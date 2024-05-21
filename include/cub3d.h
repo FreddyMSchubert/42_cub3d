@@ -1,3 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
+/*   Updated: 2024/05/21 08:38:20 by jkauker          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef CUB3D_H
+# define CUB3D_H
 
 /* ----- INCLUDES ----- */
 #include "colors.h"
@@ -33,3 +47,5 @@ void		*gc_malloc(size_t size, t_list **gc, void *ptr1);
 // printing
 void		logger(char type, char *message);
 void		verbose_logger(char type, char *message);
+
+#endif
