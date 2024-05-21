@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 07:33:54 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/21 08:05:40 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/05/21 09:12:32 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,38 @@ static int	test_libmlx_functional(void)
 	return (EXIT_SUCCESS);
 }
 
+static int	test_gc_functional(void)
+{
+	t_list	*gc;
+	void	*ptr1;
+	void	*ptr2;
+
+	gc = gc_create();
+	if (!gc)
+	{
+		perror("Failed to create garbage collector");
+		return (EXIT_FAILURE);
+	}
+	ptr1 = gc_malloc(100, &gc, NULL);
+	ptr2 = gc_malloc(200, &gc, NULL);
+	if (gc_append_element(gc, ptr1) != 0)
+		printf("Failed to append ptr1 (duplicate or error)\n");
+	if (gc_append_element(gc, ptr2) != 0)
+		printf("Failed to append ptr2 (duplicate or error)\n");
+	if (gc_append_element(gc, ptr1) != -2)
+		printf("Duplicate ptr1 was not detected\n");
+	gc_cleanup_and_reinit(&gc);
+	free (gc);
+	return (EXIT_SUCCESS);
+}
+
 int	main(int argc, char **argv)
 {
 	if (GREETING)
-		printf("%sHello cubic world!%s\n", ANSI_COLOR_CYAN, ANSI_RESET);
+		printf("🧊 %sHello cubic world!%s 🧊\n", ANSI_COLOR_CYAN, ANSI_RESET);
 
 	test_libmlx_functional();
+	test_gc_functional();
 
 	(void)argc;
 	(void)argv;
