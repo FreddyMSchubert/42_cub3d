@@ -1,5 +1,13 @@
 # Changelog
 
+### [0.1.3] - 21.05.2024 - Jonas
+
+- added strcuts:
+  - vector2 for position and rotation
+  - transform which includes pos and rot
+  - entity for player / mob
+  - input data
+
 ### [0.1.2] - 21.05.2024 - Freddy
 
 - Fixed makefile not working with submodule importing properly
