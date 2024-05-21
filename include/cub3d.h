@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/21 14:33:32 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/05/21 13:30:58 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@
 t_persistent_data	*get_persistent_data(void);
 t_list				**get_gc(void);
 
+// ---- input parsing
+char				**read_file(char *filename);
+
 // ----- util
 // garbage collector
 t_list				*gc_create(void);
@@ -53,5 +56,8 @@ void				gc_exit_error(void);
 // printing
 void				logger(char type, char *message);
 void				logger_verbose(char type, char *message);
+
+// string
+bool				str_is_equal(char *str1, char *str2);
 
 #endif
