@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:49:10 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/21 08:59:52 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/05/21 14:30:31 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	logger(char type, char *message)
 {
 	if (!message)
 		return ;
-
 	if (type == 'e')
 		printf("%sERROR%s: \t%s\n", ANSI_BOLD_RED, ANSI_RESET, message);
 	else if (type == 'w')
@@ -31,7 +30,8 @@ void	logger(char type, char *message)
 	else
 		printf("%s%s%s\n", ANSI_COLOR_WHITE, ANSI_RESET, message);
 }
-void	verbose_logger(char type, char *message)
+
+void	logger_verbose(char type, char *message)
 {
 	if (VERBOSE)
 		logger(type, message);

@@ -6,12 +6,14 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/21 11:14:05 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/05/21 14:26:17 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
+
+# include "cub3d.h"
 
 // ---- UTILS
 
@@ -38,6 +40,13 @@ typedef struct s_transform
 
 // ---- IMPORTANT
 
+typedef enum e_tile_type
+{
+	VOID = -1,
+	FLOOR = 0,
+	WALL = 1
+}	t_tile_type;
+
 typedef struct s_input_data
 {
 	char		*no_texture_location;
@@ -47,14 +56,14 @@ typedef struct s_input_data
 	char		*sprite_texture_location;
 	t_color		floor_color;
 	t_color		ceiling_color;
+	t_tile_type	**map;
 	t_transform	**walls;
 }	t_input_data;
 
-typedef struct s_input_data_step_one
+typedef struct s_persistent_data
 {
-	t_input_data	*data;
-	char			**map;
-}	t_input_data_step_one;
+	t_input_data	*input_data;
+}	t_persistent_data;
 
 // ----- CURRENTLY UNUSED
 
@@ -70,6 +79,7 @@ typedef struct s_entity
 {
 	t_entity_type	type;
 	t_transform		transform;
+	t_vec2			spawn_look_dir;
 }	t_entity;
 
 #endif

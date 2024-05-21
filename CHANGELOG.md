@@ -1,10 +1,14 @@
 # Changelog
 
-### [v0.1.5] - 21.05.2024 - Freddy
+### [0.1.6] - 21.05.204 - Freddy
+- made gc static
+- various refactorings & norminettifications
+
+### [0.1.5] - 21.05.2024 - Freddy
 
 - fixed Makefile not working importing submodules
 
-### [v0.1.4] - 21.05.2024 - Freddy
+### [0.1.4] - 21.05.2024 - Freddy
 
 - added src folder structure
 - added a test map

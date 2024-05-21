@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:18:59 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/21 09:26:49 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/05/21 14:34:58 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,13 @@ t_list	*gc_create(void)
 			-1 if malloc fails,
 			-2 if element is already in the list
 */
-int	gc_append_element(t_list *gc, void *content)
+int	gc_append_element(void *content)
 {
 	t_list	*new_node;
 	t_list	*selected_node;
+	t_list	*gc;
 
+	gc = *get_gc();
 	new_node = malloc(sizeof(t_list));
 	if (!new_node)
 		return (-1);
@@ -55,7 +57,7 @@ int	gc_append_element(t_list *gc, void *content)
 		selected_node = selected_node->next;
 		if (selected_node->content == content)
 		{
-			verbose_logger('w', "Element already in garbage collector.");
+			logger_verbose('w', "Element already in garbage collector.");
 			return (free(new_node), -2);
 		}
 	}
@@ -66,20 +68,28 @@ int	gc_append_element(t_list *gc, void *content)
 /*
 	@brief	frees all elements in the garbage collector & resets it
 */
-void	gc_cleanup_and_reinit(t_list **gc)
+void	gc_cleanup_and_reinit(void)
 {
-	verbose_logger('i', "Cleaning up garbage collector.");
+	t_list	**gc;
+
+	gc = get_gc();
+	logger_verbose('i', "Cleaning up garbage collector.");
 	ft_lstclear(gc, free);
 	*gc = NULL;
 	*gc = gc_create();
 }
 
-static void	gc_exit_error(t_list **gc, void *ptr1)
+void	gc_exit_error(void)
 {
-	gc_cleanup_and_reinit(gc);
+	int		i;
+	t_list	**gc;
+
+	gc = get_gc();
+	i = 2;
+	while (++i < 1024)
+		close(i);
+	gc_cleanup_and_reinit();
 	free(*gc);
-	if (ptr1)
-		free(ptr1);
 	exit(EXIT_FAILURE);
 }
 
@@ -88,22 +98,24 @@ static void	gc_exit_error(t_list **gc, void *ptr1)
 			exits the program by itself if malloc fails
 			ptr1 is a pointer that will be freed if malloc fails
 */
-void	*gc_malloc(size_t size, t_list **gc, void *ptr1)
+void	*gc_malloc(size_t size)
 {
 	void	*new_mem;
+	t_list	**gc;
 
+	gc = get_gc();
 	new_mem = malloc(size);
 	if (!new_mem)
 	{
 		perror("Malloc failed");
-		gc_exit_error(gc, ptr1);
+		gc_exit_error();
 	}
 	ft_bzero(new_mem, size);
-	if (gc_append_element(*gc, new_mem) == -1)
+	if (gc_append_element(new_mem) == -1)
 	{
 		perror("Malloc failed");
 		free(new_mem);
-		gc_exit_error(gc, ptr1);
+		gc_exit_error();
 	}
 	return (new_mem);
 }
