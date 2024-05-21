@@ -1,8 +1,14 @@
 # Changelog
 
+### [v0.1.4] - 21.05.2024 - Freddy
+- added src folder structure
+- added a test map
+- added minecraft coral blocks as temp assets
+- minecraft assets removal
+
 ### [0.1.3] - 21.05.2024 - Jonas
 
-- added strcuts:
+- added structs:
   - vector2 for position and rotation
   - transform which includes pos and rot
   - entity for player / mob

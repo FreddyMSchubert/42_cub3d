@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/21 08:58:40 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/05/21 11:14:05 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_input_data
 	char		*so_texture_location;
 	char		*we_texture_location;
 	char		*ea_texture_location;
+	char		*sprite_texture_location;
 	t_color		floor_color;
 	t_color		ceiling_color;
 	t_transform	**walls;
