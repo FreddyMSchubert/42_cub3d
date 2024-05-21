@@ -1,0 +1,9 @@
+[submodule "submodules/MLX42"]
+	path = submodules/MLX42
+	url = https://github.com/codam-coding-college/MLX42
+[submodule "submodules/42_libft"]
+	path = submodules/42_libft
+	url = https://github.com/FreddyMSchubert/42_libft
+[submodule "submodules/42_get_next_line"]
+	path = submodules/42_get_next_line
+	url = https://github.com/FreddyMSchubert/42_get_next_line
