@@ -1,0 +1,47 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+	  {
+		"name": "Cube3d: Debug Session (LINUX)",
+		"type": "cppdbg",
+		"request": "launch",
+		"program": "${workspaceFolder}/cube3d/",
+		"args": [],
+		"stopAtEntry": false,
+		"cwd": "${workspaceFolder}",
+		"environment": [],
+		"externalConsole": false,
+		"MIMode": "gdb",
+		"setupCommands": [
+		  {
+			"description": "Enable pretty-printing for gdb",
+			"text": "-enable-pretty-printing",
+			"ignoreFailures": true
+		  }
+		],
+		"preLaunchTask": "sudo cube3d prelaunch",
+		"miDebuggerPath": "/usr/bin/gdb"
+	  },
+	  {
+		"name": "Cube3d: Debug Session (MAC)",
+		"type": "cppdbg",
+		"request": "launch",
+		"program": "${workspaceFolder}/cube3d/cube3d",
+		"args": [],
+		"stopAtEntry": false,
+		"cwd": "${workspaceFolder}",
+		"environment": [],
+		"externalConsole": false,
+		"MIMode": "lldb",
+		"setupCommands": [
+		  {
+			"description": "Enable pretty-printing for lldb",
+			"text": "command script import /path/to/lldb/pretty_printers.py",
+			"ignoreFailures": true
+		  }
+		],
+		"preLaunchTask": "cube3d prelaunch",
+		"miDebuggerPath": "/usr/bin/lldb"
+	  }
+	]
+  }

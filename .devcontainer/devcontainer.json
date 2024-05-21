@@ -1,0 +1,38 @@
+{
+	"name": "Cube3d Dev Container",
+	"dockerFile": "Dockerfile",
+	"customizations": {
+		"vscode": {
+			"settings": { 
+				"files.autoSave": "onFocusChange",
+				"editor.renderWhitespace": "all",
+				"editor.insertSpaces": false,
+				"debug.onTaskErrors": "debugAnyway",
+				"42header.email": "jkauker@student.42heilbronn.de",
+				"42header.username": "jkauker"
+			},
+			"extensions": [
+				"ms-vscode.cpptools-themes",
+				"ms-vscode-remote.remote-containers",
+				"mitaki28.vscode-clang",
+				"ms-vscode.cpptools",
+				"ms-vscode.cpptools-extension-pack",
+				"kube.42header",
+				"twxs.cmake",
+				"ms-vscode.cmake-tools",
+				"vadimcn.vscode-lldb",
+				"GitHub.copilot",
+				"ms-azuretools.vscode-docker",
+				"ms-vscode-remote.remote-containers",
+				"DoKca.42-ft-count-line",
+				"MariusvanWijk-JoppeKoers.codam-norminette-3",
+				"Gruntfuggly.todo-tree",
+				"keyhr.42-c-format",
+				"vsls-contrib.codetour",
+				"mhutchie.git-graph",
+				"DoKca.42-ft-count-line"
+			]
+		}
+	},
+	"postCreateCommand": "chmod +x /workspaces/minishell/.devcontainer/init.sh && /workspaces/minishell/.devcontainer/init.sh"
+}
