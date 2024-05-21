@@ -1,6 +1,11 @@
 # Changelog
 
+### [v0.1.5] - 21.05.2024 - Freddy
+
+- fixed Makefile not working importing submodules
+
 ### [v0.1.4] - 21.05.2024 - Freddy
+
 - added src folder structure
 - added a test map
 - added minecraft coral blocks as temp assets

@@ -12,7 +12,7 @@ HEADERS := -I ./include -I $(LIBMLX)/include -I $(LIBFT)/include -I $(GNL)/inclu
 LIBS := $(LIBMLX)/build/libmlx42.a -ldl -lglfw $(LIBFT)/libft.a $(GNL)/libftgnl.a
 CFLAGS := -Wall -Werror -Wextra -Wunreachable-code -g #-fsanitize=address
 
-$(NAME): $(OBJ) $(LIBMLX)/build/libmlx42.a $(LIBFT)/libft.a $(GNL)/libftgnl.a
+$(NAME): setup $(OBJ) $(LIBMLX)/build/libmlx42.a $(LIBFT)/libft.a $(GNL)/libftgnl.a
 	cc $(OBJ) $(LIBS) $(HEADERS) -o $(NAME)
 
 $(OBJ_DIR)/%.o: ./src/%.c
@@ -23,12 +23,12 @@ $(OBJ_DIR)/%.o: ./src/%.c
 all: libmlx libft gnl $(NAME)
 clean:
 	rm -rf $(OBJ_DIR)
-	make -C $(LIBFT) clean
-	make -C $(GNL) clean
+	@if [ -d "$(LIBFT)" ]; then make -C $(LIBFT) clean; fi
+	@if [ -d "$(GNL)" ]; then make -C $(GNL) clean; fi
 fclean: clean
 	rm -rf $(LIBMLX)/build
-	make -C $(LIBFT) fclean
-	make -C $(GNL) fclean
+	@if [ -d "$(LIBFT)" ]; then make -C $(LIBFT) fclean; fi
+	@if [ -d "$(GNL)" ]; then make -C $(GNL) fclean; fi
 	rm -f $(NAME)
 re: fclean all
 
