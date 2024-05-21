@@ -20,7 +20,7 @@ $(OBJ_DIR)/%.o: ./src/%.c
 	@mkdir -p $(dir $@)
 	cc $(CFLAGS) -o $@ -c $< $(HEADERS)
 
-all: libmlx $(NAME)
+all: libmlx libft gnl $(NAME)
 clean:
 	rm -rf $(OBJ_DIR)
 	make -C $(LIBFT) clean
@@ -32,19 +32,22 @@ fclean: clean
 	rm -f $(NAME)
 re: fclean all
 
-$(LIBMLX)/build/libmlx42.a:
+$(LIBMLX)/build/libmlx42.a: | setup
 	cmake $(LIBMLX) -B $(LIBMLX)/build
 	make -C $(LIBMLX)/build -j4
 libmlx: $(LIBMLX)/build/libmlx42.a
 
-$(LIBFT)/libft.a:
+$(LIBFT)/libft.a: | setup
 	make -C $(LIBFT)
 	make -C $(LIBFT) bonus
 	make -C $(LIBFT) xtra
 libft: $(LIBFT)/libft.a
 
-$(GNL)/libftgnl.a:
+$(GNL)/libftgnl.a: | setup
 	make -C $(GNL)
 gnl: $(GNL)/libftgnl.a
 
-.PHONY: all clean fclean re libmlx libft gnl
+setup:
+	git submodule update --remote --init --recursive
+
+.PHONY: all clean fclean re setup libmlx libft gnl

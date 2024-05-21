@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.1.2] - 21.05.2024 - Freddy
+
+- Fixed makefile not working with submodule importing properly
+
 ### [0.1.1] - 21.05.2024 - Freddy
 
 - removed assets folder, instead added whole minecraft resources as submodule
