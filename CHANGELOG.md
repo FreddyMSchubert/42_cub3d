@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.2.0] - 21.05.24 - Freddy - `3-enum-map-to-wall-vectors`
+- made `wall_conversion.c`, which converts the tile types into a boolean array, which removes duplicate overlapping walls.
+	- now only walls that can actually seen are in this boolean array. it only needs to be converted to transforms now.
+
 ### [0.1.6] - 21.05.204 - Freddy
 - made gc static
 - various refactorings & norminettifications
