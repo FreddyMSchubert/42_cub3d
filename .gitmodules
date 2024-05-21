@@ -7,3 +7,7 @@
 [submodule "submodules/42_get_next_line"]
 	path = submodules/42_get_next_line
 	url = https://github.com/FreddyMSchubert/42_get_next_line
+[submodule "submodules/minecraft-assets"]
+	path = submodules/minecraft-assets
+	url = https://github.com/InventivetalentDev/minecraft-assets
+	branch = 21w05a

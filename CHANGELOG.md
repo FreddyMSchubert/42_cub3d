@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.1.1] - 21.05.2024 - Freddy
+
+- removed assets folder, instead added whole minecraft resources as submodule
+
 ## [0.1.0] - 21.05.2024 - Freddy
 
 - Added duplicate protected garbage collector with gc_malloc
