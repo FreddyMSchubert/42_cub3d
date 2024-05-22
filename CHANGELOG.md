@@ -1,18 +1,21 @@
 # Changelog
 
-### [0.2.1] - 21.05.2024 - Freddy - `3-enum-map-to-wall-vectors`
+## [0.3.0] - 22.05.2024 - Freddy - `6-input-validation`
+- added input validation function that ensures no floor tiles touch any void tiles or walls
+
+### [0.2.1] - 22.05.2024 - Freddy - `3-enum-map-to-wall-vectors`
 - in `wall_conversion.c`, converted bool map to wall array
 	- various refactorings & improvements in structure and logic
 	- added some comments to clarify the logic
 
-## [0.2.0] - 21.05.24 - Freddy - `3-enum-map-to-wall-vectors`
+## [0.2.0] - 22.05.24 - Freddy - `3-enum-map-to-wall-vectors`
 - made `wall_conversion.c`, which converts the tile types into a boolean array, which removes duplicate overlapping walls.
 	- now only walls that can actually seen are in this boolean array. it only needs to be converted to transforms now.
 
-### [0.1.8] - 21.05.2024 - Freddy
+### [0.1.8] - 22.05.2024 - Freddy
 - Added 5 more maps that are a good bit more difficult
 
-### [0.1.7] - 21.05.2024 - Freddy
+### [0.1.7] - 22.05.2024 - Freddy
 - Added some nice map files that test various things in ./assets/maps/*
 - Added a good amount of minecraft textures as walls
 - added `start_random_cub3d_map.sh`, which picks a random map to execute and starts ./cub3d
