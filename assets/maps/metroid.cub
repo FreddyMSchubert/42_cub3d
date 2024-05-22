@@ -1,9 +1,9 @@
 # Credits: https://gitlab.com/madebypixel02/cub3d
 
-NO ./assets/img/diamond_ore.xmp
-SO ./assets/img/lapis_ore.xmp
-WE ./assets/img/redstone_ore.xmp
-EA ./assets/img/coal_ore.xmp
+NO ./assets/img/diamond_ore.png
+SO ./assets/img/lapis_ore.png
+WE ./assets/img/redstone_ore.png
+EA ./assets/img/coal_ore.png
 
 F 184,113,39
 C 51,198,227

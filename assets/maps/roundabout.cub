@@ -1,10 +1,10 @@
 # Credits: https://github.com/zelhajou/42-cub3D/blob/main/cub3d
 
 
-NO ./assets/img/cherry_planks.xmp
-EA ./assets/img/bricks.xmp
-WE ./assets/img/cherry_planks.xmp
-SO ./assets/img/bricks.xmp
+NO ./assets/img/cherry_planks.png
+EA ./assets/img/bricks.png
+WE ./assets/img/cherry_planks.png
+SO ./assets/img/bricks.png
 
 
 C 255,255,255

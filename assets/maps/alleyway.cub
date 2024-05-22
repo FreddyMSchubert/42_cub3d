@@ -1,9 +1,9 @@
 # Credits: https://github.com/zelhajou/42-cub3D/blob/main/cub3d
 
-EA ./assets/img/bubble_coral.xmp
-NO ./assets/img/bubble_coral.xmp
-SO ./assets/img/fire_coral.xmp
-WE ./assets/img/fire_coral.xmp
+EA ./assets/img/bubble_coral.png
+NO ./assets/img/bubble_coral.png
+SO ./assets/img/fire_coral.png
+WE ./assets/img/fire_coral.png
 
 
 F 1,1,1

@@ -1,9 +1,9 @@
 # Credits: https://gitlab.com/madebypixel02/cub3d
 
-NO ./assets/img/structure_block_corner.xmp
-SO ./assets/img/structure_block_data.xmp
-WE ./assets/img/structure_block_load.xmp
-EA ./assets/img/structure_block.xmp
+NO ./assets/img/structure_block_corner.png
+SO ./assets/img/structure_block_data.png
+WE ./assets/img/structure_block_load.png
+EA ./assets/img/structure_block.png
 
 F 184,113,39
 C 51,198,227

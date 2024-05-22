@@ -3,10 +3,10 @@
 
 
 
-WE ./assets/img/structure_block_corner.xpm
-EA ./assets/img/structure_block_data.xpm
-NO ./assets/img/structure_block_load.xpm
-SO ./assets/img/structure_block.xpm
+WE ./assets/img/structure_block_corner.png
+EA ./assets/img/structure_block_data.png
+NO ./assets/img/structure_block_load.png
+SO ./assets/img/structure_block.png
 
 C 0,0,0
 F 20,20,20

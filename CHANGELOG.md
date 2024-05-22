@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.3.1] - 22.05.2024 - Freddy
+- found out how to render images starting with a png, changed back the file endings in the maps
+
 ## [0.3.0] - 22.05.2024 - Freddy - `6-input-validation`
 - added input validation function that ensures no floor tiles touch any void tiles or walls
 

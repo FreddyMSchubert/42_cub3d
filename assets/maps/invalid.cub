@@ -1,10 +1,10 @@
-NO./assets/img/brain.xmp
+NO./assets/img/brain.png
 C         225,30,0
-SO ./assets/img/brain.xmp
+SO ./assets/img/brain.png
 WE 
-./assets/img/brain.xmp
+./assets/img/brain.png
 
-EA	./assets/img/brain.xmp
+EA	./assets/img/brain.png
 
 F 220,100,0,34 
 C 2,-1

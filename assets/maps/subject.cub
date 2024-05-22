@@ -1,7 +1,7 @@
-NO ./assets/img/chiseled_tuff.xmp
-SO ./assets/img/chiseled_tuff_bricks.xmp
-WE ./assets/img/chiseled_tuff_top.xmp
-EA ./assets/img/chiseled_tuff_bricks_top.xmp
+NO ./assets/img/chiseled_tuff.png
+SO ./assets/img/chiseled_tuff_bricks.png
+WE ./assets/img/chiseled_tuff_top.png
+EA ./assets/img/chiseled_tuff_bricks_top.png
 
 F 220,100,0
 C 225,30,0

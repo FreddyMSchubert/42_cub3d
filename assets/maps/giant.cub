@@ -1,9 +1,9 @@
 # Credits: https://git.chevro.fr/42-cestoliv/cub3D
 
-NO ./assets/img/chiseled_tuff.xpm
-SO ./assets/img/chiseled_tuff_bricks.xpm
-WE ./assets/img/chiseled_tuff_top.xpm
-EA ./assets/img/chiseled_tuff_bricks_top.xpm
+NO ./assets/img/chiseled_tuff.png
+SO ./assets/img/chiseled_tuff_bricks.png
+WE ./assets/img/chiseled_tuff_top.png
+EA ./assets/img/chiseled_tuff_bricks_top.png
 
 F 20,22,25
 C 13,14,15

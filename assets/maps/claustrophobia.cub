@@ -1,9 +1,9 @@
 # Credits: https://gitlab.com/madebypixel02/cub3d
 
-NO ./assets/img/amethyst_block.xmp
-SO ./assets/img/amethyst_block.xmp
-EA ./assets/img/amethyst_block.xmp
-WE ./assets/img/amethyst_block.xmp
+NO ./assets/img/amethyst_block.png
+SO ./assets/img/amethyst_block.png
+EA ./assets/img/amethyst_block.png
+WE ./assets/img/amethyst_block.png
 
 F 199,45,91
 C 41,117,119

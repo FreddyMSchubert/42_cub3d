@@ -1,9 +1,9 @@
 # Credits: https://gitlab.com/madebypixel02/cub3d
 
-NO ./assets/img/crafter_east.xmp
-SO ./assets/img/crafter_west.xmp
-WE ./assets/img/crafter_north.xmp
-EA ./assets/img/crafter_south.xmp
+NO ./assets/img/crafter_east.png
+SO ./assets/img/crafter_west.png
+WE ./assets/img/crafter_north.png
+EA ./assets/img/crafter_south.png
 
 F 150,75,0
 C 41,117,119

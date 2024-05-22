@@ -3,10 +3,10 @@
 C 0,0,0
 F 0,0,0 
 
-EA ./assets/img/coal_ore.xpm
-NO ./assets/img/redstone_ore.xpm
-SO ./assets/img/lapis_ore.xpm
-WE ./assets/img/diamond_ore.xpm
+EA ./assets/img/coal_ore.png
+NO ./assets/img/redstone_ore.png
+SO ./assets/img/lapis_ore.png
+WE ./assets/img/diamond_ore.png
 
 1111111111111111111111111111111111111111
 1000000000000000010010010000000000000001

@@ -1,9 +1,9 @@
 # Credits: https://gitlab.com/madebypixel02/cub3d
 
-NO ./assets/img/bamboo_block.xmp
-SO ./assets/img/bamboo_door_bottom.xmp
-EA ./assets/img/bamboo_mosaic.xmp
-WE ./assets/img/bamboo_planks.xmp
+NO ./assets/img/bamboo_block.png
+SO ./assets/img/bamboo_door_bottom.png
+EA ./assets/img/bamboo_mosaic.png
+WE ./assets/img/bamboo_planks.png
 
 F 0,0,0
 C 0,0,0

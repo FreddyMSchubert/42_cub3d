@@ -1,9 +1,9 @@
 # Credits: https://gitlab.com/madebypixel02/cub3d
 
-NO ./assets/img/cherry_planks.xmp
-SO ./assets/img/cherry_planks.xmp
-WE ./assets/img/bookshelf.xmp
-EA ./assets/img/bookshelf.xmp
+NO ./assets/img/cherry_planks.png
+SO ./assets/img/cherry_planks.png
+WE ./assets/img/bookshelf.png
+EA ./assets/img/bookshelf.png
 
 F 184,113,39
 C 51,198,227
