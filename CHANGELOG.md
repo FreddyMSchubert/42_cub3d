@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.1.8] - 21.05.2024 - Freddy
+- Added 5 more maps that are a good bit more difficult
+
 ### [0.1.7] - 21.05.2024 - Freddy
 - Added some nice map files that test various things in ./assets/maps/*
 - Added a good amount of minecraft textures as walls
