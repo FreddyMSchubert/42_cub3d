@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:49:10 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/21 14:30:31 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/05/22 12:19:58 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void	logger(char type, char *message)
 	if (!message)
 		return ;
 	if (type == 'e')
-		printf("%sERROR%s: \t%s\n", ANSI_BOLD_RED, ANSI_RESET, message);
+		printf("%sERROR%s:\t\t%s\n", ANSI_BOLD_RED, ANSI_RESET, message);
 	else if (type == 'w')
-		printf("%sWARNING%s: \t%s\n", ANSI_BOLD_YELLOW, ANSI_RESET, message);
+		printf("%sWARNING%s:\t%s\n", ANSI_BOLD_YELLOW, ANSI_RESET, message);
 	else if (type == 'i')
 		printf("%sINFO%s: \t\t%s\n", ANSI_BOLD_CYAN, ANSI_RESET, message);
 	else
