@@ -6,11 +6,14 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:38:30 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/22 09:15:54 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/05/22 10:27:58 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/cub3d.h"
+
+bool	parse_textures(char	**data, t_input_data **input_data, int *i);
+bool	parse_colors(char	**data, t_input_data **input_data, int *i);
 
 static int	get_file_length(char *filename)
 {
@@ -62,6 +65,32 @@ static char	**read_file(char *filename)
 	return (data);
 }
 
+static	void	print_file_data(char **data)
+{
+	int	i;
+
+	i = 0;
+	printf("\n\n---------FILEDATA---------\n");
+	while (data[i])
+		printf("FILEDATA:\t%s", data[i++]);
+	printf("\n--------------------------\n\n");
+}
+
+static bool	parse_file_data(char **data, t_input_data **input_data)
+{
+	int	i;
+
+	i = -1;
+	while (data && data[++i])
+	{
+		if (!parse_textures(data, input_data, &i))
+			return (false);
+		if (!parse_colors(data, input_data, &i))
+			return (false);
+	}
+	return (true);
+}
+
 t_input_data	*get_map_contents(char *filepath)
 {
 	t_input_data	*input_data;
@@ -73,6 +102,17 @@ t_input_data	*get_map_contents(char *filepath)
 		logger(LOGGER_ERROR, "Could not read map file");
 		return (NULL);
 	}
+	print_file_data(data);
 	input_data = gc_malloc(sizeof(t_input_data));
+	if (!input_data)
+	{
+		logger(LOGGER_ERROR, "Could not allocate memory for input data");
+		return (NULL);
+	}
+	if (!parse_file_data(data, &input_data))
+	{
+		logger(LOGGER_ERROR, "Could not parse map data");
+		return (NULL);
+	}
 	return (input_data);
 }
