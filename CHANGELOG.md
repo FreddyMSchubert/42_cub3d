@@ -1,5 +1,14 @@
 # Changelog
 
+### [0.2.1] - 21.05.2024 - Freddy - `3-enum-map-to-wall-vectors`
+- in `wall_conversion.c`, converted bool map to wall array
+	- various refactorings & improvements in structure and logic
+	- added some comments to clarify the logic
+
+## [0.2.0] - 21.05.24 - Freddy - `3-enum-map-to-wall-vectors`
+- made `wall_conversion.c`, which converts the tile types into a boolean array, which removes duplicate overlapping walls.
+	- now only walls that can actually seen are in this boolean array. it only needs to be converted to transforms now.
+
 ### [0.1.8] - 21.05.2024 - Freddy
 - Added 5 more maps that are a good bit more difficult
 
