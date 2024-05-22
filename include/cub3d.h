@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/21 14:33:32 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/05/22 08:04:03 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,15 @@
 // ----- general
 t_persistent_data	*get_persistent_data(void);
 t_list				**get_gc(void);
+
+// ----- 0_input_parsing
+// --- a_file_reading
+// --- b_validation
+// --- c_wall_conversion
+void				convert_walls(t_input_data *in);
+// util
+struct s_size		get_map_size(t_tile_type **map);
+t_transform			*create_transform(int x, int y, int rotx, int roty);
 
 // ----- util
 // garbage collector

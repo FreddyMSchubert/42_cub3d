@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/21 14:26:17 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/05/22 08:02:21 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ typedef struct s_color
 	int	g;
 	int	b;
 }	t_color;
+
+struct s_size
+{
+	int	width;
+	int	height;
+};
 
 // ---- GAME LOGIC
 
