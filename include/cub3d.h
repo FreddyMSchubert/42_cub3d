@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/21 13:30:58 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/05/22 10:51:04 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,17 @@
 /* ----- RULES ----- */
 # define GREETING true
 # define VERBOSE true
+# define DEBUG true
+
+/* ----- LOGGER ----- */
+# define LOGGER_ERROR 'e'
+# define LOGGER_WARNING 'w'
+# define LOGGER_INFO 'i'
+
+/* ----- EXIT CODES ----- */
+# define EXIT_SUCCESS 0
+# define EXIT_INVALID_ARGS 1
+# define EXIT_INVALID_FILE_EXTENSION 2
 
 /* ---- FUNCTIONS ----- */
 // lets mirror the file system in here. the less ---, the deeper the file
@@ -44,7 +55,7 @@ t_persistent_data	*get_persistent_data(void);
 t_list				**get_gc(void);
 
 // ---- input parsing
-char				**read_file(char *filename);
+t_input_data		*get_map_contents(char *filepath);
 
 // ----- util
 // garbage collector

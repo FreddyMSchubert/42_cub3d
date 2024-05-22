@@ -10,7 +10,7 @@ GNL		:= ./submodules/42_get_next_line
 
 HEADERS := -I ./include -I $(LIBMLX)/include -I $(LIBFT)/include -I $(GNL)/include
 LIBS := $(LIBMLX)/build/libmlx42.a -ldl -lglfw $(LIBFT)/libft.a $(GNL)/libftgnl.a
-CFLAGS := -Wall -Werror -Wextra -Wunreachable-code -g #-fsanitize=address
+CFLAGS := -Wall -Werror -Wextra -Wunreachable-code -g
 
 $(NAME): setup $(OBJ) $(LIBMLX)/build/libmlx42.a $(LIBFT)/libft.a $(GNL)/libftgnl.a
 	cc $(OBJ) $(LIBS) $(HEADERS) -o $(NAME)
@@ -49,5 +49,8 @@ gnl: $(GNL)/libftgnl.a
 
 setup:
 	git submodule update --remote --init --recursive
+
+debug: CFLAGS += -g -O0
+debug: fclean all
 
 .PHONY: all clean fclean re setup libmlx libft gnl
