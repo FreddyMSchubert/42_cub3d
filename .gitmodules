@@ -4,6 +4,3 @@
 [submodule "submodules/42_libft"]
 	path = submodules/42_libft
 	url = https://github.com/FreddyMSchubert/42_libft
-[submodule "submodules/42_get_next_line"]
-	path = submodules/42_get_next_line
-	url = https://github.com/FreddyMSchubert/42_get_next_line
