@@ -1,0 +1,21 @@
+NO./assets/img/brain.xmp
+C         225,30,0
+SO ./assets/img/brain.xmp
+WE 
+./assets/img/brain.xmp
+
+EA	./assets/img/brain.xmp
+
+F 220,100,0,34 
+C 2,-1
+
+111111
+100101
+
+101001
+1100N1
+111111
+
+this map is there so we can make sure that we catch errors and print out something useful
+the stuff up there should not be allowed
+the text not either but if we arrive here weve done really damn bad
