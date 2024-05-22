@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/22 10:51:04 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/05/22 09:30:57 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 # include "../submodules/MLX42/include/MLX42/MLX42.h"
 # include "../submodules/42_libft/libft.h"
-# include "../submodules/42_get_next_line/get_next_line.h"
+# include "../lib/get_next_line/get_next_line.h"
 
 // subject functions
 # include <fcntl.h>    // open, close
