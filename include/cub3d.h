@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/23 11:20:16 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/05/23 13:49:54 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_input_data		*get_map_contents(char *filepath);
 // --- c_wall_conversion
 void				convert_walls(t_input_data *in);
 // util
-t_size			get_map_size(t_tile_type ***map);
+t_size				get_map_size(t_tile_type ***map);
 t_transform			*create_transform(int x, int y, int rotx, int roty);
 bool				wall_needed(t_tile_type ***map, int x, int y, t_size size);
 
@@ -79,9 +79,6 @@ int					gc_append_element(void *content);
 void				gc_cleanup_and_reinit(void);
 void				*gc_malloc(size_t size);
 void				gc_exit_error(void);
-
-// printing
-void				print_map(t_tile_type ***map);
 
 // logging
 void				logger(char type, char *message);

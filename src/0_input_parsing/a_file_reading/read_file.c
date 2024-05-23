@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:38:30 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/23 11:39:50 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/05/23 13:53:37 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,47 +94,32 @@ static bool	parse_file_data(char **data, t_input_data **input_data)
 	return (true);
 }
 
-static bool basic_validate(t_input_data **in)
+static bool	basic_validate(t_input_data **in)
 {
 	t_input_data	*data;
 
 	if (!in)
 		return (false);
 	data = *in;
-	if (data->ceiling_color.r == -1 || data->ceiling_color.g == -1 || data->ceiling_color.b == -1)
+	if (data->ceiling_color.r == -1 || data->ceiling_color.g == -1 || \
+										data->ceiling_color.b == -1)
 	{
 		logger(LOGGER_ERROR, "Ceiling color not set!");
 		return (false);
 	}
-	if (data->floor_color.r == -1 || data->floor_color.g == -1 || data->floor_color.b == -1)
+	if (data->floor_color.r == -1 || data->floor_color.g == -1 || \
+										data->floor_color.b == -1)
 	{
 		logger(LOGGER_ERROR, "Floor color not set!");
 		return (false);
 	}
-	if (!data->ea_texture_location || !data->no_texture_location || !data->so_texture_location || !data->we_texture_location)
+	if (!data->ea_texture_location || !data->no_texture_location || \
+					!data->so_texture_location || !data->we_texture_location)
 	{
 		logger(LOGGER_ERROR, "Texture location not set!");
 		return (false);
 	}
 	return (true);
-}
-
-void	print_map(t_tile_type ***map)
-{
-
-	for (int i = 0; map[i]; i++)
-	{
-		for (int j = 0; map[i][j]; j++)
-		{
-			if (*map[i][j] == VOID)
-				printf("X");
-			else if (*map[i][j] == FLOOR)
-				printf("0");
-			else if (*map[i][j] == WALL)
-				printf("1");
-		}
-		printf("\n");
-	}
 }
 
 static void	clean_struct_input(t_input_data *input_data)
@@ -173,7 +158,7 @@ t_input_data	*get_map_contents(char *filepath)
 	}
 	if (!basic_validate(&input_data)) // TODO: free stuff here
 		return (NULL);
-	print_map(input_data->map);
+	print_map(input_data->map, " 01");
 	logger(LOGGER_INFO, "Map loaded successfully!");
 	return (input_data);
 }
