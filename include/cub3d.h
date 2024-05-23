@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/22 09:30:57 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/05/23 10:48:21 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@
 # define VERBOSE true
 # define DEBUG true
 
+/* ---- SETTINGS ---- */
+# define MAP_TILES " 10NESW"
+
 /* ----- LOGGER ----- */
 # define LOGGER_ERROR 'e'
 # define LOGGER_WARNING 'w'
@@ -53,6 +56,8 @@
 // ----- general
 t_persistent_data	*get_persistent_data(void);
 t_list				**get_gc(void);
+t_entity			*get_player(void);
+int					*get_file_len(void);
 
 // ---- input parsing
 t_input_data		*get_map_contents(char *filepath);
@@ -64,6 +69,7 @@ int					gc_append_element(void *content);
 void				gc_cleanup_and_reinit(void);
 void				*gc_malloc(size_t size);
 void				gc_exit_error(void);
+void				print_map(t_tile_type ***map);
 // printing
 void				logger(char type, char *message);
 void				logger_verbose(char type, char *message);

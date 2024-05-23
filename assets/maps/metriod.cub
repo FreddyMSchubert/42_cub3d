@@ -1,9 +1,9 @@
 # Credits: https://gitlab.com/madebypixel02/cub3d
 
-NO ./assets/img/bamboo_block.xpm
-SO ./assets/img/bamboo_block.xpm
-WE ./assets/img/bamboo_block.xpm
-EA ./assets/img/bamboo_block.xpm
+NO ./assets/img/bamboo_block.png
+SO ./assets/img/bamboo_block.png
+WE ./assets/img/bamboo_block.png
+EA ./assets/img/bamboo_block.png
 
 F 184,113,39
 C 51,198,227
