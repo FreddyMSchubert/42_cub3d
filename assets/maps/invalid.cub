@@ -1,7 +1,8 @@
 NO      ./assets/img/bamboo_block.png
 C         225,30,0
 SO ./assets/img/bamboo_block.png
-WE ./assets/img/bamboo_block.png
+WE 
+    ./assets/img/bamboo_block.png
 
 EA	./assets/img/bamboo_block.png
 

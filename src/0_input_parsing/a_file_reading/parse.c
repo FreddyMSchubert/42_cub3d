@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 09:39:02 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/23 10:49:10 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/05/23 11:39:22 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,33 +65,31 @@ bool	regex(char *line, char *reg)
 
 static bool	set_value(char	**value, char	*set)
 {
-	char	*val;
 	int		file;
 
-	val = *value;
-	if (!value || val)
+	if (!value || *value)
 		return (false);
-	val = ft_strdup(set);
-	if (!val)
+	*value = ft_strdup(set);
+	if (!*value)
 		return (false);
-	if (val[ft_strlen(val) - 1] == '\n')
-		val[ft_strlen(val) - 1] = 0;
-	if (strlen(val) > 4
-		&& !str_is_equal(&(val[strlen(val) - 4]), ".png"))
+	if ((*value)[ft_strlen(*value) - 1] == '\n')
+		(*value)[ft_strlen(*value) - 1] = 0;
+	if (strlen(*value) > 4
+		&& !str_is_equal(&((*value)[strlen(*value) - 4]), ".png"))
 	{
 		logger(LOGGER_WARNING,
 			"Invalid texture file extension. Please provide a .png file!");
 		return (false);
 	}
-	file = open(val, O_RDONLY);
+	file = open(*value, O_RDONLY);
 	if (file < 0)
 	{
 		logger(LOGGER_WARNING, "Failed to open texture file!");
 		return (false);
 	}
-	if (DEBUG)
-		printf("Texture file set to '%s'\n", val);
 	close(file);
+	if (DEBUG)
+		printf("Texture file set to '%s'\n", *value);
 	return (true);
 }
 
@@ -181,14 +179,14 @@ bool	parse_map(char **data, t_input_data **input_data, int *i)
 	t_tile_type	***map;
 
 	map_len = 0;
-	while ((*i) + map_len < *get_file_len() && data[(*i) + map_len] && regex(data[(*i) + map_len], MAP_TILES))
+	while (data[(*i) + map_len] && regex(data[(*i) + map_len], MAP_TILES))
 		map_len++;
 	if (map_len < 3)
 		return (false);
 	map = gc_malloc((map_len + 1) * sizeof(t_tile_type **));
 	map[map_len] = NULL;
 	k = -1;
-	while (data[*i] && regex(data[*i], MAP_TILES) && (*i) - map_len < map_len)
+	while (data[*i] && regex(data[*i], MAP_TILES) && map_len--)
 	{
 		map[++k] = gc_malloc(ft_strlen(data[*i]) * sizeof(t_tile_type *) + 1);
 		map[k][ft_strlen(data[*i])] = NULL;
@@ -212,6 +210,5 @@ bool	parse_map(char **data, t_input_data **input_data, int *i)
 		(*i)++;
 	}
 	(*input_data)->map = map;
-	print_map(map);
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:03:38 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/23 10:48:08 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/05/23 10:51:52 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,4 @@ t_entity	*get_player(void)
 	static t_entity	player;
 
 	return (&player);
-}
-
-int	*get_file_len(void)
-{
-	static int	file_len;
-
-	return (&file_len);
 }

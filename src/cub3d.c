@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 07:33:54 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/23 08:38:01 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/05/23 11:28:54 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ int	main(int argc, char **argv)
 	printf("\033[H\033[J");
 	if (GREETING)
 		printf("🧊 %sHello cubic world!%s 🧊\n", ANSI_COLOR_CYAN, ANSI_RESET);
+	logger(LOGGER_INFO, "Loading map...");
 	get_persistent_data()->input_data = get_map_contents(argv[1]);
+	if (!get_persistent_data()->input_data)
+	{
+		logger(LOGGER_ERROR, "Failed to load map\n");
+		return (EXIT_MAP_ERROR);
+	}
 	return (EXIT_SUCCESS);
 }

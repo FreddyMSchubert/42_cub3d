@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/23 10:48:21 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/05/23 11:20:16 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@
 # define EXIT_SUCCESS 0
 # define EXIT_INVALID_ARGS 1
 # define EXIT_INVALID_FILE_EXTENSION 2
+# define EXIT_MAP_ERROR 3
 
 /* ---- FUNCTIONS ----- */
 // lets mirror the file system in here. the less ---, the deeper the file
@@ -57,7 +58,6 @@
 t_persistent_data	*get_persistent_data(void);
 t_list				**get_gc(void);
 t_entity			*get_player(void);
-int					*get_file_len(void);
 
 // ---- input parsing
 t_input_data		*get_map_contents(char *filepath);

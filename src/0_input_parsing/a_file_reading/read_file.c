@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:38:30 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/23 10:48:32 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/05/23 11:39:50 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,11 @@ static int	get_file_length(char *filename)
 	line = get_next_line(file);
 	while (line)
 	{
-		if (!str_is_equal(line, "\n") && *line != '#')
-			i++;
+		i++;
 		free(line);
 		line = get_next_line(file);
 	}
 	close(file);
-	*get_file_len() = i;
 	return (i);
 }
 
@@ -52,7 +50,7 @@ static char	**read_file(char *filename)
 		return (NULL);
 	length = get_file_length(filename);
 	line = get_next_line(file);
-	data = ft_calloc((length + 1), sizeof(char *));
+	data = ft_calloc((length + 2), sizeof(char *));
 	i = 0;
 	while (line)
 	{
@@ -83,7 +81,6 @@ static bool	parse_file_data(char **data, t_input_data **input_data)
 		logger(LOGGER_ERROR, "Could not parse attributes!");
 		return (false);
 	}
-	logger(LOGGER_INFO, "Parsed attributes.");
 	while (!regex(data[i], MAP_TILES))
 		i++;
 	if (!parse_map(data, input_data, &i))
@@ -93,7 +90,32 @@ static bool	parse_file_data(char **data, t_input_data **input_data)
 		logger(LOGGER_ERROR, "Could not parse playing field!");
 		return (false);
 	}
-	logger(LOGGER_INFO, "Parsed playing field.");
+	logger(LOGGER_INFO, "Map load complete.");
+	return (true);
+}
+
+static bool basic_validate(t_input_data **in)
+{
+	t_input_data	*data;
+
+	if (!in)
+		return (false);
+	data = *in;
+	if (data->ceiling_color.r == -1 || data->ceiling_color.g == -1 || data->ceiling_color.b == -1)
+	{
+		logger(LOGGER_ERROR, "Ceiling color not set!");
+		return (false);
+	}
+	if (data->floor_color.r == -1 || data->floor_color.g == -1 || data->floor_color.b == -1)
+	{
+		logger(LOGGER_ERROR, "Floor color not set!");
+		return (false);
+	}
+	if (!data->ea_texture_location || !data->no_texture_location || !data->so_texture_location || !data->we_texture_location)
+	{
+		logger(LOGGER_ERROR, "Texture location not set!");
+		return (false);
+	}
 	return (true);
 }
 
@@ -115,12 +137,22 @@ void	print_map(t_tile_type ***map)
 	}
 }
 
+static void	clean_struct_input(t_input_data *input_data)
+{
+	input_data->ceiling_color = (t_color){-1, -1, -1};
+	input_data->floor_color = (t_color){-1, -1, -1};
+	input_data->ea_texture_location = NULL;
+	input_data->no_texture_location = NULL;
+	input_data->so_texture_location = NULL;
+	input_data->we_texture_location = NULL;
+	input_data->map = NULL;
+}
+
 t_input_data	*get_map_contents(char *filepath)
 {
 	t_input_data	*input_data;
 	char			**data;
 
-	logger(LOGGER_INFO, "Loading map...");
 	data = read_file(filepath);
 	if (!data)
 	{
@@ -133,12 +165,15 @@ t_input_data	*get_map_contents(char *filepath)
 		logger(LOGGER_ERROR, "Could not allocate memory for input data!");
 		return (NULL);
 	}
+	clean_struct_input(input_data);
 	if (!parse_file_data(data, &input_data))
 	{
 		logger(LOGGER_ERROR, "Could not parse map data!");
 		return (NULL);
 	}
-	// print_map(input_data);
+	if (!basic_validate(&input_data)) // TODO: free stuff here
+		return (NULL);
+	print_map(input_data->map);
 	logger(LOGGER_INFO, "Map loaded successfully!");
 	return (input_data);
 }
