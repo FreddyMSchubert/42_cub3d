@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.5.0] - 23.05.2024 - Freddy
+- Added map generation setup & integrated it into project. Use ./cub3d without an argument to have one dynamically generated.
+- reordered folders in src files
+- added changed validator logging statement
+
 ### [0.4.1] - 23.05.2024 - Freddy
 - Added `wall_displayer.py` in misc/, which takes in the printed out generated wall and plots them out visually to verify everything is working correctly
 

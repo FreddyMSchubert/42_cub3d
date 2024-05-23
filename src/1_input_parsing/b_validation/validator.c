@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validator.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 10:54:38 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/23 14:24:43 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/05/23 23:04:44 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	validate(void)
 			if ((*data->map[y][x] == FLOOR && !check_wall_valid(data, x, y)) ||
 				(*data->map[y][x] < VOID || *data->map[y][x] > WALL))
 			{
-				logger('e', "Invalid map.");
+				logger('e', "Invalid map. [Validator]");
 				gc_exit_error();
 			}
 			x++;

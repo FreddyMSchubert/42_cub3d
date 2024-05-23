@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/23 14:17:38 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/05/23 22:53:19 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,20 @@ t_persistent_data	*get_persistent_data(void);
 t_list				**get_gc(void);
 t_entity			*get_player(void);
 
-// ----- 0_input_parsing
+// ----- 0_map_generation
+// mapmaker
+void	            generate_map(void);
+// features
+void	            remove_walls(char **maze, int height, int width);
+void	            place_player_spawn(char **maze, t_scale map_scale);
+void	            add_rooms(char **maze, t_scale scale, int room_count);
+// file writer
+void	            write_cub_file(char **maze, int height, int width, char *filename);
+// util
+int	                random_int(int min, int max);
+void	            print_maze(char **maze, int height, int width);
+
+// ----- 1_input_parsing
 void				parse_input(char	*filepath);
 void				squarify_map(void);
 // --- a_file_reading
