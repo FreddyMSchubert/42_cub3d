@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.1.7] - 21.05.204 - Jonas
+ - basic file parsing with basic error checking
+
 ### [0.1.6] - 21.05.204 - Freddy
 - made gc static
 - various refactorings & norminettifications
