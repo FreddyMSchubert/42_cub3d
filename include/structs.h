@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/23 08:18:40 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/05/23 10:00:21 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,18 @@ typedef struct s_color
 	int	b;
 }	t_color;
 
-struct s_size
+typedef struct s_size
 {
 	int	width;
 	int	height;
-};
+}	t_size;
 
 // ---- GAME LOGIC
 
 typedef struct s_vec2
 {
-	double	x;
-	double	y;
+	int	x;
+	int	y;
 }	t_vec2;
 
 typedef struct s_transform

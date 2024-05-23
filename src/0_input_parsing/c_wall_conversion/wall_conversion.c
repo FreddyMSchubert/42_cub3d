@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 13:47:07 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/22 08:04:21 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/05/23 10:02:25 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,20 @@
 	no wall gets placed.
 */
 
-static void	add_wall(bool ***bool_map, int x, int y, struct s_size size)
+// top edge, left edge, right edge, bottom edge
+static void	add_wall(bool ***bool_map, t_input_data *in, t_vec2 pos,
+								t_size size)
 {
-	bool_map[y][x][RIGHT] = !bool_map[y][x][RIGHT];
-	bool_map[y][x][DOWN] = !bool_map[y][x][DOWN];
-	if (x + 1 < size.width)
-		bool_map[y][x + 1][RIGHT] = !bool_map[y][x + 1][RIGHT];
-	if (y + 1 < size.height)
-		bool_map[y + 1][x][DOWN] = !bool_map[y + 1][x][DOWN];
+	if (pos.x < 0 || pos.y < 0 || pos.x >= size.width || pos.y >= size.height)
+		return ;
+	if (wall_needed(in->map, pos.x, pos.y - 1, size))
+		bool_map[pos.y][pos.x][RIGHT] = !bool_map[pos.y][pos.x][RIGHT];
+	if (wall_needed(in->map, pos.x - 1, pos.y, size))
+		bool_map[pos.y][pos.x][DOWN] = !bool_map[pos.y][pos.x][DOWN];
+	if (pos.x + 1 < size.width && wall_needed(in->map, pos.x + 1, pos.y, size))
+		bool_map[pos.y][pos.x + 1][DOWN] = !bool_map[pos.y][pos.x + 1][DOWN];
+	if (pos.y + 1 < size.height && wall_needed(in->map, pos.x, pos.y + 1, size))
+		bool_map[pos.y + 1][pos.x][RIGHT] = !bool_map[pos.y + 1][pos.x][RIGHT];
 }
 
 /*
@@ -39,7 +45,7 @@ static void	add_wall(bool ***bool_map, int x, int y, struct s_size size)
 	we don't need to set the values to false after allocation.
 */
 
-static bool	***get_bool_array(t_input_data *in, struct s_size size)
+static bool	***get_bool_array(t_input_data *in, t_size size)
 {
 	bool	***bool_map;
 	int		y;
@@ -52,8 +58,7 @@ static bool	***get_bool_array(t_input_data *in, struct s_size size)
 		bool_map[y] = gc_malloc(sizeof(bool *) * (size.width + 1));
 		x = -1;
 		while (++x < size.width)
-			if (in->map[y][x] == WALL)
-				bool_map[y][x] = gc_malloc(sizeof(bool) * 2);
+			bool_map[y][x] = gc_malloc(sizeof(bool) * 2);
 		bool_map[y][x] = NULL;
 	}
 	bool_map[y] = NULL;
@@ -62,13 +67,13 @@ static bool	***get_bool_array(t_input_data *in, struct s_size size)
 	{
 		x = -1;
 		while (++x < size.width)
-			if (in->map[y][x] == WALL)
-				add_wall(bool_map, x, y, size);
+			if (*in->map[y][x] == WALL)
+				add_wall(bool_map, in, (t_vec2){x, y}, size);
 	}
 	return (bool_map);
 }
 
-static int	count_walls(bool ***walls, struct s_size size)
+static int	count_walls(bool ***walls, t_size size)
 {
 	int	walls_count;
 	int	y;
@@ -98,7 +103,7 @@ static int	count_walls(bool ***walls, struct s_size size)
 	created from the boolean array.
 */
 
-static t_transform	**create_walls_list(bool ***bool_list, struct s_size size)
+static t_transform	**create_walls_list(bool ***bool_list, t_size size)
 {
 	t_transform	**walls;
 	int			walls_count;
@@ -129,10 +134,72 @@ static t_transform	**create_walls_list(bool ***bool_list, struct s_size size)
 
 void	convert_walls(t_input_data *in)
 {
-	struct s_size	size;
-	bool			***bool_map;
+	t_size	size;
+	bool	***bool_map;
 
 	size = get_map_size(in->map);
 	bool_map = get_bool_array(in, size);
 	in->walls = create_walls_list(bool_map, size);
 }
+
+/*
+t_tile_type ***create_map() {
+    t_tile_type*** map = malloc(6 * sizeof(t_tile_type**));
+    if (map == NULL) {
+        perror("Failed to allocate map");
+        exit(EXIT_FAILURE);
+    }
+
+    for (int i = 0; i < 5; i++) {
+        map[i] = malloc(6 * sizeof(t_tile_type*));
+        if (map[i] == NULL) {
+            perror("Failed to allocate row");
+            exit(EXIT_FAILURE);
+        }
+
+        for (int j = 0; j < 5; j++) {
+            map[i][j] = malloc(sizeof(t_tile_type));
+            if (map[i][j] == NULL) {
+                perror("Failed to allocate cell");
+                exit(EXIT_FAILURE);
+            }
+            *map[i][j] = WALL;
+        }
+        map[i][5] = NULL;
+    }
+    map[5] = NULL;
+
+    *map[1][1] = FLOOR; *map[1][2] = FLOOR; *map[1][3] = FLOOR;
+    *map[2][1] = FLOOR; *map[2][3] = FLOOR;
+    *map[3][1] = FLOOR; *map[3][2] = FLOOR; *map[3][3] = FLOOR;
+
+    return map;
+}
+
+int main() {
+	// Create a test map
+	t_tile_type ***map = create_map();
+
+	// Set up input data
+	t_input_data in;
+	in.map = map;
+
+	// Convert walls using provided map data
+	convert_walls(&in);
+
+	// Print the wall transformations
+	for (int i = 0; in.walls[i] != NULL; i++) {
+		printf("Wall %d: (x=%d, y=%d) - (dx=%d, dy=%d)\n",
+			i + 1,
+			in.walls[i]->pos.x,
+			in.walls[i]->pos.y,
+			in.walls[i]->rot.x,
+			in.walls[i]->rot.y);
+	}
+
+	// Assuming there is proper cleanup code for gc_malloc allocations
+	// Cleanup code here...
+
+	return 0;
+}
+*/

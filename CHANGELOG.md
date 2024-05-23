@@ -1,5 +1,11 @@
 # Changelog
 
+### [0.3.4] - 23.05.2024 - Freddy
+- Various refactorings & improvements to wall_conversion.c, mainly carrying over map array changes from [0.3.2]
+	- wall allocation logic fix
+	- made sure to only add walls directly next to a floor, which guarantees optimal performance (will always save ~ `(maze_width + maze_height + amount_of_void_spaces * 2) - 2` walls from having to be calculated with every frame)
+- Added testing setup
+
 ### [0.3.3] - 23.05.2024 - Freddy
 - Added some auto-generated mazes created with the generator I made to the project
 - Made start_random_cub3d_map not pick .DS_Store or any other files that may eventually pop up in there

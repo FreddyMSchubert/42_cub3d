@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/23 08:39:14 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/05/23 10:01:21 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,9 @@ t_list				**get_gc(void);
 // --- c_wall_conversion
 void				convert_walls(t_input_data *in);
 // util
-struct s_size		get_map_size(t_tile_type **map);
+t_size			get_map_size(t_tile_type ***map);
 t_transform			*create_transform(int x, int y, int rotx, int roty);
+bool				wall_needed(t_tile_type ***map, int x, int y, t_size size);
 
 // ----- util
 // garbage collector
