@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.3.3] - 23.05.2024 - Freddy
+- Added some auto-generated mazes created with the generator I made to the project
+- Made start_random_cub3d_map not pick .DS_Store or any other files that may eventually pop up in there
+
 ### [0.3.2] - 23.05.2024 - Freddy
 - Fixed map not being terminated by properly (**map -> ***map), various changes in validator to reflect this
 - Added a testing setup to validator
