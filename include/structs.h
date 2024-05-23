@@ -24,12 +24,18 @@ typedef struct s_color
 	int	b;
 }	t_color;
 
+typedef struct s_size
+{
+	int	width;
+	int	height;
+}	t_size;
+
 // ---- GAME LOGIC
 
 typedef struct s_vec2
 {
-	double	x;
-	double	y;
+	int	x;
+	int	y;
 }	t_vec2;
 
 typedef struct s_transform

@@ -62,6 +62,16 @@ t_entity			*get_player(void);
 // ---- input parsing
 t_input_data		*get_map_contents(char *filepath);
 
+// ----- 0_input_parsing
+// --- a_file_reading
+// --- b_validation
+// --- c_wall_conversion
+void				convert_walls(t_input_data *in);
+// util
+t_size			get_map_size(t_tile_type ***map);
+t_transform			*create_transform(int x, int y, int rotx, int roty);
+bool				wall_needed(t_tile_type ***map, int x, int y, t_size size);
+
 // ----- util
 // garbage collector
 t_list				*gc_create(void);
@@ -69,10 +79,15 @@ int					gc_append_element(void *content);
 void				gc_cleanup_and_reinit(void);
 void				*gc_malloc(size_t size);
 void				gc_exit_error(void);
-void				print_map(t_tile_type ***map);
+
 // printing
+void				print_map(t_tile_type ***map);
+
+// logging
 void				logger(char type, char *message);
 void				logger_verbose(char type, char *message);
+// printing
+void				print_map(t_tile_type ***map, char *mode);
 
 // string
 bool				str_is_equal(char *str1, char *str2);

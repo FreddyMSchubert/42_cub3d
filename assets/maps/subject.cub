@@ -1,21 +1,10 @@
-
-
-
-                  NO ./assets/img/brain_coral.png
-C         225,30,0
-SO ./assets/img/bubble_coral.png
-WE  ./assets/img/fire_coral.png
-
-EA ./assets/img/horn_coral.png
-
-
-
+NO ./assets/img/chiseled_tuff.png
+SO ./assets/img/chiseled_tuff_bricks.png
+WE ./assets/img/chiseled_tuff_top.png
+EA ./assets/img/chiseled_tuff_bricks_top.png
 
 F 220,100,0
-
-
-
-
+C 225,30,0
 
 1111111111111111111111111
 1000000000110000000000001
@@ -31,4 +20,3 @@ F 220,100,0
 11000001110101011111011110N0111
 11110111 1110101 101111010001
 11111111 1111111 111111111111
-

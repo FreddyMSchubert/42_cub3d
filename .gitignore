@@ -9,7 +9,6 @@ cub3d
 .obsidian/
 obj/
 *.py
-*.sh
 .idea/
 
 # Prerequisites
