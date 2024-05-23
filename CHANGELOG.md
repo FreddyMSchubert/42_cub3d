@@ -1,8 +1,10 @@
 # Changelog
 
+### [0.4.1] - 23.05.2024 - Freddy
+- Added `wall_displayer.py` in misc/, which takes in the printed out generated wall and plots them out visually to verify everything is working correctly
+
 ## [0.4.0] - 23.05.2024 - Jonas
-  - map squarification
-  - added Python wall vizualation script
+  - map squarification (added voids at end of map if it was non-rectangular before)
 
 ### [0.3.7] - 23.05.2024 - Freddy
 - Fixes to maps that had some issues
