@@ -1,5 +1,11 @@
 # Changelog
 
+### [0.3.2] - 23.05.2024 - Freddy
+- Fixed map not being terminated by properly (**map -> ***map), various changes in validator to reflect this
+- Added a testing setup to validator
+- Added testcases for fun (merry_go_round + 42)
+- Renamed previous printing to logging, instead creating printing, filling it with a function to print out the map in its current state
+
 ### [0.3.1] - 22.05.2024 - Freddy
 - found out how to render images starting with a png, changed back the file endings in the maps
 

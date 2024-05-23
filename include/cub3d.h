@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/22 08:04:03 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/05/23 08:39:14 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,10 @@ int					gc_append_element(void *content);
 void				gc_cleanup_and_reinit(void);
 void				*gc_malloc(size_t size);
 void				gc_exit_error(void);
-// printing
+// logging
 void				logger(char type, char *message);
 void				logger_verbose(char type, char *message);
+// printing
+void				print_map(t_tile_type ***map, char *mode);
 
 #endif

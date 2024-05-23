@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/22 08:02:21 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/05/23 08:18:40 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ typedef struct s_input_data
 	char		*sprite_texture_location;
 	t_color		floor_color;
 	t_color		ceiling_color;
-	t_tile_type	**map;
+	t_tile_type	***map;
 	t_transform	**walls;
 }	t_input_data;
 
