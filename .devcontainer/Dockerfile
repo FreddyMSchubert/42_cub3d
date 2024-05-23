@@ -25,4 +25,5 @@ RUN apt install -y cppcheck clang-tidy
 
 # Upgrade pip and setuptools, and install norminette
 RUN python3 -m pip install --upgrade pip setuptools && \
-    python3 -m pip install norminette
+    python3 -m pip install norminette && \
+    python -m pip install matplotlib

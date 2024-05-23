@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/23 14:07:37 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/05/23 14:17:38 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ t_entity			*get_player(void);
 
 // ----- 0_input_parsing
 void				parse_input(char	*filepath);
+void				squarify_map(void);
 // --- a_file_reading
 void				get_map_contents(char *filepath);
 // --- b_validation

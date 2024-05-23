@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.4.0] - 23.05.2024 - Jonas
+  - map squarification
+  - added Python wall vizualation script
+
 ### [0.3.7] - 23.05.2024 - Freddy
 - Fixes to maps that had some issues
 
