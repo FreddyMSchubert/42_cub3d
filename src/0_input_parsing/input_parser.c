@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_parser.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 13:57:51 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/23 14:12:36 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/05/23 14:56:40 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,16 @@ void	parse_input(char	*filepath)
 {
 	logger_verbose(LOGGER_INFO, "Parsing input file!");
 	get_map_contents(filepath);
+	print_map(get_persistent_data()->input_data->map, " 01");
+	squarify_map();
+	print_map(get_persistent_data()->input_data->map, ".01");
 	write(STDOUT_FILENO, "a", 1);
 	if (!get_persistent_data()->input_data)
 		gc_exit_error();
 	write(STDOUT_FILENO, "b", 1);
 	validate();
 	write(STDOUT_FILENO, "c", 1);
+	convert_walls();
+	write(STDOUT_FILENO, "d", 1);
 	print_walls();
 }

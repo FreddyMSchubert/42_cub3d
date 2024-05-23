@@ -53,4 +53,7 @@ setup:
 debug: CFLAGS += -g -O0
 debug: fclean all
 
+random: all
+	$(NAME) $(find ./assets/maps -type f -name '*.cub' | sort -R | head -n 1)
+
 .PHONY: all clean fclean re setup libmlx libft gnl

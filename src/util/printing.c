@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:49:10 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/23 14:10:38 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/05/23 15:18:45 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,9 @@ void	print_walls(void)
 
 	in = get_persistent_data()->input_data;
 	i = -1;
-	while (in->walls[++i] != NULL)
+	while (in && in->walls && in->walls[++i] != NULL)
 	{
-		printf("Wall %d: (x=%d, y=%d) - (dx=%d, dy=%d)\n",
-			i + 1,
+		printf("{'x': %d, 'y':%d, 'dx': %d, 'dy': %d},\n",
 			in->walls[i]->pos.x,
 			in->walls[i]->pos.y,
 			in->walls[i]->rot.x,

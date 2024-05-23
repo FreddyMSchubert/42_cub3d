@@ -30,9 +30,10 @@
 				"keyhr.42-c-format",
 				"vsls-contrib.codetour",
 				"mhutchie.git-graph",
-				"DoKca.42-ft-count-line"
+				"DoKca.42-ft-count-line",
+				"ms-python.python"
 			]
 		}
-	},
-	"postCreateCommand": "chmod +x /workspaces/minishell/.devcontainer/init.sh && /workspaces/minishell/.devcontainer/init.sh"
+	}
+	// "postCreateCommand": "chmod +x /workspaces/minishell/.devcontainer/init.sh && /workspaces/minishell/.devcontainer/init.sh"
 }

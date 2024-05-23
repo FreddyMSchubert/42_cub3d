@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:38:30 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/23 14:00:39 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/05/23 14:50:49 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,9 +156,8 @@ void	get_map_contents(char *filepath)
 		logger(LOGGER_ERROR, "Could not parse map data!");
 		return ;
 	}
-	if (!basic_validate(&input_data)) // TODO: free stuff here
+	if (!basic_validate(&input_data))
 		return ;
-	print_map(input_data->map, " 01");
 	logger(LOGGER_INFO, "Map loaded successfully!");
 	get_persistent_data()->input_data = input_data;
 }
