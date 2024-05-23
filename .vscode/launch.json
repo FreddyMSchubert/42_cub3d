@@ -5,8 +5,8 @@
 		"name": "Cube3d: Debug Session (LINUX)",
 		"type": "cppdbg",
 		"request": "launch",
-		"program": "${workspaceFolder}/cube3d/",
-		"args": [],
+		"program": "${workspaceFolder}/cub3d",
+		"args": ["assets/maps/parse_harder.cub"],
 		"stopAtEntry": false,
 		"cwd": "${workspaceFolder}",
 		"environment": [],
@@ -19,14 +19,14 @@
 			"ignoreFailures": true
 		  }
 		],
-		"preLaunchTask": "sudo cube3d prelaunch",
+		"preLaunchTask": "cube3d prelaunch",
 		"miDebuggerPath": "/usr/bin/gdb"
 	  },
 	  {
 		"name": "Cube3d: Debug Session (MAC)",
 		"type": "cppdbg",
 		"request": "launch",
-		"program": "${workspaceFolder}/cube3d/cube3d",
+		"program": "${workspaceFolder}/42_cube3d/cub3d",
 		"args": [],
 		"stopAtEntry": false,
 		"cwd": "${workspaceFolder}",

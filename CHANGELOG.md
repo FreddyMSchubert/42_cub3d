@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.3.5] - 21.05.204 - Jonas
+ - basic file parsing with basic error checking
+
 ### [0.3.4] - 23.05.2024 - Freddy
 - Various refactorings & improvements to wall_conversion.c, mainly carrying over map array changes from [0.3.2]
 	- wall allocation logic fix

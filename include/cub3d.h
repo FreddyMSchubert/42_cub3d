@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/23 10:01:21 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/05/23 11:20:16 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 # include "../submodules/MLX42/include/MLX42/MLX42.h"
 # include "../submodules/42_libft/libft.h"
-# include "../submodules/42_get_next_line/get_next_line.h"
+# include "../lib/get_next_line/get_next_line.h"
 
 // subject functions
 # include <fcntl.h>    // open, close
@@ -35,6 +35,21 @@
 /* ----- RULES ----- */
 # define GREETING true
 # define VERBOSE true
+# define DEBUG true
+
+/* ---- SETTINGS ---- */
+# define MAP_TILES " 10NESW"
+
+/* ----- LOGGER ----- */
+# define LOGGER_ERROR 'e'
+# define LOGGER_WARNING 'w'
+# define LOGGER_INFO 'i'
+
+/* ----- EXIT CODES ----- */
+# define EXIT_SUCCESS 0
+# define EXIT_INVALID_ARGS 1
+# define EXIT_INVALID_FILE_EXTENSION 2
+# define EXIT_MAP_ERROR 3
 
 /* ---- FUNCTIONS ----- */
 // lets mirror the file system in here. the less ---, the deeper the file
@@ -42,6 +57,10 @@
 // ----- general
 t_persistent_data	*get_persistent_data(void);
 t_list				**get_gc(void);
+t_entity			*get_player(void);
+
+// ---- input parsing
+t_input_data		*get_map_contents(char *filepath);
 
 // ----- 0_input_parsing
 // --- a_file_reading
@@ -60,10 +79,17 @@ int					gc_append_element(void *content);
 void				gc_cleanup_and_reinit(void);
 void				*gc_malloc(size_t size);
 void				gc_exit_error(void);
+
+// printing
+void				print_map(t_tile_type ***map);
+
 // logging
 void				logger(char type, char *message);
 void				logger_verbose(char type, char *message);
 // printing
 void				print_map(t_tile_type ***map, char *mode);
+
+// string
+bool				str_is_equal(char *str1, char *str2);
 
 #endif

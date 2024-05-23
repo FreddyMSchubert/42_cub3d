@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gc.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:18:59 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/21 14:34:58 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/05/21 13:29:20 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,7 @@ void	gc_exit_error(void)
 void	*gc_malloc(size_t size)
 {
 	void	*new_mem;
-	t_list	**gc;
 
-	gc = get_gc();
 	new_mem = malloc(size);
 	if (!new_mem)
 	{

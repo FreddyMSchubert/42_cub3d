@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/23 10:00:21 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/05/23 09:17:11 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,7 @@ typedef struct s_persistent_data
 typedef enum e_entity_type
 {
 	PLAYER,
-	ENEMY,
-	ITEM,
-	PROJECTILE
+	ENEMY
 }	t_entity_type;
 
 typedef struct s_entity
@@ -86,6 +84,7 @@ typedef struct s_entity
 	t_entity_type	type;
 	t_transform		transform;
 	t_vec2			spawn_look_dir;
+	t_vec2			spawn_point;
 }	t_entity;
 
 #endif
