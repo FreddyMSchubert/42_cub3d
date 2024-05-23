@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:38:30 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/23 13:53:37 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/05/23 14:00:39 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ static void	clean_struct_input(t_input_data *input_data)
 	input_data->map = NULL;
 }
 
-t_input_data	*get_map_contents(char *filepath)
+void	get_map_contents(char *filepath)
 {
 	t_input_data	*input_data;
 	char			**data;
@@ -142,23 +142,23 @@ t_input_data	*get_map_contents(char *filepath)
 	if (!data)
 	{
 		logger(LOGGER_ERROR, "Could not read map file!");
-		return (NULL);
+		return ;
 	}
 	input_data = gc_malloc(sizeof(t_input_data));
 	if (!input_data)
 	{
 		logger(LOGGER_ERROR, "Could not allocate memory for input data!");
-		return (NULL);
+		return ;
 	}
 	clean_struct_input(input_data);
 	if (!parse_file_data(data, &input_data))
 	{
 		logger(LOGGER_ERROR, "Could not parse map data!");
-		return (NULL);
+		return ;
 	}
 	if (!basic_validate(&input_data)) // TODO: free stuff here
-		return (NULL);
+		return ;
 	print_map(input_data->map, " 01");
 	logger(LOGGER_INFO, "Map loaded successfully!");
-	return (input_data);
+	get_persistent_data()->input_data = input_data;
 }

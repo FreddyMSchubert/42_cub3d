@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/23 13:49:54 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/05/23 14:07:37 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,14 @@ t_persistent_data	*get_persistent_data(void);
 t_list				**get_gc(void);
 t_entity			*get_player(void);
 
-// ---- input parsing
-t_input_data		*get_map_contents(char *filepath);
-
 // ----- 0_input_parsing
+void				parse_input(char	*filepath);
 // --- a_file_reading
+void				get_map_contents(char *filepath);
 // --- b_validation
+void				validate(void);
 // --- c_wall_conversion
-void				convert_walls(t_input_data *in);
+void				convert_walls(void);
 // util
 t_size				get_map_size(t_tile_type ***map);
 t_transform			*create_transform(int x, int y, int rotx, int roty);
@@ -85,6 +85,7 @@ void				logger(char type, char *message);
 void				logger_verbose(char type, char *message);
 // printing
 void				print_map(t_tile_type ***map, char *mode);
+void				print_walls(void);
 
 // string
 bool				str_is_equal(char *str1, char *str2);

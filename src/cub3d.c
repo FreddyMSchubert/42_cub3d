@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 07:33:54 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/23 11:28:54 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/05/23 14:11:07 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,8 @@ int	main(int argc, char **argv)
 			"Invalid file extension. Please provide a .cub file\n");
 		return (EXIT_INVALID_FILE_EXTENSION);
 	}
-	printf("\033[H\033[J");
 	if (GREETING)
 		printf("🧊 %sHello cubic world!%s 🧊\n", ANSI_COLOR_CYAN, ANSI_RESET);
-	logger(LOGGER_INFO, "Loading map...");
-	get_persistent_data()->input_data = get_map_contents(argv[1]);
-	if (!get_persistent_data()->input_data)
-	{
-		logger(LOGGER_ERROR, "Failed to load map\n");
-		return (EXIT_MAP_ERROR);
-	}
+	parse_input(argv[1]);
 	return (EXIT_SUCCESS);
 }

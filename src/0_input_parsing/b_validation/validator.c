@@ -6,49 +6,50 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 10:54:38 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/23 08:43:34 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/05/23 14:24:43 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/cub3d.h"
 
-bool	check_wall_valid(t_input_data data, int x, int y)
+bool	check_wall_valid(t_input_data *data, int x, int y)
 {
-	if (!data.map || x == 0 || y == 0 || !data.map[y] || !data.map[y][x])
+	if (!data->map || x == 0 || y == 0 || !data->map[y] || !data->map[y][x])
 		return (false);
-	if (!data.map[y + 1])
+	if (!data->map[y + 1])
 		return (false);
-	if (!data.map[y - 1])
+	if (!data->map[y - 1])
 		return (false);
-	if (!data.map[y][x + 1])
+	if (!data->map[y][x + 1])
 		return (false);
-	if (!data.map[y][x - 1])
+	if (!data->map[y][x - 1])
 		return (false);
-	if (*data.map[y + 1][x] == VOID)
+	if (*data->map[y + 1][x] == VOID)
 		return (false);
-	if (*data.map[y - 1][x] == VOID)
+	if (*data->map[y - 1][x] == VOID)
 		return (false);
-	if (*data.map[y][x + 1] == VOID)
+	if (*data->map[y][x + 1] == VOID)
 		return (false);
-	if (*data.map[y][x - 1] == VOID)
+	if (*data->map[y][x - 1] == VOID)
 		return (false);
 	return (true);
 }
 
-void	validate(t_input_data data)
+void	validate(void)
 {
-	int	x;
-	int	y;
+	t_input_data	*data;
+	int				x;
+	int				y;
 
-	print_map(data.map, " .#");
+	data = get_persistent_data()->input_data;
 	y = 0;
-	while (data.map && data.map[y] != NULL)
+	while (data->map && data->map[y] != NULL)
 	{
 		x = 0;
-		while (data.map[y][x] != NULL)
+		while (data->map[y][x] != NULL)
 		{
-			if ((*data.map[y][x] == FLOOR && !check_wall_valid(data, x, y)) ||
-				(*data.map[y][x] < VOID || *data.map[y][x] > WALL))
+			if ((*data->map[y][x] == FLOOR && !check_wall_valid(data, x, y)) ||
+				(*data->map[y][x] < VOID || *data->map[y][x] > WALL))
 			{
 				logger('e', "Invalid map.");
 				gc_exit_error();
@@ -98,19 +99,19 @@ t_tile_type ***create_map() {
 int main()
 {
     t_input_data data;
-    data.map = create_map();
+    data->map = create_map();
     validate(data);
-    // *data.map[1][1] = VOID;
-	printf("data.map[2][0] was %d, ", *data.map[2][0]);
-	*data.map[2][4] = FLOOR;
-	printf("now it is %d\n", *data.map[2][0]);
+    // *data->map[1][1] = VOID;
+	printf("data->map[2][0] was %d, ", *data->map[2][0]);
+	*data->map[2][4] = FLOOR;
+	printf("now it is %d\n", *data->map[2][0]);
     validate(data);
 
     // Free memory
-    for (int i = 0; data.map[i] != NULL; i++) {
-        free(data.map[i]);
+    for (int i = 0; data->map[i] != NULL; i++) {
+        free(data->map[i]);
     }
-    free(data.map);
+    free(data->map);
 
     return 0;
 }

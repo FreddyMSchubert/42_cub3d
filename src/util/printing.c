@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:49:10 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/22 12:19:58 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/05/23 14:10:38 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,23 @@ void	print_map(t_tile_type ***map, char *mode)
 		}
 		printf("\n");
 		y++;
+	}
+}
+
+void	print_walls(void)
+{
+	t_input_data	*in;
+	int				i;
+
+	in = get_persistent_data()->input_data;
+	i = -1;
+	while (in->walls[++i] != NULL)
+	{
+		printf("Wall %d: (x=%d, y=%d) - (dx=%d, dy=%d)\n",
+			i + 1,
+			in->walls[i]->pos.x,
+			in->walls[i]->pos.y,
+			in->walls[i]->rot.x,
+			in->walls[i]->rot.y);
 	}
 }

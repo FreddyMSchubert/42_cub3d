@@ -1,6 +1,9 @@
 # Changelog
 
-### [0.3.5] - 21.05.204 - Jonas
+### [0.3.6] - 23.05.2024 - Freddy
+- Various fixes. problem detected: map returned by file reading is not square.
+
+### [0.3.5] - 23.05.2024 - Jonas
  - basic file parsing with basic error checking
 
 ### [0.3.4] - 23.05.2024 - Freddy

@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 13:47:07 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/23 10:02:25 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/05/23 14:06:46 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,11 +132,13 @@ static t_transform	**create_walls_list(bool ***bool_list, t_size size)
 	return (walls);
 }
 
-void	convert_walls(t_input_data *in)
+void	convert_walls(void)
 {
-	t_size	size;
-	bool	***bool_map;
+	t_size			size;
+	bool			***bool_map;
+	t_input_data	*in;
 
+	in = get_persistent_data()->input_data;
 	size = get_map_size(in->map);
 	bool_map = get_bool_array(in, size);
 	in->walls = create_walls_list(bool_map, size);
@@ -188,14 +190,7 @@ int main() {
 	convert_walls(&in);
 
 	// Print the wall transformations
-	for (int i = 0; in.walls[i] != NULL; i++) {
-		printf("Wall %d: (x=%d, y=%d) - (dx=%d, dy=%d)\n",
-			i + 1,
-			in.walls[i]->pos.x,
-			in.walls[i]->pos.y,
-			in.walls[i]->rot.x,
-			in.walls[i]->rot.y);
-	}
+	print_walls();
 
 	// Assuming there is proper cleanup code for gc_malloc allocations
 	// Cleanup code here...
