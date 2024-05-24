@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 07:33:54 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/23 23:13:29 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/24 13:42:33 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,7 @@ int	main(int argc, char **argv)
 		parse_input(argv[1]);
 	else
 	{
-		write(STDOUT_FILENO, "did_that", 8);
 		generate_map();
-		write(STDOUT_FILENO, "did that", 8);
 		parse_input("generated_maze.cub");
 	}
 	return (EXIT_SUCCESS);

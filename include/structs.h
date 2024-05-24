@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/23 22:48:27 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/24 13:39:34 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,6 @@ typedef struct s_color
 	int	b;
 }	t_color;
 
-typedef struct s_size
-{
-	int	width;
-	int	height;
-}	t_size;
-
 typedef struct s_scale
 {
 	int	x;
@@ -40,8 +34,8 @@ typedef struct s_scale
 
 typedef struct s_vec2
 {
-	int	x;
-	int	y;
+	double	x;
+	double	y;
 }	t_vec2;
 
 typedef struct s_transform

@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_parser.c                                     :+:      :+:    :+:   */
+/*   distance.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/23 13:57:51 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/24 14:00:13 by freddy           ###   ########.fr       */
+/*   Created: 2024/05/24 13:22:19 by freddy            #+#    #+#             */
+/*   Updated: 2024/05/24 13:27:11 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#include "../../../../include/cub3d.h"
 
-void	parse_input(char	*filepath)
+// ints -> dobules!
+/*
+double  pos_distance(t_vec2 pos1, t_vec2 pos2)
 {
-	logger_verbose(LOGGER_INFO, "Parsing input file!");
-	get_map_contents(filepath);
-	squarify_map();
-	if (!get_persistent_data()->input_data)
-		gc_exit_error();
-	validate();
-	convert_walls();
-	print_walls();
+
 }
+*/

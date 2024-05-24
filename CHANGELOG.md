@@ -1,5 +1,13 @@
 # Changelog
 
+### [0.5.1] - 24.05.2024 - Freddy - `12-raycasting-rendering-utils`
+- Added better project structure
+- Made Makefile only attempt to import submodules if theyre not there
+- Changed vec2s to use doubles
+  - Resolved problems created by this
+- Removed t_size struct as it was unnecessary
+- Removed a bunch of weird write calls that were unnecessary
+
 ## [0.5.0] - 23.05.2024 - Freddy
 - Added map generation setup & integrated it into project. Use ./cub3d without an argument to have one dynamically generated.
 - reordered folders in src files

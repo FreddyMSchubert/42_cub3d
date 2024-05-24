@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/23 22:53:19 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/24 13:39:28 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ void				validate(void);
 // --- c_wall_conversion
 void				convert_walls(void);
 // util
-t_size				get_map_size(t_tile_type ***map);
+t_scale				get_map_size(t_tile_type ***map);
 t_transform			*create_transform(int x, int y, int rotx, int roty);
-bool				wall_needed(t_tile_type ***map, int x, int y, t_size size);
+bool				wall_needed(t_tile_type ***map, int x, int y, t_scale size);
 
 // ----- util
 // garbage collector
