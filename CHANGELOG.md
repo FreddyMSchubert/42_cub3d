@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.6.1] - 24.05.2024 - Freddy - `12-raycasting-rendering-util`
+- Changed infinitify_transform to scale_transform, which takes in an int to set the combined distance of the newly adjusted vectors to.
+  - using this, we can implement a render distance easily.
+
 ## [0.6.0] - 24.05.2024 - Freddy - `12-raycasting-rendering-utils`
 - added pos_distance function
 - added infinitify_transform function which makes an inputted vectors rotation as long as possible while keeping the same relative value
