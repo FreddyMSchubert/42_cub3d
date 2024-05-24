@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.6.0] - 24.05.2024 - Freddy - `12-raycasting-rendering-utils`
+- added pos_distance function
+- added infinitify_transform function which makes an inputted vectors rotation as long as possible while keeping the same relative value
+- added raycast intersect which returns a vec2 position of where the two vectors intersected or NULL if they dont. This does only work as far as the vectors actually go though - use infinitify vector to make the vector long.
+
 ### [0.5.1] - 24.05.2024 - Freddy - `12-raycasting-rendering-utils`
 - Added better project structure
 - Made Makefile only attempt to import submodules if theyre not there

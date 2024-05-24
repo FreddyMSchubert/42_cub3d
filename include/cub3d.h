@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/24 13:39:28 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/24 18:02:35 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 
 // other
 # include <stdbool.h>
+# include <limits.h>
+# include <float.h>
 
 /* ----- RULES ----- */
 # define GREETING true
