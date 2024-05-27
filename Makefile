@@ -48,7 +48,9 @@ $(GNL)/libftgnl.a: | setup
 gnl: $(GNL)/libftgnl.a
 
 setup:
-	git submodule update --remote --init --recursive
+	@if [ ! -d "$(LIBMLX)" ] || [ ! -d "$(LIBFT)" ]; then \
+		git submodule update --remote --init --recursive; \
+	fi
 
 debug: CFLAGS += -g -O0
 debug: fclean all

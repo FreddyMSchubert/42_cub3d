@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:49:10 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/23 15:18:45 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/05/24 13:29:02 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	print_walls(void)
 	i = -1;
 	while (in && in->walls && in->walls[++i] != NULL)
 	{
-		printf("{'x': %d, 'y':%d, 'dx': %d, 'dy': %d},\n",
+		printf("{'x': %f, 'y':%f, 'dx': %f, 'dy': %f},\n",
 			in->walls[i]->pos.x,
 			in->walls[i]->pos.y,
 			in->walls[i]->rot.x,
