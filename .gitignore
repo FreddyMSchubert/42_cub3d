@@ -8,7 +8,6 @@ cub3d
 .DS_Store
 .obsidian/
 obj/
-*.py
 .idea/
 
 # Prerequisites

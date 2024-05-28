@@ -6,118 +6,19 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 09:39:02 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/23 11:39:22 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/05/28 08:21:58 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/cub3d.h"
 
-bool	free_split(char	**split, bool ret)
-{
-	int	i;
-
-	i = -1;
-	if (!split)
-		return (ret);
-	while (split[++i])
-		free(split[i]);
-	free(split);
-	return (ret);
-}
-
-int	split_len(char **split)
-{
-	int	i;
-
-	i = 0;
-	if (!split)
-		return (0);
-	while (split[i])
-		i++;
-	return (i);
-}
-
-bool	char_is_in(char c, char *seq)
-{
-	int	i;
-
-	if (!seq)
-		return (false);
-	i = -1;
-	while (seq[++i])
-		if (c == seq[i])
-			return (true);
-	return (false);
-}
-
-bool	regex(char *line, char *reg)
-{
-	int	i;
-
-	if (!line || !reg || !*line || !*reg)
-		return (false);
-	i = -1;
-	while (line[++i])
-		if (!char_is_in(line[i], reg))
-			return (false);
-	return (true);
-}
-
-static bool	set_value(char	**value, char	*set)
-{
-	int		file;
-
-	if (!value || *value)
-		return (false);
-	*value = ft_strdup(set);
-	if (!*value)
-		return (false);
-	if ((*value)[ft_strlen(*value) - 1] == '\n')
-		(*value)[ft_strlen(*value) - 1] = 0;
-	if (strlen(*value) > 4
-		&& !str_is_equal(&((*value)[strlen(*value) - 4]), ".png"))
-	{
-		logger(LOGGER_WARNING,
-			"Invalid texture file extension. Please provide a .png file!");
-		return (false);
-	}
-	file = open(*value, O_RDONLY);
-	if (file < 0)
-	{
-		logger(LOGGER_WARNING, "Failed to open texture file!");
-		return (false);
-	}
-	close(file);
-	if (DEBUG)
-		printf("Texture file set to '%s'\n", *value);
-	return (true);
-}
-
-static bool	set_color(t_color *color, char *color_val)
-{
-	char	**cols;
-
-	if (!color_val) // TODO: set default color vals to all -1
-		return (false);
-	cols = ft_split(color_val, ',');
-	if (!cols)
-		return (false);
-	if (split_len(cols) != 3) // TODO: check wether to set default vals when not all rgb is set
-		return (free_split(cols, false));
-	color->r = ft_atoi(cols[0]);
-	if (!(color->r < 256 && color->r >= 0))
-		return (free_split(cols, false));
-	color->g = ft_atoi(cols[1]);
-	if (!(color->g < 256 && color->g >= 0))
-		return (free_split(cols, false));
-	color->b = ft_atoi(cols[2]);
-	if (!(color->b < 256 && color->b >= 0))
-		return (free_split(cols, false));
-	free_split(cols, NULL);
-	if (DEBUG)
-		printf("Color set to [%d, %d, %d]\n", color->r, color->g, color->b);
-	return (true);
-}
+bool	regex(char *line, char *reg);
+bool	char_is_in(char c, char *seq);
+int		split_len(char **split);
+bool	free_split(char	**split, bool ret);
+void	set_player_spawn(char dir, t_vec2 pos);
+bool	set_color(t_color *color, char *color_val);
+bool	set_value(char	**value, char	*set);
 
 bool	parse_attributes(char	**data, t_input_data **input_data, int *i)
 {
@@ -157,20 +58,6 @@ bool	parse_attributes(char	**data, t_input_data **input_data, int *i)
 	return (true);
 }
 
-void	set_player_spawn(char dir)
-{
-	if (dir == 'N')
-		get_player()->spawn_look_dir = (t_vec2){-1, 0};
-	else if (dir == 'S')
-		get_player()->spawn_look_dir = (t_vec2){1, 0};
-	else if (dir == 'E')
-		get_player()->spawn_look_dir = (t_vec2){0, 1};
-	else if (dir == 'W')
-		get_player()->spawn_look_dir = (t_vec2){0, -1};
-	else
-		logger(LOGGER_WARNING, "Player spawn look dir is not valid dir");
-}
-
 bool	parse_map(char **data, t_input_data **input_data, int *i)
 {
 	int			map_len;
@@ -202,8 +89,7 @@ bool	parse_map(char **data, t_input_data **input_data, int *i)
 				*map[k][j] = VOID;
 			else
 			{
-				get_player()->spawn_point = (t_vec2){k, j};
-				set_player_spawn(data[*i][j]);
+				set_player_spawn(data[*i][j], (t_vec2){k, j});
 				*map[k][j] = FLOOR;
 			}
 		}
