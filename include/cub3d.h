@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/28 10:16:18 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/28 10:18:40 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void				print_walls(void);
 void				cub_exit_error(char	*message);
 
 // colors
-int					t_color_to_int(t_color color);
+unsigned int		t_color_to_int(t_color color);
 t_color				int_to_t_color(int color);
 
 // string

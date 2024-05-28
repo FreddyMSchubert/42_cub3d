@@ -6,13 +6,13 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:56:27 by freddy            #+#    #+#             */
-/*   Updated: 2024/05/28 08:59:35 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/28 09:54:57 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-int	t_color_to_int(t_color color)
+unsigned int	t_color_to_int(t_color color)
 {
 	return (color.r << 24 | color.g << 16 | color.b << 8 | color.a);
 }

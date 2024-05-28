@@ -1,5 +1,10 @@
 # Changelog
 
+### [0.7.1] - 28.05.2024 - Freddy
+- Made t_color struct hold unsigned chars, more efficient.
+- Made colors as ints use unsigned int instead, as that keeps the data properly
+- ceiling & floor colors now render properly
+
 ## [0.7.0] - 28.05.2024 - Freddy
 - Added an alpha field to color struct & added conversion to and from int utils
 - added mlx setup function & created basic window & drew background white. currently the colors dont appear properly.

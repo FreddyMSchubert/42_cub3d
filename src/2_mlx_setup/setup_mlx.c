@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:41:35 by freddy            #+#    #+#             */
-/*   Updated: 2024/05/28 09:34:12 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/28 09:50:10 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,13 @@ static void	set_sky(void)
 		j = -1;
 		while (++j < data->mlx->width)
 		{
-			printf("%c", i < data->mlx->height / 2 ? 'c' : 'f');
 			if (i < data->mlx->height / 2)
 				mlx_put_pixel(img, j, i, t_color_to_int(data->input_data->ceiling_color));
 			else
 				mlx_put_pixel(img, j, i, t_color_to_int(data->input_data->floor_color));
 		}
-		printf("\n");
 	}
 	data->background = img;
-	printf("width: %d, height_ %d\n", data->mlx->width, data->mlx->height);
 }
 
 void	setup_mlx(void)
