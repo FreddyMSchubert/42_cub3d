@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.8.2] - 28.05.2024 - Freddy - `15-validation-flood-fill`
+- made map generation place player pos where generation started, so pretty much the center of the labrinth
+- some map gen fixes & refactorings
+
 ### [0.8.1] - 28.05.2024 - Freddy - `15-validation-flood-fill`
 - norminettification & efficiency improvements of new flood filled validator
 
