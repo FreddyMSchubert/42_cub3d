@@ -1,5 +1,17 @@
 # Changelog
 
+### [0.8.2] - 28.05.2024 - Freddy - `15-validation-flood-fill`
+- made map generation place player pos where generation started, so pretty much the center of the labrinth
+- some map gen fixes & refactorings
+
+### [0.8.1] - 28.05.2024 - Freddy - `15-validation-flood-fill`
+- norminettification & efficiency improvements of new flood filled validator
+
+## [0.8.0] - 28.05.2024 - Freddy - `15-validation-flood-fill`
+- made validator use a flood fill system starting from the player pos to authenticate the maps & made it set all unreachable fields to void for effiency
+- removed random testing code
+- random squarify map & parser fixes
+
 ### [0.7.2] - 28.05.2024 - Freddy - `14-very-basic-rendering-setup`
 - added hook setup & loop hook & key hook
 - made program close when esc is received

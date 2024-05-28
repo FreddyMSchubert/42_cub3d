@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 09:39:02 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/28 10:10:22 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/28 23:04:34 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ static bool	set_color(t_color *color, char *color_val)
 	color->a = 255;
 	free_split(cols, NULL);
 	if (DEBUG)
-		printf("Color set to [%d, %d, %d] / %X\n", color->r, color->g, color->b, t_color_to_int(*color));
+		printf("Color set to [%d, %d, %d] (0x%X)\n", color->r, color->g, color->b, t_color_to_int(*color));
 	return (true);
 }
 
@@ -207,7 +207,7 @@ bool	parse_map(char **data, t_input_data **input_data, int *i)
 				*map[k][j] = VOID;
 			else
 			{
-				get_player()->spawn_point = (t_vec2){k, j};
+				get_player()->spawn_point = (t_vec2){j, k};
 				set_player_spawn(data[*i][j]);
 				*map[k][j] = FLOOR;
 			}

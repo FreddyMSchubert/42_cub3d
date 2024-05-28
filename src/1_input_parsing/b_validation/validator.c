@@ -6,113 +6,77 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 10:54:38 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/23 23:04:44 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/28 23:30:30 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/cub3d.h"
 
-bool	check_wall_valid(t_input_data *data, int x, int y)
+#define INVALID -1
+
+int	flood_fill(t_input_data *data, bool **visited, \
+				t_scale pos, t_scale map_size)
 {
-	if (!data->map || x == 0 || y == 0 || !data->map[y] || !data->map[y][x])
-		return (false);
-	if (!data->map[y + 1])
-		return (false);
-	if (!data->map[y - 1])
-		return (false);
-	if (!data->map[y][x + 1])
-		return (false);
-	if (!data->map[y][x - 1])
-		return (false);
-	if (*data->map[y + 1][x] == VOID)
-		return (false);
-	if (*data->map[y - 1][x] == VOID)
-		return (false);
-	if (*data->map[y][x + 1] == VOID)
-		return (false);
-	if (*data->map[y][x - 1] == VOID)
-		return (false);
-	return (true);
+	if (pos.x < 0 || pos.y < 0 || pos.x >= map_size.x || \
+		pos.y >= map_size.y || *(data->map[pos.y][pos.x]) == VOID)
+		return (INVALID);
+	if (visited[pos.y][pos.x] == true)
+		return (0);
+	visited[pos.y][pos.x] = true;
+	if (*(data->map[pos.y][pos.x]) == FLOOR)
+	{
+		if (flood_fill(data, visited, (t_scale){pos.x + 1, pos.y}, \
+												map_size) == INVALID)
+			return (INVALID);
+		if (flood_fill(data, visited, (t_scale){pos.x - 1, pos.y}, \
+												map_size) == INVALID)
+			return (INVALID);
+		if (flood_fill(data, visited, (t_scale){pos.x, pos.y + 1}, \
+												map_size) == INVALID)
+			return (INVALID);
+		if (flood_fill(data, visited, (t_scale){pos.x, pos.y - 1}, \
+												map_size) == INVALID)
+			return (INVALID);
+	}
+	return (0);
+}
+
+void	clear_unused_spaces(t_tile_type ***map, \
+						bool **visited, t_scale map_size)
+{
+	int	x;
+	int	y;
+
+	y = -1;
+	while (++y < map_size.y)
+	{
+		x = -1;
+		while (++x < map_size.x)
+			if (visited[y][x] == false)
+				*map[y][x] = VOID;
+	}
 }
 
 void	validate(void)
 {
 	t_input_data	*data;
-	int				x;
 	int				y;
+	t_scale			map_size;
+	bool			**visited;
 
 	data = get_persistent_data()->input_data;
-	y = 0;
-	while (data->map && data->map[y] != NULL)
-	{
-		x = 0;
-		while (data->map[y][x] != NULL)
-		{
-			if ((*data->map[y][x] == FLOOR && !check_wall_valid(data, x, y)) ||
-				(*data->map[y][x] < VOID || *data->map[y][x] > WALL))
-			{
-				logger('e', "Invalid map. [Validator]");
-				gc_exit_error();
-			}
-			x++;
-		}
-		y++;
-	}
+	map_size.x = 0;
+	map_size.y = 0;
+	while (data->map[map_size.y] != NULL)
+		map_size.y++;
+	while (data->map[0][map_size.x] != NULL)
+		map_size.x++;
+	visited = gc_malloc(map_size.y * sizeof(bool *));
+	y = -1;
+	while (++y < map_size.y)
+		visited[y] = gc_malloc(map_size.x * sizeof(bool));
+	if (flood_fill(data, visited, (t_scale){get_player()->spawn_point.x, \
+						get_player()->spawn_point.y}, map_size) == INVALID)
+		cub_exit_error("Invalid map - Player can reach edge or void.");
+	clear_unused_spaces(data->map, visited, map_size);
 }
-
-// ----- TESTER
-/*
-t_tile_type ***create_map() {
-    t_tile_type*** map = malloc(6 * sizeof(t_tile_type**));
-    if (map == NULL) {
-        perror("Failed to allocate map");
-        exit(EXIT_FAILURE);
-    }
-
-    for (int i = 0; i < 5; i++) {
-        map[i] = malloc(6 * sizeof(t_tile_type*));
-        if (map[i] == NULL) {
-            perror("Failed to allocate row");
-            exit(EXIT_FAILURE);
-        }
-
-        for (int j = 0; j < 5; j++) {
-            map[i][j] = malloc(sizeof(t_tile_type));
-            if (map[i][j] == NULL) {
-                perror("Failed to allocate cell");
-                exit(EXIT_FAILURE);
-            }
-            *map[i][j] = WALL;
-        }
-        map[i][5] = NULL;
-    }
-    map[5] = NULL;
-
-    *map[1][1] = FLOOR; *map[1][2] = FLOOR; *map[1][3] = FLOOR;
-    *map[2][1] = FLOOR; *map[2][3] = FLOOR;
-    *map[3][1] = FLOOR; *map[3][2] = FLOOR; *map[3][3] = FLOOR;
-
-    return map;
-}
-
-
-int main()
-{
-    t_input_data data;
-    data->map = create_map();
-    validate(data);
-    // *data->map[1][1] = VOID;
-	printf("data->map[2][0] was %d, ", *data->map[2][0]);
-	*data->map[2][4] = FLOOR;
-	printf("now it is %d\n", *data->map[2][0]);
-    validate(data);
-
-    // Free memory
-    for (int i = 0; data->map[i] != NULL; i++) {
-        free(data->map[i]);
-    }
-    free(data->map);
-
-    return 0;
-}
-*/

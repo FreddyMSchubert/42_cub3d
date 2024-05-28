@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 22:46:53 by freddy            #+#    #+#             */
-/*   Updated: 2024/05/24 13:47:36 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/28 23:35:07 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,13 +105,15 @@ void	generate_map(void)
 	t_scale	map_scale;
 	char	**maze;
 	bool	**visited;
+	t_scale	pos;
 
 	map_scale = (t_scale){random_int(7, 30), random_int(7, 30)};
 	setup_maze(&maze, &visited, map_scale);
-	generate_maze(maze, visited, (t_scale){random_int(1, map_scale.y - 2), \
-		random_int(1, map_scale.x - 2)}, (t_scale){map_scale.x, map_scale.y});
+	pos.x = random_int(1, map_scale.y - 2);
+	pos.y = random_int(1, map_scale.y - 2);
+	generate_maze(maze, visited, pos, map_scale);
 	remove_walls(maze, map_scale.y, map_scale.x);
-	add_rooms(maze, (t_scale){map_scale.y, map_scale.x}, random_int(2, 5));
+	add_rooms(maze, map_scale, random_int(2, 5));
 	place_player_spawn(maze, map_scale);
 	write_cub_file(maze, map_scale.y, map_scale.x, "generated_maze.cub");
 	logger_verbose(LOGGER_INFO, "Generated random map.");

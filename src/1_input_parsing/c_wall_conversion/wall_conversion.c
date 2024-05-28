@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 13:47:07 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/24 14:00:26 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/28 22:25:44 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,58 +143,3 @@ void	convert_walls(void)
 	bool_map = get_bool_array(in, size);
 	in->walls = create_walls_list(bool_map, size);
 }
-
-/*
-t_tile_type ***create_map() {
-    t_tile_type*** map = malloc(6 * sizeof(t_tile_type**));
-    if (map == NULL) {
-        perror("Failed to allocate map");
-        exit(EXIT_FAILURE);
-    }
-
-    for (int i = 0; i < 5; i++) {
-        map[i] = malloc(6 * sizeof(t_tile_type*));
-        if (map[i] == NULL) {
-            perror("Failed to allocate row");
-            exit(EXIT_FAILURE);
-        }
-
-        for (int j = 0; j < 5; j++) {
-            map[i][j] = malloc(sizeof(t_tile_type));
-            if (map[i][j] == NULL) {
-                perror("Failed to allocate cell");
-                exit(EXIT_FAILURE);
-            }
-            *map[i][j] = WALL;
-        }
-        map[i][5] = NULL;
-    }
-    map[5] = NULL;
-
-    *map[1][1] = FLOOR; *map[1][2] = FLOOR; *map[1][3] = FLOOR;
-    *map[2][1] = FLOOR; *map[2][3] = FLOOR;
-    *map[3][1] = FLOOR; *map[3][2] = FLOOR; *map[3][3] = FLOOR;
-
-    return map;
-}
-
-int main() {
-	// Create a test map
-	t_tile_type ***map = create_map();
-
-	// Set up input data
-	t_input_data in;
-	in.map = map;
-
-	// Convert walls using provided map data
-	convert_walls(&in);
-
-	// Print the wall transformations
-	print_walls();
-
-	// Assuming there is proper cleanup code for gc_malloc allocations
-	// Cleanup code here...
-
-	return 0;
-}
-*/
