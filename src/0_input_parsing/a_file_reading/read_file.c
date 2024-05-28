@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:38:30 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/28 08:52:41 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/05/28 09:29:28 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,22 +97,22 @@ void	get_map_contents(char *filepath)
 	if (!data)
 	{
 		logger(LOGGER_ERROR, "Could not read map file!");
-		return ;
+		gc_exit_error();
 	}
 	input_data = gc_malloc(sizeof(t_input_data));
 	if (!input_data)
 	{
 		logger(LOGGER_ERROR, "Could not allocate memory for input data!");
-		return ;
+		gc_exit_error();
 	}
 	clean_struct_input(input_data);
 	if (!parse_file_data(data, &input_data))
 	{
 		logger(LOGGER_ERROR, "Could not parse map data!");
-		return ;
+		gc_exit_error();
 	}
 	if (!basic_validate(&input_data))
-		return ;
+		gc_exit_error();
 	logger(LOGGER_INFO, "Map loaded successfully!");
 	get_persistent_data()->input_data = input_data;
 }

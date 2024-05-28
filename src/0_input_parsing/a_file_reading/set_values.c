@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:12:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/28 08:23:47 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/05/28 09:37:17 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	set_player_spawn(char dir, t_vec2 pos)
 	else
 		logger(LOGGER_WARNING, "Player spawn look dir is not valid dir");
 	get_player()->spawn_point = pos;
+	get_player()->transform.pos = pos;
+	get_player()->transform.rot = get_player()->spawn_look_dir;
 }
 
 bool	set_value(char	**value, char	*set)
