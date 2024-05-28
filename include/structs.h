@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/24 13:39:34 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/28 10:16:37 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_color
 	int	r;
 	int	g;
 	int	b;
+	int	a;
 }	t_color;
 
 typedef struct s_scale
@@ -69,6 +70,8 @@ typedef struct s_input_data
 typedef struct s_persistent_data
 {
 	t_input_data	*input_data;
+	mlx_t			*mlx;
+	mlx_image_t		*background;
 }	t_persistent_data;
 
 // ----- CURRENTLY UNUSED
