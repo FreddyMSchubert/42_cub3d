@@ -8,8 +8,10 @@ LIBMLX	:= ./submodules/MLX42
 LIBFT	:= ./submodules/42_libft
 GNL		:= ./lib/get_next_line
 
-HEADERS := -I ./include -I $(LIBMLX)/include -I $(LIBFT)/include -I $(GNL)/include
-LIBS := $(LIBMLX)/build/libmlx42.a -ldl -L$(shell brew --prefix glfw)/lib -lglfw $(LIBFT)/libft.a $(GNL)/libftgnl.a
+GLFW_PATH := $(shell brew --prefix glfw)
+
+HEADERS := -I ./include -I $(LIBMLX)/include -I $(LIBFT)/include -I $(GNL)/include -I $(GLFW_PATH)/include
+LIBS := $(LIBMLX)/build/libmlx42.a -ldl -L$(GLFW_PATH)/lib -lglfw $(LIBFT)/libft.a $(GNL)/libftgnl.a
 CFLAGS := -Wall -Werror -Wextra -Wunreachable-code -g
 
 $(NAME): setup $(OBJ) $(LIBMLX)/build/libmlx42.a $(LIBFT)/libft.a $(GNL)/libftgnl.a

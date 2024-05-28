@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 09:39:02 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/23 11:39:22 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/05/28 10:10:22 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ static bool	set_value(char	**value, char	*set)
 static bool	set_color(t_color *color, char *color_val)
 {
 	char	**cols;
+	int		curr_col;
 
 	if (!color_val) // TODO: set default color vals to all -1
 		return (false);
@@ -104,18 +105,22 @@ static bool	set_color(t_color *color, char *color_val)
 		return (false);
 	if (split_len(cols) != 3) // TODO: check wether to set default vals when not all rgb is set
 		return (free_split(cols, false));
-	color->r = ft_atoi(cols[0]);
-	if (!(color->r < 256 && color->r >= 0))
+	curr_col = ft_atoi(cols[0]);
+	if (!(curr_col < 256 && curr_col >= 0))
 		return (free_split(cols, false));
-	color->g = ft_atoi(cols[1]);
-	if (!(color->g < 256 && color->g >= 0))
+	color->r = curr_col;
+	curr_col = ft_atoi(cols[1]);
+	if (!(curr_col < 256 && curr_col >= 0))
 		return (free_split(cols, false));
-	color->b = ft_atoi(cols[2]);
-	if (!(color->b < 256 && color->b >= 0))
+	color->g = curr_col;
+	curr_col = ft_atoi(cols[2]);
+	if (!(curr_col < 256 && curr_col >= 0))
 		return (free_split(cols, false));
+	color->b = curr_col;
+	color->a = 255;
 	free_split(cols, NULL);
 	if (DEBUG)
-		printf("Color set to [%d, %d, %d]\n", color->r, color->g, color->b);
+		printf("Color set to [%d, %d, %d] / %X\n", color->r, color->g, color->b, t_color_to_int(*color));
 	return (true);
 }
 

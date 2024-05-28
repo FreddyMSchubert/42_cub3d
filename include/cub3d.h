@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/24 18:02:35 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/28 10:29:11 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 # define CUB3D_H
 
 /* ----- INCLUDES ----- */
-# include "colors.h"
-# include "structs.h"
-
 # include "../submodules/MLX42/include/MLX42/MLX42.h"
 # include "../submodules/42_libft/libft.h"
 # include "../lib/get_next_line/get_next_line.h"
+
+# include "colors.h"
+# include "structs.h"
+# include "settings.h"
 
 // subject functions
 # include <fcntl.h>    // open, close
@@ -34,10 +35,6 @@
 # include <limits.h>
 # include <float.h>
 
-/* ----- RULES ----- */
-# define GREETING true
-# define VERBOSE true
-# define DEBUG true
 
 /* ---- SETTINGS ---- */
 # define MAP_TILES " 10NESW"
@@ -88,6 +85,14 @@ t_scale				get_map_size(t_tile_type ***map);
 t_transform			*create_transform(int x, int y, int rotx, int roty);
 bool				wall_needed(t_tile_type ***map, int x, int y, t_scale size);
 
+// ----- 2_mlx_setup
+void				setup_mlx(void);
+
+// ----- 3_game_loop
+// --- a_game_logic
+void				loop_hook(void *param);
+void				key_hook(mlx_key_data_t keydata, void *param);
+
 // ----- util
 // garbage collector
 t_list				*gc_create(void);
@@ -102,6 +107,13 @@ void				logger_verbose(char type, char *message);
 // printing
 void				print_map(t_tile_type ***map, char *mode);
 void				print_walls(void);
+
+// general
+void				cub_exit_error(char	*message);
+
+// colors
+unsigned int		t_color_to_int(t_color color);
+t_color				int_to_t_color(int color);
 
 // string
 bool				str_is_equal(char *str1, char *str2);

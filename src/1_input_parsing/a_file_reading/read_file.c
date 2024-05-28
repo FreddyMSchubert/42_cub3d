@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:38:30 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/23 14:50:49 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/05/28 08:58:43 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,8 +124,8 @@ static bool	basic_validate(t_input_data **in)
 
 static void	clean_struct_input(t_input_data *input_data)
 {
-	input_data->ceiling_color = (t_color){-1, -1, -1};
-	input_data->floor_color = (t_color){-1, -1, -1};
+	input_data->ceiling_color = (t_color){-1, -1, -1, -1};
+	input_data->floor_color = (t_color){-1, -1, -1, -1};
 	input_data->ea_texture_location = NULL;
 	input_data->no_texture_location = NULL;
 	input_data->so_texture_location = NULL;

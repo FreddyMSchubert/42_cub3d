@@ -1,5 +1,18 @@
 # Changelog
 
+### [0.7.2] - 28.05.2024 - Freddy - `14-very-basic-rendering-setup`
+- added hook setup & loop hook & key hook
+- made program close when esc is received
+
+### [0.7.1] - 28.05.2024 - Freddy - `14-very-basic-rendering-setup`
+- Made t_color struct hold unsigned chars, more efficient.
+- Made colors as ints use unsigned int instead, as that keeps the data properly
+- ceiling & floor colors now render properly
+
+## [0.7.0] - 28.05.2024 - Freddy - `14-very-basic-rendering-setup`
+- Added an alpha field to color struct & added conversion to and from int utils
+- added mlx setup function & created basic window & drew background white. currently the colors dont appear properly.
+
 ### [0.6.1] - 24.05.2024 - Freddy - `12-raycasting-rendering-util`
 - Changed infinitify_transform to scale_transform, which takes in an int to set the combined distance of the newly adjusted vectors to.
   - using this, we can implement a render distance easily.
