@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/28 10:18:40 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/28 10:29:11 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,11 @@ bool				wall_needed(t_tile_type ***map, int x, int y, t_scale size);
 
 // ----- 2_mlx_setup
 void				setup_mlx(void);
+
+// ----- 3_game_loop
+// --- a_game_logic
+void				loop_hook(void *param);
+void				key_hook(mlx_key_data_t keydata, void *param);
 
 // ----- util
 // garbage collector
