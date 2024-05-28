@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.8.1] - 28.05.2024 - Freddy - `15-validation-flood-fill`
+- norminettification & efficiency improvements of new flood filled validator
+
 ## [0.8.0] - 28.05.2024 - Freddy - `15-validation-flood-fill`
 - made validator use a flood fill system starting from the player pos to authenticate the maps & made it set all unreachable fields to void for effiency
 - removed random testing code
