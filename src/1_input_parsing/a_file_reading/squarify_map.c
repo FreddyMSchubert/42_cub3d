@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   squarify_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 14:07:43 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/23 14:55:44 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/05/28 23:03:40 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,12 @@ void	squarify_map(void)
 		tiles[i] = gc_malloc((new_len + 1) * sizeof(t_tile_type *));
 		while (data->map[i][++j])
 		{
-			tiles[i][j] = gc_malloc(sizeof(t_entity_type));
+			tiles[i][j] = gc_malloc(sizeof(t_tile_type));
 			*(tiles[i][j]) = *(data->map[i][j]);
 		}
 		while (j < new_len)
 		{
-			tiles[i][j] = gc_malloc(sizeof(t_entity_type));
+			tiles[i][j] = gc_malloc(sizeof(t_tile_type));
 			*(tiles[i][j++]) = VOID;
 		}
 		i++;

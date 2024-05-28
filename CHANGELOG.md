@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.8.0] - 28.05.2024 - Freddy - `15-validation-flood-fill`
+- made validator use a flood fill system starting from the player pos to authenticate the maps & made it set all unreachable fields to void for effiency
+- removed random testing code
+- random squarify map & parser fixes
+
 ### [0.7.2] - 28.05.2024 - Freddy - `14-very-basic-rendering-setup`
 - added hook setup & loop hook & key hook
 - made program close when esc is received
