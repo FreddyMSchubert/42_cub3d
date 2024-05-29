@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/28 10:29:11 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/29 08:53:27 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_entity			*get_player(void);
 void	            generate_map(void);
 // features
 void	            remove_walls(char **maze, int height, int width);
-void	            place_player_spawn(char **maze, t_scale map_scale);
+void				place_player_spawn(char **maze, t_scale starting_pos);
 void	            add_rooms(char **maze, t_scale scale, int room_count);
 // file writer
 void	            write_cub_file(char **maze, int height, int width, char *filename);
@@ -85,13 +85,18 @@ t_scale				get_map_size(t_tile_type ***map);
 t_transform			*create_transform(int x, int y, int rotx, int roty);
 bool				wall_needed(t_tile_type ***map, int x, int y, t_scale size);
 
-// ----- 2_mlx_setup
+// ----- 2_setup
 void				setup_mlx(void);
+void				setup_player(void);
 
 // ----- 3_game_loop
 // --- a_game_logic
 void				loop_hook(void *param);
 void				key_hook(mlx_key_data_t keydata, void *param);
+// --- b_rendering
+double				pos_distance(t_vec2 pos1, t_vec2 pos2);
+t_vec2				scale_transform(t_vec2 t1, double distance);
+t_vec2				*raycast_intersect(t_transform t1, t_transform t2);
 
 // ----- util
 // garbage collector

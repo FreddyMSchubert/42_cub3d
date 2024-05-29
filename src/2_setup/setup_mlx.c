@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:41:35 by freddy            #+#    #+#             */
-/*   Updated: 2024/05/28 10:29:36 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/29 08:29:26 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,5 @@ void	setup_mlx(void)
 	set_sky();
 	mlx_loop_hook(data->mlx, loop_hook, NULL);
 	mlx_key_hook(data->mlx, key_hook, NULL);
+	setup_player();
 }

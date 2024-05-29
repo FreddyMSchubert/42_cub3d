@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 10:54:38 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/28 23:30:30 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/29 08:26:37 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ void	validate(void)
 	y = -1;
 	while (++y < map_size.y)
 		visited[y] = gc_malloc(map_size.x * sizeof(bool));
-	if (flood_fill(data, visited, (t_scale){get_player()->spawn_point.x, \
-						get_player()->spawn_point.y}, map_size) == INVALID)
+	if (flood_fill(data, visited, (t_scale){get_player()->spawn_transform.pos.x, \
+						get_player()->spawn_transform.pos.y}, map_size) == INVALID)
 		cub_exit_error("Invalid map - Player can reach edge or void.");
 	clear_unused_spaces(data->map, visited, map_size);
 }

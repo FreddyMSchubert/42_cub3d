@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 09:39:02 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/28 23:04:34 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/29 08:25:12 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,14 +164,16 @@ bool	parse_attributes(char	**data, t_input_data **input_data, int *i)
 
 void	set_player_spawn(char dir)
 {
+	get_player()->spawn_transform.rot = (t_vec2){0, 0};
+	get_player()->spawn_transform.pos = (t_vec2){0, 0};
 	if (dir == 'N')
-		get_player()->spawn_look_dir = (t_vec2){-1, 0};
+		get_player()->spawn_transform.rot = (t_vec2){-1, 0};
 	else if (dir == 'S')
-		get_player()->spawn_look_dir = (t_vec2){1, 0};
+		get_player()->spawn_transform.rot = (t_vec2){1, 0};
 	else if (dir == 'E')
-		get_player()->spawn_look_dir = (t_vec2){0, 1};
+		get_player()->spawn_transform.rot = (t_vec2){0, 1};
 	else if (dir == 'W')
-		get_player()->spawn_look_dir = (t_vec2){0, -1};
+		get_player()->spawn_transform.rot = (t_vec2){0, -1};
 	else
 		logger(LOGGER_WARNING, "Player spawn look dir is not valid dir");
 }
@@ -207,7 +209,7 @@ bool	parse_map(char **data, t_input_data **input_data, int *i)
 				*map[k][j] = VOID;
 			else
 			{
-				get_player()->spawn_point = (t_vec2){j, k};
+				get_player()->spawn_transform.pos = (t_vec2){j, k};
 				set_player_spawn(data[*i][j]);
 				*map[k][j] = FLOOR;
 			}

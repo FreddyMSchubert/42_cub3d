@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:22:19 by freddy            #+#    #+#             */
-/*   Updated: 2024/05/24 22:31:28 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/29 08:45:21 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ double	pos_distance(t_vec2 pos1, t_vec2 pos2)
 
 // makes the rot of a vector be as long as the defined distance
 // e.g. for view distances
-t_transform	scale_transform(t_transform t1, int distance)
+t_vec2	scale_transform(t_vec2 t1, double distance)
 {
 	double	current_magnitude;
 	double	scale_factor;
 
-	current_magnitude = sqrt(t1.rot.x * t1.rot.x + t1.rot.y * t1.rot.y);
+	current_magnitude = sqrt(t1.x * t1.x + t1.y * t1.y);
 	if (current_magnitude != 0)
 	{
-		scale_factor = (double)distance / current_magnitude;
-		t1.rot.x *= scale_factor;
-		t1.rot.y *= scale_factor;
+		scale_factor = distance / current_magnitude;
+		t1.x *= scale_factor;
+		t1.y *= scale_factor;
 	}
 	return t1;
 }
@@ -57,49 +57,3 @@ t_vec2	*raycast_intersect(t_transform t1, t_transform t2)
 	}
 	return (NULL);
 }
-
-/*
-void test_case(t_transform t1, t_transform t2)
-{
-	t_vec2 *intersection = raycast_intersect(t1, t2);
-	if (intersection) {
-		printf("Intersection at: (%f, %f)\n", intersection->x, intersection->y);
-		free(intersection);
-	} else {
-		printf("No intersection found.\n");
-	}
-}
-
-int main()
-{
-	t_transform t1_case1 = {{0, 0}, {1, 1}};
-	t_transform t2_case1 = {{1, 0}, {0, 2}};
-	printf("Case 1:\n");
-	test_case(t1_case1, t2_case1);  // Expected: (1, 1)
-
-	t_transform t1_case2 = {{0, 0}, {1, 1}};
-	t_transform t2_case2 = {{3, 0}, {0, 4}};
-	printf("Case 2:\n");
-	test_case(t1_case2, t2_case2);  // Expected: (3, 3)
-
-	t_transform t1_case3 = {{0, 0}, {1, 0}};
-	t_transform t2_case3 = {{0, 1}, {2, 0}};
-	printf("Case 3:\n");
-	test_case(t1_case3, t2_case3);  // Expected: No intersection
-
-	t_transform t1_case4 = {{0, 0}, {1, 0}};
-	t_transform t2_case4 = {{-1, 0}, {2, 0}};
-	printf("Case 4:\n");
-	test_case(t1_case4, t2_case4);  // Expected: No intersection
-
-	t_transform t1_case5 = {{0, 0}, {0, 1}};
-	t_transform t2_case5 = {{-1, 1}, {2, 0}};
-	printf("Case 5:\n");
-	test_case(t1_case5, t2_case5);  // Expected: (0, 1)
-
-	return 0;
-}
-
-*/
-
-// check back of the ray intersection

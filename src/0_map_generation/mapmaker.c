@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 22:46:53 by freddy            #+#    #+#             */
-/*   Updated: 2024/05/28 23:35:07 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/29 08:53:38 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void	generate_map(void)
 	generate_maze(maze, visited, pos, map_scale);
 	remove_walls(maze, map_scale.y, map_scale.x);
 	add_rooms(maze, map_scale, random_int(2, 5));
-	place_player_spawn(maze, map_scale);
+	place_player_spawn(maze, pos);
 	write_cub_file(maze, map_scale.y, map_scale.x, "generated_maze.cub");
 	logger_verbose(LOGGER_INFO, "Generated random map.");
 	print_maze(maze, map_scale.y, map_scale.x);
