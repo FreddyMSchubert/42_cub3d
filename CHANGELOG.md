@@ -1,5 +1,10 @@
 # Changelog
 
+### [0.9.1] - 29.05.2024 - Freddy - `18-player-movement`
+- fixed parse resetting input pos to 0, thus breaking the update
+- added LOG_WALLS to not log walls if not necessary as its thoroughly annoying
+- i have worked toward fixing the dysfunctional moement, the position is now here properly, meaning were not in a wall anymore - but movement is still not happening
+
 ## [0.9.0] - 29.05.2024 - Freddy - `18-player-movement`
 - dysfunctional movement setup, no rotations yet. values dont seem to update. but ive changed so much its committment time
 - Changed seperate vec2s in player entity to use one t_transform instead

@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:50 by freddy            #+#    #+#             */
-/*   Updated: 2024/05/29 08:52:58 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/29 09:37:44 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static t_vec2	get_movement_from_key(mlx_key_data_t keydata)
 		movement.x = get_player()->transform.rot.y;
 		movement.y = -get_player()->transform.rot.x;
 	}
+	printf("Based on keydata %d, I decided to move in direction [%f %f]", keydata.key, movement.x, movement.y);
 	return (movement);
 }
 
@@ -45,6 +46,7 @@ static void	player_move(mlx_key_data_t keydata)
 	t_vec2		original_pos;
 	t_vec2		movement;
 
+	printf("Moving!: ");
 	original_pos = get_player()->transform.pos;
 	if (pos_distance((t_vec2){0, 0}, get_player()->transform.pos) != MOVEMENT_SPEED)
 		get_player()->transform.rot = scale_transform(get_player()->transform.rot, MOVEMENT_SPEED);
@@ -55,6 +57,7 @@ static void	player_move(mlx_key_data_t keydata)
 			[(int)get_player()->transform.pos.y]\
 			[(int)get_player()->transform.pos.x] != FLOOR)
 	{
+		printf("resetting pos from [%f|%f] back to [%f|%f]\n", get_player()->transform.pos.x, get_player()->transform.pos.y, original_pos.x, original_pos.y);
 		get_player()->transform.pos.x = original_pos.x;
 		get_player()->transform.pos.y = original_pos.y;
 	}
@@ -63,7 +66,7 @@ static void	player_move(mlx_key_data_t keydata)
 void	key_hook(mlx_key_data_t keydata, void *param)
 {
 	if (keydata.action == MLX_PRESS)
-		printf("\nReceived key press %u input!\n", keydata.key);
+		printf("Received key press %u input!\n", keydata.key);
 	if (keydata.key == MLX_KEY_ESCAPE)
 		mlx_close_window(get_persistent_data()->mlx);
 	if (keydata.action == MLX_REPEAT)

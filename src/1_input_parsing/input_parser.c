@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 13:57:51 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/24 14:00:13 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/29 09:31:40 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@ void	parse_input(char	*filepath)
 {
 	logger_verbose(LOGGER_INFO, "Parsing input file!");
 	get_map_contents(filepath);
+	printf("%f %f\n", get_player()->spawn_transform.pos.x, get_player()->spawn_transform.pos.y);
 	squarify_map();
 	if (!get_persistent_data()->input_data)
 		gc_exit_error();
 	validate();
 	convert_walls();
-	print_walls();
+	if (LOG_WALLS)
+		print_walls();
 }

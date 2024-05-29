@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 09:39:02 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/29 08:25:12 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/29 09:27:51 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,7 +165,6 @@ bool	parse_attributes(char	**data, t_input_data **input_data, int *i)
 void	set_player_spawn(char dir)
 {
 	get_player()->spawn_transform.rot = (t_vec2){0, 0};
-	get_player()->spawn_transform.pos = (t_vec2){0, 0};
 	if (dir == 'N')
 		get_player()->spawn_transform.rot = (t_vec2){-1, 0};
 	else if (dir == 'S')
