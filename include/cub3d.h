@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/29 08:53:27 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/29 20:47:16 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,9 @@ void				setup_player(void);
 // --- a_game_logic
 void				loop_hook(void *param);
 void				key_hook(mlx_key_data_t keydata, void *param);
+void				scroll_hook(double xdelta, double ydelta, void* param);
+// util
+void				turn(double amount);
 // --- b_rendering
 double				pos_distance(t_vec2 pos1, t_vec2 pos2);
 t_vec2				scale_transform(t_vec2 t1, double distance);

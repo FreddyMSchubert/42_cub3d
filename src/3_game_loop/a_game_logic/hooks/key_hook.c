@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:50 by freddy            #+#    #+#             */
-/*   Updated: 2024/05/29 20:26:41 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/29 21:21:31 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,11 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 {
 	if (keydata.key == MLX_KEY_ESCAPE)
 		mlx_close_window(get_persistent_data()->mlx);
-	if (keydata.action == MLX_REPEAT)
-	{
-		if (keydata.key == MLX_KEY_W || keydata.key == MLX_KEY_A || keydata.key == MLX_KEY_S || keydata.key == MLX_KEY_D)
-			player_move(keydata);
-	}
+	else if (keydata.key == MLX_KEY_W || keydata.key == MLX_KEY_A || keydata.key == MLX_KEY_S || keydata.key == MLX_KEY_D)
+		player_move(keydata);
+	else if (keydata.key == MLX_KEY_LEFT)
+		turn (-TURN_SPEED_ARROWS_DEG);
+	else if (keydata.key == MLX_KEY_RIGHT)
+		turn (TURN_SPEED_ARROWS_DEG);
 	(void) param;
 }

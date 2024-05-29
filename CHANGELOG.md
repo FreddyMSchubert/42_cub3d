@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.9.3] - 29.05.2024 - Freddy - `18-player-movement`
+- made mouse change rotations by scrolling because i havent found a mouse position hook - unsure that exists. would be very weird if not though.
+
 ### [0.9.2] - 29.05.2024 - Freddy - `18-player-movement`
 - fixed movement not working properly because of improper dereferencing of t_tile_type value at standing map spot
 
