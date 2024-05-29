@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.9.2] - 29.05.2024 - Freddy - `18-player-movement`
+- fixed movement not working properly because of improper dereferencing of t_tile_type value at standing map spot
+
 ### [0.9.1] - 29.05.2024 - Freddy - `18-player-movement`
 - fixed parse resetting input pos to 0, thus breaking the update
 - added LOG_WALLS to not log walls if not necessary as its thoroughly annoying
