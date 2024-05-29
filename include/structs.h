@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/28 10:18:50 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/29 08:23:55 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,7 @@ typedef struct s_entity
 {
 	t_entity_type	type;
 	t_transform		transform;
-	t_vec2			spawn_look_dir;
-	t_vec2			spawn_point;
+	t_transform		spawn_transform;
 }	t_entity;
 
 #endif

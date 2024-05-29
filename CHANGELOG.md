@@ -1,5 +1,22 @@
 # Changelog
 
+### [0.9.3] - 29.05.2024 - Freddy - `18-player-movement`
+- made mouse change rotations by scrolling because i havent found a mouse position hook - unsure that exists. would be very weird if not though.
+
+### [0.9.2] - 29.05.2024 - Freddy - `18-player-movement`
+- fixed movement not working properly because of improper dereferencing of t_tile_type value at standing map spot
+
+### [0.9.1] - 29.05.2024 - Freddy - `18-player-movement`
+- fixed parse resetting input pos to 0, thus breaking the update
+- added LOG_WALLS to not log walls if not necessary as its thoroughly annoying
+- i have worked toward fixing the dysfunctional moement, the position is now here properly, meaning were not in a wall anymore - but movement is still not happening
+
+## [0.9.0] - 29.05.2024 - Freddy - `18-player-movement`
+- dysfunctional movement setup, no rotations yet. values dont seem to update. but ive changed so much its committment time
+- Changed seperate vec2s in player entity to use one t_transform instead
+- made scale_transform use a double for precise values & made it take in any vec2 instead of a transform
+- random fixes
+
 ### [0.8.2] - 28.05.2024 - Freddy - `15-validation-flood-fill`
 - made map generation place player pos where generation started, so pretty much the center of the labrinth
 - some map gen fixes & refactorings

@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 22:50:16 by freddy            #+#    #+#             */
-/*   Updated: 2024/05/28 23:35:50 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/29 08:53:18 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ void	remove_walls(char **maze, int height, int width)
 	}
 }
 
-void	place_player_spawn(char **maze, t_scale map_scale, \
-								t_scale starting_pos)
+void	place_player_spawn(char **maze, t_scale starting_pos)
 {
 	maze[starting_pos.y][starting_pos.x] = \
 						"NSWE"[random_int(0, 3)];
