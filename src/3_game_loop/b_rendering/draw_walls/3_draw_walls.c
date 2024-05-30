@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/05/30 16:32:10 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/30 17:28:27 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void set_pixel_color(mlx_image_t *img, int x, int y, int col)
 
 static int interpolate(int start, int end, int step, int max_steps)
 {
+	if (max_steps == 0) return start;
 	return (start + (end - start) * step / max_steps);
 }
 
@@ -46,6 +47,8 @@ static void	draw_wall(t_wall_scale *wall, mlx_image_t *img)
 	int	start_y;
 	int	end_y;
 
+	if (wall->x_left >= wall->x_right || (wall->height_left == 0  && wall->height_right == 0))
+		return ;
 	printf("Wall from x %d to %d, left: %d, right: %d\n", wall->x_left, wall->x_right, wall->height_left, wall->height_right);
 	col = get_color(wall->direction);
 	center_y = img->height / 2;

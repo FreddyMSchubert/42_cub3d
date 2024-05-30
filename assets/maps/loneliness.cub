@@ -5,8 +5,8 @@ SO ./assets/img/bricks.png
 WE ./assets/img/bricks.png
 EA ./assets/img/bricks.png
 
-F 184,113,39
-C 51,198,227
+F 0,0,0
+C 0,0,0
 
 11111111111111111111111111111
 10000000000000000000000000001

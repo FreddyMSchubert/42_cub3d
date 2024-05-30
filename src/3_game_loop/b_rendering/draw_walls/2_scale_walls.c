@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 10:53:27 by freddy            #+#    #+#             */
-/*   Updated: 2024/05/30 16:36:14 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/30 17:32:51 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,11 @@ static int angle_to_screen_x(double angle_deg)
 
 	screen_width = get_persistent_data()->mlx->width;
 	normalized_angle = fmod(angle_deg + 360.0, 360.0);
-	position = (screen_width / 2) * (1 + tan(degrees_to_radians(normalized_angle)) / tan(FOV_DEG / 2.0));
+	if (normalized_angle > 180.0)
+		normalized_angle -= 360.0; // normalize to -180 to 180 range
+
+	// Map angle to screen x position using rule of three (Dreisatz)
+	position = (normalized_angle + (FOV_DEG / 2)) * screen_width / FOV_DEG;
 
 	if (position < 0)
 		return 0;
@@ -37,7 +41,14 @@ static int angle_to_screen_x(double angle_deg)
 
 static int	angle_to_wall_height(double angle_deg)
 {
-	return (get_max_wall_height() * (1.0 - fabs(angle_deg) / (FOV_DEG / 2)));
+	double	height;
+
+	height = get_max_wall_height() * (1.0 - fabs(angle_deg) / (FOV_DEG / 2));
+	if (height < 0)
+		return (0);
+	if (height > INT_MAX)
+		return (INT_MAX);
+	return ((int)height);
 }
 
 static char	get_wall_face(t_transform *wall, t_entity *player)
@@ -54,7 +65,7 @@ static char	get_wall_face(t_transform *wall, t_entity *player)
 		if (player->transform.pos.y > wall->pos.y)
 			return 'N';
 		else
-			return 'E';
+			return 'S';
 	}
 }
 
