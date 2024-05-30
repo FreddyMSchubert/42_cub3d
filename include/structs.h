@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/29 08:23:55 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/30 14:19:39 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,15 @@ typedef struct s_transform
 	t_vec2	rot;
 }	t_transform;
 
+typedef struct s_wall_scale
+{
+	int		x_left;
+	int		x_right;
+	int		height_left;
+	int		height_right;
+	char	direction;
+}	t_wall_scale;
+
 // ---- IMPORTANT
 
 typedef enum e_tile_type
@@ -70,8 +79,11 @@ typedef struct s_input_data
 typedef struct s_persistent_data
 {
 	t_input_data	*input_data;
+	t_transform		**raycasted_sorted_walls;
+	t_wall_scale	**walls_scaled;
 	mlx_t			*mlx;
 	mlx_image_t		*background;
+	mlx_image_t		*game_scene;
 }	t_persistent_data;
 
 // ----- CURRENTLY UNUSED

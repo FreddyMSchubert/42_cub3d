@@ -1,0 +1,79 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   3_draw_walls.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
+/*   Updated: 2024/05/30 14:51:39 by freddy           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../../../include/cub3d.h"
+
+static void set_pixel_color(mlx_image_t *img, int x, int y, int col)
+{
+	if (x >= 0 && x < (int)img->width && y >= 0 && y < (int)img->height)
+		img->pixels[y * img->width + x] = col;
+}
+
+static int interpolate(int start, int end, int step, int max_steps)
+{
+	return (start + (end - start) * step / max_steps);
+}
+
+static int	get_color(char walldir)
+{
+	if (walldir == 'N')
+		return (0xFF0000);
+	if (walldir == 'E')
+		return (0x0000FF);
+	if (walldir == 'S')
+		return (0x00FF00);
+	if (walldir == 'W')
+		return (0xFFFF00);
+	return (0xFFFFFF);
+}
+
+static void	draw_wall(t_wall_scale *wall, mlx_image_t *img)
+{
+	int	col;
+	int	x;
+	int	y;
+	int	current_height;
+	int	center_y;
+	int	start_y;
+	int	end_y;
+
+	col = get_color(wall->direction);
+	center_y = img->height / 2;
+	x = -1;
+	while (++x <= wall->x_right - wall->x_left)
+	{
+		current_height = interpolate(wall->height_left, wall->height_right, x, wall->x_right - wall->x_left);
+		start_y = center_y - current_height / 2;
+		end_y = center_y + current_height / 2;
+		y = start_y - 1;
+		while (++y <= end_y)
+		{
+			set_pixel_color(img, wall->x_left + x, y, col);
+		}
+	}
+}
+
+void	draw_walls(void)
+{
+	t_wall_scale	**walls;
+	mlx_image_t		*img;
+	int				i;
+
+	write(STDOUT_FILENO, "a", 1);
+	walls = get_persistent_data()->walls_scaled;
+	write(STDOUT_FILENO, "b", 1);
+	img = get_persistent_data()->game_scene;
+	write(STDOUT_FILENO, "c", 1);
+	i = -1;
+	while (walls && walls[++i])
+		draw_wall(walls[i], img);
+}

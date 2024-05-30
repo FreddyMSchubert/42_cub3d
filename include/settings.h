@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/05/29 20:32:26 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/30 10:36:51 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,9 @@
 # define MOVEMENT_SPEED 0.5
 # define TURN_SPEED_ARROWS_DEG 5
 # define TURN_SPEED_MOUSE_DEG 1
+
+// Display Settings
+
+# define FOV_DEG 90
 
 #endif

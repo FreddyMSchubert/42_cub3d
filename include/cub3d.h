@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/29 20:47:16 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/30 14:37:40 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,19 @@ void				scroll_hook(double xdelta, double ydelta, void* param);
 // util
 void				turn(double amount);
 // --- b_rendering
+void				render_game_scene(void);
+// util
 double				pos_distance(t_vec2 pos1, t_vec2 pos2);
 t_vec2				scale_transform(t_vec2 t1, double distance);
 t_vec2				*raycast_intersect(t_transform t1, t_transform t2);
+// - 1 sort walls
+void				sort_and_raycast_walls(void);
+// - 2 scale walls
+void				scale_walls(void);
+// util
+double				calculate_deviation_angle(t_transform p, t_vec2 pos);
+// - 3 draw walls
+void				draw_walls(void);
 
 // ----- util
 // garbage collector
@@ -125,5 +135,9 @@ t_color				int_to_t_color(int color);
 
 // string
 bool				str_is_equal(char *str1, char *str2);
+
+// rotations
+double				degrees_to_radians(double degrees);
+double				radians_to_degrees(double radians);
 
 #endif
