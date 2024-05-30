@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 10:53:27 by freddy            #+#    #+#             */
-/*   Updated: 2024/05/30 14:46:51 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/30 16:36:14 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,21 @@ static int	get_max_wall_height(void)
 	return (get_persistent_data()->mlx->height * 2);
 }
 
-static int	angle_to_screen_x(double angle_deg, double fov_rad)
+static int angle_to_screen_x(double angle_deg)
 {
-	return ((int)((angle_deg + fov_rad / 2) / fov_rad * get_persistent_data()->mlx->width));
+	int screen_width;
+	float normalized_angle;
+	float position;
+
+	screen_width = get_persistent_data()->mlx->width;
+	normalized_angle = fmod(angle_deg + 360.0, 360.0);
+	position = (screen_width / 2) * (1 + tan(degrees_to_radians(normalized_angle)) / tan(FOV_DEG / 2.0));
+
+	if (position < 0)
+		return 0;
+	if (position > screen_width)
+		return screen_width;
+	return ((int)position);
 }
 
 static int	angle_to_wall_height(double angle_deg)
@@ -30,14 +42,14 @@ static int	angle_to_wall_height(double angle_deg)
 
 static char	get_wall_face(t_transform *wall, t_entity *player)
 {
-	if (wall->rot.x == 1) // vertical
+	if (wall->rot.x == 1)
 	{
 		if (player->transform.pos.x > wall->pos.x)
 			return 'W';
 		else
 			return 'E';
 	}
-	else // horizontal
+	else
 	{
 		if (player->transform.pos.y > wall->pos.y)
 			return 'N';
@@ -49,19 +61,18 @@ static char	get_wall_face(t_transform *wall, t_entity *player)
 static t_wall_scale	*get_wall_dimensions(t_transform *wall, t_entity *player)
 {
 	t_wall_scale	*dimensions;
-	double			fov_rad;
 	double			left_angle_deg;
 	double			right_angle_deg;
 	
-	fov_rad = degrees_to_radians(FOV_DEG);
 	left_angle_deg = calculate_deviation_angle(player->transform, wall->pos);
 	right_angle_deg = calculate_deviation_angle(player->transform, (t_vec2){wall->pos.x + wall->rot.x, wall->pos.y + wall->rot.y});
 	dimensions = gc_malloc(sizeof(t_wall_scale));
-	dimensions->x_left = angle_to_screen_x(left_angle_deg, fov_rad / 2);
-	dimensions->x_right = angle_to_screen_x(right_angle_deg, fov_rad / 2);
+	dimensions->x_left = angle_to_screen_x(left_angle_deg);
+	dimensions->x_right = angle_to_screen_x(right_angle_deg);
 	dimensions->height_left = angle_to_wall_height(left_angle_deg);
 	dimensions->height_right = angle_to_wall_height(right_angle_deg);
 	dimensions->direction = get_wall_face(wall, player);
+	printf("wall scale: %d - %d \n", dimensions->x_left, dimensions->x_right);
 	return (dimensions);
 }
 

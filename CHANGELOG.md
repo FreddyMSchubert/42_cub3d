@@ -1,6 +1,12 @@
 # Changelog
 
-## [0.10.0] - 29.05.2024 - Freddy - `20-draw-walls`
+### [0.10.1] - 30.05.2024 - Freddy - `20-draw-walls`
+- fixed incorrect degrees to radians conversion
+- reworked angle_to_Screen_x function, that should hopefully be better now
+- fixed angle to screen x producing int min and int max values, making the program run predictably slowly when it loops through them. i fixed that. 
+- it renders now - something. nothing correct though.
+
+## [0.10.0] - 30.05.2024 - Freddy - `20-draw-walls`
 - added calculate deviation angle, which will be helpful to draw the walls and check whether a wall is outside of the fov, ...
 - added sort walls (which is supposed to eventually do the raycasting and sorting, but currently does nothing)
 - added scale walls, which turns the 3d walls into 2d screen coordinates
