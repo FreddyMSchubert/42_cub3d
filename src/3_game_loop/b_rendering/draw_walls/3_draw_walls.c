@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/05/30 17:28:27 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/30 18:49:19 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ static int interpolate(int start, int end, int step, int max_steps)
 static int	get_color(char walldir)
 {
 	if (walldir == 'N')
-		return (0xFF0000);
+		return (t_color_to_int((t_color){255, 0, 0, 255}));
 	if (walldir == 'E')
-		return (0x0000FF);
+		return (t_color_to_int((t_color){0, 0, 255, 255}));
 	if (walldir == 'S')
-		return (0x00FF00);
+		return (t_color_to_int((t_color){0, 255, 0, 255}));
 	if (walldir == 'W')
-		return (0xFFFF00);
-	return (0xFFFFFF);
+		return (t_color_to_int((t_color){255, 255, 0, 255}));
+	return (t_color_to_int((t_color){255, 255, 255, 255}));
 }
 
 static void	draw_wall(t_wall_scale *wall, mlx_image_t *img)
@@ -49,8 +49,8 @@ static void	draw_wall(t_wall_scale *wall, mlx_image_t *img)
 
 	if (wall->x_left >= wall->x_right || (wall->height_left == 0  && wall->height_right == 0))
 		return ;
-	printf("Wall from x %d to %d, left: %d, right: %d\n", wall->x_left, wall->x_right, wall->height_left, wall->height_right);
 	col = get_color(wall->direction);
+	printf("Wall from x %d to %d, left: %d, right: %d, col: %X\n", wall->x_left, wall->x_right, wall->height_left, wall->height_right, col);
 	center_y = img->height / 2;
 	x = -1;
 	while (++x <= wall->x_right - wall->x_left)

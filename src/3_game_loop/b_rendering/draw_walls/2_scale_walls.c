@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 10:53:27 by freddy            #+#    #+#             */
-/*   Updated: 2024/05/30 17:32:51 by freddy           ###   ########.fr       */
+/*   Updated: 2024/05/30 18:42:05 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	angle_to_wall_height(double angle_deg)
 
 static char	get_wall_face(t_transform *wall, t_entity *player)
 {
-	if (wall->rot.x == 1)
+	if (wall->rot.x == 1.0)
 	{
 		if (player->transform.pos.x > wall->pos.x)
 			return 'W';
@@ -83,7 +83,7 @@ static t_wall_scale	*get_wall_dimensions(t_transform *wall, t_entity *player)
 	dimensions->height_left = angle_to_wall_height(left_angle_deg);
 	dimensions->height_right = angle_to_wall_height(right_angle_deg);
 	dimensions->direction = get_wall_face(wall, player);
-	printf("wall scale: %d - %d \n", dimensions->x_left, dimensions->x_right);
+	printf("Wall scale: %d - %d / %d - %d / %c\n", dimensions->x_left, dimensions->x_right, dimensions->height_left, dimensions->height_right, dimensions->direction);
 	return (dimensions);
 }
 
@@ -99,6 +99,7 @@ void	scale_walls(void)
 	walls_amount = 0;
 	while (walls[walls_amount])
 		walls_amount++;
+	printf("Walls amount: %d\n", walls_amount);
 	player = get_player();
 	wall_scales = gc_malloc((walls_amount + 1) * sizeof(t_wall_scale));
 	wall_scales[walls_amount] = NULL;

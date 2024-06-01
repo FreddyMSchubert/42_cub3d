@@ -5,9 +5,9 @@ SO ./assets/img/amethyst_block.png
 EA ./assets/img/amethyst_block.png
 WE ./assets/img/amethyst_block.png
 
-F 199,45,91
-C 41,117,119
+F 0,0,0
+C 0,0,0
 
 111
-101
+1N1
 111
