@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/30 14:37:40 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/03 10:48:10 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,8 @@ void				cub_exit_error(char	*message);
 // colors
 unsigned int		t_color_to_int(t_color color);
 t_color				int_to_t_color(int color);
+void				log_color_from_t_color(t_color color);
+void				log_color_from_int(int color);
 
 // string
 bool				str_is_equal(char *str1, char *str2);

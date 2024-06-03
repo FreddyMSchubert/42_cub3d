@@ -1,5 +1,11 @@
 # Changelog
 
+### [0.10.2] - 3.06.2024 - Freddy - `20-draw-walls`
+- fixed colors! it now draws colorful & doesnt repeat 4 times anymore. big success.
+- Added screen clearing to 1_sort_walls, this is not a permanent solution but is helpful while I'm sorting out the drawing logic. This will be removed later.
+- Added math lib include to makefile
+- better color logging
+
 ### [0.10.1] - 30.05.2024 - Freddy - `20-draw-walls`
 - fixed incorrect degrees to radians conversion
 - reworked angle_to_Screen_x function, that should hopefully be better now

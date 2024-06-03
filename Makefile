@@ -11,7 +11,7 @@ GNL		:= ./lib/get_next_line
 GLFW_PATH := $(shell brew --prefix glfw)
 
 HEADERS := -I ./include -I $(LIBMLX)/include -I $(LIBFT)/include -I $(GNL)/include -I $(GLFW_PATH)/include
-LIBS := $(LIBMLX)/build/libmlx42.a -ldl -L$(GLFW_PATH)/lib -lglfw $(LIBFT)/libft.a $(GNL)/libftgnl.a
+LIBS := $(LIBMLX)/build/libmlx42.a -ldl -lm -L$(GLFW_PATH)/lib -lglfw $(LIBFT)/libft.a $(GNL)/libftgnl.a
 CFLAGS := -Wall -Werror -Wextra -Wunreachable-code -g
 
 $(NAME): setup $(OBJ) $(LIBMLX)/build/libmlx42.a $(LIBFT)/libft.a $(GNL)/libftgnl.a
