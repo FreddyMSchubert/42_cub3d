@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:12:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/28 09:37:17 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/04 11:16:22 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		split_len(char **split);
 bool	free_split(char	**split, bool ret);
 
-void	set_player_spawn(char dir, t_vec2 pos)
+void	set_player_spawn(char dir, t_vec2 pos, t_tile_type ***map)
 {
 	if (dir == 'N')
 		get_player()->spawn_look_dir = (t_vec2){-1, 0};
@@ -30,6 +30,7 @@ void	set_player_spawn(char dir, t_vec2 pos)
 	get_player()->spawn_point = pos;
 	get_player()->transform.pos = pos;
 	get_player()->transform.rot = get_player()->spawn_look_dir;
+	(*map)[(int)pos.x][(int)pos.y] = FLOOR;
 }
 
 bool	set_value(char	**value, char	*set)
