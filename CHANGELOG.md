@@ -1,8 +1,77 @@
 # Changelog
 
-### [0.3.7] - 23.05.2024 - Jonas
-  - map squarification
-  - added Python wall vizualation script
+### [0.9.3] - 29.05.2024 - Freddy - `18-player-movement`
+- made mouse change rotations by scrolling because i havent found a mouse position hook - unsure that exists. would be very weird if not though.
+
+### [0.9.2] - 29.05.2024 - Freddy - `18-player-movement`
+- fixed movement not working properly because of improper dereferencing of t_tile_type value at standing map spot
+
+### [0.9.1] - 29.05.2024 - Freddy - `18-player-movement`
+- fixed parse resetting input pos to 0, thus breaking the update
+- added LOG_WALLS to not log walls if not necessary as its thoroughly annoying
+- i have worked toward fixing the dysfunctional moement, the position is now here properly, meaning were not in a wall anymore - but movement is still not happening
+
+## [0.9.0] - 29.05.2024 - Freddy - `18-player-movement`
+- dysfunctional movement setup, no rotations yet. values dont seem to update. but ive changed so much its committment time
+- Changed seperate vec2s in player entity to use one t_transform instead
+- made scale_transform use a double for precise values & made it take in any vec2 instead of a transform
+- random fixes
+
+### [0.8.2] - 28.05.2024 - Freddy - `15-validation-flood-fill`
+- made map generation place player pos where generation started, so pretty much the center of the labrinth
+- some map gen fixes & refactorings
+
+### [0.8.1] - 28.05.2024 - Freddy - `15-validation-flood-fill`
+- norminettification & efficiency improvements of new flood filled validator
+
+## [0.8.0] - 28.05.2024 - Freddy - `15-validation-flood-fill`
+- made validator use a flood fill system starting from the player pos to authenticate the maps & made it set all unreachable fields to void for effiency
+- removed random testing code
+- random squarify map & parser fixes
+
+### [0.7.2] - 28.05.2024 - Freddy - `14-very-basic-rendering-setup`
+- added hook setup & loop hook & key hook
+- made program close when esc is received
+
+### [0.7.1] - 28.05.2024 - Freddy - `14-very-basic-rendering-setup`
+- Made t_color struct hold unsigned chars, more efficient.
+- Made colors as ints use unsigned int instead, as that keeps the data properly
+- ceiling & floor colors now render properly
+
+## [0.7.0] - 28.05.2024 - Freddy - `14-very-basic-rendering-setup`
+- Added an alpha field to color struct & added conversion to and from int utils
+- added mlx setup function & created basic window & drew background white. currently the colors dont appear properly.
+
+### [0.6.1] - 24.05.2024 - Freddy - `12-raycasting-rendering-util`
+- Changed infinitify_transform to scale_transform, which takes in an int to set the combined distance of the newly adjusted vectors to.
+  - using this, we can implement a render distance easily.
+
+## [0.6.0] - 24.05.2024 - Freddy - `12-raycasting-rendering-utils`
+- added pos_distance function
+- added infinitify_transform function which makes an inputted vectors rotation as long as possible while keeping the same relative value
+- added raycast intersect which returns a vec2 position of where the two vectors intersected or NULL if they dont. This does only work as far as the vectors actually go though - use infinitify vector to make the vector long.
+
+### [0.5.1] - 24.05.2024 - Freddy - `12-raycasting-rendering-utils`
+- Added better project structure
+- Made Makefile only attempt to import submodules if theyre not there
+- Changed vec2s to use doubles
+  - Resolved problems created by this
+- Removed t_size struct as it was unnecessary
+- Removed a bunch of weird write calls that were unnecessary
+
+## [0.5.0] - 23.05.2024 - Freddy
+- Added map generation setup & integrated it into project. Use ./cub3d without an argument to have one dynamically generated.
+- reordered folders in src files
+- added changed validator logging statement
+
+### [0.4.1] - 23.05.2024 - Freddy
+- Added `wall_displayer.py` in misc/, which takes in the printed out generated wall and plots them out visually to verify everything is working correctly
+
+## [0.4.0] - 23.05.2024 - Jonas
+  - map squarification (added voids at end of map if it was non-rectangular before)
+
+### [0.3.7] - 23.05.2024 - Freddy
+- Fixes to maps that had some issues
 
 ### [0.3.6] - 23.05.2024 - Freddy
 - Various fixes. problem detected: map returned by file reading is not square.

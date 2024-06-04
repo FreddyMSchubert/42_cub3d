@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/23 09:17:11 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/05/29 08:23:55 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,21 @@ typedef struct s_color
 	int	r;
 	int	g;
 	int	b;
+	int	a;
 }	t_color;
 
-typedef struct s_size
+typedef struct s_scale
 {
-	int	width;
-	int	height;
-}	t_size;
+	int	x;
+	int	y;
+}	t_scale;
 
 // ---- GAME LOGIC
 
 typedef struct s_vec2
 {
-	int	x;
-	int	y;
+	double	x;
+	double	y;
 }	t_vec2;
 
 typedef struct s_transform
@@ -69,6 +70,8 @@ typedef struct s_input_data
 typedef struct s_persistent_data
 {
 	t_input_data	*input_data;
+	mlx_t			*mlx;
+	mlx_image_t		*background;
 }	t_persistent_data;
 
 // ----- CURRENTLY UNUSED
@@ -83,8 +86,7 @@ typedef struct s_entity
 {
 	t_entity_type	type;
 	t_transform		transform;
-	t_vec2			spawn_look_dir;
-	t_vec2			spawn_point;
+	t_transform		spawn_transform;
 }	t_entity;
 
 #endif

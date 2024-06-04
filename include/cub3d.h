@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/23 14:17:38 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/05/29 20:47:16 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 # define CUB3D_H
 
 /* ----- INCLUDES ----- */
-# include "colors.h"
-# include "structs.h"
-
 # include "../submodules/MLX42/include/MLX42/MLX42.h"
 # include "../submodules/42_libft/libft.h"
 # include "../lib/get_next_line/get_next_line.h"
+
+# include "colors.h"
+# include "structs.h"
+# include "settings.h"
 
 // subject functions
 # include <fcntl.h>    // open, close
@@ -31,11 +32,9 @@
 
 // other
 # include <stdbool.h>
+# include <limits.h>
+# include <float.h>
 
-/* ----- RULES ----- */
-# define GREETING true
-# define VERBOSE true
-# define DEBUG true
 
 /* ---- SETTINGS ---- */
 # define MAP_TILES " 10NESW"
@@ -59,7 +58,20 @@ t_persistent_data	*get_persistent_data(void);
 t_list				**get_gc(void);
 t_entity			*get_player(void);
 
-// ----- 0_input_parsing
+// ----- 0_map_generation
+// mapmaker
+void	            generate_map(void);
+// features
+void	            remove_walls(char **maze, int height, int width);
+void				place_player_spawn(char **maze, t_scale starting_pos);
+void	            add_rooms(char **maze, t_scale scale, int room_count);
+// file writer
+void	            write_cub_file(char **maze, int height, int width, char *filename);
+// util
+int	                random_int(int min, int max);
+void	            print_maze(char **maze, int height, int width);
+
+// ----- 1_input_parsing
 void				parse_input(char	*filepath);
 void				squarify_map(void);
 // --- a_file_reading
@@ -69,9 +81,25 @@ void				validate(void);
 // --- c_wall_conversion
 void				convert_walls(void);
 // util
-t_size				get_map_size(t_tile_type ***map);
+t_scale				get_map_size(t_tile_type ***map);
 t_transform			*create_transform(int x, int y, int rotx, int roty);
-bool				wall_needed(t_tile_type ***map, int x, int y, t_size size);
+bool				wall_needed(t_tile_type ***map, int x, int y, t_scale size);
+
+// ----- 2_setup
+void				setup_mlx(void);
+void				setup_player(void);
+
+// ----- 3_game_loop
+// --- a_game_logic
+void				loop_hook(void *param);
+void				key_hook(mlx_key_data_t keydata, void *param);
+void				scroll_hook(double xdelta, double ydelta, void* param);
+// util
+void				turn(double amount);
+// --- b_rendering
+double				pos_distance(t_vec2 pos1, t_vec2 pos2);
+t_vec2				scale_transform(t_vec2 t1, double distance);
+t_vec2				*raycast_intersect(t_transform t1, t_transform t2);
 
 // ----- util
 // garbage collector
@@ -87,6 +115,13 @@ void				logger_verbose(char type, char *message);
 // printing
 void				print_map(t_tile_type ***map, char *mode);
 void				print_walls(void);
+
+// general
+void				cub_exit_error(char	*message);
+
+// colors
+unsigned int		t_color_to_int(t_color color);
+t_color				int_to_t_color(int color);
 
 // string
 bool				str_is_equal(char *str1, char *str2);

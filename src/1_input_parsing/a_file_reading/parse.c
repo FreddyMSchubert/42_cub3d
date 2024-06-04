@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 09:39:02 by jkauker           #+#    #+#             */
+<<<<<<< HEAD:src/0_input_parsing/a_file_reading/parse.c
 /*   Updated: 2024/06/04 11:16:46 by jkauker          ###   ########.fr       */
+=======
+/*   Updated: 2024/05/29 09:27:51 by freddy           ###   ########.fr       */
+>>>>>>> master:src/1_input_parsing/a_file_reading/parse.c
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +41,54 @@ bool	set_values(char **split, t_input_data **input_data, char **data, int *i)
 	else if (str_is_equal(split[0], "F")
 		&& !set_color(&((*input_data)->floor_color), split[1]))
 		return (false);
+<<<<<<< HEAD:src/0_input_parsing/a_file_reading/parse.c
 	else if (str_is_equal(split[0], "C")
 		&& !set_color(&((*input_data)->ceiling_color), split[1]))
+=======
+	}
+	file = open(*value, O_RDONLY);
+	if (file < 0)
+	{
+		logger(LOGGER_WARNING, "Failed to open texture file!");
+		return (false);
+	}
+	close(file);
+	if (DEBUG)
+		printf("Texture file set to '%s'\n", *value);
+	return (true);
+}
+
+static bool	set_color(t_color *color, char *color_val)
+{
+	char	**cols;
+	int		curr_col;
+
+	if (!color_val) // TODO: set default color vals to all -1
+>>>>>>> master:src/1_input_parsing/a_file_reading/parse.c
 		return (false);
 	else if (regex(data[*i], MAP_TILES))
 		return (false);
+<<<<<<< HEAD:src/0_input_parsing/a_file_reading/parse.c
+=======
+	if (split_len(cols) != 3) // TODO: check wether to set default vals when not all rgb is set
+		return (free_split(cols, false));
+	curr_col = ft_atoi(cols[0]);
+	if (!(curr_col < 256 && curr_col >= 0))
+		return (free_split(cols, false));
+	color->r = curr_col;
+	curr_col = ft_atoi(cols[1]);
+	if (!(curr_col < 256 && curr_col >= 0))
+		return (free_split(cols, false));
+	color->g = curr_col;
+	curr_col = ft_atoi(cols[2]);
+	if (!(curr_col < 256 && curr_col >= 0))
+		return (free_split(cols, false));
+	color->b = curr_col;
+	color->a = 255;
+	free_split(cols, NULL);
+	if (DEBUG)
+		printf("Color set to [%d, %d, %d] (0x%X)\n", color->r, color->g, color->b, t_color_to_int(*color));
+>>>>>>> master:src/1_input_parsing/a_file_reading/parse.c
 	return (true);
 }
 
@@ -67,12 +114,26 @@ bool	parse_attributes(char **data, t_input_data **input_data, int *i)
 
 int	get_map_len(int *i, char **data)
 {
+<<<<<<< HEAD:src/0_input_parsing/a_file_reading/parse.c
 	int	map_len;
 
 	map_len = 0;
 	while (data[(*i) + map_len] && regex(data[(*i) + map_len], MAP_TILES))
 		map_len++;
 	return (map_len);
+=======
+	get_player()->spawn_transform.rot = (t_vec2){0, 0};
+	if (dir == 'N')
+		get_player()->spawn_transform.rot = (t_vec2){-1, 0};
+	else if (dir == 'S')
+		get_player()->spawn_transform.rot = (t_vec2){1, 0};
+	else if (dir == 'E')
+		get_player()->spawn_transform.rot = (t_vec2){0, 1};
+	else if (dir == 'W')
+		get_player()->spawn_transform.rot = (t_vec2){0, -1};
+	else
+		logger(LOGGER_WARNING, "Player spawn look dir is not valid dir");
+>>>>>>> master:src/1_input_parsing/a_file_reading/parse.c
 }
 
 t_tile_type	***make_map(int map_len, int *i, char **data)
@@ -97,7 +158,15 @@ t_tile_type	***make_map(int map_len, int *i, char **data)
 			else if (data[*i][j] == ' ')
 				*map[k][j] = VOID;
 			else
+<<<<<<< HEAD:src/0_input_parsing/a_file_reading/parse.c
 				set_player_spawn(data[*i][j], (t_vec2){k, j}, map);
+=======
+			{
+				get_player()->spawn_transform.pos = (t_vec2){j, k};
+				set_player_spawn(data[*i][j]);
+				*map[k][j] = FLOOR;
+			}
+>>>>>>> master:src/1_input_parsing/a_file_reading/parse.c
 		}
 	}
 	return (map);
