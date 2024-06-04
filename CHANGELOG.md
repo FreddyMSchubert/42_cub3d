@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.10.6] - 04.06.2024 - Freddy - `20-draw-walls`
+- implemented view distance
+- fixed vis walls count being uninitialized, leading to a segfault
+
 ### [0.10.5] - 04.06.2024 - Freddy - `20-draw-walls`
 - renamed data back to name - now things work better, it compiles.
 - sorted wall drawing functions a little

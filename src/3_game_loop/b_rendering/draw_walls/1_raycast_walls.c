@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/04 10:39:41 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/04 12:52:29 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static t_transform	*perform_raycast(int i)
 	p_angle = dir_vector_to_degrees(player()->transform.rot);
 	ray_angle = p_angle - FOV_DEG / 2.0 + (double)i / (double)RAYCASTS_PER_DEG;
 	ray.rot = degrees_to_dir_vector(ray_angle);
+	ray.rot = scale_transform(ray.rot, RENDER_DISTANCE);
 	ray.pos = player()->transform.pos;
 	intersection = get_intersection_wall(game()->input_data->walls, ray);
 	return (intersection);
@@ -46,6 +47,7 @@ void	get_visible_walls(t_transform *vis_walls, int *vis_walls_count)
 	i = -1;
 	while (++i < RAYCASTS_PER_DEG * FOV_DEG)
 	{
+		printf("woohoo i is %d and walls count is %d and fov deg * raycasts per deg is %d\n", i, *vis_walls_count, RAYCASTS_PER_DEG * FOV_DEG);
 		wall = perform_raycast(i);
 		if (!wall)
 			continue ;
