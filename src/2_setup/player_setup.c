@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_setup.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 08:28:05 by freddy            #+#    #+#             */
-/*   Updated: 2024/05/30 16:26:21 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/04 09:52:13 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	setup_player(void)
 {
-	get_player()->transform.pos.x = get_player()->spawn_transform.pos.x;
-	get_player()->transform.pos.y = get_player()->spawn_transform.pos.y;
-	get_player()->transform.rot.x = get_player()->spawn_transform.rot.x;
-	get_player()->transform.rot.y = get_player()->spawn_transform.rot.y;
+	player()->transform.pos.x = player()->spawn_transform.pos.x;
+	player()->transform.pos.y = player()->spawn_transform.pos.y;
+	player()->transform.rot.x = player()->spawn_transform.rot.x;
+	player()->transform.rot.y = player()->spawn_transform.rot.y;
 }

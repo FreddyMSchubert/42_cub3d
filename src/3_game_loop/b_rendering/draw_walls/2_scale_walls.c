@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2_scale_walls.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 10:53:27 by freddy            #+#    #+#             */
-/*   Updated: 2024/05/30 18:42:05 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/04 09:52:13 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // this is easily adjustable for better looking walls
 static int	get_max_wall_height(void)
 {
-	return (get_persistent_data()->mlx->height * 2);
+	return (data()->mlx->height * 2);
 }
 
 static int angle_to_screen_x(double angle_deg)
@@ -24,7 +24,7 @@ static int angle_to_screen_x(double angle_deg)
 	float normalized_angle;
 	float position;
 
-	screen_width = get_persistent_data()->mlx->width;
+	screen_width = data()->mlx->width;
 	normalized_angle = fmod(angle_deg + 360.0, 360.0);
 	if (normalized_angle > 180.0)
 		normalized_angle -= 360.0; // normalize to -180 to 180 range
@@ -56,16 +56,16 @@ static char	get_wall_face(t_transform *wall, t_entity *player)
 	if (wall->rot.x == 1.0)
 	{
 		if (player->transform.pos.x > wall->pos.x)
-			return 'W';
+			return ('W');
 		else
-			return 'E';
+			return ('E');
 	}
 	else
 	{
 		if (player->transform.pos.y > wall->pos.y)
-			return 'N';
+			return ('N');
 		else
-			return 'S';
+			return ('S');
 	}
 }
 
@@ -95,16 +95,16 @@ void	scale_walls(void)
 	t_wall_scale	**wall_scales;
 	int				i;
 
-	walls = get_persistent_data()->raycasted_sorted_walls;
+	walls = data()->raycasted_sorted_walls;
 	walls_amount = 0;
 	while (walls[walls_amount])
 		walls_amount++;
 	printf("Walls amount: %d\n", walls_amount);
-	player = get_player();
+	player = player();
 	wall_scales = gc_malloc((walls_amount + 1) * sizeof(t_wall_scale));
 	wall_scales[walls_amount] = NULL;
 	i = -1;
 	while (walls[++i])
 		wall_scales[i] = get_wall_dimensions(walls[i], player);
-	get_persistent_data()->walls_scaled = wall_scales;
+	data()->walls_scaled = wall_scales;
 }

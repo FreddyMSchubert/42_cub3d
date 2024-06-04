@@ -1,5 +1,13 @@
 # Changelog
 
+### [0.10.3] - 04.06.2024 - Freddy - `20-draw-walls`
+- removed mallocing from raycast intersect, general improvements
+- added get_intersection_wall which returns the wall from a long list that is intersected with
+- added util function to convert between degrees and directional vectors, and to normalize degrees
+- continued work on sort walls function
+- renamed get_persistent_data() functin to just data() and get_player() to just player()
+- added half-finished wall sorting and raycasting setup, where the raycasts are performed in all the right directions, but not used yet.
+
 ### [0.10.2] - 3.06.2024 - Freddy - `20-draw-walls`
 - fixed colors! it now draws colorful & doesnt repeat 4 times anymore. big success.
 - Added screen clearing to 1_sort_walls, this is not a permanent solution but is helpful while I'm sorting out the drawing logic. This will be removed later.

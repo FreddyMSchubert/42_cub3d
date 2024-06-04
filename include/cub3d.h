@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/03 10:48:10 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/04 09:52:13 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@
 // lets mirror the file system in here. the less ---, the deeper the file
 
 // ----- general
-t_persistent_data	*get_persistent_data(void);
+t_persistent_data	*data(void);
 t_list				**get_gc(void);
-t_entity			*get_player(void);
+t_entity			*player(void);
 
 // ----- 0_map_generation
 // mapmaker
@@ -101,7 +101,8 @@ void				render_game_scene(void);
 // util
 double				pos_distance(t_vec2 pos1, t_vec2 pos2);
 t_vec2				scale_transform(t_vec2 t1, double distance);
-t_vec2				*raycast_intersect(t_transform t1, t_transform t2);
+t_vec2				raycast_intersect(t_transform t1, t_transform t2);
+t_transform			*get_intersection_wall(t_transform **walls, t_transform p);
 // - 1 sort walls
 void				sort_and_raycast_walls(void);
 // - 2 scale walls
@@ -141,5 +142,8 @@ bool				str_is_equal(char *str1, char *str2);
 // rotations
 double				degrees_to_radians(double degrees);
 double				radians_to_degrees(double radians);
+t_vec2				degrees_to_dir_vector(double degrees);
+double				dir_vector_to_degrees(t_vec2 dir);
+double				normalize_degrees(double degrees);
 
 #endif

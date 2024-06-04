@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:38:30 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/28 08:58:43 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/04 09:51:43 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,5 +159,5 @@ void	get_map_contents(char *filepath)
 	if (!basic_validate(&input_data))
 		return ;
 	logger(LOGGER_INFO, "Map loaded successfully!");
-	get_persistent_data()->input_data = input_data;
+	data()->input_data = input_data;
 }

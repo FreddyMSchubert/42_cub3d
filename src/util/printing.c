@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:49:10 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/24 13:29:02 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/04 09:51:43 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	print_walls(void)
 	t_input_data	*in;
 	int				i;
 
-	in = get_persistent_data()->input_data;
+	in = data()->input_data;
 	i = -1;
 	while (in && in->walls && in->walls[++i] != NULL)
 	{

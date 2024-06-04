@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/03 10:59:54 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/04 09:51:43 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ static void	set_pixel_color(mlx_image_t *img, int x, int y, int col)
 
 static int	interpolate(int start, int end, int step, int max_steps)
 {
-	if (max_steps == 0) return start;
+	if (max_steps == 0)
+		return (start);
 	return (start + (end - start) * step / max_steps);
 }
 
@@ -71,8 +72,8 @@ void	draw_walls(void)
 	mlx_image_t		*img;
 	int				i;
 
-	walls = get_persistent_data()->walls_scaled;
-	img = get_persistent_data()->game_scene;
+	walls = data()->walls_scaled;
+	img = data()->game_scene;
 	i = -1;
 	while (walls && walls[++i])
 		draw_wall(walls[i], img);

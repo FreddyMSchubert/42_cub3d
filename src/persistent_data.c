@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   persistent_data.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:03:38 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/23 10:51:52 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/04 09:52:13 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-t_persistent_data	*get_persistent_data(void)
+t_persistent_data	*data(void)
 {
 	static t_persistent_data	data;
 
@@ -28,7 +28,7 @@ t_list	**get_gc(void)
 	return (&gc);
 }
 
-t_entity	*get_player(void)
+t_entity	*player(void)
 {
 	static t_entity	player;
 

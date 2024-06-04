@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:22:19 by freddy            #+#    #+#             */
-/*   Updated: 2024/05/29 08:45:21 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/04 09:32:02 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,29 +31,56 @@ t_vec2	scale_transform(t_vec2 t1, double distance)
 		t1.x *= scale_factor;
 		t1.y *= scale_factor;
 	}
-	return t1;
+	return (t1);
 }
 
-t_vec2	*raycast_intersect(t_transform t1, t_transform t2)
+t_vec2	raycast_intersect(t_transform t1, t_transform t2)
 {
 	double	denom;
 	double	t;
 	double	u;
-	t_vec2	*intersection;
+	t_vec2	intersection;
 
+	intersection.x = -1;
+	intersection.y = -1;
 	denom = t1.rot.x * t2.rot.y - t1.rot.y * t2.rot.x;
 	if (denom == 0.0)
-		return (NULL);
+		return (intersection);
 	t = ((t2.pos.x - t1.pos.x) * t2.rot.y - \
 		(t2.pos.y - t1.pos.y) * t2.rot.x) / denom;
 	u = ((t2.pos.x - t1.pos.x) * t1.rot.y - \
 		(t2.pos.y - t1.pos.y) * t1.rot.x) / denom;
 	if (t >= 0.0 && u >= 0.0 && u <= 1.0)
 	{
-		intersection = (t_vec2 *)malloc(sizeof(t_vec2));
-		intersection->x = t1.pos.x + t * t1.rot.x;
-		intersection->y = t1.pos.y + t * t1.rot.y;
-		return (intersection);
+		intersection.x = t1.pos.x + t * t1.rot.x;
+		intersection.y = t1.pos.y + t * t1.rot.y;
 	}
-	return (NULL);
+	return (intersection);
+}
+
+t_transform	*get_intersection_wall(t_transform **walls, t_transform ray)
+{
+	t_transform	*closest_wall;
+	t_vec2		intersection;
+	double		closest_distance;
+	double		current_distance;
+	int			i;
+
+	closest_wall = NULL;
+	closest_distance = -1;
+	i = -1;
+	while (walls[++i])
+	{
+		intersection = raycast_intersect(ray, *walls[i]);
+		if (intersection.x != -1)
+		{
+			current_distance = pos_distance(ray.pos, intersection);
+			if (closest_distance == -1 || current_distance < closest_distance)
+			{
+				closest_distance = current_distance;
+				closest_wall = walls[i];
+			}
+		}
+	}
+	return (closest_wall);
 }

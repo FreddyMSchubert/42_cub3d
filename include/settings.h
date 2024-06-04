@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   settings.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/05/30 17:32:59 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/04 09:08:39 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SETTINGS_H
 # define SETTINGS_H
 
-#include <stdbool.h>
+# include <stdbool.h>
 
 // General
 
@@ -36,6 +36,8 @@
 
 // Display Settings
 
-# define FOV_DEG 360
+# define FOV_DEG 90
+# define RAYCASTS_PER_DEG 1
+# define RENDER_DISTANCE 25
 
 #endif
