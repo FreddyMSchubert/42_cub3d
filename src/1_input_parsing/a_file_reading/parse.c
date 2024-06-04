@@ -6,80 +6,45 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 09:39:02 by jkauker           #+#    #+#             */
+<<<<<<< HEAD:src/0_input_parsing/a_file_reading/parse.c
+/*   Updated: 2024/06/04 11:16:46 by jkauker          ###   ########.fr       */
+=======
 /*   Updated: 2024/05/29 09:27:51 by freddy           ###   ########.fr       */
+>>>>>>> master:src/1_input_parsing/a_file_reading/parse.c
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/cub3d.h"
 
-bool	free_split(char	**split, bool ret)
+bool	regex(char *line, char *reg);
+bool	char_is_in(char c, char *seq);
+int		split_len(char **split);
+bool	free_split(char	**split, bool ret);
+void	set_player_spawn(char dir, t_vec2 pos, t_tile_type ***map);
+bool	set_color(t_color *color, char *color_val);
+bool	set_value(char	**value, char	*set);
+
+bool	set_values(char **split, t_input_data **input_data, char **data, int *i)
 {
-	int	i;
-
-	i = -1;
-	if (!split)
-		return (ret);
-	while (split[++i])
-		free(split[i]);
-	free(split);
-	return (ret);
-}
-
-int	split_len(char **split)
-{
-	int	i;
-
-	i = 0;
-	if (!split)
-		return (0);
-	while (split[i])
-		i++;
-	return (i);
-}
-
-bool	char_is_in(char c, char *seq)
-{
-	int	i;
-
-	if (!seq)
+	if (str_is_equal(split[0], "NO")
+		&& !set_value(&(*input_data)->no_texture_location, split[1]))
 		return (false);
-	i = -1;
-	while (seq[++i])
-		if (c == seq[i])
-			return (true);
-	return (false);
-}
-
-bool	regex(char *line, char *reg)
-{
-	int	i;
-
-	if (!line || !reg || !*line || !*reg)
+	else if (str_is_equal(split[0], "SO")
+		&& !set_value(&(*input_data)->so_texture_location, split[1]))
 		return (false);
-	i = -1;
-	while (line[++i])
-		if (!char_is_in(line[i], reg))
-			return (false);
-	return (true);
-}
-
-static bool	set_value(char	**value, char	*set)
-{
-	int		file;
-
-	if (!value || *value)
+	else if (str_is_equal(split[0], "WE")
+		&& !set_value(&(*input_data)->we_texture_location, split[1]))
 		return (false);
-	*value = ft_strdup(set);
-	if (!*value)
+	else if (str_is_equal(split[0], "EA")
+		&& !set_value(&(*input_data)->ea_texture_location, split[1]))
 		return (false);
-	if ((*value)[ft_strlen(*value) - 1] == '\n')
-		(*value)[ft_strlen(*value) - 1] = 0;
-	if (strlen(*value) > 4
-		&& !str_is_equal(&((*value)[strlen(*value) - 4]), ".png"))
-	{
-		logger(LOGGER_WARNING,
-			"Invalid texture file extension. Please provide a .png file!");
+	else if (str_is_equal(split[0], "F")
+		&& !set_color(&((*input_data)->floor_color), split[1]))
 		return (false);
+<<<<<<< HEAD:src/0_input_parsing/a_file_reading/parse.c
+	else if (str_is_equal(split[0], "C")
+		&& !set_color(&((*input_data)->ceiling_color), split[1]))
+=======
 	}
 	file = open(*value, O_RDONLY);
 	if (file < 0)
@@ -99,10 +64,12 @@ static bool	set_color(t_color *color, char *color_val)
 	int		curr_col;
 
 	if (!color_val) // TODO: set default color vals to all -1
+>>>>>>> master:src/1_input_parsing/a_file_reading/parse.c
 		return (false);
-	cols = ft_split(color_val, ',');
-	if (!cols)
+	else if (regex(data[*i], MAP_TILES))
 		return (false);
+<<<<<<< HEAD:src/0_input_parsing/a_file_reading/parse.c
+=======
 	if (split_len(cols) != 3) // TODO: check wether to set default vals when not all rgb is set
 		return (free_split(cols, false));
 	curr_col = ft_atoi(cols[0]);
@@ -121,10 +88,11 @@ static bool	set_color(t_color *color, char *color_val)
 	free_split(cols, NULL);
 	if (DEBUG)
 		printf("Color set to [%d, %d, %d] (0x%X)\n", color->r, color->g, color->b, t_color_to_int(*color));
+>>>>>>> master:src/1_input_parsing/a_file_reading/parse.c
 	return (true);
 }
 
-bool	parse_attributes(char	**data, t_input_data **input_data, int *i)
+bool	parse_attributes(char **data, t_input_data **input_data, int *i)
 {
 	char	**split;
 
@@ -137,33 +105,23 @@ bool	parse_attributes(char	**data, t_input_data **input_data, int *i)
 		split = ft_split(data[*i], ' ');
 		if (!split || split_len(split) != 2)
 			return (free_split(split, true));
-		if (str_is_equal(split[0], "NO")
-			&& !set_value(&(*input_data)->no_texture_location, split[1]))
+		if (!set_values(split, input_data, data, i))
 			return (free_split(split, false));
-		else if (str_is_equal(split[0], "SO")
-			&& !set_value(&(*input_data)->so_texture_location, split[1]))
-			return (free_split(split, false));
-		else if (str_is_equal(split[0], "WE")
-			&& !set_value(&(*input_data)->we_texture_location, split[1]))
-			return (free_split(split, false));
-		else if (str_is_equal(split[0], "EA")
-			&& !set_value(&(*input_data)->ea_texture_location, split[1]))
-			return (free_split(split, false));
-		else if (str_is_equal(split[0], "F")
-			&& !set_color(&((*input_data)->floor_color), split[1]))
-			return (free_split(split, false));
-		else if (str_is_equal(split[0], "C")
-			&& !set_color(&((*input_data)->ceiling_color), split[1]))
-			return (free_split(split, false));
-		else if (regex(data[*i], MAP_TILES))
-			return (free_split(split, true));
 		free_split(split, NULL);
 	}
 	return (true);
 }
 
-void	set_player_spawn(char dir)
+int	get_map_len(int *i, char **data)
 {
+<<<<<<< HEAD:src/0_input_parsing/a_file_reading/parse.c
+	int	map_len;
+
+	map_len = 0;
+	while (data[(*i) + map_len] && regex(data[(*i) + map_len], MAP_TILES))
+		map_len++;
+	return (map_len);
+=======
 	get_player()->spawn_transform.rot = (t_vec2){0, 0};
 	if (dir == 'N')
 		get_player()->spawn_transform.rot = (t_vec2){-1, 0};
@@ -175,24 +133,19 @@ void	set_player_spawn(char dir)
 		get_player()->spawn_transform.rot = (t_vec2){0, -1};
 	else
 		logger(LOGGER_WARNING, "Player spawn look dir is not valid dir");
+>>>>>>> master:src/1_input_parsing/a_file_reading/parse.c
 }
 
-bool	parse_map(char **data, t_input_data **input_data, int *i)
+t_tile_type	***make_map(int map_len, int *i, char **data)
 {
-	int			map_len;
+	t_tile_type	***map;
 	int			k;
 	int			j;
-	t_tile_type	***map;
 
-	map_len = 0;
-	while (data[(*i) + map_len] && regex(data[(*i) + map_len], MAP_TILES))
-		map_len++;
-	if (map_len < 3)
-		return (false);
 	map = gc_malloc((map_len + 1) * sizeof(t_tile_type **));
 	map[map_len] = NULL;
 	k = -1;
-	while (data[*i] && regex(data[*i], MAP_TILES) && map_len--)
+	while (++(*i) && data[*i] && regex(data[*i], MAP_TILES) && map_len--)
 	{
 		map[++k] = gc_malloc(ft_strlen(data[*i]) * sizeof(t_tile_type *) + 1);
 		map[k][ft_strlen(data[*i])] = NULL;
@@ -200,21 +153,36 @@ bool	parse_map(char **data, t_input_data **input_data, int *i)
 		while (data[*i][++j])
 		{
 			map[k][j] = gc_malloc(sizeof(t_tile_type));
-			if (data[*i][j] == '0')
-				*map[k][j] = FLOOR;
-			else if (data[*i][j] == '1')
-				*map[k][j] = WALL;
+			if (data[*i][j] == '0' || data[*i][j] == '1')
+				*map[k][j] = (t_tile_type)(data[*i][j] - '0');
 			else if (data[*i][j] == ' ')
 				*map[k][j] = VOID;
 			else
+<<<<<<< HEAD:src/0_input_parsing/a_file_reading/parse.c
+				set_player_spawn(data[*i][j], (t_vec2){k, j}, map);
+=======
 			{
 				get_player()->spawn_transform.pos = (t_vec2){j, k};
 				set_player_spawn(data[*i][j]);
 				*map[k][j] = FLOOR;
 			}
+>>>>>>> master:src/1_input_parsing/a_file_reading/parse.c
 		}
-		(*i)++;
 	}
-	(*input_data)->map = map;
+	return (map);
+}
+
+bool	parse_map(char **data, t_input_data **input_data, int *i)
+{
+	int			map_len;
+	t_tile_type	***map;
+
+	map_len = get_map_len(i, data);
+	if (map_len < 3)
+		return (false);
+	map = gc_malloc((map_len + 1) * sizeof(t_tile_type **));
+	map[map_len] = NULL;
+	(*i)--;
+	(*input_data)->map = make_map(map_len, i, data);
 	return (true);
 }

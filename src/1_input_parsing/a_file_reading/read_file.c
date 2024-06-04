@@ -6,7 +6,11 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:38:30 by fschuber          #+#    #+#             */
+<<<<<<< HEAD:src/0_input_parsing/a_file_reading/read_file.c
+/*   Updated: 2024/06/04 10:59:24 by jkauker          ###   ########.fr       */
+=======
 /*   Updated: 2024/05/28 08:58:43 by freddy           ###   ########.fr       */
+>>>>>>> master:src/1_input_parsing/a_file_reading/read_file.c
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,42 +19,16 @@
 bool	parse_attributes(char	**data, t_input_data **input_data, int *i);
 bool	parse_map(char **data, t_input_data **input_data, int *i);
 bool	regex(char *line, char *reg);
+int		get_file_length(char *filename);
+void	clean_struct_input(t_input_data *input_data);
+bool	basic_validate(t_input_data **in);
 
-static int	get_file_length(char *filename)
+static void	read_file_loop(char ***data, int file)
 {
-	int		file;
 	char	*line;
 	int		i;
 
-	file = open(filename, O_RDONLY);
-	if (file < 0)
-		return (-1);
-	i = 0;
 	line = get_next_line(file);
-	while (line)
-	{
-		i++;
-		free(line);
-		line = get_next_line(file);
-	}
-	close(file);
-	return (i);
-}
-
-static char	**read_file(char *filename)
-{
-	char	**data;
-	int		file;
-	char	*line;
-	int		i;
-	int		length;
-
-	file = open(filename, O_RDONLY);
-	if (file < 0)
-		return (NULL);
-	length = get_file_length(filename);
-	line = get_next_line(file);
-	data = ft_calloc((length + 2), sizeof(char *));
 	i = 0;
 	while (line)
 	{
@@ -60,11 +38,30 @@ static char	**read_file(char *filename)
 			line = get_next_line(file);
 			continue ;
 		}
-		data[i++] = line;
-		if (data[i - 1][ft_strlen(data[i -1]) - 1] == '\n')
-			data[i - 1][ft_strlen(data[i -1]) - 1] = 0;
+		(*data)[i++] = line;
+		if ((*data)[i - 1][ft_strlen((*data)[i -1]) - 1] == '\n')
+			(*data)[i - 1][ft_strlen((*data)[i -1]) - 1] = 0;
 		line = get_next_line(file);
 	}
+}
+
+static char	**read_file(char *filename)
+{
+	char	**data;
+	int		file;
+	int		length;
+
+	file = open(filename, O_RDONLY);
+	if (file < 0)
+		return (NULL);
+	length = get_file_length(filename);
+	data = ft_calloc((length + 2), sizeof(char *));
+	if (!data)
+	{
+		close(file);
+		return (NULL);
+	}
+	read_file_loop(&data, file);
 	close(file);
 	return (data);
 }
@@ -94,6 +91,8 @@ static bool	parse_file_data(char **data, t_input_data **input_data)
 	return (true);
 }
 
+<<<<<<< HEAD:src/0_input_parsing/a_file_reading/read_file.c
+=======
 static bool	basic_validate(t_input_data **in)
 {
 	t_input_data	*data;
@@ -133,6 +132,7 @@ static void	clean_struct_input(t_input_data *input_data)
 	input_data->map = NULL;
 }
 
+>>>>>>> master:src/1_input_parsing/a_file_reading/read_file.c
 void	get_map_contents(char *filepath)
 {
 	t_input_data	*input_data;
@@ -142,22 +142,22 @@ void	get_map_contents(char *filepath)
 	if (!data)
 	{
 		logger(LOGGER_ERROR, "Could not read map file!");
-		return ;
+		gc_exit_error();
 	}
 	input_data = gc_malloc(sizeof(t_input_data));
 	if (!input_data)
 	{
 		logger(LOGGER_ERROR, "Could not allocate memory for input data!");
-		return ;
+		gc_exit_error();
 	}
 	clean_struct_input(input_data);
 	if (!parse_file_data(data, &input_data))
 	{
 		logger(LOGGER_ERROR, "Could not parse map data!");
-		return ;
+		gc_exit_error();
 	}
 	if (!basic_validate(&input_data))
-		return ;
+		gc_exit_error();
 	logger(LOGGER_INFO, "Map loaded successfully!");
 	get_persistent_data()->input_data = input_data;
 }
