@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 10:54:38 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/28 09:44:52 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/04 10:56:02 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void	validate(void)
 		x = 0;
 		while (data->map[y][x] != NULL)
 		{
-			if ((*(data->map[y][x]) == FLOOR && !check_wall_valid(data, x, y)) ||
-				(*(data->map[y][x]) < VOID || *(data->map[y][x]) > WALL))
+			if ((*(data->map[y][x]) == FLOOR && !check_wall_valid(data, x, y))
+				|| (*(data->map[y][x]) < VOID || *(data->map[y][x]) > WALL))
 			{
 				printf("at %d, %d\n", x, y);
 				logger('e', "Invalid map.");

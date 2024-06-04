@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:38:30 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/28 09:29:28 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/04 10:59:24 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static void	read_file_loop(char ***data, int file)
 	int		i;
 
 	line = get_next_line(file);
+	i = 0;
 	while (line)
 	{
 		if ((*line == '#' && i == 0))
@@ -85,8 +86,6 @@ static bool	parse_file_data(char **data, t_input_data **input_data)
 	logger(LOGGER_INFO, "Map load complete.");
 	return (true);
 }
-
-
 
 void	get_map_contents(char *filepath)
 {

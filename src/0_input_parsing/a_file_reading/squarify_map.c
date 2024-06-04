@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 14:07:43 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/28 09:05:03 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/04 10:55:43 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ static int	get_longest_line_length(void)
 	return (longest_line_length);
 }
 
-static void	process_map_row(int i, int new_len, t_tile_type ***tiles, t_input_data *data)
+static void	process_map_row(int i, int new_len, t_tile_type ***tiles,
+	t_input_data *data)
 {
 	int	j;
 
