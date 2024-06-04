@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 09:39:02 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/04 11:29:06 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/04 11:01:10 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,18 @@ bool	parse_attributes(char **data, t_input_data **input_data, int *i)
 	return (true);
 }
 
-t_tile_type	***create_map(char **data, int *i, int map_len)
+bool	parse_map(char **data, t_input_data **input_data, int *i)
 {
+	int			map_len;
 	int			k;
+	int			j;
 	t_tile_type	***map;
 
+	map_len = 0;
+	while (data[(*i) + map_len] && regex(data[(*i) + map_len], MAP_TILES))
+		map_len++;
+	if (map_len < 3)
+		return (false);
 	map = gc_malloc((map_len + 1) * sizeof(t_tile_type **));
 	map[map_len] = NULL;
 	k = -1;
@@ -77,19 +84,6 @@ t_tile_type	***create_map(char **data, int *i, int map_len)
 	{
 		map[++k] = gc_malloc(ft_strlen(data[*i]) * sizeof(t_tile_type *) + 1);
 		map[k][ft_strlen(data[*i])] = NULL;
-	}
-	return (map);
-}
-
-bool	set_map_tiles(char **data, t_input_data **input_data,
-	int *i, t_tile_type ***map) // TODO: pacma map example it gets the length corrctly but it starts adding the tiles starting at the wrong pos or somthing like that
-{
-	int	j;
-	int	k;
-
-	k = -1;
-	while (data[*i] && regex(data[*i], MAP_TILES))
-	{
 		j = -1;
 		while (data[*i][++j])
 		{
@@ -108,22 +102,6 @@ bool	set_map_tiles(char **data, t_input_data **input_data,
 		}
 		(*i)++;
 	}
-	return (true);
-}
-
-bool	parse_map(char **data, t_input_data **input_data, int *i)
-{
-	int			map_len;
-	t_tile_type	***map;
-
-	map_len = 0;
-	while (data[(*i) + map_len] && regex(data[(*i) + map_len], MAP_TILES))
-		map_len++;
-	if (map_len < 3)
-		return (false);
-	map = create_map(data, i, map_len);
-	if (set_map_tiles(data, input_data, i, map) == false)
-		return (false);
 	(*input_data)->map = map;
 	return (true);
 }
