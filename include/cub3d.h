@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/04 10:06:57 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/04 11:25:12 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@
 // lets mirror the file system in here. the less ---, the deeper the file
 
 // ----- general
-t_persistent_data	*data(void);
+t_persistent_data	*game(void);
 t_list				**get_gc(void);
 t_entity			*player(void);
 
@@ -98,18 +98,20 @@ void				scroll_hook(double xdelta, double ydelta, void* param);
 void				turn(double amount);
 // --- b_rendering
 void				render_game_scene(void);
-// util
+void				do_wall_operations();
+// raycasting util
 double				pos_distance(t_vec2 pos1, t_vec2 pos2);
 t_vec2				scale_transform(t_vec2 t1, double distance);
 t_vec2				raycast_intersect(t_transform t1, t_transform t2);
 t_transform			*get_intersection_wall(t_transform **walls, t_transform p);
-// - 1 sort walls
-void				sort_and_raycast_walls(void);
-// - 2 scale walls
-void				scale_walls(void);
-// util
 double				calculate_deviation_angle(t_transform p, t_vec2 pos);
-// - 3 draw walls
+// - 1 raycast walls
+void				get_visible_walls(t_transform *vis_walls, int *vis_walls_count);
+// - 2 sort walls
+void				quick_sort_walls(t_transform arr[], int low, int high);
+// - 3 scale walls
+void				scale_walls(t_transform *walls, int walls_amount);
+// - 4 draw walls
 void				draw_walls(void);
 
 // ----- util

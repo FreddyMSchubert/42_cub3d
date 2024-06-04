@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   1_sort_walls.c                                     :+:      :+:    :+:   */
+/*   1_raycast_walls.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/04 10:10:18 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/04 10:39:41 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ static t_transform	*perform_raycast(int i)
 	ray_angle = p_angle - FOV_DEG / 2.0 + (double)i / (double)RAYCASTS_PER_DEG;
 	ray.rot = degrees_to_dir_vector(ray_angle);
 	ray.pos = player()->transform.pos;
-	intersection = get_intersection_wall(data()->input_data->walls, ray);
+	intersection = get_intersection_wall(game()->input_data->walls, ray);
 	return (intersection);
 }
 
-static void	get_visible_walls(t_transform *vis_walls, int *vis_walls_count)
+void	get_visible_walls(t_transform *vis_walls, int *vis_walls_count)
 {
 	int			i;
 	int			j;
@@ -62,20 +62,4 @@ static void	get_visible_walls(t_transform *vis_walls, int *vis_walls_count)
 		if (!is_duplicate)
 			vis_walls[(*vis_walls_count)++] = *wall;
 	}
-}
-
-void	sort_and_raycast_walls(void)
-{
-	t_transform	vis_walls[RAYCASTS_PER_DEG * FOV_DEG];
-	int			vis_walls_count;
-
-	vis_walls_count = 0;
-
-
-	data()->raycasted_sorted_walls = data()->input_data->walls;
-	// clear image
-	mlx_image_t	*img = data()->game_scene;
-	if (img && img->pixels && img->width > 0 && img->height > 0)
-		for (int i = 0; i < (int)(img->width * img->height); i++)
-			img->pixels[i] = 0;
 }

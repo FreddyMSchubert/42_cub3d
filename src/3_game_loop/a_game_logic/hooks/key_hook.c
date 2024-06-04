@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:50 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/04 09:52:13 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/04 10:39:41 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	player_move(mlx_key_data_t keydata)
 	movement = get_movement_from_key(keydata);
 	player()->transform.pos.x += movement.x;
 	player()->transform.pos.y += movement.y;
-	if (*data()->input_data->map \
+	if (*game()->input_data->map \
 			[(int)player()->transform.pos.y]\
 			[(int)player()->transform.pos.x] != FLOOR)
 	{
@@ -63,7 +63,7 @@ static void	player_move(mlx_key_data_t keydata)
 void	key_hook(mlx_key_data_t keydata, void *param)
 {
 	if (keydata.key == MLX_KEY_ESCAPE)
-		mlx_close_window(data()->mlx);
+		mlx_close_window(game()->mlx);
 	else if (keydata.key == MLX_KEY_W || keydata.key == MLX_KEY_A || keydata.key == MLX_KEY_S || keydata.key == MLX_KEY_D)
 		player_move(keydata);
 	else if (keydata.key == MLX_KEY_LEFT)

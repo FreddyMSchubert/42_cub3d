@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:22:19 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/04 10:02:57 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/04 10:19:14 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,29 @@ t_transform	*get_intersection_wall(t_transform **walls, t_transform ray)
 		}
 	}
 	return (closest_wall);
+}
+
+/**
+ * Calculate the deviation angle in degrees between a transform and a given pos.
+ *
+ * @param player e.g. the player's position and view direction (t_transform).
+ * @param pos The target position to calculate the deviation for (t_vec2).
+ * @return The deviation angle in degrees.
+ * 
+ * while loops are so we dont end up with -1000 degrees
+ */
+double	calculate_deviation_angle(t_transform p, t_vec2 pos)
+{
+	double	pos_angle;
+	double	player_angle;
+	double	deviation_angle;
+
+	pos_angle = atan2(pos.y - p.pos.y, pos.x - p.pos.x);
+	player_angle = atan2(p.rot.y, p.rot.x);
+	deviation_angle = pos_angle - player_angle;
+	while (deviation_angle > M_PI)
+		deviation_angle -= 2 * M_PI;
+	while (deviation_angle < -M_PI)
+		deviation_angle += 2 * M_PI;
+	return (radians_to_degrees(deviation_angle));
 }

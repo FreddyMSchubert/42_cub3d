@@ -6,17 +6,17 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:03:38 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/04 09:52:13 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/04 10:39:10 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-t_persistent_data	*data(void)
+t_persistent_data	*game(void)
 {
-	static t_persistent_data	data;
+	static t_persistent_data	game;
 
-	return (&data);
+	return (&game);
 }
 
 t_list	**get_gc(void)

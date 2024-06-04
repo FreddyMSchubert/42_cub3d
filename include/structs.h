@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/01 09:19:36 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/04 11:14:41 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ typedef struct s_input_data
 typedef struct s_persistent_data
 {
 	t_input_data	*input_data;
-	t_transform		**raycasted_sorted_walls;
 	t_wall_scale	**walls_scaled;
 	mlx_t			*mlx;
 	mlx_image_t		*background;

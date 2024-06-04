@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:41:35 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/04 09:51:43 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/04 10:39:41 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	set_sky(void)
 	int					i;
 	int					j;
 
-	data = data();
+	data = game();
 	img = mlx_new_image(data->mlx, data->mlx->width, data->mlx->height);
 	if (!img || (mlx_image_to_window(data->mlx, img, 0, 0) < 0))
 		cub_exit_error("mlx image creation failed");
@@ -46,7 +46,7 @@ void	setup_mlx(void)
 	mlx = mlx_init(START_WIDTH, START_HEIGHT, WINDOW_NAME, true);
 	if (!mlx)
 		cub_exit_error("mlx setup failed.");
-	data = data();
+	data = game();
 	data->mlx = mlx;
 	set_sky();
 	printf("Setting up with %d %d, consts are %d %d\n", data->mlx->width, data->mlx->height, START_WIDTH, START_HEIGHT);

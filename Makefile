@@ -12,7 +12,7 @@ GLFW_PATH := $(shell brew --prefix glfw)
 
 HEADERS := -I ./include -I $(LIBMLX)/include -I $(LIBFT)/include -I $(GNL)/include -I $(GLFW_PATH)/include
 LIBS := $(LIBMLX)/build/libmlx42.a -ldl -lm -L$(GLFW_PATH)/lib -lglfw $(LIBFT)/libft.a $(GNL)/libftgnl.a
-CFLAGS := -Wall -Werror -Wextra -Wunreachable-code -g
+CFLAGS := -Wall -Werror -Wextra -Wunreachable-code
 
 $(NAME): setup $(OBJ) $(LIBMLX)/build/libmlx42.a $(LIBFT)/libft.a $(GNL)/libftgnl.a
 	cc $(OBJ) $(LIBS) $(HEADERS) -o $(NAME)
@@ -54,7 +54,7 @@ setup:
 		git submodule update --remote --init --recursive; \
 	fi
 
-debug: CFLAGS += -g -O0
+debug: CFLAGS += -fsanitize=address -g -O0
 debug: fclean all
 
 random: all

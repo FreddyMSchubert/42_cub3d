@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 07:33:54 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/04 09:51:43 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/04 10:39:41 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(int argc, char **argv)
 		parse_input("generated_maze.cub");
 	}
 	setup_mlx();
-	mlx_loop(data()->mlx);
-	mlx_terminate(data()->mlx);
+	mlx_loop(game()->mlx);
+	mlx_terminate(game()->mlx);
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:38:30 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/04 09:51:43 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/04 10:39:41 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,5 +159,5 @@ void	get_map_contents(char *filepath)
 	if (!basic_validate(&input_data))
 		return ;
 	logger(LOGGER_INFO, "Map loaded successfully!");
-	data()->input_data = input_data;
+	game()->input_data = input_data;
 }

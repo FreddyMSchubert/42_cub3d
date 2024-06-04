@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   3_draw_walls.c                                     :+:      :+:    :+:   */
+/*   4_draw_walls.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/04 09:51:43 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/04 10:39:41 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ void	draw_walls(void)
 	mlx_image_t		*img;
 	int				i;
 
-	walls = data()->walls_scaled;
-	img = data()->game_scene;
+	walls = game()->walls_scaled;
+	img = game()->game_scene;
 	i = -1;
 	while (walls && walls[++i])
 		draw_wall(walls[i], img);

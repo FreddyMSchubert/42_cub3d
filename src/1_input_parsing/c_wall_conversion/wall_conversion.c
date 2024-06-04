@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 13:47:07 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/04 09:51:43 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/04 10:39:41 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ void	convert_walls(void)
 	bool			***bool_map;
 	t_input_data	*in;
 
-	in = data()->input_data;
+	in = game()->input_data;
 	size = get_map_size(in->map);
 	bool_map = get_bool_array(in, size);
 	in->walls = create_walls_list(bool_map, size);
