@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/04 09:52:13 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/04 10:06:57 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,9 @@ unsigned int		t_color_to_int(t_color color);
 t_color				int_to_t_color(int color);
 void				log_color_from_t_color(t_color color);
 void				log_color_from_int(int color);
+
+// positions
+bool				is_same_wall(t_transform wall1, t_transform wall2);
 
 // string
 bool				str_is_equal(char *str1, char *str2);

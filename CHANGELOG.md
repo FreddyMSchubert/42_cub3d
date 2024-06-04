@@ -1,5 +1,10 @@
 # Changelog
 
+### [0.10.4] - 04.06.2024 - Freddy - `20-draw-walls`
+- sort walls now saves walls into array & ensures wall uniqueness
+	- to do this, i created a positions util that compares walls
+- moved some files around & cahnged some names
+
 ### [0.10.3] - 04.06.2024 - Freddy - `20-draw-walls`
 - removed mallocing from raycast intersect, general improvements
 - added get_intersection_wall which returns the wall from a long list that is intersected with

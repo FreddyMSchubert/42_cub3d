@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/04 09:53:16 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/04 10:10:18 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 
 	we will not malloc to keep the visible walls, we will just use a local array
 	raycasts per deg*fov deg is not actually how logn its gonna be though, its just how long it could possibly be.
-	actual amount is saved in visible_walls_count
+	actual amount is saved in vis_walls_count
 */
 
 static t_transform	*perform_raycast(int i)
 {
 	t_transform	ray;
-	t_vec2		*intersection;
+	t_transform	*intersection;
 	double		p_angle;
 	double		ray_angle;
 
@@ -36,23 +36,41 @@ static t_transform	*perform_raycast(int i)
 	return (intersection);
 }
 
-static void	get_visible_walls(t_transform *visible_walls, int *visible_walls_count)
+static void	get_visible_walls(t_transform *vis_walls, int *vis_walls_count)
 {
-	int		i;
+	int			i;
+	int			j;
+	bool		is_duplicate;
+	t_transform	*wall;
 
 	i = -1;
 	while (++i < RAYCASTS_PER_DEG * FOV_DEG)
 	{
-		// shoot raycast
-		// if it hits a wall, add it to visible_walls
-		// increment i
+		wall = perform_raycast(i);
+		if (!wall)
+			continue ;
+		is_duplicate = false;
+		j = -1;
+		while (++j < *vis_walls_count)
+		{
+			if (is_same_wall(vis_walls[j], *wall))
+			{
+				is_duplicate = true;
+				break ;
+			}
+		}
+		if (!is_duplicate)
+			vis_walls[(*vis_walls_count)++] = *wall;
 	}
 }
 
 void	sort_and_raycast_walls(void)
 {
-	t_transform	visible_walls[RAYCASTS_PER_DEG * FOV_DEG];
-	int			visible_walls_count;
+	t_transform	vis_walls[RAYCASTS_PER_DEG * FOV_DEG];
+	int			vis_walls_count;
+
+	vis_walls_count = 0;
+
 
 	data()->raycasted_sorted_walls = data()->input_data->walls;
 	// clear image
