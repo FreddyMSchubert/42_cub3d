@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_mlx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:41:35 by freddy            #+#    #+#             */
-/*   Updated: 2024/05/29 20:49:15 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/05 11:53:09 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	set_sky(void)
 	int					i;
 	int					j;
 
-	data = get_persistent_data();
+	data = game();
 	img = mlx_new_image(data->mlx, data->mlx->width, data->mlx->height);
 	if (!img || (mlx_image_to_window(data->mlx, img, 0, 0) < 0))
 		cub_exit_error("mlx image creation failed");
@@ -46,7 +46,7 @@ void	setup_mlx(void)
 	mlx = mlx_init(START_WIDTH, START_HEIGHT, WINDOW_NAME, true);
 	if (!mlx)
 		cub_exit_error("mlx setup failed.");
-	data = get_persistent_data();
+	data = game();
 	data->mlx = mlx;
 	set_sky();
 	setup_player();

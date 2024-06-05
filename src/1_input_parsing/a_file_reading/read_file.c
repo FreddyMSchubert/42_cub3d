@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:38:30 by fschuber          #+#    #+#             */
-<<<<<<< HEAD:src/0_input_parsing/a_file_reading/read_file.c
-/*   Updated: 2024/06/04 10:59:24 by jkauker          ###   ########.fr       */
-=======
-/*   Updated: 2024/05/28 08:58:43 by freddy           ###   ########.fr       */
->>>>>>> master:src/1_input_parsing/a_file_reading/read_file.c
+/*   Updated: 2024/06/05 12:35:24 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +16,8 @@ bool	parse_attributes(char	**data, t_input_data **input_data, int *i);
 bool	parse_map(char **data, t_input_data **input_data, int *i);
 bool	regex(char *line, char *reg);
 int		get_file_length(char *filename);
-void	clean_struct_input(t_input_data *input_data);
-bool	basic_validate(t_input_data **in);
+// void	clean_struct_input(t_input_data *input_data);
+// bool	basic_validate(t_input_data **in);
 
 static void	read_file_loop(char ***data, int file)
 {
@@ -53,7 +49,10 @@ static char	**read_file(char *filename)
 
 	file = open(filename, O_RDONLY);
 	if (file < 0)
+	{
+		logger(LOGGER_ERROR, "Could not open map file!");
 		return (NULL);
+	}
 	length = get_file_length(filename);
 	data = ft_calloc((length + 2), sizeof(char *));
 	if (!data)
@@ -91,23 +90,21 @@ static bool	parse_file_data(char **data, t_input_data **input_data)
 	return (true);
 }
 
-<<<<<<< HEAD:src/0_input_parsing/a_file_reading/read_file.c
-=======
 static bool	basic_validate(t_input_data **in)
 {
 	t_input_data	*data;
 
-	if (!in)
+	if (!*in)
 		return (false);
 	data = *in;
-	if (data->ceiling_color.r == -1 || data->ceiling_color.g == -1 || \
-										data->ceiling_color.b == -1)
+	if (data->ceiling_color.r == -1 || data->ceiling_color.g == -1
+		|| data->ceiling_color.b == -1 || data->ceiling_color.a == -1)
 	{
 		logger(LOGGER_ERROR, "Ceiling color not set!");
 		return (false);
 	}
-	if (data->floor_color.r == -1 || data->floor_color.g == -1 || \
-										data->floor_color.b == -1)
+	if (data->floor_color.r == -1 || data->floor_color.g == -1
+		|| data->floor_color.b == -1|| data->floor_color.a == -1)
 	{
 		logger(LOGGER_ERROR, "Floor color not set!");
 		return (false);
@@ -132,7 +129,6 @@ static void	clean_struct_input(t_input_data *input_data)
 	input_data->map = NULL;
 }
 
->>>>>>> master:src/1_input_parsing/a_file_reading/read_file.c
 void	get_map_contents(char *filepath)
 {
 	t_input_data	*input_data;
@@ -159,5 +155,5 @@ void	get_map_contents(char *filepath)
 	if (!basic_validate(&input_data))
 		gc_exit_error();
 	logger(LOGGER_INFO, "Map loaded successfully!");
-	get_persistent_data()->input_data = input_data;
+	game()->input_data = input_data;
 }

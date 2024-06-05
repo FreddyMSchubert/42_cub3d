@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/29 20:47:16 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/05 11:53:23 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@
 // lets mirror the file system in here. the less ---, the deeper the file
 
 // ----- general
-t_persistent_data	*get_persistent_data(void);
-t_list				**get_gc(void);
-t_entity			*get_player(void);
+t_persistent_data	*game(void);
+t_list				**gc(void);
+t_entity			*player(void);
 
 // ----- 0_map_generation
 // mapmaker

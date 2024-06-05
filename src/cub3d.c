@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 07:33:54 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/28 10:18:58 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/05 12:21:53 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+#include <stdio.h>
+#include <unistd.h>
 
 int	main(int argc, char **argv)
 {
@@ -36,7 +38,7 @@ int	main(int argc, char **argv)
 		parse_input("generated_maze.cub");
 	}
 	setup_mlx();
-	mlx_loop(get_persistent_data()->mlx);
-	mlx_terminate(get_persistent_data()->mlx);
+	mlx_loop(game()->mlx);
+	mlx_terminate(game()->mlx);
 	return (EXIT_SUCCESS);
 }

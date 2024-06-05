@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_values.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:12:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/04 11:16:22 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/05 12:53:54 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,18 @@ bool	free_split(char	**split, bool ret);
 void	set_player_spawn(char dir, t_vec2 pos, t_tile_type ***map)
 {
 	if (dir == 'N')
-		get_player()->spawn_look_dir = (t_vec2){-1, 0};
+		player()->spawn_transform.rot = (t_vec2){-1, 0};
 	else if (dir == 'S')
-		get_player()->spawn_look_dir = (t_vec2){1, 0};
+		player()->spawn_transform.rot = (t_vec2){1, 0};
 	else if (dir == 'E')
-		get_player()->spawn_look_dir = (t_vec2){0, 1};
+		player()->spawn_transform.rot = (t_vec2){0, 1};
 	else if (dir == 'W')
-		get_player()->spawn_look_dir = (t_vec2){0, -1};
+		player()->spawn_transform.rot = (t_vec2){0, -1};
 	else
 		logger(LOGGER_WARNING, "Player spawn look dir is not valid dir");
-	get_player()->spawn_point = pos;
-	get_player()->transform.pos = pos;
-	get_player()->transform.rot = get_player()->spawn_look_dir;
+	player()->spawn_transform.pos = pos;
+	player()->transform.pos = pos;
+	player()->transform.rot = player()->spawn_transform.rot;
 	(*map)[(int)pos.x][(int)pos.y] = FLOOR;
 }
 
@@ -70,7 +70,7 @@ bool	set_color(t_color *color, char *color_val)
 	cols = ft_split(color_val, ',');
 	if (!cols)
 		return (false);
-	if (split_len(cols) != 3)
+	if (split_len(cols) < 3 || split_len(cols) > 4)
 		return (free_split(cols, false));
 	color->r = ft_atoi(cols[0]);
 	if (!(color->r < 256 && color->r >= 0))
@@ -81,6 +81,14 @@ bool	set_color(t_color *color, char *color_val)
 	color->b = ft_atoi(cols[2]);
 	if (!(color->b < 256 && color->b >= 0))
 		return (free_split(cols, false));
+	if (split_len(cols) == 4)
+	{
+		color->a = ft_atoi(cols[3]);
+		if (!(color->a < 256 && color->a >= 0))
+			return (free_split(cols, false));
+	}
+	else
+		color->a = 255;
 	free_split(cols, NULL);
 	return (true);
 }

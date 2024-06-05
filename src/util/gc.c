@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gc.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:18:59 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/21 13:29:20 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/05 11:57:14 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,15 @@ int	gc_append_element(void *content)
 {
 	t_list	*new_node;
 	t_list	*selected_node;
-	t_list	*gc;
+	t_list	*garbage_col;
 
-	gc = *get_gc();
+	garbage_col = *gc();
 	new_node = malloc(sizeof(t_list));
 	if (!new_node)
 		return (-1);
 	new_node->content = content;
 	new_node->next = NULL;
-	selected_node = gc;
+	selected_node = garbage_col;
 	while (selected_node->next != NULL)
 	{
 		selected_node = selected_node->next;
@@ -70,26 +70,26 @@ int	gc_append_element(void *content)
 */
 void	gc_cleanup_and_reinit(void)
 {
-	t_list	**gc;
+	t_list	**garbage_col;
 
-	gc = get_gc();
+	garbage_col = gc();
 	logger_verbose('i', "Cleaning up garbage collector.");
-	ft_lstclear(gc, free);
-	*gc = NULL;
-	*gc = gc_create();
+	ft_lstclear(garbage_col, free);
+	*garbage_col = NULL;
+	*garbage_col = gc_create();
 }
 
 void	gc_exit_error(void)
 {
 	int		i;
-	t_list	**gc;
+	t_list	**garbage_col;
 
-	gc = get_gc();
+	garbage_col = gc();
 	i = 2;
 	while (++i < 1024)
 		close(i);
 	gc_cleanup_and_reinit();
-	free(*gc);
+	free(*garbage_col);
 	exit(EXIT_FAILURE);
 }
 

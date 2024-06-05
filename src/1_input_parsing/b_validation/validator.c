@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validator.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 10:54:38 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/29 08:26:37 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/05 11:53:09 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	validate(void)
 	t_scale			map_size;
 	bool			**visited;
 
-	data = get_persistent_data()->input_data;
+	data = game()->input_data;
 	map_size.x = 0;
 	map_size.y = 0;
 	while (data->map[map_size.y] != NULL)
@@ -75,8 +75,8 @@ void	validate(void)
 	y = -1;
 	while (++y < map_size.y)
 		visited[y] = gc_malloc(map_size.x * sizeof(bool));
-	if (flood_fill(data, visited, (t_scale){get_player()->spawn_transform.pos.x, \
-						get_player()->spawn_transform.pos.y}, map_size) == INVALID)
+	if (flood_fill(data, visited, (t_scale){player()->spawn_transform.pos.x, \
+						player()->spawn_transform.pos.y}, map_size) == INVALID)
 		cub_exit_error("Invalid map - Player can reach edge or void.");
 	clear_unused_spaces(data->map, visited, map_size);
 }

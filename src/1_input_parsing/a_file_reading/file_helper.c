@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_helper.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:27:08 by jkauker           #+#    #+#             */
-/*   Updated: 2024/05/28 09:05:38 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/05 11:54:15 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int	get_file_length(char *filename)
 
 void	clean_struct_input(t_input_data *input_data)
 {
-	input_data->ceiling_color = (t_color){-1, -1, -1};
-	input_data->floor_color = (t_color){-1, -1, -1};
+	input_data->ceiling_color = (t_color){-1, -1, -1, -1};
+	input_data->floor_color = (t_color){-1, -1, -1, -1};
 	input_data->ea_texture_location = NULL;
 	input_data->no_texture_location = NULL;
 	input_data->so_texture_location = NULL;
