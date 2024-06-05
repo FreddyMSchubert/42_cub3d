@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   input_parser.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/28 09:35:37 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/05 14:18:17 by jkauker          ###   ########.fr       */
+/*   Created: 2024/05/23 13:57:51 by fschuber          #+#    #+#             */
+/*   Updated: 2024/06/05 19:15:58 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-#include <stdio.h>
-#include <unistd.h>
 
 void	parse_input(char	*filepath)
 {
@@ -25,7 +23,7 @@ void	parse_input(char	*filepath)
 	validate();
 	convert_walls();
 	if (DEBUG)
-	    printf("%f %f\n", player()->spawn_transform.pos.x, player()->spawn_transform.pos.y);
+		printf("%f %f\n", player()->spawn_transform.pos.x, player()->spawn_transform.pos.y);
 	if (LOG_WALLS)
 		print_walls();
 }

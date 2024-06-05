@@ -1,5 +1,64 @@
 # Changelog
 
+### [0.10.9] - 05.06.2024 - Freddy - `20-draw-walls`
+- Merged 20-draw-walls into master - it is not done, but the decision was made to sync up the state of the code as it is at the moment so we can easily continue working
+- There are a lot of issues created with this, the three most notable being
+	- Segfaults in 1_input_parsing
+	- A map without floors voids in each line starting with the first floor of each line going to the end arriving at the validator (so, that would be an issue with the squarifier presumably)
+	- abort issues
+- these three issues combined let almost no executions run through as normally expected without issues
+- however, well go through those together tomorrow
+
+### [0.10.8] - 05.06.2024 - Freddy - `20-draw-walls`
+- fixed maze generator placing really weird player spawns. player now no longer spawns wherever generation started
+- various drawing changes
+
+### [0.10.7] - 05.06.2024 - Freddy - `20-draw-walls`
+- Fixed maze generator occasionally segfaulting when adding rooms due to incorrect maze boundary checks
+- moved the important generation settings as easily changeable macros into settings.h
+
+### [0.10.6] - 04.06.2024 - Freddy - `20-draw-walls`
+- implemented view distance
+- fixed vis walls count being uninitialized, leading to a segfault
+
+### [0.10.5] - 04.06.2024 - Freddy - `20-draw-walls`
+- renamed data back to name - now things work better, it compiles.
+- sorted wall drawing functions a little
+- implemented non-malloc approach further
+- code segfaults on second frame
+
+### [0.10.4] - 04.06.2024 - Freddy - `20-draw-walls`
+- sort walls now saves walls into array & ensures wall uniqueness
+	- to do this, i created a positions util that compares walls
+- moved some files around & cahnged some names
+
+### [0.10.3] - 04.06.2024 - Freddy - `20-draw-walls`
+- removed mallocing from raycast intersect, general improvements
+- added get_intersection_wall which returns the wall from a long list that is intersected with
+- added util function to convert between degrees and directional vectors, and to normalize degrees
+- continued work on sort walls function
+- renamed get_persistent_game() functin to just game() and get_player() to just player()
+- added half-finished wall sorting and raycasting setup, where the raycasts are performed in all the right directions, but not used yet.
+
+### [0.10.2] - 3.06.2024 - Freddy - `20-draw-walls`
+- fixed colors! it now draws colorful & doesnt repeat 4 times anymore. big success.
+- Added screen clearing to 1_sort_walls, this is not a permanent solution but is helpful while I'm sorting out the drawing logic. This will be removed later.
+- Added math lib include to makefile
+- better color logging
+
+### [0.10.1] - 30.05.2024 - Freddy - `20-draw-walls`
+- fixed incorrect degrees to radians conversion
+- reworked angle_to_Screen_x function, that should hopefully be better now
+- fixed angle to screen x producing int min and int max values, making the program run predictably slowly when it loops through them. i fixed that. 
+- it renders now - something. nothing correct though.
+
+## [0.10.0] - 30.05.2024 - Freddy - `20-draw-walls`
+- added calculate deviation angle, which will be helpful to draw the walls and check whether a wall is outside of the fov, ...
+- added sort walls (which is supposed to eventually do the raycasting and sorting, but currently does nothing)
+- added scale walls, which turns the 3d walls into 2d screen coordinates
+- added draw_walls, which draws each wall
+- currently, this does not work. instead, there are little lines on top of the screen, the height and width of which are influenced by the players transform.
+
 ### [0.9.3] - 29.05.2024 - Freddy - `18-player-movement`
 - made mouse change rotations by scrolling because i havent found a mouse position hook - unsure that exists. would be very weird if not though.
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/05 11:53:23 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/05 18:44:07 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_entity			*player(void);
 void	            generate_map(void);
 // features
 void	            remove_walls(char **maze, int height, int width);
-void				place_player_spawn(char **maze, t_scale starting_pos);
+void				place_player_spawn(char **maze, t_scale	map_scale);
 void	            add_rooms(char **maze, t_scale scale, int room_count);
 // file writer
 void	            write_cub_file(char **maze, int height, int width, char *filename);
@@ -97,9 +97,22 @@ void				scroll_hook(double xdelta, double ydelta, void* param);
 // util
 void				turn(double amount);
 // --- b_rendering
+void				render_game_scene(void);
+void				do_wall_operations();
+// raycasting util
 double				pos_distance(t_vec2 pos1, t_vec2 pos2);
 t_vec2				scale_transform(t_vec2 t1, double distance);
-t_vec2				*raycast_intersect(t_transform t1, t_transform t2);
+t_vec2				raycast_intersect(t_transform t1, t_transform t2);
+t_transform			*get_intersection_wall(t_transform **walls, t_transform p);
+double				calculate_deviation_angle(t_transform p, t_vec2 pos);
+// - 1 raycast walls
+void				get_visible_walls(t_transform *vis_walls, int *vis_walls_count);
+// - 2 sort walls
+void				quick_sort_walls(t_transform arr[], int low, int high);
+// - 3 scale walls
+void				scale_walls(t_transform *walls, int walls_amount);
+// - 4 draw walls
+void				draw_walls(void);
 
 // ----- util
 // garbage collector
@@ -122,8 +135,20 @@ void				cub_exit_error(char	*message);
 // colors
 unsigned int		t_color_to_int(t_color color);
 t_color				int_to_t_color(int color);
+void				log_color_from_t_color(t_color color);
+void				log_color_from_int(int color);
+
+// positions
+bool				is_same_wall(t_transform wall1, t_transform wall2);
 
 // string
 bool				str_is_equal(char *str1, char *str2);
+
+// rotations
+double				degrees_to_radians(double degrees);
+double				radians_to_degrees(double radians);
+t_vec2				degrees_to_dir_vector(double degrees);
+double				dir_vector_to_degrees(t_vec2 dir);
+double				normalize_degrees(double degrees);
 
 #endif

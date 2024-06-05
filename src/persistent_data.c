@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   persistent_data.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:03:38 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/05 12:04:36 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/05 18:50:00 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 t_persistent_data	*game(void)
 {
-	static t_persistent_data	data;
+	static t_persistent_data	game;
 
-	return (&data);
+	return (&game);
 }
 
 t_list	**gc(void)

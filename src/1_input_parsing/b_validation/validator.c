@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validator.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 10:54:38 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/05 11:53:09 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/05 19:12:15 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	validate(void)
 	t_scale			map_size;
 	bool			**visited;
 
+	printf("%d, %d\n", (int)player()->spawn_transform.pos.x, (int)player()->spawn_transform.pos.y);
 	data = game()->input_data;
 	map_size.x = 0;
 	map_size.y = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/05 11:53:45 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/05 18:45:55 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,15 @@ typedef struct s_transform
 	t_vec2	rot;
 }	t_transform;
 
+typedef struct s_wall_scale
+{
+	int		x_left;
+	int		x_right;
+	int		height_left;
+	int		height_right;
+	char	direction;
+}	t_wall_scale;
+
 // ---- IMPORTANT
 
 typedef enum e_tile_type
@@ -70,8 +79,10 @@ typedef struct s_input_data
 typedef struct s_persistent_data
 {
 	t_input_data	*input_data;
+	t_wall_scale	**walls_scaled;
 	mlx_t			*mlx;
 	mlx_image_t		*background;
+	mlx_image_t		*game_scene;
 }	t_persistent_data;
 
 // ----- CURRENTLY UNUSED
