@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.10.7] - 05.06.2024 - Freddy - `20-draw-walls`
+- Fixed maze generator occasionally segfaulting when adding rooms due to incorrect maze boundary checks
+- moved the important generation settings as easily changeable macros into settings.h
+
 ### [0.10.6] - 04.06.2024 - Freddy - `20-draw-walls`
 - implemented view distance
 - fixed vis walls count being uninitialized, leading to a segfault

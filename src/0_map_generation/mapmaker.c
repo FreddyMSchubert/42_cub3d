@@ -107,7 +107,7 @@ void	generate_map(void)
 	bool	**visited;
 	t_scale	pos;
 
-	map_scale = (t_scale){random_int(7, 30), random_int(7, 30)};
+	map_scale = (t_scale){random_int(MIN_MAP_SIZE, MAX_MAP_SIZE), random_int(MIN_MAP_SIZE, MAX_MAP_SIZE)};
 	setup_maze(&maze, &visited, map_scale);
 	pos.x = random_int(1, map_scale.y - 2);
 	pos.y = random_int(1, map_scale.y - 2);
