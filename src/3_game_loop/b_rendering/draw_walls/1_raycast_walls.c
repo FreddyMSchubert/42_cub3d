@@ -47,7 +47,6 @@ void	get_visible_walls(t_transform *vis_walls, int *vis_walls_count)
 	i = -1;
 	while (++i < RAYCASTS_PER_DEG * FOV_DEG)
 	{
-		printf("woohoo i is %d and walls count is %d and fov deg * raycasts per deg is %d\n", i, *vis_walls_count, RAYCASTS_PER_DEG * FOV_DEG);
 		wall = perform_raycast(i);
 		if (!wall)
 			continue ;

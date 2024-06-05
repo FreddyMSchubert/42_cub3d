@@ -63,7 +63,7 @@ t_entity			*player(void);
 void	            generate_map(void);
 // features
 void	            remove_walls(char **maze, int height, int width);
-void				place_player_spawn(char **maze, t_scale starting_pos);
+void				place_player_spawn(char **maze, t_scale	map_scale);
 void	            add_rooms(char **maze, t_scale scale, int room_count);
 // file writer
 void	            write_cub_file(char **maze, int height, int width, char *filename);

@@ -25,10 +25,10 @@
 // Map Making
 
 # define MIN_MAP_SIZE 7
-# define MAX_MAP_SIZE 30
+# define MAX_MAP_SIZE 20
 # define MIN_WALLS_AMOUNT 2
 # define MAX_WALLS_AMOUNT 5
-# define WALL_REMOVAL_CHANCE_PERCENT 10
+# define WALL_REMOVAL_CHANCE_PERCENT 15
 
 // Window Setup
 

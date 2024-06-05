@@ -31,10 +31,24 @@ void	remove_walls(char **maze, int height, int width)
 	}
 }
 
-void	place_player_spawn(char **maze, t_scale starting_pos)
+void	place_player_spawn(char **maze, t_scale	map_scale)
 {
-	maze[starting_pos.y][starting_pos.x] = \
-						"NSWE"[random_int(0, 3)];
+    int found_pos;
+    int x;
+    int y;
+
+    found_pos = false;
+    while (found_pos == false)
+    {
+        x = random_int(1, map_scale.x - 2);
+        y = random_int(1, map_scale.y - 2);
+        if (x <= 0 || y <= 0)
+            continue ;
+        if (x >= map_scale.x - 1 || y >= map_scale.y - 1)
+            continue ;
+        found_pos = true;
+        maze[y][x] = "NSWE"[random_int(0, 3)];
+    }
 }
 
 static void	add_room(char **maze, t_scale start_pos, t_scale room_scale, t_scale maze_size)

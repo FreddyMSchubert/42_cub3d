@@ -39,7 +39,7 @@ static int	get_color(char walldir)
 	return (t_color_to_int((t_color){255, 255, 255, 255}));
 }
 
-static void	draw_wall(t_wall_scale *wall, mlx_image_t *img)
+void	draw_wall(t_wall_scale *wall, mlx_image_t *img)
 {
 	int	col;
 	int	x;
@@ -49,10 +49,10 @@ static void	draw_wall(t_wall_scale *wall, mlx_image_t *img)
 	int	start_y;
 	int	end_y;
 
+    write(STDOUT_FILENO, "R", 1);
 	if (wall->x_left >= wall->x_right || (wall->height_left == 0  && wall->height_right == 0))
 		return ;
 	col = get_color(wall->direction);
-	printf("Wall from x %d to %d, left: %d, right: %d, col: %08X\n", wall->x_left, wall->x_right, wall->height_left, wall->height_right, col);
 	center_y = img->height / 2;
 	x = -1;
 	while (++x <= wall->x_right - wall->x_left)

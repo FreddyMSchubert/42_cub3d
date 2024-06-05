@@ -16,7 +16,6 @@ void	loop_hook(void *param)
 {
 	t_entity	*p;
 
-	write(STDOUT_FILENO, "loop\n", 5);
 	p = player();
 	render_game_scene();
 	printf("POS: [%f, %f] - ROT: [%f, %f]: %d\n", p->transform.pos.x, p->transform.pos.y, p->transform.rot.x, p->transform.rot.y, *game()->input_data->map[(int)p->transform.pos.y][(int)p->transform.pos.x]);
