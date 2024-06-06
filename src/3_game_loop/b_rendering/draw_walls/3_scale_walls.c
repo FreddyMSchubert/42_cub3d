@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   3_scale_walls.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 10:53:27 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/04 11:32:34 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/06 17:04:57 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,51 +47,52 @@ static int	angle_to_wall_height(double angle_deg)
 	return ((int)height);
 }
 
-static char	get_wall_face(t_transform wall, t_entity *player)
+static char	get_wall_face(t_transform wall)
 {
 	if (wall.rot.x == 1.0)
 	{
-		if (player->transform.pos.x > wall.pos.x)
+		if (player()->transform.pos.x > wall.pos.x)
 			return ('W');
 		else
 			return ('E');
 	}
 	else
 	{
-		if (player->transform.pos.y > wall.pos.y)
+		if (player()->transform.pos.y > wall.pos.y)
 			return ('N');
 		else
 			return ('S');
 	}
 }
 
-static t_wall_scale	*get_wall_dimensions(t_transform wall, t_entity *player)
+static t_wall_scale	get_wall_dimensions(t_transform wall)
 {
-	t_wall_scale	*dimensions;
+	t_wall_scale	dimensions;
 	double			left_angle_deg;
 	double			right_angle_deg;
 
-	left_angle_deg = calculate_deviation_angle(player->transform, wall.pos);
-	right_angle_deg = calculate_deviation_angle(player->transform, (t_vec2){wall.pos.x + wall.rot.x, wall.pos.y + wall.rot.y});
-	dimensions = gc_malloc(sizeof(t_wall_scale));
-	dimensions->x_left = angle_to_screen_x(left_angle_deg);
-	dimensions->x_right = angle_to_screen_x(right_angle_deg);
-	dimensions->height_left = angle_to_wall_height(left_angle_deg);
-	dimensions->height_right = angle_to_wall_height(right_angle_deg);
-	dimensions->direction = get_wall_face(wall, player);
-	printf("Wall scale: %d - %d / %d - %d / %c\n", dimensions->x_left, dimensions->x_right, dimensions->height_left, dimensions->height_right, dimensions->direction);
+	left_angle_deg = calculate_deviation_angle(player()->transform, wall.pos);
+	right_angle_deg = calculate_deviation_angle(player()->transform, (t_vec2){wall.pos.x + wall.rot.x, wall.pos.y + wall.rot.y});
+	dimensions.x_left = angle_to_screen_x(left_angle_deg);
+	dimensions.x_right = angle_to_screen_x(right_angle_deg);
+	dimensions.height_left = angle_to_wall_height(left_angle_deg);
+	dimensions.height_right = angle_to_wall_height(right_angle_deg);
+	dimensions.direction = get_wall_face(wall);
+	printf("Wall scale: %d - %d / %d - %d / %c\n", dimensions.x_left, dimensions.x_right, dimensions.height_left, dimensions.height_right, dimensions.direction);
 	return (dimensions);
 }
 
 void	scale_walls(t_transform *walls, int walls_amount)
 {
-	t_wall_scale	**wall_scales;
+	t_wall_scale	curr_wall_scale;
 	int				i;
 
-	wall_scales = gc_malloc((walls_amount + 1) * sizeof(t_wall_scale));
-	wall_scales[walls_amount] = NULL;
+	printf("amount of walls: %d\n", walls_amount);
 	i = -1;
 	while (++i < walls_amount)
-		wall_scales[i] = get_wall_dimensions(walls[i], player());
-	game()->walls_scaled = wall_scales;
+	{
+		printf("scaling wall %d\n", i);
+		curr_wall_scale = get_wall_dimensions(walls[i]);
+		draw_wall(curr_wall_scale, game()->game_scene);
+	}
 }

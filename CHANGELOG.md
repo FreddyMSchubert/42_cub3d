@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.10.13] - 06.06.2024 - Freddy
+- Made all the draw walls stuff not malloc anything - which should improve performance greatly
+	- Now the testing rectangle seems to render, and nothing else anymore, whats going on?
+- Fixed some maps not having a proper spawn point
+- map generator placing player in 1 sized space fix, this is because random walls were removed before setting the player, so bad luck can sometimes make you spawn trapped, now player gets set first and doesn't get overriden by either remove random walls or add rooms
+- fixed map making macro misnaming & added room size changing macros
+
 ### [0.10.12] - 06.06.2024 - Freddy
 - Added 12 more maps, some my own, some credited, to test various aspects
 - Added invalid_maps to test parsing, very hard. Already found a segfault. For now just maps, no parser changes yet

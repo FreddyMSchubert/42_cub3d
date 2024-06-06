@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   1_raycast_walls.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/04 12:52:29 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/06 17:07:55 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 	2. Sort the walls by distance from the player
 
 	we will not malloc to keep the visible walls, we will just use a local array
-	raycasts per deg*fov deg is not actually how logn its gonna be though, its just how long it could possibly be.
+	raycasts per deg*fov deg is not actually how long its gonna be though, its just how long it could possibly be.
 	actual amount is saved in vis_walls_count
 */
 
@@ -63,4 +63,5 @@ void	get_visible_walls(t_transform *vis_walls, int *vis_walls_count)
 		if (!is_duplicate)
 			vis_walls[(*vis_walls_count)++] = *wall;
 	}
+	printf("vis walls count is %d\n", *vis_walls_count);
 }

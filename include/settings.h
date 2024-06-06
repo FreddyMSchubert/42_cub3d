@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   settings.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/04 09:08:39 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/06 17:27:13 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@
 
 # define MIN_MAP_SIZE 7
 # define MAX_MAP_SIZE 20
-# define MIN_WALLS_AMOUNT 2
-# define MAX_WALLS_AMOUNT 5
+# define MIN_ROOMS_AMOUNT 2
+# define MAX_ROOMS_AMOUNT 5
+# define MIN_ROOM_SIZE 1
+# define MAX_ROOM_SIZE 10
 # define WALL_REMOVAL_CHANCE_PERCENT 15
 
 // Window Setup

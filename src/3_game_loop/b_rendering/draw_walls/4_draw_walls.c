@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   4_draw_walls.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/06 09:32:46 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/06 16:45:56 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	get_color(char walldir)
 	return (t_color_to_int((t_color){255, 255, 255, 255}));
 }
 
-void	draw_wall(t_wall_scale *wall, mlx_image_t *img)
+void	draw_wall(t_wall_scale wall, mlx_image_t *img)
 {
 	int	col;
 	int	x;
@@ -54,31 +54,18 @@ void	draw_wall(t_wall_scale *wall, mlx_image_t *img)
 	int	end_y;
 
 	write(STDOUT_FILENO, "R", 1);
-	if (wall->x_left >= wall->x_right || (wall->height_left == 0 && wall->height_right == 0))
+	if (wall.x_left >= wall.x_right || (wall.height_left == 0 && wall.height_right == 0))
 		return ;
-	col = get_color(wall->direction);
+	col = get_color(wall.direction);
 	center_y = img->height / 2;
 	x = -1;
-	while (++x <= wall->x_right - wall->x_left)
+	while (++x <= wall.x_right - wall.x_left)
 	{
-		current_height = interpolate(wall->height_left, wall->height_right, x, wall->x_right - wall->x_left);
+		current_height = interpolate(wall.height_left, wall.height_right, x, wall.x_right - wall.x_left);
 		start_y = center_y - current_height / 2;
 		end_y = center_y + current_height / 2;
 		y = start_y - 1;
 		while (++y <= end_y)
-			set_pixel_color(img, wall->x_left + x, y, col);
+			set_pixel_color(img, wall.x_left + x, y, col);
 	}
-}
-
-void	draw_walls(void)
-{
-	t_wall_scale	**walls;
-	mlx_image_t		*img;
-	int				i;
-
-	walls = game()->walls_scaled;
-	img = game()->game_scene;
-	i = -1;
-	while (walls && walls[++i])
-		draw_wall(walls[i], img);
 }

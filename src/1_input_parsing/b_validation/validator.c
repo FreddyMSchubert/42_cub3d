@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validator.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 10:54:38 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/06 10:46:17 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/06 16:56:17 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,6 @@ void	validate(void)
 
 	data = game()->input_data;
 	print_map(data->map, "._|");
-	printf("player pos %f %f\n", player()->spawn_transform.pos.x, \
-									player()->spawn_transform.pos.y);
-	printf("player pos %f %f\n", player()->transform.pos.x, \
-									player()->transform.pos.y);
 	map_size.x = 0;
 	map_size.y = 0;
 	while (data->map[map_size.y] != NULL)

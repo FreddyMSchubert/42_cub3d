@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/06 10:30:40 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/06 16:45:18 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void				quick_sort_walls(t_transform arr[], int low, int high);
 // - 3 scale walls
 void				scale_walls(t_transform *walls, int walls_amount);
 // - 4 draw walls
-void				draw_walls(void);
+void				draw_wall(t_wall_scale wall, mlx_image_t *img);
 
 // ----- util
 // garbage collector
