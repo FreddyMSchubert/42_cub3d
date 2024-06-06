@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/04 10:39:41 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/06 08:57:52 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,13 @@ static void	set_pixel_color(mlx_image_t *img, int x, int y, int col)
 
 static int	interpolate(int start, int end, int step, int max_steps)
 {
-	if (max_steps == 0)
+	if (max_steps <= 0)
 		return (start);
-	return (start + (end - start) * step / max_steps);
+	if (step < 0)
+		step = 0;
+	if (step >= max_steps)
+		step = max_steps - 1;
+	return (start + (end - start) * ((double)step / max_steps));
 }
 
 static int	get_color(char walldir)

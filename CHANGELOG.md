@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.10.9] - 06.06.2024 - Freddy
+- Fixed some squarify map issues, general stability and readability improvements
+- fixed issue where squarify map would turn all floors and everything following the first floor in a line into voids
+
 ### [0.10.9] - 05.06.2024 - Freddy - `20-draw-walls`
 - Merged 20-draw-walls into master - it is not done, but the decision was made to sync up the state of the code as it is at the moment so we can easily continue working
 - There are a lot of issues created with this, the three most notable being

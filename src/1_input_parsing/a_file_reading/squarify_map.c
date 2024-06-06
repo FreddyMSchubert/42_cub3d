@@ -3,20 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   squarify_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 14:07:43 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/05 18:51:47 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/06 09:15:57 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/cub3d.h"
-#include <stdio.h>
 
 static int	tiles_len(t_tile_type **tiles)
 {
 	int	i;
 
+	if (!tiles)
+		return (0);
 	i = 0;
 	while (tiles && tiles[i])
 		i++;
@@ -27,6 +28,8 @@ static int	tiles_len3(t_tile_type ***tiles)
 {
 	int	i;
 
+	if (!tiles)
+		return (0);
 	i = 0;
 	while (tiles && tiles[i])
 		i++;
@@ -39,6 +42,8 @@ static int	get_longest_line_length(void)
 	int		longest_line_length;
 	int		current_line_length;
 
+	if (!game()->input_data->map)
+		return (0);
 	i = 0;
 	longest_line_length = 0;
 	while (game()->input_data->map[i])
@@ -57,17 +62,19 @@ static void	process_map_row(int i, int new_len, t_tile_type ***tiles,
 {
 	int	j;
 
-	j = -1; // when i set this to 0 so the loop starts at 1 it works but thats weird cuz it should start at the first and not the second
+	j = 0;
 	tiles[i] = gc_malloc((new_len + 1) * sizeof(t_tile_type *));
-	while (data->map[i][++j] && *(data->map[i][j]))
+	while (data->map[i][j])
 	{
-		tiles[i][j] = gc_malloc(sizeof(t_entity_type));
+		tiles[i][j] = gc_malloc(sizeof(t_tile_type));
 		*(tiles[i][j]) = *(data->map[i][j]); // TODO: *(data->map[i][j]) is a segv when i > 0
+		j++;
 	}
 	while (j < new_len)
 	{
-		tiles[i][j] = gc_malloc(sizeof(t_entity_type));
-		*(tiles[i][j++]) = VOID;
+		tiles[i][j] = gc_malloc(sizeof(t_tile_type));
+		*(tiles[i][j]) = VOID;
+		j++;
 	}
 }
 
