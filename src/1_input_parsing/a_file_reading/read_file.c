@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:38:30 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/06 09:54:12 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/06 11:22:29 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ bool	parse_attributes(char	**data, t_input_data **input_data, int *i);
 bool	parse_map(char **data, t_input_data **input_data, int *i);
 bool	regex(char *line, char *reg);
 int		get_file_length(char *filename);
-// void	clean_struct_input(t_input_data *input_data);
-// bool	basic_validate(t_input_data **in);
 
 static void	read_file_loop(char ***data, int file)
 {

@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.10.11] - 06.06.2024 - Freddy
+- Removed various unwanted chars from the maps which would cause parsing errors, through the help of misc/char_overview.sh, which lists amounts of each char in file
+
 ### [0.10.10] - 06.06.2024 - Freddy
 - added step logging type & logging statements all over the program. now we clearly know where something broke if something broke
 - removed premade walls - they are thoroughly unnecessary now that we have integrated the map generator into the main program
