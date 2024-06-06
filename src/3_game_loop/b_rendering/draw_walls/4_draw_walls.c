@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/06 08:57:52 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/06 09:32:46 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	draw_wall(t_wall_scale *wall, mlx_image_t *img)
 	int	start_y;
 	int	end_y;
 
-    write(STDOUT_FILENO, "R", 1);
-	if (wall->x_left >= wall->x_right || (wall->height_left == 0  && wall->height_right == 0))
+	write(STDOUT_FILENO, "R", 1);
+	if (wall->x_left >= wall->x_right || (wall->height_left == 0 && wall->height_right == 0))
 		return ;
 	col = get_color(wall->direction);
 	center_y = img->height / 2;

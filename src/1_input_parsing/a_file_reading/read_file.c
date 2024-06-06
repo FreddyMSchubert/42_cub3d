@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:38:30 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/05 18:51:03 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/06 09:54:12 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,6 @@ static bool	parse_file_data(char **data, t_input_data **input_data)
 	i = 0;
 	if (!parse_attributes(data, input_data, &i))
 	{
-		if (DEBUG)
-			printf("(%d)\t", i + 1);
 		logger(LOGGER_ERROR, "Could not parse attributes!");
 		return (false);
 	}
@@ -81,12 +79,9 @@ static bool	parse_file_data(char **data, t_input_data **input_data)
 		i++;
 	if (!parse_map(data, input_data, &i))
 	{
-		if (DEBUG)
-			printf("(%d)\t", i + 1);
 		logger(LOGGER_ERROR, "Could not parse playing field!");
 		return (false);
 	}
-	logger(LOGGER_INFO, "Map load complete.");
 	return (true);
 }
 
@@ -154,6 +149,5 @@ void	get_map_contents(char *filepath)
 	}
 	if (!basic_validate(&input_data))
 		gc_exit_error();
-	logger(LOGGER_INFO, "Map loaded successfully!");
 	game()->input_data = input_data;
 }

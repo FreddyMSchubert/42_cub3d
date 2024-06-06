@@ -1,5 +1,13 @@
 # Changelog
 
+### [0.10.10] - 06.06.2024 - Freddy
+- added step logging type & logging statements all over the program. now we clearly know where something broke if something broke
+- removed premade walls - they are thoroughly unnecessary now that we have integrated the map generator into the main program
+- fixed weird letters in zelda.cub
+- removed unnecessary logging in general
+- made map creator not leak literally every allocated byte by using garbage collector, fully removed mapmaker cleanup function
+- made mapmaker not log map, it will be logged out soon enogh afterwards
+
 ### [0.10.9] - 06.06.2024 - Freddy
 - Fixed some squarify map issues, general stability and readability improvements
 - fixed issue where squarify map would turn all floors and everything following the first floor in a line into voids

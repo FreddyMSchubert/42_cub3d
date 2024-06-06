@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 22:52:39 by freddy            #+#    #+#             */
-/*   Updated: 2024/05/23 22:53:52 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/06 10:30:37 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,28 +39,4 @@ int	random_int(int min, int max)
 	}
 	close(fd);
 	return (bytes_read % (max - min + 1) + min);
-}
-
-void	print_maze(char **maze, int height, int width)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < height)
-	{
-		j = 0;
-		while (j < width)
-		{
-			if (maze[i][j] == '0')
-				printf("\e[0;32m%c\e[0m ", maze[i][j]);
-			else if (maze[i][j] == '1')
-				printf("\e[0;31m%c\e[0m ", maze[i][j]);
-			else
-				printf("\e[0;34m%c\e[0m ", maze[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
 }

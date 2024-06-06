@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 09:39:02 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/05 18:48:25 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/06 09:55:25 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,5 @@ bool	parse_map(char **data, t_input_data **input_data, int *i)
 	map[map_len] = NULL;
 	(*i)--;
 	(*input_data)->map = make_map(map_len, i, data);
-	print_map((*input_data)->map, ".01");
 	return (true);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/05 18:44:07 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/06 10:30:40 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@
 # define LOGGER_ERROR 'e'
 # define LOGGER_WARNING 'w'
 # define LOGGER_INFO 'i'
+# define LOGGER_STEP 's'
 
 /* ----- EXIT CODES ----- */
 # define EXIT_SUCCESS 0
@@ -69,7 +70,6 @@ void	            add_rooms(char **maze, t_scale scale, int room_count);
 void	            write_cub_file(char **maze, int height, int width, char *filename);
 // util
 int	                random_int(int min, int max);
-void	            print_maze(char **maze, int height, int width);
 
 // ----- 1_input_parsing
 void				parse_input(char	*filepath);

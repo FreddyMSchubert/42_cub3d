@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mapmaker.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 22:46:53 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/05 12:23:08 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/06 10:30:25 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,34 +70,20 @@ static void	setup_maze(char ***maze, bool ***visited, t_scale map_scale)
 	int	i;
 	int	j;
 
-	*maze = malloc(map_scale.y * sizeof(char *));
-	*visited = malloc(map_scale.y * sizeof(bool *));
+	*maze = gc_malloc(map_scale.y * sizeof(char *));
+	*visited = gc_malloc(map_scale.y * sizeof(bool *));
 	i = -1;
 	while (++i < map_scale.y)
 	{
 		j = -1;
-		(*maze)[i] = malloc(map_scale.x * sizeof(char));
-		(*visited)[i] = malloc(map_scale.x * sizeof(bool));
+		(*maze)[i] = gc_malloc(map_scale.x * sizeof(char));
+		(*visited)[i] = gc_malloc(map_scale.x * sizeof(bool));
 		while (++j < map_scale.x)
 		{
 			(*maze)[i][j] = '1';
 			(*visited)[i][j] = false;
 		}
 	}
-}
-
-static void	cleanup(char **maze, bool **visited, t_scale map_scale)
-{
-	int	i;
-
-	i = -1;
-	while (++i < map_scale.y)
-	{
-		free(maze[i]);
-		free(visited[i]);
-	}
-	free(maze);
-	free(visited);
 }
 
 void	generate_map(void)
@@ -113,7 +99,4 @@ void	generate_map(void)
 	add_rooms(maze, map_scale, random_int(2, 5));
 	place_player_spawn(maze, map_scale);
 	write_cub_file(maze, map_scale.y, map_scale.x, "generated_maze.cub");
-	logger_verbose(LOGGER_INFO, "Generated random map.");
-	print_maze(maze, map_scale.y, map_scale.x);
-	cleanup(maze, visited, map_scale);
 }

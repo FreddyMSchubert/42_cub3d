@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:49:10 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/05 18:55:30 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/06 09:50:22 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ void	print_map(t_tile_type ***map, char *mode)
 		{
 			current_spot = *map[y][x];
 			if (current_spot == VOID)
-				printf("%c", mode[0]);
+				printf("%s%c%s", ANSI_BACKGROUND_BLACK, mode[0], ANSI_RESET);
 			else if (current_spot == FLOOR)
-				printf("%c", mode[1]);
+				printf("%s%c%s", ANSI_BACKGROUND_GREEN, mode[1], ANSI_RESET);
 			else if (current_spot == WALL)
-				printf("%c", mode[2]);
+				printf("%s%c%s", ANSI_BACKGROUND_RED, mode[2], ANSI_RESET);
 			x++;
 		}
 		printf("\n");
