@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.10.12] - 06.06.2024 - Freddy
+- Added 12 more maps, some my own, some credited, to test various aspects
+- Added invalid_maps to test parsing, very hard. Already found a segfault. For now just maps, no parser changes yet
+
 ### [0.10.11] - 06.06.2024 - Freddy
 - Removed various unwanted chars from the maps which would cause parsing errors, through the help of misc/char_overview.sh, which lists amounts of each char in file
 

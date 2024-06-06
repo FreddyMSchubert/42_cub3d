@@ -1,0 +1,16 @@
+NO ./assets/img/chiseled_tuff.png
+SO ./assets/img/chiseled_tuff_bricks.png
+WE ./assets/img/chiseled_tuff_top.png
+EA ./assets/img/chiseled_tuff_bricks_top.png
+
+F 20,22,25
+C 13,14,15
+
+11111111 
+1000E001 
+10100101 
+10011001 
+10011001 
+10100101 
+10000001 
+11111111

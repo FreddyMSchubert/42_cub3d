@@ -1,0 +1,18 @@
+# Credits: https://github.com/mcombeau/cub3D
+
+EA ./assets/img/bubble_coral.png
+NO ./assets/img/bubble_coral.png
+SO ./assets/img/fire_coral.png
+WE ./assets/img/fire_coral.png
+
+F 18,53,25
+C 153,204,255
+
+111111111111
+1         11
+1          1
+111111111111
+10E000000001
+111111111111
+11         1
+111111111111
