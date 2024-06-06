@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.10.15] - 06.06.2024 - Freddy
+- automatically importing submodules doesnt work yet because submodule folders are cloned but not filled, which makes the check not work. added a new check which runs ls in the directories and runs the submodule command if the ls command prints something
+- very annoying you cant test this without pushing a commit
+
 ### [0.10.14] - 06.06.2024 - Freddy
 - made makefile automatically run setup when submodules arent installed. this should work.
 

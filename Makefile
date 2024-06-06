@@ -57,8 +57,11 @@ $(GNL)/libftgnl.a: | setup
 gnl: $(GNL)/libftgnl.a
 
 setup:
-	@if [ ! -d "$(LIBMLX)" ] || [ ! -d "$(LIBFT)" ]; then \
-		git submodule update --remote --init --recursive; \
+	@if [ -z "$(shell ls -A $(LIBMLX) 2>/dev/null)" ] || [ -z "$(shell ls -A $(LIBFT) 2>/dev/null)" ]; then \
+		echo "Submodules appear empty or not cloned. Initializing and updating submodules..."; \
+		git submodule update --init --recursive; \
+	else \
+		echo "Submodules are initialized. 🦦"; \
 	fi
 
 debug: CFLAGS += -fsanitize=address -g -O0
