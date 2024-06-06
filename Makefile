@@ -29,7 +29,7 @@ $(OBJ_DIR)/%.o: ./src/%.c
 	@mkdir -p $(dir $@)
 	cc $(CFLAGS) -o $@ -c $< $(HEADERS)
 
-all: libmlx libft gnl $(NAME)
+all: setup libmlx libft gnl $(NAME)
 clean:
 	rm -rf $(OBJ_DIR)
 	@if [ -d "$(LIBFT)" ]; then make -C $(LIBFT) clean; fi
@@ -65,6 +65,6 @@ debug: CFLAGS += -fsanitize=address -g -O0
 debug: fclean all
 
 random: all
-	$(NAME) $(find ./assets/maps -type f -name '*.cub' | sort -R | head -n 1)
+	./random_map.sh
 
 .PHONY: all clean fclean re setup libmlx libft gnl

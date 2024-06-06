@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.10.14] - 06.06.2024 - Freddy
+- made makefile automatically run setup when submodules arent installed. this should work.
+
 ### [0.10.13] - 06.06.2024 - Freddy
 - Made all the draw walls stuff not malloc anything - which should improve performance greatly
 	- Now the testing rectangle seems to render, and nothing else anymore, whats going on?
