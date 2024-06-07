@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.10.22] - 07.06.2024 - Freddy & Jonas
+- Fixed gc seg fault.
+
 ### [0.10.21] - 07.06.2024 - Freddy
 - Added Apple map
 
