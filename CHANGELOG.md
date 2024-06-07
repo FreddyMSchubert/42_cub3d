@@ -1,5 +1,10 @@
 # Changelog
 
+### [0.10.18] - 07.06.2024 - Freddy
+- Small fix to wall drawing, now if left x coord is larger then right they get switched before starting drawing execution
+- renamed png_to_map to xpm_to_map, which is actually correct
+- various changes & fixes
+
 ### [0.10.17] - 07.06.2024 - Freddy
 - Fixed player often spawning in walls because player coords defined in parse.c/make_map passed to set_values.c/set_player_spawn were switched
 - made rng in mapmaker util use /dev/urandom instead or /dev/random

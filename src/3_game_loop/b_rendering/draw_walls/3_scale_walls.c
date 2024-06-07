@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   3_scale_walls.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 10:53:27 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/06 17:04:57 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/07 10:27:23 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,9 @@ void	scale_walls(t_transform *walls, int walls_amount)
 	t_wall_scale	curr_wall_scale;
 	int				i;
 
-	printf("amount of walls: %d\n", walls_amount);
 	i = -1;
 	while (++i < walls_amount)
 	{
-		printf("scaling wall %d\n", i);
 		curr_wall_scale = get_wall_dimensions(walls[i]);
 		draw_wall(curr_wall_scale, game()->game_scene);
 	}

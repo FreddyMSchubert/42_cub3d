@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   4_draw_walls.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/06 16:45:56 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/07 10:37:33 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,27 +45,27 @@ static int	get_color(char walldir)
 
 void	draw_wall(t_wall_scale wall, mlx_image_t *img)
 {
-	int	col;
 	int	x;
 	int	y;
 	int	current_height;
-	int	center_y;
-	int	start_y;
 	int	end_y;
+	int	temp;
 
-	write(STDOUT_FILENO, "R", 1);
-	if (wall.x_left >= wall.x_right || (wall.height_left == 0 && wall.height_right == 0))
+	if (wall.height_left == 0 && wall.height_right == 0)
 		return ;
-	col = get_color(wall.direction);
-	center_y = img->height / 2;
+	if (wall.x_left > wall.x_right)
+	{
+		temp = wall.x_left;
+		wall.x_left = wall.x_right;
+		wall.x_right = temp;
+	}
 	x = -1;
 	while (++x <= wall.x_right - wall.x_left)
 	{
 		current_height = interpolate(wall.height_left, wall.height_right, x, wall.x_right - wall.x_left);
-		start_y = center_y - current_height / 2;
-		end_y = center_y + current_height / 2;
-		y = start_y - 1;
+		y = (img->height / 2) - current_height / 2;
+		end_y = (img->height / 2) + current_height / 2;
 		while (++y <= end_y)
-			set_pixel_color(img, wall.x_left + x, y, col);
+			set_pixel_color(img, wall.x_left + x, y, get_color(wall.direction));
 	}
 }

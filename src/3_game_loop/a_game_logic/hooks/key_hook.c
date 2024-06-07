@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:50 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/05 18:53:29 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/07 10:41:27 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../include/cub3d.h"
-
-void	print_distorted_img(char *img, int width, int height);
 
 static t_vec2	get_movement_from_key(mlx_key_data_t keydata)
 {
@@ -68,9 +66,9 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 		mlx_close_window(game()->mlx);
 	else if (keydata.key == MLX_KEY_W || keydata.key == MLX_KEY_A || keydata.key == MLX_KEY_S || keydata.key == MLX_KEY_D)
 		player_move(keydata);
-	else if (keydata.key == MLX_KEY_LEFT)
+	else if (keydata.key == MLX_KEY_LEFT && keydata.action == MLX_PRESS)
 		turn (-TURN_SPEED_ARROWS_DEG);
-	else if (keydata.key == MLX_KEY_RIGHT)
+	else if (keydata.key == MLX_KEY_RIGHT && keydata.action == MLX_PRESS)
 		turn (TURN_SPEED_ARROWS_DEG);
 	(void) param;
 }
