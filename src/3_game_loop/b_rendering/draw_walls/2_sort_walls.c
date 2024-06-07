@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:14:27 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/04 10:25:30 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/07 11:26:40 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	partition(t_transform arr[], int low, int high)
 	k = low;
 	while (k <= high - 1)
 	{
-		if (get_wall_distance(arr[k]) < pivot)
+		if (get_wall_distance(arr[k]) > pivot)
 		{
 			i++;
 			swap(&arr[i], &arr[k]);

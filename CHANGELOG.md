@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.10.19] - 07.06.2024 - Freddy
+- Added execute_cub3d.sh, which allows you to pick what maps you want to choose and whether to execute all or a random one. it also features a lot of emojis and colors, thus clearly epic.
+- Made sort walls sort the walls in the right order, descending not ascending
+
 ### [0.10.18] - 07.06.2024 - Freddy
 - Small fix to wall drawing, now if left x coord is larger then right they get switched before starting drawing execution
 - renamed png_to_map to xpm_to_map, which is actually correct
