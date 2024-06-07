@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validator.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 10:54:38 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/06 16:56:17 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/07 09:48:52 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ void	validate(void)
 	bool			**visited;
 
 	data = game()->input_data;
-	print_map(data->map, "._|");
 	map_size.x = 0;
 	map_size.y = 0;
 	while (data->map[map_size.y] != NULL)

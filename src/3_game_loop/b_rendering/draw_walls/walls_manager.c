@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   walls_manager.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:15:34 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/06 17:10:41 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/07 09:41:13 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,9 @@ void	do_wall_operations(void)
 	int			vis_walls_count;
 
 	vis_walls_count = 0;
-	write(STDOUT_FILENO, "doing wall operations\n", 22);
 	get_visible_walls(vis_walls, &vis_walls_count);
-	write(STDOUT_FILENO, "doing wall operations\n", 22);
 	quick_sort_walls(vis_walls, 0, vis_walls_count - 1);
-	write(STDOUT_FILENO, "doing wall operations\n", 22);
 	scale_walls(vis_walls, vis_walls_count);
-	write(STDOUT_FILENO, "doing wall operations\n", 22);
 	t_wall_scale test = (t_wall_scale){10, 100, 50, 300, 'E'};
 	draw_wall(test, game()->game_scene);
 }

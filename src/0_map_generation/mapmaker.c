@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mapmaker.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 22:46:53 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/06 17:21:51 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/07 09:58:23 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,15 @@ void	generate_map(void)
 
 	map_scale = (t_scale){random_int(MIN_MAP_SIZE, MAX_MAP_SIZE), random_int(MIN_MAP_SIZE, MAX_MAP_SIZE)};
 	setup_maze(&maze, &visited, map_scale);
+	write(STDOUT_FILENO, "Generating maze...\n", 19);
 	generate_maze(maze, visited, (t_scale){random_int(1, map_scale.x - 2), random_int(1, map_scale.x - 2)}, map_scale);
+	write(STDOUT_FILENO, "Maze generated\n", 15);
 	place_player_spawn(maze, map_scale);
+	write(STDOUT_FILENO, "Player spawn placed\n", 21);
 	remove_walls(maze, map_scale.y, map_scale.x);
+	write(STDOUT_FILENO, "Walls removed\n", 14);
 	add_rooms(maze, map_scale, random_int(MIN_ROOMS_AMOUNT, MAX_ROOMS_AMOUNT));
+	write(STDOUT_FILENO, "Rooms added\n", 12);
 	write_cub_file(maze, map_scale.y, map_scale.x, "generated_maze.cub");
+	write(STDOUT_FILENO, "Map saved to generated_maze.cub\n", 32);
 }

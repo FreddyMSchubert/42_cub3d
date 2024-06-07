@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_values.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:12:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/05 12:53:54 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/07 09:44:17 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	set_player_spawn(char dir, t_vec2 pos, t_tile_type ***map)
 	else
 		logger(LOGGER_WARNING, "Player spawn look dir is not valid dir");
 	player()->spawn_transform.pos = pos;
-	player()->transform.pos = pos;
+	player()->transform.pos = player()->spawn_transform.pos;
 	player()->transform.rot = player()->spawn_transform.rot;
 	(*map)[(int)pos.x][(int)pos.y] = FLOOR;
 }

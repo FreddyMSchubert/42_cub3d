@@ -1,5 +1,11 @@
 # Changelog
 
+### [0.10.17] - 07.06.2024 - Freddy
+- Fixed player often spawning in walls because player coords defined in parse.c/make_map passed to set_values.c/set_player_spawn were switched
+- made rng in mapmaker util use /dev/urandom instead or /dev/random
+- fixed floating point exception in mapmaker rng
+- mapmaker norminettifications, removal of fprintf statements
+
 ### [0.10.16] - 07.06.2024 - Freddy
 - Added mario.cub, a recreation of smb1-1 as cub format
 
