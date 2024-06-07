@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gc.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:18:59 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/05 18:49:49 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/07 14:33:53 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	gc_append_element(void *content)
 	t_list	*selected_node;
 	t_list	*garbage_col;
 
+	if (!content)
+		return (0);
 	garbage_col = *gc();
 	new_node = malloc(sizeof(t_list));
 	if (!new_node)
@@ -52,7 +54,7 @@ int	gc_append_element(void *content)
 	new_node->content = content;
 	new_node->next = NULL;
 	selected_node = garbage_col;
-	while (selected_node->next != NULL)
+	while (selected_node && selected_node->next && selected_node->content)
 	{
 		selected_node = selected_node->next;
 		if (selected_node->content == content)
