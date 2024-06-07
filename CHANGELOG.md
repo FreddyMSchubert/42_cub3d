@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.10.22] - 07.06.2024 - Freddy - `23-better-rendering`
+- Instead of manually editing the image data, we now use the provided mlx_put_pixel function, which does seem to fix some issues.
+
 ### [0.10.21] - 07.06.2024 - Freddy
 - Added Apple map
 

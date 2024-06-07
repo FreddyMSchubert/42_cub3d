@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:15:34 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/07 09:41:13 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/07 11:56:02 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,4 @@ void	do_wall_operations(void)
 	get_visible_walls(vis_walls, &vis_walls_count);
 	quick_sort_walls(vis_walls, 0, vis_walls_count - 1);
 	scale_walls(vis_walls, vis_walls_count);
-	t_wall_scale test = (t_wall_scale){10, 100, 50, 300, 'E'};
-	draw_wall(test, game()->game_scene);
 }

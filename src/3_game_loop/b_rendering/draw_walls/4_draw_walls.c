@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/07 10:37:33 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/07 11:54:35 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 static void	set_pixel_color(mlx_image_t *img, int x, int y, int col)
 {
 	if (x >= 0 && x < (int)(img->width) && y >= 0 && y < (int)(img->height))
-		memcpy(&(img->pixels[(y * img->width + x) * sizeof(int32_t)]), \
-						&col, sizeof(col));
+		mlx_put_pixel(img, x, y, col);
 }
 
 static int	interpolate(int start, int end, int step, int max_steps)
