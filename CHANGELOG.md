@@ -1,10 +1,14 @@
 # Changelog
 
-## [0.10.20] - 07.06.2024 - Jonas
+### [0.10.21] - 07.06.2024 - Freddy
+- Added Apple map
+
+### [0.10.20] - 07.06.2024 - Jonas
 - added amogus 🐔
 
 ### [0.10.19] - 07.06.2024 - Freddy
 - Added execute_cub3d.sh, which allows you to pick what maps you want to choose and whether to execute all or a random one. it also features a lot of emojis and colors, thus clearly epic.
+	- removed random map and random invalid map, now unnecessary
 - Made sort walls sort the walls in the right order, descending not ascending
 
 ### [0.10.18] - 07.06.2024 - Freddy
