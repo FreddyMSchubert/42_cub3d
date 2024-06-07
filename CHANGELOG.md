@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.10.19] - 07.06.2024 - Jonas
+- added amogus 🐔
+
 ### [0.10.18] - 07.06.2024 - Freddy
 - Small fix to wall drawing, now if left x coord is larger then right they get switched before starting drawing execution
 - renamed png_to_map to xpm_to_map, which is actually correct
