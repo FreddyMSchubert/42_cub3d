@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:38:30 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/06 11:22:29 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/10 11:05:37 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static bool	parse_file_data(char **data, t_input_data **input_data)
 		logger(LOGGER_ERROR, "Could not parse attributes!");
 		return (false);
 	}
-	while (!regex(data[i], MAP_TILES))
+	while (data[i] && !regex(data[i], MAP_TILES))
 		i++;
 	if (!parse_map(data, input_data, &i))
 	{
@@ -85,30 +85,30 @@ static bool	parse_file_data(char **data, t_input_data **input_data)
 
 static bool	basic_validate(t_input_data **in)
 {
-	t_input_data	*data;
+	bool	invalid;
 
+	invalid = false;
 	if (!*in)
-		return (false);
-	data = *in;
-	if (data->ceiling_color.r == -1 || data->ceiling_color.g == -1
-		|| data->ceiling_color.b == -1 || data->ceiling_color.a == -1)
+		return (invalid);
+	if ((*in)->ceiling_color.r == -1 || (*in)->ceiling_color.g == -1
+		|| (*in)->ceiling_color.b == -1 || (*in)->ceiling_color.a == -1)
 	{
 		logger(LOGGER_ERROR, "Ceiling color not set!");
-		return (false);
+		invalid = true;
 	}
-	if (data->floor_color.r == -1 || data->floor_color.g == -1
-		|| data->floor_color.b == -1|| data->floor_color.a == -1)
+	if ((*in)->floor_color.r == -1 || (*in)->floor_color.g == -1
+		|| (*in)->floor_color.b == -1 || (*in)->floor_color.a == -1)
 	{
 		logger(LOGGER_ERROR, "Floor color not set!");
-		return (false);
+		invalid = true;
 	}
-	if (!data->ea_texture_location || !data->no_texture_location || \
-					!data->so_texture_location || !data->we_texture_location)
+	if (!(*in)->ea_texture_location || !(*in)->no_texture_location
+		|| !(*in)->so_texture_location || !(*in)->we_texture_location)
 	{
 		logger(LOGGER_ERROR, "Texture location not set!");
-		return (false);
+		invalid = true;
 	}
-	return (true);
+	return (!invalid);
 }
 
 static void	clean_struct_input(t_input_data *input_data)
@@ -146,6 +146,9 @@ void	get_map_contents(char *filepath)
 		gc_exit_error();
 	}
 	if (!basic_validate(&input_data))
+	{
+		logger(LOGGER_ERROR, "Basic validation failed!");
 		gc_exit_error();
+	}
 	game()->input_data = input_data;
 }

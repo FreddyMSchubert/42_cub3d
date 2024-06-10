@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_values.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:12:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/07 09:44:17 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/10 10:59:55 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int		split_len(char **split);
 bool	free_split(char	**split, bool ret);
+bool	regex(char *line, char *reg);
 
 void	set_player_spawn(char dir, t_vec2 pos, t_tile_type ***map)
 {
@@ -61,11 +62,11 @@ bool	set_value(char	**value, char	*set)
 	return (true);
 }
 
-bool	set_color(t_color *color, char *color_val)
+bool	set_color(t_color *color, char *color_val) // TODO: check if all is a number
 {
 	char	**cols;
 
-	if (!color_val)
+	if (!color_val || !regex(color_val, "0123456789,"))
 		return (false);
 	cols = ft_split(color_val, ',');
 	if (!cols)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_helper.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:27:08 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/05 11:54:15 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/10 10:39:01 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,28 +46,28 @@ void	clean_struct_input(t_input_data *input_data)
 
 bool	basic_validate(t_input_data **in)
 {
-	t_input_data	*data;
+	bool	invalid;
 
-	if (!in)
+	invalid = false;
+	if (!in || !(*in))
 		return (false);
-	data = *in;
-	if (data->ceiling_color.r == -1 || data->ceiling_color.g == -1
-		|| data->ceiling_color.b == -1)
+	if ((*in)->ceiling_color.r == -1 || (*in)->ceiling_color.g == -1
+		|| (*in)->ceiling_color.b == -1)
 	{
 		logger(LOGGER_ERROR, "Ceiling color not set!");
-		return (false);
+		invalid = true;
 	}
-	if (data->floor_color.r == -1 || data->floor_color.g == -1
-		|| data->floor_color.b == -1)
+	if ((*in)->floor_color.r == -1 || (*in)->floor_color.g == -1
+		|| (*in)->floor_color.b == -1)
 	{
 		logger(LOGGER_ERROR, "Floor color not set!");
-		return (false);
+		invalid = true;
 	}
-	if (!data->ea_texture_location || !data->no_texture_location
-		|| !data->so_texture_location || !data->we_texture_location)
+	if (!(*in)->ea_texture_location || !(*in)->no_texture_location
+		|| !(*in)->so_texture_location || !(*in)->we_texture_location)
 	{
 		logger(LOGGER_ERROR, "Texture location not set!");
-		return (false);
+		invalid = true;
 	}
-	return (true);
+	return (!invalid);
 }

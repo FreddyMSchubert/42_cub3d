@@ -6,7 +6,7 @@
 		"type": "cppdbg",
 		"request": "launch",
 		"program": "${workspaceFolder}/cub3d",
-		"args": ["./assets/maps/roundabout.cub"],
+		"args": ["./assets/invalid_maps/map_missing.cub"],
 		"stopAtEntry": false,
 		"cwd": "${workspaceFolder}",
 		"environment": [],
