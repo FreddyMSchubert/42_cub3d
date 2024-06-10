@@ -12,6 +12,16 @@ echo -e "${YELLOW}Select map type: ${CYAN}[V]alid${YELLOW} or ${CYAN}[I]nvalid${
 read -n 1 MAP_TYPE
 echo
 
+if [ ! -f ./cub3d ]; then
+    echo -e "${RED}cub3d executable not found. Running make...${NC}"
+    make
+    if [ $? -ne 0 ]; then
+        echo -e "${RED}Error compiling cub3d. Exiting...🚫${NC}"
+        exit 1
+    fi
+    echo -e "${GREEN}cub3d compiled successfully. ✔️${NC}"
+fi
+
 # Default to valid if no input or if input is not 'I'
 if [[ -z "$MAP_TYPE" || "$MAP_TYPE" = "v" || "$MAP_TYPE" = "V" ]]; then
     MAP_DIR="./assets/maps"
@@ -37,13 +47,13 @@ if [[ -z "$EXECUTION_MODE" || "$EXECUTION_MODE" = "r" || "$EXECUTION_MODE" = "R"
         echo -e "${RED}No .cub files found in $MAP_DIR.🚫${NC}"
         exit 1
     fi
-    echo -e "${GREEN}Running cub3d with random map: ${MAPFILE} 🎲${NC}"
+    echo -e "\n-------------------\n\n${GREEN}Running cub3d with random map: ${MAPFILE} 🎲${NC}"
     ./cub3d "$MAPFILE"
 elif [[ "$EXECUTION_MODE" = "a" || "$EXECUTION_MODE" = "A" ]]; then
     # Loop through each .cub file in the directory
     for MAPFILE in "$MAP_DIR"/*.cub; do
         if [ -f "$MAPFILE" ]; then
-            echo -e "${GREEN}Running cub3d with map: $MAPFILE 🗺️${NC}"
+            echo -e "\n-------------------\n\n${GREEN}Running cub3d with map: $MAPFILE 🗺️${NC}"
             ./cub3d "$MAPFILE"
             wait $!
             echo -e "${GREEN}Finished running with map: $MAPFILE ✔️${NC}"
@@ -59,8 +69,8 @@ else
         echo -e "${RED}No .cub files found in $MAP_DIR.🚫${NC}"
         exit 1
     fi
-    echo -e "${GREEN}Running cub3d with random map: $MAPFILE 🎲${NC}"
+    echo -e "\n-------------------\n\n${GREEN}Running cub3d with random map: $MAPFILE 🎲${NC}"
     ./cub3d "$MAPFILE"
 fi
 
-echo -e "${GREEN}Script execution complete. ✨${NC}"
+echo -e "${GREEN}\nScript execution complete. ✨\n${NC}"
