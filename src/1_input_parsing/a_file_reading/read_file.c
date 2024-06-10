@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:38:30 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/10 11:05:37 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/10 11:23:46 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,14 @@ static bool	parse_file_data(char **data, t_input_data **input_data)
 	int	i;
 
 	i = 0;
-	if (!parse_attributes(data, input_data, &i))
+	if (!parse_attributes(data, input_data, &i) || !data)
 	{
 		logger(LOGGER_ERROR, "Could not parse attributes!");
 		return (false);
 	}
-	while (data[i] && !regex(data[i], MAP_TILES))
+	while (i > -1 && (data && data[i] && !(regex(data[i], MAP_TILES))))
 		i++;
-	if (!parse_map(data, input_data, &i))
+	if (i == -1 || !parse_map(data, input_data, &i) || !data)
 	{
 		logger(LOGGER_ERROR, "Could not parse playing field!");
 		return (false);
