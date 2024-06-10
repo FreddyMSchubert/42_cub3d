@@ -43,6 +43,8 @@ MAP_COUNT=0
 MAP_SUCCESS=0
 MAP_FAILURE=0
 
+MAPS_FAILED=""
+
 # Default to random if no input or if input is not 'A'
 if [[ -z "$EXECUTION_MODE" || "$EXECUTION_MODE" = "r" || "$EXECUTION_MODE" = "R" ]]; then
     # Find a random .cub file from the chosen directory
@@ -65,6 +67,7 @@ elif [[ "$EXECUTION_MODE" = "a" || "$EXECUTION_MODE" = "A" ]]; then
                 if [ $EXIT_CODE -eq 0 ]; then
                     echo -e "${RED}FAILURE: Finished running with map: $MAPFILE ❌${NC}"
                     MAP_FAILURE=$((MAP_FAILURE + 1))
+                    MAPS_FAILED+="$MAPFILE\n"
                 else
                     echo -e "${GREEN}SUCCESS: Error running with map: $MAPFILE ✔️${NC}"
                     MAP_SUCCESS=$((MAP_SUCCESS + 1))
@@ -77,6 +80,7 @@ elif [[ "$EXECUTION_MODE" = "a" || "$EXECUTION_MODE" = "A" ]]; then
                 else
                     echo -e "${RED}FAILURE: Error running with map: $MAPFILE ❌${NC}"
                     MAP_FAILURE=$((MAP_FAILURE + 1))
+                    MAPS_FAILED+="$MAPFILE\n"
                 fi
             fi
             MAP_COUNT=$((MAP_COUNT + 1))
@@ -96,10 +100,12 @@ else
     ./cub3d "$MAPFILE"
 fi
 
-echo -e "${GREEN}\nScript execution complete. ✨\n${NC}"
-
 if [ $MAP_COUNT -gt 1 ] && ([ "$MAP_TYPE" = "i" ] || [ "$MAP_TYPE" = "I" ]); then
-    echo -e "${GREEN}Maps executed: $MAP_COUNT\nMaps passed: $MAP_SUCCESS\n${RED}Maps failed: $MAP_FAILURE${NC}\n"
+    echo -e "\n\n${GREEN}Maps executed: $MAP_COUNT\nMaps passed: $MAP_SUCCESS\n${RED}Maps failed: $MAP_FAILURE${NC}\n"
 else
-    echo -e "${CYAN}Maps executed: $MAP_COUNT\n${GREEN}Maps passed: $MAP_FAILURE\n${RED}Maps failed: $MAP_SUCCESS${NC}\n"
+    echo -e "\n\n${CYAN}Maps executed: $MAP_COUNT\n${GREEN}Maps passed: $MAP_FAILURE\n${RED}Maps failed: $MAP_SUCCESS${NC}\n"
 fi
+
+echo -e "${YELLOW}Maps failed:${NC}\n$MAPS_FAILED"
+
+echo -e "${GREEN}\nScript execution complete. ✨\n${NC}"
