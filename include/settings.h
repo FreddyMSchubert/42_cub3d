@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/10 12:01:47 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/10 15:45:06 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define VERBOSE true
 # define DEBUG true
 # define LOG_WALLS false
+# define TERMINAL_MAP true
 
 // Player
 # define PLAYER_MAX_HEALTH 100
