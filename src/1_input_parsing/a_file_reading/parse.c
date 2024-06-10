@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 09:39:02 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/10 10:50:09 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/10 12:08:55 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ bool	regex(char *line, char *reg);
 bool	char_is_in(char c, char *seq);
 int		split_len(char **split);
 bool	free_split(char	**split, bool ret);
-void	set_player_spawn(char dir, t_vec2 pos, t_tile_type ***map);
+bool	set_player_spawn(char dir, t_vec2 pos, t_tile_type ***map);
 bool	set_color(t_color *color, char *color_val);
 bool	set_value(char	**value, char	*set);
 
@@ -96,8 +96,8 @@ t_tile_type	***make_map(int map_len, int *i, char **data)
 				*(map[k][j]) = (t_tile_type)(data[*i][j] - '0');
 			else if (data[*i][j] == ' ')
 				*(map[k][j]) = VOID;
-			else
-				set_player_spawn(data[*i][j], (t_vec2){j, k}, map);
+			else if (!set_player_spawn(data[*i][j], (t_vec2){j, k}, map))
+				return (NULL);
 		}
 	}
 	return (map);

@@ -6,7 +6,7 @@
 		"type": "cppdbg",
 		"request": "launch",
 		"program": "${workspaceFolder}/cub3d",
-		"args": ["./assets/invalid_maps/empty.cub"],
+		"args": ["./assets/invalid_maps/multiple_players.cub"],
 		"stopAtEntry": false,
 		"cwd": "${workspaceFolder}",
 		"environment": [],

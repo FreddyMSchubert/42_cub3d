@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:27:08 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/10 11:33:56 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/10 11:53:43 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	clean_struct_input(t_input_data *input_data)
 	input_data->map = NULL;
 }
 
-static bool	check_player(bool *invalid)
+bool	check_player(bool *invalid)
 {
 	if (*invalid)
 		return (false);
@@ -61,32 +61,4 @@ static bool	check_player(bool *invalid)
 		logger(LOGGER_ERROR, "Player spawn position not set!");
 	}
 	return (!*invalid);
-}
-
-bool	basic_validate(t_input_data **in)
-{
-	bool	invalid;
-
-	invalid = false;
-	if (!in || !(*in))
-		return (false);
-	if ((*in)->ceiling_color.r == -1 || (*in)->ceiling_color.g == -1
-		|| (*in)->ceiling_color.b == -1)
-	{
-		logger(LOGGER_ERROR, "Ceiling color not set!");
-		invalid = true;
-	}
-	if ((*in)->floor_color.r == -1 || (*in)->floor_color.g == -1
-		|| (*in)->floor_color.b == -1)
-	{
-		logger(LOGGER_ERROR, "Floor color not set!");
-		invalid = true;
-	}
-	if (!(*in)->ea_texture_location || !(*in)->no_texture_location
-		|| !(*in)->so_texture_location || !(*in)->we_texture_location)
-	{
-		logger(LOGGER_ERROR, "Texture location not set!");
-		invalid = true;
-	}
-	return (check_player(&invalid));
 }

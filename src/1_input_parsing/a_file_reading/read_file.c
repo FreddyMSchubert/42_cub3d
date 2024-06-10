@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:38:30 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/10 11:23:46 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/10 11:53:59 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ bool	parse_attributes(char	**data, t_input_data **input_data, int *i);
 bool	parse_map(char **data, t_input_data **input_data, int *i);
 bool	regex(char *line, char *reg);
 int		get_file_length(char *filename);
+bool	check_player(bool *invalid);
 
 static void	read_file_loop(char ***data, int file)
 {
@@ -83,21 +84,21 @@ static bool	parse_file_data(char **data, t_input_data **input_data)
 	return (true);
 }
 
-static bool	basic_validate(t_input_data **in)
+bool	basic_validate(t_input_data **in)
 {
 	bool	invalid;
 
 	invalid = false;
-	if (!*in)
-		return (invalid);
+	if (!in || !(*in))
+		return (false);
 	if ((*in)->ceiling_color.r == -1 || (*in)->ceiling_color.g == -1
-		|| (*in)->ceiling_color.b == -1 || (*in)->ceiling_color.a == -1)
+		|| (*in)->ceiling_color.b == -1)
 	{
 		logger(LOGGER_ERROR, "Ceiling color not set!");
 		invalid = true;
 	}
 	if ((*in)->floor_color.r == -1 || (*in)->floor_color.g == -1
-		|| (*in)->floor_color.b == -1 || (*in)->floor_color.a == -1)
+		|| (*in)->floor_color.b == -1)
 	{
 		logger(LOGGER_ERROR, "Floor color not set!");
 		invalid = true;
@@ -108,7 +109,7 @@ static bool	basic_validate(t_input_data **in)
 		logger(LOGGER_ERROR, "Texture location not set!");
 		invalid = true;
 	}
-	return (!invalid);
+	return (check_player(&invalid));
 }
 
 static void	clean_struct_input(t_input_data *input_data)

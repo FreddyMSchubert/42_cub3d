@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:12:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/10 10:59:55 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/10 12:18:49 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,15 @@ int		split_len(char **split);
 bool	free_split(char	**split, bool ret);
 bool	regex(char *line, char *reg);
 
-void	set_player_spawn(char dir, t_vec2 pos, t_tile_type ***map)
+bool	set_player_spawn(char dir, t_vec2 pos, t_tile_type ***map)
 {
+	static int	player_count = 0;
+
+	if (++player_count > MAX_PLAYER_COUNT)
+	{
+		logger(LOGGER_WARNING, "Maximum player count already reached!");
+		return (false);
+	}
 	if (dir == 'N')
 		player()->spawn_transform.rot = (t_vec2){-1, 0};
 	else if (dir == 'S')
@@ -27,11 +34,14 @@ void	set_player_spawn(char dir, t_vec2 pos, t_tile_type ***map)
 	else if (dir == 'W')
 		player()->spawn_transform.rot = (t_vec2){0, -1};
 	else
+	{
 		logger(LOGGER_WARNING, "Player spawn look dir is not valid dir");
+		return (false);
+	}
 	player()->spawn_transform.pos = pos;
-	player()->transform.pos = player()->spawn_transform.pos;
-	player()->transform.rot = player()->spawn_transform.rot;
+	player()->transform = player()->spawn_transform;
 	(*map)[(int)pos.x][(int)pos.y] = FLOOR;
+	return (true);
 }
 
 bool	set_value(char	**value, char	*set)
