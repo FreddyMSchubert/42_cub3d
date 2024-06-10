@@ -39,6 +39,10 @@ echo -e "${YELLOW}Run ${CYAN}[R]andom${YELLOW} map or ${CYAN}[A]ll${YELLOW} maps
 read -n 1 EXECUTION_MODE
 echo
 
+MAP_COUNT=0
+MAP_SUCCESS=0
+MAP_FAILURE=0
+
 # Default to random if no input or if input is not 'A'
 if [[ -z "$EXECUTION_MODE" || "$EXECUTION_MODE" = "r" || "$EXECUTION_MODE" = "R" ]]; then
     # Find a random .cub file from the chosen directory
@@ -55,8 +59,27 @@ elif [[ "$EXECUTION_MODE" = "a" || "$EXECUTION_MODE" = "A" ]]; then
         if [ -f "$MAPFILE" ]; then
             echo -e "\n-------------------\n\n${GREEN}Running cub3d with map: $MAPFILE 🗺️${NC}"
             ./cub3d "$MAPFILE"
+            EXIT_CODE=$?
             wait $!
-            echo -e "${GREEN}Finished running with map: $MAPFILE ✔️${NC}"
+            if ([ "$MAP_TYPE" = "i" ] || [ "$MAP_TYPE" = "I" ]); then
+                if [ $EXIT_CODE -eq 0 ]; then
+                    echo -e "${RED}FAILURE: Finished running with map: $MAPFILE ❌${NC}"
+                    MAP_FAILURE=$((MAP_FAILURE + 1))
+                else
+                    echo -e "${GREEN}SUCCESS: Error running with map: $MAPFILE ✔️${NC}"
+                    MAP_SUCCESS=$((MAP_SUCCESS + 1))
+                fi
+            else
+                if [ $EXIT_CODE -eq 0 ]; then
+                    echo -e "${GREEN}SUCCESS: Finished running with map: $MAPFILE ✔️${NC}"
+                    MAP_SUCCESS=$((MAP_SUCCESS + 1))
+                    
+                else
+                    echo -e "${RED}FAILURE: Error running with map: $MAPFILE ❌${NC}"
+                    MAP_FAILURE=$((MAP_FAILURE + 1))
+                fi
+            fi
+            MAP_COUNT=$((MAP_COUNT + 1))
         else
             echo -e "${RED}No .cub files found in $MAP_DIR.🚫${NC}"
             break
@@ -74,3 +97,9 @@ else
 fi
 
 echo -e "${GREEN}\nScript execution complete. ✨\n${NC}"
+
+if [ $MAP_COUNT -gt 1 ] && ([ "$MAP_TYPE" = "i" ] || [ "$MAP_TYPE" = "I" ]); then
+    echo -e "${GREEN}Maps executed: $MAP_COUNT\nMaps passed: $MAP_SUCCESS\n${RED}Maps failed: $MAP_FAILURE${NC}\n"
+else
+    echo -e "${CYAN}Maps executed: $MAP_COUNT\n${GREEN}Maps passed: $MAP_FAILURE\n${RED}Maps failed: $MAP_SUCCESS${NC}\n"
+fi
