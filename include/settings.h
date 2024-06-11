@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/11 14:04:54 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/11 16:09:34 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,12 @@
 # define TERMINAL_MAP true
 
 // Player
-# define PLAYER_MAX_HEALTH 100
-# define PLAYER_MAX_ARMOR 100
-# define PLAYER_MAX_AMMO 100
 
 # define MAX_PLAYER_COUNT 1
+
+// Quality of Life
+
+# define MOUSE_SENSITIVITY 0.5
 
 // Map Making
 
@@ -57,5 +58,6 @@
 # define FOV_DEG 90
 # define RAYCASTS_PER_DEG 1
 # define RENDER_DISTANCE 25
+# define FPS 30
 
 #endif

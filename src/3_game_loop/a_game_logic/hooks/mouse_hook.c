@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scroll_hook.c                                      :+:      :+:    :+:   */
+/*   mouse_hook.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/29 20:41:54 by freddy            #+#    #+#             */
-/*   Updated: 2024/05/29 20:49:37 by freddy           ###   ########.fr       */
+/*   Created: 2024/06/11 15:50:17 by freddy            #+#    #+#             */
+/*   Updated: 2024/06/11 15:54:12 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../include/cub3d.h"
 
-void scroll_hook(double xdelta, double ydelta, void* param)
+void	handle_mouse_mv(void)
 {
-	(void)param;
-	(void)ydelta;
-	turn(xdelta);
+	int32_t	current_mouse_x;
+	int32_t	current_mouse_y;
+
+	mlx_get_mouse_pos(game()->mlx, &current_mouse_x, &current_mouse_y);
+	turn((current_mouse_x - game()->prev_mouse_x) * MOUSE_SENSITIVITY);
+	game()->prev_mouse_x = current_mouse_x;
 }

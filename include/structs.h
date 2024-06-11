@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/06 16:42:10 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/11 16:02:32 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ typedef struct s_persistent_data
 	mlx_t			*mlx;
 	mlx_image_t		*background;
 	mlx_image_t		*game_scene;
+	int32_t			prev_mouse_x;
+	double			prev_time;
 }	t_persistent_data;
 
 // ----- CURRENTLY UNUSED

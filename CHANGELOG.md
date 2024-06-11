@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.11.6] - 11.06.2024 - Freddy
+- removed scroll to pan view functionality, added mouse x position tracking
+- added fps functionality to limit frames & warn if a frame was skipped
+
 ### [0.11.5] - 11.06.2024 - Jonas
 - fixed player rotation not working naturally when pressing arrow keys
 - fixed terminal map showing wrong player dir
