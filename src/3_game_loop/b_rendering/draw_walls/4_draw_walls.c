@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/11 14:17:18 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/11 15:06:01 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,11 @@ void	draw_wall(t_wall_scale wall, mlx_image_t *img)
 	{
 		current_height = interpolate(wall.height_left, wall.height_right, x, wall.x_right - wall.x_left);
 		y = (img->height / 2) - (current_height / 2);
+		if (y < 0)
+			y = 0;
 		end_y = (img->height / 2) + (current_height / 2);
+		if (end_y > (int)(img->height))
+			end_y = img->height;
 		while (++y <= end_y)
 			set_pixel_color(img, wall.x_left + x, y, get_color(wall.direction));
 	}

@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.11.3] - 11.06.2024 - Freddy - `23-better-rendering`
+- switched walls in scale walls properly
+
 ### [0.11.2] - 11.06.2024 - Freddy - `23-better-rendering`
 - various fixes
 - ensured proper wall sorting order

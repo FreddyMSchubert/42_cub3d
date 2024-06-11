@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 10:53:27 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/11 14:33:29 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/11 15:11:40 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,14 +80,30 @@ static t_wall_scale	get_wall_dimensions(t_transform wall)
 	right_angle_deg = calculate_deviation_angle(player()->transform, (t_vec2){wall.pos.x + wall.rot.x, wall.pos.y + wall.rot.y});
 	dimensions.x_left = angle_to_screen_x(left_angle_deg);
 	dimensions.x_right = angle_to_screen_x(right_angle_deg);
-	left_distance = pos_distance(player()->transform.pos, wall.pos); // TODO: these two gotta be switched if player is standing on other side
+	left_distance = pos_distance(player()->transform.pos, wall.pos);
 	if (left_distance <= 0)
 		left_distance = 0.1;
 	right_distance = pos_distance(player()->transform.pos, (t_vec2){wall.pos.x + wall.rot.x, wall.pos.y + wall.rot.y});
 	if (right_distance <= 0)
 		right_distance = 0.1;
+	if (wall.rot.x != 0.0 && player()->transform.pos.y < wall.pos.y)
+	{
+		double tmp = left_distance;
+		left_distance = right_distance;
+		right_distance = tmp;
+	}
+	else if (wall.rot.y != 0.0 && player()->transform.pos.x > wall.pos.x)
+	{
+		double tmp = left_distance;
+		left_distance = right_distance;
+		right_distance = tmp;
+	}
 	dimensions.height_left = angle_to_wall_height(left_angle_deg, left_distance);
 	dimensions.height_right = angle_to_wall_height(right_angle_deg, right_distance);
+	if (dimensions.height_left < 0)
+		dimensions.height_left = 0;
+	if (dimensions.height_right < 0)
+		dimensions.height_right = 0;
 	dimensions.direction = get_wall_face(wall);
 	printf("Left Angle: %f, Right Angle: %f, Left Distance: %f, Right Distance: %f\n", left_angle_deg, right_angle_deg, left_distance, right_distance);
 	printf("Wall scale: %d - %d / %d - %d / %c\n", dimensions.x_left, dimensions.x_right, dimensions.height_left, dimensions.height_right, dimensions.direction);
