@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 09:39:02 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/07 09:44:50 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/10 12:08:55 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ bool	regex(char *line, char *reg);
 bool	char_is_in(char c, char *seq);
 int		split_len(char **split);
 bool	free_split(char	**split, bool ret);
-void	set_player_spawn(char dir, t_vec2 pos, t_tile_type ***map);
+bool	set_player_spawn(char dir, t_vec2 pos, t_tile_type ***map);
 bool	set_color(t_color *color, char *color_val);
 bool	set_value(char	**value, char	*set);
 
@@ -56,7 +56,7 @@ bool	parse_attributes(char **data, t_input_data **input_data, int *i)
 		if (data[*i][0] == 0)
 			continue ;
 		split = ft_split(data[*i], ' ');
-		if (!split || split_len(split) != 2 )
+		if (!split || split_len(split) != 2) // TODO: when we have F or C color not only seperated by comma but also by space it stops here
 			return (free_split(split, true));
 		if (!set_values(split, input_data, data, i))
 			return (free_split(split, false));
@@ -84,7 +84,7 @@ t_tile_type	***make_map(int map_len, int *i, char **data)
 	map = gc_malloc((map_len + 1) * sizeof(t_tile_type **));
 	map[map_len] = NULL;
 	k = -1;
-	while (++(*i) && data[*i] && regex(data[*i], MAP_TILES) && map_len--) //FIXME: in here something might not go as it should because after this i cant access the map[1] and further
+	while (++(*i) && data[*i] && regex(data[*i], MAP_TILES) && map_len--)
 	{
 		map[++k] = gc_malloc(ft_strlen(data[*i]) * sizeof(t_tile_type *) + 1);
 		map[k][ft_strlen(data[*i])] = NULL;
@@ -96,8 +96,8 @@ t_tile_type	***make_map(int map_len, int *i, char **data)
 				*(map[k][j]) = (t_tile_type)(data[*i][j] - '0');
 			else if (data[*i][j] == ' ')
 				*(map[k][j]) = VOID;
-			else
-				set_player_spawn(data[*i][j], (t_vec2){j, k}, map);
+			else if (!set_player_spawn(data[*i][j], (t_vec2){j, k}, map))
+				return (NULL);
 		}
 	}
 	return (map);

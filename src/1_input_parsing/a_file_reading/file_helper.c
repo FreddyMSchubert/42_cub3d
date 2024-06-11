@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_helper.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:27:08 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/05 11:54:15 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/10 11:53:43 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,30 +44,21 @@ void	clean_struct_input(t_input_data *input_data)
 	input_data->map = NULL;
 }
 
-bool	basic_validate(t_input_data **in)
+bool	check_player(bool *invalid)
 {
-	t_input_data	*data;
-
-	if (!in)
+	if (*invalid)
 		return (false);
-	data = *in;
-	if (data->ceiling_color.r == -1 || data->ceiling_color.g == -1
-		|| data->ceiling_color.b == -1)
+	if (player()->spawn_transform.rot.x == -1
+		&& player()->spawn_transform.rot.y == -1)
 	{
-		logger(LOGGER_ERROR, "Ceiling color not set!");
-		return (false);
+		*invalid = true;
+		logger(LOGGER_ERROR, "Player spawn look dir not set!");
 	}
-	if (data->floor_color.r == -1 || data->floor_color.g == -1
-		|| data->floor_color.b == -1)
+	if (player()->spawn_transform.pos.x == -1
+		&& player()->spawn_transform.pos.y == -1)
 	{
-		logger(LOGGER_ERROR, "Floor color not set!");
-		return (false);
+		*invalid = true;
+		logger(LOGGER_ERROR, "Player spawn position not set!");
 	}
-	if (!data->ea_texture_location || !data->no_texture_location
-		|| !data->so_texture_location || !data->we_texture_location)
-	{
-		logger(LOGGER_ERROR, "Texture location not set!");
-		return (false);
-	}
-	return (true);
+	return (!*invalid);
 }

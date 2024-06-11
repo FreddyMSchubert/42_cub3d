@@ -11,10 +11,10 @@ GNL		:= ./lib/get_next_line
 UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S),Linux)
-    GLFW_PATH := $(shell pkg-config --variable=prefix glfw3)
+	GLFW_PATH := $(shell pkg-config --variable=prefix glfw3)
 endif
 ifeq ($(UNAME_S),Darwin)
-    GLFW_PATH := $(shell brew --prefix glfw)
+	GLFW_PATH := $(shell brew --prefix glfw)
 endif
 
 HEADERS := -I ./include -I $(LIBMLX)/include -I $(LIBFT)/include -I $(GNL)/include -I $(GLFW_PATH)/include
@@ -64,7 +64,17 @@ setup:
 		echo "Submodules are initialized. 🦦"; \
 	fi
 
-debug: CFLAGS += -fsanitize=address -g -O0
+
+# ifeq ($(UNAME_S),Linux)
+# 	debug: CFLAGS += -g -O0
+# 	debug: fclean all
+# endif
+# ifeq ($(UNAME_S),Darwin)
+# 	debug: CFLAGS += -fsanitize=address -g -O0
+# 	debug: fclean all
+# endif
+
+debug: CFLAGS += -g -O0
 debug: fclean all
 
 random: all

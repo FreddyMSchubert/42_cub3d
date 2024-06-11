@@ -21,6 +21,14 @@
 # define VERBOSE true
 # define DEBUG true
 # define LOG_WALLS false
+# define TERMINAL_MAP true
+
+// Player
+# define PLAYER_MAX_HEALTH 100
+# define PLAYER_MAX_ARMOR 100
+# define PLAYER_MAX_AMMO 100
+
+# define MAX_PLAYER_COUNT 1
 
 // Map Making
 
