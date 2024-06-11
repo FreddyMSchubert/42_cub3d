@@ -40,7 +40,7 @@ bool	set_player_spawn(char dir, t_vec2 pos, t_tile_type ***map)
 	}
 	player()->spawn_transform.pos = pos;
 	player()->transform = player()->spawn_transform;
-	(*map)[(int)pos.x][(int)pos.y] = FLOOR;
+	*(map[(int)pos.y][(int)pos.x]) = FLOOR;
 	return (true);
 }
 
