@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   3_scale_walls.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 10:53:27 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/11 15:11:40 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/11 15:25:57 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,8 @@ static t_wall_scale	get_wall_dimensions(t_transform wall)
 	if (dimensions.height_right < 0)
 		dimensions.height_right = 0;
 	dimensions.direction = get_wall_face(wall);
-	printf("Left Angle: %f, Right Angle: %f, Left Distance: %f, Right Distance: %f\n", left_angle_deg, right_angle_deg, left_distance, right_distance);
-	printf("Wall scale: %d - %d / %d - %d / %c\n", dimensions.x_left, dimensions.x_right, dimensions.height_left, dimensions.height_right, dimensions.direction);
+	// printf("Left Angle: %f, Right Angle: %f, Left Distance: %f, Right Distance: %f\n", left_angle_deg, right_angle_deg, left_distance, right_distance);
+	// printf("Wall scale: %d - %d / %d - %d / %c\n", dimensions.x_left, dimensions.x_right, dimensions.height_left, dimensions.height_right, dimensions.direction);
 	return (dimensions);
 }
 

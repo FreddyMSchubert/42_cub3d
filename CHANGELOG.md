@@ -1,9 +1,13 @@
 # Changelog
 
-### [0.11.3] - 11.06.2024 - Freddy - `23-better-rendering`
+### [0.11.5] - 11.06.2024 - Jonas
+- fixed player rotation not working naturally when pressing arrow keys
+- fixed terminal map showing wrong player dir
+
+### [0.11.3] - 11.06.2024 - Freddy
 - switched walls in scale walls properly
 
-### [0.11.2] - 11.06.2024 - Freddy - `23-better-rendering`
+### [0.11.2] - 11.06.2024 - Freddy
 - various fixes
 - ensured proper wall sorting order
 

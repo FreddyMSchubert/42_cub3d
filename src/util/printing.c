@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:49:10 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/10 16:02:14 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/11 15:32:14 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	print_player(void)
 
 	rot = player()->transform.rot;
 	if (rot.x > 0 && rot.y >= 0)
-		printf("%s%c%s", ANSI_BACKGROUND_YELLOW, '^', ANSI_RESET);
-	else if (rot.x <= 0 && rot.y < 0)
 		printf("%s%c%s", ANSI_BACKGROUND_YELLOW, 'v', ANSI_RESET);
+	else if (rot.x <= 0 && rot.y < 0)
+		printf("%s%c%s", ANSI_BACKGROUND_YELLOW, '^', ANSI_RESET);
 	else if (rot.x < 0 && rot.y >= 0)
 		printf("%s%c%s", ANSI_BACKGROUND_YELLOW, '<', ANSI_RESET);
 	else if (rot.x >= 0 && rot.y < 0)

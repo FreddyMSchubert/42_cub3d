@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   4_draw_walls.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/11 15:06:01 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/11 15:23:20 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	draw_wall(t_wall_scale wall, mlx_image_t *img)
 	int	end_y;
 
 	x = -1;
+	if (wall.x_left < 0 && wall.x_right < 0)
+		return ;
 	while (++x <= wall.x_right - wall.x_left)
 	{
 		current_height = interpolate(wall.height_left, wall.height_right, x, wall.x_right - wall.x_left);
