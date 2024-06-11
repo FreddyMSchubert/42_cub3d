@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/07 10:37:33 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/11 12:13:44 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 static void	set_pixel_color(mlx_image_t *img, int x, int y, int col)
 {
 	if (x >= 0 && x < (int)(img->width) && y >= 0 && y < (int)(img->height))
-		memcpy(&(img->pixels[(y * img->width + x) * sizeof(int32_t)]), \
-						&col, sizeof(col));
+		mlx_put_pixel(img, x, y, col);
 }
 
 static int	interpolate(int start, int end, int step, int max_steps)
@@ -51,8 +50,6 @@ void	draw_wall(t_wall_scale wall, mlx_image_t *img)
 	int	end_y;
 	int	temp;
 
-	if (wall.height_left == 0 && wall.height_right == 0)
-		return ;
 	if (wall.x_left > wall.x_right)
 	{
 		temp = wall.x_left;
@@ -63,8 +60,8 @@ void	draw_wall(t_wall_scale wall, mlx_image_t *img)
 	while (++x <= wall.x_right - wall.x_left)
 	{
 		current_height = interpolate(wall.height_left, wall.height_right, x, wall.x_right - wall.x_left);
-		y = (img->height / 2) - current_height / 2;
-		end_y = (img->height / 2) + current_height / 2;
+		y = (img->height / 2) - (current_height / 2);
+		end_y = (img->height / 2) + (current_height / 2);
 		while (++y <= end_y)
 			set_pixel_color(img, wall.x_left + x, y, get_color(wall.direction));
 	}

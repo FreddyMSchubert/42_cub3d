@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   settings.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/10 15:45:06 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/07 18:31:36 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 
 // Map Making
 
-# define MIN_MAP_SIZE 7
-# define MAX_MAP_SIZE 20
+# define MIN_MAP_SIZE 5
+# define MAX_MAP_SIZE 10
 # define MIN_ROOMS_AMOUNT 0
 # define MAX_ROOMS_AMOUNT 0
 # define MIN_ROOM_SIZE 1

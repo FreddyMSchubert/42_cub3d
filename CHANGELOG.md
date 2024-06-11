@@ -1,5 +1,16 @@
 # Changelog
 
+### [0.11.1] - 11.06.2024 - Freddy - `23-better-rendering`
+- commented out raycasting, now just drawing all walls, that makes it work a lot better for some reason.
+- closing branch to keep working on master
+
+## [0.11.0] - 07.06.2024 - Freddy - `23-better-rendering`
+- updated angle_to_screen_x and angle_to_wall_height functions. it seems better, but still sort of - huh?
+- minor maps fixes
+
+### [0.10.23] - 07.06.2024 - Freddy - `23-better-rendering`
+- Instead of manually editing the image data, we now use the provided mlx_put_pixel function, which does seem to fix some issues.
+
 ### [0.10.22] - 07.06.2024 - Freddy & Jonas
 - Fixed gc seg fault.
 

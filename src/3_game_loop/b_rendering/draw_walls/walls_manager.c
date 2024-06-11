@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:15:34 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/07 09:41:13 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/11 12:29:29 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,18 @@
 // scale walls calls draw walls
 void	do_wall_operations(void)
 {
-	t_transform	vis_walls[RAYCASTS_PER_DEG * FOV_DEG];
 	int			vis_walls_count;
 
 	vis_walls_count = 0;
+	while (game()->input_data->walls[vis_walls_count])
+		vis_walls_count++;
+	t_transform	vis_walls[vis_walls_count];
+	int i = -1;
+	while (++i < vis_walls_count)
+	{
+		vis_walls[i] = *game()->input_data->walls[i];
+	}
 	get_visible_walls(vis_walls, &vis_walls_count);
 	quick_sort_walls(vis_walls, 0, vis_walls_count - 1);
 	scale_walls(vis_walls, vis_walls_count);
-	t_wall_scale test = (t_wall_scale){10, 100, 50, 300, 'E'};
-	draw_wall(test, game()->game_scene);
 }
