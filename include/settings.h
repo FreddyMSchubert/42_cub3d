@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   settings.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/07 10:20:09 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/10 15:45:06 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@
 # define VERBOSE true
 # define DEBUG true
 # define LOG_WALLS false
+# define TERMINAL_MAP true
+
+// Player
+# define PLAYER_MAX_HEALTH 100
+# define PLAYER_MAX_ARMOR 100
+# define PLAYER_MAX_AMMO 100
+
+# define MAX_PLAYER_COUNT 1
 
 // Map Making
 

@@ -5,8 +5,8 @@ SO ./assets/img/bamboo_door_bottom.png
 EA ./assets/img/bamboo_mosaic.png
 WE ./assets/img/bamboo_planks.png
 
-F 100, 70, 20
-C 27, 210, 227
+F 100,70,20
+C 27,210,227
 
                  11110000
                  100100000
