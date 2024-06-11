@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   4_draw_walls.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/11 12:13:44 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/11 14:17:18 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,7 @@ void	draw_wall(t_wall_scale wall, mlx_image_t *img)
 	int	y;
 	int	current_height;
 	int	end_y;
-	int	temp;
 
-	if (wall.x_left > wall.x_right)
-	{
-		temp = wall.x_left;
-		wall.x_left = wall.x_right;
-		wall.x_right = temp;
-	}
 	x = -1;
 	while (++x <= wall.x_right - wall.x_left)
 	{

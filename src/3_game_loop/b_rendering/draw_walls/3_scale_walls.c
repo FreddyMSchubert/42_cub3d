@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   3_scale_walls.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 10:53:27 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/11 12:12:08 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/11 14:33:29 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,14 @@ static int angle_to_wall_height(double angle_deg, double distance)
 	double angle_rad = degrees_to_radians(angle_deg);
 	double relative_angle = angle_rad - player_angle_rad;
 
-	// Correct for fisheye effect
 	if (relative_angle < 0)
 		relative_angle += 2 * M_PI;
 	if (relative_angle > 2 * M_PI)
 		relative_angle -= 2 * M_PI;
 
+	// Correct for fisheye effect
 	double corrected_distance = distance * cos(relative_angle);
+
 	double wall_height = (1.0 / corrected_distance) * ((game()->mlx->width / 2) / tan(degrees_to_radians(FOV_DEG) / 2));
 	return ((int)wall_height);
 }

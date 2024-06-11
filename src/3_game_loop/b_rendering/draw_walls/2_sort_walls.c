@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2_sort_walls.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:14:27 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/07 11:26:40 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/11 14:32:15 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,14 @@
 
 static double	get_wall_distance(t_transform wall)
 {
-	return (pos_distance(player()->transform.pos, wall.pos));
+	t_vec2	new_wall_pos;
+
+	new_wall_pos = wall.pos;
+	if (wall.rot.x != 0.0)
+		new_wall_pos.x += 0.5;
+	else
+		new_wall_pos.y += 0.5;
+	return (pos_distance(player()->transform.pos, new_wall_pos));
 }
 
 static void	swap(t_transform *a, t_transform *b)

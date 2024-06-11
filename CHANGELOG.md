@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.11.2] - 11.06.2024 - Freddy - `23-better-rendering`
+- various fixes
+- ensured proper wall sorting order
+
 ### [0.11.1] - 11.06.2024 - Freddy - `23-better-rendering`
 - commented out raycasting, now just drawing all walls, that makes it work a lot better for some reason.
 - closing branch to keep working on master

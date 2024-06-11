@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:50 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/07 10:41:27 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/11 14:24:45 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ static t_vec2	get_movement_from_key(mlx_key_data_t keydata)
 
 static void	player_move(mlx_key_data_t keydata)
 {
-	t_vec2		original_pos;
+	//t_vec2		original_pos;
 	t_vec2		movement;
 
-	original_pos = player()->transform.pos;
+	//original_pos = player()->transform.pos;
 	if (pos_distance((t_vec2){0, 0}, player()->transform.pos) != MOVEMENT_SPEED)
 		player()->transform.rot = scale_transform(player()->transform.rot, MOVEMENT_SPEED);
 	movement = get_movement_from_key(keydata);
@@ -55,8 +55,8 @@ static void	player_move(mlx_key_data_t keydata)
 			[(int)player()->transform.pos.y]\
 			[(int)player()->transform.pos.x] != FLOOR)
 	{
-		player()->transform.pos.x = original_pos.x;
-		player()->transform.pos.y = original_pos.y;
+		//player()->transform.pos.x = original_pos.x;
+		//player()->transform.pos.y = original_pos.y;
 	}
 }
 

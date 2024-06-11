@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/07 18:31:36 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/11 14:04:54 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 # define GREETING true
 # define VERBOSE true
-# define DEBUG true
+# define DEBUG false
 # define LOG_WALLS false
 # define TERMINAL_MAP true
 
@@ -48,7 +48,7 @@
 
 // Player Movement Stats
 
-# define MOVEMENT_SPEED 0.5
+# define MOVEMENT_SPEED 0.1
 # define TURN_SPEED_ARROWS_DEG 5
 # define TURN_SPEED_MOUSE_DEG 1
 
