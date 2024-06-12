@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 10:53:27 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/12 11:07:16 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/12 11:45:06 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,15 @@ static t_wall_scale	get_wall_dimensions(t_transform wall)
 	dimensions.direction = get_wall_face(wall);
 	// printf("Left Angle: %f, Right Angle: %f, Left Distance: %f, Right Distance: %f\n", left_angle_deg, right_angle_deg, left_distance, right_distance);
 	// printf("Wall scale: %d - %d / %d - %d / %c\n", dimensions.x_left, dimensions.x_right, dimensions.height_left, dimensions.height_right, dimensions.direction);
+	if (dimensions.x_left > dimensions.x_right)
+	{
+		int tmp = dimensions.x_left;
+		dimensions.x_left = dimensions.x_right;
+		dimensions.x_right = tmp;
+		double tmp2 = dimensions.height_left;
+		dimensions.height_left = dimensions.height_right;
+		dimensions.height_right = tmp2;
+	}
 	return (dimensions);
 }
 
@@ -116,14 +125,16 @@ void	scale_walls(t_transform *walls, int walls_amount)
 	int				i;
 
 	i = -1;
+	printf("Wall amount: %d\n", walls_amount);
 	while (++i < walls_amount)
 	{
 		curr_wall_scale = get_wall_dimensions(walls[i]);
-		printf("drawing wall: [%f|%f] - ", walls[i].pos.x, walls[i].pos.y);
+		printf("Drawing wall: [%d|%d] - ", (int)walls[i].pos.x, (int)walls[i].pos.y);
 		if (walls[i].rot.x != 0.0)
-			printf("Horizontal\n");
+			printf("Horizontal - ");
 		else
-			printf("Vertical\n");
+			printf("Vertical   - ");
+		printf("X: %d - %d, Height: %d - %d - ", curr_wall_scale.x_left, curr_wall_scale.x_right, curr_wall_scale.height_left, curr_wall_scale.height_right);
 		draw_wall(curr_wall_scale, game()->game_scene);
 	}
 }

@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.11.8] - 12.06.2024 - Freddy
+- various rendering fixes
+- very solid printing
+
 ### [0.11.7] - 12.06.2024 - Freddy
 - Made WASD keys properly move you in the expected directions
 - Added standing_simulator.cub, a simple single space
