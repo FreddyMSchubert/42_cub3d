@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.11.9] - 12.06.2024 - Jonas && Fortnite Freddy
+- refined terminal map
+
 ### [0.11.8] - 12.06.2024 - Freddy
 - various rendering fixes
 - very solid printing

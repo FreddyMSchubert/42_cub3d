@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   3_scale_walls.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 10:53:27 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/12 11:45:06 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/12 14:21:49 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,16 +125,16 @@ void	scale_walls(t_transform *walls, int walls_amount)
 	int				i;
 
 	i = -1;
-	printf("Wall amount: %d\n", walls_amount);
+	// printf("Wall amount: %d\n", walls_amount);
 	while (++i < walls_amount)
 	{
 		curr_wall_scale = get_wall_dimensions(walls[i]);
-		printf("Drawing wall: [%d|%d] - ", (int)walls[i].pos.x, (int)walls[i].pos.y);
-		if (walls[i].rot.x != 0.0)
-			printf("Horizontal - ");
-		else
-			printf("Vertical   - ");
-		printf("X: %d - %d, Height: %d - %d - ", curr_wall_scale.x_left, curr_wall_scale.x_right, curr_wall_scale.height_left, curr_wall_scale.height_right);
+		// printf("Drawing wall: [%d|%d] - ", (int)walls[i].pos.x, (int)walls[i].pos.y);
+		// if (walls[i].rot.x != 0.0)
+		// 	printf("Horizontal - ");
+		// else
+		// 	printf("Vertical   - ");
+		// printf("X: %d - %d, Height: %d - %d - ", curr_wall_scale.x_left, curr_wall_scale.x_right, curr_wall_scale.height_left, curr_wall_scale.height_right);
 		draw_wall(curr_wall_scale, game()->game_scene);
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   4_draw_walls.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/12 11:47:00 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/12 14:22:00 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	draw_wall(t_wall_scale wall, mlx_image_t *img)
 
 	x = -1;
 	pixels_drawn = 0;
-	printf("Width: %d - Color: %06X - ", wall.x_right - wall.x_left, get_color(wall.direction));
+	// printf("Width: %d - Color: %06X - ", wall.x_right - wall.x_left, get_color(wall.direction));
 	while (++x <= wall.x_right - wall.x_left)
 	{
 		current_height = interpolate(wall.height_left, wall.height_right, x, wall.x_right - wall.x_left);
@@ -72,8 +72,8 @@ void	draw_wall(t_wall_scale wall, mlx_image_t *img)
 				pixels_drawn++;
 		}
 	}
-	if (pixels_drawn == 0)
-		printf("\t%sERROR%s: No pixels drawn\n", ANSI_COLOR_RED, ANSI_RESET);
-	else
-		printf("\t%sSUCCESS%s: Pixels drawn: %d\n", ANSI_COLOR_GREEN, ANSI_RESET, pixels_drawn);
+	// if (pixels_drawn == 0)
+	// 	printf("\t%sERROR%s: No pixels drawn\n", ANSI_COLOR_RED, ANSI_RESET);
+	// else
+	// 	printf("\t%sSUCCESS%s: Pixels drawn: %d\n", ANSI_COLOR_GREEN, ANSI_RESET, pixels_drawn);
 }

@@ -3,30 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   printing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:49:10 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/11 15:32:14 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/12 14:42:38 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
+// deg_seg = degree segment
+// "v↙️<↖️^↗️>↘️"[deg_seg]
+// 6 is up, 7 is top right
 void	print_player(void)
 {
-	t_vec2	rot;
+	int		deg_seg;
+	char	*deg_seg_string;
 
-	rot = player()->transform.rot;
-	if (rot.x > 0 && rot.y >= 0)
-		printf("%s%c%s", ANSI_BACKGROUND_YELLOW, 'v', ANSI_RESET);
-	else if (rot.x <= 0 && rot.y < 0)
-		printf("%s%c%s", ANSI_BACKGROUND_YELLOW, '^', ANSI_RESET);
-	else if (rot.x < 0 && rot.y >= 0)
-		printf("%s%c%s", ANSI_BACKGROUND_YELLOW, '<', ANSI_RESET);
-	else if (rot.x >= 0 && rot.y < 0)
-		printf("%s%c%s", ANSI_BACKGROUND_YELLOW, '>', ANSI_RESET);
+	deg_seg = dir_vector_to_degrees(player()->transform.rot) / 45;
+	if (deg_seg == 0)
+		deg_seg_string = "→";
+	else if (deg_seg == 1)
+		deg_seg_string = "↘️";
+	else if (deg_seg == 2)
+		deg_seg_string = "↓";
+	else if (deg_seg == 3)
+		deg_seg_string = "↙️";
+	else if (deg_seg == 4)
+		deg_seg_string = "←";
+	else if (deg_seg == 5)
+		deg_seg_string = "↖️";
+	else if (deg_seg == 6)
+		deg_seg_string = "↑";
+	else if (deg_seg == 7)
+		deg_seg_string = "↗️";
 	else
-		printf("%s%c%s", ANSI_BACKGROUND_YELLOW, 'P', ANSI_RESET);
+		deg_seg_string = "P";
+	printf("%s%s%s", ANSI_BACKGROUND_YELLOW, \
+		deg_seg_string, ANSI_RESET);
 }
 
 // Mode determines what to print for each tile type,
