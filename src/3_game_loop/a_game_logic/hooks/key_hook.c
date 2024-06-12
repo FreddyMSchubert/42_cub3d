@@ -3,39 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:50 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/11 15:38:46 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/12 11:02:22 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../include/cub3d.h"
 
-static t_vec2	get_movement_from_key(mlx_key_data_t keydata)
+static t_vec2	get_movement_from_key(mlx_key_data_t keydata, double angle)
 {
 	t_vec2	movement;
 
 	movement = (t_vec2){0, 0};
 	if (keydata.key == MLX_KEY_W)
 	{
-		movement.x = player()->transform.rot.x;
-		movement.y = player()->transform.rot.y;
-	}
-	else if (keydata.key == MLX_KEY_S)
-	{
-		movement.x = -player()->transform.rot.x;
-		movement.y = -player()->transform.rot.y;
+		movement.x = cos(angle) * MOVEMENT_SPEED;
+		movement.y = sin(angle) * MOVEMENT_SPEED;
 	}
 	else if (keydata.key == MLX_KEY_A)
 	{
-		movement.x = -player()->transform.rot.y;
-		movement.y = player()->transform.rot.x;
+		movement.x = sin(angle) * MOVEMENT_SPEED;
+		movement.y = -cos(angle) * MOVEMENT_SPEED;
+	}
+	else if (keydata.key == MLX_KEY_S)
+	{
+		movement.x = -cos(angle) * MOVEMENT_SPEED;
+		movement.y = -sin(angle) * MOVEMENT_SPEED;
 	}
 	else if (keydata.key == MLX_KEY_D)
 	{
-		movement.x = player()->transform.rot.y;
-		movement.y = -player()->transform.rot.x;
+		movement.x = -sin(angle) * MOVEMENT_SPEED;
+		movement.y = cos(angle) * MOVEMENT_SPEED;
 	}
 	return (movement);
 }
@@ -46,18 +46,21 @@ static void	player_move(mlx_key_data_t keydata)
 	t_vec2		movement;
 
 	//original_pos = player()->transform.pos;
-	if (pos_distance((t_vec2){0, 0}, player()->transform.pos) != MOVEMENT_SPEED)
+	if (pos_distance((t_vec2){0, 0}, player()->transform.rot) != MOVEMENT_SPEED)
 		player()->transform.rot = scale_transform(player()->transform.rot, MOVEMENT_SPEED);
-	movement = get_movement_from_key(keydata);
+	movement = get_movement_from_key(keydata, degrees_to_radians(dir_vector_to_degrees(player()->transform.rot)));
+	printf("movement: %f, %f, current rot: %f, %f\n", movement.x, movement.y, player()->transform.rot.x, player()->transform.rot.y);
 	player()->transform.pos.x += movement.x;
 	player()->transform.pos.y += movement.y;
-	if (*game()->input_data->map \
-			[(int)player()->transform.pos.y]\
-			[(int)player()->transform.pos.x] != FLOOR)
-	{
-		//player()->transform.pos.x = original_pos.x;
-		//player()->transform.pos.y = original_pos.y;
-	}
+	/*
+		if (*game()->input_data->map \
+				[(int)player()->transform.pos.y]\
+				[(int)player()->transform.pos.x] != FLOOR)
+		{
+			player()->transform.pos.x = original_pos.x;
+			player()->transform.pos.y = original_pos.y;
+		}
+	*/
 }
 
 void	key_hook(mlx_key_data_t keydata, void *param)

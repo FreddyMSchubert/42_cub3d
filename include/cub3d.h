@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/11 15:50:32 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/12 10:35:07 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,7 @@ void				log_color_from_int(int color);
 
 // positions
 bool				is_same_wall(t_transform wall1, t_transform wall2);
+t_vec2				sum_vectors(t_vec2 v1, t_vec2 v2);
 
 // string
 bool				str_is_equal(char *str1, char *str2);

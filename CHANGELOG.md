@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.11.7] - 12.06.2024 - Freddy
+- Made WASD keys properly move you in the expected directions
+- Added standing_simulator.cub, a simple single space
+
 ### [0.11.6] - 11.06.2024 - Freddy
 - removed scroll to pan view functionality, added mouse x position tracking
 - added fps functionality to limit frames & warn if a frame was skipped
