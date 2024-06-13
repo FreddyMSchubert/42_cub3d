@@ -1,5 +1,10 @@
 # Changelog
 
+### [0.12.4] - 13.06.2024 - Freddy - `walls_with_raycasting`
+- map gen fixes
+- readded player collisions & made x and y checks seperate to allow for wall hugging
+- various tweaks
+
 ### [0.12.3] - 13.06.2024 - Freddy - `walls_with_raycasting`
 - Removed fisheye effect
 

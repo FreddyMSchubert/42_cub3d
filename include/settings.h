@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/13 11:01:40 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/13 11:52:46 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@
 // Map Making
 
 # define MIN_MAP_SIZE 5
-# define MAX_MAP_SIZE 10
+# define MAX_MAP_SIZE 30
 # define MIN_ROOMS_AMOUNT 0
-# define MAX_ROOMS_AMOUNT 0
-# define MIN_ROOM_SIZE 1
-# define MAX_ROOM_SIZE 3
-# define WALL_REMOVAL_CHANCE_PERCENT 30
+# define MAX_ROOMS_AMOUNT 3
+# define MIN_ROOM_SIZE 2
+# define MAX_ROOM_SIZE 5
+# define WALL_REMOVAL_CHANCE_PERCENT 20
 
 // Window Setup
 
@@ -55,8 +55,8 @@
 
 // Display Settings
 
-# define FOV_DEG 90
-# define RAYCASTS_PER_DEG 1
+# define FOV_DEG 70
+# define RAYCASTS_PER_DEG 5
 # define RENDER_DISTANCE 50
 # define FPS 30
 
