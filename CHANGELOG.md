@@ -1,6 +1,27 @@
 # Changelog
 
-### [0.11.9] - 12.06.2024 - Jonas && Fortnite Freddy
+### [0.12.5] - 13.06.2024 - Jonas
+- fixed execute_cub3d.sh showing maps failed and success the wrong way around
+
+### [0.12.4] - 13.06.2024 - Freddy - `walls_with_raycasting`
+- map gen fixes
+- readded player collisions & made x and y checks seperate to allow for wall hugging
+- various tweaks
+
+### [0.12.3] - 13.06.2024 - Freddy - `walls_with_raycasting`
+- Removed fisheye effect
+
+### [0.12.2] - 13.06.2024 - Freddy - `walls_with_raycasting`
+- functional colored walls
+
+### [0.12.1] - 13.06.2024 - Freddy - `walls_with_raycasting`
+- nice rendering logging
+- fixes: now full width & at least two colors
+
+## [0.12.0] - 13.06.2024 - Freddy - `walls_with_raycasting`
+- removed old rendering code, added new dysfunctional raycasting rendering code
+
+### [0.11.9] - 12.06.2024 - Jonas && Freddy
 - refined terminal map
 
 ### [0.11.8] - 12.06.2024 - Freddy

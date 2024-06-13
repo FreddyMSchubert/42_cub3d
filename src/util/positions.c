@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:05:18 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/12 10:34:49 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/13 11:48:33 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 bool	is_same_wall(t_transform wall1, t_transform wall2)
 {
-	if (wall1.pos.x != wall2.pos.x)
+	if (wall1.rot.x != wall2.rot.x)
 		return (false);
-	if (wall1.pos.y != wall2.pos.y)
+	if (wall1.rot.y != wall2.rot.y)
 		return (false);
 	if (wall1.rot.x != wall2.rot.x)
 		return (false);
@@ -32,4 +32,22 @@ t_vec2	sum_vectors(t_vec2 v1, t_vec2 v2)
 	result.x = v1.x + v2.x;
 	result.y = v1.y + v2.y;
 	return (result);
+}
+
+char	get_color_for_wall(t_transform t)
+{
+	if (t.rot.x == 0.0)
+	{
+		if (player()->transform.pos.x < t.pos.x)
+			return ('N');
+		else
+			return ('S');
+	}
+	else
+	{
+		if (player()->transform.pos.y < t.pos.y)
+			return ('E');
+		else
+			return ('W');
+	}
 }

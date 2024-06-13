@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:50 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/12 11:02:22 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/13 12:03:39 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,25 +42,24 @@ static t_vec2	get_movement_from_key(mlx_key_data_t keydata, double angle)
 
 static void	player_move(mlx_key_data_t keydata)
 {
-	//t_vec2		original_pos;
+	t_vec2		original_pos;
 	t_vec2		movement;
 
-	//original_pos = player()->transform.pos;
+	original_pos = player()->transform.pos;
 	if (pos_distance((t_vec2){0, 0}, player()->transform.rot) != MOVEMENT_SPEED)
 		player()->transform.rot = scale_transform(player()->transform.rot, MOVEMENT_SPEED);
 	movement = get_movement_from_key(keydata, degrees_to_radians(dir_vector_to_degrees(player()->transform.rot)));
 	printf("movement: %f, %f, current rot: %f, %f\n", movement.x, movement.y, player()->transform.rot.x, player()->transform.rot.y);
 	player()->transform.pos.x += movement.x;
 	player()->transform.pos.y += movement.y;
-	/*
-		if (*game()->input_data->map \
-				[(int)player()->transform.pos.y]\
-				[(int)player()->transform.pos.x] != FLOOR)
-		{
-			player()->transform.pos.x = original_pos.x;
-			player()->transform.pos.y = original_pos.y;
-		}
-	*/
+	player()->transform.pos.x += movement.x;
+	if (*game()->input_data->map[(int)player()->transform.pos.y][(int)player()->transform.pos.x] != FLOOR) {
+		player()->transform.pos.x = original_pos.x;  // Reset X if colliding
+	}
+	player()->transform.pos.y += movement.y;
+	if (*game()->input_data->map[(int)player()->transform.pos.y][(int)player()->transform.pos.x] != FLOOR) {
+		player()->transform.pos.y = original_pos.y;  // Reset Y if colliding
+	}
 }
 
 void	key_hook(mlx_key_data_t keydata, void *param)

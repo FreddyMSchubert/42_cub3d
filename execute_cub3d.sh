@@ -75,11 +75,10 @@ elif [[ "$EXECUTION_MODE" = "a" || "$EXECUTION_MODE" = "A" ]]; then
             else
                 if [ $EXIT_CODE -eq 0 ]; then
                     echo -e "${GREEN}SUCCESS: Finished running with map: $MAPFILE ✔️${NC}"
-                    MAP_SUCCESS=$((MAP_SUCCESS + 1))
-                    
+                    MAP_FAILURE=$((MAP_FAILURE + 1))
                 else
                     echo -e "${RED}FAILURE: Error running with map: $MAPFILE ❌${NC}"
-                    MAP_FAILURE=$((MAP_FAILURE + 1))
+                    MAP_SUCCESS=$((MAP_SUCCESS + 1))
                     MAPS_FAILED+="$MAPFILE\n"
                 fi
             fi
@@ -106,6 +105,8 @@ else
     echo -e "\n\n${CYAN}Maps executed: $MAP_COUNT\n${GREEN}Maps passed: $MAP_FAILURE\n${RED}Maps failed: $MAP_SUCCESS${NC}\n"
 fi
 
-echo -e "${YELLOW}Maps failed:${NC}\n$MAPS_FAILED"
+if [ $MAP_FAILURE -gt 0 ]; then
+    echo -e "${RED}Maps failed:${NC}\n$MAPS_FAILED"
+fi
 
 echo -e "${GREEN}\nScript execution complete. ✨\n${NC}"
