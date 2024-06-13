@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:05:18 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/13 10:13:05 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/13 10:34:22 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ t_vec2	sum_vectors(t_vec2 v1, t_vec2 v2)
 	return (result);
 }
 
-char	get_color_for_wall(t_vec2 rot)
+char	get_color_for_wall(t_transform t)
 {
-	printf("rot.x: %f, diff: %f\n", rot.x, rot.x - (int)rot.x);
-	if (rot.x  == 0.0)
+	printf("transform: %d %d - %d %d\n", (int)t.pos.x, (int)t.pos.y, (int)t.rot.x, (int)t.rot.y);
+	if (t.rot.x == 0.0)
 	{
 		// vertical wall
-		if (player()->transform.rot.y < rot.y)
+		if (player()->transform.pos.x < t.pos.x)
 			return ('N');
 		else
 			return ('S');
@@ -48,7 +48,7 @@ char	get_color_for_wall(t_vec2 rot)
 	else
 	{
 		// horizontal wall
-		if (player()->transform.rot.x < rot.x)
+		if (player()->transform.pos.y < t.pos.y)
 			return ('E');
 		else
 			return ('W');

@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/13 10:17:21 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/13 10:31:23 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ void				log_color_from_int(int color);
 // positions
 bool				is_same_wall(t_transform wall1, t_transform wall2);
 t_vec2				sum_vectors(t_vec2 v1, t_vec2 v2);
-char				get_color_for_wall(t_vec2 pos);
+char				get_color_for_wall(t_transform t);
 
 // string
 bool				str_is_equal(char *str1, char *str2);

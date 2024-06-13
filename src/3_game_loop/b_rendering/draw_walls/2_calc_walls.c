@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 09:10:15 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/13 10:22:57 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/13 10:32:24 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ void	calc_wall(int ray_index, double intersection_dist, char d)
 	int		end_x;
 
 	get_x_pixel_from_ray_index(ray_index, &start_x, &end_x);
-	printf("x_pixel: %d %d - ", start_x, end_x);
 	height = get_height_from_intersection_dist(intersection_dist);
-	printf("height: %d - ", height);
 	draw_wall(start_x, end_x, height, d);
 }

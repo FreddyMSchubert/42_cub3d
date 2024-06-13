@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:22:19 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/13 10:08:26 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/13 10:31:50 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ double	get_ray_distance(t_transform **walls, t_transform ray, char *d)
 			}
 		}
 	}
-	*d = get_color_for_wall(closest_wall->rot);
+	*d = get_color_for_wall(*closest_wall);
 	return (closest_distance);
 }
 

@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/13 10:27:31 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/13 10:32:30 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	draw_wall(int start_x, int end_x, int height, char d)
 	int		x;
 
 	color = get_color(d);
-	printf("color: %06X - ", color);
 	start_y = (int)(game()->mlx->height / 2) - height / 2;
 	end_y = (int)(game()->mlx->height / 2) + height / 2;
 	x = start_x;

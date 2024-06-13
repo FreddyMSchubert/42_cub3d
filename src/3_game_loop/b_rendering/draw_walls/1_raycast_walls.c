@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/13 09:43:48 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/13 10:32:19 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,7 @@ void	raycast_walls(void)
 	ray_index = -1;
 	while (++ray_index < RAYCASTS_PER_DEG * FOV_DEG)
 	{
-		printf("ray_index: %d - ", ray_index);
 		intersection_dist = perform_raycast(ray_index, &d);
-		printf("intersection_dist: %f - ", intersection_dist);
-		printf("dir: %c - ", d);
 		if (intersection_dist == -1 || intersection_dist > RENDER_DISTANCE)
 			continue ;
 		calc_wall(ray_index, intersection_dist, d);
