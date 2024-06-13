@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.12.5] - 13.06.2024 - Jonas
+- fixed execute_cub3d.sh showing maps failed and success the wrong way around
+
 ### [0.12.4] - 13.06.2024 - Freddy - `walls_with_raycasting`
 - map gen fixes
 - readded player collisions & made x and y checks seperate to allow for wall hugging
