@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   setup_mlx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:41:35 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/11 15:47:08 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/13 12:59:23 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static void	set_sky(void)
+void	resize_hook(int32_t width, int32_t height, void* param);
+
+void	set_sky(void)
 {
 	t_persistent_data	*data;
 	mlx_image_t			*img;
@@ -54,6 +56,8 @@ void	setup_mlx(void)
 	if (!data->game_scene || (mlx_image_to_window(data->mlx, data->game_scene, 0, 0) < 0))
 		cub_exit_error("mlx image creation failed");
 	setup_player();
+	render_game_scene();
 	mlx_loop_hook(data->mlx, loop_hook, NULL);
 	mlx_key_hook(data->mlx, key_hook, NULL);
+	mlx_resize_hook(data->mlx, resize_hook, NULL);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_setup.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 08:28:05 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/05 18:53:07 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/13 13:05:38 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	setup_player(void)
 {
-	player()->transform.pos.x = player()->spawn_transform.pos.x;
-	player()->transform.pos.y = player()->spawn_transform.pos.y;
+	player()->transform.pos.x = player()->spawn_transform.pos.x + 0.5;
+	player()->transform.pos.y = player()->spawn_transform.pos.y + 0.5;
 	player()->transform.rot.x = player()->spawn_transform.rot.x;
 	player()->transform.rot.y = player()->spawn_transform.rot.y;
 	printf("Setting pos to %f %f\n", player()->transform.pos.x, player()->transform.pos.y);

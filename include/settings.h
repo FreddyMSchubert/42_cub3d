@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   settings.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/13 11:52:46 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/13 13:02:43 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 
 // Quality of Life
 
-# define MOUSE_SENSITIVITY 0.5
+# define MOUSE_SENSITIVITY 0.35
 
 // Map Making
 
@@ -49,15 +49,15 @@
 
 // Player Movement Stats
 
-# define MOVEMENT_SPEED 0.1
+# define MOVEMENT_SPEED 0.03
 # define TURN_SPEED_ARROWS_DEG 5
 # define TURN_SPEED_MOUSE_DEG 1
 
 // Display Settings
 
-# define FOV_DEG 70
+# define FOV_DEG 96
 # define RAYCASTS_PER_DEG 5
 # define RENDER_DISTANCE 50
-# define FPS 30
+# define FPS 60
 
 #endif
