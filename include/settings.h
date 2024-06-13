@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/13 09:29:12 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/13 10:24:45 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@
 // Display Settings
 
 # define FOV_DEG 90
-# define RAYCASTS_PER_DEG 3
+# define RAYCASTS_PER_DEG 1
 # define RENDER_DISTANCE 50
 # define FPS 30
 

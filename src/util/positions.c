@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:05:18 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/13 09:21:31 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/13 10:13:05 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 bool	is_same_wall(t_transform wall1, t_transform wall2)
 {
-	if (wall1.pos.x != wall2.pos.x)
+	if (wall1.rot.x != wall2.rot.x)
 		return (false);
-	if (wall1.pos.y != wall2.pos.y)
+	if (wall1.rot.y != wall2.rot.y)
 		return (false);
 	if (wall1.rot.x != wall2.rot.x)
 		return (false);
@@ -34,12 +34,13 @@ t_vec2	sum_vectors(t_vec2 v1, t_vec2 v2)
 	return (result);
 }
 
-char	get_color_for_wall(t_vec2 pos)
+char	get_color_for_wall(t_vec2 rot)
 {
-	if ((int)pos.x % 1 == 0)
+	printf("rot.x: %f, diff: %f\n", rot.x, rot.x - (int)rot.x);
+	if (rot.x  == 0.0)
 	{
 		// vertical wall
-		if (player()->transform.pos.y < pos.y)
+		if (player()->transform.rot.y < rot.y)
 			return ('N');
 		else
 			return ('S');
@@ -47,7 +48,7 @@ char	get_color_for_wall(t_vec2 pos)
 	else
 	{
 		// horizontal wall
-		if (player()->transform.pos.x < pos.x)
+		if (player()->transform.rot.x < rot.x)
 			return ('E');
 		else
 			return ('W');

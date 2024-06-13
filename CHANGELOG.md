@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.12.1] - 13.06.2024 - Freddy - `walls_with_raycasting*`
+- nice rendering logging
+- fixes: now full width & at least two colors
+
 ## [0.12.0] - 13.06.2024 - Freddy - `walls_with_raycasting*`
 - removed old rendering code, added new dysfunctional raycasting rendering code
 

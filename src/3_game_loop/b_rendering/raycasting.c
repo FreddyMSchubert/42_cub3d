@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:22:19 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/13 09:21:59 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/13 10:08:26 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ t_transform	*get_intersection_wall(t_transform **walls, t_transform ray)
 double	get_ray_distance(t_transform **walls, t_transform ray, char *d)
 {
 	t_vec2		intersection;
+	t_transform	*closest_wall;
 	double		closest_distance;
 	double		current_distance;
 	int			i;
@@ -101,10 +102,13 @@ double	get_ray_distance(t_transform **walls, t_transform ray, char *d)
 		{
 			current_distance = pos_distance(ray.pos, intersection);
 			if (closest_distance == -1 || current_distance < closest_distance)
+			{
 				closest_distance = current_distance;
+				closest_wall = walls[i];
+			}
 		}
 	}
-	*d = get_color_for_wall(intersection);
+	*d = get_color_for_wall(closest_wall->rot);
 	return (closest_distance);
 }
 

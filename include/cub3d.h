@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/13 09:27:02 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/13 10:17:21 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void				raycast_walls(void);
 // - 2 calc walls
 void				calc_wall(int ray_index, double intersection_dist, char d);
 // - 3 draw walls
-void				draw_wall(int x_pixel, int height, char d);
+void				draw_wall(int start_x, int end_x, int height, char d);
 
 // ----- util
 // garbage collector
