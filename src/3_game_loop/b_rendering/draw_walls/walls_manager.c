@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   walls_manager.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:15:34 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/12 13:00:00 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/13 09:27:07 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,5 @@
 // scale walls calls draw walls
 void	do_wall_operations(void)
 {
-	int			vis_walls_count;
-
-	vis_walls_count = 0;
-	while (game()->input_data->walls[vis_walls_count])
-		vis_walls_count++;
-	t_transform	vis_walls[vis_walls_count];
-	int i = -1;
-	while (++i < vis_walls_count)
-	{
-		vis_walls[i] = *game()->input_data->walls[i];
-	}
-	// get_visible_walls(vis_walls, &vis_walls_count);
-	quick_sort_walls(vis_walls, 0, vis_walls_count - 1);
-	scale_walls(vis_walls, vis_walls_count);
+	raycast_walls();
 }

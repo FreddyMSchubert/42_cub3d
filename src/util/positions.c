@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:05:18 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/12 10:34:49 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/13 09:21:31 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,24 @@ t_vec2	sum_vectors(t_vec2 v1, t_vec2 v2)
 	result.x = v1.x + v2.x;
 	result.y = v1.y + v2.y;
 	return (result);
+}
+
+char	get_color_for_wall(t_vec2 pos)
+{
+	if ((int)pos.x % 1 == 0)
+	{
+		// vertical wall
+		if (player()->transform.pos.y < pos.y)
+			return ('N');
+		else
+			return ('S');
+	}
+	else
+	{
+		// horizontal wall
+		if (player()->transform.pos.x < pos.x)
+			return ('E');
+		else
+			return ('W');
+	}
 }

@@ -1,6 +1,9 @@
 # Changelog
 
-### [0.11.9] - 12.06.2024 - Jonas && Fortnite Freddy
+## [0.12.0] - 13.06.2024 - Freddy - `walls_with_raycasting*`
+- removed old rendering code, added new dysfunctional raycasting rendering code
+
+### [0.11.9] - 12.06.2024 - Jonas && Freddy
 - refined terminal map
 
 ### [0.11.8] - 12.06.2024 - Freddy
