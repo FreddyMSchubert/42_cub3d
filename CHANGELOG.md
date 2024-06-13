@@ -1,11 +1,14 @@
 # Changelog
 
+### [0.12.6] - 13.06.2024 - Freddy
+- Fixed player resetting improperly when pressing r
+
 ### [0.12.5] - 13.06.2024 - Jonas
 - player now spawns correctly in the middle of a tile and not on the top left edge
   -> that also fixed the walls not rendering on spawn
 - fov has to be the screen width / 10 for it not to be cut off
 
-### [0.12.5] - 13.06.2024 - Jonas
+### [0.12.5] - 13.06.2024 - Jonas - `walls_with_raycasting`
 - fixed execute_cub3d.sh showing maps failed and success the wrong way around
 
 ### [0.12.4] - 13.06.2024 - Freddy - `walls_with_raycasting`

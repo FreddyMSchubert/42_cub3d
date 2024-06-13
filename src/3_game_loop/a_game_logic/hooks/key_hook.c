@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:50 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/13 12:03:39 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/13 14:44:18 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,6 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 	else if (keydata.key == MLX_KEY_RIGHT && (keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT))
 		turn (TURN_SPEED_ARROWS_DEG);
 	else if (keydata.key == MLX_KEY_R && keydata.action == MLX_PRESS)
-		player()->transform = player()->spawn_transform;
+		setup_player();
 	(void) param;
 }
