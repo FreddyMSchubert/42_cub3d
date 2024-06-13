@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.12.3] - 13.06.2024 - Freddy - `walls_with_raycasting`
+- Removed fisheye effect
+
 ### [0.12.2] - 13.06.2024 - Freddy - `walls_with_raycasting`
 - functional colored walls
 
