@@ -3,20 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:38:30 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/10 11:53:59 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/14 10:46:58 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/cub3d.h"
-
-bool	parse_attributes(char	**data, t_input_data **input_data, int *i);
-bool	parse_map(char **data, t_input_data **input_data, int *i);
-bool	regex(char *line, char *reg);
-int		get_file_length(char *filename);
-bool	check_player(bool *invalid);
 
 static void	read_file_loop(char ***data, int file)
 {

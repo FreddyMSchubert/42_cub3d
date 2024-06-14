@@ -3,22 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 09:39:02 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/10 12:08:55 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/14 10:55:04 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/cub3d.h"
-
-bool	regex(char *line, char *reg);
-bool	char_is_in(char c, char *seq);
-int		split_len(char **split);
-bool	free_split(char	**split, bool ret);
-bool	set_player_spawn(char dir, t_vec2 pos, t_tile_type ***map);
-bool	set_color(t_color *color, char *color_val);
-bool	set_value(char	**value, char	*set);
 
 bool	set_values(char **split, t_input_data **input_data, char **data, int *i)
 {
@@ -96,6 +88,8 @@ t_tile_type	***make_map(int map_len, int *i, char **data)
 				*(map[k][j]) = (t_tile_type)(data[*i][j] - '0');
 			else if (data[*i][j] == ' ')
 				*(map[k][j]) = VOID;
+			else if (data[*i][j] == 'G' && !set_goal((t_vec2){j, k}, map))
+				return (NULL);
 			else if (!set_player_spawn(data[*i][j], (t_vec2){j, k}, map))
 				return (NULL);
 		}

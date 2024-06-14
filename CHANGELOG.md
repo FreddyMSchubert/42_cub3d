@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.13.0] - 14.06.2024 - Freddy - `31-entities`
+- added goal option to map which gets read by parser & added to new entity list
+- general cleanup
+- minor map changes
+
 ### [0.12.6] - 13.06.2024 - Freddy
 - Fixed player resetting improperly when pressing r
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/11 16:02:32 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/14 10:39:45 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,16 +82,16 @@ typedef struct s_persistent_data
 	mlx_t			*mlx;
 	mlx_image_t		*background;
 	mlx_image_t		*game_scene;
+	t_list			*entities;
 	int32_t			prev_mouse_x;
 	double			prev_time;
 }	t_persistent_data;
 
-// ----- CURRENTLY UNUSED
+// ----- ENTITIES
 
 typedef enum e_entity_type
 {
-	PLAYER,
-	ENEMY
+	GOAL
 }	t_entity_type;
 
 typedef struct s_entity

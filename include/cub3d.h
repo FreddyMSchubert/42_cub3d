@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/13 10:31:23 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/14 10:51:16 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,31 @@ void	            write_cub_file(char **maze, int height, int width, char *filena
 int	                random_int(int min, int max);
 
 // ----- 1_input_parsing
-void				parse_input(char	*filepath);
+// file helper
+int					get_file_length(char *filename);
+bool				check_player(bool *invalid);
+// parse
+bool				set_values(char **split, t_input_data **input_data, char **data, int *i);
+bool				parse_attributes(char **data, t_input_data **input_data, int *i);
+int					get_map_len(int *i, char **data);
+t_tile_type			***make_map(int map_len, int *i, char **data);
+bool				parse_map(char **data, t_input_data **input_data, int *i);
+// read file
+bool				basic_validate(t_input_data **in);
+void				get_map_contents(char *filepath);
+// set values
+bool				set_player_spawn(char dir, t_vec2 pos, t_tile_type ***map);
+bool				set_goal(t_vec2 pos, t_tile_type ***map);
+bool				set_value(char	**value, char	*set);
+bool				set_color(t_color *color, char *color_val);
+// squarify map
 void				squarify_map(void);
+// util
+bool				free_split(char	**split, bool ret);
+int					split_len(char **split);
+bool				char_is_in(char c, char *seq);
+bool				regex(char *line, char *reg);
+
 // --- a_file_reading
 void				get_map_contents(char *filepath);
 // --- b_validation
@@ -141,6 +164,9 @@ void				log_color_from_int(int color);
 bool				is_same_wall(t_transform wall1, t_transform wall2);
 t_vec2				sum_vectors(t_vec2 v1, t_vec2 v2);
 char				get_color_for_wall(t_transform t);
+
+// entities
+void				create_entity(t_vec2 pos, t_vec2 rot, t_entity_type type);
 
 // string
 bool				str_is_equal(char *str1, char *str2);

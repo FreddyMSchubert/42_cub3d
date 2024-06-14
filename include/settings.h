@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   settings.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/13 13:02:43 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/14 10:47:49 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@
 # define LOG_WALLS false
 # define TERMINAL_MAP true
 
-// Player
+// Map limits
 
 # define MAX_PLAYER_COUNT 1
+# define MAX_GOAL_COUNT 1
 
 // Quality of Life
 
