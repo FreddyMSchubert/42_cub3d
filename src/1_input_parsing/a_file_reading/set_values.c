@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:12:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/14 10:54:44 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/14 12:51:31 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@ bool	set_player_spawn(char dir, t_vec2 pos, t_tile_type ***map)
 {
 	static int	player_count = 0;
 
+	printf("player_count: %d, pos: %f, %f\n", player_count, pos.x, pos.y);
 	if (++player_count > MAX_PLAYER_COUNT)
 	{
-		logger(LOGGER_WARNING, "Maximum player count already reached!");
+		logger(LOGGER_ERROR, "Maximum player count already reached!");
 		return (false);
 	}
 	if (dir == 'N')
@@ -44,6 +45,7 @@ bool	set_goal(t_vec2 pos, t_tile_type ***map)
 {
 	static int	goal_count = 0;
 
+	printf("setting the goal \n");
 	if (++goal_count > MAX_GOAL_COUNT)
 	{
 		logger(LOGGER_WARNING, "Maximum goal count already reached!");

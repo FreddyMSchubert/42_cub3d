@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:22:19 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/14 11:09:22 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/14 12:36:33 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ t_transform	*get_intersection_wall(t_transform **walls, t_transform ray)
 	return (closest_wall);
 }
 
-double	get_ray_distance(t_transform **walls, t_transform ray, char *d)
+double	wall_ray_dist(t_transform **walls, t_transform ray, char *d)
 {
 	t_vec2		intersection;
 	t_transform	*closest_wall;
@@ -109,6 +109,33 @@ double	get_ray_distance(t_transform **walls, t_transform ray, char *d)
 		}
 	}
 	*d = get_color_for_wall(*closest_wall);
+	return (closest_distance);
+}
+
+double	entity_ray_dist(t_list *entities, t_transform ray, \
+										t_entity **closest_entity)
+{
+	t_entity	*entity;
+	t_vec2		intersection;
+	double		closest_distance;
+	double		current_distance;
+
+	closest_distance = -1;
+	while (entities)
+	{
+		entity = (t_entity *)entities->content;
+		intersection = raycast_intersect(ray, get_face_vector(entity->transform.rot));
+		if (intersection.x != -1)
+		{
+			current_distance = pos_distance(ray.pos, intersection);
+			if (closest_distance == -1 || current_distance < closest_distance)
+			{
+				closest_distance = current_distance;
+				*closest_entity = entity;
+			}
+		}
+		entities = entities->next;
+	}
 	return (closest_distance);
 }
 

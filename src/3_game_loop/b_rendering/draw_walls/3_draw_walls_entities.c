@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   3_draw_walls.c                                     :+:      :+:    :+:   */
+/*   3_draw_walls_entities.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/13 12:40:30 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/14 12:38:15 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,34 @@ void	draw_wall(int start_x, int end_x, int height, char d)
 	int		x;
 
 	color = get_color(d);
+	start_y = (int)(game()->mlx->height / 2) - height / 2;
+	end_y = (int)(game()->mlx->height / 2) + height / 2;
+	x = start_x;
+	while (x != end_x)
+	{
+		y = start_y;
+		while (y < end_y)
+		{
+			set_pixel_color(game()->game_scene, x, y, color);
+			y++;
+		}
+		if (start_x < end_x)
+			x++;
+		else
+			x--;
+	}
+}
+
+void	draw_entity(int start_x, int end_x, int height, t_entity *ntt)
+{
+	int		color;
+	int		start_y;
+	int		end_y;
+	int		y;
+	int		x;
+
+	(void)ntt; // later used for texturing, for now everythings white so useless
+	color = 0xFFFFFFFF;
 	start_y = (int)(game()->mlx->height / 2) - height / 2;
 	end_y = (int)(game()->mlx->height / 2) + height / 2;
 	x = start_x;

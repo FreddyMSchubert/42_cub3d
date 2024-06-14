@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.13.2] - 14.06.2024 - Freddy - `31-entities`
+- theoretical rendering, but not working yet
+- reworked and renamed window resizing hook file
+
 ### [0.13.1] - 14.06.2024 - Freddy - `31-entities`
 - get_face_vector function
 - various renamings & fixes

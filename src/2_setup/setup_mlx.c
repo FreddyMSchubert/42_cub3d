@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_mlx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:41:35 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/13 12:59:23 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/14 11:25:03 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	resize_hook(int32_t width, int32_t height, void* param);
 
-void	set_sky(void)
+void	set_background(void)
 {
 	t_persistent_data	*data;
 	mlx_image_t			*img;
@@ -50,7 +50,7 @@ void	setup_mlx(void)
 		cub_exit_error("mlx setup failed.");
 	data = game();
 	data->mlx = mlx;
-	set_sky();
+	set_background();
 	printf("Setting up with %d %d, consts are %d %d\n", data->mlx->width, data->mlx->height, START_WIDTH, START_HEIGHT);
 	data->game_scene = mlx_new_image(data->mlx, data->mlx->width, data->mlx->height);
 	if (!data->game_scene || (mlx_image_to_window(data->mlx, data->game_scene, 0, 0) < 0))

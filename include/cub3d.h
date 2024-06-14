@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/14 11:18:06 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/14 12:41:38 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 
 
 /* ---- SETTINGS ---- */
-# define MAP_TILES " 10NESW"
+# define MAP_TILES " 10NESWG"
 
 /* ----- LOGGER ----- */
 # define LOGGER_ERROR 'e'
@@ -72,6 +72,7 @@ void	            write_cub_file(char **maze, int height, int width, char *filena
 int	                random_int(int min, int max);
 
 // ----- 1_input_parsing
+void				parse_input(char	*filepath);
 // file helper
 int					get_file_length(char *filename);
 bool				check_player(bool *invalid);
@@ -127,14 +128,18 @@ double				pos_distance(t_vec2 pos1, t_vec2 pos2);
 t_vec2				scale_transform(t_vec2 t1, double distance);
 t_vec2				raycast_intersect(t_transform t1, t_transform t2);
 t_transform			*get_intersection_wall(t_transform **walls, t_transform p);
-double				get_ray_distance(t_transform **walls, t_transform ray, char *d);
+double				wall_ray_dist(t_transform **walls, t_transform ray, char *d);
+double				entity_ray_dist(t_list *entities, t_transform ray, \
+										t_entity **closest_entity);
 double				calculate_deviation_angle(t_transform p, t_vec2 pos);
 // - 1 raycast walls
 void				raycast_walls(void);
-// - 2 calc walls
+// - 2 calc walls & entities
 void				calc_wall(int ray_index, double intersection_dist, char d);
-// - 3 draw walls
+void				calc_entity(int ray_index, t_entity *ntt, double intersection_dist);
+// - 3 draw walls & entities
 void				draw_wall(int start_x, int end_x, int height, char d);
+void				draw_entity(int start_x, int end_x, int height, t_entity *ntt);
 
 // ----- util
 // garbage collector
