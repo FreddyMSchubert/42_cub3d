@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/14 10:51:16 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/14 11:18:06 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,15 +167,16 @@ char				get_color_for_wall(t_transform t);
 
 // entities
 void				create_entity(t_vec2 pos, t_vec2 rot, t_entity_type type);
+t_transform			get_face_vector(t_vec2 pos);
 
 // string
 bool				str_is_equal(char *str1, char *str2);
 
 // rotations
-double				degrees_to_radians(double degrees);
-double				radians_to_degrees(double radians);
-t_vec2				degrees_to_dir_vector(double degrees);
-double				dir_vector_to_degrees(t_vec2 dir);
+double				deg_to_rad(double degrees);
+double				rad_to_deg(double radians);
+t_vec2				deg_to_dir_vec(double degrees);
+double				dir_vec_to_deg(t_vec2 dir);
 double				normalize_degrees(double degrees);
 
 #endif

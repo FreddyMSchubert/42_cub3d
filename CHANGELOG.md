@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.13.1] - 14.06.2024 - Freddy - `31-entities`
+- get_face_vector function
+- various renamings & fixes
+
 ## [0.13.0] - 14.06.2024 - Freddy - `31-entities`
 - added goal option to map which gets read by parser & added to new entity list
 - general cleanup

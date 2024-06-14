@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2_calc_walls.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 09:10:15 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/13 12:37:42 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/14 11:09:43 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	get_height_from_intersection_dist(double intersection_dist)
 	int		height;
 
 	height = (1.0 / intersection_dist) * (game()->mlx->width / 2) / \
-						tan(radians_to_degrees(FOV_DEG) / 2);
+						tan(rad_to_deg(FOV_DEG) / 2);
 	return (abs(height));
 }
 
@@ -40,8 +40,8 @@ void	calc_wall(int ray_index, double intersection_dist, char d)
 	double	player_angle;
 	double	ray_angle;
 
-	player_angle = degrees_to_radians(\
-						dir_vector_to_degrees(player()->transform.rot));
+	player_angle = deg_to_rad(\
+						dir_vec_to_deg(player()->transform.rot));
 	ray_angle = player_angle + (ray_index - RAYCASTS_PER_DEG * FOV_DEG / 2) * \
 								(M_PI / 180.0 / RAYCASTS_PER_DEG);
 	intersection_dist *= cos(player_angle - ray_angle);

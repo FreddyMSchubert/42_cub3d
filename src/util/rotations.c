@@ -6,40 +6,40 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 10:56:39 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/04 09:42:32 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/14 11:10:00 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-double	degrees_to_radians(double degrees)
+double	deg_to_rad(double degrees)
 {
 	return (degrees * (M_PI / 180.0));
 }
 
-double	radians_to_degrees(double radians)
+double	rad_to_deg(double radians)
 {
 	return (radians * (180.0 / M_PI));
 }
 
-t_vec2	degrees_to_dir_vector(double degrees)
+t_vec2	deg_to_dir_vec(double degrees)
 {
 	t_vec2	dir;
 	double	radians;
 
-	radians = degrees_to_radians(degrees);
+	radians = deg_to_rad(degrees);
 	dir.x = cos(radians);
 	dir.y = sin(radians);
 	return (dir);
 }
 
-double	dir_vector_to_degrees(t_vec2 dir)
+double	dir_vec_to_deg(t_vec2 dir)
 {
 	double	radians;
 	double	degrees;
 
 	radians = atan2(dir.y, dir.x);
-	degrees = radians_to_degrees(radians);
+	degrees = rad_to_deg(radians);
 	return (normalize_degrees(degrees));
 }
 

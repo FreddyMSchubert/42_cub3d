@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   1_raycast_walls.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/13 12:55:23 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/14 11:10:00 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ static double	perform_raycast(int i, char *d)
 	double		ray_angle;
 	double		intersection_dist;
 
-	p_angle = dir_vector_to_degrees(player()->transform.rot);
+	p_angle = dir_vec_to_deg(player()->transform.rot);
 	ray_angle = p_angle - FOV_DEG / 2.0 + (double)i / (double)RAYCASTS_PER_DEG;
-	ray.rot = degrees_to_dir_vector(ray_angle);
+	ray.rot = deg_to_dir_vec(ray_angle);
 	ray.rot = scale_transform(ray.rot, RENDER_DISTANCE);
 	ray.pos = player()->transform.pos;
 	intersection_dist = get_ray_distance(game()->input_data->walls, ray, d);

@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:22:19 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/13 10:31:50 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/14 11:09:22 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,5 +134,5 @@ double	calculate_deviation_angle(t_transform p, t_vec2 pos)
 		deviation_angle -= 2 * M_PI;
 	while (deviation_angle < -M_PI)
 		deviation_angle += 2 * M_PI;
-	return (radians_to_degrees(deviation_angle));
+	return (rad_to_deg(deviation_angle));
 }
