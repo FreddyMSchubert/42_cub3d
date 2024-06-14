@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window_hook.c                                      :+:      :+:    :+:   */
+/*   resize_hook.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 20:45:16 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/14 11:26:22 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/14 13:57:42 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	set_background(void);
 void	resize_hook(int32_t width, int32_t height, void *param)
 {
 	(void)param;
-	(void)width;
-	(void)height;
+	game()->mlx->width = width;
+	game()->mlx->height = height;
 	mlx_delete_image(game()->mlx, game()->background);
 	set_background();
 }

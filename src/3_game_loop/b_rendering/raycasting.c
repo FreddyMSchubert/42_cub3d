@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:22:19 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/14 12:36:33 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/14 14:03:33 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,19 @@ double	pos_distance(t_vec2 pos1, t_vec2 pos2)
 	return (sqrt(pow(pos2.x - pos1.x, 2) + pow(pos2.y - pos1.y, 2)));
 }
 
-// makes the rot of a vector be as long as the defined distance
-// e.g. for view distances
-t_vec2	scale_transform(t_vec2 t1, double distance)
+t_vec2	scale_vector(t_vec2 v, double distance)
 {
 	double	current_magnitude;
 	double	scale_factor;
 
-	current_magnitude = sqrt(t1.x * t1.x + t1.y * t1.y);
+	current_magnitude = sqrt(v.x * v.x + v.y * v.y);
 	if (current_magnitude != 0)
 	{
 		scale_factor = distance / current_magnitude;
-		t1.x *= scale_factor;
-		t1.y *= scale_factor;
+		v.x *= scale_factor;
+		v.y *= scale_factor;
 	}
-	return (t1);
+	return (v);
 }
 
 t_vec2	raycast_intersect(t_transform t1, t_transform t2)
@@ -124,7 +122,7 @@ double	entity_ray_dist(t_list *entities, t_transform ray, \
 	while (entities)
 	{
 		entity = (t_entity *)entities->content;
-		intersection = raycast_intersect(ray, get_face_vector(entity->transform.rot));
+		intersection = raycast_intersect(ray, get_face_vector(entity->transform.pos));
 		if (intersection.x != -1)
 		{
 			current_distance = pos_distance(ray.pos, intersection);

@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.13.3] - 14.06.2024 - Freddy - `31-entities`
+- proper entity placement & rendering
+- moved a lot of stuff around
+
 ### [0.13.2] - 14.06.2024 - Freddy - `31-entities`
 - theoretical rendering, but not working yet
 - reworked and renamed window resizing hook file
@@ -217,7 +221,7 @@
 ## [0.9.0] - 29.05.2024 - Freddy - `18-player-movement`
 - dysfunctional movement setup, no rotations yet. values dont seem to update. but ive changed so much its committment time
 - Changed seperate vec2s in player entity to use one t_transform instead
-- made scale_transform use a double for precise values & made it take in any vec2 instead of a transform
+- made scale_vector use a double for precise values & made it take in any vec2 instead of a transform
 - random fixes
 
 ### [0.8.2] - 28.05.2024 - Freddy - `15-validation-flood-fill`
@@ -246,7 +250,7 @@
 - added mlx setup function & created basic window & drew background white. currently the colors dont appear properly.
 
 ### [0.6.1] - 24.05.2024 - Freddy - `12-raycasting-rendering-util`
-- Changed infinitify_transform to scale_transform, which takes in an int to set the combined distance of the newly adjusted vectors to.
+- Changed infinitify_transform to scale_vector, which takes in an int to set the combined distance of the newly adjusted vectors to.
   - using this, we can implement a render distance easily.
 
 ## [0.6.0] - 24.05.2024 - Freddy - `12-raycasting-rendering-utils`

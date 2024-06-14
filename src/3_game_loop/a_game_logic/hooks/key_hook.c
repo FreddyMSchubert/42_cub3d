@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:50 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/14 11:09:43 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/14 13:39:23 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	player_move(mlx_key_data_t keydata)
 
 	original_pos = player()->transform.pos;
 	if (pos_distance((t_vec2){0, 0}, player()->transform.rot) != MOVEMENT_SPEED)
-		player()->transform.rot = scale_transform(player()->transform.rot, MOVEMENT_SPEED);
+		player()->transform.rot = scale_vector(player()->transform.rot, MOVEMENT_SPEED);
 	movement = get_movement_from_key(keydata, deg_to_rad(dir_vec_to_deg(player()->transform.rot)));
 	printf("movement: %f, %f, current rot: %f, %f\n", movement.x, movement.y, player()->transform.rot.x, player()->transform.rot.y);
 	player()->transform.pos.x += movement.x;

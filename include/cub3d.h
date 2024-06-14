@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/14 12:41:38 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/14 13:39:23 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ void				render_game_scene(void);
 void				do_wall_operations();
 // raycasting util
 double				pos_distance(t_vec2 pos1, t_vec2 pos2);
-t_vec2				scale_transform(t_vec2 t1, double distance);
+t_vec2				scale_vector(t_vec2 t1, double distance);
 t_vec2				raycast_intersect(t_transform t1, t_transform t2);
 t_transform			*get_intersection_wall(t_transform **walls, t_transform p);
 double				wall_ray_dist(t_transform **walls, t_transform ray, char *d);

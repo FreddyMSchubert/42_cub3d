@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/14 12:26:13 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/14 14:03:42 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static double	perform_wall_raycast(int i, char *d)
 	p_angle = dir_vec_to_deg(player()->transform.rot);
 	ray_angle = p_angle - FOV_DEG / 2.0 + (double)i / (double)RAYCASTS_PER_DEG;
 	ray.rot = deg_to_dir_vec(ray_angle);
-	ray.rot = scale_transform(ray.rot, VIEW_DIST);
+	ray.rot = scale_vector(ray.rot, VIEW_DIST);
 	ray.pos = player()->transform.pos;
 	wall_intersection_dist = wall_ray_dist(game()->input_data->walls, ray, d);
 	return (wall_intersection_dist);
@@ -38,7 +38,7 @@ static t_entity	*perform_entity_raycast(int i, double *entity_intersection_dist)
 	p_angle = dir_vec_to_deg(player()->transform.rot);
 	ray_angle = p_angle - FOV_DEG / 2.0 + (double)i / (double)RAYCASTS_PER_DEG;
 	ray.rot = deg_to_dir_vec(ray_angle);
-	ray.rot = scale_transform(ray.rot, VIEW_DIST);
+	ray.rot = scale_vector(ray.rot, VIEW_DIST);
 	ray.pos = player()->transform.pos;
 	*entity_intersection_dist = entity_ray_dist(game()->entities, ray, &entity);
 	return (entity);

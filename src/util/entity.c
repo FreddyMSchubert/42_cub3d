@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 10:40:08 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/14 12:51:45 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/14 14:01:15 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_transform	get_face_vector(t_vec2 pos)
 
 	face_angle = deg_to_rad(dir_vec_to_deg(player()->transform.rot)) + M_PI / 2;
 	result.rot = deg_to_dir_vec(rad_to_deg(face_angle));
-	result.rot = scale_transform(result.rot, 1);
+	result.rot = scale_vector(result.rot, 1.0);
 	result.pos = (t_vec2){pos.x - result.rot.x / 2, pos.y - result.rot.y / 2};
 	return (result);
 }

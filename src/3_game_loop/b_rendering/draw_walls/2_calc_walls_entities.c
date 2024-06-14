@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 09:10:15 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/14 12:37:31 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/14 13:46:16 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,9 @@ void	calc_wall(int ray_index, double intersection_dist, char d)
 	double	player_angle;
 	double	ray_angle;
 
-	player_angle = deg_to_rad(\
-						dir_vec_to_deg(player()->transform.rot));
-	ray_angle = player_angle + (ray_index - RAYCASTS_PER_DEG * FOV_DEG / 2) * \
-								(M_PI / 180.0 / RAYCASTS_PER_DEG);
+	player_angle = deg_to_rad(dir_vec_to_deg(player()->transform.rot));
+	ray_angle = player_angle + deg_to_rad((ray_index - RAYCASTS_PER_DEG * \
+									FOV_DEG / 2) / RAYCASTS_PER_DEG);
 	intersection_dist *= cos(player_angle - ray_angle);
 	get_x_pixel_from_ray_index(ray_index, &start_x, &end_x);
 	height = get_height_from_intersection_dist(intersection_dist);
@@ -65,5 +64,6 @@ void	calc_entity(int ray_index, t_entity *ntt, double intersection_dist)
 	intersection_dist *= cos(player_angle - ray_angle);
 	get_x_pixel_from_ray_index(ray_index, &start_x, &end_x);
 	height = get_height_from_intersection_dist(intersection_dist);
+	printf("calc_entity: %d %d %d %d\n", start_x, end_x, height, ntt->type);
 	draw_entity(start_x, end_x, height, ntt);
 }
