@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/19 14:22:06 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/19 15:10:00 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,10 @@ void	draw_wall_texture(int start_x, int end_x, int height, int d, double hit_off
 					rgba_to_int(255, 0, 255, 255));
 			else
 			{
-				int texture_x = (int)(hit_offset * texture->width * 2) % texture->width;
-				int texture_y = ((y - start_y) * texture->height / (end_y - start_y)) % texture->height;
+				// int repeat = texture->height / texture->width;
+				int repeat_y = texture->width / texture->height;
+				int texture_x = (int)(hit_offset * texture->width) % texture->width;
+				int texture_y = ((y - start_y) * texture->height * repeat_y / (end_y - start_y)) % texture->height;
 				int index = (texture_y * texture->width + texture_x) * texture->bytes_per_pixel;
 				int color = rgba_to_int(texture->pixels[index], texture->pixels[index + 1], texture->pixels[index + 2], texture->pixels[index + 3]);
 				set_pixel_color(game()->game_scene, x, y, color);
