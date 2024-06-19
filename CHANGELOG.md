@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.15.1] - 19.06.2024 - Freddy - `34-better-player-movement`
+- cleaned up unnecessary old code form key_hook
+
 ## [0.15.0] - 19.06.2024 - Freddy - `34-better-player-movement`
 - Fixed player movement segfault
 
