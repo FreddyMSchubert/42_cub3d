@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 09:10:15 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/19 11:34:14 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/19 12:04:05 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@ static void	get_x_pixel_from_ray_index(int ray_index, int *start_x, int *end_x)
 	double	segment_width;
 
 	number_of_segments = RAYCASTS_PER_DEG * FOV_DEG;
-	segment_width = game()->mlx->width / number_of_segments;
-	*start_x = floor((double)ray_index * segment_width);
-	*end_x = ceil(((double)ray_index + 1) * segment_width);
+	segment_width = (double)game()->mlx->width / number_of_segments;
+	*start_x = (int)((double)ray_index * segment_width);
+	*end_x = (int)(((double)ray_index + 1) * segment_width);
+	if (ray_index == number_of_segments - 1)
+		*end_x = game()->mlx->width;
 }
 
 static int	get_height_from_intersection_dist(double intersection_dist)

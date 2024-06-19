@@ -1,6 +1,9 @@
 # Changelog
 
-### [0.14.0] - 19.06.2024 - Freddy - `33-rendering-improvements`
+### [0.14.1] - 19.06.2024 - Freddy - `33-rendering-improvements`
+- Fixed rounding error causing the transparent stripe to the right issue in get_x_pixel_from_ray_index in 2_calc_walls_entities.c
+
+## [0.14.0] - 19.06.2024 - Freddy - `33-rendering-improvements`
 - peculiar condition fix, used & instead of && in raycast_walls. shouldn't actually change anything, but more readable & less confusing now
 - minor fisheye fixes
 - Made FOV 70, a more reasonable number than 96, we're not doing Minecraft PvP here.
