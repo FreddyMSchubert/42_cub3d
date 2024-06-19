@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 09:10:15 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/19 12:04:05 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/19 16:11:14 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	get_height_from_intersection_dist(double intersection_dist)
 {
 	int		height;
 
-	height = (1.0 / intersection_dist) * (game()->mlx->width / 2) / \
+	height = (4.0 / intersection_dist) * (game()->mlx->width / 2) / \
 						tan(rad_to_deg(FOV_DEG) / 2);
 	return (abs(height));
 }
