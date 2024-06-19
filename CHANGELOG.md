@@ -1,5 +1,11 @@
 # Changelog
 
+### [0.15.1] - 19.06.2024 - Freddy - `34-better-player-movement`
+- cleaned up unnecessary old code form key_hook
+
+## [0.15.0] - 19.06.2024 - Freddy - `34-better-player-movement`
+- Fixed player movement segfault
+
 ### [0.14.2] - 19.06.2024 - Freddy - `33-rendering-improvements`
 - Wall distortion fix. I have fixed it by deciding we won't allow dynamically changing the FOV (which is totally fine), thus not forcing me to make the wall scaling work properly on anything but one FOV
 
@@ -12,7 +18,7 @@
 - Made FOV 70, a more reasonable number than 96, we're not doing Minecraft PvP here.
 - gotta switch pcs
 
-### [0.13.3] - 14.06.2024 - Freddy - `31-entities`
+## [0.13.3] - 14.06.2024 - Freddy - `31-entities`
 - proper entity placement & rendering
 - moved a lot of stuff around
 
