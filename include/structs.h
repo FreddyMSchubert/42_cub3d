@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/11 16:02:32 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/19 10:19:47 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,10 @@ typedef struct s_persistent_data
 	mlx_t			*mlx;
 	mlx_image_t		*background;
 	mlx_image_t		*game_scene;
+	mlx_texture_t	*no_texture;
+	mlx_texture_t	*so_texture;
+	mlx_texture_t	*we_texture;
+	mlx_texture_t	*ea_texture;
 	int32_t			prev_mouse_x;
 	double			prev_time;
 }	t_persistent_data;

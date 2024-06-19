@@ -6,13 +6,30 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:41:35 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/13 12:59:23 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/19 10:47:16 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void	resize_hook(int32_t width, int32_t height, void* param);
+void	resize_hook(int32_t width, int32_t height, void *param);
+
+// lets use purple if a texture cannot be loaded so we dont have to crash
+void	load_textures(void)
+{
+	game()->ea_texture = mlx_load_png(game()->input_data->ea_texture_location);
+	if (!game()->ea_texture)
+		cub_exit_error("Failed to load east texture.");
+	game()->no_texture = mlx_load_png(game()->input_data->no_texture_location);
+	if (!game()->no_texture)
+		cub_exit_error("Failed to load north texture.");
+	game()->so_texture = mlx_load_png(game()->input_data->so_texture_location);
+	if (!game()->so_texture)
+		cub_exit_error("Failed to load south texture.");
+	game()->we_texture = mlx_load_png(game()->input_data->we_texture_location);
+	if (!game()->we_texture)
+		cub_exit_error("Failed to load west texture.");
+}
 
 void	set_sky(void)
 {
@@ -50,6 +67,7 @@ void	setup_mlx(void)
 		cub_exit_error("mlx setup failed.");
 	data = game();
 	data->mlx = mlx;
+	load_textures();
 	set_sky();
 	printf("Setting up with %d %d, consts are %d %d\n", data->mlx->width, data->mlx->height, START_WIDTH, START_HEIGHT);
 	data->game_scene = mlx_new_image(data->mlx, data->mlx->width, data->mlx->height);

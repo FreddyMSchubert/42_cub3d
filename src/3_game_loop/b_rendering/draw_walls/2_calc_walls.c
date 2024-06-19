@@ -6,11 +6,13 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 09:10:15 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/13 12:37:42 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/19 12:22:16 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../include/cub3d.h"
+
+void	draw_wall_texture(int start_x, int end_x, int height, int d);
 
 static void	get_x_pixel_from_ray_index(int ray_index, int *start_x, int *end_x)
 {
@@ -47,5 +49,6 @@ void	calc_wall(int ray_index, double intersection_dist, char d)
 	intersection_dist *= cos(player_angle - ray_angle);
 	get_x_pixel_from_ray_index(ray_index, &start_x, &end_x);
 	height = get_height_from_intersection_dist(intersection_dist);
-	draw_wall(start_x, end_x, height, d);
+	// draw_wall(start_x, end_x, height, d);
+	draw_wall_texture(start_x, end_x, height, d);
 }
