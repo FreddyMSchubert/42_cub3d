@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/19 13:45:13 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/19 14:22:06 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ mlx_texture_t	*get_texture(char d)
 	return (NULL);
 }
 
-void	draw_wall_texture(int start_x, int end_x, int height, int d)
+void	draw_wall_texture(int start_x, int end_x, int height, int d, double hit_offset)
 {
 	mlx_texture_t	*texture;
 	int				start_y;
@@ -58,7 +58,7 @@ void	draw_wall_texture(int start_x, int end_x, int height, int d)
 	int				x;
 
 	(void)d;
-	texture = get_texture('W');
+	texture = get_texture('E'); // N and S dont work
 	start_y = (int)(game()->mlx->height / 2) - height / 2;
 	end_y = (int)(game()->mlx->height / 2) + height / 2;
 	x = start_x;
@@ -72,8 +72,7 @@ void	draw_wall_texture(int start_x, int end_x, int height, int d)
 					rgba_to_int(255, 0, 255, 255));
 			else
 			{
-				// int texture_x = x / 10 * texture->width / 10 % texture->width;
-				int texture_x = (x * texture->width) / (FOV_DEG * 2) % texture->width;
+				int texture_x = (int)(hit_offset * texture->width * 2) % texture->width;
 				int texture_y = ((y - start_y) * texture->height / (end_y - start_y)) % texture->height;
 				int index = (texture_y * texture->width + texture_x) * texture->bytes_per_pixel;
 				int color = rgba_to_int(texture->pixels[index], texture->pixels[index + 1], texture->pixels[index + 2], texture->pixels[index + 3]);

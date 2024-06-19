@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/13 10:31:23 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/19 14:01:10 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,12 +104,12 @@ double				pos_distance(t_vec2 pos1, t_vec2 pos2);
 t_vec2				scale_transform(t_vec2 t1, double distance);
 t_vec2				raycast_intersect(t_transform t1, t_transform t2);
 t_transform			*get_intersection_wall(t_transform **walls, t_transform p);
-double				get_ray_distance(t_transform **walls, t_transform ray, char *d);
+double				get_ray_distance(t_transform **walls, t_transform ray, char *d, char *wall_orientation);
 double				calculate_deviation_angle(t_transform p, t_vec2 pos);
 // - 1 raycast walls
 void				raycast_walls(void);
 // - 2 calc walls
-void				calc_wall(int ray_index, double intersection_dist, char d);
+void				calc_wall(int ray_index, double intersection_dist, char d, char wall_orientation);
 // - 3 draw walls
 void				draw_wall(int start_x, int end_x, int height, char d);
 

@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:22:19 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/19 12:22:22 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/19 14:02:43 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ t_transform	*get_intersection_wall(t_transform **walls, t_transform ray)
 	return (closest_wall);
 }
 
-double	get_ray_distance(t_transform **walls, t_transform ray, char *d)
+double	get_ray_distance(t_transform **walls, t_transform ray, char *d, char *wall_orientation)
 {
 	t_vec2		intersection;
 	t_transform	*closest_wall;
@@ -109,6 +109,10 @@ double	get_ray_distance(t_transform **walls, t_transform ray, char *d)
 		}
 	}
 	*d = get_color_for_wall(*closest_wall);
+	if (fabs(closest_wall->rot.x) > fabs(closest_wall->rot.y))
+		*wall_orientation = 'H';
+	else
+		*wall_orientation = 'V';
 	return (closest_distance);
 }
 
