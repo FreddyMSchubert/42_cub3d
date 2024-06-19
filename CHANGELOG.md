@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.15.0] - 19.06.2024 - Freddy - `34-better-player-movement`
+- Fixed player movement segfault
+
 ## [0.13.3] - 14.06.2024 - Freddy - `31-entities`
 - proper entity placement & rendering
 - moved a lot of stuff around

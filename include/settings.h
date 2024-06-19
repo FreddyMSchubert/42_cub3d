@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   settings.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/19 16:05:27 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/19 16:36:17 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@
 
 // Player Movement Stats
 
-# define MOVEMENT_SPEED 0.003
-# define MOVEMENT_SPRINT_MULTIPLIER 1.3
+# define MOVEMENT_SPEED 0.01
+# define MOVEMENT_SPRINT_MULTIPLIER 2
 # define TURN_SPEED_ARROWS_DEG 5
 # define TURN_SPEED_MOUSE_DEG 1
 
