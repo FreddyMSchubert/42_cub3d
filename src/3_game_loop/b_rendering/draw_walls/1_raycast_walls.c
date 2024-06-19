@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/14 14:03:42 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/19 11:37:35 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,9 @@ void	raycast_walls(void)
 	{
 		wall_intersection_dist = perform_wall_raycast(ray_index, &d);
 		ntt = perform_entity_raycast(ray_index, &entity_intersection_dist);
-		if (wall_intersection_dist != -1 & wall_intersection_dist <= VIEW_DIST)
+		if (wall_intersection_dist != -1 && wall_intersection_dist <= VIEW_DIST)
 			calc_wall(ray_index, wall_intersection_dist, d);
-		if (entity_intersection_dist != -1 && \
-			entity_intersection_dist <= VIEW_DIST && \
+		if (entity_intersection_dist != -1 && entity_intersection_dist <= VIEW_DIST &&
 			ntt != NULL && entity_intersection_dist < wall_intersection_dist)
 			calc_entity(ray_index, ntt, entity_intersection_dist);
 	}

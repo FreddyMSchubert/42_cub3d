@@ -1,6 +1,12 @@
 # Changelog
 
-## [0.13.3] - 14.06.2024 - Freddy - `31-entities`
+### [0.14.0] - 19.06.2024 - Freddy - `33-rendering-improvements`
+- peculiar condition fix, used & instead of && in raycast_walls. shouldn't actually change anything, but more readable & less confusing now
+- minor fisheye fixes
+- Made FOV 70, a more reasonable number than 96, we're not doing Minecraft PvP here.
+- gotta switch pcs
+
+### [0.13.3] - 14.06.2024 - Freddy - `31-entities`
 - proper entity placement & rendering
 - moved a lot of stuff around
 
