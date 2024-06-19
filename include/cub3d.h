@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/14 13:39:23 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/19 16:03:11 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ void				setup_player(void);
 void				loop_hook(void *param);
 void				handle_mouse_mv(void);
 void				key_hook(mlx_key_data_t keydata, void *param);
+void				handle_player_move(void);
 // util
 void				turn(double amount);
 // --- b_rendering
