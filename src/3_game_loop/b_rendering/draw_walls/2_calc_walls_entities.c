@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 09:10:15 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/14 13:46:16 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/19 16:11:14 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,18 @@ static void	get_x_pixel_from_ray_index(int ray_index, int *start_x, int *end_x)
 	double	segment_width;
 
 	number_of_segments = RAYCASTS_PER_DEG * FOV_DEG;
-	segment_width = game()->mlx->width / number_of_segments;
-	*start_x = floor((double)ray_index * segment_width);
-	*end_x = ceil(((double)ray_index + 1.0) * segment_width);
+	segment_width = (double)game()->mlx->width / number_of_segments;
+	*start_x = (int)((double)ray_index * segment_width);
+	*end_x = (int)(((double)ray_index + 1) * segment_width);
+	if (ray_index == number_of_segments - 1)
+		*end_x = game()->mlx->width;
 }
 
 static int	get_height_from_intersection_dist(double intersection_dist)
 {
 	int		height;
 
-	height = (1.0 / intersection_dist) * (game()->mlx->width / 2) / \
+	height = (4.0 / intersection_dist) * (game()->mlx->width / 2) / \
 						tan(rad_to_deg(FOV_DEG) / 2);
 	return (abs(height));
 }
@@ -41,9 +43,9 @@ void	calc_wall(int ray_index, double intersection_dist, char d)
 	double	ray_angle;
 
 	player_angle = deg_to_rad(dir_vec_to_deg(player()->transform.rot));
-	ray_angle = player_angle + deg_to_rad((ray_index - RAYCASTS_PER_DEG * \
-									FOV_DEG / 2) / RAYCASTS_PER_DEG);
-	intersection_dist *= cos(player_angle - ray_angle);
+	ray_angle = player_angle - deg_to_rad(FOV_DEG / 2.0) + \
+							deg_to_rad((double)ray_index / RAYCASTS_PER_DEG);
+	intersection_dist *= cos(ray_angle - player_angle);
 	get_x_pixel_from_ray_index(ray_index, &start_x, &end_x);
 	height = get_height_from_intersection_dist(intersection_dist);
 	draw_wall(start_x, end_x, height, d);

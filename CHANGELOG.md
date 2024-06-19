@@ -1,6 +1,18 @@
 # Changelog
 
-## [0.13.3] - 14.06.2024 - Freddy - `31-entities`
+### [0.14.2] - 19.06.2024 - Freddy - `33-rendering-improvements`
+- Wall distortion fix. I have fixed it by deciding we won't allow dynamically changing the FOV (which is totally fine), thus not forcing me to make the wall scaling work properly on anything but one FOV
+
+### [0.14.1] - 19.06.2024 - Freddy - `33-rendering-improvements`
+- Fixed rounding error causing the transparent stripe to the right issue in get_x_pixel_from_ray_index in 2_calc_walls_entities.c
+
+## [0.14.0] - 19.06.2024 - Freddy - `33-rendering-improvements`
+- peculiar condition fix, used & instead of && in raycast_walls. shouldn't actually change anything, but more readable & less confusing now
+- minor fisheye fixes
+- Made FOV 70, a more reasonable number than 96, we're not doing Minecraft PvP here.
+- gotta switch pcs
+
+### [0.13.3] - 14.06.2024 - Freddy - `31-entities`
 - proper entity placement & rendering
 - moved a lot of stuff around
 
