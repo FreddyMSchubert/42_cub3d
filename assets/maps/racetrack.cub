@@ -1,9 +1,9 @@
 # Credits: https://git.narnaud.net/nicolas-arnaud/Cub3D
 
 NO ./assets/img/bricks.png
-SO ./assets/img/bricks.png
-WE ./assets/img/bricks.png
-EA ./assets/img/bricks.png
+SO ./assets/img/bookshelf.png
+WE ./assets/img/diamond_ore.png
+EA ./assets/img/structure_block_corner.png
 
 F 18,176,12
 C 27,210,227

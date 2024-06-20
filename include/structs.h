@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/14 10:39:45 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/20 06:25:02 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,10 @@ typedef struct s_persistent_data
 	mlx_image_t		*background;
 	mlx_image_t		*game_scene;
 	t_list			*entities;
+	mlx_texture_t	*no_texture;
+	mlx_texture_t	*so_texture;
+	mlx_texture_t	*we_texture;
+	mlx_texture_t	*ea_texture;
 	int32_t			prev_mouse_x;
 	double			prev_time;
 }	t_persistent_data;
@@ -97,8 +101,11 @@ typedef enum e_entity_type
 typedef struct s_entity
 {
 	t_entity_type	type;
+
 	t_transform		transform;
 	t_transform		spawn_transform;
+
+	mlx_texture_t	*texture;
 }	t_entity;
 
 #endif

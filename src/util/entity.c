@@ -6,13 +6,13 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 10:40:08 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/14 14:01:15 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/20 06:25:44 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void	create_entity(t_vec2 pos, t_vec2 rot, t_entity_type type)
+void	create_entity(t_vec2 pos, t_vec2 rot, t_entity_type type, mlx_texture_t *tex)
 {
 	t_entity	*entity;
 
@@ -21,6 +21,7 @@ void	create_entity(t_vec2 pos, t_vec2 rot, t_entity_type type)
 	entity->spawn_transform.rot = rot;
 	entity->transform = entity->spawn_transform;
 	entity->type = type;
+	entity->texture = tex;
 	ft_lstadd_back(&game()->entities, ft_lstnew(entity));
 }
 

@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/14 12:38:15 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/20 06:22:14 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,67 +18,43 @@ static void	set_pixel_color(mlx_image_t *img, int x, int y, int col)
 		mlx_put_pixel(img, x, y, col);
 }
 
-static int	get_color(char walldir)
+static int	get_tex_color_at(mlx_texture_t *tex, int x, int y)
 {
-	if (walldir == 'N')
-		return (t_color_to_int((t_color){255, 0, 0, 255}));
-	if (walldir == 'E')
-		return (t_color_to_int((t_color){0, 0, 255, 255}));
-	if (walldir == 'S')
-		return (t_color_to_int((t_color){0, 255, 0, 255}));
-	if (walldir == 'W')
-		return (t_color_to_int((t_color){255, 255, 0, 255}));
-	return (t_color_to_int((t_color){255, 255, 255, 255}));
+	int index = (y * tex->width + x) * tex->bytes_per_pixel;
+	return (rgba_to_int(tex->pixels[index], tex->pixels[index + 1], \
+					tex->pixels[index + 2], tex->pixels[index + 3]));
 }
-
-void	draw_wall(int start_x, int end_x, int height, char d)
+static void	draw_column(t_scale start, int end_y, mlx_texture_t *tex, int tex_x, int repeat_y)
 {
-	int		color;
-	int		start_y;
-	int		end_y;
-	int		y;
-	int		x;
+	int y;
+	int tex_y;
+	int color;
 
-	color = get_color(d);
-	start_y = (int)(game()->mlx->height / 2) - height / 2;
-	end_y = (int)(game()->mlx->height / 2) + height / 2;
-	x = start_x;
-	while (x != end_x)
+	y = start.y;
+	while (y < end_y)
 	{
-		y = start_y;
-		while (y < end_y)
-		{
-			set_pixel_color(game()->game_scene, x, y, color);
-			y++;
-		}
-		if (start_x < end_x)
-			x++;
-		else
-			x--;
+		tex_y = (y - start.y) * tex->height * repeat_y / (end_y - start.y) % tex->height;
+		color = get_tex_color_at(tex, tex_x, tex_y);
+		set_pixel_color(game()->game_scene, start.x, y++, color);
 	}
 }
 
-void	draw_entity(int start_x, int end_x, int height, t_entity *ntt)
+void	draw_gameobject(int start_x, int end_x, int height, mlx_texture_t *tex, double hit_offset)
 {
-	int		color;
-	int		start_y;
-	int		end_y;
-	int		y;
-	int		x;
+	int				start_y;
+	int				end_y;
+	int				repeat_y;
+	int				x;
+	int				texture_x;
 
-	(void)ntt; // later used for texturing, for now everythings white so useless
-	color = 0xFFFFFFFF;
 	start_y = (int)(game()->mlx->height / 2) - height / 2;
-	end_y = (int)(game()->mlx->height / 2) + height / 2;
+	end_y = start_y + height;
 	x = start_x;
+	repeat_y = tex->width / tex->height;
 	while (x != end_x)
 	{
-		y = start_y;
-		while (y < end_y)
-		{
-			set_pixel_color(game()->game_scene, x, y, color);
-			y++;
-		}
+		texture_x = (int)(hit_offset * tex->width) % tex->width;
+		draw_column((t_scale){x, start_y}, end_y, tex, texture_x, repeat_y);
 		if (start_x < end_x)
 			x++;
 		else

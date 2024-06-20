@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:12:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/14 12:51:31 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/20 06:26:34 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ bool	set_goal(t_vec2 pos, t_tile_type ***map)
 		return (false);
 	}
 	*(map[(int)pos.y][(int)pos.x]) = FLOOR;
-	create_entity(pos, (t_vec2){0, 1}, GOAL);
+	create_entity(pos, (t_vec2){0, 1}, GOAL, game()->ea_texture);
 	return (true);
 }
 

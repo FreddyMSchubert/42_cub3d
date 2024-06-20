@@ -3,16 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   setup_mlx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:41:35 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/19 16:19:45 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/20 05:55:46 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void	resize_hook(int32_t width, int32_t height, void* param);
+void	resize_hook(int32_t width, int32_t height, void *param);
+
+// lets use purple if a texture cannot be loaded so we dont have to crash
+void	load_textures(void)
+{
+	game()->ea_texture = mlx_load_png(game()->input_data->ea_texture_location);
+	if (!game()->ea_texture)
+		cub_exit_error("Failed to load east texture.");
+	game()->no_texture = mlx_load_png(game()->input_data->no_texture_location);
+	if (!game()->no_texture)
+		cub_exit_error("Failed to load north texture.");
+	game()->so_texture = mlx_load_png(game()->input_data->so_texture_location);
+	if (!game()->so_texture)
+		cub_exit_error("Failed to load south texture.");
+	game()->we_texture = mlx_load_png(game()->input_data->we_texture_location);
+	if (!game()->we_texture)
+		cub_exit_error("Failed to load west texture.");
+}
 
 void	set_background(void)
 {
@@ -51,6 +68,7 @@ void	setup_mlx(void)
 	data = game();
 	data->mlx = mlx;
 	set_background();
+	load_textures();
 	printf("Setting up with %d %d, consts are %d %d\n", data->mlx->width, data->mlx->height, START_WIDTH, START_HEIGHT);
 	data->game_scene = mlx_new_image(data->mlx, data->mlx->width, data->mlx->height);
 	if (!data->game_scene || (mlx_image_to_window(data->mlx, data->game_scene, 0, 0) < 0))

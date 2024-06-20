@@ -1,5 +1,25 @@
 # Changelog
 
+### [0.16.3] - 10.06.2024 - Freddy
+- Merge 21 with master
+- Made entities & walls use the same calc & drawing functions in step 2 & 3. Now that we need a name for both walls and entities together, I have dubbed them "gameobjects".
+- A lot of reorderings
+- This branch is highly unstable and segfaults often, yet I'll push it because the amount of changes are large. Look away kids, don't do as I do...
+
+### [0.16.2] - 10.06.2024 - Freddy - `21-image-distortion`
+- Fully reworked rendering system, second of two halves.
+- Slight drawing & draw calc logic tweaks for simplicity
+- Unnecessary print removal
+
+### [0.16.1] - 10.06.2024 - Freddy - `21-image-distortion`
+- Full rework of rendering system, first half
+- Removed some old unnecessary functions
+
+## [0.16.0] - 20.06.2024 - Freddy - `21-image-distortion`
+- fully removed draw wall function and get color function - it's no longer needed
+- moved rgba_to_int to color utils where it belongs
+- various cleanups
+
 ### [0.15.1] - 19.06.2024 - Freddy - `34-better-player-movement`
 - cleaned up unnecessary old code form key_hook
 

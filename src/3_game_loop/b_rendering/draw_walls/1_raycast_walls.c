@@ -6,29 +6,27 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/19 11:37:35 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/20 06:26:51 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../include/cub3d.h"
 
-static double	perform_wall_raycast(int i, char *d)
+static t_vec2	perform_wall_raycast(int i)
 {
 	t_transform	ray;
 	double		p_angle;
 	double		ray_angle;
-	double		wall_intersection_dist;
 
 	p_angle = dir_vec_to_deg(player()->transform.rot);
 	ray_angle = p_angle - FOV_DEG / 2.0 + (double)i / (double)RAYCASTS_PER_DEG;
 	ray.rot = deg_to_dir_vec(ray_angle);
 	ray.rot = scale_vector(ray.rot, VIEW_DIST);
 	ray.pos = player()->transform.pos;
-	wall_intersection_dist = wall_ray_dist(game()->input_data->walls, ray, d);
-	return (wall_intersection_dist);
+	return (get_wall_intersection(game()->input_data->walls, ray));
 }
 
-static t_entity	*perform_entity_raycast(int i, double *entity_intersection_dist)
+static t_entity	*perform_entity_raycast(int i, t_vec2 *entity_intersection)
 {
 	t_transform	ray;
 	double		p_angle;
@@ -40,27 +38,40 @@ static t_entity	*perform_entity_raycast(int i, double *entity_intersection_dist)
 	ray.rot = deg_to_dir_vec(ray_angle);
 	ray.rot = scale_vector(ray.rot, VIEW_DIST);
 	ray.pos = player()->transform.pos;
-	*entity_intersection_dist = entity_ray_dist(game()->entities, ray, &entity);
+	*entity_intersection = get_entity_intersection(game()->entities, ray, &entity);
 	return (entity);
+}
+
+static mlx_texture_t	*get_wall_texture(char d)
+{
+	if (d == 'N')
+		return (game()->no_texture);
+	if (d == 'E')
+		return (game()->ea_texture);
+	if (d == 'S')
+		return (game()->so_texture);
+	if (d == 'W')
+		return (game()->we_texture);
+	return (NULL);
 }
 
 void	raycast_walls(void)
 {
 	int			ray_index;
-	double		wall_intersection_dist;
+	t_vec2		wall_intersection;
+	t_vec2		entity_intersection;
 	double		entity_intersection_dist;
 	t_entity	*ntt;
-	char		d;
 
 	ray_index = -1;
 	while (++ray_index < RAYCASTS_PER_DEG * FOV_DEG)
 	{
-		wall_intersection_dist = perform_wall_raycast(ray_index, &d);
-		ntt = perform_entity_raycast(ray_index, &entity_intersection_dist);
-		if (wall_intersection_dist != -1 && wall_intersection_dist <= VIEW_DIST)
-			calc_wall(ray_index, wall_intersection_dist, d);
+		wall_intersection = perform_wall_raycast(ray_index);
+		ntt = perform_entity_raycast(ray_index, &entity_intersection);
+		calc_gameobject(ray_index, wall_intersection, get_wall_texture(get_wall_face_to_render(wall_intersection)));
+		entity_intersection_dist = pos_distance(player()->transform.pos, entity_intersection);
 		if (entity_intersection_dist != -1 && entity_intersection_dist <= VIEW_DIST &&
-			ntt != NULL && entity_intersection_dist < wall_intersection_dist)
-			calc_entity(ray_index, ntt, entity_intersection_dist);
+			ntt != NULL && entity_intersection_dist < pos_distance(player()->transform.pos, wall_intersection))
+			calc_gameobject(ray_index, entity_intersection, ntt->texture);
 	}
 }

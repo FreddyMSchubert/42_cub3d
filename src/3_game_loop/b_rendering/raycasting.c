@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:22:19 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/14 14:03:33 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/20 06:15:23 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,37 +56,10 @@ t_vec2	raycast_intersect(t_transform t1, t_transform t2)
 	return (intersection);
 }
 
-t_transform	*get_intersection_wall(t_transform **walls, t_transform ray)
-{
-	t_transform	*closest_wall;
-	t_vec2		intersection;
-	double		closest_distance;
-	double		current_distance;
-	int			i;
-
-	closest_wall = NULL;
-	closest_distance = -1;
-	i = -1;
-	while (walls[++i])
-	{
-		intersection = raycast_intersect(ray, *walls[i]);
-		if (intersection.x != -1)
-		{
-			current_distance = pos_distance(ray.pos, intersection);
-			if (closest_distance == -1 || current_distance < closest_distance)
-			{
-				closest_distance = current_distance;
-				closest_wall = walls[i];
-			}
-		}
-	}
-	return (closest_wall);
-}
-
-double	wall_ray_dist(t_transform **walls, t_transform ray, char *d)
+t_vec2	get_wall_intersection(t_transform **walls, t_transform ray)
 {
 	t_vec2		intersection;
-	t_transform	*closest_wall;
+	t_vec2		closest_intersection;
 	double		closest_distance;
 	double		current_distance;
 	int			i;
@@ -102,23 +75,25 @@ double	wall_ray_dist(t_transform **walls, t_transform ray, char *d)
 			if (closest_distance == -1 || current_distance < closest_distance)
 			{
 				closest_distance = current_distance;
-				closest_wall = walls[i];
+				closest_intersection = intersection;
 			}
 		}
 	}
-	*d = get_color_for_wall(*closest_wall);
-	return (closest_distance);
+	return (closest_intersection);
 }
 
-double	entity_ray_dist(t_list *entities, t_transform ray, \
+t_vec2	get_entity_intersection(t_list *entities, t_transform ray, \
 										t_entity **closest_entity)
 {
 	t_entity	*entity;
 	t_vec2		intersection;
+	t_vec2		closest_intersection;
 	double		closest_distance;
 	double		current_distance;
 
 	closest_distance = -1;
+	closest_intersection.x = -1;
+	closest_intersection.y = -1;
 	while (entities)
 	{
 		entity = (t_entity *)entities->content;
@@ -129,35 +104,11 @@ double	entity_ray_dist(t_list *entities, t_transform ray, \
 			if (closest_distance == -1 || current_distance < closest_distance)
 			{
 				closest_distance = current_distance;
+				closest_intersection = intersection;
 				*closest_entity = entity;
 			}
 		}
 		entities = entities->next;
 	}
-	return (closest_distance);
-}
-
-/**
- * Calculate the deviation angle in degrees between a transform and a given pos.
- *
- * @param player e.g. the player's position and view direction (t_transform).
- * @param pos The target position to calculate the deviation for (t_vec2).
- * @return The deviation angle in degrees.
- * 
- * while loops are so we dont end up with -1000 degrees
- */
-double	calculate_deviation_angle(t_transform p, t_vec2 pos)
-{
-	double	pos_angle;
-	double	player_angle;
-	double	deviation_angle;
-
-	pos_angle = atan2(pos.y - p.pos.y, pos.x - p.pos.x);
-	player_angle = atan2(p.rot.y, p.rot.x);
-	deviation_angle = pos_angle - player_angle;
-	while (deviation_angle > M_PI)
-		deviation_angle -= 2 * M_PI;
-	while (deviation_angle < -M_PI)
-		deviation_angle += 2 * M_PI;
-	return (rad_to_deg(deviation_angle));
+	return (closest_intersection);
 }

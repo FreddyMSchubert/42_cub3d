@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/19 16:03:11 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/20 06:26:20 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,15 @@ t_entity			*player(void);
 
 // ----- 0_map_generation
 // mapmaker
-void	            generate_map(void);
+void				generate_map(void);
 // features
-void	            remove_walls(char **maze, int height, int width);
+void				remove_walls(char **maze, int height, int width);
 void				place_player_spawn(char **maze, t_scale	map_scale);
-void	            add_rooms(char **maze, t_scale scale, int room_count);
+void				add_rooms(char **maze, t_scale scale, int room_count);
 // file writer
-void	            write_cub_file(char **maze, int height, int width, char *filename);
+void				write_cub_file(char **maze, int height, int width, char *filename);
 // util
-int	                random_int(int min, int max);
+int					random_int(int min, int max);
 
 // ----- 1_input_parsing
 void				parse_input(char	*filepath);
@@ -128,19 +128,27 @@ void				do_wall_operations();
 double				pos_distance(t_vec2 pos1, t_vec2 pos2);
 t_vec2				scale_vector(t_vec2 t1, double distance);
 t_vec2				raycast_intersect(t_transform t1, t_transform t2);
-t_transform			*get_intersection_wall(t_transform **walls, t_transform p);
-double				wall_ray_dist(t_transform **walls, t_transform ray, char *d);
-double				entity_ray_dist(t_list *entities, t_transform ray, \
+t_vec2				get_wall_intersection(t_transform **walls, t_transform ray);
+t_vec2				get_entity_intersection(t_list *entities, t_transform ray, \
 										t_entity **closest_entity);
-double				calculate_deviation_angle(t_transform p, t_vec2 pos);
 // - 1 raycast walls
 void				raycast_walls(void);
-// - 2 calc walls & entities
-void				calc_wall(int ray_index, double intersection_dist, char d);
-void				calc_entity(int ray_index, t_entity *ntt, double intersection_dist);
-// - 3 draw walls & entities
-void				draw_wall(int start_x, int end_x, int height, char d);
-void				draw_entity(int start_x, int end_x, int height, t_entity *ntt);
+// - 2 calc walls
+void				calc_gameobject(int ray_index, t_vec2 intersect, mlx_texture_t *tex);
+// - 3 draw walls
+void				draw_gameobject(int start_x, int end_x, int height, mlx_texture_t *tex, double hit_offset);
+// - util
+bool				get_wall_orientation(t_vec2 intersect);		// d
+char				get_wall_face_to_render(t_vec2 intersect);	// wall_orientation
+t_transform			get_wall_from_intersect(t_vec2 intersect);
+
+# define WALL_ORIENTATION_HORIZONTAL 0
+# define WALL_ORIENTATION_VERTICAL 1
+
+# define WALL_FACE_NORTH 'N'
+# define WALL_FACE_SOUTH 'S'
+# define WALL_FACE_EAST 'E'
+# define WALL_FACE_WEST 'W'
 
 // ----- util
 // garbage collector
@@ -165,6 +173,7 @@ unsigned int		t_color_to_int(t_color color);
 t_color				int_to_t_color(int color);
 void				log_color_from_t_color(t_color color);
 void				log_color_from_int(int color);
+int					rgba_to_int(int r, int g, int b, int a);
 
 // positions
 bool				is_same_wall(t_transform wall1, t_transform wall2);
@@ -172,7 +181,7 @@ t_vec2				sum_vectors(t_vec2 v1, t_vec2 v2);
 char				get_color_for_wall(t_transform t);
 
 // entities
-void				create_entity(t_vec2 pos, t_vec2 rot, t_entity_type type);
+void				create_entity(t_vec2 pos, t_vec2 rot, t_entity_type type, mlx_texture_t *tex);
 t_transform			get_face_vector(t_vec2 pos);
 
 // string
@@ -184,5 +193,8 @@ double				rad_to_deg(double radians);
 t_vec2				deg_to_dir_vec(double degrees);
 double				dir_vec_to_deg(t_vec2 dir);
 double				normalize_degrees(double degrees);
+
+// math
+bool				has_decimals(double number);
 
 #endif
