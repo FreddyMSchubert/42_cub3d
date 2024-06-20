@@ -1,5 +1,10 @@
 # Changelog
 
+### [0.16.5] - 10.06.2024 - Freddy
+- Made walls square
+- Removed all multiplayer traces
+- player movement improvement when multiple keys are held & better logic update
+
 ### [0.16.4] - 10.06.2024 - Freddy
 - Added star entity sprite & set it as goal texture
 - Removed render being called outside of loop hook segfault

@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/20 06:03:07 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/20 07:54:34 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 
 // Map limits
 
-# define MAX_PLAYER_COUNT 1
 # define MAX_GOAL_COUNT 1
 
 // Quality of Life
@@ -50,7 +49,7 @@
 
 // Player Movement Stats
 
-# define MOVEMENT_SPEED 0.01
+# define MOVEMENT_SPEED 0.03
 # define MOVEMENT_SPRINT_MULTIPLIER 2
 # define TURN_SPEED_ARROWS_DEG 5
 # define TURN_SPEED_MOUSE_DEG 1

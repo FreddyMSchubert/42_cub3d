@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:12:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/20 07:17:43 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/20 07:38:45 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,8 @@ bool	set_player_spawn(char dir, t_vec2 pos, t_tile_type ***map)
 {
 	static int	player_count = 0;
 
-	if (++player_count > MAX_PLAYER_COUNT)
-	{
-		logger(LOGGER_ERROR, "Maximum player count already reached!");
-		return (false);
-	}
+	if (++player_count > 1)
+		cub_exit_error("Multiple player spawns detected!");
 	if (dir == 'N')
 		player()->spawn_transform.rot = (t_vec2){-1, 0};
 	else if (dir == 'S')

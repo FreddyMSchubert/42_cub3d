@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/20 07:23:10 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/20 07:30:57 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	draw_gameobject(int start_x, int end_x, int height, mlx_texture_t *tex, dou
 	int				x;
 	int				texture_x;
 
+	write(STDOUT_FILENO, "draw_gameobject\n", 17);
 	start_y = (int)(game()->mlx->height / 2) - height / 2;
 	end_y = start_y + height;
 	x = start_x;
@@ -62,4 +63,5 @@ void	draw_gameobject(int start_x, int end_x, int height, mlx_texture_t *tex, dou
 		else
 			x--;
 	}
+	write(STDOUT_FILENO, "draw_gameobject end\n", 21);
 }
