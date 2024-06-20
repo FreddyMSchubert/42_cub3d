@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/20 06:22:14 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/20 07:23:10 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static void	set_pixel_color(mlx_image_t *img, int x, int y, int col)
 {
+	if (int_to_t_color(col).a == 0)
+		return ;
 	if (x >= 0 && x < (int)(img->width) && y >= 0 && y < (int)(img->height))
 		mlx_put_pixel(img, x, y, col);
 }

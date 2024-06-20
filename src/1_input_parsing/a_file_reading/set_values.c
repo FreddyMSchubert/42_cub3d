@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:12:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/20 06:26:34 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/20 07:17:43 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ bool	set_player_spawn(char dir, t_vec2 pos, t_tile_type ***map)
 {
 	static int	player_count = 0;
 
-	printf("player_count: %d, pos: %f, %f\n", player_count, pos.x, pos.y);
 	if (++player_count > MAX_PLAYER_COUNT)
 	{
 		logger(LOGGER_ERROR, "Maximum player count already reached!");
@@ -44,6 +43,7 @@ bool	set_player_spawn(char dir, t_vec2 pos, t_tile_type ***map)
 bool	set_goal(t_vec2 pos, t_tile_type ***map)
 {
 	static int	goal_count = 0;
+	mlx_texture_t	*texture;
 
 	printf("setting the goal \n");
 	if (++goal_count > MAX_GOAL_COUNT)
@@ -52,7 +52,10 @@ bool	set_goal(t_vec2 pos, t_tile_type ***map)
 		return (false);
 	}
 	*(map[(int)pos.y][(int)pos.x]) = FLOOR;
-	create_entity(pos, (t_vec2){0, 1}, GOAL, game()->ea_texture);
+	texture = mlx_load_png("./assets/entities/star.png");
+	if (!texture)
+		cub_exit_error("Failed to load goal texture!");
+	create_entity(pos, (t_vec2){0, 1}, GOAL, texture);
 	return (true);
 }
 

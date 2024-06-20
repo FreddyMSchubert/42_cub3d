@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:41:35 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/20 05:55:46 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/20 07:20:58 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,10 @@ void	setup_mlx(void)
 	data->mlx = mlx;
 	set_background();
 	load_textures();
-	printf("Setting up with %d %d, consts are %d %d\n", data->mlx->width, data->mlx->height, START_WIDTH, START_HEIGHT);
 	data->game_scene = mlx_new_image(data->mlx, data->mlx->width, data->mlx->height);
 	if (!data->game_scene || (mlx_image_to_window(data->mlx, data->game_scene, 0, 0) < 0))
 		cub_exit_error("mlx image creation failed");
 	setup_player();
-	render_game_scene();
 	mlx_loop_hook(data->mlx, loop_hook, NULL);
 	mlx_key_hook(data->mlx, key_hook, NULL);
 	mlx_resize_hook(data->mlx, resize_hook, NULL);

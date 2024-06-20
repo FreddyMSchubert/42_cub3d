@@ -1,6 +1,6 @@
 #include "../../../include/cub3d.h"
 
-double	get_mvmnt_speed(void)
+static double	get_mvmnt_speed(void)
 {
 	double	speed;
 
@@ -10,7 +10,7 @@ double	get_mvmnt_speed(void)
 	return (speed);
 }
 
-t_vec2	get_movement_from_key(void)
+static t_vec2	get_movement_from_key(void)
 {
 	double	speed;
 	double	angle;

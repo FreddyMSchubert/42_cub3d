@@ -1,5 +1,10 @@
 # Changelog
 
+### [0.16.4] - 10.06.2024 - Freddy
+- Added star entity sprite & set it as goal texture
+- Removed render being called outside of loop hook segfault
+- Made renderer support transparency (transparent texture pixels wont be placed, thus not overriding the image, thus not making the walls behind invisible)
+
 ### [0.16.3] - 10.06.2024 - Freddy
 - Merge 21 with master
 - Made entities & walls use the same calc & drawing functions in step 2 & 3. Now that we need a name for both walls and entities together, I have dubbed them "gameobjects".

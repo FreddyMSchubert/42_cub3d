@@ -22,12 +22,12 @@ LIBS := $(LIBMLX)/build/libmlx42.a -ldl -lm -L$(GLFW_PATH)/lib -lglfw $(LIBFT)/l
 CFLAGS := -Wall -Werror -Wextra -Wunreachable-code
 
 $(NAME): setup $(OBJ) $(LIBMLX)/build/libmlx42.a $(LIBFT)/libft.a $(GNL)/libftgnl.a
-	cc $(OBJ) $(LIBS) $(HEADERS) -o $(NAME)
+	cc $(OBJ) $(LIBS) $(HEADERS) -o $(NAME) -g
 
 $(OBJ_DIR)/%.o: ./src/%.c
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(dir $@)
-	cc $(CFLAGS) -o $@ -c $< $(HEADERS)
+	cc $(CFLAGS) -o $@ -c $< $(HEADERS) -g
 
 all: setup libmlx libft gnl $(NAME)
 clean:
