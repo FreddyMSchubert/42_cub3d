@@ -1,5 +1,10 @@
 # Changelog
 
+### [0.13.0] - 20.06.2024 - Freddy
+- fully removed draw wall function and get color function - it's no longer needed
+- moved rgba_to_int to color utils where it belongs
+- various cleanups
+
 ### [0.12.6] - 13.06.2024 - Freddy
 - Fixed player resetting improperly when pressing r
 

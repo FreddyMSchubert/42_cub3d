@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/19 14:01:10 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/20 03:20:37 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void				raycast_walls(void);
 // - 2 calc walls
 void				calc_wall(int ray_index, double intersection_dist, char d, char wall_orientation);
 // - 3 draw walls
-void				draw_wall(int start_x, int end_x, int height, char d);
+void				draw_wall_texture(int start_x, int end_x, int height, int d, double hit_offset);
 
 // ----- util
 // garbage collector
@@ -136,6 +136,7 @@ unsigned int		t_color_to_int(t_color color);
 t_color				int_to_t_color(int color);
 void				log_color_from_t_color(t_color color);
 void				log_color_from_int(int color);
+int					rgba_to_int(int r, int g, int b, int a);
 
 // positions
 bool				is_same_wall(t_transform wall1, t_transform wall2);

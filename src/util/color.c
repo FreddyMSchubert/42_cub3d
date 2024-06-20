@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:56:27 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/03 10:50:17 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/20 03:20:39 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,9 @@ void	log_color_from_int(int color)
 
 	c = int_to_t_color(color);
 	log_color_from_t_color(c);
+}
+
+int	rgba_to_int(int r, int g, int b, int a)
+{
+	return (t_color_to_int((t_color){r, g, b, a}));
 }

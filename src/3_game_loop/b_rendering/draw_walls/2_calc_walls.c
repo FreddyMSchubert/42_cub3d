@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   2_calc_walls.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 09:10:15 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/19 14:21:59 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/20 03:17:47 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../include/cub3d.h"
-
-void	draw_wall_texture(int start_x, int end_x, int height, int d, double hit_offset);
 
 static void	get_x_pixel_from_ray_index(int ray_index, int *start_x, int *end_x)
 {
