@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 03:32:53 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/20 04:25:27 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/20 05:14:26 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ t_transform	get_wall_from_intersect(t_vec2 intersect)
 {
 	t_transform	wall;
 
-	printf("an intersect at %f, %f ", intersect.x, intersect.y);
 	wall.rot.x = 0;
 	wall.rot.y = 0;
 	wall.pos.x = intersect.x;
@@ -31,7 +30,6 @@ t_transform	get_wall_from_intersect(t_vec2 intersect)
 		wall.rot.y = 1;
 		wall.pos.y = floor(intersect.y);
 	}
-	printf("is a wall at %f, %f, rotations %f %f\n", wall.pos.x, wall.pos.y, wall.rot.x, wall.rot.y);
 	return (wall);
 }
 

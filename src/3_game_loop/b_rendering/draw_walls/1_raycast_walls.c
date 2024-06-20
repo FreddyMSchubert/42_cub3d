@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   1_raycast_walls.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/20 04:38:18 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/20 05:15:45 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ static t_vec2	perform_raycast(int i)
 	ray.rot = degrees_to_dir_vector(ray_angle);
 	ray.rot = scale_transform(ray.rot, RENDER_DISTANCE);
 	ray.pos = player()->transform.pos;
-	t_vec2	intersection = get_wall_intersection(game()->input_data->walls, ray);
-	printf("intersection: %f, %f\n", intersection.x, intersection.y);
-	return (intersection);
+	return (get_wall_intersection(game()->input_data->walls, ray));
 }
 
 void	raycast_walls(void)

@@ -1,5 +1,10 @@
 # Changelog
 
+### [0.13.2] - 10.06.2024 - Freddy - `21-image-distortion`
+- Fully reworked rendering system, second of two halves.
+- Slight drawing & draw calc logic tweaks for simplicity
+- Unnecessary print removal
+
 ### [0.13.1] - 10.06.2024 - Freddy - `21-image-distortion`
 - Full rework of rendering system, first half
 - Removed some old unnecessary functions

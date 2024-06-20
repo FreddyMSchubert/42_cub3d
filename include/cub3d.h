@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/20 04:36:32 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/20 05:22:28 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void				raycast_walls(void);
 // - 2 calc walls
 void				calc_wall(int ray_index, t_vec2 intersect);
 // - 3 draw walls
-void				draw_wall_texture(int start_x, int end_x, int height, int d, double hit_offset);
+void				draw_wall_texture(int start_x, int end_x, int height, mlx_texture_t *texture, double hit_offset);
 // - util
 bool				get_wall_orientation(t_vec2 intersect);	// d
 char				get_wall_face_to_render(t_vec2 intersect); // wall_orientation
