@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/20 03:20:37 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/20 04:36:32 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,15 +103,25 @@ void				do_wall_operations();
 double				pos_distance(t_vec2 pos1, t_vec2 pos2);
 t_vec2				scale_transform(t_vec2 t1, double distance);
 t_vec2				raycast_intersect(t_transform t1, t_transform t2);
-t_transform			*get_intersection_wall(t_transform **walls, t_transform p);
-double				get_ray_distance(t_transform **walls, t_transform ray, char *d, char *wall_orientation);
-double				calculate_deviation_angle(t_transform p, t_vec2 pos);
+t_vec2				get_wall_intersection(t_transform **walls, t_transform ray);
 // - 1 raycast walls
 void				raycast_walls(void);
 // - 2 calc walls
-void				calc_wall(int ray_index, double intersection_dist, char d, char wall_orientation);
+void				calc_wall(int ray_index, t_vec2 intersect);
 // - 3 draw walls
 void				draw_wall_texture(int start_x, int end_x, int height, int d, double hit_offset);
+// - util
+bool				get_wall_orientation(t_vec2 intersect);	// d
+char				get_wall_face_to_render(t_vec2 intersect); // wall_orientation
+t_transform			get_wall_from_intersect(t_vec2 intersect);
+
+# define WALL_ORIENTATION_HORIZONTAL 0
+# define WALL_ORIENTATION_VERTICAL 1
+
+# define WALL_FACE_NORTH 'N'
+# define WALL_FACE_SOUTH 'S'
+# define WALL_FACE_EAST 'E'
+# define WALL_FACE_WEST 'W'
 
 // ----- util
 // garbage collector
@@ -152,5 +162,8 @@ double				radians_to_degrees(double radians);
 t_vec2				degrees_to_dir_vector(double degrees);
 double				dir_vector_to_degrees(t_vec2 dir);
 double				normalize_degrees(double degrees);
+
+// math
+bool				has_decimals(double number);
 
 #endif

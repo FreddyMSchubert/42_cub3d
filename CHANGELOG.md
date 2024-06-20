@@ -1,6 +1,10 @@
 # Changelog
 
-### [0.13.0] - 20.06.2024 - Freddy
+### [0.13.1] - 10.06.2024 - Freddy - `21-image-distortion`
+- Full rework of rendering system, first half
+- Removed some old unnecessary functions
+
+## [0.13.0] - 20.06.2024 - Freddy - `21-image-distortion`
 - fully removed draw wall function and get color function - it's no longer needed
 - moved rgba_to_int to color utils where it belongs
 - various cleanups
