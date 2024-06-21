@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/21 12:38:00 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/21 13:32:37 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,6 @@
 # define FOV_DEG 96
 # define RAYCASTS_PER_DEG 5
 # define VIEW_DIST 10
-# define FPS 60
+# define FPS 30
 
 #endif

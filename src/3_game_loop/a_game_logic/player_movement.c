@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 07:50:27 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/20 07:53:57 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/21 13:49:23 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,17 @@ static t_vec2	get_movement_from_key(void)
 
 void	handle_player_move(void)
 {
+	t_vec2	mvmnt;
 	t_vec2	new_pos;
-	t_vec2	movement;
 
-	movement = get_movement_from_key();
-	new_pos = player()->transform.pos;
-	new_pos.x += movement.x;
-	if (*game()->input_data->map[(int)new_pos.y][(int)new_pos.x] != FLOOR)
-		new_pos.x = player()->transform.pos.x;
-	new_pos.y += movement.y;
-	if (*game()->input_data->map[(int)player()->transform.pos.y][(int)player()->transform.pos.x] != FLOOR)
-		new_pos.y = player()->transform.pos.y;
-	player()->transform.pos = new_pos;
+	mvmnt = get_movement_from_key();
+	new_pos = (t_vec2){floor(player()->transform.pos.x), floor(player()->transform.pos.y + mvmnt.y)};
+	if (*game()->input_data->map[(int)new_pos.y][(int)new_pos.x] == FLOOR)
+		player()->transform.pos.y += mvmnt.y;
+	new_pos = (t_vec2){floor(player()->transform.pos.x + mvmnt.x), floor(player()->transform.pos.y)};
+	if (*game()->input_data->map[(int)new_pos.y][(int)new_pos.x] == FLOOR)
+		player()->transform.pos.x += mvmnt.x;
+
+	new_pos = (t_vec2){player()->transform.pos.x + mvmnt.x, player()->transform.pos.y + mvmnt.y};
+	printf("player()->transform.pos: [%f|%f] - movement_from_key: [%f|%f] - rounded & casted: [%d|%d]\n", player()->transform.pos.y, player()->transform.pos.x, mvmnt.y, mvmnt.x, (int)floor(new_pos.y), (int)floor(new_pos.x));
 }

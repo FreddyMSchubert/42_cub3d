@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:28 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/20 07:17:22 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/21 13:35:24 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	loop_hook(void *param)
 	int		prev_frame;
 
 	(void) param;
-	write(STDOUT_FILENO, "loop_hook\n", 10);
 	curr_time = mlx_get_time();
 	prev_time = game()->prev_time;
 	curr_frame = get_frame(curr_time);
