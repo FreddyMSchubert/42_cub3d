@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/21 12:45:29 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/21 14:42:17 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ t_vec2				get_wall_intersection(t_transform **walls, t_transform ray);
 // - 1 raycast walls
 void				raycast_walls(void);
 // - 2 calc walls
-void				calc_gameobject(int ray_index, t_vec2 intersect, mlx_texture_t *tex);
+void				calc_gameobject(int ray_index, t_vec2 intersect);
 // - 3 draw walls
 void				draw_gameobject(int start_x, int end_x, int height, mlx_texture_t *tex, double hit_offset);
 // - util

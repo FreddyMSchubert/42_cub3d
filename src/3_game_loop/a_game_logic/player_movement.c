@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 07:50:27 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/21 14:31:41 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/21 15:06:03 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ void	handle_player_move(void)
 	old_pos = player()->transform.pos;
 	mvmnt = get_movement_from_key();
 	new_pos = (t_vec2){floor(player()->transform.pos.x), \
-									floor(player()->transform.pos.y + mvmnt.y)};
+									floor(player()->transform.pos.y + (mvmnt.y * (1 + WALL_COLLISION_MARGIN)))};
 	if (*game()->input_data->map[(int)new_pos.y][(int)new_pos.x] == FLOOR)
 		player()->transform.pos.y += mvmnt.y;
-	new_pos = (t_vec2){floor(player()->transform.pos.x + mvmnt.x), \
+	new_pos = (t_vec2){floor(player()->transform.pos.x + (mvmnt.x * (1 + WALL_COLLISION_MARGIN))), \
 											floor(player()->transform.pos.y)};
 	if (*game()->input_data->map[(int)new_pos.y][(int)new_pos.x] == FLOOR)
 		player()->transform.pos.x += mvmnt.x;

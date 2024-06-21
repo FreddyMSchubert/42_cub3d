@@ -6,13 +6,13 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/21 12:44:27 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/21 14:58:36 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../include/cub3d.h"
 
-static void	set_pixel_color(mlx_image_t *img, int x, int y, int col)
+static inline void	set_pixel_color(mlx_image_t *img, int x, int y, int col)
 {
 	if (int_to_t_color(col).a == 0)
 		return ;
@@ -20,7 +20,7 @@ static void	set_pixel_color(mlx_image_t *img, int x, int y, int col)
 		mlx_put_pixel(img, x, y, col);
 }
 
-static int	get_tex_color_at(mlx_texture_t *tex, int x, int y)
+static inline int	get_tex_color_at(mlx_texture_t *tex, int x, int y)
 {
 	int	index;
 
@@ -28,7 +28,7 @@ static int	get_tex_color_at(mlx_texture_t *tex, int x, int y)
 	return (rgba_to_int(tex->pixels[index], tex->pixels[index + 1], \
 					tex->pixels[index + 2], tex->pixels[index + 3]));
 }
-static void	draw_column(t_scale start, int end_y, mlx_texture_t *tex, int tex_x, int repeat_y)
+static inline void	draw_column(t_scale start, int end_y, mlx_texture_t *tex, int tex_x, int repeat_y)
 {
 	int	y;
 	int	tex_y;
@@ -37,7 +37,7 @@ static void	draw_column(t_scale start, int end_y, mlx_texture_t *tex, int tex_x,
 	y = start.y;
 	while (y < end_y)
 	{
-		tex_y = (y - start.y) * tex->height * repeat_y / (end_y - start.y) % tex->height;
+		tex_y = (y - start.y) * tex->height * repeat_y / (end_y - start.y) & (tex->height - 1);
 		color = get_tex_color_at(tex, tex_x, tex_y);
 		set_pixel_color(game()->game_scene, start.x, y++, color);
 	}

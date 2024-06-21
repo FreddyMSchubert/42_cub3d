@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:41:35 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/21 14:14:27 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/21 14:56:29 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,14 @@ void	load_textures(void)
 	game()->we_texture = mlx_load_png(game()->input_data->we_texture_location);
 	if (!game()->we_texture)
 		cub_exit_error("Failed to load west texture.");
+	if (game()->no_texture->height != game()->no_texture->width)
+		cub_exit_error("Textures must be square.");
+	if (game()->so_texture->height != game()->so_texture->width)
+		cub_exit_error("Textures must be square.");
+	if (game()->we_texture->height != game()->we_texture->width)
+		cub_exit_error("Textures must be square.");
+	if (game()->ea_texture->height != game()->ea_texture->width)
+		cub_exit_error("Textures must be square.");
 }
 
 void	set_background(void)

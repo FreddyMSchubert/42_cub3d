@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.17.2] - 21.06.2024 - Freddy
+- Required textures to be square, reducing time spent drawing.
+- wall margin system
+
 ### [0.17.1] - 21.06.2024 - Freddy
 - Simple mark dirty system, no drawing necessary if nothing changed. (dirty = something state, currently rendered state is inaccurate.)
 - MARK_DIRTY_LOGGING macro for dirtiness debugging
