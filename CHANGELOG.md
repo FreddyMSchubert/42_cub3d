@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.17.3] - 21.06.2024 - Freddy
+- Wall flickering reduction
+
 ### [0.17.2] - 21.06.2024 - Freddy
 - Required textures to be square, reducing time spent drawing.
 - wall margin system

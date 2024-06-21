@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 04:04:54 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/20 04:05:31 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/22 00:58:11 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 bool	has_decimals(double number)
 {
-	return (number != floor(number));
+	return (number != floorf(number));
 }

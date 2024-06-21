@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 03:32:53 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/21 14:50:49 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/22 00:58:07 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ t_transform	get_wall_from_intersect(t_vec2 intersect)
 	if (has_decimals(intersect.x))
 	{
 		wall.rot.x = 1;
-		wall.pos.x = floor(intersect.x);
+		wall.pos.x = floorf(intersect.x);
 	}
 	else
 	{
 		wall.rot.y = 1;
-		wall.pos.y = floor(intersect.y);
+		wall.pos.y = floorf(intersect.y);
 	}
 	return (wall);
 }
