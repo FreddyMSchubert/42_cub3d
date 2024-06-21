@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.17.0] - 21.06.2024 - Freddy
+- Removed maze generator & entities
+
 ### [0.16.5] - 10.06.2024 - Freddy
 - Made walls square
 - Removed all multiplayer traces

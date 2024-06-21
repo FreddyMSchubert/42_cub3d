@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/20 06:26:20 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/21 12:45:29 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 
 
 /* ---- SETTINGS ---- */
-# define MAP_TILES " 10NESWG"
+# define MAP_TILES " 10NESW"
 
 /* ----- LOGGER ----- */
 # define LOGGER_ERROR 'e'
@@ -57,19 +57,7 @@
 // ----- general
 t_persistent_data	*game(void);
 t_list				**gc(void);
-t_entity			*player(void);
-
-// ----- 0_map_generation
-// mapmaker
-void				generate_map(void);
-// features
-void				remove_walls(char **maze, int height, int width);
-void				place_player_spawn(char **maze, t_scale	map_scale);
-void				add_rooms(char **maze, t_scale scale, int room_count);
-// file writer
-void				write_cub_file(char **maze, int height, int width, char *filename);
-// util
-int					random_int(int min, int max);
+t_player			*player(void);
 
 // ----- 1_input_parsing
 void				parse_input(char	*filepath);
@@ -87,7 +75,6 @@ bool				basic_validate(t_input_data **in);
 void				get_map_contents(char *filepath);
 // set values
 bool				set_player_spawn(char dir, t_vec2 pos, t_tile_type ***map);
-bool				set_goal(t_vec2 pos, t_tile_type ***map);
 bool				set_value(char	**value, char	*set);
 bool				set_color(t_color *color, char *color_val);
 // squarify map
@@ -129,8 +116,6 @@ double				pos_distance(t_vec2 pos1, t_vec2 pos2);
 t_vec2				scale_vector(t_vec2 t1, double distance);
 t_vec2				raycast_intersect(t_transform t1, t_transform t2);
 t_vec2				get_wall_intersection(t_transform **walls, t_transform ray);
-t_vec2				get_entity_intersection(t_list *entities, t_transform ray, \
-										t_entity **closest_entity);
 // - 1 raycast walls
 void				raycast_walls(void);
 // - 2 calc walls
@@ -179,10 +164,6 @@ int					rgba_to_int(int r, int g, int b, int a);
 bool				is_same_wall(t_transform wall1, t_transform wall2);
 t_vec2				sum_vectors(t_vec2 v1, t_vec2 v2);
 char				get_color_for_wall(t_transform t);
-
-// entities
-void				create_entity(t_vec2 pos, t_vec2 rot, t_entity_type type, mlx_texture_t *tex);
-t_transform			get_face_vector(t_vec2 pos);
 
 // string
 bool				str_is_equal(char *str1, char *str2);

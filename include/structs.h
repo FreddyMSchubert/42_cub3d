@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/20 06:25:02 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/21 12:45:55 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,19 +93,10 @@ typedef struct s_persistent_data
 
 // ----- ENTITIES
 
-typedef enum e_entity_type
+typedef struct s_player
 {
-	GOAL
-}	t_entity_type;
-
-typedef struct s_entity
-{
-	t_entity_type	type;
-
 	t_transform		transform;
 	t_transform		spawn_transform;
-
-	mlx_texture_t	*texture;
-}	t_entity;
+}	t_player;
 
 #endif

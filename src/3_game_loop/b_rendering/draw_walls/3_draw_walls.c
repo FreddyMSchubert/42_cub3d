@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   3_draw_walls_entities.c                            :+:      :+:    :+:   */
+/*   3_draw_walls.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/20 07:30:57 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/21 12:44:27 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,17 @@ static void	set_pixel_color(mlx_image_t *img, int x, int y, int col)
 
 static int	get_tex_color_at(mlx_texture_t *tex, int x, int y)
 {
-	int index = (y * tex->width + x) * tex->bytes_per_pixel;
+	int	index;
+
+	index = (y * tex->width + x) * tex->bytes_per_pixel;
 	return (rgba_to_int(tex->pixels[index], tex->pixels[index + 1], \
 					tex->pixels[index + 2], tex->pixels[index + 3]));
 }
 static void	draw_column(t_scale start, int end_y, mlx_texture_t *tex, int tex_x, int repeat_y)
 {
-	int y;
-	int tex_y;
-	int color;
+	int	y;
+	int	tex_y;
+	int	color;
 
 	y = start.y;
 	while (y < end_y)
@@ -49,7 +51,6 @@ void	draw_gameobject(int start_x, int end_x, int height, mlx_texture_t *tex, dou
 	int				x;
 	int				texture_x;
 
-	write(STDOUT_FILENO, "draw_gameobject\n", 17);
 	start_y = (int)(game()->mlx->height / 2) - height / 2;
 	end_y = start_y + height;
 	x = start_x;
@@ -63,5 +64,4 @@ void	draw_gameobject(int start_x, int end_x, int height, mlx_texture_t *tex, dou
 		else
 			x--;
 	}
-	write(STDOUT_FILENO, "draw_gameobject end\n", 21);
 }

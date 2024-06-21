@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:22:19 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/20 06:15:23 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/21 12:42:57 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,37 +78,6 @@ t_vec2	get_wall_intersection(t_transform **walls, t_transform ray)
 				closest_intersection = intersection;
 			}
 		}
-	}
-	return (closest_intersection);
-}
-
-t_vec2	get_entity_intersection(t_list *entities, t_transform ray, \
-										t_entity **closest_entity)
-{
-	t_entity	*entity;
-	t_vec2		intersection;
-	t_vec2		closest_intersection;
-	double		closest_distance;
-	double		current_distance;
-
-	closest_distance = -1;
-	closest_intersection.x = -1;
-	closest_intersection.y = -1;
-	while (entities)
-	{
-		entity = (t_entity *)entities->content;
-		intersection = raycast_intersect(ray, get_face_vector(entity->transform.pos));
-		if (intersection.x != -1)
-		{
-			current_distance = pos_distance(ray.pos, intersection);
-			if (closest_distance == -1 || current_distance < closest_distance)
-			{
-				closest_distance = current_distance;
-				closest_intersection = intersection;
-				*closest_entity = entity;
-			}
-		}
-		entities = entities->next;
 	}
 	return (closest_intersection);
 }

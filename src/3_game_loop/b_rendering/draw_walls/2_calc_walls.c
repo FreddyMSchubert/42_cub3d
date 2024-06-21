@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   2_calc_walls_entities.c                            :+:      :+:    :+:   */
+/*   2_calc_walls.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1999/06/13 09:10:15 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/20 07:34:40 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/21 12:43:54 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	calc_gameobject(int ray_index, t_vec2 intersect, mlx_texture_t *tex)
 	int		end_x;
 	double	hit_offset;
 
-	write(STDOUT_FILENO, "calc_gameobject\n", 16);
 	get_x_pixel_from_ray_index(ray_index, &start_x, &end_x);
 	height = get_height_from_intersection_dist(ray_index, intersect);
 	hit_offset = intersect.y - floor(intersect.y) + intersect.x - floor(intersect.x);

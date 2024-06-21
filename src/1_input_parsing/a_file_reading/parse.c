@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 09:39:02 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/14 13:24:41 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/21 12:42:04 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,6 @@ t_tile_type	***make_map(int map_len, int *i, char **data)
 				*(map[k][j]) = (t_tile_type)(data[*i][j] - '0');
 			else if (data[*i][j] == ' ')
 				*(map[k][j]) = VOID;
-			else if (data[*i][j] == 'G' && !set_goal((t_vec2){j, k}, map))
-				return (NULL);
 			else if (char_is_in(data[*i][j], "NSEW") && !set_player_spawn(data[*i][j], (t_vec2){j, k}, map))
 				return (NULL);
 		}
