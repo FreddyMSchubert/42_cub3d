@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/21 13:32:37 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/21 14:31:13 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define DEBUG false
 # define LOG_WALLS false
 # define TERMINAL_MAP true
+# define MARK_DIRTY_LOGGING false
 
 // Map limits
 
@@ -39,8 +40,8 @@
 
 // Player Movement Stats
 
-# define MOVEMENT_SPEED 0.03
-# define MOVEMENT_SPRINT_MULTIPLIER 2
+# define MOVEMENT_SPEED 0.05
+# define MOVEMENT_SPRINT_MULTIPLIER 2.5
 # define TURN_SPEED_ARROWS_DEG 5
 # define TURN_SPEED_MOUSE_DEG 1
 

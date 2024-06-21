@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.17.1] - 21.06.2024 - Freddy
+- Simple mark dirty system, no drawing necessary if nothing changed. (dirty = something state, currently rendered state is inaccurate.)
+- MARK_DIRTY_LOGGING macro for dirtiness debugging
+
 ## [0.17.0] - 21.06.2024 - Freddy
 - Removed maze generator & entities
 

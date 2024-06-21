@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 07:50:27 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/21 13:49:23 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/21 14:31:41 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,23 @@ void	handle_player_move(void)
 {
 	t_vec2	mvmnt;
 	t_vec2	new_pos;
+	t_vec2	old_pos;
 
+	old_pos = player()->transform.pos;
 	mvmnt = get_movement_from_key();
-	new_pos = (t_vec2){floor(player()->transform.pos.x), floor(player()->transform.pos.y + mvmnt.y)};
+	new_pos = (t_vec2){floor(player()->transform.pos.x), \
+									floor(player()->transform.pos.y + mvmnt.y)};
 	if (*game()->input_data->map[(int)new_pos.y][(int)new_pos.x] == FLOOR)
 		player()->transform.pos.y += mvmnt.y;
-	new_pos = (t_vec2){floor(player()->transform.pos.x + mvmnt.x), floor(player()->transform.pos.y)};
+	new_pos = (t_vec2){floor(player()->transform.pos.x + mvmnt.x), \
+											floor(player()->transform.pos.y)};
 	if (*game()->input_data->map[(int)new_pos.y][(int)new_pos.x] == FLOOR)
 		player()->transform.pos.x += mvmnt.x;
-
-	new_pos = (t_vec2){player()->transform.pos.x + mvmnt.x, player()->transform.pos.y + mvmnt.y};
-	printf("player()->transform.pos: [%f|%f] - movement_from_key: [%f|%f] - rounded & casted: [%d|%d]\n", player()->transform.pos.y, player()->transform.pos.x, mvmnt.y, mvmnt.x, (int)floor(new_pos.y), (int)floor(new_pos.x));
+	if (old_pos.x != player()->transform.pos.x || \
+					old_pos.y != player()->transform.pos.y)
+	{
+		game()->dirty = true;
+		if (MARK_DIRTY_LOGGING)
+			printf("player moved, set dirty to true!\n");
+	}
 }

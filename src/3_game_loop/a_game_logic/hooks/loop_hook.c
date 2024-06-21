@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:28 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/21 13:35:24 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/21 14:31:26 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,16 @@ void	loop_hook(void *param)
 		logger(LOGGER_WARNING, "skipped frame");
 	if ((int)curr_time != (int)prev_time || curr_frame != prev_frame)
 	{
-		render_game_scene();
+		game()->dirty = false;
 		handle_mouse_mv();
 		handle_player_move();
+		if (game()->dirty == true)
+		{
+			if (MARK_DIRTY_LOGGING)
+				printf("is dirty, rendering new!\n");
+			render_game_scene();
+			game()->dirty = false;
+		}
 		game()->prev_time = curr_time;
 	}
 }

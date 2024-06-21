@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/21 12:45:55 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/21 14:14:06 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ typedef struct s_persistent_data
 	mlx_t			*mlx;
 	mlx_image_t		*background;
 	mlx_image_t		*game_scene;
-	t_list			*entities;
+	bool			dirty;
 	mlx_texture_t	*no_texture;
 	mlx_texture_t	*so_texture;
 	mlx_texture_t	*we_texture;
