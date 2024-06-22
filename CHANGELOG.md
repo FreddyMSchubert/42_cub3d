@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.17.5] - 22.06.2024 - Freddy
+- Removed problem_maps folder (that map isn't a problem anymore)
+- Made maps that only have one space to walk in have more stuff going on. (Those are boring)
+
 ### [0.17.4] - 22.06.2024 - Freddy
 - Slight map printing player rotation display fix (was previously shifted to the right by 2.5°)
 - Fixed weird_images.cub not being recognized as valid as it contained non-square textures. Created new non_square_textures.cub map in invalid_maps
