@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:49:10 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/14 11:09:43 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/22 18:43:45 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,13 @@
 // 6 is up, 7 is top right
 void	print_player(void)
 {
+	int		degrees;
 	int		deg_seg;
 	char	*deg_seg_string;
 
-	deg_seg = dir_vec_to_deg(player()->transform.rot) / 45;
+	degrees = dir_vec_to_deg(player()->transform.rot) + 22.5;
+	degrees = normalize_degrees(degrees);
+	deg_seg = degrees / 45;
 	if (deg_seg == 0)
 		deg_seg_string = "→";
 	else if (deg_seg == 1)

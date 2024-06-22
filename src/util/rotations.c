@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotations.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 10:56:39 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/14 11:10:00 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/22 18:45:05 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,8 @@ double	dir_vec_to_deg(t_vec2 dir)
 
 double	normalize_degrees(double degrees)
 {
-	while (degrees < 0)
-		degrees += 360;
-	while (degrees >= 360)
-		degrees -= 360;
-	return (degrees);
+	degrees = fmod(degrees, 360.0);
+	if (degrees < 0)
+		degrees += 360.0;
+	return degrees;
 }
