@@ -6,21 +6,27 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 03:32:53 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/22 00:58:07 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/22 18:26:19 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../include/cub3d.h"
 
+/*
+	Checked for larger diff between decimals instead of just intersect.x != 0.0
+	To account for floating point imprecisions
+*/
 t_transform	get_wall_from_intersect(t_vec2 intersect)
 {
 	t_transform	wall;
+	float		decimalsX;
+	float		decimalsY;
 
-	wall.rot.x = 0;
-	wall.rot.y = 0;
-	wall.pos.x = intersect.x;
-	wall.pos.y = intersect.y;
-	if (has_decimals(intersect.x))
+	wall.rot = (t_vec2){0, 0};
+	wall.pos = intersect;
+	decimalsX = fabs(intersect.x - floorf(intersect.x));
+	decimalsY = fabs(intersect.y - floorf(intersect.y));
+	if (decimalsX > decimalsY)
 	{
 		wall.rot.x = 1;
 		wall.pos.x = floorf(intersect.x);

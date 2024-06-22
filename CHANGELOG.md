@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.17.4] - 22.06.2024 - Freddy
+- Fixed wall flickering by allowing for slight floating point imprecision in draw_walls/util/get_wall_from_intersect
+- Removed has_decimals() and math.c util
+
 ### [0.17.3] - 21.06.2024 - Freddy
 - Wall flickering reduction
 

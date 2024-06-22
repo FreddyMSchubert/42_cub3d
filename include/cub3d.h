@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/21 14:42:17 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/22 18:24:00 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,8 +174,5 @@ double				rad_to_deg(double radians);
 t_vec2				deg_to_dir_vec(double degrees);
 double				dir_vec_to_deg(t_vec2 dir);
 double				normalize_degrees(double degrees);
-
-// math
-bool				has_decimals(double number);
 
 #endif
