@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   settings.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/21 15:10:41 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/23 10:55:20 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@
 
 # define FOV_DEG 96
 # define RAYCASTS_PER_DEG 5
-# define VIEW_DIST 10
+# define FISHEYE_CORRECTION_FACTOR 0.5
+# define VIEW_DIST 3
 # define FPS 30
 
 #endif

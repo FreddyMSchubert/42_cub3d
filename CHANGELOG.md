@@ -1,5 +1,10 @@
 # Changelog
 
+### [0.18.0] - 23.06.2024 - Freddy - `39-alternative-fisheye-approach`
+- Removed claustrophobia.cub, it's a bad map where you just stand.
+- Attempted ray angle fisheye correction, not yet working
+- Removed old fisheye correction functionality
+
 ### [0.17.5] - 22.06.2024 - Freddy
 - Removed problem_maps folder (that map isn't a problem anymore)
 - Made maps that only have one space to walk in have more stuff going on. (Those are boring)
