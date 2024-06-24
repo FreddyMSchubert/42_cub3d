@@ -3,16 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   2_calc_walls.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1999/06/13 09:10:15 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/23 10:24:23 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/24 10:14:02 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../include/cub3d.h"
 
-static inline void	get_x_pixel_from_ray_index(int ray_index, int *start_x, int *end_x)
+double	get_fisheye_corrected_ray_angle(int ray_index);
+
+static inline void	get_x_pixel_from_ray_index(int ray_index, int *start_x,
+	int *end_x)
 {
 	int		number_of_segments;
 	double	segment_width;
@@ -25,14 +28,14 @@ static inline void	get_x_pixel_from_ray_index(int ray_index, int *start_x, int *
 		*end_x = game()->mlx->width;
 }
 
-static inline int	get_height_from_intersection_dist(t_vec2 intersect)
+static inline int	get_height_from_intersection_dist(double corrected_dist)
 {
-	double	intersection_dist;
 	int		height;
+	double	vertical_fov_rad;
 
-	intersection_dist = pos_distance(player()->transform.pos, intersect);
-	height = (4.0 / intersection_dist) * (game()->mlx->width / 2) / \
-						tan(rad_to_deg(FOV_DEG) / 2);
+	vertical_fov_rad = 2 * atan(tan(rad_to_deg(FOV_DEG) / 2)
+			/ (game()->mlx->width / game()->mlx->height));
+	height = (game()->mlx->height) / (tan(vertical_fov_rad) * corrected_dist);
 	return (abs(height));
 }
 
@@ -55,9 +58,15 @@ void	calc_gameobject(int ray_index, t_vec2 intersect)
 	int		start_x;
 	int		end_x;
 	double	hit_offset;
+	double	intersection_dist;
+	double	corrected_dist;
+	double	angle_correction_rad;
 
 	get_x_pixel_from_ray_index(ray_index, &start_x, &end_x);
-	height = get_height_from_intersection_dist(intersect);
+	intersection_dist = pos_distance(player()->transform.pos, intersect);
+	angle_correction_rad = deg_to_rad(get_fisheye_corrected_ray_angle(ray_index));
+	corrected_dist = intersection_dist * cos(angle_correction_rad);	// Correct the distance
+	height = get_height_from_intersection_dist(corrected_dist);	// Use the corrected distance
 	hit_offset = intersect.y - floor(intersect.y) + \
 						intersect.x - floor(intersect.x);
 	draw_gameobject(start_x, end_x, height, \

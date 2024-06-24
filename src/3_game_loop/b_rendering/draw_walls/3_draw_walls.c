@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   3_draw_walls.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/21 14:58:36 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/24 10:11:40 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ static inline int	get_tex_color_at(mlx_texture_t *tex, int x, int y)
 	return (rgba_to_int(tex->pixels[index], tex->pixels[index + 1], \
 					tex->pixels[index + 2], tex->pixels[index + 3]));
 }
-static inline void	draw_column(t_scale start, int end_y, mlx_texture_t *tex, int tex_x, int repeat_y)
+
+static inline void	draw_column(t_scale start, int end_y, mlx_texture_t *tex,
+	int tex_x, int repeat_y)
 {
 	int	y;
 	int	tex_y;
@@ -37,13 +39,15 @@ static inline void	draw_column(t_scale start, int end_y, mlx_texture_t *tex, int
 	y = start.y;
 	while (y < end_y)
 	{
-		tex_y = (y - start.y) * tex->height * repeat_y / (end_y - start.y) & (tex->height - 1);
+		tex_y = (y - start.y) * tex->height * repeat_y
+			/ (end_y - start.y) & (tex->height - 1);
 		color = get_tex_color_at(tex, tex_x, tex_y);
 		set_pixel_color(game()->game_scene, start.x, y++, color);
 	}
 }
 
-void	draw_gameobject(int start_x, int end_x, int height, mlx_texture_t *tex, double hit_offset)
+void	draw_gameobject(int start_x, int end_x, int height,
+	mlx_texture_t *tex, double hit_offset)
 {
 	int				start_y;
 	int				end_y;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   1_raycast_walls.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/23 11:18:07 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/24 10:13:05 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ static inline int	get_total_rays(void)
 	return (RAYCASTS_PER_DEG * FOV_DEG);
 }
 
-static inline double	get_fisheye_corrected_ray_angle(int ray_index)
+double	get_fisheye_corrected_ray_angle(int ray_index)
 {
 	double	relative_position;
 	double	angle_correction;
 
 	relative_position = ((double)ray_index / (get_total_rays() / 2)) - 1;
-	angle_correction = atan(relative_position * tan(deg_to_rad(FOV_DEG / 2))) * FISHEYE_CORRECTION_FACTOR;
+	angle_correction = atan(relative_position * tan(deg_to_rad(FOV_DEG / 2)));
 	return (rad_to_deg(angle_correction));
 }
 
@@ -51,7 +51,6 @@ void	raycast_walls(void)
 	ray_index = -1;
 	while (++ray_index < get_total_rays())
 	{
-		printf("Suggested angle adjustment: %f for ray %d\n", get_fisheye_corrected_ray_angle(ray_index), ray_index);
 		intersect = perform_wall_raycast(ray_index);
 		calc_gameobject(ray_index, intersect);
 	}
