@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   settings.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/23 10:55:20 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/24 12:49:03 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,12 @@
 # define FISHEYE_CORRECTION_FACTOR 0.5
 # define VIEW_DIST 3
 # define FPS 30
+
+// Minimap Settings
+# define MINIMAP_WIDTH 100
+# define MINIMAP_HEIGHT 100
+# define MINIMAP_LEFT_OFFSET 50
+# define MINIMAP_TOP_OFFSET 50
+# define MINIMAP_BORDER_WIDTH 5
 
 #endif

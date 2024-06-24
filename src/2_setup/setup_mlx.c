@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_mlx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:41:35 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/21 14:56:29 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/24 14:16:29 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,11 @@ void	setup_mlx(void)
 	load_textures();
 	data->game_scene = mlx_new_image(data->mlx, data->mlx->width, data->mlx->height);
 	if (!data->game_scene || (mlx_image_to_window(data->mlx, data->game_scene, 0, 0) < 0))
-		cub_exit_error("mlx image creation failed");
+		cub_exit_error("mlx game image creation failed");
 	setup_player();
+	// data->hud = mlx_new_image(data->mlx, data->mlx->width, data->mlx->height);
+	// if (!data->hud || (mlx_image_to_window(data->mlx, data->hud, 0, 0) < 0))
+	// 	cub_exit_error("mlx hud image creation failed");
 	mlx_loop_hook(data->mlx, loop_hook, NULL);
 	mlx_key_hook(data->mlx, key_hook, NULL);
 	mlx_resize_hook(data->mlx, resize_hook, NULL);

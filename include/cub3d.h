@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/22 18:24:00 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/24 13:53:43 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,11 @@ void				loop_hook(void *param);
 void				handle_mouse_mv(void);
 void				key_hook(mlx_key_data_t keydata, void *param);
 void				handle_player_move(void);
+// -- hud
+void				hud_draw(void);
+void				draw_square(int x, int y, int size, int color);
+// - minimap
+void				hud_draw_minimap(void);
 // util
 void				turn(double amount);
 // --- b_rendering
@@ -122,6 +127,7 @@ void				raycast_walls(void);
 void				calc_gameobject(int ray_index, t_vec2 intersect);
 // - 3 draw walls
 void				draw_gameobject(int start_x, int end_x, int height, mlx_texture_t *tex, double hit_offset);
+void				set_pixel_color(mlx_image_t *img, int x, int y, int col);
 // - util
 bool				get_wall_orientation(t_vec2 intersect);		// d
 char				get_wall_face_to_render(t_vec2 intersect);	// wall_orientation

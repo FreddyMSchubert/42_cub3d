@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop_hook.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:28 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/21 14:31:26 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/24 14:24:02 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,11 @@ void	loop_hook(void *param)
 		handle_player_move();
 		if (game()->dirty == true)
 		{
+			write(1, "dirty\n", 6);
 			if (MARK_DIRTY_LOGGING)
 				printf("is dirty, rendering new!\n");
 			render_game_scene();
+			hud_draw();
 			game()->dirty = false;
 		}
 		game()->prev_time = curr_time;
