@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   set_values.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:12:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/21 12:41:55 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/24 10:48:13 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/cub3d.h"
 
-bool	set_player_spawn(char dir, t_vec2 pos, t_tile_type ***map)
+bool	set_entity_spawn(char dir, t_vec2 pos, t_tile_type ***map)
 {
 	static int	player_count = 0;
 

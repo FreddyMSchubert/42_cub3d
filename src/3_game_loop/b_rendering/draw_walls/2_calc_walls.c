@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1999/06/13 09:10:15 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/24 10:21:41 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/24 11:14:36 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static inline mlx_texture_t	*get_wall_texture(char d)
 	return (NULL);
 }
 
-void	calc_gameobject(int ray_index, t_vec2 intersect)
+void	calc_wall(int ray_index, t_vec2 intersect)
 {
 	int		height;
 	int		start_x;
@@ -71,4 +71,9 @@ void	calc_gameobject(int ray_index, t_vec2 intersect)
 						intersect.x - floor(intersect.x);
 	draw_gameobject(start_x, end_x, height, \
 			get_wall_texture(get_wall_face_to_render(intersect)), hit_offset);
+}
+
+void	calc_entity(int ray_index, t_vec2 intersect, t_entity *ntt)
+{
+
 }

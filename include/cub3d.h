@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/22 18:24:00 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/24 11:14:28 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 
 
 /* ---- SETTINGS ---- */
-# define MAP_TILES " 10NESW"
+# define MAP_TILES " 10NESWG"
 
 /* ----- LOGGER ----- */
 # define LOGGER_ERROR 'e'
@@ -57,7 +57,7 @@
 // ----- general
 t_persistent_data	*game(void);
 t_list				**gc(void);
-t_player			*player(void);
+t_entity			*player(void);
 
 // ----- 1_input_parsing
 void				parse_input(char	*filepath);
@@ -74,7 +74,7 @@ bool				parse_map(char **data, t_input_data **input_data, int *i);
 bool				basic_validate(t_input_data **in);
 void				get_map_contents(char *filepath);
 // set values
-bool				set_player_spawn(char dir, t_vec2 pos, t_tile_type ***map);
+bool				set_entity_spawn(char dir, t_vec2 pos, t_tile_type ***map);
 bool				set_value(char	**value, char	*set);
 bool				set_color(t_color *color, char *color_val);
 // squarify map
@@ -116,10 +116,13 @@ double				pos_distance(t_vec2 pos1, t_vec2 pos2);
 t_vec2				scale_vector(t_vec2 t1, double distance);
 t_vec2				raycast_intersect(t_transform t1, t_transform t2);
 t_vec2				get_wall_intersection(t_transform **walls, t_transform ray);
+t_vec2				get_entity_intersection(t_list *entities, t_transform ray, \
+										t_entity **closest_entity);
 // - 1 raycast walls
 void				raycast_walls(void);
 // - 2 calc walls
-void				calc_gameobject(int ray_index, t_vec2 intersect);
+void				calc_wall(int ray_index, t_vec2 intersect);
+void				calc_entity(int ray_index, t_vec2 intersect, t_entity *ntt);
 // - 3 draw walls
 void				draw_gameobject(int start_x, int end_x, int height, mlx_texture_t *tex, double hit_offset);
 // - util
@@ -174,5 +177,9 @@ double				rad_to_deg(double radians);
 t_vec2				deg_to_dir_vec(double degrees);
 double				dir_vec_to_deg(t_vec2 dir);
 double				normalize_degrees(double degrees);
+t_vec2				rotate_vector_by_90_degrees(t_vec2 v, int direction);
+
+// entities
+t_transform			get_face_vector(t_transform *ntt_trans);
 
 #endif

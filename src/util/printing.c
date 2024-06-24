@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:49:10 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/22 18:43:45 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/24 10:48:13 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // deg_seg = degree segment
 // "v↙️<↖️^↗️>↘️"[deg_seg]
 // 6 is up, 7 is top right
-void	print_player(void)
+void	print_entity(void)
 {
 	int		degrees;
 	int		deg_seg;
@@ -66,7 +66,7 @@ void	print_map(t_tile_type ***map, char *mode)
 			current_spot = *map[y][x];
 			if (TERMINAL_MAP && x == (int)player()->transform.pos.x
 				&& y == (int)player()->transform.pos.y)
-				print_player();
+				print_entity();
 			else if (current_spot == VOID)
 				printf("%s%c%s", ANSI_BACKGROUND_BLACK, mode[0], ANSI_RESET);
 			else if (current_spot == FLOOR)

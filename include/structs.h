@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/21 14:14:06 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/24 11:08:21 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,16 +87,27 @@ typedef struct s_persistent_data
 	mlx_texture_t	*so_texture;
 	mlx_texture_t	*we_texture;
 	mlx_texture_t	*ea_texture;
+	t_list			*entities;
 	int32_t			prev_mouse_x;
 	double			prev_time;
 }	t_persistent_data;
 
 // ----- ENTITIES
 
-typedef struct s_player
+typedef enum e_entity_type
 {
+	PLAYER_E,
+	WALL_E
+}	t_entity_type;
+
+typedef struct s_entity
+{
+	t_entity_type	type;
+
 	t_transform		transform;
 	t_transform		spawn_transform;
-}	t_player;
+
+	mlx_texture_t	*texture;
+}	t_entity;
 
 #endif

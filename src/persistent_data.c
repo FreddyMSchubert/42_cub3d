@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   persistent_data.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:03:38 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/21 12:46:07 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/24 10:48:13 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ t_list	**gc(void)
 	return (&gc);
 }
 
-t_player	*player(void)
+t_entity	*player(void)
 {
-	static t_player	player;
+	static t_entity	player;
 
 	return (&player);
 }

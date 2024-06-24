@@ -1,6 +1,9 @@
 # Changelog
 
-### [0.18.0] - 23.06.2024 - Freddy - `39-alternative-fisheye-approach`
+## [0.19.0] - 24.06.2024 - Freddy - `39-alternative-fisheye-approach`
+- Half - reimplementation of entities. Currently not functional at all
+
+## [0.18.0] - 23.06.2024 - Freddy - `39-alternative-fisheye-approach`
 - Removed claustrophobia.cub, it's a bad map where you just stand.
 - Attempted ray angle fisheye correction, not yet working
 - Removed old fisheye correction functionality
