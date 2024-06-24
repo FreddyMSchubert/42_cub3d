@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/24 13:36:30 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/24 14:57:15 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,7 +181,12 @@ double				normalize_degrees(double degrees);
 t_vec2				rotate_vector_by_90_degrees(t_vec2 v, int direction);
 
 // entities
-t_transform			get_face_vector(t_transform *ntt_trans);
-void				create_entity(t_vec2 pos, t_vec2 rot, t_entity_type type, mlx_texture_t *tex);
+t_transform			get_face_vector(t_entity *ntt);
+void				create_entity(t_vec2 pos, t_vec2 rot, t_entity_type type, mlx_texture_t *tex, bool is_billboard);
+
+// vector
+double				vec2_dot_product(t_vec2 a, t_vec2 b);
+double				vec2_sqr_magnitude(t_vec2 v);
+t_vec2				vec2_sub(t_vec2 a, t_vec2 b);
 
 #endif

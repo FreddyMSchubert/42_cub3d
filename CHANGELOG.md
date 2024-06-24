@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.19.2] - 24.06.2024 - Freddy - `39-alternative-fisheye-approach`
+- Various changes and fixes to entity rendering
+- is_billboard entity functionality, will later be useful for walls
+
 ### [0.19.1] - 24.06.2024 - Freddy - `39-alternative-fisheye-approach`
 - Dysfunctional asan fix
 - Full reimplementation of entity to the point we had it up until version 0.17.0; Texture still rotates peculiarly

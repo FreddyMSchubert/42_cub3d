@@ -6,33 +6,30 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 10:51:45 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/24 13:25:01 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/24 14:58:41 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-t_transform	get_face_vector(t_transform *ntt_trans)
+t_transform	get_face_vector(t_entity *ntt)
 {
 	t_transform		face_vector;
 	t_vec2			dir;
 
-	// face the dir towards the player
-	dir.x = player()->transform.pos.x - ntt_trans->pos.x;
-	dir.y = player()->transform.pos.y - ntt_trans->pos.y;
+	if (!ntt->is_billboard)
+		return ((t_transform){ntt->transform.pos, scale_vector(ntt->transform.rot, 1)});
+	dir.x = player()->transform.pos.x - ntt->transform.pos.x;
+	dir.y = player()->transform.pos.y - ntt->transform.pos.y;
 	dir = scale_vector(dir, 1);
-
-	// turn by 90 degrees
 	face_vector.rot = rotate_vector_by_90_degrees(dir, 1);
-
-	// set pos
-	face_vector.pos.x = ntt_trans->pos.x - 0.5 * face_vector.rot.x;
-	face_vector.pos.y = ntt_trans->pos.y - 0.5 * face_vector.rot.y;
+	face_vector.pos.x = ntt->transform.pos.x - 0.5 * face_vector.rot.x;
+	face_vector.pos.y = ntt->transform.pos.y - 0.5 * face_vector.rot.y;
 
 	return (face_vector);
 }
 
-void	create_entity(t_vec2 pos, t_vec2 rot, t_entity_type type, mlx_texture_t *tex)
+void	create_entity(t_vec2 pos, t_vec2 rot, t_entity_type type, mlx_texture_t *tex, bool is_billboard)
 {
 	t_entity	*entity;
 
@@ -42,5 +39,6 @@ void	create_entity(t_vec2 pos, t_vec2 rot, t_entity_type type, mlx_texture_t *te
 	entity->transform = entity->spawn_transform;
 	entity->type = type;
 	entity->texture = tex;
+	entity->is_billboard = is_billboard;
 	ft_lstadd_back(&game()->entities, ft_lstnew(entity));
 }

@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1999/06/13 09:10:15 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/24 13:21:18 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/24 14:58:00 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 double	get_fisheye_corrected_ray_angle(int ray_index);
 
-static inline void	get_x_pixel_from_ray_index(int ray_index, int *start_x,
-	int *end_x)
+static void	get_x_pixel_from_ray_index(int ray_index, int *start_x, int *end_x)
 {
 	int		number_of_segments;
 	double	segment_width;
@@ -28,7 +27,7 @@ static inline void	get_x_pixel_from_ray_index(int ray_index, int *start_x,
 		*end_x = game()->mlx->width;
 }
 
-static inline int	get_height_from_intersection_dist(double corrected_dist)
+static int	get_height_from_intersection_dist(double corrected_dist)
 {
 	int		height;
 	double	vertical_fov_rad;
@@ -37,6 +36,18 @@ static inline int	get_height_from_intersection_dist(double corrected_dist)
 			/ (game()->mlx->width / game()->mlx->height));
 	height = (game()->mlx->height) / (tan(vertical_fov_rad) * corrected_dist);
 	return (abs(height));
+}
+
+static double	get_ntt_hit_offset(t_vec2 intersect, t_transform ntt_face)
+{
+	t_vec2	line_to_point;
+	double	dot_product;
+	double	line_rot_sqr_mag;
+
+	line_to_point = vec2_sub(intersect, ntt_face.pos);
+	dot_product = vec2_dot_product(line_to_point, ntt_face.rot);
+	line_rot_sqr_mag = vec2_sqr_magnitude(ntt_face.rot);
+	return (dot_product / line_rot_sqr_mag);
 }
 
 static inline mlx_texture_t	*get_wall_texture(char d)
@@ -88,7 +99,6 @@ void	calc_entity(int ray_index, t_vec2 intersect, t_entity *ntt)
 	angle_correction_rad = deg_to_rad(get_fisheye_corrected_ray_angle(ray_index));
 	corrected_dist = intersection_dist * cos(angle_correction_rad);
 	height = get_height_from_intersection_dist(corrected_dist);
-	hit_offset = intersect.y - floor(intersect.y) + \
-						intersect.x - floor(intersect.x);
+	hit_offset = get_ntt_hit_offset(intersect, get_face_vector(ntt));
 	draw_gameobject(start_x, end_x, height, ntt->texture, hit_offset);
 }

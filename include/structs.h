@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/24 13:23:22 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/24 14:54:59 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,8 @@ typedef struct s_entity
 	t_transform		spawn_transform;
 
 	mlx_texture_t	*texture;
+	bool			is_billboard;
 }	t_entity;
+// if is_billboard is on, the entity will always show its full face towards the player
 
 #endif

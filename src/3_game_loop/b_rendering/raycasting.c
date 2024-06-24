@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:22:19 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/24 11:06:42 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/24 14:58:15 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ t_vec2	get_entity_intersection(t_list *entities, t_transform ray, \
 	while (entities)
 	{
 		entity = (t_entity *)entities->content;
-		intersection = raycast_intersect(ray, get_face_vector(&entity->transform));
+		intersection = raycast_intersect(ray, get_face_vector(entity));
 		if (intersection.x != -1)
 		{
 			current_distance = pos_distance(ray.pos, intersection);
