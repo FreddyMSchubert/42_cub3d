@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_mlx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:41:35 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/24 16:10:46 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/24 17:49:43 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	setup_mlx(void)
 		cub_exit_error("mlx game image creation failed");
 	setup_player();
 
-
+	/*
 	data->visible_walls = malloc(sizeof(bool *) * data->mlx->width);
 	if (!data->visible_walls)
 		cub_exit_error("malloc failed");
@@ -97,6 +97,7 @@ void	setup_mlx(void)
 		for (int j = 0; j < data->mlx->height; j++)
 			data->visible_walls[i][j] = false;
 	}
+	*/
 
 	
 	mlx_loop_hook(data->mlx, loop_hook, NULL);

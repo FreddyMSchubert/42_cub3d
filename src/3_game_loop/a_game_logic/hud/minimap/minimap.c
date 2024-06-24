@@ -43,14 +43,12 @@ static int	get_opacity(int x, int y)
 			+ pow(player()->transform.pos.y - y, 2));
 	if (!is_visible(x, y) || distance >= 100)
 		return (min_opacity);
-	if (distance < 10)
-		return (255);
-	else if (distance < 20)
-		return (200);
-	return (150);
+	if (max_opacity * distance / 100 > max_opacity)
+		return (max_opacity);
+	return (max_opacity * distance / 100);
 }
 
-static inline void	draw_walls(void)
+static inline void	draw_walls(int size)
 {
 	int			i;
 	int			j;
@@ -59,7 +57,7 @@ static inline void	draw_walls(void)
 
 	i = -1;
 	walls = game()->input_data->map;
-	wall_size = 5;
+	wall_size = size;
 	while (walls[++i])
 	{
 		j = -1;
@@ -81,17 +79,20 @@ static inline void	draw_walls(void)
 	}
 }
 
-static inline void	draw_player(void)
+static inline void	draw_player(int size)
 {
-	draw_square((player()->transform.pos.x) * 5 + MINIMAP_LEFT_OFFSET + 1,
-		(player()->transform.pos.y) * 5 + MINIMAP_TOP_OFFSET + 1, 2,
+	draw_square((player()->transform.pos.x) * size + MINIMAP_LEFT_OFFSET + 1,
+		(player()->transform.pos.y) * size + MINIMAP_TOP_OFFSET + 1, size / 2,
 		rgba_to_int(0, 255, 255, 255));
 }
 
 void	hud_draw_minimap(void)
 {
+	int	size;
+
+	size = 5;
 	// draw_square(MINIMAP_LEFT_OFFSET, MINIMAP_TOP_OFFSET, MINIMAP_WIDTH,
 	// 	rgba_to_int(50, 50, 50, 255));
-	draw_walls();
-	draw_player();
+	draw_walls(size);
+	draw_player(size);
 }

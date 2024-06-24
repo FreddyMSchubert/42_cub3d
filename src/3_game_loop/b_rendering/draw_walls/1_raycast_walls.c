@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   1_raycast_walls.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/24 16:08:17 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/24 17:48:15 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	raycast_walls(void)
 	while (++ray_index < get_total_rays())
 	{
 		intersect = perform_wall_raycast(ray_index);
-		game()->visible_walls[(int)intersect.x][(int)intersect.y] = true;
+		// game()->visible_walls[(int)intersect.x][(int)intersect.y] = true;
 		calc_gameobject(ray_index, intersect);
 	}
 }
