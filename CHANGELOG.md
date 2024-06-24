@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.19.1] - 24.06.2024 - Freddy - `39-alternative-fisheye-approach`
+- Dysfunctional asan fix
+- Full reimplementation of entity to the point we had it up until version 0.17.0; Texture still rotates peculiarly
+
 ## [0.19.0] - 24.06.2024 - Freddy - `39-alternative-fisheye-approach`
 - Half - reimplementation of entities. Currently not functional at all
 

@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 10:51:45 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/24 11:08:33 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/24 13:25:01 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,17 @@ t_transform	get_face_vector(t_transform *ntt_trans)
 	face_vector.pos.y = ntt_trans->pos.y - 0.5 * face_vector.rot.y;
 
 	return (face_vector);
+}
+
+void	create_entity(t_vec2 pos, t_vec2 rot, t_entity_type type, mlx_texture_t *tex)
+{
+	t_entity	*entity;
+
+	entity = gc_malloc(sizeof(t_entity));
+	entity->spawn_transform.pos = (t_vec2){pos.x + 0.5, pos.y + 0.5};
+	entity->spawn_transform.rot = rot;
+	entity->transform = entity->spawn_transform;
+	entity->type = type;
+	entity->texture = tex;
+	ft_lstadd_back(&game()->entities, ft_lstnew(entity));
 }

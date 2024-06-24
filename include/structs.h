@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/24 11:08:21 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/24 13:23:22 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,7 @@ typedef struct s_persistent_data
 
 typedef enum e_entity_type
 {
-	PLAYER_E,
-	WALL_E
+	GOAL_E
 }	t_entity_type;
 
 typedef struct s_entity

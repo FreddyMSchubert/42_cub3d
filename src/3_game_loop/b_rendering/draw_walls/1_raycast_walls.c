@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/24 11:13:51 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/24 13:47:51 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ void	raycast_walls(void)
 		wall_intersect = perform_wall_raycast(ray_index);
 		ntt = perform_entity_raycast(ray_index, &entity_intersect);
 		calc_wall(ray_index, wall_intersect);
-		if (ntt)
+		if (ntt && entity_intersect.x != -1 && entity_intersect.y != -1 && \
+				pos_distance(player()->transform.pos, entity_intersect) < pos_distance(player()->transform.pos, wall_intersect))
 			calc_entity(ray_index, entity_intersect, ntt);
 	}
 }

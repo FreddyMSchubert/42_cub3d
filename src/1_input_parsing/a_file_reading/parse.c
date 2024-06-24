@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 09:39:02 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/24 10:48:13 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/24 13:37:41 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ t_tile_type	***make_map(int map_len, int *i, char **data)
 	k = -1;
 	while (++(*i) && data[*i] && regex(data[*i], MAP_TILES) && map_len--)
 	{
-		map[++k] = gc_malloc(ft_strlen(data[*i]) * sizeof(t_tile_type *) + 1);
+		map[++k] = gc_malloc((ft_strlen(data[*i]) + 1) * sizeof(t_tile_type *));
 		map[k][ft_strlen(data[*i])] = NULL;
 		j = -1;
 		while (data[*i][++j])
@@ -88,6 +88,8 @@ t_tile_type	***make_map(int map_len, int *i, char **data)
 				*(map[k][j]) = (t_tile_type)(data[*i][j] - '0');
 			else if (data[*i][j] == ' ')
 				*(map[k][j]) = VOID;
+			else if (data[*i][j] == 'G' && !set_goal((t_vec2){j, k}, map))
+				return (NULL);
 			else if (char_is_in(data[*i][j], "NSEW") && !set_entity_spawn(data[*i][j], (t_vec2){j, k}, map))
 				return (NULL);
 		}

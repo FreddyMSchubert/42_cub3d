@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:12:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/24 10:48:13 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/24 13:23:25 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,25 @@ bool	set_entity_spawn(char dir, t_vec2 pos, t_tile_type ***map)
 	player()->spawn_transform.pos = pos;
 	player()->transform = player()->spawn_transform;
 	*(map[(int)pos.y][(int)pos.x]) = FLOOR;
+	return (true);
+}
+
+bool	set_goal(t_vec2 pos, t_tile_type ***map)
+{
+	static int	goal_count = 0;
+	mlx_texture_t	*texture;
+
+	printf("setting the goal \n");
+	if (++goal_count > MAX_GOAL_COUNT)
+	{
+		logger(LOGGER_WARNING, "Maximum goal count already reached!");
+		return (false);
+	}
+	*(map[(int)pos.y][(int)pos.x]) = FLOOR;
+	texture = mlx_load_png("./assets/entities/star.png");
+	if (!texture)
+		cub_exit_error("Failed to load goal texture!");
+	create_entity(pos, (t_vec2){0, 1}, GOAL_E, texture);
 	return (true);
 }
 

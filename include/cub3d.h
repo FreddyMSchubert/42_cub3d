@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/24 11:14:28 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/24 13:36:30 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ bool				basic_validate(t_input_data **in);
 void				get_map_contents(char *filepath);
 // set values
 bool				set_entity_spawn(char dir, t_vec2 pos, t_tile_type ***map);
+bool				set_goal(t_vec2 pos, t_tile_type ***map);
 bool				set_value(char	**value, char	*set);
 bool				set_color(t_color *color, char *color_val);
 // squarify map
@@ -126,8 +127,8 @@ void				calc_entity(int ray_index, t_vec2 intersect, t_entity *ntt);
 // - 3 draw walls
 void				draw_gameobject(int start_x, int end_x, int height, mlx_texture_t *tex, double hit_offset);
 // - util
-bool				get_wall_orientation(t_vec2 intersect);		// d
-char				get_wall_face_to_render(t_vec2 intersect);	// wall_orientation
+bool				get_wall_orientation(t_vec2 intersect);
+char				get_wall_face_to_render(t_vec2 intersect);
 t_transform			get_wall_from_intersect(t_vec2 intersect);
 
 # define WALL_ORIENTATION_HORIZONTAL 0
@@ -181,5 +182,6 @@ t_vec2				rotate_vector_by_90_degrees(t_vec2 v, int direction);
 
 // entities
 t_transform			get_face_vector(t_transform *ntt_trans);
+void				create_entity(t_vec2 pos, t_vec2 rot, t_entity_type type, mlx_texture_t *tex);
 
 #endif
