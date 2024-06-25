@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.20.2] - 25.04.2024 - Freddy - `42-multiplayer`
+- Potential problem detected: We can't start two mlx instances.
+
 ### [0.20.1] - 25.06.2024 - Freddy - `42-multiplayer`
 - Fixed player amount not specified if there is no third arg. Now it defaults to 1. Now the game actually runs normally for one player! Thats a good first step
 

@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 07:33:54 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/25 20:17:04 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 20:43:56 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	main(int argc, char **argv)
 	setup_mlx();
 	logger(LOGGER_STEP, "Gameloop");
 	mlx_loop(player(0)->mlx);
+	mlx_loop(player(1)->mlx); // damn thats a bit awkward
 	mlx_terminate(player(0)->mlx);
 	return (EXIT_SUCCESS);
 }
