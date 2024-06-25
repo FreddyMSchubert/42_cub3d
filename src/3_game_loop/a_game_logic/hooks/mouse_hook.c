@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:50:17 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/25 14:32:14 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/25 14:42:55 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ void	handle_mouse_mv(void)
 		printf("mouse moved, set dirty to true!\n");
 	turn((current_mouse_x - game()->prev_mouse_x) * MOUSE_SENSITIVITY);
 	game()->prev_mouse_x = current_mouse_x;
+
+	/*
+	mouse reset logic gotta be in here:
+	mlx_set_mouse_pos(game()->mlx, game()->mlx->width / 2, game()->mlx->height / 2);
+	*/
 }
 
 void	scroll_hook(double xdelta, double ydelta, void *param)
