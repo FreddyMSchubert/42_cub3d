@@ -6,27 +6,11 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/24 13:47:51 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 11:04:06 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../include/cub3d.h"
-
-static t_entity	*perform_entity_raycast(int i, t_vec2 *entity_intersection)
-{
-	t_transform	ray;
-	double		p_angle;
-	double		ray_angle;
-	t_entity	*entity;
-
-	p_angle = dir_vec_to_deg(player()->transform.rot);
-	ray_angle = p_angle - FOV_DEG / 2.0 + (double)i / (double)RAYCASTS_PER_DEG;
-	ray.rot = deg_to_dir_vec(ray_angle);
-	ray.rot = scale_vector(ray.rot, VIEW_DIST);
-	ray.pos = player()->transform.pos;
-	*entity_intersection = get_entity_intersection(game()->entities, ray, &entity);
-	return (entity);
-}
 
 double	get_fisheye_corrected_ray_angle(int ray_index)
 {
@@ -36,6 +20,23 @@ double	get_fisheye_corrected_ray_angle(int ray_index)
 	relative_position = ((double)ray_index / ((RAYCASTS_PER_DEG * FOV_DEG) / 2)) - 1;
 	angle_correction = atan(relative_position * tan(deg_to_rad(FOV_DEG / 2)));
 	return (rad_to_deg(angle_correction));
+}
+
+static t_entity	*perform_entity_raycast(int i, t_vec2 *entity_intersection)
+{
+	t_transform	ray;
+	double		p_angle;
+	double		ray_angle;
+	t_entity	*entity;
+
+	p_angle = dir_vec_to_deg(player()->transform.rot);
+	ray_angle = get_fisheye_corrected_ray_angle(i);
+	ray_angle += p_angle;
+	ray.rot = deg_to_dir_vec(ray_angle);
+	ray.rot = scale_vector(ray.rot, VIEW_DIST);
+	ray.pos = player()->transform.pos;
+	*entity_intersection = get_entity_intersection(game()->entities, ray, &entity);
+	return (entity);
 }
 
 static inline t_vec2	perform_wall_raycast(int ray_index)

@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.19.3] - 24.06.2024 - Freddy - `39-alternative-fisheye-approach`
+- Fixed entity fisheye
+- Some adjustments
+
 ### [0.19.2] - 24.06.2024 - Freddy - `39-alternative-fisheye-approach`
 - Various changes and fixes to entity rendering
 - is_billboard entity functionality, will later be useful for walls
