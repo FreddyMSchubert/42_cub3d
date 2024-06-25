@@ -1,6 +1,9 @@
 # Changelog
 
-## [0.20.0] - 25.06.2024 - Freddy - `43-raycasting-efficiency`
+### [0.20.1] - 26.06.2024 - Freddy - `43-raycasting-efficiency`
+- Further minor raycasting logic efficiency improvements
+
+## [0.20.0] - 26.06.2024 - Freddy - `43-raycasting-efficiency`
 - Removed annoying logging stuff
 - Minor raycasting efficiency improvements
 

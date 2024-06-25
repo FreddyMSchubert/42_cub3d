@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:22:19 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/26 00:26:32 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/26 00:49:53 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ t_vec2	scale_vector(t_vec2 v, double distance)
 t_vec2	raycast_intersect(t_transform t1, t_transform t2)
 {
 	double	denom;
+	double	inv_denom;
 	double	t;
 	double	u;
 	t_vec2	intersection;
@@ -46,12 +47,13 @@ t_vec2	raycast_intersect(t_transform t1, t_transform t2)
 	intersection.x = -1;
 	intersection.y = -1;
 	denom = t1.rot.x * t2.rot.y - t1.rot.y * t2.rot.x;
-	if (denom == 0.0)
+	if (fabs(denom) < DBL_EPSILON)
 		return (intersection);
+	inv_denom = 1.0 / denom;
 	t = ((t2.pos.x - t1.pos.x) * t2.rot.y - \
-		(t2.pos.y - t1.pos.y) * t2.rot.x) / denom;
+		(t2.pos.y - t1.pos.y) * t2.rot.x) * inv_denom;
 	u = ((t2.pos.x - t1.pos.x) * t1.rot.y - \
-		(t2.pos.y - t1.pos.y) * t1.rot.x) / denom;
+		(t2.pos.y - t1.pos.y) * t1.rot.x) * inv_denom;
 	if (t >= 0.0 && u >= 0.0 && u <= 1.0)
 	{
 		intersection.x = t1.pos.x + t * t1.rot.x;
