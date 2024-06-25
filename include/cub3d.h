@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/25 12:50:54 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 13:26:45 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,17 @@
 
 
 /* ---- SETTINGS ---- */
-# define MAP_TILES " 10NESWG"
+# define MAP_TILES " 10NESWGVH"
+// ' ' -> VOID
+// '1' -> WALL
+// '0' -> FLOOR
+// 'N' -> PLAYER LOOKING NORTH
+// 'E' -> PLAYER LOOKING EAST
+// 'S' -> PLAYER LOOKING SOUTH
+// 'W' -> PLAYER LOOKING WEST
+// 'G' -> GOAL
+// 'H' -> HORIZONTAL DOOR
+// 'V' -> VERTICAL DOOR
 
 /* ----- LOGGER ----- */
 # define LOGGER_ERROR 'e'
@@ -135,6 +145,8 @@ t_transform			get_wall_from_intersect(t_vec2 intersect);
 void				tick_entities(void);
 // - goal
 void				tick_goal(t_entity *self);
+// - door
+void				tick_door(t_entity *self);
 
 # define WALL_ORIENTATION_HORIZONTAL 0
 # define WALL_ORIENTATION_VERTICAL 1
@@ -187,7 +199,7 @@ t_vec2				rotate_vector_by_90_degrees(t_vec2 v, int direction);
 
 // entities
 t_transform			get_face_vector(t_entity *ntt);
-t_entity			*create_entity(t_vec2 pos, t_vec2 rot, t_entity_type type, mlx_texture_t *tex, bool is_billboard);
+t_entity			*create_entity(t_transform trans, t_entity_type type, mlx_texture_t *tex, bool is_billboard, void (*tick)(t_entity *self));
 
 // vector
 double				vec2_dot_product(t_vec2 a, t_vec2 b);

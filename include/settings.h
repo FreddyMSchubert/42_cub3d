@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/25 11:51:34 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 13:09:06 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,9 @@
 
 # define RENDER_ENTITIES_THROUGH_WALLS false
 
-// Map limits
-
-# define MAX_GOAL_COUNT 5
-
 // Quality of Life
 
-# define MOUSE_SENSITIVITY 0.35
+# define MOUSE_SENSITIVITY 0.45
 
 // Window Setup
 

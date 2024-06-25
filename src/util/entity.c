@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 10:51:45 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/25 11:46:16 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 13:21:35 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,18 @@ t_transform	get_face_vector(t_entity *ntt)
 	return (face_vector);
 }
 
-t_entity	*create_entity(t_vec2 pos, t_vec2 rot, t_entity_type type, mlx_texture_t *tex, bool is_billboard)
+t_entity	*create_entity(t_transform trans, t_entity_type type, mlx_texture_t *tex, bool is_billboard, void (*tick)(t_entity *self))
 {
 	t_entity	*entity;
 
 	entity = gc_malloc(sizeof(t_entity));
-	entity->spawn_transform.pos = (t_vec2){pos.x + 0.5, pos.y + 0.5};
-	entity->spawn_transform.rot = rot;
+	entity->spawn_transform = trans;
 	entity->transform = entity->spawn_transform;
 	entity->type = type;
 	entity->texture = tex;
 	entity->is_billboard = is_billboard;
+	entity->tick = tick;
+	entity->data = NULL;
 	ft_lstadd_back(&game()->entities, ft_lstnew(entity));
 	return (entity);
 }

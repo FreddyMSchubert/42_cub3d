@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/25 12:50:35 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 13:25:46 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,8 @@ typedef struct s_player
 
 typedef enum e_entity_type
 {
-	GOAL_E
+	GOAL_E,
+	DOOR_E
 }	t_entity_type;
 
 typedef struct s_entity t_entity;
@@ -117,7 +118,26 @@ typedef struct s_entity
 	bool			is_billboard;
 
 	void (*tick)(t_entity *self);
+
+	void			*data; // for specific entity data e.g. t_door
 }	t_entity;
 // if is_billboard is on, the entity will always show its full face towards the player
+
+// - DOOR
+
+# define DOOR_CLOSED 0
+# define DOOR_CLOSING 1
+# define DOOR_OPEN 2
+# define DOOR_OPENING 3
+
+# define DOOR_VERTICAL 0
+# define DOOR_HORIZONTAL 1
+
+typedef struct s_door
+{
+	int		state;
+	bool	orientation;
+	bool	locked;
+}	t_door;
 
 #endif

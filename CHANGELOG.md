@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.19.7] - 25.06.2024 - Freddy - `39-alternative-fisheye-approach`
+- Added doors which dont get properly added yet.
+- Added a nice data field in t_entity, allowing for some dynamic content based on the entity, e.g. t_door
+- Added nice explanatory comment in cub3d.h to explain all the chars that are accepted in the map format
+- Removed max goal count
+- Doors dont work yet
+
 ### [0.19.6] - 25.06.2024 - Freddy - `39-alternative-fisheye-approach`
 - Created t_player struct seperate from t_entity as there are starting to be a lot of fields in t_entity the player won't need.
 - Made cub_exit not use the logger error prefix when a success exit code is passed
