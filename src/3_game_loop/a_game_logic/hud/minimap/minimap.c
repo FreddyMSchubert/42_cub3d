@@ -26,7 +26,7 @@ static inline bool	is_visible(int x, int y)
 	player_rot_y /= player_rot_magnitude;
 	float	dot_product = dir_x * player_rot_x + dir_y * player_rot_y;
 	if (acos(dot_product) <= M_PI / 4.5
-		&& dir_magnitude <= VIEW_DIST * 4)
+		&& dir_magnitude <= VIEW_DIST * 5)
 		return (true);
 	return (false);
 }
@@ -36,16 +36,20 @@ static int	get_opacity(int x, int y)
 	double	distance;
 	int		min_opacity;
 	int		max_opacity;
+	bool	visible;
 
 	min_opacity = 75;
 	max_opacity = 255;
 	distance = sqrt(pow(player()->transform.pos.x - x, 2)
 			+ pow(player()->transform.pos.y - y, 2));
-	if (!is_visible(x, y) || distance >= 100)
+	visible = is_visible(x, y);
+	if (!visible && distance >= 3)
 		return (0);
 	if (max_opacity * (distance / 100) > max_opacity)
 		return (max_opacity);
-	return (max_opacity * (distance / 100));
+	if (max_opacity - (max_opacity * (distance / 10)) < min_opacity)
+		return (min_opacity);
+	return (max_opacity - (max_opacity * (distance / 10)));
 }
 
 static inline void	draw_walls(int size)
@@ -70,11 +74,11 @@ static inline void	draw_walls(int size)
 			else if (*(walls[i][j]) == WALL)
 				draw_square(j * wall_size + MINIMAP_LEFT_OFFSET,
 					i * wall_size + MINIMAP_TOP_OFFSET, wall_size,
-					rgba_to_int(255, 255, 255, get_opacity(j, i)));
+					rgba_to_int(255, 0, 0, get_opacity(j, i)));
 			else if (*(walls[i][j]) == FLOOR)
 				draw_square(j * wall_size + MINIMAP_LEFT_OFFSET,
 					i * wall_size + MINIMAP_TOP_OFFSET, wall_size,
-					rgba_to_int(100, 100, 100, get_opacity(j, i)));
+					rgba_to_int(0, 255, 0, get_opacity(j, i)));
 		}
 	}
 }
