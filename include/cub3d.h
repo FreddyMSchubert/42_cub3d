@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/25 10:59:51 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/25 12:55:44 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ void				scroll_hook(double xdelta, double ydelta, void *param);
 // -- hud
 void				hud_draw(void);
 void				draw_square(int x, int y, int size, int color);
+void				draw_square_hud(int x, int y, int size, int color);
 // - minimap
 void				hud_draw_minimap(void);
 // util

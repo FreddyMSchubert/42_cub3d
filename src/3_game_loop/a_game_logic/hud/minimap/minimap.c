@@ -54,47 +54,43 @@ static int	get_opacity(int x, int y)
 
 static inline void	draw_walls(int size)
 {
-	int			i;
-	int			j;
+	// int			i;
+	// int			j;
 	int			wall_size;
 	t_tile_type	***walls;
 
-	i = -1;
+	// i = -1;
 	walls = game()->input_data->map;
 	wall_size = size;
-	while (walls[++i])
-	{
-		j = -1;
-		while (walls[i][++j])
-		{
+	int centerX = MINIMAP_WIDTH / 2;
+	int centerY = MINIMAP_HEIGHT / 2;
+	int offsetX = centerX - (player()->transform.pos.x * size);
+	int offsetY = centerY - (player()->transform.pos.y * size);
+	for (int i = 0; walls[i] != NULL; i++) {
+		for (int j = 0; walls[i][j] != NULL; j++) {
+			int drawX = j * wall_size + offsetX - size / 2;
+			int drawY = i * wall_size + offsetY - size / 2;
 			if (*(walls[i][j]) == VOID)
-				draw_square(j * wall_size + MINIMAP_LEFT_OFFSET,
-					i * wall_size + MINIMAP_TOP_OFFSET, wall_size,
-					rgba_to_int(50, 50, 50, get_opacity(j, i)));
+				draw_square_hud(drawX, drawY, wall_size, rgba_to_int(50, 50, 50, get_opacity(j, i)));
 			else if (*(walls[i][j]) == WALL)
-				draw_square(j * wall_size + MINIMAP_LEFT_OFFSET,
-					i * wall_size + MINIMAP_TOP_OFFSET, wall_size,
-					rgba_to_int(255, 0, 0, get_opacity(j, i)));
+				draw_square_hud(drawX, drawY, wall_size, rgba_to_int(255, 0, 0, get_opacity(j, i)));
 			else if (*(walls[i][j]) == FLOOR)
-				draw_square(j * wall_size + MINIMAP_LEFT_OFFSET,
-					i * wall_size + MINIMAP_TOP_OFFSET, wall_size,
-					rgba_to_int(0, 255, 0, get_opacity(j, i)));
+				draw_square_hud(drawX, drawY, wall_size, rgba_to_int(0, 255, 0, get_opacity(j, i)));
 		}
 	}
 }
 
 static inline void	draw_player(int size)
 {
-	draw_square((player()->transform.pos.x) * size + MINIMAP_LEFT_OFFSET + 1,
-		(player()->transform.pos.y) * size + MINIMAP_TOP_OFFSET + 1, size / 2,
-		rgba_to_int(0, 255, 255, 255));
+	draw_square_hud(game()->hud->width / 2 - size / 2, game()->hud->height / 2 - size / 2, size / 2,
+		rgba_to_int(0, 0, 255, 255));
 }
 
 void	hud_draw_minimap(void)
 {
 	int	size;
 
-	size = game()->minimap_size;
+	size = 6;
 	draw_walls(size);
 	draw_player(size);
 }

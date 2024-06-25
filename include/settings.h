@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/25 11:28:09 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/25 13:22:38 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@
 # define FPS 30
 
 // Minimap Settings
-# define MINIMAP_WIDTH 100
-# define MINIMAP_HEIGHT 100
-# define MINIMAP_LEFT_OFFSET 50
-# define MINIMAP_TOP_OFFSET 50
+# define MINIMAP_WIDTH 200
+# define MINIMAP_HEIGHT 200
+# define MINIMAP_LEFT_OFFSET 25
+# define MINIMAP_TOP_OFFSET 25
 # define MINIMAP_BORDER_WIDTH 5
 
 #endif

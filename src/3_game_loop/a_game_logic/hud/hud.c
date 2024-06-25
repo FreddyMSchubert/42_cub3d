@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hud.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/24 17:51:16 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/25 13:32:13 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,15 @@ static void	draw_crosshair(void)
 
 void	hud_draw(void)
 {
-	hud_draw_minimap();
+	if (game()->hud)
+	{
+		mlx_delete_image(game()->mlx, game()->hud);
+		game()->hud = mlx_new_image(game()->mlx, MINIMAP_WIDTH, MINIMAP_HEIGHT);
+		if (!game()->hud)
+			cub_exit_error("Failed to create HUD image.");
+		hud_draw_minimap();
+		mlx_image_to_window(game()->mlx, game()->hud, MINIMAP_LEFT_OFFSET,
+			MINIMAP_TOP_OFFSET);
+	}
 	draw_crosshair();
 }

@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:41:35 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/25 10:59:37 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/25 13:24:20 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ void	setup_mlx(void)
 	data = game();
 	data->dirty = true;
 	data->mlx = mlx;
-	data->minimap_size = 5;
 	set_background();
 	load_textures();
 	data->game_scene = mlx_new_image(data->mlx, data->mlx->width,
@@ -86,6 +85,12 @@ void	setup_mlx(void)
 	if (!data->game_scene
 		|| (mlx_image_to_window(data->mlx, data->game_scene, 0, 0) < 0))
 		cub_exit_error("mlx game image creation failed");
+	data->hud = mlx_new_image(data->mlx, MINIMAP_WIDTH, MINIMAP_HEIGHT);
+	if (!data->hud
+		|| (mlx_image_to_window(data->mlx, data->hud,
+				MINIMAP_LEFT_OFFSET, MINIMAP_TOP_OFFSET) < 0))
+		cub_exit_error("mlx hud image creation failed");
+	data->minimap_size = 5;
 	setup_player();
 	mlx_loop_hook(data->mlx, loop_hook, NULL);
 	mlx_key_hook(data->mlx, key_hook, NULL);
