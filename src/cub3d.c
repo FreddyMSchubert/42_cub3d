@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 07:33:54 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/25 20:06:46 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 20:17:04 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,9 @@ bool	check_args_validity(int argc, char **argv)
 			"Invalid file extension. Please provide a .cub file\n");
 		return (false);
 	}
-	if (argc == 3)
-	{
-		game()->player_count = 1;
-		if (argv[2] && argv[2][0] && argv[2][0] == '2')
-			game()->player_count = 2;
-	}
+	game()->player_count = 1;
+	if (argc == 3 && argv[2] && argv[2][0] && argv[2][0] == '2')
+		game()->player_count = 2;
 	return (true);
 }
 

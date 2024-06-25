@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.20.1] - 25.06.2024 - Freddy - `42-multiplayer`
+- Fixed player amount not specified if there is no third arg. Now it defaults to 1. Now the game actually runs normally for one player! Thats a good first step
+
 ## [0.20.0] - 25.06.2024 - Freddy - `42-multiplayer`
 - Started editing just about the whole program
 - player() function now contains two players and gets passed an id. This id is passed all over the program

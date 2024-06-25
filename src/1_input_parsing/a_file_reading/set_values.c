@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:12:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/25 18:06:38 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 20:18:07 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ bool	set_entity_spawn(char dir, t_vec2 pos, t_tile_type ***map)
 {
 	static int	player_count = 0;
 
-	if (++player_count > game()->player_count)
+	player_count++;
+	if (player_count > game()->player_count)
 		cub_exit("More players than specified detected", -1);
 	if (dir == 'N')
 		player(player_count - 1)->spawn_transform.rot = (t_vec2){-1, 0};
