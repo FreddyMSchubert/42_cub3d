@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.19.4] - 25.06.2024 - Freddy - `39-alternative-fisheye-approach`
+- Added RENDER_ENTITIES_THROUGH_WALLS as a debug macro
+- fixed up get_face_vector functionality, entity rendering should be a done deal for now.
+
 ### [0.19.3] - 24.06.2024 - Freddy - `39-alternative-fisheye-approach`
 - Fixed entity fisheye
 - Some adjustments

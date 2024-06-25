@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 10:51:45 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/24 14:58:41 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 11:15:20 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,12 @@ t_transform	get_face_vector(t_entity *ntt)
 	t_vec2			dir;
 
 	if (!ntt->is_billboard)
-		return ((t_transform){ntt->transform.pos, scale_vector(ntt->transform.rot, 1)});
+	{
+		face_vector.pos.x = ntt->transform.pos.x - 0.5 * ntt->transform.rot.x;
+		face_vector.pos.y = ntt->transform.pos.y - 0.5 * ntt->transform.rot.y;
+		face_vector.rot = ntt->transform.rot;
+		return (face_vector);
+	}
 	dir.x = player()->transform.pos.x - ntt->transform.pos.x;
 	dir.y = player()->transform.pos.y - ntt->transform.pos.y;
 	dir = scale_vector(dir, 1);

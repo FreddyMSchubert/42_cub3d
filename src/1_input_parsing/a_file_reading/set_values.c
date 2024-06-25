@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:12:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/25 09:35:29 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 11:17:49 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ bool	set_goal(t_vec2 pos, t_tile_type ***map)
 		return (false);
 	}
 	*(map[(int)pos.y][(int)pos.x]) = FLOOR;
-	texture = mlx_load_png("./assets/img/structure_block.png");
+	texture = mlx_load_png("./assets/entities/star.png");
 	if (!texture)
 		cub_exit_error("Failed to load goal texture!");
-	create_entity(pos, (t_vec2){0, 1}, GOAL_E, texture, false);
+	create_entity(pos, (t_vec2){0, 1}, GOAL_E, texture, true);
 	return (true);
 }
 

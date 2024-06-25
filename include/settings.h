@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/25 09:31:47 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 11:18:18 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@
 # define LOG_WALLS false
 # define TERMINAL_MAP true
 # define MARK_DIRTY_LOGGING false
+
+// Debug
+
+# define RENDER_ENTITIES_THROUGH_WALLS false
 
 // Map limits
 
