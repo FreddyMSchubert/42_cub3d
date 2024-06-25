@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/24 14:54:59 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 11:44:02 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ typedef enum e_entity_type
 	GOAL_E
 }	t_entity_type;
 
+typedef struct s_entity t_entity;
 typedef struct s_entity
 {
 	t_entity_type	type;
@@ -108,6 +109,8 @@ typedef struct s_entity
 
 	mlx_texture_t	*texture;
 	bool			is_billboard;
+
+	void (*tick)(t_entity *self);
 }	t_entity;
 // if is_billboard is on, the entity will always show its full face towards the player
 

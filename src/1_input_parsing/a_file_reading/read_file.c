@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:38:30 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/14 10:46:58 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/25 11:42:26 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,24 +126,24 @@ void	get_map_contents(char *filepath)
 	if (!data)
 	{
 		logger(LOGGER_ERROR, "Could not read map file!");
-		gc_exit_error();
+		gc_exit(-1);
 	}
 	input_data = gc_malloc(sizeof(t_input_data));
 	if (!input_data)
 	{
 		logger(LOGGER_ERROR, "Could not allocate memory for input data!");
-		gc_exit_error();
+		gc_exit(-1);
 	}
 	clean_struct_input(input_data);
 	if (!parse_file_data(data, &input_data))
 	{
 		logger(LOGGER_ERROR, "Could not parse map data!");
-		gc_exit_error();
+		gc_exit(-1);
 	}
 	if (!basic_validate(&input_data))
 	{
 		logger(LOGGER_ERROR, "Basic validation failed!");
-		gc_exit_error();
+		gc_exit(-1);
 	}
 	game()->input_data = input_data;
 }

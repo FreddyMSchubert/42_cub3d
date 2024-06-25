@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 13:57:51 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/24 10:48:13 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 11:42:14 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	parse_input(char	*filepath)
 	if (!game()->input_data || !game()->input_data->map)
 	{
 		logger(LOGGER_ERROR, "Error during input parsing!");
-		gc_exit_error();
+		gc_exit(-1);
 	}
 	print_map(game()->input_data->map, ".01");
 	logger(LOGGER_STEP, "Map Squarification");

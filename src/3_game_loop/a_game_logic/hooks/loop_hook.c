@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:28 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/24 13:46:32 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 11:49:22 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	loop_hook(void *param)
 		game()->dirty = false;
 		handle_mouse_mv();
 		handle_player_move();
+		tick_entities();
 		if (game()->dirty == true)
 		{
 			if (MARK_DIRTY_LOGGING)

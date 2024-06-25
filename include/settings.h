@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/25 11:18:18 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 11:51:34 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,9 @@
 # define FISHEYE_CORRECTION_FACTOR 0.5
 # define VIEW_DIST 3
 # define FPS 30
+
+// Entities
+
+# define GOAL_COLLISION_DISTANCE 0.5
 
 #endif

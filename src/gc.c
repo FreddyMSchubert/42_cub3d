@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gc.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:18:59 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/07 14:33:53 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/25 11:42:11 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	gc_cleanup_and_reinit(void)
 	*garbage_col = gc_create();
 }
 
-void	gc_exit_error(void)
+void	gc_exit(int code)
 {
 	int		i;
 	t_list	**garbage_col;
@@ -92,7 +92,7 @@ void	gc_exit_error(void)
 		close(i);
 	gc_cleanup_and_reinit();
 	free(*garbage_col);
-	exit(EXIT_FAILURE);
+	exit(code);
 }
 
 /*
@@ -108,14 +108,14 @@ void	*gc_malloc(size_t size)
 	if (!new_mem)
 	{
 		perror("Malloc failed");
-		gc_exit_error();
+		gc_exit(-1);
 	}
 	ft_bzero(new_mem, size);
 	if (gc_append_element(new_mem) == -1)
 	{
 		perror("Malloc failed");
 		free(new_mem);
-		gc_exit_error();
+		gc_exit(-1);
 	}
 	return (new_mem);
 }

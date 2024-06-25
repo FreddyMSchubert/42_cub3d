@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   entities.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/28 08:51:31 by freddy            #+#    #+#             */
-/*   Updated: 2024/05/28 08:52:32 by freddy           ###   ########.fr       */
+/*   Created: 2024/06/25 11:47:39 by freddy            #+#    #+#             */
+/*   Updated: 2024/06/25 11:48:32 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#include "../../../include/cub3d.h"
 
-void	cub_exit_error(char	*message)
+void	tick_entities(void)
 {
-	logger(LOGGER_ERROR, message);
-	gc_exit_error();
+	t_list		*ntt_list;
+
+	ntt_list = game()->entities;
+	while (ntt_list)
+	{
+		((t_entity *)ntt_list->content)->tick((t_entity *)ntt_list->content);
+		ntt_list = ntt_list->next;
+	}
 }

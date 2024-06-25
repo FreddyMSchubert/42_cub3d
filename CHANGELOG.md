@@ -1,5 +1,10 @@
 # Changelog
 
+### [0.19.5] - 25.06.2024 - Freddy - `39-alternative-fisheye-approach`
+- Added tick method to entity structs which gets called every frame
+- Goal now works. If you walk into it, a happy message logs & the program quits
+- Reworked exit functions to pass an exit code to allow for an intended exit
+
 ### [0.19.4] - 25.06.2024 - Freddy - `39-alternative-fisheye-approach`
 - Added RENDER_ENTITIES_THROUGH_WALLS as a debug macro
 - fixed up get_face_vector functionality, entity rendering should be a done deal for now.

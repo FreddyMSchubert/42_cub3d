@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:12:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/25 11:17:49 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 11:47:01 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ bool	set_entity_spawn(char dir, t_vec2 pos, t_tile_type ***map)
 	static int	player_count = 0;
 
 	if (++player_count > 1)
-		cub_exit_error("Multiple player spawns detected!");
+		cub_exit("Multiple player spawns detected!", -1);
 	if (dir == 'N')
 		player()->spawn_transform.rot = (t_vec2){-1, 0};
 	else if (dir == 'S')
@@ -39,8 +39,9 @@ bool	set_entity_spawn(char dir, t_vec2 pos, t_tile_type ***map)
 
 bool	set_goal(t_vec2 pos, t_tile_type ***map)
 {
-	static int	goal_count = 0;
+	static int		goal_count = 0;
 	mlx_texture_t	*texture;
+	t_entity		*ntt;
 
 	printf("setting the goal \n");
 	if (++goal_count > MAX_GOAL_COUNT)
@@ -51,8 +52,9 @@ bool	set_goal(t_vec2 pos, t_tile_type ***map)
 	*(map[(int)pos.y][(int)pos.x]) = FLOOR;
 	texture = mlx_load_png("./assets/entities/star.png");
 	if (!texture)
-		cub_exit_error("Failed to load goal texture!");
-	create_entity(pos, (t_vec2){0, 1}, GOAL_E, texture, true);
+		cub_exit("Failed to load goal texture!", -1);
+	ntt = create_entity(pos, (t_vec2){0, 1}, GOAL_E, texture, true);
+	ntt->tick = tick_goal;
 	return (true);
 }
 

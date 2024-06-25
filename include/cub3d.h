@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/24 14:57:15 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 11:50:44 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,11 @@ bool				get_wall_orientation(t_vec2 intersect);
 char				get_wall_face_to_render(t_vec2 intersect);
 t_transform			get_wall_from_intersect(t_vec2 intersect);
 
+// --- entities
+void				tick_entities(void);
+// - goal
+void				tick_goal(t_entity *self);
+
 # define WALL_ORIENTATION_HORIZONTAL 0
 # define WALL_ORIENTATION_VERTICAL 1
 
@@ -145,7 +150,7 @@ t_list				*gc_create(void);
 int					gc_append_element(void *content);
 void				gc_cleanup_and_reinit(void);
 void				*gc_malloc(size_t size);
-void				gc_exit_error(void);
+void				gc_exit(int code);
 
 // logging
 void				logger(char type, char *message);
@@ -155,7 +160,7 @@ void				print_map(t_tile_type ***map, char *mode);
 void				print_walls(void);
 
 // general
-void				cub_exit_error(char	*message);
+void				cub_exit(char *message, int code);
 
 // colors
 unsigned int		t_color_to_int(t_color color);
@@ -182,7 +187,7 @@ t_vec2				rotate_vector_by_90_degrees(t_vec2 v, int direction);
 
 // entities
 t_transform			get_face_vector(t_entity *ntt);
-void				create_entity(t_vec2 pos, t_vec2 rot, t_entity_type type, mlx_texture_t *tex, bool is_billboard);
+t_entity			*create_entity(t_vec2 pos, t_vec2 rot, t_entity_type type, mlx_texture_t *tex, bool is_billboard);
 
 // vector
 double				vec2_dot_product(t_vec2 a, t_vec2 b);

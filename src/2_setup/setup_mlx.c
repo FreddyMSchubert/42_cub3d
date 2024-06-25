@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_mlx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:41:35 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/21 14:56:29 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/25 11:40:45 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,24 @@ void	load_textures(void)
 {
 	game()->ea_texture = mlx_load_png(game()->input_data->ea_texture_location);
 	if (!game()->ea_texture)
-		cub_exit_error("Failed to load east texture.");
+		cub_exit("Failed to load east texture.", -1);
 	game()->no_texture = mlx_load_png(game()->input_data->no_texture_location);
 	if (!game()->no_texture)
-		cub_exit_error("Failed to load north texture.");
+		cub_exit("Failed to load north texture.", -1);
 	game()->so_texture = mlx_load_png(game()->input_data->so_texture_location);
 	if (!game()->so_texture)
-		cub_exit_error("Failed to load south texture.");
+		cub_exit("Failed to load south texture.", -1);
 	game()->we_texture = mlx_load_png(game()->input_data->we_texture_location);
 	if (!game()->we_texture)
-		cub_exit_error("Failed to load west texture.");
+		cub_exit("Failed to load west texture.", -1);
 	if (game()->no_texture->height != game()->no_texture->width)
-		cub_exit_error("Textures must be square.");
+		cub_exit("Textures must be square.", -1);
 	if (game()->so_texture->height != game()->so_texture->width)
-		cub_exit_error("Textures must be square.");
+		cub_exit("Textures must be square.", -1);
 	if (game()->we_texture->height != game()->we_texture->width)
-		cub_exit_error("Textures must be square.");
+		cub_exit("Textures must be square.", -1);
 	if (game()->ea_texture->height != game()->ea_texture->width)
-		cub_exit_error("Textures must be square.");
+		cub_exit("Textures must be square.", -1);
 }
 
 void	set_background(void)
@@ -49,7 +49,7 @@ void	set_background(void)
 	data = game();
 	img = mlx_new_image(data->mlx, data->mlx->width, data->mlx->height);
 	if (!img || (mlx_image_to_window(data->mlx, img, 0, 0) < 0))
-		cub_exit_error("mlx image creation failed");
+		cub_exit("mlx image creation failed", -1);
 	i = -1;
 	while (++i < data->mlx->height)
 	{
@@ -72,7 +72,7 @@ void	setup_mlx(void)
 
 	mlx = mlx_init(START_WIDTH, START_HEIGHT, WINDOW_NAME, true);
 	if (!mlx)
-		cub_exit_error("mlx setup failed.");
+		cub_exit("mlx setup failed.", -1);
 	data = game();
 	data->dirty = true;
 	data->mlx = mlx;
@@ -80,7 +80,7 @@ void	setup_mlx(void)
 	load_textures();
 	data->game_scene = mlx_new_image(data->mlx, data->mlx->width, data->mlx->height);
 	if (!data->game_scene || (mlx_image_to_window(data->mlx, data->game_scene, 0, 0) < 0))
-		cub_exit_error("mlx image creation failed");
+		cub_exit("mlx image creation failed", -1);
 	setup_player();
 	mlx_loop_hook(data->mlx, loop_hook, NULL);
 	mlx_key_hook(data->mlx, key_hook, NULL);
