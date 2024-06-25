@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.19.10] - 25.06.2024 - Freddy - `40-doors`
+- Nice door sliding open animation.
+- Goals of this branch are done, it's mergin' time.
+
 ### [0.19.9] - 25.06.2024 - Freddy - `40-doors`
 - Added small key entities, which can be collected and will be added to a player inventory
 - Made doors openable, they open automatically when a key is held

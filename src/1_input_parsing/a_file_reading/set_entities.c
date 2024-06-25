@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 16:06:43 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/25 16:55:24 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 17:16:20 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ bool	set_door(t_vec2 pos, t_tile_type ***map, char type)
 		trans.rot.x = 1;
 	else
 		trans.rot.y = 1;
-	data->locked = true;
+	data->state = DOOR_STATE_CLOSED;
 	ntt = create_entity(trans, DOOR_E, texture, false, tick_door);
 	ntt->data = data;
 	return (true);

@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/25 16:58:28 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 17:21:51 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,9 @@
 // Entities
 
 # define GOAL_COLLISION_DISTANCE 0.5
-# define KEY_COLLISION_DISTANCE 0.25
+# define KEY_COLLISION_DISTANCE 0.5
 # define CLOSED_DOOR_ALLOWED_WALK_DISTANCE 0.3
-# define DOOR_OPEN_DISTANCE 0.5
+# define DOOR_OPEN_DISTANCE 1.0
+# define DOOR_OPEN_SPEED 0.05
 
 #endif
