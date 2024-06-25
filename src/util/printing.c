@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:49:10 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/24 10:48:13 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 18:40:17 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 // deg_seg = degree segment
 // "v↙️<↖️^↗️>↘️"[deg_seg]
 // 6 is up, 7 is top right
-void	print_entity(void)
+static inline void	print_player(int id)
 {
 	int		degrees;
 	int		deg_seg;
 	char	*deg_seg_string;
 
-	degrees = dir_vec_to_deg(player()->transform.rot) + 22.5;
+	degrees = dir_vec_to_deg(player(id)->transform.rot) + 22.5;
 	degrees = normalize_degrees(degrees);
 	deg_seg = degrees / 45;
 	if (deg_seg == 0)
@@ -64,9 +64,12 @@ void	print_map(t_tile_type ***map, char *mode)
 		while (map[y][++x] != NULL)
 		{
 			current_spot = *map[y][x];
-			if (TERMINAL_MAP && x == (int)player()->transform.pos.x
-				&& y == (int)player()->transform.pos.y)
-				print_entity();
+			if (TERMINAL_MAP && x == (int)player(0)->transform.pos.x
+				&& y == (int)player(0)->transform.pos.y)
+				print_player(0);
+			else if (TERMINAL_MAP && game()->player_count > 1 && x == (int)player(1)->transform.pos.x
+				&& y == (int)player(1)->transform.pos.y)
+				print_player(1);
 			else if (current_spot == VOID)
 				printf("%s%c%s", ANSI_BACKGROUND_BLACK, mode[0], ANSI_RESET);
 			else if (current_spot == FLOOR)

@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/25 17:37:22 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 19:08:07 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@
 
 # define START_HEIGHT 540
 # define START_WIDTH 960
-# define WINDOW_NAME "cub3d"
+# define WINDOW_NAME_PLAYER_1 "cub3d - Player 1️⃣"
+# define WINDOW_NAME_PLAYER_2 "cub3d - Player 2️⃣"
 
 // Player Movement Stats
 

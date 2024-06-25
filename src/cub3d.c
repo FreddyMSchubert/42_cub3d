@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 07:33:54 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/21 12:40:25 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/25 20:06:46 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 bool	check_args_validity(int argc, char **argv)
 {
-	if (argc != 2)
+	if (argc < 2 || argc > 3)
 	{
 		logger(LOGGER_ERROR,
-			"Invalid number of arguments. Usage ./cub3d <path to map>\n");
+			"Invalid number of arguments. Usage ./cub3d <path to map> [number of players]\n");
 		return (false);
 	}
 	if (strlen(argv[1]) > 4 \
@@ -26,6 +26,12 @@ bool	check_args_validity(int argc, char **argv)
 		logger(LOGGER_ERROR,
 			"Invalid file extension. Please provide a .cub file\n");
 		return (false);
+	}
+	if (argc == 3)
+	{
+		game()->player_count = 1;
+		if (argv[2] && argv[2][0] && argv[2][0] == '2')
+			game()->player_count = 2;
 	}
 	return (true);
 }
@@ -40,7 +46,7 @@ int	main(int argc, char **argv)
 	logger(LOGGER_STEP, "Mlx Setup");
 	setup_mlx();
 	logger(LOGGER_STEP, "Gameloop");
-	mlx_loop(game()->mlx);
-	mlx_terminate(game()->mlx);
+	mlx_loop(player(0)->mlx);
+	mlx_terminate(player(0)->mlx);
 	return (EXIT_SUCCESS);
 }

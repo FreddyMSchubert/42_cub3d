@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/25 17:42:35 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 18:57:16 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static inline int	get_tex_color_at(mlx_texture_t *tex, int x, int y)
 }
 
 static inline void	draw_column(t_scale start, int end_y, mlx_texture_t *tex,
-	int tex_x, int repeat_y)
+	int tex_x, int repeat_y, int id)
 {
 	int	y;
 	int	tex_y;
@@ -42,12 +42,12 @@ static inline void	draw_column(t_scale start, int end_y, mlx_texture_t *tex,
 		tex_y = (y - start.y) * tex->height * repeat_y
 			/ (end_y - start.y) & (tex->height - 1);
 		color = get_tex_color_at(tex, tex_x, tex_y);
-		set_pixel_color(game()->game_scene, start.x, y++, color);
+		set_pixel_color(player(id)->game_scene, start.x, y++, color);
 	}
 }
 
 void	draw_gameobject(int start_x, int end_x, int height,
-	mlx_texture_t *tex, double hit_offset)
+	mlx_texture_t *tex, double hit_offset, int id)
 {
 	int				start_y;
 	int				end_y;
@@ -55,14 +55,14 @@ void	draw_gameobject(int start_x, int end_x, int height,
 	int				x;
 	int				texture_x;
 
-	start_y = (int)(game()->mlx->height / 2) - height / 2;
+	start_y = (int)(player(id)->mlx->height / 2) - height / 2;
 	end_y = start_y + height;
 	x = start_x;
 	repeat_y = tex->width / tex->height;
 	while (x != end_x)
 	{
 		texture_x = (int)(hit_offset * tex->width) % tex->width;
-		draw_column((t_scale){x, start_y}, end_y, tex, texture_x, repeat_y);
+		draw_column((t_scale){x, start_y}, end_y, tex, texture_x, repeat_y, id);
 		if (start_x < end_x)
 			x++;
 		else

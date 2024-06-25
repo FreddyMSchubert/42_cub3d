@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:57:29 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/25 17:22:28 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 19:29:56 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,22 @@
 void	tick_door(t_entity *self)
 {
 	t_door	*door;
+	int		opening_player;
 
 	door = (t_door *)self->data;
 	if (door->state == DOOR_STATE_OPEN)
 		return ;
 	else if (door->state == DOOR_STATE_CLOSED)
 	{
-		if (pos_distance(player()->transform.pos, self->transform.pos) > DOOR_OPEN_DISTANCE || player()->inv.keys < 1)
+		opening_player = -1;
+		if (pos_distance(player(0)->transform.pos, self->transform.pos) < DOOR_OPEN_DISTANCE && player(0)->inv.keys > 0)
+			opening_player = 0;
+		else if (game()->player_count > 1 && pos_distance(player(1)->transform.pos, self->transform.pos) < DOOR_OPEN_DISTANCE && player(1)->inv.keys > 0)
+			opening_player = 1;
+		if (opening_player == -1)
 			return ;
 		logger(LOGGER_INFO, "Door unlocked!");
-		player()->inv.keys--;
+		player(opening_player)->inv.keys--;
 		door->state = DOOR_STATE_OPENING;
 		door->close_pos = self->transform.pos;
 		door->open_pos = self->transform.pos;
@@ -39,7 +45,8 @@ void	tick_door(t_entity *self)
 		door->door_open_progress -= DOOR_OPEN_SPEED;
 		self->transform.pos.x += ((door->open_pos.x - door->close_pos.x) * DOOR_OPEN_SPEED);
 		self->transform.pos.y += ((door->open_pos.y - door->close_pos.y) * DOOR_OPEN_SPEED);
-		game()->dirty = true;
+		player(0)->dirty = true;
+		player(1)->dirty = true;
 		if (MARK_DIRTY_LOGGING)
 			logger(LOGGER_INFO, "Door opening, set dirty to true!\n");
 		if (door->door_open_progress <= 0)

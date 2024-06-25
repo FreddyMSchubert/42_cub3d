@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:12:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/25 16:07:00 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 18:06:38 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,23 @@ bool	set_entity_spawn(char dir, t_vec2 pos, t_tile_type ***map)
 {
 	static int	player_count = 0;
 
-	if (++player_count > 1)
-		cub_exit("Multiple player spawns detected!", -1);
+	if (++player_count > game()->player_count)
+		cub_exit("More players than specified detected", -1);
 	if (dir == 'N')
-		player()->spawn_transform.rot = (t_vec2){-1, 0};
+		player(player_count - 1)->spawn_transform.rot = (t_vec2){-1, 0};
 	else if (dir == 'S')
-		player()->spawn_transform.rot = (t_vec2){1, 0};
+		player(player_count - 1)->spawn_transform.rot = (t_vec2){1, 0};
 	else if (dir == 'E')
-		player()->spawn_transform.rot = (t_vec2){0, 1};
+		player(player_count - 1)->spawn_transform.rot = (t_vec2){0, 1};
 	else if (dir == 'W')
-		player()->spawn_transform.rot = (t_vec2){0, -1};
+		player(player_count - 1)->spawn_transform.rot = (t_vec2){0, -1};
 	else
 	{
 		logger(LOGGER_WARNING, "Player spawn look dir is not valid dir");
 		return (false);
 	}
-	player()->spawn_transform.pos = pos;
-	player()->transform = player()->spawn_transform;
+	player(player_count - 1)->spawn_transform.pos = pos;
+	player(player_count - 1)->transform = player(player_count - 1)->spawn_transform;
 	*(map[(int)pos.y][(int)pos.x]) = FLOOR;
 	return (true);
 }

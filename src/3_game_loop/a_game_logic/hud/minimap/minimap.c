@@ -14,7 +14,7 @@
 
 bool	is_visible(int x, int y);
 
-int	get_opacity(int x, int y)
+int	get_opacity(int x, int y, int id)
 {
 	double	distance;
 	int		min_opacity;
@@ -23,8 +23,8 @@ int	get_opacity(int x, int y)
 
 	min_opacity = 75;
 	max_opacity = 255;
-	distance = sqrt(pow(player()->transform.pos.x - x, 2)
-			+ pow(player()->transform.pos.y - y, 2));
+	distance = sqrt(pow(player(id)->transform.pos.x - x, 2)
+			+ pow(player(id)->transform.pos.y - y, 2));
 	visible = is_visible(x, y);
 	if (!visible && distance >= 3)
 		return (0);
@@ -35,7 +35,7 @@ int	get_opacity(int x, int y)
 	return (max_opacity - (max_opacity * (distance / 10)));
 }
 
-void	draw_tile(t_scale ij, int size, int offset_x, int offset_y)
+void	draw_tile(t_scale ij, int size, int offset_x, int offset_y, int id)
 {
 	t_tile_type	***walls;
 	int			draw_x;
@@ -50,16 +50,16 @@ void	draw_tile(t_scale ij, int size, int offset_x, int offset_y)
 	draw_y = i * size + offset_y - size / 2;
 	if (*(walls[i][j]) == VOID)
 		draw_square_hud(draw_x, draw_y, size,
-			rgba_to_int(50, 50, 50, get_opacity(j, i)));
+			rgba_to_int(50, 50, 50, get_opacity(j, i, id)), id);
 	else if (*(walls[i][j]) == WALL)
 		draw_square_hud(draw_x, draw_y, size,
-			rgba_to_int(255, 0, 0, get_opacity(j, i)));
+			rgba_to_int(255, 0, 0, get_opacity(j, i, id)), id);
 	else if (*(walls[i][j]) == FLOOR)
 		draw_square_hud(draw_x, draw_y, size,
-			rgba_to_int(0, 255, 0, get_opacity(j, i)));
+			rgba_to_int(0, 255, 0, get_opacity(j, i, id)), id);
 }
 
-static inline void	draw_walls(int size)
+static inline void	draw_walls(int size, int id)
 {
 	int			i;
 	int			j;
@@ -68,29 +68,29 @@ static inline void	draw_walls(int size)
 	t_tile_type	***walls;
 
 	i = -1;
-	offset_x = MINIMAP_WIDTH / 2 - (player()->transform.pos.x * size);
-	offset_y = MINIMAP_HEIGHT / 2 - (player()->transform.pos.y * size);
+	offset_x = MINIMAP_WIDTH / 2 - (player(id)->transform.pos.x * size);
+	offset_y = MINIMAP_HEIGHT / 2 - (player(id)->transform.pos.y * size);
 	walls = game()->input_data->map;
 	while (walls[++i])
 	{
 		j = -1;
 		while (walls[i][++j])
-			draw_tile((t_scale){i, j}, size, offset_x, offset_y);
+			draw_tile((t_scale){i, j}, size, offset_x, offset_y, id);
 	}
 }
 
-static inline void	draw_player(int size)
+static inline void	draw_player(int size, int id)
 {
-	draw_square_hud(game()->hud->width / 2 - size / 2,
-		game()->hud->height / 2 - size / 2, size / 2,
-		rgba_to_int(0, 0, 255, 255));
+	draw_square_hud(player(id)->hud->width / 2 - size / 2,
+		player(id)->hud->height / 2 - size / 2, size / 2,
+		rgba_to_int(0, 0, 255, 255), id);
 }
 
-void	hud_draw_minimap(void)
+void	hud_draw_minimap(int id)
 {
 	int	size;
 
 	size = 6;
-	draw_walls(size);
-	draw_player(size);
+	draw_walls(size, id);
+	draw_player(size, id);
 }

@@ -6,24 +6,24 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 20:45:16 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/05 18:55:01 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 18:59:56 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../include/cub3d.h"
 
 // if positive, turn right
-void	turn(double degrees)
+void	turn(double degrees, int id)
 {
 	t_vec2	direction;
 	double	cos_angle;
 	double	sin_angle;
 	t_vec2	new_direction;
 
-	direction = player()->transform.rot;
+	direction = player(id)->transform.rot;
 	cos_angle = cos(degrees * M_PI / 180.0);
 	sin_angle = sin(degrees * M_PI / 180.0);
 	new_direction.x = direction.x * cos_angle - direction.y * sin_angle;
 	new_direction.y = direction.x * sin_angle + direction.y * cos_angle;
-	player()->transform.rot = new_direction;
+	player(id)->transform.rot = new_direction;
 }

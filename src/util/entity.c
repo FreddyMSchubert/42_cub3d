@@ -6,13 +6,13 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 10:51:45 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/25 16:15:02 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 18:38:24 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-t_transform	get_face_vector(t_entity *ntt)
+t_transform	get_face_vector(t_entity *ntt, int id)
 {
 	t_transform		face_vector;
 	t_vec2			dir;
@@ -24,8 +24,8 @@ t_transform	get_face_vector(t_entity *ntt)
 		face_vector.rot = ntt->transform.rot;
 		return (face_vector);
 	}
-	dir.x = player()->transform.pos.x - ntt->transform.pos.x;
-	dir.y = player()->transform.pos.y - ntt->transform.pos.y;
+	dir.x = player(id)->transform.pos.x - ntt->transform.pos.x;
+	dir.y = player(id)->transform.pos.y - ntt->transform.pos.y;
 	dir = scale_vector(dir, 1);
 	face_vector.rot = rotate_vector_by_90_degrees(dir, 1);
 	face_vector.pos.x = ntt->transform.pos.x - 0.5 * face_vector.rot.x;

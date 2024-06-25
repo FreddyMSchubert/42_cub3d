@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.20.0] - 25.06.2024 - Freddy - `42-multiplayer`
+- Started editing just about the whole program
+- player() function now contains two players and gets passed an id. This id is passed all over the program
+- The hooks get a malloced int of their player id passed in, for further use
+- Not functional at all, I just updated the program in its entirety.
+- Removed walls manager, not necessary at all.
+
 ### [0.19.10] - 25.06.2024 - Freddy - `40-doors`
 - Nice door sliding open animation.
 - Goals of this branch are done, it's mergin' time.

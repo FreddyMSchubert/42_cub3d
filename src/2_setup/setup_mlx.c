@@ -6,13 +6,11 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:41:35 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/25 17:43:19 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 20:07:20 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
-void	resize_hook(int32_t width, int32_t height, void *param);
 
 // lets use purple if a texture cannot be loaded so we dont have to crash
 void	load_textures(void)
@@ -39,7 +37,7 @@ void	load_textures(void)
 		cub_exit("Textures must be square.", -1);
 }
 
-void	set_background(void)
+void	set_background(int id)
 {
 	t_persistent_data	*data;
 	mlx_image_t			*img;
@@ -47,16 +45,16 @@ void	set_background(void)
 	int					j;
 
 	data = game();
-	img = mlx_new_image(data->mlx, data->mlx->width, data->mlx->height);
-	if (!img || (mlx_image_to_window(data->mlx, img, 0, 0) < 0))
+	img = mlx_new_image(player(id)->mlx, player(id)->mlx->width, player(id)->mlx->height);
+	if (!img || (mlx_image_to_window(player(id)->mlx, img, 0, 0) < 0))
 		cub_exit("mlx image creation failed", -1);
 	i = -1;
-	while (++i < data->mlx->height)
+	while (++i < player(id)->mlx->height)
 	{
 		j = -1;
-		while (++j < data->mlx->width)
+		while (++j < player(id)->mlx->width)
 		{
-			if (i < data->mlx->height / 2)
+			if (i < player(id)->mlx->height / 2)
 				mlx_put_pixel(img, j, i,
 					t_color_to_int(data->input_data->ceiling_color));
 			else
@@ -64,44 +62,48 @@ void	set_background(void)
 					t_color_to_int(data->input_data->floor_color));
 		}
 	}
-	data->background = img;
+	player(id)->background = img;
 }
 
-static inline void	setup_inventory(void)
+void	setup_mlx_for_player(int id)
 {
-	player()->inv.keys = 0;
+	mlx_t	*mlx;
+	int		*hooks_id;
+
+	if (id == 0)
+		mlx = mlx_init(START_WIDTH, START_HEIGHT, WINDOW_NAME_PLAYER_1, true);
+	else
+		mlx = mlx_init(START_WIDTH, START_HEIGHT, WINDOW_NAME_PLAYER_2, true);
+	if (!mlx)
+		cub_exit("mlx setup failed.", -1);
+	player(id)->dirty = true;
+	player(id)->mlx = mlx;
+	set_background(id);
+	player(id)->inv.keys = 0;
+	player(id)->game_scene = mlx_new_image(player(id)->mlx, player(id)->mlx->width, player(id)->mlx->height);
+	if (!player(id)->game_scene
+		|| (mlx_image_to_window(player(id)->mlx, player(id)->game_scene, 0, 0) < 0))
+		cub_exit("mlx game image creation failed", -1);
+	player(id)->hud = mlx_new_image(player(id)->mlx, MINIMAP_WIDTH, MINIMAP_HEIGHT);
+	if (!player(id)->hud
+		|| (mlx_image_to_window(player(id)->mlx, player(id)->hud,
+				MINIMAP_LEFT_OFFSET, MINIMAP_TOP_OFFSET) < 0))
+		cub_exit("mlx hud image creation failed", -1);
+	player(id)->minimap_size = 5;
+	setup_player(id);
+	mlx_set_cursor_mode(player(id)->mlx, MLX_MOUSE_HIDDEN);
+	hooks_id = gc_malloc(sizeof(int));
+	*hooks_id = id;
+	mlx_loop_hook(player(id)->mlx, loop_hook, hooks_id);
+	mlx_key_hook(player(id)->mlx, key_hook, hooks_id);
+	mlx_scroll_hook(player(id)->mlx, scroll_hook, hooks_id);
+	mlx_resize_hook(player(id)->mlx, resize_hook, hooks_id);
 }
 
 void	setup_mlx(void)
 {
-	mlx_t				*mlx;
-	t_persistent_data	*data;
-
-	mlx = mlx_init(START_WIDTH, START_HEIGHT, WINDOW_NAME, true);
-	if (!mlx)
-		cub_exit("mlx setup failed.", -1);
-	data = game();
-	data->dirty = true;
-	data->mlx = mlx;
-	set_background();
 	load_textures();
-	setup_inventory();
-	data->game_scene = mlx_new_image(data->mlx, data->mlx->width,
-			data->mlx->height);
-	if (!data->game_scene
-		|| (mlx_image_to_window(data->mlx, data->game_scene, 0, 0) < 0))
-		cub_exit("mlx game image creation failed", -1);
-	data->hud = mlx_new_image(data->mlx, MINIMAP_WIDTH, MINIMAP_HEIGHT);
-	if (!data->hud
-		|| (mlx_image_to_window(data->mlx, data->hud,
-				MINIMAP_LEFT_OFFSET, MINIMAP_TOP_OFFSET) < 0))
-		cub_exit("mlx hud image creation failed", -1);
-	data->minimap_size = 5;
-	setup_player();
-	mlx_set_cursor_mode(data->mlx, MLX_MOUSE_HIDDEN);
-	mlx_loop_hook(data->mlx, loop_hook, NULL);
-	mlx_key_hook(data->mlx, key_hook, NULL);
-	mlx_scroll_hook(data->mlx, scroll_hook, NULL);
-	mlx_cursor_hook(data->mlx, cursor_hook, NULL);
-	mlx_resize_hook(data->mlx, resize_hook, NULL);
+	setup_mlx_for_player(0);
+	if (game()->player_count > 1)
+		setup_mlx_for_player(1);
 }

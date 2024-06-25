@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/25 17:42:42 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 20:05:25 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@
 // ----- general
 t_persistent_data	*game(void);
 t_list				**gc(void);
-t_player			*player(void);
+t_player			*player(int id);
 
 // ----- 1_input_parsing
 void				parse_input(char	*filepath);
@@ -113,47 +113,50 @@ bool				wall_needed(t_tile_type ***map, int x, int y, t_scale size);
 
 // ----- 2_setup
 void				setup_mlx(void);
-void				setup_player(void);
+void				setup_player(int id);
 
 // ----- 3_game_loop
 // --- a_game_logic
 void				loop_hook(void *param);
+void				scroll_hook(double xdelta, double ydelta, void* param);
+void				resize_hook(int32_t width, int32_t height, void *param);
 void				cursor_hook(double x, double y, void *param);
 void				handle_mouse_mv(void);
 void				key_hook(mlx_key_data_t keydata, void *param);
-void				handle_player_move(void);
 void				scroll_hook(double xdelta, double ydelta, void *param);
+// - player mvnt
+bool				is_position_valid(float x, float y, int id);
+void				handle_player_move(int id);
 // -- hud
-void				hud_draw(void);
-void				draw_square(int x, int y, int size, int color);
-void				draw_square_hud(int x, int y, int size, int color);
-void				draw_square_world(int x, int y, int size, int color);
+void				hud_draw(int id);
+void				draw_square(int x, int y, int size, int color, int id);
+void				draw_square_hud(int x, int y, int size, int color, int id);
+void				draw_square_world(int x, int y, int size, int color, int id);
 // - minimap
-void				hud_draw_minimap(void);
-void				hud_toogle_worldmap(bool change_state);
+void				hud_draw_minimap(int id);
+void				hud_toogle_worldmap(bool change_state, int id);
 // util
-void				turn(double amount);
+void				turn(double degrees, int id);
 // --- b_rendering
-void				render_game_scene(void);
-void				do_wall_operations();
+void				render_game_scene(int id);
 // raycasting util
 double				pos_distance(t_vec2 pos1, t_vec2 pos2);
 t_vec2				scale_vector(t_vec2 t1, double distance);
 t_vec2				raycast_intersect(t_transform t1, t_transform t2);
 t_vec2				get_wall_intersection(t_transform **walls, t_transform ray);
 t_vec2				get_entity_intersection(t_list *entities, t_transform ray, \
-										t_entity **closest_entity);
+										t_entity **closest_entity, int id);
 // - 1 raycast walls
-void				raycast_walls(void);
+void				raycast_walls(int id);
 // - 2 calc walls
-void				calc_wall(int ray_index, t_vec2 intersect);
-void				calc_entity(int ray_index, t_vec2 intersect, t_entity *ntt);
+void				calc_wall(int ray_index, t_vec2 intersect, int id);
+void				calc_entity(int ray_index, t_vec2 intersect, t_entity *ntt, int id);
 // - 3 draw walls
-void				draw_gameobject(int start_x, int end_x, int height, mlx_texture_t *tex, double hit_offset);
+void				draw_gameobject(int start_x, int end_x, int height, mlx_texture_t *tex, double hit_offset, int id);
 void				set_pixel_color(mlx_image_t *img, int x, int y, int col);
 // - util
 bool				get_wall_orientation(t_vec2 intersect);
-char				get_wall_face_to_render(t_vec2 intersect);
+char				get_wall_face_to_render(t_vec2 intersect, int id);
 t_transform			get_wall_from_intersect(t_vec2 intersect);
 
 // --- entities
@@ -215,7 +218,7 @@ double				normalize_degrees(double degrees);
 t_vec2				rotate_vector_by_90_degrees(t_vec2 v, int direction);
 
 // entities
-t_transform			get_face_vector(t_entity *ntt);
+t_transform			get_face_vector(t_entity *ntt, int id);
 t_entity			*create_entity(t_transform trans, t_entity_type type, mlx_texture_t *tex, bool is_billboard, void (*tick)(t_entity *self));
 void				delete_entity(t_entity *self);
 
