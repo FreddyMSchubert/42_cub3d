@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:12:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/25 13:23:32 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 15:49:43 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,19 +59,20 @@ bool	set_door(t_vec2 pos, t_tile_type ***map, char type)
 	*(map[(int)pos.y][(int)pos.x]) = FLOOR;
 	data = gc_malloc(sizeof(t_door));
 	if (type == 'H')
-		data->orientation = DOOR_HORIZONTAL;
+		data->direction = DOOR_DIR_HORIZONTAL;
 	else
-		data->orientation = DOOR_VERTICAL;
+		data->direction = DOOR_DIR_VERTICAL;
 	texture = mlx_load_png("./assets/entities/door.png");
 	if (!texture)
 		cub_exit("Failed to load door texture!", -1);
 	trans.pos = (t_vec2){pos.x + 0.5, pos.y + 0.5};
 	trans.rot = (t_vec2){0, 0};
-	if (data->orientation == DOOR_HORIZONTAL)
+	if (data->direction == DOOR_DIR_HORIZONTAL)
 		trans.rot.x = 1;
 	else
 		trans.rot.y = 1;
-	ntt = create_entity(trans, DOOR_E, texture, true, tick_door);
+	data->locked = true;
+	ntt = create_entity(trans, DOOR_E, texture, false, tick_door);
 	ntt->data = data;
 	return (true);
 }

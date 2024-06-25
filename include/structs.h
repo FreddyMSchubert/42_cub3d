@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/25 13:25:46 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 15:31:16 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,18 +125,18 @@ typedef struct s_entity
 
 // - DOOR
 
-# define DOOR_CLOSED 0
-# define DOOR_CLOSING 1
-# define DOOR_OPEN 2
-# define DOOR_OPENING 3
+# define DOOR_STATE_CLOSED 0
+# define DOOR_STATE_CLOSING 1
+# define DOOR_STATE_OPEN 2
+# define DOOR_STATE_OPENING 3
 
-# define DOOR_VERTICAL 0
-# define DOOR_HORIZONTAL 1
+# define DOOR_DIR_VERTICAL 0
+# define DOOR_DIR_HORIZONTAL 1
 
 typedef struct s_door
 {
 	int		state;
-	bool	orientation;
+	bool	direction;
 	bool	locked;
 }	t_door;
 

@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:28 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/25 11:49:22 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 15:14:15 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	loop_hook(void *param)
 		if (game()->dirty == true)
 		{
 			if (MARK_DIRTY_LOGGING)
-				printf("is dirty, rendering new!\n");
+				logger(LOGGER_INFO, "State is dirty, rendering anew!\n");
 			render_game_scene();
 			game()->dirty = false;
 		}

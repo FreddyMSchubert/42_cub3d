@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_hook.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:50:17 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/21 14:31:33 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/25 15:14:31 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	handle_mouse_mv(void)
 		return ;
 	game()->dirty = true;
 	if (MARK_DIRTY_LOGGING)
-		printf("mouse moved, set dirty to true!\n");
+		logger(LOGGER_INFO, "Mouse moved, set dirty to true!\n");
 	turn((current_mouse_x - game()->prev_mouse_x) * MOUSE_SENSITIVITY);
 	game()->prev_mouse_x = current_mouse_x;
 }

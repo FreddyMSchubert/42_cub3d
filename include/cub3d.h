@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/25 13:26:45 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 14:06:16 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void				get_map_contents(char *filepath);
 // set values
 bool				set_entity_spawn(char dir, t_vec2 pos, t_tile_type ***map);
 bool				set_goal(t_vec2 pos, t_tile_type ***map);
+bool				set_door(t_vec2 pos, t_tile_type ***map, char type);
 bool				set_value(char	**value, char	*set);
 bool				set_color(t_color *color, char *color_val);
 // squarify map

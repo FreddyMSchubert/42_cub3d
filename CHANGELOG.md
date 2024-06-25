@@ -1,40 +1,46 @@
 # Changelog
 
-### [0.19.7] - 25.06.2024 - Freddy - `39-alternative-fisheye-approach`
+### [0.19.8] - 25.06.2024 - Freddy - `40-doors`
+- Fixed doors not being recognized as valid map parts
+- Made it impossible to walk through doors (that are locked)
+- better door macro naming
+- Made doors non-billboard
+
+### [0.19.7] - 25.06.2024 - Freddy - `40-doors`
 - Added doors which dont get properly added yet.
 - Added a nice data field in t_entity, allowing for some dynamic content based on the entity, e.g. t_door
 - Added nice explanatory comment in cub3d.h to explain all the chars that are accepted in the map format
 - Removed max goal count
 - Doors dont work yet
 
-### [0.19.6] - 25.06.2024 - Freddy - `39-alternative-fisheye-approach`
+### [0.19.6] - 25.06.2024 - Freddy - `40-doors`
 - Created t_player struct seperate from t_entity as there are starting to be a lot of fields in t_entity the player won't need.
 - Made cub_exit not use the logger error prefix when a success exit code is passed
 - Added door texture (minecraft iron trapdoor)
 - Added goals to every map
 
-### [0.19.5] - 25.06.2024 - Freddy - `39-alternative-fisheye-approach`
+### [0.19.5] - 25.06.2024 - Freddy - `40-doors`
 - Added tick method to entity structs which gets called every frame
 - Goal now works. If you walk into it, a happy message logs & the program quits
 - Reworked exit functions to pass an exit code to allow for an intended exit
 
-### [0.19.4] - 25.06.2024 - Freddy - `39-alternative-fisheye-approach`
+### [0.19.4] - 25.06.2024 - Freddy - `40-doors`
 - Added RENDER_ENTITIES_THROUGH_WALLS as a debug macro
 - fixed up get_face_vector functionality, entity rendering should be a done deal for now.
 
-### [0.19.3] - 24.06.2024 - Freddy - `39-alternative-fisheye-approach`
+### [0.19.3] - 24.06.2024 - Freddy - `40-doors`
 - Fixed entity fisheye
 - Some adjustments
 
-### [0.19.2] - 24.06.2024 - Freddy - `39-alternative-fisheye-approach`
+### [0.19.2] - 24.06.2024 - Freddy - `40-doors`
 - Various changes and fixes to entity rendering
 - is_billboard entity functionality, will later be useful for walls
 
-### [0.19.1] - 24.06.2024 - Freddy - `39-alternative-fisheye-approach`
+### [0.19.1] - 24.06.2024 - Freddy - `40-doors`
 - Dysfunctional asan fix
 - Full reimplementation of entity to the point we had it up until version 0.17.0; Texture still rotates peculiarly
 
-## [0.19.0] - 24.06.2024 - Freddy - `39-alternative-fisheye-approach`
+## [0.19.0] - 24.06.2024 - Freddy - `40-doors`
 - Half - reimplementation of entities. Currently not functional at all
 
 ## [0.18.0] - 23.06.2024 - Freddy - `39-alternative-fisheye-approach`
