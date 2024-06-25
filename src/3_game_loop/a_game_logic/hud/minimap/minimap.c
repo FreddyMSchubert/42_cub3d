@@ -12,26 +12,9 @@
 
 #include "../../../../../include/cub3d.h"
 
-static inline bool	is_visible(int x, int y)
-{
-	float	player_rot_x = player()->transform.rot.x;
-	float	player_rot_y = player()->transform.rot.y;
-	float	dir_x = x - player()->transform.pos.x;
-	float	dir_y = y - player()->transform.pos.y;
-	float	dir_magnitude = sqrt(dir_x * dir_x + dir_y * dir_y);
-	dir_x /= dir_magnitude;
-	dir_y /= dir_magnitude;
-	float	player_rot_magnitude = sqrt(player_rot_x * player_rot_x + player_rot_y * player_rot_y);
-	player_rot_x /= player_rot_magnitude;
-	player_rot_y /= player_rot_magnitude;
-	float	dot_product = dir_x * player_rot_x + dir_y * player_rot_y;
-	if (acos(dot_product) <= M_PI / 4.5
-		&& dir_magnitude <= VIEW_DIST * 5)
-		return (true);
-	return (false);
-}
+bool	is_visible(int x, int y);
 
-static int	get_opacity(int x, int y)
+int	get_opacity(int x, int y)
 {
 	double	distance;
 	int		min_opacity;
@@ -52,37 +35,54 @@ static int	get_opacity(int x, int y)
 	return (max_opacity - (max_opacity * (distance / 10)));
 }
 
+void	draw_tile(t_scale ij, int size, int offset_x, int offset_y)
+{
+	t_tile_type	***walls;
+	int			draw_x;
+	int			draw_y;
+	int			j;
+	int			i;
+
+	i = ij.x;
+	j = ij.y;
+	walls = game()->input_data->map;
+	draw_x = j * size + offset_x - size / 2;
+	draw_y = i * size + offset_y - size / 2;
+	if (*(walls[i][j]) == VOID)
+		draw_square_hud(draw_x, draw_y, size,
+			rgba_to_int(50, 50, 50, get_opacity(j, i)));
+	else if (*(walls[i][j]) == WALL)
+		draw_square_hud(draw_x, draw_y, size,
+			rgba_to_int(255, 0, 0, get_opacity(j, i)));
+	else if (*(walls[i][j]) == FLOOR)
+		draw_square_hud(draw_x, draw_y, size,
+			rgba_to_int(0, 255, 0, get_opacity(j, i)));
+}
+
 static inline void	draw_walls(int size)
 {
-	// int			i;
-	// int			j;
-	int			wall_size;
+	int			i;
+	int			j;
+	int			offset_x;
+	int			offset_y;
 	t_tile_type	***walls;
 
-	// i = -1;
+	i = -1;
+	offset_x = MINIMAP_WIDTH / 2 - (player()->transform.pos.x * size);
+	offset_y = MINIMAP_HEIGHT / 2 - (player()->transform.pos.y * size);
 	walls = game()->input_data->map;
-	wall_size = size;
-	int centerX = MINIMAP_WIDTH / 2;
-	int centerY = MINIMAP_HEIGHT / 2;
-	int offsetX = centerX - (player()->transform.pos.x * size);
-	int offsetY = centerY - (player()->transform.pos.y * size);
-	for (int i = 0; walls[i] != NULL; i++) {
-		for (int j = 0; walls[i][j] != NULL; j++) {
-			int drawX = j * wall_size + offsetX - size / 2;
-			int drawY = i * wall_size + offsetY - size / 2;
-			if (*(walls[i][j]) == VOID)
-				draw_square_hud(drawX, drawY, wall_size, rgba_to_int(50, 50, 50, get_opacity(j, i)));
-			else if (*(walls[i][j]) == WALL)
-				draw_square_hud(drawX, drawY, wall_size, rgba_to_int(255, 0, 0, get_opacity(j, i)));
-			else if (*(walls[i][j]) == FLOOR)
-				draw_square_hud(drawX, drawY, wall_size, rgba_to_int(0, 255, 0, get_opacity(j, i)));
-		}
+	while (walls[++i])
+	{
+		j = -1;
+		while (walls[i][++j])
+			draw_tile((t_scale){i, j}, size, offset_x, offset_y);
 	}
 }
 
 static inline void	draw_player(int size)
 {
-	draw_square_hud(game()->hud->width / 2 - size / 2, game()->hud->height / 2 - size / 2, size / 2,
+	draw_square_hud(game()->hud->width / 2 - size / 2,
+		game()->hud->height / 2 - size / 2, size / 2,
 		rgba_to_int(0, 0, 255, 255));
 }
 

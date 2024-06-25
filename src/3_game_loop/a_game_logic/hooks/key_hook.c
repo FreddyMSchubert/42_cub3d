@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:50 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/20 05:56:27 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/25 14:18:40 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,7 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 		turn (TURN_SPEED_ARROWS_DEG);
 	else if (keydata.key == MLX_KEY_R && keydata.action == MLX_PRESS)
 		setup_player();
+	// else if (keydata.key == MLX_KEY_M && keydata.action == MLX_PRESS)
+	// 	hud_toogle_worldmap(true);
 	(void) param;
 }

@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:41:35 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/25 13:24:20 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/25 14:24:32 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,10 @@ void	setup_mlx(void)
 		cub_exit_error("mlx hud image creation failed");
 	data->minimap_size = 5;
 	setup_player();
+	mlx_set_cursor_mode(data->mlx, MLX_MOUSE_HIDDEN);
 	mlx_loop_hook(data->mlx, loop_hook, NULL);
 	mlx_key_hook(data->mlx, key_hook, NULL);
 	mlx_scroll_hook(data->mlx, scroll_hook, NULL);
+	mlx_cursor_hook(data->mlx, cursor_hook, NULL);
 	mlx_resize_hook(data->mlx, resize_hook, NULL);
 }

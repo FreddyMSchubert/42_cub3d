@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/25 12:50:31 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/25 14:00:52 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,9 @@ typedef struct s_persistent_data
 	mlx_image_t		*background;
 	mlx_image_t		*game_scene;
 	mlx_image_t		*hud;
+	mlx_image_t		*worldmap;
 	bool			dirty;
-	// bool			**visible_walls;
+	bool			**visible_walls;
 	double			minimap_size;
 	mlx_texture_t	*no_texture;
 	mlx_texture_t	*so_texture;

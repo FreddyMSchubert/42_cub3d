@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:50:17 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/25 11:05:13 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/25 14:32:14 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,13 @@ void	scroll_hook(double xdelta, double ydelta, void *param)
 		if (game()->minimap_size > 6)
 			game()->minimap_size = 6;
 	}
+}
+
+void	cursor_hook(double x, double y, void *param)
+{
+	(void)param;
+	(void)x;
+	(void)y;
+	return ;
+	// mlx_set_mouse_pos(game()->mlx, game()->mlx->width / 2, game()->mlx->height / 2);
 }

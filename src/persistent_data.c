@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   persistent_data.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:03:38 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/21 12:46:07 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/25 14:25:34 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/25 13:32:13 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/25 14:18:02 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,5 @@ void	hud_draw(void)
 			MINIMAP_TOP_OFFSET);
 	}
 	draw_crosshair();
+	hud_toogle_worldmap(false);
 }
