@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/24 13:53:43 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/25 10:59:51 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ void				loop_hook(void *param);
 void				handle_mouse_mv(void);
 void				key_hook(mlx_key_data_t keydata, void *param);
 void				handle_player_move(void);
+void				scroll_hook(double xdelta, double ydelta, void *param);
 // -- hud
 void				hud_draw(void);
 void				draw_square(int x, int y, int size, int color);

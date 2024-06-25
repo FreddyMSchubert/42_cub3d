@@ -42,10 +42,10 @@ static int	get_opacity(int x, int y)
 	distance = sqrt(pow(player()->transform.pos.x - x, 2)
 			+ pow(player()->transform.pos.y - y, 2));
 	if (!is_visible(x, y) || distance >= 100)
-		return (min_opacity);
-	if (max_opacity * distance / 100 > max_opacity)
+		return (0);
+	if (max_opacity * (distance / 100) > max_opacity)
 		return (max_opacity);
-	return (max_opacity * distance / 100);
+	return (max_opacity * (distance / 100));
 }
 
 static inline void	draw_walls(int size)
@@ -90,9 +90,7 @@ void	hud_draw_minimap(void)
 {
 	int	size;
 
-	size = 5;
-	// draw_square(MINIMAP_LEFT_OFFSET, MINIMAP_TOP_OFFSET, MINIMAP_WIDTH,
-	// 	rgba_to_int(50, 50, 50, 255));
+	size = game()->minimap_size;
 	draw_walls(size);
 	draw_player(size);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_mlx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:41:35 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/24 17:49:43 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/25 10:59:37 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,11 @@ void	set_background(void)
 		while (++j < data->mlx->width)
 		{
 			if (i < data->mlx->height / 2)
-				mlx_put_pixel(img, j, i, t_color_to_int(data->input_data->ceiling_color));
+				mlx_put_pixel(img, j, i,
+					t_color_to_int(data->input_data->ceiling_color));
 			else
-				mlx_put_pixel(img, j, i, t_color_to_int(data->input_data->floor_color));
+				mlx_put_pixel(img, j, i,
+					t_color_to_int(data->input_data->floor_color));
 		}
 	}
 	data->background = img;
@@ -76,6 +78,7 @@ void	setup_mlx(void)
 	data = game();
 	data->dirty = true;
 	data->mlx = mlx;
+	data->minimap_size = 5;
 	set_background();
 	load_textures();
 	data->game_scene = mlx_new_image(data->mlx, data->mlx->width,
@@ -84,23 +87,8 @@ void	setup_mlx(void)
 		|| (mlx_image_to_window(data->mlx, data->game_scene, 0, 0) < 0))
 		cub_exit_error("mlx game image creation failed");
 	setup_player();
-
-	/*
-	data->visible_walls = malloc(sizeof(bool *) * data->mlx->width);
-	if (!data->visible_walls)
-		cub_exit_error("malloc failed");
-	for (int i = 0; i < data->mlx->width; i++)
-	{
-		data->visible_walls[i] = malloc(sizeof(bool) * data->mlx->height);
-		if (!data->visible_walls[i])
-			cub_exit_error("malloc failed");
-		for (int j = 0; j < data->mlx->height; j++)
-			data->visible_walls[i][j] = false;
-	}
-	*/
-
-	
 	mlx_loop_hook(data->mlx, loop_hook, NULL);
 	mlx_key_hook(data->mlx, key_hook, NULL);
+	mlx_scroll_hook(data->mlx, scroll_hook, NULL);
 	mlx_resize_hook(data->mlx, resize_hook, NULL);
 }
