@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.20.0] - 25.06.2024 - Freddy - `43-raycasting-efficiency`
+- Removed annoying logging stuff
+- Minor raycasting efficiency improvements
+
 ### [0.19.10] - 25.06.2024 - Freddy - `40-doors`
 - Nice door sliding open animation.
 - Goals of this branch are done, it's mergin' time.

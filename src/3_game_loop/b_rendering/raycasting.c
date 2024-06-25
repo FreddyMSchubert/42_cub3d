@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:22:19 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/24 14:58:15 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/26 00:26:32 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,12 @@
 
 double	pos_distance(t_vec2 pos1, t_vec2 pos2)
 {
-	return (sqrt(pow(pos2.x - pos1.x, 2) + pow(pos2.y - pos1.y, 2)));
+	double	dx;
+	double	dy;
+
+	dx = pos2.x - pos1.x;
+	dy = pos2.y - pos1.y;
+	return (sqrt(dx * dx + dy * dy));
 }
 
 t_vec2	scale_vector(t_vec2 v, double distance)
@@ -23,12 +28,11 @@ t_vec2	scale_vector(t_vec2 v, double distance)
 	double	scale_factor;
 
 	current_magnitude = sqrt(v.x * v.x + v.y * v.y);
-	if (current_magnitude != 0)
-	{
-		scale_factor = distance / current_magnitude;
-		v.x *= scale_factor;
-		v.y *= scale_factor;
-	}
+	if (current_magnitude == 0)
+		return (v);
+	scale_factor = distance / current_magnitude;
+	v.x *= scale_factor;
+	v.y *= scale_factor;
 	return (v);
 }
 
