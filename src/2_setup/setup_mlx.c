@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:41:35 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/25 11:40:45 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 16:12:29 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,11 @@ void	set_background(void)
 	data->background = img;
 }
 
+static inline void	setup_inventory(void)
+{
+	player()->inv.keys = 0;
+}
+
 void	setup_mlx(void)
 {
 	mlx_t				*mlx;
@@ -78,6 +83,7 @@ void	setup_mlx(void)
 	data->mlx = mlx;
 	set_background();
 	load_textures();
+	setup_inventory();
 	data->game_scene = mlx_new_image(data->mlx, data->mlx->width, data->mlx->height);
 	if (!data->game_scene || (mlx_image_to_window(data->mlx, data->game_scene, 0, 0) < 0))
 		cub_exit("mlx image creation failed", -1);

@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/25 15:31:16 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 16:10:36 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,19 @@ typedef struct s_persistent_data
 	double			prev_time;
 }	t_persistent_data;
 
+// --- PLAYER
+
+typedef struct s_inventory
+{
+	int	keys;
+}	t_inventory;
+
 typedef struct s_player
 {
 	t_transform	transform;
 	t_transform	spawn_transform;
+
+	t_inventory	inv;
 }	t_player;
 
 // ----- ENTITIES
@@ -103,7 +112,8 @@ typedef struct s_player
 typedef enum e_entity_type
 {
 	GOAL_E,
-	DOOR_E
+	DOOR_E,
+	KEY_E
 }	t_entity_type;
 
 typedef struct s_entity t_entity;

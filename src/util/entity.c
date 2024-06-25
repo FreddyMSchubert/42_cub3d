@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 10:51:45 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/25 13:21:35 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 16:15:02 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,31 @@ t_entity	*create_entity(t_transform trans, t_entity_type type, mlx_texture_t *te
 	entity->data = NULL;
 	ft_lstadd_back(&game()->entities, ft_lstnew(entity));
 	return (entity);
+}
+
+void	delete_entity(t_entity *self)
+{
+	t_list	**entities;
+	t_list	*prev;
+
+	entities = &game()->entities;
+	prev = NULL;
+	while (*entities)
+	{
+		if ((*entities)->content == self)
+		{
+			if (prev) // Not the first element
+			{
+				prev->next = (*entities)->next;
+			}
+			else // First element
+			{
+				game()->entities = (*entities)->next;
+			}
+			*entities = NULL;
+			return;
+		}
+		prev = *entities;
+		entities = &(*entities)->next;
+	}
 }

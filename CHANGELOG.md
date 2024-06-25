@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.19.9] - 25.06.2024 - Freddy - `40-doors`
+- Added small key entities, which can be collected and will be added to a player inventory
+- Made doors openable, they open automatically when a key is held
+
 ### [0.19.8] - 25.06.2024 - Freddy - `40-doors`
 - Fixed doors not being recognized as valid map parts
 - Made it impossible to walk through doors (that are locked)

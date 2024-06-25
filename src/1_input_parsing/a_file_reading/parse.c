@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 09:39:02 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/25 14:05:54 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 16:17:04 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ t_tile_type	***make_map(int map_len, int *i, char **data)
 			else if (data[*i][j] == 'G' && !set_goal((t_vec2){j, k}, map))
 				return (NULL);
 			else if ((data[*i][j] == 'H' || data[*i][j] == 'V') && !set_door((t_vec2){j, k}, map, data[*i][j]))
+				return (NULL);
+			else if (data[*i][j] == 'K' && !set_key((t_vec2){j, k}, map))
 				return (NULL);
 			else if (char_is_in(data[*i][j], "NSEW") && !set_entity_spawn(data[*i][j], (t_vec2){j, k}, map))
 				return (NULL);

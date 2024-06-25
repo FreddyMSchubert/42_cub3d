@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/25 14:06:16 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 16:15:41 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 
 
 /* ---- SETTINGS ---- */
-# define MAP_TILES " 10NESWGVH"
+# define MAP_TILES " 10NESWGHVK"
 // ' ' -> VOID
 // '1' -> WALL
 // '0' -> FLOOR
@@ -48,6 +48,7 @@
 // 'G' -> GOAL
 // 'H' -> HORIZONTAL DOOR
 // 'V' -> VERTICAL DOOR
+// 'K' -> KEY
 
 /* ----- LOGGER ----- */
 # define LOGGER_ERROR 'e'
@@ -85,10 +86,12 @@ bool				basic_validate(t_input_data **in);
 void				get_map_contents(char *filepath);
 // set values
 bool				set_entity_spawn(char dir, t_vec2 pos, t_tile_type ***map);
-bool				set_goal(t_vec2 pos, t_tile_type ***map);
-bool				set_door(t_vec2 pos, t_tile_type ***map, char type);
 bool				set_value(char	**value, char	*set);
 bool				set_color(t_color *color, char *color_val);
+// create entities
+bool				set_goal(t_vec2 pos, t_tile_type ***map);
+bool				set_door(t_vec2 pos, t_tile_type ***map, char type);
+bool				set_key(t_vec2 pos, t_tile_type ***map);
 // squarify map
 void				squarify_map(void);
 // util
@@ -148,6 +151,8 @@ void				tick_entities(void);
 void				tick_goal(t_entity *self);
 // - door
 void				tick_door(t_entity *self);
+// - key
+void				tick_key(t_entity *self);
 
 # define WALL_ORIENTATION_HORIZONTAL 0
 # define WALL_ORIENTATION_VERTICAL 1
@@ -201,6 +206,7 @@ t_vec2				rotate_vector_by_90_degrees(t_vec2 v, int direction);
 // entities
 t_transform			get_face_vector(t_entity *ntt);
 t_entity			*create_entity(t_transform trans, t_entity_type type, mlx_texture_t *tex, bool is_billboard, void (*tick)(t_entity *self));
+void				delete_entity(t_entity *self);
 
 // vector
 double				vec2_dot_product(t_vec2 a, t_vec2 b);
