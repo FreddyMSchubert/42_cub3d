@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/25 11:50:44 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 12:50:54 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@
 // ----- general
 t_persistent_data	*game(void);
 t_list				**gc(void);
-t_entity			*player(void);
+t_player			*player(void);
 
 // ----- 1_input_parsing
 void				parse_input(char	*filepath);

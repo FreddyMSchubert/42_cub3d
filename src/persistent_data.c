@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:03:38 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/24 10:48:13 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 12:50:44 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ t_list	**gc(void)
 	return (&gc);
 }
 
-t_entity	*player(void)
+t_player	*player(void)
 {
-	static t_entity	player;
+	static t_player	player;
 
 	return (&player);
 }

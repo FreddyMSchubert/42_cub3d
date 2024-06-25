@@ -1,5 +1,11 @@
 # Changelog
 
+### [0.19.6] - 25.06.2024 - Freddy - `39-alternative-fisheye-approach`
+- Created t_player struct seperate from t_entity as there are starting to be a lot of fields in t_entity the player won't need.
+- Made cub_exit not use the logger error prefix when a success exit code is passed
+- Added door texture (minecraft iron trapdoor)
+- Added goals to every map
+
 ### [0.19.5] - 25.06.2024 - Freddy - `39-alternative-fisheye-approach`
 - Added tick method to entity structs which gets called every frame
 - Goal now works. If you walk into it, a happy message logs & the program quits
