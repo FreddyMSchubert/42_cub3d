@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/25 17:12:36 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 17:37:32 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,11 @@ typedef struct s_persistent_data
 	mlx_t			*mlx;
 	mlx_image_t		*background;
 	mlx_image_t		*game_scene;
+	mlx_image_t		*hud;
+	mlx_image_t		*worldmap;
 	bool			dirty;
+	bool			**visible_walls;
+	double			minimap_size;
 	mlx_texture_t	*no_texture;
 	mlx_texture_t	*so_texture;
 	mlx_texture_t	*we_texture;

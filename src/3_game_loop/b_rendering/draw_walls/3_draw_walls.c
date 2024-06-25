@@ -6,13 +6,13 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/24 13:45:43 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 17:42:35 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../include/cub3d.h"
 
-static inline void	set_pixel_color(mlx_image_t *img, int x, int y, int col)
+void	set_pixel_color(mlx_image_t *img, int x, int y, int col)
 {
 	if (int_to_t_color(col).a == 0)
 		return ;

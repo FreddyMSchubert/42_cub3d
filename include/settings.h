@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/25 17:21:51 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 17:37:22 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,13 @@
 # define CLOSED_DOOR_ALLOWED_WALK_DISTANCE 0.3
 # define DOOR_OPEN_DISTANCE 1.0
 # define DOOR_OPEN_SPEED 0.05
+
+// Minimap Settings
+
+# define MINIMAP_WIDTH 200
+# define MINIMAP_HEIGHT 200
+# define MINIMAP_LEFT_OFFSET 25
+# define MINIMAP_TOP_OFFSET 25
+# define MINIMAP_BORDER_WIDTH 5
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/25 16:15:41 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 17:42:42 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,9 +118,19 @@ void				setup_player(void);
 // ----- 3_game_loop
 // --- a_game_logic
 void				loop_hook(void *param);
+void				cursor_hook(double x, double y, void *param);
 void				handle_mouse_mv(void);
 void				key_hook(mlx_key_data_t keydata, void *param);
 void				handle_player_move(void);
+void				scroll_hook(double xdelta, double ydelta, void *param);
+// -- hud
+void				hud_draw(void);
+void				draw_square(int x, int y, int size, int color);
+void				draw_square_hud(int x, int y, int size, int color);
+void				draw_square_world(int x, int y, int size, int color);
+// - minimap
+void				hud_draw_minimap(void);
+void				hud_toogle_worldmap(bool change_state);
 // util
 void				turn(double amount);
 // --- b_rendering
@@ -140,6 +150,7 @@ void				calc_wall(int ray_index, t_vec2 intersect);
 void				calc_entity(int ray_index, t_vec2 intersect, t_entity *ntt);
 // - 3 draw walls
 void				draw_gameobject(int start_x, int end_x, int height, mlx_texture_t *tex, double hit_offset);
+void				set_pixel_color(mlx_image_t *img, int x, int y, int col);
 // - util
 bool				get_wall_orientation(t_vec2 intersect);
 char				get_wall_face_to_render(t_vec2 intersect);

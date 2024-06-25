@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:28 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/25 16:11:50 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/25 17:42:03 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	loop_hook(void *param)
 			if (MARK_DIRTY_LOGGING)
 				logger(LOGGER_INFO, "State is dirty, rendering anew!\n");
 			render_game_scene();
+			hud_draw();
 			game()->dirty = false;
 		}
 		game()->prev_time = curr_time;
