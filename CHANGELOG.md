@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.20.2] - 26.06.2024 - Freddy - `43-raycasting-efficiency`
+- Added insanely long detailed and elaborate raycast_walls logging, which has led to absolutely no new information gained.
+
 ### [0.20.1] - 26.06.2024 - Freddy - `43-raycasting-efficiency`
 - Further minor raycasting logic efficiency improvements
 
