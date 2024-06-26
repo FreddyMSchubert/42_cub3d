@@ -1,0 +1,45 @@
+name: Norminette CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  norminette:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install Norminette
+        run: pip install norminette
+
+      - name: Run Norminette
+        id: norminette
+        run: |
+          norminette ./src/
+      
+      - name: Create status badge
+        if: always()
+        run: |
+          echo "Status: ${{ job.status }}"
+          if [ "${{ job.status }}" == "success" ]; then
+            echo "![Norminette](https://img.shields.io/badge/Norminette-passing-brightgreen)" > badge.md
+          else
+            echo "![Norminette](https://img.shields.io/badge/Norminette-failing-red)" > badge.md
+          
+      - name: Upload status badge
+        uses: actions/upload-artifact@v2
+        with:
+          name: badge
+          path: badge.md
