@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.21.4] - 26.06.2024 - Freddy - `45-enemies`
+- Proper entity correct position validation check
+- Enemy still just moves into a wall though
+
 ### [0.21.3] - 26.06.2024 - Freddy - `45-enemies`
 - Added blights (they don't work yet - i cant see them.) They should move around randomly though.
 - Added simple randomness setup
