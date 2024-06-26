@@ -81,8 +81,8 @@ static inline void	draw_walls(int size)
 
 static inline void	draw_player(int size)
 {
-	draw_square_hud(game()->hud->width / 2 - size / 2,
-		game()->hud->height / 2 - size / 2, size / 2,
+	draw_square_hud(MINIMAP_WIDTH / 2 - size / 2,
+		MINIMAP_HEIGHT / 2 - size / 2, size / 2,
 		rgba_to_int(0, 0, 255, 255));
 }
 
