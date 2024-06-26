@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   settings.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/25 17:37:22 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/26 12:04:33 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@
 
 # define GOAL_COLLISION_DISTANCE 0.5
 # define KEY_COLLISION_DISTANCE 0.5
-# define CLOSED_DOOR_ALLOWED_WALK_DISTANCE 0.3
+# define CLOSED_DOOR_ALLOWED_WALK_DISTANCE 0.4
 # define DOOR_OPEN_DISTANCE 1.0
 # define DOOR_OPEN_SPEED 0.05
 

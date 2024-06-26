@@ -1,5 +1,26 @@
 # Changelog
 
+### [0.20.4] - 26.06.2024 - Freddy - `43-raycasting-efficiency`
+- Very minor final efficiency improvements
+
+### [0.20.4] - 26.06.2024 - Freddy - `43-raycasting-efficiency`
+- Vastly improved draw_walls/draw_column speed using corrected y check, previous commit was erroneous
+
+### [0.20.3] - 26.06.2024 - Freddy - `43-raycasting-efficiency`
+- Even more extensive & epic performance logging in calc_walls, even differentiating between time spent calculating and time spent drawing
+	- drawing takes up like 95% of each frame.
+- Some minor draw walls efficiency improvements
+
+### [0.20.2] - 26.06.2024 - Freddy - `43-raycasting-efficiency`
+- Added insanely long detailed and elaborate raycast_walls logging, which has led to absolutely no new information gained.
+
+### [0.20.1] - 26.06.2024 - Freddy - `43-raycasting-efficiency`
+- Further minor raycasting logic efficiency improvements
+
+## [0.20.0] - 26.06.2024 - Freddy - `43-raycasting-efficiency`
+- Removed annoying logging stuff
+- Minor raycasting efficiency improvements
+
 ### [0.19.10] - 25.06.2024 - Freddy - `40-doors`
 - Nice door sliding open animation.
 - Goals of this branch are done, it's mergin' time.

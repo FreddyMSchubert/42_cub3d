@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/25 17:42:42 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/26 11:05:18 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,8 +146,8 @@ t_vec2				get_entity_intersection(t_list *entities, t_transform ray, \
 // - 1 raycast walls
 void				raycast_walls(void);
 // - 2 calc walls
-void				calc_wall(int ray_index, t_vec2 intersect);
-void				calc_entity(int ray_index, t_vec2 intersect, t_entity *ntt);
+double				calc_wall(int ray_index, t_vec2 intersect);
+double				calc_entity(int ray_index, t_vec2 intersect, t_entity *ntt);
 // - 3 draw walls
 void				draw_gameobject(int start_x, int end_x, int height, mlx_texture_t *tex, double hit_offset);
 void				set_pixel_color(mlx_image_t *img, int x, int y, int col);
