@@ -48,15 +48,12 @@ void	draw_tile(t_scale ij, int size, int offset_x, int offset_y)
 	walls = game()->input_data->map;
 	draw_x = j * size + offset_x - size / 2;
 	draw_y = i * size + offset_y - size / 2;
-	if (*(walls[i][j]) == VOID)
+	if (*(walls[i][j]) == WALL || *(walls[i][j]) == VOID)
 		draw_square_hud(draw_x, draw_y, size,
-			rgba_to_int(50, 50, 50, get_opacity(j, i)));
-	else if (*(walls[i][j]) == WALL)
-		draw_square_hud(draw_x, draw_y, size,
-			rgba_to_int(255, 0, 0, get_opacity(j, i)));
+			rgba_to_int(25, 25, 25, get_opacity(j, i)));
 	else if (*(walls[i][j]) == FLOOR)
-		draw_square_hud(draw_x, draw_y, size,
-			rgba_to_int(0, 255, 0, get_opacity(j, i)));
+		draw_square_hud(draw_x, draw_y, size, t_color_to_int(with_opacity \
+						(game()->input_data->floor_color, get_opacity(j, i))));
 }
 
 static inline void	draw_walls(int size)

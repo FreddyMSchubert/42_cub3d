@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:56:27 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/20 03:20:39 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/26 12:38:39 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,17 @@ t_color	int_to_t_color(int color)
 	result.g = (color >> 16) & 0xFF;
 	result.b = (color >> 8) & 0xFF;
 	result.a = color & 0xFF;
+	return (result);
+}
+
+t_color	with_opacity(t_color in, int opacity)
+{
+	t_color	result;
+
+	result.r = in.r;
+	result.g = in.g;
+	result.b = in.b;
+	result.a = opacity;
 	return (result);
 }
 

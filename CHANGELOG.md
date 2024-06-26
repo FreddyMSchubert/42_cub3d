@@ -1,5 +1,10 @@
 # Changelog
 
+### [0.20.6] - 26.06.2024 - Freddy - `43-raycasting-efficiency`
+- Minimap visual improvements
+	- Made voids render like walls to hide the behind-the-scenes optimizations
+	- Made minimap floor color take the map inputted floor color
+
 ### [0.20.5] - 26.06.2024 - Freddy - `43-raycasting-efficiency`
 - Merging cleanup, minimap movement, rendering system proper inclusion
 

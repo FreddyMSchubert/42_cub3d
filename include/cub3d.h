@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/26 12:19:28 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/26 12:38:52 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,6 +197,7 @@ t_color				int_to_t_color(int color);
 void				log_color_from_t_color(t_color color);
 void				log_color_from_int(int color);
 int					rgba_to_int(int r, int g, int b, int a);
+t_color				with_opacity(t_color in, int opacity);
 
 // positions
 bool				is_same_wall(t_transform wall1, t_transform wall2);
