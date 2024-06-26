@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/26 11:05:18 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/26 12:19:28 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,20 +123,20 @@ void				handle_mouse_mv(void);
 void				key_hook(mlx_key_data_t keydata, void *param);
 void				handle_player_move(void);
 void				scroll_hook(double xdelta, double ydelta, void *param);
-// -- hud
-void				hud_draw(void);
-void				draw_square(int x, int y, int size, int color);
-void				draw_square_hud(int x, int y, int size, int color);
-void				draw_square_world(int x, int y, int size, int color);
-// - minimap
-void				hud_draw_minimap(void);
-void				hud_toogle_worldmap(bool change_state);
 // util
 void				turn(double amount);
 // --- b_rendering
-void				render_game_scene(void);
+void				render(void);
 void				do_wall_operations();
-// raycasting util
+// - hud
+void				draw_crosshair(void);
+void				draw_square(int x, int y, int size, int color);
+void				draw_square_hud(int x, int y, int size, int color);
+void				draw_square_world(int x, int y, int size, int color);
+// minimap
+void				hud_draw_minimap(void);
+void				hud_toogle_worldmap(bool change_state);
+// - raycasting util
 double				pos_distance(t_vec2 pos1, t_vec2 pos2);
 t_vec2				scale_vector(t_vec2 t1, double distance);
 t_vec2				raycast_intersect(t_transform t1, t_transform t2);

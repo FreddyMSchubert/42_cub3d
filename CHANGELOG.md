@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.20.5] - 26.06.2024 - Freddy - `43-raycasting-efficiency`
+- Merging cleanup, minimap movement, rendering system proper inclusion
+
 ### [0.20.4] - 26.06.2024 - Freddy - `43-raycasting-efficiency`
 - Very minor final efficiency improvements
 

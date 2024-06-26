@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   worldmap.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/25 14:17:04 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/26 12:19:45 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../../../include/cub3d.h"
+#include "../../../../include/cub3d.h"
 
 int	get_opacity(int x, int y);
 
