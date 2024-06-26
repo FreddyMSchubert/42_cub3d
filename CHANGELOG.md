@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.21.2] - 26.06.2024 - Freddy - `45-enemies`
+- Patched up some issues
+- Added water orb & earth orb textures. They are substantially worse as I've made them myself and haven't stolen them from minecraft.
+
 ### [0.21.1] - 26.06.2024 - Freddy - `45-enemies`
 - Proper projectile shooting using mouse hook
 - moving projectiles
