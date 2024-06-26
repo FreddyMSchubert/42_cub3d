@@ -1,5 +1,10 @@
 # Changelog
 
+### [0.20.3] - 26.06.2024 - Freddy - `43-raycasting-efficiency`
+- Even more extensive & epic performance logging in calc_walls, even differentiating between time spent calculating and time spent drawing
+	- drawing takes up like 95% of each frame.
+- Some minor draw walls efficiency improvements
+
 ### [0.20.2] - 26.06.2024 - Freddy - `43-raycasting-efficiency`
 - Added insanely long detailed and elaborate raycast_walls logging, which has led to absolutely no new information gained.
 
