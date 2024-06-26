@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/26 11:26:44 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/26 11:51:56 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,17 @@ static inline void	draw_column(t_scale start, int end_y, mlx_texture_t *tex,
 	int	tex_y;
 	int	color;
 
+	if (end_y <= start.y)
+		return ;
 	y = start.y;
 	delta_y = end_y - start.y;
 	while (y < end_y)
 	{
-		if (y < 0 && y >= game()->mlx->height)
+		if (y < 0 || y >= game()->mlx->height)
+		{
+			y++;
 			continue ;
+		}
 		tex_y = (y - start.y) * tex->height * repeat_y
 			/ delta_y & (tex->height - 1);
 		color = get_tex_color_at(tex, tex_x, tex_y);

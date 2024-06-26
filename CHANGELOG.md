@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.20.4] - 26.06.2024 - Freddy - `43-raycasting-efficiency`
+- Vastly improved draw_walls/draw_column speed using corrected y check, previous commit was erroneous
+
 ### [0.20.3] - 26.06.2024 - Freddy - `43-raycasting-efficiency`
 - Even more extensive & epic performance logging in calc_walls, even differentiating between time spent calculating and time spent drawing
 	- drawing takes up like 95% of each frame.
