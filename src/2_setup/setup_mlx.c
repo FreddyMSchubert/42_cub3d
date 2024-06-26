@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_mlx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:41:35 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/26 12:38:58 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/26 13:27:38 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,10 @@ void	set_background(void)
 static inline void	setup_inventory(void)
 {
 	player()->inv.keys = 0;
+	player()->inv.water_orbs = 0;
+	player()->inv.fire_orbs = 0;
+	player()->inv.earth_orbs = 0;
+	player()->inv.air_orbs = 0;
 }
 
 void	setup_mlx(void)

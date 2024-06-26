@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/26 12:55:54 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/26 13:44:02 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 
 
 /* ---- SETTINGS ---- */
-# define MAP_TILES " 10NESWGHVK"
+# define MAP_TILES " 10NESWGHVKwfea"
 // ' ' -> VOID
 // '1' -> WALL
 // '0' -> FLOOR
@@ -49,6 +49,10 @@
 // 'H' -> HORIZONTAL DOOR
 // 'V' -> VERTICAL DOOR
 // 'K' -> KEY
+// 'w' -> WATER ORB
+// 'f' -> FIRE ORB
+// 'e' -> EARTH ORB
+// 'a' -> AIR ORB
 
 /* ----- LOGGER ----- */
 # define LOGGER_ERROR 'e'
@@ -90,6 +94,7 @@ bool				set_value(char	**value, char	*set);
 bool				set_color(t_color *color, char *color_val);
 // create entities
 bool				set_goal(t_vec2 pos, t_tile_type ***map);
+bool				set_orb(t_vec2 pos, t_tile_type ***map, char orb_type);
 bool				set_door(t_vec2 pos, t_tile_type ***map, char type);
 bool				set_key(t_vec2 pos, t_tile_type ***map);
 // squarify map
@@ -164,6 +169,8 @@ void				tick_goal(t_entity *self);
 void				tick_door(t_entity *self);
 // - key
 void				tick_key(t_entity *self);
+// - orb
+void				tick_orb(t_entity *self);
 
 # define WALL_ORIENTATION_HORIZONTAL 0
 # define WALL_ORIENTATION_VERTICAL 1

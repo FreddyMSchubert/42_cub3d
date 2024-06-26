@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 09:39:02 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/25 16:17:04 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/26 13:38:52 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ t_tile_type	***make_map(int map_len, int *i, char **data)
 			else if (data[*i][j] == 'G' && !set_goal((t_vec2){j, k}, map))
 				return (NULL);
 			else if ((data[*i][j] == 'H' || data[*i][j] == 'V') && !set_door((t_vec2){j, k}, map, data[*i][j]))
+				return (NULL);
+			else if ((data[*i][j] == 'w' || data[*i][j] == 'e' || data[*i][j] == 'a' || data[*i][j] == 'f') && !set_orb((t_vec2){j, k}, map, data[*i][j]))
 				return (NULL);
 			else if (data[*i][j] == 'K' && !set_key((t_vec2){j, k}, map))
 				return (NULL);

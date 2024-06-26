@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/26 12:30:04 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/26 13:47:49 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,10 @@ typedef struct s_persistent_data
 typedef struct s_inventory
 {
 	int	keys;
+	int	water_orbs;
+	int	fire_orbs;
+	int	earth_orbs;
+	int	air_orbs;
 }	t_inventory;
 
 typedef struct s_player
@@ -117,10 +121,11 @@ typedef enum e_entity_type
 {
 	GOAL_E,
 	DOOR_E,
-	KEY_E
+	KEY_E,
+	ORB_E
 }	t_entity_type;
 
-typedef struct s_entity t_entity;
+typedef struct s_entity	t_entity;
 typedef struct s_entity
 {
 	t_entity_type	type;
@@ -131,11 +136,11 @@ typedef struct s_entity
 	mlx_texture_t	*texture;
 	bool			is_billboard;
 
-	void (*tick)(t_entity *self);
+	void			(*tick)(t_entity *self);
 
-	void			*data; // for specific entity data e.g. t_door
+	void			*data;
 }	t_entity;
-// if is_billboard is on, the entity will always show its full face towards the player
+// if is_billboard, the entity will always show its full face towards the player
 
 // - DOOR
 
@@ -154,5 +159,17 @@ typedef struct s_door
 	t_vec2	close_pos;
 	double	door_open_progress;
 }	t_door;
+
+// - ORB
+
+# define ORB_TYPE_WATER 0
+# define ORB_TYPE_FIRE 1
+# define ORB_TYPE_EARTH 2
+# define ORB_TYPE_AIR 3
+
+typedef struct s_orb
+{
+	int	type;
+}	t_orb;
 
 #endif

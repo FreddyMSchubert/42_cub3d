@@ -1,6 +1,10 @@
 # Changelog
 
-### [0.20.8] - 28.06.2024 - Freddy - `43-raycasting-efficiency`
+## [0.21.0] - 26.06.2024 - Freddy - `45-enemies`
+- Added air orb & fire orb textures
+- Added orb entities which can be picked up into inventory
+
+### [0.20.8] - 26.06.2024 - Freddy - `43-raycasting-efficiency`
 - Made minimap wall color white if the floor color is pretty dark to ensure contrast
 
 ### [0.20.7] - 26.06.2024 - Freddy - `43-raycasting-efficiency`
