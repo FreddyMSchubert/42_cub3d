@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/26 14:36:45 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/26 22:18:27 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 
 
 /* ---- SETTINGS ---- */
-# define MAP_TILES " 10NESWGHVKwfea"
+# define MAP_TILES " 10NESWGHVKwfeaqrds"
 // ' ' -> VOID
 // '1' -> WALL
 // '0' -> FLOOR
@@ -53,6 +53,10 @@
 // 'f' -> FIRE ORB
 // 'e' -> EARTH ORB
 // 'a' -> AIR ORB
+// 'q' -> WATER BLIGHT
+// 'd' -> FIRE BLIGHT
+// 'r' -> EARTH BLIGHT
+// 's' -> AIR BLIGHT
 
 /* ----- LOGGER ----- */
 # define LOGGER_ERROR 'e'
@@ -95,6 +99,7 @@ bool				set_color(t_color *color, char *color_val);
 // create entities
 bool				set_goal(t_vec2 pos, t_tile_type ***map);
 bool				set_orb(t_vec2 pos, t_tile_type ***map, char orb_type);
+bool				set_blight(t_vec2 pos, t_tile_type ***map, char blight_type);
 bool				set_door(t_vec2 pos, t_tile_type ***map, char type);
 bool				set_key(t_vec2 pos, t_tile_type ***map);
 // squarify map
@@ -177,6 +182,8 @@ void				tick_orb(t_entity *self);
 // - projectile
 void				tick_projectile(t_entity *self);
 void				shooooot(t_transform t, int type);
+// - blight
+void				tick_blight(t_entity *self);
 
 # define WALL_ORIENTATION_HORIZONTAL 0
 # define WALL_ORIENTATION_VERTICAL 1
@@ -237,5 +244,9 @@ void				delete_entity(t_entity *self);
 double				vec2_dot_product(t_vec2 a, t_vec2 b);
 double				vec2_sqr_magnitude(t_vec2 v);
 t_vec2				vec2_sub(t_vec2 a, t_vec2 b);
+
+// random
+double				random_val(void);
+int					random_int(int min, int max);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/26 14:28:39 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/26 22:06:37 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,8 @@ typedef enum e_entity_type
 	GOAL_E,
 	DOOR_E,
 	KEY_E,
-	ORB_E
+	ORB_E,
+	BLIGHT_E
 }	t_entity_type;
 
 typedef struct s_entity	t_entity;
@@ -172,5 +173,17 @@ typedef struct s_orb
 {
 	int	type;
 }	t_orb;
+
+// - BLIGHT
+
+# define BLIGHT_TYPE_WATER 0
+# define BLIGHT_TYPE_FIRE 1
+# define BLIGHT_TYPE_EARTH 2
+# define BLIGHT_TYPE_AIR 3
+
+typedef struct s_blight
+{
+	int	type;
+}	t_blight;
 
 #endif

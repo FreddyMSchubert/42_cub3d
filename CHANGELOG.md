@@ -1,5 +1,11 @@
 # Changelog
 
+### [0.21.3] - 26.06.2024 - Freddy - `45-enemies`
+- Added blights (they don't work yet - i cant see them.) They should move around randomly though.
+- Added simple randomness setup
+- Fixed projectiles getting stuck in walls because game not set dirty issue
+- Various improvementx & assets file sorting
+
 ### [0.21.2] - 26.06.2024 - Freddy - `45-enemies`
 - Patched up some issues
 - Added water orb & earth orb textures. They are substantially worse as I've made them myself and haven't stolen them from minecraft.

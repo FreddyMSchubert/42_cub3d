@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   settings.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/26 13:59:03 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/26 22:08:26 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@
 
 # define DOOR_OPEN_SPEED 0.05
 # define PROJECTILE_SPEED 0.1
+# define BLIGHT_SPEED 0.05
 
 // --- Minimap Settings
 

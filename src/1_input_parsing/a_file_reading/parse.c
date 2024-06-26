@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 09:39:02 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/26 13:38:52 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/26 22:18:41 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ t_tile_type	***make_map(int map_len, int *i, char **data)
 			else if ((data[*i][j] == 'H' || data[*i][j] == 'V') && !set_door((t_vec2){j, k}, map, data[*i][j]))
 				return (NULL);
 			else if ((data[*i][j] == 'w' || data[*i][j] == 'e' || data[*i][j] == 'a' || data[*i][j] == 'f') && !set_orb((t_vec2){j, k}, map, data[*i][j]))
+				return (NULL);
+			else if ((data[*i][j] == 'q' || data[*i][j] == 'r' || data[*i][j] == 'd' || data[*i][j] == 's') && !set_blight((t_vec2){j, k}, map, data[*i][j]))
 				return (NULL);
 			else if (data[*i][j] == 'K' && !set_key((t_vec2){j, k}, map))
 				return (NULL);
