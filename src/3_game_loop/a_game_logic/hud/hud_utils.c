@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/25 14:40:03 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/26 10:03:29 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,13 +136,14 @@ bool	is_visible(int x, int y)
 	float	dot_product;
 	float	dir_magnitude;
 
+	player_rot = normalize_player_rotation();
+	dir = calculate_normalized_direction(x, y);
 	dot_product = dir.x * player_rot.x + dir.y * player_rot.y;
 	dir_magnitude = sqrt((x - player()->transform.pos.x)
 			* (x - player()->transform.pos.x)
 			+ (y - player()->transform.pos.y)
 			* (y - player()->transform.pos.y));
-	player_rot = normalize_player_rotation();
-	dir = calculate_normalized_direction(x, y);
+
 	if (acos(dot_product) <= M_PI / 4.5 && dir_magnitude <= VIEW_DIST * 5)
 		return (true);
 	return (false);
