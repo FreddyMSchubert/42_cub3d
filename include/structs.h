@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/26 14:28:39 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:16:45 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,9 @@ typedef struct s_persistent_data
 
 typedef struct s_inventory
 {
+	int	num_available_items;
+	int	current_index;
+
 	int	keys;
 	int	water_orbs;
 	int	fire_orbs;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_hook.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:50:17 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/26 14:39:29 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:26:30 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,9 @@ void	scroll_hook(double xdelta, double ydelta, void *param)
 	if (ydelta != 0)
 	{
 		if (ydelta > 0)
-			game()->minimap_size += 1;
+			cycle_inventory(1, false);
 		else
-			game()->minimap_size -= 1;
-		if (game()->minimap_size < 2)
-			game()->minimap_size = 2;
-		if (game()->minimap_size > 6)
-			game()->minimap_size = 6;
+			cycle_inventory(-1, false);
 	}
 }
 
