@@ -4,4 +4,4 @@
 
 ![Wolfenstein 3D Gameplay, similar to 42 cub3d project](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/wolfenstein.gif)
 
-![Norminette](https://img.shields.io/badge/Norminette-unknown-lightgrey)
+![Norminette Status](https://img.shields.io/badge/Norminette-unknown-lightgrey)
