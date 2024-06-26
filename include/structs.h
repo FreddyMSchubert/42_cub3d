@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/26 13:47:49 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/26 14:28:39 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ typedef struct s_entity	t_entity;
 typedef struct s_entity
 {
 	t_entity_type	type;
+	unsigned int	id;
 
 	t_transform		transform;
 	t_transform		spawn_transform;

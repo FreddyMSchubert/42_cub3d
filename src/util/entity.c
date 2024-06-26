@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   entity.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 10:51:45 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/25 16:15:02 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/26 14:31:23 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,12 @@ t_transform	get_face_vector(t_entity *ntt)
 
 t_entity	*create_entity(t_transform trans, t_entity_type type, mlx_texture_t *tex, bool is_billboard, void (*tick)(t_entity *self))
 {
-	t_entity	*entity;
+	t_entity			*entity;
+	static unsigned int	id = 0;
 
+	id++;
 	entity = gc_malloc(sizeof(t_entity));
+	entity->id = id;
 	entity->spawn_transform = trans;
 	entity->transform = entity->spawn_transform;
 	entity->type = type;
@@ -52,27 +55,23 @@ t_entity	*create_entity(t_transform trans, t_entity_type type, mlx_texture_t *te
 
 void	delete_entity(t_entity *self)
 {
-	t_list	**entities;
+	t_list	*entities;
 	t_list	*prev;
 
-	entities = &game()->entities;
+	entities = game()->entities;
 	prev = NULL;
-	while (*entities)
+	while (entities)
 	{
-		if ((*entities)->content == self)
+		if (self->id == ((t_entity *)entities->content)->id)
 		{
-			if (prev) // Not the first element
-			{
-				prev->next = (*entities)->next;
-			}
-			else // First element
-			{
-				game()->entities = (*entities)->next;
-			}
-			*entities = NULL;
-			return;
+			if (prev)
+				prev->next = entities->next;
+			else
+				game()->entities = entities->next;
+			entities = NULL;
+			return ;
 		}
-		prev = *entities;
-		entities = &(*entities)->next;
+		prev = entities;
+		entities = entities->next;
 	}
 }

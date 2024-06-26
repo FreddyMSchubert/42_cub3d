@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 16:06:43 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/26 13:51:46 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/26 14:25:20 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,14 @@ bool	set_orb(t_vec2 pos, t_tile_type ***map, char orb_type)
 	if (!texture)
 		cub_exit("Failed to load orb texture!", -1);
 	data = gc_malloc(sizeof(t_orb));
-	data->type = orb_type;
+	if (orb_type == 'w')
+		data->type = ORB_TYPE_WATER;
+	else if (orb_type == 'f')
+		data->type = ORB_TYPE_FIRE;
+	else if (orb_type == 'e')
+		data->type = ORB_TYPE_EARTH;
+	else if (orb_type == 'a')
+		data->type = ORB_TYPE_AIR;
 	ntt = create_entity((t_transform){{pos.x + 0.5, pos.y + 0.5}, {1.0 , 0}}, ORB_E, texture, true, tick_orb);
 	ntt->data = data;
 	return (true);

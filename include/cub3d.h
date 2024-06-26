@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/26 13:44:02 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/26 14:36:45 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,8 +126,11 @@ void				loop_hook(void *param);
 void				cursor_hook(double x, double y, void *param);
 void				handle_mouse_mv(void);
 void				key_hook(mlx_key_data_t keydata, void *param);
-void				handle_player_move(void);
 void				scroll_hook(double xdelta, double ydelta, void *param);
+void				mouse_click_hook(mouse_key_t button, action_t action, modifier_key_t mods, void* param);
+// player movement
+void				handle_player_move(void);
+bool				is_position_valid(float x, float y);
 // util
 void				turn(double amount);
 // --- b_rendering
@@ -171,6 +174,9 @@ void				tick_door(t_entity *self);
 void				tick_key(t_entity *self);
 // - orb
 void				tick_orb(t_entity *self);
+// - projectile
+void				tick_projectile(t_entity *self);
+void				shooooot(t_transform t, int type);
 
 # define WALL_ORIENTATION_HORIZONTAL 0
 # define WALL_ORIENTATION_VERTICAL 1

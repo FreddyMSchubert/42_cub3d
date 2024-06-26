@@ -1,5 +1,10 @@
 # Changelog
 
+### [0.21.1] - 26.06.2024 - Freddy - `45-enemies`
+- Proper projectile shooting using mouse hook
+- moving projectiles
+- entity id system & improved entity deletion
+
 ## [0.21.0] - 26.06.2024 - Freddy - `45-enemies`
 - Added air orb & fire orb textures
 - Added orb entities which can be picked up into inventory

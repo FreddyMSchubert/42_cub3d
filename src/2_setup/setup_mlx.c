@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:41:35 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/26 13:27:38 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/26 14:36:50 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,6 @@ void	set_background(void)
 	data->background = img;
 }
 
-static inline void	setup_inventory(void)
-{
-	player()->inv.keys = 0;
-	player()->inv.water_orbs = 0;
-	player()->inv.fire_orbs = 0;
-	player()->inv.earth_orbs = 0;
-	player()->inv.air_orbs = 0;
-}
-
 void	setup_mlx(void)
 {
 	mlx_t				*mlx;
@@ -89,7 +80,6 @@ void	setup_mlx(void)
 	data->mlx = mlx;
 	set_background();
 	load_textures();
-	setup_inventory();
 	data->game_scene = mlx_new_image(data->mlx, data->mlx->width,
 			data->mlx->height);
 	if (!data->game_scene
@@ -108,4 +98,5 @@ void	setup_mlx(void)
 	mlx_scroll_hook(data->mlx, scroll_hook, NULL);
 	mlx_cursor_hook(data->mlx, cursor_hook, NULL);
 	mlx_resize_hook(data->mlx, resize_hook, NULL);
+	mlx_mouse_hook(data->mlx, mouse_click_hook, NULL);
 }

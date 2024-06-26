@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_hook.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:50:17 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/25 17:42:15 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/26 14:39:29 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,14 @@ void	scroll_hook(double xdelta, double ydelta, void *param)
 		if (game()->minimap_size > 6)
 			game()->minimap_size = 6;
 	}
+}
+
+void	mouse_click_hook(mouse_key_t button, action_t action, modifier_key_t mods, void* param)
+{
+	(void)param;
+	(void)mods;
+	if (button == MLX_MOUSE_BUTTON_LEFT && action == MLX_PRESS && player()->inv.air_orbs > 0)
+		shooooot(player()->transform, ORB_TYPE_AIR);
 }
 
 void	cursor_hook(double x, double y, void *param)

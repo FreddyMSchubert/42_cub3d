@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/26 12:04:33 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/26 13:59:03 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdbool.h>
 
-// General
+// --- General
 
 # define GREETING true
 # define VERBOSE true
@@ -24,21 +24,21 @@
 # define TERMINAL_MAP true
 # define MARK_DIRTY_LOGGING false
 
-// Debug
+// --- Debug
 
 # define RENDER_ENTITIES_THROUGH_WALLS false
 
-// Quality of Life
+// --- Quality of Life
 
 # define MOUSE_SENSITIVITY 0.45
 
-// Window Setup
+// --- Window Setup
 
 # define START_HEIGHT 540
 # define START_WIDTH 960
 # define WINDOW_NAME "cub3d"
 
-// Player Movement Stats
+// --- Player Movement Stats
 
 # define MOVEMENT_SPEED 0.065
 # define MOVEMENT_SPRINT_MULTIPLIER 2.5
@@ -46,7 +46,7 @@
 # define TURN_SPEED_MOUSE_DEG 1
 # define WALL_COLLISION_MARGIN 0.25
 
-// Display Settings
+// --- Display Settings
 
 # define FOV_DEG 96
 # define RAYCASTS_PER_DEG 5
@@ -54,15 +54,21 @@
 # define VIEW_DIST 3
 # define FPS 30
 
-// Entities
+// --- Entities
+
+// collisions
 
 # define GOAL_COLLISION_DISTANCE 0.5
 # define KEY_COLLISION_DISTANCE 0.5
 # define CLOSED_DOOR_ALLOWED_WALK_DISTANCE 0.4
 # define DOOR_OPEN_DISTANCE 1.0
-# define DOOR_OPEN_SPEED 0.05
 
-// Minimap Settings
+// speed
+
+# define DOOR_OPEN_SPEED 0.05
+# define PROJECTILE_SPEED 0.1
+
+// --- Minimap Settings
 
 # define MINIMAP_WIDTH 200
 # define MINIMAP_HEIGHT 200
