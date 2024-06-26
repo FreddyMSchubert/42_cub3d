@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1999/06/13 09:10:15 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/26 11:05:09 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/26 12:56:21 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static inline mlx_texture_t	*get_wall_texture(char d)
 	return (NULL);
 }
 
-double	calc_wall(int ray_index, t_vec2 intersect)
+void	calc_wall(int ray_index, t_vec2 intersect)
 {
 	int		height;
 	int		start_x;
@@ -80,13 +80,11 @@ double	calc_wall(int ray_index, t_vec2 intersect)
 	height = get_height_from_intersection_dist(corrected_dist);
 	hit_offset = intersect.y - floor(intersect.y) + \
 						intersect.x - floor(intersect.x);
-	double	draw_time_start = mlx_get_time();
 	draw_gameobject(start_x, end_x, height, \
 			get_wall_texture(get_wall_face_to_render(intersect)), hit_offset);
-	return (mlx_get_time() - draw_time_start);
 }
 
-double	calc_entity(int ray_index, t_vec2 intersect, t_entity *ntt)
+void	calc_entity(int ray_index, t_vec2 intersect, t_entity *ntt)
 {
 	int		height;
 	int		start_x;
@@ -102,7 +100,5 @@ double	calc_entity(int ray_index, t_vec2 intersect, t_entity *ntt)
 	corrected_dist = intersection_dist * cos(angle_correction_rad);
 	height = get_height_from_intersection_dist(corrected_dist);
 	hit_offset = get_ntt_hit_offset(intersect, get_face_vector(ntt));
-	double	draw_time_start = mlx_get_time();
 	draw_gameobject(start_x, end_x, height, ntt->texture, hit_offset);
-	return (mlx_get_time() - draw_time_start);
 }

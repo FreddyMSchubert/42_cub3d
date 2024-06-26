@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:28 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/26 12:13:06 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/26 12:57:27 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	loop_hook(void *param)
 	prev_time = game()->prev_time;
 	curr_frame = get_frame(curr_time);
 	prev_frame = get_frame(prev_time);
-	if (curr_frame > prev_frame + 1)
-		logger(LOGGER_WARNING, "skipped frame");
+	// if (curr_frame > prev_frame + 1)
+	// 	logger(LOGGER_WARNING, "skipped frame");
 	if ((int)curr_time != (int)prev_time || curr_frame != prev_frame)
 	{
 		game()->dirty = false;

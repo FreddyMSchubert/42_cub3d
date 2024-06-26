@@ -1,5 +1,18 @@
 # Changelog
 
+### [0.20.8] - 28.06.2024 - Freddy - `43-raycasting-efficiency`
+- Made minimap wall color white if the floor color is pretty dark to ensure contrast
+
+### [0.20.7] - 26.06.2024 - Freddy - `43-raycasting-efficiency`
+- Removed overly excessive raycast walls efficiency logging
+- Commented out Frame Skipped logging
+- Removed unnecessary wall / door collision logging
+
+### [0.20.6] - 26.06.2024 - Freddy - `43-raycasting-efficiency`
+- Minimap visual improvements
+	- Made voids render like walls to hide the behind-the-scenes optimizations
+	- Made minimap floor color take the map inputted floor color
+
 ### [0.20.5] - 26.06.2024 - Freddy - `43-raycasting-efficiency`
 - Merging cleanup, minimap movement, rendering system proper inclusion
 

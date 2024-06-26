@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_movement.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 07:50:27 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/25 17:21:18 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/26 13:01:27 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ bool	is_position_valid(float x, float y)
 	float		pos_on_space;
 
 	if (*game()->input_data->map[(int)y][(int)x] != FLOOR)
-		return(logger(LOGGER_WARNING, "Can't move there because of a wall."), false);
+		return(false);
 	ntt_list = game()->entities;
 	while (ntt_list)
 	{
@@ -78,14 +78,14 @@ bool	is_position_valid(float x, float y)
 					pos_on_space = fmod(y, 1.0f);
 					if (floor(player()->transform.pos.x) == floor(ntt->transform.pos.x) && floor(player()->transform.pos.y) == floor(ntt->transform.pos.y) && \
 							pos_on_space > CLOSED_DOOR_ALLOWED_WALK_DISTANCE && pos_on_space < 1 - CLOSED_DOOR_ALLOWED_WALK_DISTANCE)
-						return(logger(LOGGER_WARNING, "Can't move there because of a horizontal door."), false);
+						return(false);
 				}
 				else
 				{
 					pos_on_space = fmod(x, 1.0f);
 					if (floor(player()->transform.pos.y) == floor(ntt->transform.pos.y) && floor(player()->transform.pos.x) == floor(ntt->transform.pos.x) && \
 							pos_on_space > CLOSED_DOOR_ALLOWED_WALK_DISTANCE && pos_on_space < 1 - CLOSED_DOOR_ALLOWED_WALK_DISTANCE)
-						return(logger(LOGGER_WARNING, "Can't move there because of a vertical door."), false);
+						return(false);
 				}
 			}
 		}

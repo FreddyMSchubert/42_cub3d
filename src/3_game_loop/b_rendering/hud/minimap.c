@@ -35,6 +35,25 @@ int	get_opacity(int x, int y)
 	return (max_opacity - (max_opacity * (distance / 10)));
 }
 
+static inline int	get_floor_color(int j, int i)
+{
+	t_color	color;
+
+	color = game()->input_data->floor_color;
+	color = with_opacity(color, get_opacity(j, i));
+	return (t_color_to_int(color));
+}
+
+static inline int	get_wall_color(int j, int i)
+{
+	t_color	floor_color;
+
+	floor_color = game()->input_data->floor_color;
+	if (floor_color.r + floor_color.g + floor_color.b < 200)
+		return (rgba_to_int(255, 255, 255, get_opacity(j, i)));
+	return (rgba_to_int(0, 0, 0, get_opacity(j, i)));
+}
+
 void	draw_tile(t_scale ij, int size, int offset_x, int offset_y)
 {
 	t_tile_type	***walls;
@@ -48,15 +67,10 @@ void	draw_tile(t_scale ij, int size, int offset_x, int offset_y)
 	walls = game()->input_data->map;
 	draw_x = j * size + offset_x - size / 2;
 	draw_y = i * size + offset_y - size / 2;
-	if (*(walls[i][j]) == VOID)
-		draw_square_hud(draw_x, draw_y, size,
-			rgba_to_int(50, 50, 50, get_opacity(j, i)));
-	else if (*(walls[i][j]) == WALL)
-		draw_square_hud(draw_x, draw_y, size,
-			rgba_to_int(255, 0, 0, get_opacity(j, i)));
+	if (*(walls[i][j]) == WALL || *(walls[i][j]) == VOID)
+		draw_square_hud(draw_x, draw_y, size, get_wall_color(j, i));
 	else if (*(walls[i][j]) == FLOOR)
-		draw_square_hud(draw_x, draw_y, size,
-			rgba_to_int(0, 255, 0, get_opacity(j, i)));
+		draw_square_hud(draw_x, draw_y, size, get_floor_color(j, i));
 }
 
 static inline void	draw_walls(int size)

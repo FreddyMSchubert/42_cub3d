@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/26 11:14:22 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/26 12:55:35 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,59 +61,15 @@ void	raycast_walls(void)
 	t_vec2		wall_intersect;
 	t_vec2		entity_intersect;
 	t_entity	*ntt;
-	double		start_rendering;
-	double		end_rendering;
-	double		raycasting;
-	double		ntt_raycasting;
-	double		wall_calc;
-	double		wall_draw;
-	double		entity_calc;
-	double		entity_draw;
-	double		temp_val;
-	double		temp_val_2;
 
-	start_rendering = mlx_get_time();
 	ray_index = -1;
-	end_rendering = 0;
-	raycasting = 0;
-	ntt_raycasting = 0;
-	wall_calc = 0;
-	wall_draw = 0;
-	entity_calc = 0;
-	entity_draw = 0;
 	while (++ray_index < RAYCASTS_PER_DEG * FOV_DEG)
 	{
-		temp_val = mlx_get_time();
 		wall_intersect = perform_wall_raycast(ray_index);
-		raycasting += mlx_get_time() - temp_val;
-
-		temp_val = mlx_get_time();
 		ntt = perform_entity_raycast(ray_index, &entity_intersect);
-		ntt_raycasting += mlx_get_time() - temp_val;
-
-		// Wall calculations and drawing
-		temp_val = mlx_get_time();
-		temp_val_2 = calc_wall(ray_index, wall_intersect);
-		wall_calc += mlx_get_time() - temp_val - temp_val_2;
-		wall_draw += temp_val_2;
-
-		// Entity calculations and drawing
+		calc_wall(ray_index, wall_intersect);
 		if (ntt && entity_intersect.x != -1 && entity_intersect.y != -1 &&
-			(pos_distance(player()->transform.pos, entity_intersect) < pos_distance(player()->transform.pos, wall_intersect) || RENDER_ENTITIES_THROUGH_WALLS)) {
-			temp_val = mlx_get_time();
-			temp_val_2 = calc_entity(ray_index, entity_intersect, ntt);
-			entity_calc += mlx_get_time() - temp_val - temp_val_2;
-			entity_draw += temp_val_2;
-		}
+			(pos_distance(player()->transform.pos, entity_intersect) < pos_distance(player()->transform.pos, wall_intersect) || RENDER_ENTITIES_THROUGH_WALLS))
+			calc_entity(ray_index, entity_intersect, ntt);
 	}
-	end_rendering = mlx_get_time();
-	double	rendering_time = end_rendering - start_rendering;
-	printf("Total rendering time: %f, raycasting: %f (%.2f%%), ntt_raycasting: %f (%.2f%%), wall_calc: %f (%.2f%%), wall_draw: %f (%.2f%%), entity_calc: %f (%.2f%%), entity_draw: %f (%.2f%%)\n",
-		rendering_time,
-		raycasting, (raycasting / rendering_time) * 100,
-		ntt_raycasting, (ntt_raycasting / rendering_time) * 100,
-		wall_calc, (wall_calc / rendering_time) * 100,
-		wall_draw, (wall_draw / rendering_time) * 100,
-		entity_calc, (entity_calc / rendering_time) * 100,
-		entity_draw, (entity_draw / rendering_time) * 100);
 }
