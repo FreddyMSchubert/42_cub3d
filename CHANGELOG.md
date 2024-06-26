@@ -1,6 +1,9 @@
 # Changelog
 
 ### [0.20.4] - 26.06.2024 - Freddy - `43-raycasting-efficiency`
+- Very minor final efficiency improvements
+
+### [0.20.4] - 26.06.2024 - Freddy - `43-raycasting-efficiency`
 - Vastly improved draw_walls/draw_column speed using corrected y check, previous commit was erroneous
 
 ### [0.20.3] - 26.06.2024 - Freddy - `43-raycasting-efficiency`
