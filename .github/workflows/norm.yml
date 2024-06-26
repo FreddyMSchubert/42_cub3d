@@ -1,0 +1,6 @@
+    - name: 42 Norminette
+  uses: alexandregv/norminette-action@99553916aada3d882aaa35cd1fd51b433234749e
+  with:
+    # Flags passed to norminette
+    flags: # default is ./src/
+          
