@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:56:45 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/27 18:52:23 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 20:37:13 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ void	shooooot(t_transform t, int type)
 	logger(LOGGER_ACTION, "Shot projectile!");
 	texture = NULL;
 	if (type == TYPE_FIRE)
-		texture = mlx_load_png("./assets/entities/orbs/fire_orb.png");
+		texture = game()->textures.fire_orb;
 	else if (type == TYPE_AIR)
-		texture = mlx_load_png("./assets/entities/orbs/air_orb.png");
+		texture = game()->textures.air_orb;
 	else if (type == TYPE_WATER)
-		texture = mlx_load_png("./assets/entities/orbs/water_orb.png");
+		texture = game()->textures.water_orb;
 	else if (type == TYPE_EARTH)
-		texture = mlx_load_png("./assets/entities/orbs/earth_orb.png");
+		texture = game()->textures.earth_orb;
 	if (!texture)
 		logger(LOGGER_ERROR, "Failed to load projectile texture!\n");
 	ntt = create_entity(t, PROJECTILE_E, texture, true, tick_projectile);

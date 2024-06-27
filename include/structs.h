@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/27 14:28:59 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 20:25:38 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,38 @@ typedef struct s_input_data
 	t_transform	**walls;
 }	t_input_data;
 
+typedef struct s_textures
+{
+	// General
+	mlx_texture_t	*door;
+	mlx_texture_t	*key;
+	mlx_texture_t	*star;
+
+	// Orbs
+	mlx_texture_t	*water_orb;
+	mlx_texture_t	*fire_orb;
+	mlx_texture_t	*earth_orb;
+	mlx_texture_t	*air_orb;
+
+	// Blights
+	mlx_texture_t	*air_blight_idle;
+	mlx_texture_t	*air_blight_death1;
+	mlx_texture_t	*air_blight_death2;
+	mlx_texture_t	*air_blight_death3;
+	mlx_texture_t	*fire_blight_idle;
+	mlx_texture_t	*fire_blight_death1;
+	mlx_texture_t	*fire_blight_death2;
+	mlx_texture_t	*fire_blight_death3;
+	mlx_texture_t	*water_blight_idle;
+	mlx_texture_t	*water_blight_death1;
+	mlx_texture_t	*water_blight_death2;
+	mlx_texture_t	*water_blight_death3;
+	mlx_texture_t	*earth_blight_idle;
+	mlx_texture_t	*earth_blight_death1;
+	mlx_texture_t	*earth_blight_death2;
+	mlx_texture_t	*earth_blight_death3;
+}	t_textures;
+
 typedef struct s_persistent_data
 {
 	t_input_data	*input_data;
@@ -94,6 +126,7 @@ typedef struct s_persistent_data
 	t_list			*entities;
 	int32_t			prev_mouse_x;
 	double			prev_time;
+	t_textures		textures;
 }	t_persistent_data;
 
 // --- PLAYER

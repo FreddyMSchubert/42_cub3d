@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.22.3] - 27.06.2024 - Freddy
+- Added a texture loading functionality. Now all needed textures are loaded at the very start, and then never again
+
 ### [0.22.2] - 27.06.2024 - Freddy - `47-enhanced-entity-rendering`
 - Fixed it! Now, proper entity rendering.
 - Slight movement tweaks

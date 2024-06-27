@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/27 18:50:00 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 20:26:37 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,9 @@
 t_persistent_data	*game(void);
 t_list				**gc(void);
 t_player			*player(void);
+
+// ----- 0_texture_init
+void				load_static_textures(void);
 
 // ----- 1_input_parsing
 void				parse_input(char	*filepath);
