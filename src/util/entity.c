@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 10:51:45 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/27 20:54:00 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 21:07:15 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ t_entity	*create_entity(t_transform trans, t_entity_type type, mlx_texture_t	*(*
 	entity->transform = entity->spawn_transform;
 	entity->type = type;
 	entity->get_texture = tex;
+	entity->frames_since_state_change = 0;
 	entity->is_billboard = is_billboard;
 	entity->tick = tick;
 	entity->on_collision = NULL;

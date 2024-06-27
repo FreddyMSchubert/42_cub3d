@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/27 20:50:50 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 21:20:05 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,13 @@ typedef struct s_input_data
 	t_transform	**walls;
 }	t_input_data;
 
+typedef struct s_animation
+{
+	mlx_texture_t	*frame1;
+	mlx_texture_t	*frame2;
+	mlx_texture_t	*frame3;
+}	t_animation;
+
 typedef struct s_textures
 {
 	// General
@@ -91,21 +98,13 @@ typedef struct s_textures
 
 	// Blights
 	mlx_texture_t	*air_blight_idle;
-	mlx_texture_t	*air_blight_death1;
-	mlx_texture_t	*air_blight_death2;
-	mlx_texture_t	*air_blight_death3;
+	t_animation		air_blight_death;
 	mlx_texture_t	*fire_blight_idle;
-	mlx_texture_t	*fire_blight_death1;
-	mlx_texture_t	*fire_blight_death2;
-	mlx_texture_t	*fire_blight_death3;
+	t_animation		fire_blight_death;
 	mlx_texture_t	*water_blight_idle;
-	mlx_texture_t	*water_blight_death1;
-	mlx_texture_t	*water_blight_death2;
-	mlx_texture_t	*water_blight_death3;
+	t_animation		water_blight_death;
 	mlx_texture_t	*earth_blight_idle;
-	mlx_texture_t	*earth_blight_death1;
-	mlx_texture_t	*earth_blight_death2;
-	mlx_texture_t	*earth_blight_death3;
+	t_animation		earth_blight_death;
 }	t_textures;
 
 typedef struct s_persistent_data
@@ -171,6 +170,7 @@ typedef struct s_entity
 
 	mlx_texture_t	*(*get_texture)(t_entity *self);
 	bool			is_billboard;
+	unsigned int	frames_since_state_change;
 
 	void			(*tick)(t_entity *self);
 	void			(*on_collision)(t_entity *self, t_entity *collider);
@@ -216,6 +216,7 @@ typedef struct s_projectile
 # define BLIGHT_STATE_WALKING 0
 # define BLIGHT_STATE_ATTACKING 1
 # define BLIGHT_STATE_STANDING 2
+# define BLIGHT_STATE_DYING 3
 
 typedef struct s_blight
 {

@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 20:18:50 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/27 20:50:59 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 21:21:36 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,19 @@ void	load_static_textures(void)
 	game()->textures.earth_orb = load_texture("assets/entities/orbs/earth.png");
 	game()->textures.air_orb = load_texture("assets/entities/orbs/air.png");
 	game()->textures.air_blight_idle = load_texture("assets/entities/blights/air/idle.png");
-	game()->textures.air_blight_death1 = load_texture("assets/entities/blights/air/death1.png");
-	game()->textures.air_blight_death2 = load_texture("assets/entities/blights/air/death2.png");
-	game()->textures.air_blight_death3 = load_texture("assets/entities/blights/air/death3.png");
+	game()->textures.air_blight_death.frame1 = load_texture("assets/entities/blights/air/death1.png");
+	game()->textures.air_blight_death.frame2 = load_texture("assets/entities/blights/air/death2.png");
+	game()->textures.air_blight_death.frame3 = load_texture("assets/entities/blights/air/death3.png");
 	game()->textures.fire_blight_idle = load_texture("assets/entities/blights/fire/idle.png");
-	game()->textures.fire_blight_death1 = load_texture("assets/entities/blights/fire/death1.png");
-	game()->textures.fire_blight_death2 = load_texture("assets/entities/blights/fire/death2.png");
-	game()->textures.fire_blight_death3 = load_texture("assets/entities/blights/fire/death3.png");
+	game()->textures.fire_blight_death.frame1 = load_texture("assets/entities/blights/fire/death1.png");
+	game()->textures.fire_blight_death.frame2 = load_texture("assets/entities/blights/fire/death2.png");
+	game()->textures.fire_blight_death.frame3 = load_texture("assets/entities/blights/fire/death3.png");
 	game()->textures.water_blight_idle = load_texture("assets/entities/blights/water/idle.png");
-	game()->textures.water_blight_death1 = load_texture("assets/entities/blights/water/death1.png");
-	game()->textures.water_blight_death2 = load_texture("assets/entities/blights/water/death2.png");
-	game()->textures.water_blight_death3 = load_texture("assets/entities/blights/water/death3.png");
+	game()->textures.water_blight_death.frame1 = load_texture("assets/entities/blights/water/death1.png");
+	game()->textures.water_blight_death.frame2 = load_texture("assets/entities/blights/water/death2.png");
+	game()->textures.water_blight_death.frame3 = load_texture("assets/entities/blights/water/death3.png");
 	game()->textures.earth_blight_idle = load_texture("assets/entities/blights/earth/idle.png");
-	game()->textures.earth_blight_death1 = load_texture("assets/entities/blights/earth/death1.png");
-	game()->textures.earth_blight_death2 = load_texture("assets/entities/blights/earth/death2.png");
-	game()->textures.earth_blight_death3 = load_texture("assets/entities/blights/earth/death3.png");
+	game()->textures.earth_blight_death.frame1 = load_texture("assets/entities/blights/earth/death1.png");
+	game()->textures.earth_blight_death.frame2 = load_texture("assets/entities/blights/earth/death2.png");
+	game()->textures.earth_blight_death.frame3 = load_texture("assets/entities/blights/earth/death3.png");
 }

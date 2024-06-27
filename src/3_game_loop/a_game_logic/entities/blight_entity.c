@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 21:57:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/27 20:56:57 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 21:25:01 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	tick_blight(t_entity *self)
 {
 	t_blight	*blight;
 
+	self->frames_since_state_change++;
 	blight = (t_blight *)self->data;
 	if (blight->state == BLIGHT_STATE_WALKING)
 	{
@@ -73,6 +74,7 @@ void	tick_blight(t_entity *self)
 		if (random_val() < BLIGHT_STANDING_START_CHANCE)
 		{
 			blight->state = BLIGHT_STATE_STANDING;
+			self->frames_since_state_change = 0;
 			game()->dirty = true;
 			if (MARK_DIRTY_LOGGING)
 				logger(LOGGER_DIRTY, "Blight stopped, marking dirty!");
@@ -83,6 +85,16 @@ void	tick_blight(t_entity *self)
 		if (random_val() < BLIGHT_WALKING_START_CHANCE)
 		{
 			blight->state = BLIGHT_STATE_WALKING;
+			self->frames_since_state_change = 0;
+		}
+	}
+	else if (blight->state == BLIGHT_STATE_DYING)
+	{
+		if (self->frames_since_state_change > BLIGHT_DEATH_ANIMATION_FRAMES)
+		{
+			logger(LOGGER_ACTION, "Blight died!");
+			delete_entity(self);
+			game()->dirty = true;
 		}
 	}
 }
@@ -97,20 +109,52 @@ void	on_collision_blight(t_entity *self, t_entity *other)
 	if (!a_beats_b(((t_projectile *)other->data)->type, blight->type))
 		return ;
 	logger(LOGGER_ACTION, "Blight killed by projectile!");
-	delete_entity(self);
+	blight->state = BLIGHT_STATE_DYING;
 	delete_entity(other);
 	game()->dirty = true;
 }
 
+// BLIGHT_DEATH_ANIMATION_FRAMES
+
 mlx_texture_t	*get_texture_blight(t_entity *self)
 {
-	if (((t_blight *)self->data)->type == TYPE_FIRE)
+	t_blight	*blight;
+	t_animation	animation;
+
+	blight = (t_blight *)self->data;
+	if (blight->state != BLIGHT_STATE_DYING)
+	{
+		if (blight->type == TYPE_FIRE)
+			return (game()->textures.fire_blight_idle);
+		else if (blight->type == TYPE_AIR)
+			return (game()->textures.air_blight_idle);
+		else if (blight->type == TYPE_WATER)
+			return (game()->textures.water_blight_idle);
+		else if (blight->type == TYPE_EARTH)
+			return (game()->textures.earth_blight_idle);
 		return (game()->textures.fire_blight_idle);
-	else if (((t_blight *)self->data)->type == TYPE_AIR)
-		return (game()->textures.air_blight_idle);
-	else if (((t_blight *)self->data)->type == TYPE_WATER)
-		return (game()->textures.water_blight_idle);
-	else if (((t_blight *)self->data)->type == TYPE_EARTH)
-		return (game()->textures.earth_blight_idle);
-	return (NULL);
+	}
+	else
+	{
+		animation.frame1 = NULL;
+		if (blight->type == TYPE_FIRE)
+			animation = game()->textures.fire_blight_death;
+		else if (blight->type == TYPE_AIR)
+			animation = game()->textures.air_blight_death;
+		else if (blight->type == TYPE_WATER)
+			animation = game()->textures.water_blight_death;
+		else if (blight->type == TYPE_EARTH)
+			animation = game()->textures.earth_blight_death;
+		if (!animation.frame1)
+			cub_exit("Error: Blight death animation not found!", -1);
+		game()->dirty = true;
+		if (MARK_DIRTY_LOGGING)
+			logger(LOGGER_DIRTY, "Blight death animation, marking dirty!");
+		if (self->frames_since_state_change < BLIGHT_DEATH_ANIMATION_FRAMES / 3)
+			return (animation.frame1);
+		else if (self->frames_since_state_change < 2 * BLIGHT_DEATH_ANIMATION_FRAMES / 3)
+			return (animation.frame2);
+		else
+			return (animation.frame3);
+	}
 }

@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.22.5] - 27.06.2024 - Freddy
+- Dynamic texture animation reworks
+- Implemented blight death animations
+
 ### [0.22.4] - 27.06.2024 - Freddy
 - Dynamic texture application - now, entities dont have a single static texture, but a dynamic texture retrieved using a per-entity get_texture function to allow for dynamic textures (and animated sprites)
 
