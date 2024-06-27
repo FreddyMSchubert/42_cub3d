@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 15:53:33 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/27 18:51:44 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 20:57:17 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,10 @@ void	tick_key(t_entity *self)
 	logger(LOGGER_ACTION, "Key collected!");
 	player()->inv.keys++;
 	delete_entity(self);
+}
+
+mlx_texture_t	*get_texture_key(t_entity *self)
+{
+	(void)self;
+	return (game()->textures.key);
 }

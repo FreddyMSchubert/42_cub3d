@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 10:51:45 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/27 15:47:52 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 20:54:00 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_transform	get_face_vector(t_entity *ntt)
 	return (face_vector);
 }
 
-t_entity	*create_entity(t_transform trans, t_entity_type type, mlx_texture_t *tex, bool is_billboard, void (*tick)(t_entity *self))
+t_entity	*create_entity(t_transform trans, t_entity_type type, mlx_texture_t	*(*tex)(t_entity *self), bool is_billboard, void (*tick)(t_entity *self))
 {
 	t_entity			*entity;
 	static unsigned int	id = 0;
@@ -45,7 +45,7 @@ t_entity	*create_entity(t_transform trans, t_entity_type type, mlx_texture_t *te
 	entity->spawn_transform = trans;
 	entity->transform = entity->spawn_transform;
 	entity->type = type;
-	entity->texture = tex;
+	entity->get_texture = tex;
 	entity->is_billboard = is_billboard;
 	entity->tick = tick;
 	entity->on_collision = NULL;

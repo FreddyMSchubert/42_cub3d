@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 21:57:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/27 18:51:04 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 20:56:57 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,17 @@ void	on_collision_blight(t_entity *self, t_entity *other)
 	delete_entity(self);
 	delete_entity(other);
 	game()->dirty = true;
+}
+
+mlx_texture_t	*get_texture_blight(t_entity *self)
+{
+	if (((t_blight *)self->data)->type == TYPE_FIRE)
+		return (game()->textures.fire_blight_idle);
+	else if (((t_blight *)self->data)->type == TYPE_AIR)
+		return (game()->textures.air_blight_idle);
+	else if (((t_blight *)self->data)->type == TYPE_WATER)
+		return (game()->textures.water_blight_idle);
+	else if (((t_blight *)self->data)->type == TYPE_EARTH)
+		return (game()->textures.earth_blight_idle);
+	return (NULL);
 }

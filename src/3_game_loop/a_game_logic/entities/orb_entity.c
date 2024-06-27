@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:42:00 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/27 18:51:57 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 20:56:46 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,17 @@ void	tick_orb(t_entity *self)
 		logger(LOGGER_ACTION, "Picked up some air orbs!");
 	}
 	delete_entity(self);
+}
+
+mlx_texture_t	*get_texture_orb(t_entity *self)
+{
+	if (((t_blight *)self->data)->type == TYPE_FIRE)
+		return (game()->textures.fire_orb);
+	else if (((t_blight *)self->data)->type == TYPE_AIR)
+		return (game()->textures.air_orb);
+	else if (((t_blight *)self->data)->type == TYPE_WATER)
+		return (game()->textures.water_orb);
+	else if (((t_blight *)self->data)->type == TYPE_EARTH)
+		return (game()->textures.earth_orb);
+	return (NULL);
 }

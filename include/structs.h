@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/27 20:25:38 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 20:50:50 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ typedef struct s_textures
 	// General
 	mlx_texture_t	*door;
 	mlx_texture_t	*key;
-	mlx_texture_t	*star;
+	mlx_texture_t	*goal;
 
 	// Orbs
 	mlx_texture_t	*water_orb;
@@ -169,7 +169,7 @@ typedef struct s_entity
 	t_transform		transform;
 	t_transform		spawn_transform;
 
-	mlx_texture_t	*texture;
+	mlx_texture_t	*(*get_texture)(t_entity *self);
 	bool			is_billboard;
 
 	void			(*tick)(t_entity *self);

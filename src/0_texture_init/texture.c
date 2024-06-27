@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 20:18:50 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/27 20:26:28 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 20:50:59 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	load_static_textures(void)
 {
 	game()->textures.door = load_texture("assets/entities/door.png");
 	game()->textures.key = load_texture("assets/entities/key.png");
-	game()->textures.star = load_texture("assets/entities/star.png");
+	game()->textures.goal = load_texture("assets/entities/goal.png");
 	game()->textures.water_orb = load_texture("assets/entities/orbs/water.png");
 	game()->textures.fire_orb = load_texture("assets/entities/orbs/fire.png");
 	game()->textures.earth_orb = load_texture("assets/entities/orbs/earth.png");

@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/27 20:26:37 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 20:56:22 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,18 +184,24 @@ void				tick_entities(void);
 void				collide_entities(void);
 // - goal
 void				tick_goal(t_entity *self);
+mlx_texture_t		*get_texture_goal(t_entity *self);
 // - door
 void				tick_door(t_entity *self);
+mlx_texture_t		*get_texture_door(t_entity *self);
 // - key
 void				tick_key(t_entity *self);
+mlx_texture_t		*get_texture_key(t_entity *self);
 // - orb
 void				tick_orb(t_entity *self);
+mlx_texture_t		*get_texture_orb(t_entity *self);
 // - projectile
 void				tick_projectile(t_entity *self);
 void				shooooot(t_transform t, int type);
+mlx_texture_t		*get_texture_projectile(t_entity *self);
 // - blight
 void				tick_blight(t_entity *self);
 void				on_collision_blight(t_entity *self, t_entity *other);
+mlx_texture_t		*get_texture_blight(t_entity *self);
 
 # define WALL_ORIENTATION_HORIZONTAL 0
 # define WALL_ORIENTATION_VERTICAL 1
@@ -249,7 +255,7 @@ t_vec2				rotate_vector_by_90_degrees(t_vec2 v, int direction);
 
 // entities
 t_transform			get_face_vector(t_entity *ntt);
-t_entity			*create_entity(t_transform trans, t_entity_type type, mlx_texture_t *tex, bool is_billboard, void (*tick)(t_entity *self));
+t_entity			*create_entity(t_transform trans, t_entity_type type, mlx_texture_t	*(*tex)(t_entity *self), bool is_billboard, void (*tick)(t_entity *self));
 void				delete_entity(t_entity *self);
 
 // vector

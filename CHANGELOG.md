@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.22.4] - 27.06.2024 - Freddy
+- Dynamic texture application - now, entities dont have a single static texture, but a dynamic texture retrieved using a per-entity get_texture function to allow for dynamic textures (and animated sprites)
+
 ### [0.22.3] - 27.06.2024 - Freddy
 - Added a texture loading functionality. Now all needed textures are loaded at the very start, and then never again
 

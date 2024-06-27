@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:57:29 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/27 18:56:12 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 20:57:09 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,10 @@ void	tick_door(t_entity *self)
 			door->state = DOOR_STATE_OPEN;
 		}
 	}
+}
+
+mlx_texture_t	*get_texture_door(t_entity *self)
+{
+	(void)self;
+	return (game()->textures.door);
 }

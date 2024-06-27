@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:57:29 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/27 15:31:58 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 20:47:00 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,11 @@ void	on_collision_template(t_entity *self, t_entity *other)
 {
 	(void)self;
 	(void)other;
+}
+
+// also called every frame, by the renderer
+mlx_texture_t	*get_texture_template(t_entity *self)
+{
+	(void)self;
+	return (NULL);
 }
