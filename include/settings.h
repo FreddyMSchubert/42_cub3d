@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/27 12:14:04 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/27 12:40:09 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,12 @@
 
 // movement
 
-# define BLIGHT_MOVEMENT_SWITCH_CHANCE 0.03
+# define BLIGHT_WALKING_START_CHANCE 0.06
+# define BLIGHT_STANDING_START_CHANCE 0.01
+# define BLIGHT_MOVEMENT_ROTATION_SWITCH_CHANCE 0.05
 # define BLIGHT_MINIUM_ROTATION_DEG 45
+# define BLIGHT_MAX_SPAWN_DISTANCE 10
+# define BLIGHT_SPAWN_RETURNING_DEG_VARIATION 60
 
 // --- Minimap Settings
 

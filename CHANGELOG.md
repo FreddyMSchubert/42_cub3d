@@ -1,6 +1,9 @@
 # Changelog
 
-### [0.21.5] - 26.06.2024 - Freddy - `45-enemies`
+### [0.21.6] - 27.06.2024 - Freddy - `45-enemies`
+- Improved blight movement system. They will stand, walk, and never go too far away from their spawn.
+
+### [0.21.5] - 27.06.2024 - Freddy - `45-enemies`
 - Significantly improved randomness functions, should now return more diverse random values
 - Blights now properly walk in different directions
 

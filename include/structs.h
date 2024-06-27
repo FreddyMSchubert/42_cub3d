@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/26 22:06:37 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 12:21:28 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,9 +181,14 @@ typedef struct s_orb
 # define BLIGHT_TYPE_EARTH 2
 # define BLIGHT_TYPE_AIR 3
 
+# define BLIGHT_STATE_WALKING 0
+# define BLIGHT_STATE_ATTACKING 1
+# define BLIGHT_STATE_STANDING 2
+
 typedef struct s_blight
 {
 	int	type;
+	int	state;
 }	t_blight;
 
 #endif

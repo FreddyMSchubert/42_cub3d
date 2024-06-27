@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_entities.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 16:06:43 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/26 22:20:50 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 12:26:53 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ bool	set_blight(t_vec2 pos, t_tile_type ***map, char blight_type)
 		data->type = BLIGHT_TYPE_EARTH;
 	else if (blight_type == 's')
 		data->type = BLIGHT_TYPE_AIR;
+	data->state = BLIGHT_STATE_STANDING;
 	ntt = create_entity((t_transform){{pos.x + 0.5, pos.y + 0.5}, {1.0 , 0}}, BLIGHT_E, texture, true, tick_blight);
 	ntt->data = data;
 	return (true);
