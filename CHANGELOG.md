@@ -1,5 +1,10 @@
 # Changelog
 
+### [0.21.8] - 27.06.2024 - Freddy - `45-enemies`
+- Some balancing, now adding three charges to inventory per orb pickup
+- Added air, earth and water blight
+- Better logging
+
 ### [0.21.7] - 27.06.2024 - Freddy - `45-enemies`
 - Functional collision system with killing blights
 - Implemented x beats x method in a simple function

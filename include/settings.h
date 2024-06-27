@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/27 15:31:14 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 16:03:01 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,9 @@
 # define MINIMAP_LEFT_OFFSET 25
 # define MINIMAP_TOP_OFFSET 25
 # define MINIMAP_BORDER_WIDTH 5
+
+// --- Gameplay Balancing
+
+# define AMMO_AMOUNT_PER_ORB 3
 
 #endif

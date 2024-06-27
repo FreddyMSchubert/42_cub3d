@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:42:00 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/27 15:53:34 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 16:32:21 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,24 @@ void	tick_orb(t_entity *self)
 		return ;
 	orb = (t_orb *)self->data;
 	if (orb->type == TYPE_EARTH)
-		player()->inv.earth_orbs++;
+	{
+		player()->inv.earth_orbs += AMMO_AMOUNT_PER_ORB;
+		logger(LOGGER_INFO, "Picked up earth orbs!");
+	}
 	else if (orb->type == TYPE_FIRE)
-		player()->inv.fire_orbs++;
+	{
+		player()->inv.fire_orbs += AMMO_AMOUNT_PER_ORB;
+		logger(LOGGER_INFO, "Picked up fire orbs!");
+	}
 	else if (orb->type == TYPE_WATER)
-		player()->inv.water_orbs++;
+	{
+		player()->inv.water_orbs += AMMO_AMOUNT_PER_ORB;
+		logger(LOGGER_INFO, "Picked up water orbs!");
+	}
 	else if (orb->type == TYPE_AIR)
-		player()->inv.air_orbs++;
-	logger(LOGGER_INFO, "Picked up orb!");
+	{
+		player()->inv.air_orbs += AMMO_AMOUNT_PER_ORB;
+		logger(LOGGER_INFO, "Picked up air orbs!");
+	}
 	delete_entity(self);
 }
