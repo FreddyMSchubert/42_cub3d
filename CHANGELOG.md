@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.22.2] - 27.06.2024 - Freddy - `47-enhanced-entity-rendering`
+- Fixed it! Now, proper entity rendering.
+- Slight movement tweaks
+
 ### [0.22.1] - 27.06.2024 - Freddy - `47-enhanced-entity-rendering`
 - Entities now render in correct order but sometimes theres holes in them.
 - Enhanced logging

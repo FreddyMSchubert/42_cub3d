@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/27 18:56:19 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 19:20:14 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@
 
 // --- Player Movement Stats
 
-# define MOVEMENT_SPEED 0.075
-# define MOVEMENT_SPRINT_MULTIPLIER 2.5
+# define MOVEMENT_SPEED 0.08
+# define MOVEMENT_SPRINT_MULTIPLIER 2
 # define TURN_SPEED_ARROWS_DEG 5
 # define TURN_SPEED_MOUSE_DEG 1
 # define WALL_COLLISION_MARGIN 0.25

@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/27 18:38:27 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 19:27:17 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,10 @@ void	start_calc_entities(t_entity **ntts, t_vec2 *entity_intersects, double wall
 		count++;
 	j = -1;
 	while (++j < count)
+		if (pos_distance(player()->transform.pos, entity_intersects[j]) > wall_dist)
+			ntts[j] = NULL;
+	j = -1;
+	while (++j < count)
 	{
 		max_dist = -1.0;
 		farthest_index = -1;
@@ -84,12 +88,13 @@ void	start_calc_entities(t_entity **ntts, t_vec2 *entity_intersects, double wall
 				farthest_index = i;
 			}
 		}
-		if (farthest_index != -1 && (max_dist < wall_dist || RENDER_ENTITIES_THROUGH_WALLS))
+		if (farthest_index != -1 || RENDER_ENTITIES_THROUGH_WALLS)
 		{
 			calc_entity(ray_index, entity_intersects[farthest_index], ntts[farthest_index]);
 			ntts[farthest_index] = NULL;
 		}
 	}
+	free (ntts);
 }
 
 void	raycast_walls(void)
@@ -103,8 +108,8 @@ void	raycast_walls(void)
 	while (++ray_index < RAYCASTS_PER_DEG * FOV_DEG)
 	{
 		wall_intersect = perform_wall_raycast(ray_index);
-		ntts = perform_entity_raycast(ray_index, &entity_intersects);
 		calc_wall(ray_index, wall_intersect);
+		ntts = perform_entity_raycast(ray_index, &entity_intersects);
 		start_calc_entities(ntts, entity_intersects, pos_distance(player()->transform.pos, wall_intersect), ray_index);
 	}
 }

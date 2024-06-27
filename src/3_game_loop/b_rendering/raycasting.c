@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:22:19 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/27 18:12:18 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 19:25:53 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ t_vec2	*get_entity_intersection(t_transform ray, t_entity ***entities)
 	size = ft_lstsize(game()->entities);
 	intersections = malloc((size + 1) * sizeof(t_vec2));
 	*entities = malloc((size + 1) * sizeof(t_entity *));
+	if (!entities)
+		cub_exit("Memory allocation failed", -1);
 	current = game()->entities;
 	size = 0;
 	while (current)
