@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.21.5] - 26.06.2024 - Freddy - `45-enemies`
+- Significantly improved randomness functions, should now return more diverse random values
+- Blights now properly walk in different directions
+
 ### [0.21.4] - 26.06.2024 - Freddy - `45-enemies`
 - Proper entity correct position validation check
 - Enemy still just moves into a wall though
