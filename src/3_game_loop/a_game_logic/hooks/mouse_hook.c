@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:50:17 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/27 18:55:07 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 22:12:30 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ void	mouse_click_hook(mouse_key_t button, action_t action, modifier_key_t mods, 
 	(void)param;
 	(void)mods;
 	if (button == MLX_MOUSE_BUTTON_LEFT && action == MLX_PRESS && player()->inv.air_orbs > 0)
+	{
 		shooooot(player()->transform, TYPE_WATER);
+		logger(LOGGER_ACTION, "Shot projectile!");
+	}
 }
 
 void	cursor_hook(double x, double y, void *param)

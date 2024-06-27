@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 07:50:27 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/27 18:55:26 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 22:24:48 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ bool	is_position_valid(float x, float y)
 	t_door		*door;
 	float		pos_on_space;
 
-	if (*game()->input_data->map[(int)y][(int)x] != FLOOR)
-		return(false);
+	if (x < 0 || x >= game()->input_data->map_width || y < 0 || y >= game()->input_data->map_height || *game()->input_data->map[(int)y][(int)x] != FLOOR)
+		return (false);
 	ntt_list = game()->entities;
 	while (ntt_list)
 	{

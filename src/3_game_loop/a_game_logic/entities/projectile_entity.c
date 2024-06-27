@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:56:45 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/27 20:58:04 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 22:34:52 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	shooooot(t_transform t, int type)
 	t_entity		*ntt;
 	t_projectile	*projectile;
 
-	logger(LOGGER_ACTION, "Shot projectile!");
 	ntt = create_entity(t, PROJECTILE_E, get_texture_projectile, true, tick_projectile);
 	projectile = gc_malloc(sizeof(t_orb));
 	projectile->type = type;

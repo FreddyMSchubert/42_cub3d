@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/27 21:20:05 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 22:22:05 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ typedef struct s_input_data
 	t_color		floor_color;
 	t_color		ceiling_color;
 	t_tile_type	***map;
+	int			map_width;
+	int			map_height;
 	t_transform	**walls;
 }	t_input_data;
 
@@ -99,12 +101,16 @@ typedef struct s_textures
 	// Blights
 	mlx_texture_t	*air_blight_idle;
 	t_animation		air_blight_death;
+	t_animation		air_blight_attack;
 	mlx_texture_t	*fire_blight_idle;
 	t_animation		fire_blight_death;
+	t_animation		fire_blight_attack;
 	mlx_texture_t	*water_blight_idle;
 	t_animation		water_blight_death;
+	t_animation		water_blight_attack;
 	mlx_texture_t	*earth_blight_idle;
 	t_animation		earth_blight_death;
+	t_animation		earth_blight_attack;
 }	t_textures;
 
 typedef struct s_persistent_data

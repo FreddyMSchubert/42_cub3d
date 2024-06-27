@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   squarify_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 14:07:43 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/10 12:12:08 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/27 22:22:57 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,7 @@ void	squarify_map(void)
 	i = -1;
 	while (data->map && data->map[++i])
 		process_map_row(i, new_len, tiles, data);
+	game()->input_data->map_height = i;
+	game()->input_data->map_width = new_len;
 	game()->input_data->map = tiles;
 }

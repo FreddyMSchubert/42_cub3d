@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/27 21:25:31 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 22:37:27 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,9 @@
 
 // movement
 
-# define BLIGHT_WALKING_START_CHANCE 0.06
-# define BLIGHT_STANDING_START_CHANCE 0.01
+# define BLIGHT_WALKING_START_CHANCE 0.1
+# define BLIGHT_STANDING_START_CHANCE 0.025
+# define BLIGHT_ATTACKING_START_CHANCE 0.5
 # define BLIGHT_MOVEMENT_ROTATION_SWITCH_CHANCE 0.05
 # define BLIGHT_MINIUM_ROTATION_DEG 45
 # define BLIGHT_MAX_SPAWN_DISTANCE 10
@@ -81,7 +82,8 @@
 
 // animations
 
-# define BLIGHT_DEATH_ANIMATION_FRAMES 30
+# define BLIGHT_DEATH_ANIMATION_FRAMES 45
+# define BLIGHT_ATTACK_ANIMATION_FRAMES 30
 
 // --- Minimap Settings
 

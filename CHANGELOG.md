@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.22.6] - 27.06.2024 - Freddy
+- Added enemy attacking & enemy attack animation
+- Collision check improvements
+
 ### [0.22.5] - 27.06.2024 - Freddy
 - Dynamic texture animation reworks
 - Implemented blight death animations
