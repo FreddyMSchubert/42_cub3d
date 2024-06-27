@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_movement.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 07:50:27 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/26 13:01:27 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/27 18:55:26 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,6 @@ void	handle_player_move(void)
 	{
 		game()->dirty = true;
 		if (MARK_DIRTY_LOGGING)
-			logger(LOGGER_INFO, "Player moved, set dirty to true!\n");
+			logger(LOGGER_DIRTY, "Player moved, set dirty to true!");
 	}
 }

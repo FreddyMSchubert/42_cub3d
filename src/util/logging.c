@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:49:10 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/27 15:53:04 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 18:57:03 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 	@brief	prints a message to the console
-	@param	type	- 'e' for error, 'w' for warning, 'i' for info, 's' for step
+	@param	type	- 'e' for error, 'w' for warning, 'i' for info, 's' for step, 'a' for action, 'd' for dirty
 	@param	message	- the message to print
 */
 void	logger(char type, char *message)
@@ -29,6 +29,10 @@ void	logger(char type, char *message)
 		printf("%sINFO%s: \t%s\n", ANSI_BOLD_CYAN, ANSI_RESET, message);
 	else if (type == 's')
 		printf("%sSTEP%s: \t%s\n", ANSI_BOLD_GREEN, ANSI_RESET, message);
+	else if (type == 'a')
+		printf("%sACTION%s: %s\n", ANSI_BOLD_MAGENTA, ANSI_RESET, message);
+	else if (type == 'd')
+		printf("%sDIRTY%s: \t%s\n", ANSI_BOLD_BLUE, ANSI_RESET, message);
 	else
 		printf("%s%s%s\n", ANSI_COLOR_WHITE, ANSI_RESET, message);
 }

@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/27 15:44:37 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 18:50:00 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@
 # define LOGGER_WARNING 'w'
 # define LOGGER_INFO 'i'
 # define LOGGER_STEP 's'
+# define LOGGER_ACTION 'a'
+# define LOGGER_DIRTY 'd'
 
 /* ----- EXIT CODES ----- */
 # define EXIT_SUCCESS 0
@@ -160,8 +162,7 @@ double				pos_distance(t_vec2 pos1, t_vec2 pos2);
 t_vec2				scale_vector(t_vec2 t1, double distance);
 t_vec2				raycast_intersect(t_transform t1, t_transform t2);
 t_vec2				get_wall_intersection(t_transform **walls, t_transform ray);
-t_vec2				get_entity_intersection(t_list *entities, t_transform ray, \
-										t_entity **closest_entity);
+t_vec2				*get_entity_intersection(t_transform ray, t_entity ***entities);
 // - 1 raycast walls
 void				raycast_walls(void);
 // - 2 calc walls

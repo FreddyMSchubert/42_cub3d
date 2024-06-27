@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:18:59 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/25 11:42:11 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 18:50:35 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	gc_append_element(void *content)
 		selected_node = selected_node->next;
 		if (selected_node->content == content)
 		{
-			logger_verbose('w', "Element already in garbage collector.");
+			logger_verbose(LOGGER_WARNING, "Element already in garbage collector.");
 			return (free(new_node), -2);
 		}
 	}
@@ -75,7 +75,7 @@ void	gc_cleanup_and_reinit(void)
 	t_list	**garbage_col;
 
 	garbage_col = gc();
-	logger_verbose('i', "Cleaning up garbage collector.");
+	logger_verbose(LOGGER_INFO, "Cleaning up garbage collector.");
 	ft_lstclear(garbage_col, free);
 	*garbage_col = NULL;
 	*garbage_col = gc_create();

@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:56:45 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/27 15:44:23 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 18:52:23 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	shooooot(t_transform t, int type)
 	t_entity		*ntt;
 	t_projectile	*projectile;
 
-	logger(LOGGER_INFO, "Shooting projectile!");
+	logger(LOGGER_ACTION, "Shot projectile!");
 	texture = NULL;
 	if (type == TYPE_FIRE)
 		texture = mlx_load_png("./assets/entities/orbs/fire_orb.png");
@@ -52,5 +52,5 @@ void	tick_projectile(t_entity *self)
 	self->transform.pos = new_pos;
 	game()->dirty = true;
 	if (MARK_DIRTY_LOGGING)
-		logger(LOGGER_INFO, "Projectile moved, set dirty to true!\n");
+		logger(LOGGER_DIRTY, "Projectile moved, set dirty to true!\n");
 }

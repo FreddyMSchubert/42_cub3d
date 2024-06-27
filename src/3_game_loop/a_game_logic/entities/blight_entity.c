@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 21:57:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/27 15:55:51 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 18:51:04 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	move_self(t_entity *self)
 	{
 		game()->dirty = true;
 		if (MARK_DIRTY_LOGGING)
-			logger(LOGGER_INFO, "Blight moved, marking dirty!");
+			logger(LOGGER_DIRTY, "Blight moved, marking dirty!");
 	}
 }
 
@@ -75,7 +75,7 @@ void	tick_blight(t_entity *self)
 			blight->state = BLIGHT_STATE_STANDING;
 			game()->dirty = true;
 			if (MARK_DIRTY_LOGGING)
-				logger(LOGGER_INFO, "Blight stopped, marking dirty!");
+				logger(LOGGER_DIRTY, "Blight stopped, marking dirty!");
 		}
 	}
 	else if (blight->state == BLIGHT_STATE_STANDING)
@@ -96,7 +96,7 @@ void	on_collision_blight(t_entity *self, t_entity *other)
 		return ;
 	if (!a_beats_b(((t_projectile *)other->data)->type, blight->type))
 		return ;
-	logger(LOGGER_INFO, "Blight killed by projectile!");
+	logger(LOGGER_ACTION, "Blight killed by projectile!");
 	delete_entity(self);
 	delete_entity(other);
 	game()->dirty = true;
