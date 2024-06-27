@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/27 17:51:39 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 18:50:00 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@
 # define LOGGER_WARNING 'w'
 # define LOGGER_INFO 'i'
 # define LOGGER_STEP 's'
+# define LOGGER_ACTION 'a'
+# define LOGGER_DIRTY 'd'
 
 /* ----- EXIT CODES ----- */
 # define EXIT_SUCCESS 0

@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/27 18:19:23 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 18:38:27 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,36 @@ void	start_calc_entities(t_entity **ntts, t_vec2 *entity_intersects, double wall
 {
 	double		dist;
 	int			i;
+	int			j;
+	int			farthest_index;
+	double		max_dist;
+	int			count;
 
-	i = 0;
-	while (ntts[i])
+	count = 0;
+	while (ntts[count])
+		count++;
+	j = -1;
+	while (++j < count)
 	{
-		dist = pos_distance(player()->transform.pos, entity_intersects[i]);
-		if (dist < wall_dist || RENDER_ENTITIES_THROUGH_WALLS)
-			calc_entity(ray_index, entity_intersects[i], ntts[i]);
-		i++;
+		max_dist = -1.0;
+		farthest_index = -1;
+		i = -1;
+		while (++i < count)
+		{
+			if (ntts[i] == NULL)
+				continue ;
+			dist = pos_distance(player()->transform.pos, entity_intersects[i]);
+			if (dist > max_dist)
+			{
+				max_dist = dist;
+				farthest_index = i;
+			}
+		}
+		if (farthest_index != -1 && (max_dist < wall_dist || RENDER_ENTITIES_THROUGH_WALLS))
+		{
+			calc_entity(ray_index, entity_intersects[farthest_index], ntts[farthest_index]);
+			ntts[farthest_index] = NULL;
+		}
 	}
 }
 

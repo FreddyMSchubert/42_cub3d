@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 15:53:33 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/27 15:44:15 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 18:51:44 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	tick_key(t_entity *self)
 {
 	if (pos_distance(player()->transform.pos, self->transform.pos) > KEY_COLLISION_DISTANCE)
 		return ;
-	logger(LOGGER_INFO, "Key collected!");
+	logger(LOGGER_ACTION, "Key collected!");
 	player()->inv.keys++;
 	delete_entity(self);
 }

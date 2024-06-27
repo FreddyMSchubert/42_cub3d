@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.22.1] - 27.06.2024 - Freddy - `47-enhanced-entity-rendering`
+- Entities now render in correct order but sometimes theres holes in them.
+- Enhanced logging
+
 ## [0.22.0] - 27.06.2024 - Freddy - `47-enhanced-entity-rendering`
 - Made entities render behind each other. It works well, except they are not properly sorted, so they don't render in order.
 

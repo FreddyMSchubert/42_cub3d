@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:57:29 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/27 15:44:08 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 18:56:12 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	tick_door(t_entity *self)
 	{
 		if (pos_distance(player()->transform.pos, self->transform.pos) > DOOR_OPEN_DISTANCE || player()->inv.keys < 1)
 			return ;
-		logger(LOGGER_INFO, "Door unlocked!");
+		logger(LOGGER_ACTION, "Door unlocked!");
 		player()->inv.keys--;
 		door->state = DOOR_STATE_OPENING;
 		door->close_pos = self->transform.pos;
@@ -41,7 +41,7 @@ void	tick_door(t_entity *self)
 		self->transform.pos.y += ((door->open_pos.y - door->close_pos.y) * DOOR_OPEN_SPEED);
 		game()->dirty = true;
 		if (MARK_DIRTY_LOGGING)
-			logger(LOGGER_INFO, "Door opening, set dirty to true!\n");
+			logger(LOGGER_DIRTY, "Door opening, set dirty to true!");
 		if (door->door_open_progress <= 0)
 		{
 			self->transform.pos = door->open_pos;
