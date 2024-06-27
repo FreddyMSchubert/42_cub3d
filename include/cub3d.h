@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/26 22:18:27 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 15:44:37 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,12 @@
 # define EXIT_INVALID_ARGS 1
 # define EXIT_INVALID_FILE_EXTENSION 2
 # define EXIT_MAP_ERROR 3
+
+/* ----- ENTITY TPYES ----- */
+# define TYPE_WATER 0
+# define TYPE_FIRE 1
+# define TYPE_AIR 2
+# define TYPE_EARTH 3
 
 /* ---- FUNCTIONS ----- */
 // lets mirror the file system in here. the less ---, the deeper the file
@@ -171,6 +177,7 @@ t_transform			get_wall_from_intersect(t_vec2 intersect);
 
 // --- entities
 void				tick_entities(void);
+void				collide_entities(void);
 // - goal
 void				tick_goal(t_entity *self);
 // - door
@@ -184,6 +191,7 @@ void				tick_projectile(t_entity *self);
 void				shooooot(t_transform t, int type);
 // - blight
 void				tick_blight(t_entity *self);
+void				on_collision_blight(t_entity *self, t_entity *other);
 
 # define WALL_ORIENTATION_HORIZONTAL 0
 # define WALL_ORIENTATION_VERTICAL 1
@@ -248,5 +256,8 @@ t_vec2				vec2_sub(t_vec2 a, t_vec2 b);
 // random
 double				random_val(void);
 int					random_int(int min, int max);
+
+// blights
+bool				a_beats_b(int a, int b);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   1_raycast_walls.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/26 12:55:35 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/27 15:14:39 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static t_entity	*perform_entity_raycast(int i, t_vec2 *entity_intersection)
 	double		ray_angle;
 	t_entity	*entity;
 
+	entity = NULL;
 	p_angle = dir_vec_to_deg(player()->transform.rot);
 	ray_angle = get_fisheye_corrected_ray_angle(i);
 	ray_angle += p_angle;
@@ -63,6 +64,7 @@ void	raycast_walls(void)
 	t_entity	*ntt;
 
 	ray_index = -1;
+	ntt = NULL;
 	while (++ray_index < RAYCASTS_PER_DEG * FOV_DEG)
 	{
 		wall_intersect = perform_wall_raycast(ray_index);

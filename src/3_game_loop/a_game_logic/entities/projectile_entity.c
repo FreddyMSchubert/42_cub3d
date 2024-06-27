@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:56:45 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/26 22:25:15 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 15:44:23 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,25 @@
 void	shooooot(t_transform t, int type)
 {
 	mlx_texture_t	*texture;
+	t_entity		*ntt;
+	t_projectile	*projectile;
 
 	logger(LOGGER_INFO, "Shooting projectile!");
 	texture = NULL;
-	if (type == ORB_TYPE_FIRE)
+	if (type == TYPE_FIRE)
 		texture = mlx_load_png("./assets/entities/orbs/fire_orb.png");
-	else if (type == ORB_TYPE_AIR)
+	else if (type == TYPE_AIR)
 		texture = mlx_load_png("./assets/entities/orbs/air_orb.png");
-	else if (type == ORB_TYPE_WATER)
+	else if (type == TYPE_WATER)
 		texture = mlx_load_png("./assets/entities/orbs/water_orb.png");
-	else if (type == ORB_TYPE_EARTH)
+	else if (type == TYPE_EARTH)
 		texture = mlx_load_png("./assets/entities/orbs/earth_orb.png");
 	if (!texture)
 		logger(LOGGER_ERROR, "Failed to load projectile texture!\n");
-	create_entity(t, type, texture, true, tick_projectile);
+	ntt = create_entity(t, PROJECTILE_E, texture, true, tick_projectile);
+	projectile = gc_malloc(sizeof(t_orb));
+	projectile->type = type;
+	ntt->data = projectile;
 }
 
 void	tick_projectile(t_entity *self)

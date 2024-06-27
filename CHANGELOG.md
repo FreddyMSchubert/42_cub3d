@@ -1,5 +1,11 @@
 # Changelog
 
+### [0.21.7] - 27.06.2024 - Freddy - `45-enemies`
+- Functional collision system with killing blights
+- Implemented x beats x method in a simple function
+- Fixed incorrect projectile entity setup
+- Made correct projectiles kill the correct blight
+
 ### [0.21.6] - 27.06.2024 - Freddy - `45-enemies`
 - Improved blight movement system. They will stand, walk, and never go too far away from their spawn.
 

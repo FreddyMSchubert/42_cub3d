@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   entity.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 10:51:45 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/26 14:31:23 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/27 15:47:52 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ t_entity	*create_entity(t_transform trans, t_entity_type type, mlx_texture_t *te
 	entity->texture = tex;
 	entity->is_billboard = is_billboard;
 	entity->tick = tick;
+	entity->on_collision = NULL;
 	entity->data = NULL;
 	ft_lstadd_back(&game()->entities, ft_lstnew(entity));
 	return (entity);

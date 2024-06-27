@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/27 12:21:28 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/27 14:28:59 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ typedef enum e_entity_type
 	DOOR_E,
 	KEY_E,
 	ORB_E,
+	PROJECTILE_E,
 	BLIGHT_E
 }	t_entity_type;
 
@@ -139,6 +140,7 @@ typedef struct s_entity
 	bool			is_billboard;
 
 	void			(*tick)(t_entity *self);
+	void			(*on_collision)(t_entity *self, t_entity *collider);
 
 	void			*data;
 }	t_entity;
@@ -164,22 +166,19 @@ typedef struct s_door
 
 // - ORB
 
-# define ORB_TYPE_WATER 0
-# define ORB_TYPE_FIRE 1
-# define ORB_TYPE_EARTH 2
-# define ORB_TYPE_AIR 3
-
 typedef struct s_orb
 {
 	int	type;
 }	t_orb;
 
-// - BLIGHT
+// - PROJECTILE
 
-# define BLIGHT_TYPE_WATER 0
-# define BLIGHT_TYPE_FIRE 1
-# define BLIGHT_TYPE_EARTH 2
-# define BLIGHT_TYPE_AIR 3
+typedef struct s_projectile
+{
+	int	type;
+}	t_projectile;
+
+// - BLIGHT
 
 # define BLIGHT_STATE_WALKING 0
 # define BLIGHT_STATE_ATTACKING 1

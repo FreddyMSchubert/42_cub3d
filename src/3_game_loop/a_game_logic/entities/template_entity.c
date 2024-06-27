@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   goal_entity.c                                      :+:      :+:    :+:   */
+/*   template_entity.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/25 11:34:27 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/27 15:44:12 by freddy           ###   ########.fr       */
+/*   Created: 2024/06/25 11:57:29 by freddy            #+#    #+#             */
+/*   Updated: 2024/06/27 15:31:58 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/cub3d.h"
 
-void	tick_goal(t_entity *self)
+// called every frame
+void	tick_template(t_entity *self)
 {
-	if (pos_distance(player()->transform.pos, self->transform.pos) > GOAL_COLLISION_DISTANCE)
-		return ;
-	logger(LOGGER_INFO, "Goal reached!");
-	cub_exit("Thanks for playing!", 0);
+	(void)self;
+}
+
+// called when two entities have are closer together than DEFAULT_COLLISION_DISTANCE
+// note that a player is not considered an entity. player collisions should be handled in tick
+void	on_collision_template(t_entity *self, t_entity *other)
+{
+	(void)self;
+	(void)other;
 }

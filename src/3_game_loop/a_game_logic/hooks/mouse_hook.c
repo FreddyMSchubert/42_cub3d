@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_hook.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:50:17 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/26 14:39:29 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/27 14:32:57 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	mouse_click_hook(mouse_key_t button, action_t action, modifier_key_t mods, 
 	(void)param;
 	(void)mods;
 	if (button == MLX_MOUSE_BUTTON_LEFT && action == MLX_PRESS && player()->inv.air_orbs > 0)
-		shooooot(player()->transform, ORB_TYPE_AIR);
+		shooooot(player()->transform, TYPE_WATER);
 }
 
 void	cursor_hook(double x, double y, void *param)

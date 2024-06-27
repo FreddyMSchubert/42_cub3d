@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop_hook.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:28 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/26 12:57:27 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/27 15:40:03 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	loop_hook(void *param)
 		handle_mouse_mv();
 		handle_player_move();
 		tick_entities();
+		collide_entities();
 		if (game()->dirty == true)
 		{
 			if (MARK_DIRTY_LOGGING)

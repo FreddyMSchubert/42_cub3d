@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   orb_entity.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:42:00 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/26 14:40:21 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/27 15:53:34 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ void	tick_orb(t_entity *self)
 	if (pos_distance(player()->transform.pos, self->transform.pos) > GOAL_COLLISION_DISTANCE)
 		return ;
 	orb = (t_orb *)self->data;
-	if (orb->type == ORB_TYPE_EARTH)
+	if (orb->type == TYPE_EARTH)
 		player()->inv.earth_orbs++;
-	else if (orb->type == ORB_TYPE_FIRE)
+	else if (orb->type == TYPE_FIRE)
 		player()->inv.fire_orbs++;
-	else if (orb->type == ORB_TYPE_WATER)
+	else if (orb->type == TYPE_WATER)
 		player()->inv.water_orbs++;
-	else if (orb->type == ORB_TYPE_AIR)
+	else if (orb->type == TYPE_AIR)
 		player()->inv.air_orbs++;
 	logger(LOGGER_INFO, "Picked up orb!");
 	delete_entity(self);

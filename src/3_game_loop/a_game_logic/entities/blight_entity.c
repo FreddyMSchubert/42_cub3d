@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   blight_entity.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 21:57:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/27 12:38:15 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/27 15:55:51 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,19 @@ void	tick_blight(t_entity *self)
 			blight->state = BLIGHT_STATE_WALKING;
 		}
 	}
+}
+
+void	on_collision_blight(t_entity *self, t_entity *other)
+{
+	t_blight	*blight;
+
+	blight = (t_blight *)self->data;
+	if (!(other->type == PROJECTILE_E))
+		return ;
+	if (!a_beats_b(((t_projectile *)other->data)->type, blight->type))
+		return ;
+	logger(LOGGER_INFO, "Blight killed by projectile!");
+	delete_entity(self);
+	delete_entity(other);
+	game()->dirty = true;
 }

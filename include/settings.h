@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   settings.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/27 12:40:09 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/27 15:31:14 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@
 # define KEY_COLLISION_DISTANCE 0.5
 # define CLOSED_DOOR_ALLOWED_WALK_DISTANCE 0.4
 # define DOOR_OPEN_DISTANCE 1.0
+# define DEFAULT_COLLISION_DISTANCE 0.5
 
 // speed
 
