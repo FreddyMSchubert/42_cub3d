@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/28 12:37:24 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/28 12:44:07 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ int	*get_amount_of_item(int index)
 {
 	if (index == 0)
 		return (&(player()->inv.keys));
-	else if (index == 1)
+	else if (index == TYPE_WATER + 1)
 		return (&(player()->inv.water_orbs));
-	else if (index == 2)
+	else if (index == TYPE_FIRE + 1)
 		return (&(player()->inv.fire_orbs));
-	else if (index == 3)
+	else if (index == TYPE_EARTH + 1)
 		return (&(player()->inv.earth_orbs));
-	else if (index == 4)
+	else if (index == TYPE_AIR + 1)
 		return (&(player()->inv.air_orbs));
 	return (0);
 }
@@ -56,13 +56,13 @@ mlx_texture_t	*get_tex_by_index(int index)
 		return (NULL);
 	if (index == 0)
 		tex = mlx_load_png("./assets/textures/entities/key.png");
-	else if (index == 1)
+	else if (index == TYPE_WATER + 1)
 		tex = mlx_load_png("./assets/textures/entities/orbs/water.png");
-	else if (index == 2)
+	else if (index == TYPE_FIRE + 1)
 		tex = mlx_load_png("./assets/textures/entities/orbs/fire.png");
-	else if (index == 3)
+	else if (index == TYPE_EARTH + 1)
 		tex = mlx_load_png("./assets/textures/entities/orbs/earth.png");
-	else if (index == 4)
+	else if (index == TYPE_AIR + 1)
 		tex = mlx_load_png("./assets/textures/entities/orbs/air.png");
 	else
 	 	tex = NULL;
