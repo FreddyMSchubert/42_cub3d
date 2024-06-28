@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   BLIGHT_NTTntity.c                                    :+:      :+:    :+:   */
+/*   blight_entity.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 21:57:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/28 10:06:03 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/28 17:48:17 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,10 @@ void	tick_blight(t_entity *self)
 	{
 		if (self->frames_since_state_change > BLIGHT_ATTACK_ANIMATION_FRAMES)
 		{
-			self->transform.rot.x = self->transform.rot.x - player()->transform.rot.x;
-			self->transform.rot.y = self->transform.rot.y - player()->transform.rot.y;
+			self->transform.rot.x = player()->transform.pos.x - self->transform.pos.x;
+			self->transform.rot.y = player()->transform.pos.y - self->transform.pos.y;
+			self->transform.rot = scale_vector(self->transform.rot, 1);
+			self->transform.rot = deg_to_dir_vec(dir_vec_to_deg(self->transform.rot) + (random_val() * BLIGHT_SHOOTING_INACCURACY_DEG - (BLIGHT_SHOOTING_INACCURACY_DEG / 2)));
 			shooooot(self->transform, blight->type);
 			blight->state = BLIGHT_STATE_WALKING;
 			self->frames_since_state_change = 0;

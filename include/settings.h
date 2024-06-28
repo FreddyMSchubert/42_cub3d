@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/28 13:17:49 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/28 17:47:45 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@
 # define BLIGHT_MINIUM_ROTATION_DEG 45
 # define BLIGHT_MAX_SPAWN_DISTANCE 10
 # define BLIGHT_SPAWN_RETURNING_DEG_VARIATION 60
+# define BLIGHT_SHOOTING_INACCURACY_DEG 30
 
 // animations
 
