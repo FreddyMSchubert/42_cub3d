@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.22.9] - 28.06.2024 - Freddy
+- Fixed blight entity creating stack overflow when infinitely rotating stuck blight enitty
+
 ### [0.22.8] - 28.06.2024 - Freddy
 - Made entities use normal malloc instead of gc_malloc (otherwise any created entity would stay in the gc forever)
 - Entities now just get cleaned up when leaving using gc_exit
