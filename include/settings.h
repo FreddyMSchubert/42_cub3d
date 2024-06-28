@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/28 17:47:45 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/28 18:07:08 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,16 @@
 // --- Quality of Life
 
 # define MOUSE_SENSITIVITY 0.45
+
+// Map Making
+
+# define MIN_MAP_SIZE 5
+# define MAX_MAP_SIZE 30
+# define MIN_ROOMS_AMOUNT 0
+# define MAX_ROOMS_AMOUNT 3
+# define MIN_ROOM_SIZE 2
+# define MAX_ROOM_SIZE 5
+# define WALL_REMOVAL_CHANCE_PERCENT 20
 
 // --- Window Setup
 

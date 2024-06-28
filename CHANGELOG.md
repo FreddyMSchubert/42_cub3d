@@ -1,5 +1,10 @@
 # Changelog
 
+### [0.22.13] - 28.06.2024 - Freddy
+- Better goal texture
+- Readded map maker functionality
+- tick entity segfaulting if there are no entities fix
+
 ### [0.22.12] - 28.06.2024 - Freddy
 - Blights not properly shooting at you if youre not looking at you fix (Calculated shooting angle based on rot not pos)
 - BLIGHT_SHOOTING_INACCURACY_DEG to modify shooting accuracy of a blight

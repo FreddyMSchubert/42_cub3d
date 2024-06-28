@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   random.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 22:02:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/27 12:06:20 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/28 18:13:02 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,11 @@ static inline double	random_seed(void)
 	uint64_t	buf;
 
 	rand_val = mlx_get_time();
-	mlx_get_mouse_pos(game()->mlx, &mouse_pos_x, &mouse_pos_y);
-	rand_val *= mouse_pos_x * mouse_pos_y;
+	if (game()->mlx)
+	{
+		mlx_get_mouse_pos(game()->mlx, &mouse_pos_x, &mouse_pos_y);
+		rand_val *= mouse_pos_x * mouse_pos_y;
+	}
 	fd = open("/dev/urandom", O_RDONLY);
 	if (fd < 0)
 		return (rand_val);

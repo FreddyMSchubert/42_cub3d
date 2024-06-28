@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/28 13:41:18 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/28 18:06:45 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,19 @@ t_persistent_data	*game(void);
 t_list				**gc(void);
 t_player			*player(void);
 
-// ----- 0_texture_init
 void				load_static_textures(void);
+
+// ----- 0_map_generation
+// mapmaker
+void				generate_map(void);
+// features
+void				remove_walls(char **maze, int height, int width);
+void				place_player_spawn(char **maze, t_scale	map_scale);
+void				add_rooms(char **maze, t_scale scale, int room_count);
+// file writer
+void				write_cub_file(char **maze, int height, int width, char *filename);
+// util
+int					random_int(int min, int max);
 
 // ----- 1_input_parsing
 void				parse_input(char	*filepath);

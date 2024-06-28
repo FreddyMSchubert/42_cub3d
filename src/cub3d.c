@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 07:33:54 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/26 15:28:40 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/28 18:11:19 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 bool	check_args_validity(int argc, char **argv)
 {
-	if (argc != 2)
+	if (argc != 1 && argc != 2)
 	{
 		logger(LOGGER_ERROR,
 			"Invalid number of arguments. Usage ./cub3d <path to map>\n");
 		return (false);
 	}
-	if (strlen(argv[1]) > 4 \
+	if (argc == 2 && strlen(argv[1]) > 4 \
 				&& !str_is_equal(&(argv[1][strlen(argv[1]) - 4]), ".cub"))
 	{
 		logger(LOGGER_ERROR,
@@ -37,7 +37,16 @@ int	main(int argc, char **argv)
 	if (GREETING)
 		printf("🧊 %sHello cubic world!%s 🧊\n", ANSI_COLOR_CYAN, ANSI_RESET);
 	load_static_textures();
-	parse_input(argv[1]);
+	if (argc == 1)
+	{
+		logger(LOGGER_STEP, "Map Generation");
+		generate_map();
+		parse_input("generated_map.cub");
+	}
+	else
+	{
+		parse_input(argv[1]);
+	}
 	logger(LOGGER_STEP, "Mlx Setup");
 	setup_mlx();
 	logger(LOGGER_STEP, "Gameloop");
