@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_hook.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:50:17 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/26 15:26:30 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/26 16:28:01 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ void	scroll_hook(double xdelta, double ydelta, void *param)
 	if (ydelta != 0)
 	{
 		if (ydelta > 0)
-			cycle_inventory(1, false);
-		else
 			cycle_inventory(-1, false);
+		else
+			cycle_inventory(1, false);
+		game()->dirty = true;
 	}
 }
 

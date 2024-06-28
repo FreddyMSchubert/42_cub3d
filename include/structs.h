@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/26 15:16:45 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/28 10:42:17 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,14 +100,17 @@ typedef struct s_persistent_data
 
 typedef struct s_inventory
 {
-	int	num_available_items;
-	int	current_index;
+	int		num_available_items;
+	int		current_index;
 
-	int	keys;
-	int	water_orbs;
-	int	fire_orbs;
-	int	earth_orbs;
-	int	air_orbs;
+	int		*current_amount;
+	char	*curr_texture;
+
+	int		keys;
+	int		water_orbs;
+	int		fire_orbs;
+	int		earth_orbs;
+	int		air_orbs;
 }	t_inventory;
 
 typedef struct s_player

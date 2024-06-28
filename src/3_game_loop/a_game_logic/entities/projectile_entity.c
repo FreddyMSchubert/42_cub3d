@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   projectile_entity.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:56:45 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/26 14:46:14 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/27 22:10:47 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	shooooot(t_transform t, int type)
 	if (!texture)
 		logger(LOGGER_ERROR, "Failed to load projectile texture!\n");
 	projectile = create_entity(t, type, texture, true, tick_projectile);
+	(void)projectile;
 }
 
 void	tick_projectile(t_entity *self)
@@ -51,4 +52,5 @@ void	tick_projectile(t_entity *self)
 	game()->dirty = true;
 	if (MARK_DIRTY_LOGGING)
 		logger(LOGGER_INFO, "Projectile moved, set dirty to true!\n");
+	(void)orb;
 }

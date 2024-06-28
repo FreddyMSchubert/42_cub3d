@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_setup.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 08:28:05 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/26 15:16:20 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/28 10:40:49 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,6 @@ void	setup_player(void)
 	player()->inv.air_orbs = 0;
 	player()->inv.num_available_items = 5;
 	player()->inv.current_index = 0;
+	player()->inv.current_amount = gc_malloc(sizeof(int));
+	*(player()->inv.current_amount) = -1;
 }

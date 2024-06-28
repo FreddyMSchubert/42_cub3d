@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/26 15:26:07 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/28 10:29:40 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,7 @@ void				draw_square(int x, int y, int size, int color);
 void				draw_square_hud(int x, int y, int size, int color);
 void				draw_square_world(int x, int y, int size, int color);
 void				draw_inventory(void);
+void				texture_draw(mlx_texture_t *texture, t_scale pos, t_scale size);
 void				cycle_inventory(int direction, bool direct);
 // minimap
 void				hud_draw_minimap(void);
