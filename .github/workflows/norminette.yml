@@ -36,6 +36,7 @@ jobs:
             echo "![Norminette](https://img.shields.io/badge/Norminette-passing-brightgreen)" > badge.md
           else
             echo "![Norminette](https://img.shields.io/badge/Norminette-failing-red)" > badge.md
+          fi
 
       - name: Upload status badge
         if: always()
