@@ -6,11 +6,14 @@
 /*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:50:17 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/26 16:28:01 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/28 12:35:31 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../include/cub3d.h"
+#include <stdint.h>
+
+int	*get_amount_of_item(int index);
 
 void	handle_mouse_mv(void)
 {
@@ -48,11 +51,16 @@ void	scroll_hook(double xdelta, double ydelta, void *param)
 
 void	mouse_click_hook(mouse_key_t button, action_t action, modifier_key_t mods, void* param)
 {
+	int	*amount;
+
 	(void)param;
 	(void)mods;
-	if (button == MLX_MOUSE_BUTTON_LEFT && action == MLX_PRESS && player()->inv.air_orbs > 0)
+	amount = get_amount_of_item(player()->inv.current_index);
+	if (button == MLX_MOUSE_BUTTON_LEFT && action == MLX_PRESS
+		&& *amount)
 	{
-		shooooot(player()->transform, TYPE_WATER);
+		shooooot(player()->transform, player()->inv.current_index - 1);
+		(*amount)--;
 		logger(LOGGER_ACTION, "Shot projectile!");
 	}
 }

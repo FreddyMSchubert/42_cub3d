@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:50 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/28 10:17:53 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/28 12:32:55 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static inline void	inventory_press(mlx_key_data_t keydata)
 		{
 			player()->inv.current_index = keydata.key - MLX_KEY_1;
 			game()->dirty = true;
-			printf("current index: %d\n", player()->inv.current_index);
 		}
 	}
 }

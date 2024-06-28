@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/28 11:03:58 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/28 12:37:24 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,18 @@ static inline void	draw_rectangle(t_scale pos, t_scale size, t_color color)
 	}
 }
 
-int	get_amount_of_item(int index)
+int	*get_amount_of_item(int index)
 {
-	t_inventory	inv;
-
-	inv = player()->inv;
 	if (index == 0)
-		return (inv.keys);
+		return (&(player()->inv.keys));
 	else if (index == 1)
-		return (inv.water_orbs);
+		return (&(player()->inv.water_orbs));
 	else if (index == 2)
-		return (inv.fire_orbs);
+		return (&(player()->inv.fire_orbs));
 	else if (index == 3)
-		return (inv.earth_orbs);
+		return (&(player()->inv.earth_orbs));
 	else if (index == 4)
-		return (inv.air_orbs);
+		return (&(player()->inv.air_orbs));
 	return (0);
 }
 
@@ -55,18 +52,18 @@ mlx_texture_t	*get_tex_by_index(int index)
 {
 	mlx_texture_t	*tex;
 
-	if (!get_amount_of_item(index) || index < 0 || index > player()->inv.num_available_items)
+	if (!*get_amount_of_item(index) || index < 0 || index > player()->inv.num_available_items)
 		return (NULL);
 	if (index == 0)
-		tex = mlx_load_png("./assets/entities/key.png");
+		tex = mlx_load_png("./assets/textures/entities/key.png");
 	else if (index == 1)
-		tex = mlx_load_png("./assets/entities/air_orb.png");
+		tex = mlx_load_png("./assets/textures/entities/orbs/water.png");
 	else if (index == 2)
-		tex = mlx_load_png("./assets/entities/fire_orb.png");
+		tex = mlx_load_png("./assets/textures/entities/orbs/fire.png");
 	else if (index == 3)
-		tex = mlx_load_png("./assets/entities/fire_orb.png");
+		tex = mlx_load_png("./assets/textures/entities/orbs/earth.png");
 	else if (index == 4)
-		tex = mlx_load_png("./assets/entities/air_orb.png");
+		tex = mlx_load_png("./assets/textures/entities/orbs/air.png");
 	else
 	 	tex = NULL;
 	return (tex);
@@ -88,7 +85,7 @@ static void draw_item_at(unsigned int index, int x, int y)
 		return ;
 	texture_draw(tex, (t_scale){x + 1, y + 1}, (t_scale){49, 46});
 	free(tex); // TODO: check if this is the right way
-	amount = ft_itoa(get_amount_of_item(index)); // TODO: make this the actual amount
+	amount = ft_itoa(*get_amount_of_item(index)); // TODO: make this the actual amount
 	if (!amount)
 	{
 		mlx_put_string(game()->mlx, "?", x, y);
@@ -144,6 +141,7 @@ void	cycle_inventory(int direction, bool direct)
 				- 1;
 		}
 	}
+	printf("Current index: %d\n", player()->inv.current_index);
 }
 
 void	draw_hand_item(int pos_x, int pos_y, int size_x, int size_y)
