@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/28 12:44:07 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/28 13:08:20 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,26 @@ mlx_texture_t	*get_tex_by_index(int index)
 	return (tex);
 }
 
+mlx_image_t	**get_amount_text_by_index(int index)
+{
+	if (index == 0)
+		return (&(player()->inv.text_amount_key));
+	else if (index == TYPE_WATER + 1)
+		return (&(player()->inv.text_amount_water));
+	else if (index == TYPE_FIRE + 1)
+		return (&(player()->inv.text_amount_fire));
+	else if (index == TYPE_EARTH + 1)
+		return (&(player()->inv.text_amount_earth));
+	else
+		return (&(player()->inv.text_amount_air));
+}
+
 static void draw_item_at(unsigned int index, int x, int y)
 {
 	mlx_texture_t	*tex;
 	t_inventory		inv;
 	char			*amount;
+	mlx_image_t		**amount_text;
 
 	inv = player()->inv;
 	tex = NULL;
@@ -84,14 +99,15 @@ static void draw_item_at(unsigned int index, int x, int y)
 	if (!tex)
 		return ;
 	texture_draw(tex, (t_scale){x + 1, y + 1}, (t_scale){49, 46});
-	free(tex); // TODO: check if this is the right way
-	amount = ft_itoa(*get_amount_of_item(index)); // TODO: make this the actual amount
+	amount = ft_itoa(*get_amount_of_item(index));
 	if (!amount)
 	{
 		mlx_put_string(game()->mlx, "?", x, y);
 		return ;
 	}
-	mlx_put_string(game()->mlx, amount, x, y);
+	amount_text = get_amount_text_by_index(index);
+	if (!*amount_text)
+		*amount_text = mlx_put_string(game()->mlx, amount, x, y);
 	free(amount);
 }
 
@@ -141,7 +157,6 @@ void	cycle_inventory(int direction, bool direct)
 				- 1;
 		}
 	}
-	printf("Current index: %d\n", player()->inv.current_index);
 }
 
 void	draw_hand_item(int pos_x, int pos_y, int size_x, int size_y)

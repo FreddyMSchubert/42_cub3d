@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:50:17 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/28 12:35:31 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/28 13:07:40 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ void	scroll_hook(double xdelta, double ydelta, void *param)
 
 void	mouse_click_hook(mouse_key_t button, action_t action, modifier_key_t mods, void* param)
 {
-	int	*amount;
+	int				*amount;
+	mlx_image_t		**amount_text;
 
 	(void)param;
 	(void)mods;
@@ -59,8 +60,11 @@ void	mouse_click_hook(mouse_key_t button, action_t action, modifier_key_t mods, 
 	if (button == MLX_MOUSE_BUTTON_LEFT && action == MLX_PRESS
 		&& *amount)
 	{
+		amount_text = get_amount_text_by_index(player()->inv.current_index);
 		shooooot(player()->transform, player()->inv.current_index - 1);
 		(*amount)--;
+		mlx_delete_image(game()->mlx, *amount_text);
+		*amount_text = NULL;
 		logger(LOGGER_ACTION, "Shot projectile!");
 	}
 }
