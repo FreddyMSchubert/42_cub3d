@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 22:51:32 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/28 18:15:23 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/28 19:01:15 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,18 +96,18 @@ static void	write_colors(int fd)
 void	write_cub_file(char **maze, int height, int width, char *filename)
 {
 	int	fd;
-	int	i;
-	int	j;
+	int	x;
+	int	y;
 
 	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	write_parameters(fd);
 	write_colors(fd);
-	i = -1;
-	while (++i < height)
+	y = -1;
+	while (++y < height)
 	{
-		j = -1;
-		while (++j < width)
-			write(fd, &maze[i][j], 1);
+		x = -1;
+		while (++x < width)
+			write(fd, &maze[y][x], 1);
 		write(fd, "\n", 1);
 	}
 	close(fd);

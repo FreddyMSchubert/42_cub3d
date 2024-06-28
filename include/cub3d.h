@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/28 18:06:45 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/28 19:23:50 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -278,6 +278,11 @@ t_vec2				vec2_sub(t_vec2 a, t_vec2 b);
 // random
 double				random_val(void);
 int					random_int(int min, int max);
+void				init_random_seed(void);
+
+// math
+int					min(int a, int b);
+int					max(int a, int b);
 
 // blights
 bool				a_beats_b(int a, int b);

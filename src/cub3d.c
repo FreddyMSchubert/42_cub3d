@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 07:33:54 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/28 18:11:19 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/28 18:34:55 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	main(int argc, char **argv)
 	if (GREETING)
 		printf("🧊 %sHello cubic world!%s 🧊\n", ANSI_COLOR_CYAN, ANSI_RESET);
 	load_static_textures();
+	init_random_seed();
 	if (argc == 1)
 	{
 		logger(LOGGER_STEP, "Map Generation");

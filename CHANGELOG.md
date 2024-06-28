@@ -1,5 +1,12 @@
 # Changelog
 
+
+### [0.22.14] - 28.06.2024 - Freddy
+- Reworked mapmaker, clearer now
+	- Maze segfault fix
+- Made max room size relative to total generated map size so rooms dont take up all of the map
+- Math min & max utils
+
 ### [0.22.13] - 28.06.2024 - Freddy
 - Better goal texture
 - Readded map maker functionality
