@@ -6,16 +6,18 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 13:57:51 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/25 11:42:14 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/28 13:57:27 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void	init_entity()
+static inline void	init_entity(void)
 {
-	player()->spawn_transform.rot = (t_vec2){-1, -1};
-	player()->spawn_transform.pos = (t_vec2){-1, -1};
+	player()->spawn_transform.rot.x = -1;
+	player()->spawn_transform.rot.y = -1;
+	player()->spawn_transform.pos.x = -1;
+	player()->spawn_transform.pos.y = -1;
 	player()->transform = player()->spawn_transform;
 }
 

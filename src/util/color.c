@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:56:27 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/26 12:38:39 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/28 13:41:11 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,20 +37,6 @@ t_color	with_opacity(t_color in, int opacity)
 	result.b = in.b;
 	result.a = opacity;
 	return (result);
-}
-
-// logs without new line for your specific formatting needs
-void	log_color_from_t_color(t_color color)
-{
-	printf("r: %d, g: %d, b: %d, a: %d", color.r, color.g, color.b, color.a);
-}
-
-void	log_color_from_int(int color)
-{
-	t_color	c;
-
-	c = int_to_t_color(color);
-	log_color_from_t_color(c);
 }
 
 int	rgba_to_int(int r, int g, int b, int a)

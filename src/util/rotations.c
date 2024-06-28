@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 10:56:39 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/24 11:04:45 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/28 13:36:28 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,5 @@ double	normalize_degrees(double degrees)
 	degrees = fmod(degrees, 360.0);
 	if (degrees < 0)
 		degrees += 360.0;
-	return degrees;
-}
-
-// if direction is 1, rotate clockwise, if -1, rotate counterclockwise
-t_vec2	rotate_vector_by_90_degrees(t_vec2 v, int direction)
-{
-	t_vec2	rotated;
-
-	rotated.x = v.y * direction;
-	rotated.y = -v.x * direction;
-	return (rotated);
+	return (degrees);
 }

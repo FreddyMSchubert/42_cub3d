@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:12:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/25 16:07:00 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/28 14:02:56 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,16 @@ bool	set_entity_spawn(char dir, t_vec2 pos, t_tile_type ***map)
 
 	if (++player_count > 1)
 		cub_exit("Multiple player spawns detected!", -1);
+	player()->spawn_transform.rot.x = 0;
+	player()->spawn_transform.rot.y = 0;
 	if (dir == 'N')
-		player()->spawn_transform.rot = (t_vec2){-1, 0};
+		player()->spawn_transform.rot.x = -1;
 	else if (dir == 'S')
-		player()->spawn_transform.rot = (t_vec2){1, 0};
+		player()->spawn_transform.rot.x = 1;
 	else if (dir == 'E')
-		player()->spawn_transform.rot = (t_vec2){0, 1};
+		player()->spawn_transform.rot.y = 1;
 	else if (dir == 'W')
-		player()->spawn_transform.rot = (t_vec2){0, -1};
+		player()->spawn_transform.rot.y = -1;
 	else
 	{
 		logger(LOGGER_WARNING, "Player spawn look dir is not valid dir");
@@ -65,25 +67,21 @@ bool	set_value(char	**value, char	*set)
 	return (true);
 }
 
-bool	set_color(t_color *color, char *color_val) // TODO: check if all is a number
+bool	set_color(t_color *color, char *color_val)
 {
 	char	**cols;
 
 	if (!color_val || !regex(color_val, "0123456789,"))
 		return (false);
 	cols = ft_split(color_val, ',');
-	if (!cols)
-		return (false);
-	if (split_len(cols) < 3 || split_len(cols) > 4)
+	if (!cols || split_len(cols) < 3 || split_len(cols) > 4)
 		return (free_split(cols, false));
 	color->r = ft_atoi(cols[0]);
-	if (!(color->r < 256 && color->r >= 0))
-		return (free_split(cols, false));
 	color->g = ft_atoi(cols[1]);
-	if (!(color->g < 256 && color->g >= 0))
-		return (free_split(cols, false));
 	color->b = ft_atoi(cols[2]);
-	if (!(color->b < 256 && color->b >= 0))
+	if (!(color->r < 256 && color->r >= 0) || \
+		!(color->g < 256 && color->g >= 0) || \
+		!(color->b < 256 && color->b >= 0))
 		return (free_split(cols, false));
 	if (split_len(cols) == 4)
 	{

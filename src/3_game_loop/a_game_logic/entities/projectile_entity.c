@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:56:45 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/28 13:18:24 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/28 13:38:45 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	shooooot(t_transform t, int type)
 	t_entity		*ntt;
 	t_projectile	*projectile;
 
-	ntt = create_entity(t, PROJECTILE_NTT, get_texture_projectile, true, tick_projectile);
+	ntt = create_entity(t, PROJECTILE_NTT, get_texture_projectile, tick_projectile);
 	projectile = malloc(sizeof(t_orb));
 	if (!projectile)
 		cub_exit("malloc failed", -1);

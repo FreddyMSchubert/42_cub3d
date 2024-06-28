@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.22.11] - 28.06.2024 - Freddy
+- Norminettification & Unnecessities removal
+	- util/
+	- gc.c
+	- 0_texture_init/
+	- 1_input_parsing/ (partly)
+
 ### [0.22.10] - 28.06.2024 - Freddy
 - Removed mark dirty system, it's quite unnecessary at this point anyways.
 

@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:49:10 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/28 13:19:15 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/28 13:40:30 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 /*
 	@brief	prints a message to the console
-	@param	type	- 'e' for error, 'w' for warning, 'i' for info, 's' for step, 'a' for action
+	@param	type	-	'e' for error, 
+						'w' for warning,
+						'i' for info,
+						's' for step,
+						'a' for action
 	@param	message	- the message to print
 */
 void	logger(char type, char *message)

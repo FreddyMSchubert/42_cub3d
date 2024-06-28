@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:49:10 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/24 10:48:13 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/28 13:40:05 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,11 @@
 // 6 is up, 7 is top right
 void	print_entity(void)
 {
-	int		degrees;
 	int		deg_seg;
 	char	*deg_seg_string;
 
-	degrees = dir_vec_to_deg(player()->transform.rot) + 22.5;
-	degrees = normalize_degrees(degrees);
-	deg_seg = degrees / 45;
+	deg_seg = normalize_degrees(dir_vec_to_deg(player()->transform.rot) \
+		+ 22.5) / 45;
 	if (deg_seg == 0)
 		deg_seg_string = "→";
 	else if (deg_seg == 1)

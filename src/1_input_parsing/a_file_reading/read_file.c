@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:38:30 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/25 17:41:21 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/28 14:06:00 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,17 +106,6 @@ bool	basic_validate(t_input_data **in)
 	return (check_player(&invalid));
 }
 
-static void	clean_struct_input(t_input_data *input_data)
-{
-	input_data->ceiling_color = (t_color){-1, -1, -1, -1};
-	input_data->floor_color = (t_color){-1, -1, -1, -1};
-	input_data->ea_texture_location = NULL;
-	input_data->no_texture_location = NULL;
-	input_data->so_texture_location = NULL;
-	input_data->we_texture_location = NULL;
-	input_data->map = NULL;
-}
-
 void	get_map_contents(char *filepath)
 {
 	t_input_data	*input_data;
@@ -124,26 +113,20 @@ void	get_map_contents(char *filepath)
 
 	data = read_file(filepath);
 	if (!data)
-	{
-		logger(LOGGER_ERROR, "Could not read map file!");
-		gc_exit(-1);
-	}
+		cub_exit("Could not read map file!", -1);
 	input_data = gc_malloc(sizeof(t_input_data));
 	if (!input_data)
-	{
-		logger(LOGGER_ERROR, "Could not allocate memory for input data!");
-		gc_exit(-1);
-	}
-	clean_struct_input(input_data);
+		cub_exit("Could not allocate memory for input data!", -1);
+	input_data->ceiling_color = (t_color){-1, -1, -1, -1};
+	input_data->floor_color = (t_color){-1, -1, -1, -1};
+	input_data->ea_texture_location = NULL;
+	input_data->no_texture_location = NULL;
+	input_data->so_texture_location = NULL;
+	input_data->we_texture_location = NULL;
+	input_data->map = NULL;
 	if (!parse_file_data(data, &input_data))
-	{
-		logger(LOGGER_ERROR, "Could not parse map data!");
-		gc_exit(-1);
-	}
+		cub_exit("Could not parse map data!", -1);
 	if (!basic_validate(&input_data))
-	{
-		logger(LOGGER_ERROR, "Basic validation failed!");
-		gc_exit(-1);
-	}
+		cub_exit("Basic validation failed!", -1);
 	game()->input_data = input_data;
 }

@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/28 13:17:40 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/28 13:41:18 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,8 +235,6 @@ void				cub_exit(char *message, int code);
 // colors
 unsigned int		t_color_to_int(t_color color);
 t_color				int_to_t_color(int color);
-void				log_color_from_t_color(t_color color);
-void				log_color_from_int(int color);
 int					rgba_to_int(int r, int g, int b, int a);
 t_color				with_opacity(t_color in, int opacity);
 
@@ -258,7 +256,7 @@ t_vec2				rotate_vector_by_90_degrees(t_vec2 v, int direction);
 
 // entities
 t_transform			get_face_vector(t_entity *ntt);
-t_entity			*create_entity(t_transform trans, t_entity_type type, mlx_texture_t	*(*tex)(t_entity *self), bool is_billboard, void (*tick)(t_entity *self));
+t_entity			*create_entity(t_transform trans, t_entity_type type, mlx_texture_t	*(*tex)(t_entity *self), void (*tick)(t_entity *self));
 void				delete_entity(t_entity *self);
 
 // vector

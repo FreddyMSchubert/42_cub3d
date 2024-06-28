@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   entity.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 10:51:45 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/28 11:02:24 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/28 13:37:46 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ t_transform	get_face_vector(t_entity *ntt)
 	face_vector.rot = rotate_vector_by_90_degrees(dir, 1);
 	face_vector.pos.x = ntt->transform.pos.x - 0.5 * face_vector.rot.x;
 	face_vector.pos.y = ntt->transform.pos.y - 0.5 * face_vector.rot.y;
-
 	return (face_vector);
 }
 
-t_entity	*create_entity(t_transform trans, t_entity_type type, mlx_texture_t	*(*tex)(t_entity *self), bool is_billboard, void (*tick)(t_entity *self))
+t_entity	*create_entity(t_transform trans, t_entity_type type, \
+		mlx_texture_t	*(*tex)(t_entity *self), void (*tick)(t_entity *self))
 {
 	t_entity			*entity;
 	static unsigned int	id = 0;
@@ -49,7 +49,7 @@ t_entity	*create_entity(t_transform trans, t_entity_type type, mlx_texture_t	*(*
 	entity->type = type;
 	entity->get_texture = tex;
 	entity->frames_since_state_change = 0;
-	entity->is_billboard = is_billboard;
+	entity->is_billboard = true;
 	entity->tick = tick;
 	entity->on_collision = NULL;
 	entity->data = NULL;

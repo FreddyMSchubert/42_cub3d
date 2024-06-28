@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gc.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:18:59 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/28 10:59:35 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/28 13:35:06 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ int	gc_append_element(void *content)
 		selected_node = selected_node->next;
 		if (selected_node->content == content)
 		{
-			logger_verbose(LOGGER_WARNING, "Element already in garbage collector.");
+			logger_verbose(LOGGER_WARNING, \
+					"Element already in garbage collector.");
 			return (free(new_node), -2);
 		}
 	}
@@ -84,11 +85,9 @@ void	gc_cleanup_and_reinit(void)
 void	gc_exit(int code)
 {
 	int			i;
-	t_list		**garbage_col;
 	t_list		*ntt;
 	t_list		*next;
 
-	garbage_col = gc();
 	i = 2;
 	while (++i < 1024)
 		close(i);
@@ -107,7 +106,7 @@ void	gc_exit(int code)
 		ntt = next;
 	}
 	gc_cleanup_and_reinit();
-	free(*garbage_col);
+	free(*gc());
 	exit(code);
 }
 
