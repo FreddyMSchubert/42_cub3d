@@ -37,7 +37,7 @@
 
 
 /* ---- SETTINGS ---- */
-# define MAP_TILES " 10NESWGHVKwfea"
+# define MAP_TILES " 10NESWGHVKwfeaqrds"
 // ' ' -> VOID
 // '1' -> WALL
 // '0' -> FLOOR
@@ -53,18 +53,30 @@
 // 'f' -> FIRE ORB
 // 'e' -> EARTH ORB
 // 'a' -> AIR ORB
+// 'q' -> WATER BLIGHT
+// 'd' -> FIRE BLIGHT
+// 'r' -> EARTH BLIGHT
+// 's' -> AIR BLIGHT
 
 /* ----- LOGGER ----- */
 # define LOGGER_ERROR 'e'
 # define LOGGER_WARNING 'w'
 # define LOGGER_INFO 'i'
 # define LOGGER_STEP 's'
+# define LOGGER_ACTION 'a'
+# define LOGGER_DIRTY 'd'
 
 /* ----- EXIT CODES ----- */
 # define EXIT_SUCCESS 0
 # define EXIT_INVALID_ARGS 1
 # define EXIT_INVALID_FILE_EXTENSION 2
 # define EXIT_MAP_ERROR 3
+
+/* ----- ENTITY TPYES ----- */
+# define TYPE_WATER 0
+# define TYPE_FIRE 1
+# define TYPE_AIR 2
+# define TYPE_EARTH 3
 
 /* ---- FUNCTIONS ----- */
 // lets mirror the file system in here. the less ---, the deeper the file
@@ -73,6 +85,9 @@
 t_persistent_data	*game(void);
 t_list				**gc(void);
 t_player			*player(void);
+
+// ----- 0_texture_init
+void				load_static_textures(void);
 
 // ----- 1_input_parsing
 void				parse_input(char	*filepath);
@@ -95,6 +110,7 @@ bool				set_color(t_color *color, char *color_val);
 // create entities
 bool				set_goal(t_vec2 pos, t_tile_type ***map);
 bool				set_orb(t_vec2 pos, t_tile_type ***map, char orb_type);
+bool				set_blight(t_vec2 pos, t_tile_type ***map, char blight_type);
 bool				set_door(t_vec2 pos, t_tile_type ***map, char type);
 bool				set_key(t_vec2 pos, t_tile_type ***map);
 // squarify map
@@ -152,8 +168,7 @@ double				pos_distance(t_vec2 pos1, t_vec2 pos2);
 t_vec2				scale_vector(t_vec2 t1, double distance);
 t_vec2				raycast_intersect(t_transform t1, t_transform t2);
 t_vec2				get_wall_intersection(t_transform **walls, t_transform ray);
-t_vec2				get_entity_intersection(t_list *entities, t_transform ray, \
-										t_entity **closest_entity);
+t_vec2				*get_entity_intersection(t_transform ray, t_entity ***entities);
 // - 1 raycast walls
 void				raycast_walls(void);
 // - 2 calc walls
@@ -169,17 +184,27 @@ t_transform			get_wall_from_intersect(t_vec2 intersect);
 
 // --- entities
 void				tick_entities(void);
+void				collide_entities(void);
 // - goal
 void				tick_goal(t_entity *self);
+mlx_texture_t		*get_texture_goal(t_entity *self);
 // - door
 void				tick_door(t_entity *self);
+mlx_texture_t		*get_texture_door(t_entity *self);
 // - key
 void				tick_key(t_entity *self);
+mlx_texture_t		*get_texture_key(t_entity *self);
 // - orb
 void				tick_orb(t_entity *self);
+mlx_texture_t		*get_texture_orb(t_entity *self);
 // - projectile
 void				tick_projectile(t_entity *self);
 void				shooooot(t_transform t, int type);
+mlx_texture_t		*get_texture_projectile(t_entity *self);
+// - blight
+void				tick_blight(t_entity *self);
+void				on_collision_blight(t_entity *self, t_entity *other);
+mlx_texture_t		*get_texture_blight(t_entity *self);
 
 # define WALL_ORIENTATION_HORIZONTAL 0
 # define WALL_ORIENTATION_VERTICAL 1
@@ -233,12 +258,19 @@ t_vec2				rotate_vector_by_90_degrees(t_vec2 v, int direction);
 
 // entities
 t_transform			get_face_vector(t_entity *ntt);
-t_entity			*create_entity(t_transform trans, t_entity_type type, mlx_texture_t *tex, bool is_billboard, void (*tick)(t_entity *self));
+t_entity			*create_entity(t_transform trans, t_entity_type type, mlx_texture_t	*(*tex)(t_entity *self), bool is_billboard, void (*tick)(t_entity *self));
 void				delete_entity(t_entity *self);
 
 // vector
 double				vec2_dot_product(t_vec2 a, t_vec2 b);
 double				vec2_sqr_magnitude(t_vec2 v);
 t_vec2				vec2_sub(t_vec2 a, t_vec2 b);
+
+// random
+double				random_val(void);
+int					random_int(int min, int max);
+
+// blights
+bool				a_beats_b(int a, int b);
 
 #endif

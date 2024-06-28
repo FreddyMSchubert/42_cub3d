@@ -1,5 +1,74 @@
 # Changelog
 
+### [0.22.8] - 28.06.2024 - Freddy
+- Made entities use normal malloc instead of gc_malloc (otherwise any created entity would stay in the gc forever)
+- Entities now just get cleaned up when leaving using gc_exit
+
+### [0.22.7] - 28.06.2024 - Freddy
+- Random cleanups
+- Entity type renaming
+- assets directory sorting
+	- execute_cub3d update
+	- changed all maps a little
+- having too many goals is no longer considered invalid, so i removed that map
+
+### [0.22.6] - 27.06.2024 - Freddy
+- Added enemy attacking & enemy attack animation
+- Collision check improvements
+
+### [0.22.5] - 27.06.2024 - Freddy
+- Dynamic texture animation reworks
+- Implemented blight death animations
+
+### [0.22.4] - 27.06.2024 - Freddy
+- Dynamic texture application - now, entities dont have a single static texture, but a dynamic texture retrieved using a per-entity get_texture function to allow for dynamic textures (and animated sprites)
+
+### [0.22.3] - 27.06.2024 - Freddy
+- Added a texture loading functionality. Now all needed textures are loaded at the very start, and then never again
+
+### [0.22.2] - 27.06.2024 - Freddy - `47-enhanced-entity-rendering`
+- Fixed it! Now, proper entity rendering.
+- Slight movement tweaks
+
+### [0.22.1] - 27.06.2024 - Freddy - `47-enhanced-entity-rendering`
+- Entities now render in correct order but sometimes theres holes in them.
+- Enhanced logging
+
+## [0.22.0] - 27.06.2024 - Freddy - `47-enhanced-entity-rendering`
+- Made entities render behind each other. It works well, except they are not properly sorted, so they don't render in order.
+
+### [0.21.8] - 27.06.2024 - Freddy - `45-enemies`
+- Some balancing, now adding three charges to inventory per orb pickup
+- Added air, earth and water blight
+- Better logging
+
+### [0.21.7] - 27.06.2024 - Freddy - `45-enemies`
+- Functional collision system with killing blights
+- Implemented x beats x method in a simple function
+- Fixed incorrect projectile entity setup
+- Made correct projectiles kill the correct blight
+
+### [0.21.6] - 27.06.2024 - Freddy - `45-enemies`
+- Improved blight movement system. They will stand, walk, and never go too far away from their spawn.
+
+### [0.21.5] - 27.06.2024 - Freddy - `45-enemies`
+- Significantly improved randomness functions, should now return more diverse random values
+- Blights now properly walk in different directions
+
+### [0.21.4] - 26.06.2024 - Freddy - `45-enemies`
+- Proper entity correct position validation check
+- Enemy still just moves into a wall though
+
+### [0.21.3] - 26.06.2024 - Freddy - `45-enemies`
+- Added blights (they don't work yet - i cant see them.) They should move around randomly though.
+- Added simple randomness setup
+- Fixed projectiles getting stuck in walls because game not set dirty issue
+- Various improvementx & assets file sorting
+
+### [0.21.2] - 26.06.2024 - Freddy - `45-enemies`
+- Patched up some issues
+- Added water orb & earth orb textures. They are substantially worse as I've made them myself and haven't stolen them from minecraft.
+
 ### [0.21.1] - 26.06.2024 - Freddy - `45-enemies`
 - Proper projectile shooting using mouse hook
 - moving projectiles

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2_calc_walls.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1999/06/13 09:10:15 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/26 12:56:21 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/27 20:59:22 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,5 @@ void	calc_entity(int ray_index, t_vec2 intersect, t_entity *ntt)
 	corrected_dist = intersection_dist * cos(angle_correction_rad);
 	height = get_height_from_intersection_dist(corrected_dist);
 	hit_offset = get_ntt_hit_offset(intersect, get_face_vector(ntt));
-	draw_gameobject(start_x, end_x, height, ntt->texture, hit_offset);
+	draw_gameobject(start_x, end_x, height, ntt->get_texture(ntt), hit_offset);
 }

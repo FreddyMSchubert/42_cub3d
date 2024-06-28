@@ -36,6 +36,7 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	if (GREETING)
 		printf("🧊 %sHello cubic world!%s 🧊\n", ANSI_COLOR_CYAN, ANSI_RESET);
+	load_static_textures();
 	parse_input(argv[1]);
 	logger(LOGGER_STEP, "Mlx Setup");
 	setup_mlx();

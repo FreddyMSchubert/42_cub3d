@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gc.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:18:59 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/25 11:42:11 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/28 10:59:35 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	gc_append_element(void *content)
 		selected_node = selected_node->next;
 		if (selected_node->content == content)
 		{
-			logger_verbose('w', "Element already in garbage collector.");
+			logger_verbose(LOGGER_WARNING, "Element already in garbage collector.");
 			return (free(new_node), -2);
 		}
 	}
@@ -75,7 +75,7 @@ void	gc_cleanup_and_reinit(void)
 	t_list	**garbage_col;
 
 	garbage_col = gc();
-	logger_verbose('i', "Cleaning up garbage collector.");
+	logger_verbose(LOGGER_INFO, "Cleaning up garbage collector.");
 	ft_lstclear(garbage_col, free);
 	*garbage_col = NULL;
 	*garbage_col = gc_create();
@@ -83,13 +83,29 @@ void	gc_cleanup_and_reinit(void)
 
 void	gc_exit(int code)
 {
-	int		i;
-	t_list	**garbage_col;
+	int			i;
+	t_list		**garbage_col;
+	t_list		*ntt;
+	t_list		*next;
 
 	garbage_col = gc();
 	i = 2;
 	while (++i < 1024)
 		close(i);
+	ntt = game()->entities;
+	while (ntt)
+	{
+		next = ntt->next;
+		if (ntt->content && ((t_entity *)ntt->content)->data)
+		{
+			free(((t_entity *)ntt->content)->data);
+			((t_entity *)ntt->content)->data = NULL;
+		}
+		free(ntt->content);
+		ntt->content = NULL;
+		free(ntt);
+		ntt = next;
+	}
 	gc_cleanup_and_reinit();
 	free(*garbage_col);
 	exit(code);

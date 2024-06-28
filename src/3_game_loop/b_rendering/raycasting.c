@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:22:19 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/26 00:49:53 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/27 19:25:53 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,33 +88,35 @@ t_vec2	get_wall_intersection(t_transform **walls, t_transform ray)
 	return (closest_intersection);
 }
 
-t_vec2	get_entity_intersection(t_list *entities, t_transform ray, \
-										t_entity **closest_entity)
+t_vec2	*get_entity_intersection(t_transform ray, t_entity ***entities)
 {
+	int			size;
+	t_vec2		*intersections;
 	t_entity	*entity;
 	t_vec2		intersection;
-	t_vec2		closest_intersection;
-	double		closest_distance;
-	double		current_distance;
+	t_list		*current;
 
-	closest_distance = -1;
-	closest_intersection.x = -1;
-	closest_intersection.y = -1;
-	while (entities)
+	size = ft_lstsize(game()->entities);
+	intersections = malloc((size + 1) * sizeof(t_vec2));
+	*entities = malloc((size + 1) * sizeof(t_entity *));
+	if (!entities)
+		cub_exit("Memory allocation failed", -1);
+	current = game()->entities;
+	size = 0;
+	while (current)
 	{
-		entity = (t_entity *)entities->content;
+		entity = (t_entity *)current->content;
 		intersection = raycast_intersect(ray, get_face_vector(entity));
 		if (intersection.x != -1)
 		{
-			current_distance = pos_distance(ray.pos, intersection);
-			if (closest_distance == -1 || current_distance < closest_distance)
-			{
-				closest_distance = current_distance;
-				closest_intersection = intersection;
-				*closest_entity = entity;
-			}
+			(*entities)[size] = entity;
+			intersections[size] = intersection;
+			size++;
 		}
-		entities = entities->next;
+		current = current->next;
 	}
-	return (closest_intersection);
+	intersections[size].x = -1;
+	intersections[size].y = -1;
+	(*entities)[size] = NULL;
+	return (intersections);
 }

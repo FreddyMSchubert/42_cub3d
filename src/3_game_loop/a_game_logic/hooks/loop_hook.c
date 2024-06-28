@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop_hook.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:28 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/26 12:57:27 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/27 18:54:57 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,11 @@ void	loop_hook(void *param)
 		handle_mouse_mv();
 		handle_player_move();
 		tick_entities();
+		collide_entities();
 		if (game()->dirty == true)
 		{
 			if (MARK_DIRTY_LOGGING)
-				logger(LOGGER_INFO, "State is dirty, rendering anew!\n");
+				logger(LOGGER_DIRTY, "State is dirty, rendering anew!");
 			render();
 			game()->dirty = false;
 		}

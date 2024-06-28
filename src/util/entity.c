@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 10:51:45 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/26 14:31:23 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/28 11:02:24 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,26 @@ t_transform	get_face_vector(t_entity *ntt)
 	return (face_vector);
 }
 
-t_entity	*create_entity(t_transform trans, t_entity_type type, mlx_texture_t *tex, bool is_billboard, void (*tick)(t_entity *self))
+t_entity	*create_entity(t_transform trans, t_entity_type type, mlx_texture_t	*(*tex)(t_entity *self), bool is_billboard, void (*tick)(t_entity *self))
 {
 	t_entity			*entity;
 	static unsigned int	id = 0;
 
 	id++;
-	entity = gc_malloc(sizeof(t_entity));
+	entity = malloc(sizeof(t_entity));
+	if (!entity)
+		cub_exit("Failed to allocate memory for entity", -1);
 	entity->id = id;
 	entity->spawn_transform = trans;
 	entity->transform = entity->spawn_transform;
 	entity->type = type;
-	entity->texture = tex;
+	entity->get_texture = tex;
+	entity->frames_since_state_change = 0;
 	entity->is_billboard = is_billboard;
 	entity->tick = tick;
+	entity->on_collision = NULL;
 	entity->data = NULL;
+	entity->to_be_deleted = false;
 	ft_lstadd_back(&game()->entities, ft_lstnew(entity));
 	return (entity);
 }
@@ -68,7 +73,10 @@ void	delete_entity(t_entity *self)
 				prev->next = entities->next;
 			else
 				game()->entities = entities->next;
-			entities = NULL;
+			if (self->data)
+				free(self->data);
+			free(self);
+			free(entities);
 			return ;
 		}
 		prev = entities;

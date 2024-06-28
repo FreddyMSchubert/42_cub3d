@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   settings.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/26 13:59:03 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/27 22:37:27 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@
 
 // --- Player Movement Stats
 
-# define MOVEMENT_SPEED 0.065
-# define MOVEMENT_SPRINT_MULTIPLIER 2.5
+# define MOVEMENT_SPEED 0.08
+# define MOVEMENT_SPRINT_MULTIPLIER 2
 # define TURN_SPEED_ARROWS_DEG 5
 # define TURN_SPEED_MOUSE_DEG 1
 # define WALL_COLLISION_MARGIN 0.25
@@ -62,11 +62,28 @@
 # define KEY_COLLISION_DISTANCE 0.5
 # define CLOSED_DOOR_ALLOWED_WALK_DISTANCE 0.4
 # define DOOR_OPEN_DISTANCE 1.0
+# define DEFAULT_COLLISION_DISTANCE 0.5
 
 // speed
 
 # define DOOR_OPEN_SPEED 0.05
 # define PROJECTILE_SPEED 0.1
+# define BLIGHT_SPEED 0.05
+
+// movement
+
+# define BLIGHT_WALKING_START_CHANCE 0.1
+# define BLIGHT_STANDING_START_CHANCE 0.025
+# define BLIGHT_ATTACKING_START_CHANCE 0.5
+# define BLIGHT_MOVEMENT_ROTATION_SWITCH_CHANCE 0.05
+# define BLIGHT_MINIUM_ROTATION_DEG 45
+# define BLIGHT_MAX_SPAWN_DISTANCE 10
+# define BLIGHT_SPAWN_RETURNING_DEG_VARIATION 60
+
+// animations
+
+# define BLIGHT_DEATH_ANIMATION_FRAMES 45
+# define BLIGHT_ATTACK_ANIMATION_FRAMES 30
 
 // --- Minimap Settings
 
@@ -75,5 +92,9 @@
 # define MINIMAP_LEFT_OFFSET 25
 # define MINIMAP_TOP_OFFSET 25
 # define MINIMAP_BORDER_WIDTH 5
+
+// --- Gameplay Balancing
+
+# define AMMO_AMOUNT_PER_ORB 3
 
 #endif

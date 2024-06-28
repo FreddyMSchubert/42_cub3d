@@ -22,7 +22,7 @@ void	handle_mouse_mv(void)
 		return ;
 	game()->dirty = true;
 	if (MARK_DIRTY_LOGGING)
-		logger(LOGGER_INFO, "Mouse moved, set dirty to true!\n");
+		logger(LOGGER_DIRTY, "Mouse moved, set dirty to true!");
 	turn((current_mouse_x - game()->prev_mouse_x) * MOUSE_SENSITIVITY);
 	game()->prev_mouse_x = current_mouse_x;
 
@@ -51,7 +51,10 @@ void	mouse_click_hook(mouse_key_t button, action_t action, modifier_key_t mods, 
 	(void)param;
 	(void)mods;
 	if (button == MLX_MOUSE_BUTTON_LEFT && action == MLX_PRESS && player()->inv.air_orbs > 0)
-		shooooot(player()->transform, ORB_TYPE_AIR);
+	{
+		shooooot(player()->transform, TYPE_WATER);
+		logger(LOGGER_ACTION, "Shot projectile!");
+	}
 }
 
 void	cursor_hook(double x, double y, void *param)

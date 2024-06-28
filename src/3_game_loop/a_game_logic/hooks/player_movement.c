@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 07:50:27 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/26 13:01:27 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/28 10:05:29 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,13 @@ bool	is_position_valid(float x, float y)
 	t_door		*door;
 	float		pos_on_space;
 
-	if (*game()->input_data->map[(int)y][(int)x] != FLOOR)
-		return(false);
+	if (x < 0 || x >= game()->input_data->map_width || y < 0 || y >= game()->input_data->map_height || *game()->input_data->map[(int)y][(int)x] != FLOOR)
+		return (false);
 	ntt_list = game()->entities;
 	while (ntt_list)
 	{
 		ntt = (t_entity *)ntt_list->content;
-		if (ntt->type == DOOR_E)
+		if (ntt->type == DOOR_NTT)
 		{
 			door = (t_door *)ntt->data;
 			if (door->state != DOOR_STATE_OPEN)
@@ -111,6 +111,6 @@ void	handle_player_move(void)
 	{
 		game()->dirty = true;
 		if (MARK_DIRTY_LOGGING)
-			logger(LOGGER_INFO, "Player moved, set dirty to true!\n");
+			logger(LOGGER_DIRTY, "Player moved, set dirty to true!");
 	}
 }
