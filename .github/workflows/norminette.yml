@@ -27,9 +27,10 @@ jobs:
       - name: Run Norminette
         id: norminette
         run: norminette ./src/
+        continue-on-error: true
 
       - name: Create status badge
-        id: create_badge
+        if: always()
         run: |
           if [ "${{ steps.norminette.outcome }}" == "success" ]; then
             echo "![Norminette](https://img.shields.io/badge/Norminette-passing-brightgreen)" > badge.md
@@ -37,6 +38,7 @@ jobs:
             echo "![Norminette](https://img.shields.io/badge/Norminette-failing-red)" > badge.md
 
       - name: Upload status badge
+        if: always()
         uses: actions/upload-artifact@v2
         with:
           name: badge
