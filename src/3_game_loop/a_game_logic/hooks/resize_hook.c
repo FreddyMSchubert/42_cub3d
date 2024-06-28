@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 20:45:16 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/28 14:28:39 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/28 14:30:21 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	resize_hook(int32_t width, int32_t height, void *param)
 	mlx_delete_image(game()->mlx, game()->background);
 	mlx_delete_image(game()->mlx, game()->game_scene);
 	mlx_delete_image(game()->mlx, game()->hud);
-	write(1, "Resized\n", 8);
 	set_background();
 	game()->game_scene = mlx_new_image(game()->mlx, game()->mlx->width,
 		game()->mlx->height);
