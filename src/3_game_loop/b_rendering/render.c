@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 14:36:45 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/26 12:41:59 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/26 15:25:33 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ static inline void	render_hud(void)
 void	render(void)
 {
 	render_game_scene();
+	draw_inventory();
 	render_hud();
 }

@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_hook.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:50:17 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/27 22:12:30 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/28 13:07:40 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../include/cub3d.h"
+#include <stdint.h>
+
+int	*get_amount_of_item(int index);
 
 void	handle_mouse_mv(void)
 {
@@ -39,23 +42,29 @@ void	scroll_hook(double xdelta, double ydelta, void *param)
 	if (ydelta != 0)
 	{
 		if (ydelta > 0)
-			game()->minimap_size += 1;
+			cycle_inventory(-1, false);
 		else
-			game()->minimap_size -= 1;
-		if (game()->minimap_size < 2)
-			game()->minimap_size = 2;
-		if (game()->minimap_size > 6)
-			game()->minimap_size = 6;
+			cycle_inventory(1, false);
+		game()->dirty = true;
 	}
 }
 
 void	mouse_click_hook(mouse_key_t button, action_t action, modifier_key_t mods, void* param)
 {
+	int				*amount;
+	mlx_image_t		**amount_text;
+
 	(void)param;
 	(void)mods;
-	if (button == MLX_MOUSE_BUTTON_LEFT && action == MLX_PRESS && player()->inv.air_orbs > 0)
+	amount = get_amount_of_item(player()->inv.current_index);
+	if (button == MLX_MOUSE_BUTTON_LEFT && action == MLX_PRESS
+		&& *amount)
 	{
-		shooooot(player()->transform, TYPE_WATER);
+		amount_text = get_amount_text_by_index(player()->inv.current_index);
+		shooooot(player()->transform, player()->inv.current_index - 1);
+		(*amount)--;
+		mlx_delete_image(game()->mlx, *amount_text);
+		*amount_text = NULL;
 		logger(LOGGER_ACTION, "Shot projectile!");
 	}
 }

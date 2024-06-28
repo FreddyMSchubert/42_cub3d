@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_setup.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 08:28:05 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/26 14:05:00 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/28 12:58:45 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,10 @@ void	setup_player(void)
 	player()->inv.fire_orbs = 0;
 	player()->inv.earth_orbs = 0;
 	player()->inv.air_orbs = 0;
+	player()->inv.num_available_items = 5;
+	player()->inv.current_index = 0;
+	player()->inv.text_amount_earth = NULL;
+	player()->inv.text_amount_fire = NULL;
+	player()->inv.text_amount_water = NULL;
+	player()->inv.text_amount_air = NULL;
 }

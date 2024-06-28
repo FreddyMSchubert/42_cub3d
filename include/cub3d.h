@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/27 20:56:22 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/28 13:07:20 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,6 +157,10 @@ void				draw_crosshair(void);
 void				draw_square(int x, int y, int size, int color);
 void				draw_square_hud(int x, int y, int size, int color);
 void				draw_square_world(int x, int y, int size, int color);
+void				draw_inventory(void);
+mlx_image_t			**get_amount_text_by_index(int index);
+void				texture_draw(mlx_texture_t *texture, t_scale pos, t_scale size);
+void				cycle_inventory(int direction, bool direct);
 // minimap
 void				hud_draw_minimap(void);
 void				hud_toogle_worldmap(bool change_state);

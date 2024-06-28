@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   3_draw_walls.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/26 12:52:21 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/28 10:23:47 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	set_pixel_color(mlx_image_t *img, int x, int y, int col)
 	mlx_put_pixel(img, x, y, col);
 }
 
-static inline int	get_tex_color_at(mlx_texture_t *tex, int x, int y)
+int	get_tex_color_at(mlx_texture_t *tex, int x, int y)
 {
 	int	index;
 
