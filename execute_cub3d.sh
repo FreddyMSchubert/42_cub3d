@@ -24,10 +24,10 @@ fi
 
 # Default to valid if no input or if input is not 'I'
 if [[ -z "$MAP_TYPE" || "$MAP_TYPE" = "v" || "$MAP_TYPE" = "V" ]]; then
-    MAP_DIR="./assets/maps"
+    MAP_DIR="./assets/maps/valid"
     echo -e "${GREEN}🗺️ Using valid maps.${NC}"
 elif [[ "$MAP_TYPE" = "i" || "$MAP_TYPE" = "I" ]]; then
-    MAP_DIR="./assets/invalid_maps"
+    MAP_DIR="./assets/maps/invalid"
     echo -e "${RED}🚫 Using invalid maps.${NC}"
 else
     echo -e "${RED}Invalid choice. Using default (Valid).🗺️${NC}"

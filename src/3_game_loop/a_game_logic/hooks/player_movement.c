@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_movement.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 07:50:27 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/27 22:24:48 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/28 10:05:29 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ bool	is_position_valid(float x, float y)
 	while (ntt_list)
 	{
 		ntt = (t_entity *)ntt_list->content;
-		if (ntt->type == DOOR_E)
+		if (ntt->type == DOOR_NTT)
 		{
 			door = (t_door *)ntt->data;
 			if (door->state != DOOR_STATE_OPEN)

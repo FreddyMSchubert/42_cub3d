@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   projectile_entity.c                                :+:      :+:    :+:   */
+/*   PROJECTILE_NTTntity.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -17,7 +17,7 @@ void	shooooot(t_transform t, int type)
 	t_entity		*ntt;
 	t_projectile	*projectile;
 
-	ntt = create_entity(t, PROJECTILE_E, get_texture_projectile, true, tick_projectile);
+	ntt = create_entity(t, PROJECTILE_NTT, get_texture_projectile, true, tick_projectile);
 	projectile = gc_malloc(sizeof(t_orb));
 	projectile->type = type;
 	ntt->data = projectile;

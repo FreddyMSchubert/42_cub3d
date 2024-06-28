@@ -1,5 +1,13 @@
 # Changelog
 
+### [0.22.7] - 27.06.2024 - Freddy
+- Random cleanups
+- Entity type renaming
+- assets directory sorting
+	- execute_cub3d update
+	- changed all maps a little
+- having too many goals is no longer considered invalid, so i removed that map
+
 ### [0.22.6] - 27.06.2024 - Freddy
 - Added enemy attacking & enemy attack animation
 - Collision check improvements

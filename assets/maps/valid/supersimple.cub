@@ -1,0 +1,14 @@
+NO ./assets/textures/walls/blackstone.png
+SO ./assets/textures/walls/blackstone.png
+WE ./assets/textures/walls/blackstone.png
+EA ./assets/textures/walls/blackstone.png
+
+C 225,30,0
+F 220,100,0
+
+111111
+1G0001
+100101
+101001
+1000N1
+111111

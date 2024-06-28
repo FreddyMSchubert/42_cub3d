@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/27 22:22:05 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/28 10:06:14 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,12 +157,12 @@ typedef struct s_player
 
 typedef enum e_entity_type
 {
-	GOAL_E,
-	DOOR_E,
-	KEY_E,
-	ORB_E,
-	PROJECTILE_E,
-	BLIGHT_E
+	GOAL_NTT,
+	DOOR_NTT,
+	KEY_NTT,
+	ORB_NTT,
+	PROJECTILE_NTT,
+	BLIGHT_NTT
 }	t_entity_type;
 
 typedef struct s_entity	t_entity;

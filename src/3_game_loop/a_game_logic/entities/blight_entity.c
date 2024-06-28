@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   blight_entity.c                                    :+:      :+:    :+:   */
+/*   BLIGHT_NTTntity.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 21:57:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/27 22:34:49 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/28 10:06:03 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ void	move_self(t_entity *self)
 void	tick_blight(t_entity *self)
 {
 	t_blight	*blight;
-	t_transform	trans;
 
 	self->frames_since_state_change++;
 	blight = (t_blight *)self->data;
@@ -104,10 +103,9 @@ void	tick_blight(t_entity *self)
 	{
 		if (self->frames_since_state_change > BLIGHT_ATTACK_ANIMATION_FRAMES)
 		{
-			trans.pos = self->transform.pos;
-			trans.rot.x = self->transform.rot.x - player()->transform.rot.x;
-			trans.rot.y = self->transform.rot.y - player()->transform.rot.y;
-			shooooot(trans, blight->type);
+			self->transform.rot.x = self->transform.rot.x - player()->transform.rot.x;
+			self->transform.rot.y = self->transform.rot.y - player()->transform.rot.y;
+			shooooot(self->transform, blight->type);
 			blight->state = BLIGHT_STATE_WALKING;
 			self->frames_since_state_change = 0;
 		}
@@ -119,7 +117,7 @@ void	on_collision_blight(t_entity *self, t_entity *other)
 	t_blight	*blight;
 
 	blight = (t_blight *)self->data;
-	if (!(other->type == PROJECTILE_E))
+	if (!(other->type == PROJECTILE_NTT))
 		return ;
 	if (!a_beats_b(((t_projectile *)other->data)->type, blight->type))
 		return ;
