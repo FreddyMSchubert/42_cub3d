@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/28 10:42:17 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/28 11:12:41 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,9 +102,6 @@ typedef struct s_inventory
 {
 	int		num_available_items;
 	int		current_index;
-
-	int		*current_amount;
-	char	*curr_texture;
 
 	int		keys;
 	int		water_orbs;
