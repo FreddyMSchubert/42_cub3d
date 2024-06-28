@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/28 13:07:20 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/28 13:17:40 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@
 # define LOGGER_INFO 'i'
 # define LOGGER_STEP 's'
 # define LOGGER_ACTION 'a'
-# define LOGGER_DIRTY 'd'
 
 /* ----- EXIT CODES ----- */
 # define EXIT_SUCCESS 0

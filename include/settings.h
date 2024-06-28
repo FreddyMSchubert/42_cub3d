@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/27 22:37:27 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/28 13:17:49 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # define DEBUG false
 # define LOG_WALLS false
 # define TERMINAL_MAP true
-# define MARK_DIRTY_LOGGING false
 
 // --- Debug
 

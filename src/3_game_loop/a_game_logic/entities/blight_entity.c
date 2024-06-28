@@ -41,9 +41,7 @@ void	rotate_self(t_entity *self, int depth)
 void	move_self(t_entity *self)
 {
 	t_vec2	new_pos;
-	t_vec2	oldpos;
 
-	oldpos = self->transform.pos;
 	self->transform.rot = scale_vector(self->transform.rot, 1);
 	if (random_val() < BLIGHT_MOVEMENT_ROTATION_SWITCH_CHANCE)
 		rotate_self(self, 0);
@@ -56,12 +54,6 @@ void	move_self(t_entity *self)
 	}
 	else
 		rotate_self(self, 0);
-	if (oldpos.x != self->transform.pos.x || oldpos.y != self->transform.pos.y)
-	{
-		game()->dirty = true;
-		if (MARK_DIRTY_LOGGING)
-			logger(LOGGER_DIRTY, "Blight moved, marking dirty!");
-	}
 }
 
 void	tick_blight(t_entity *self)
@@ -79,9 +71,6 @@ void	tick_blight(t_entity *self)
 			self->frames_since_state_change = 0;
 			if (random_val() < BLIGHT_ATTACKING_START_CHANCE)
 				blight->state = BLIGHT_STATE_ATTACKING;
-			game()->dirty = true;
-			if (MARK_DIRTY_LOGGING)
-				logger(LOGGER_DIRTY, "Blight stopped, marking dirty!");
 		}
 	}
 	else if (blight->state == BLIGHT_STATE_STANDING)
@@ -98,7 +87,6 @@ void	tick_blight(t_entity *self)
 		{
 			logger(LOGGER_ACTION, "Blight died!");
 			self->to_be_deleted = true;
-			game()->dirty = true;
 		}
 	}
 	else if (blight->state == BLIGHT_STATE_ATTACKING)
@@ -126,7 +114,6 @@ void	on_collision_blight(t_entity *self, t_entity *other)
 	logger(LOGGER_ACTION, "Blight killed by projectile!");
 	blight->state = BLIGHT_STATE_DYING;
 	other->to_be_deleted = true;
-	game()->dirty = true;
 }
 
 // BLIGHT_DEATH_ANIMATION_FRAMES
@@ -150,9 +137,6 @@ mlx_texture_t	*get_texture_blight(t_entity *self)
 			animation = game()->textures.earth_blight_death;
 		if (!animation.frame1)
 			cub_exit("Error: Blight death animation not found!", -1);
-		game()->dirty = true;
-		if (MARK_DIRTY_LOGGING)
-			logger(LOGGER_DIRTY, "Blight death animation, marking dirty!");
 		if (self->frames_since_state_change < BLIGHT_DEATH_ANIMATION_FRAMES / 3)
 			return (animation.frame1);
 		else if (self->frames_since_state_change < 2 * BLIGHT_DEATH_ANIMATION_FRAMES / 3)
@@ -173,9 +157,6 @@ mlx_texture_t	*get_texture_blight(t_entity *self)
 			animation = game()->textures.earth_blight_attack;
 		if (!animation.frame1)
 			cub_exit("Error: Blight attack animation not found!", -1);
-		game()->dirty = true;
-		if (MARK_DIRTY_LOGGING)
-			logger(LOGGER_DIRTY, "Blight attack animation, marking dirty!");
 		if (self->frames_since_state_change < BLIGHT_ATTACK_ANIMATION_FRAMES / 3)
 			return (animation.frame1);
 		else if (self->frames_since_state_change < 2 * BLIGHT_ATTACK_ANIMATION_FRAMES / 3)

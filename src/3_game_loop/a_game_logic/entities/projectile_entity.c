@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PROJECTILE_NTTntity.c                              :+:      :+:    :+:   */
+/*   projectile_entity.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:56:45 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/27 22:34:52 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/28 13:18:24 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,9 @@ void	tick_projectile(t_entity *self)
 	if (!is_position_valid(new_pos.x, new_pos.y))
 	{
 		self->to_be_deleted = true;
-		game()->dirty = true;
 		return ;
 	}
 	self->transform.pos = new_pos;
-	game()->dirty = true;
-	if (MARK_DIRTY_LOGGING)
-		logger(LOGGER_DIRTY, "Projectile moved, set dirty to true!\n");
 }
 
 mlx_texture_t	*get_texture_projectile(t_entity *self)

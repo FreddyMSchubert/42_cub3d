@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_mlx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:41:35 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/26 15:26:46 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/28 13:17:53 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ void	setup_mlx(void)
 	if (!mlx)
 		cub_exit("mlx setup failed.", -1);
 	data = game();
-	data->dirty = true;
 	data->mlx = mlx;
 	set_background();
 	load_textures();

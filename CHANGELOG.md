@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.22.10] - 28.06.2024 - Freddy
+- Removed mark dirty system, it's quite unnecessary at this point anyways.
+
 ### [0.22.9] - 28.06.2024 - Freddy
 - Fixed blight entity creating stack overflow when infinitely rotating stuck blight enitty
 

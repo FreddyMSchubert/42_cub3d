@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:28 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/27 18:54:57 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/28 13:18:50 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,11 @@ void	loop_hook(void *param)
 	// 	logger(LOGGER_WARNING, "skipped frame");
 	if ((int)curr_time != (int)prev_time || curr_frame != prev_frame)
 	{
-		game()->dirty = false;
 		handle_mouse_mv();
 		handle_player_move();
 		tick_entities();
 		collide_entities();
-		if (game()->dirty == true)
-		{
-			if (MARK_DIRTY_LOGGING)
-				logger(LOGGER_DIRTY, "State is dirty, rendering anew!");
-			render();
-			game()->dirty = false;
-		}
+		render();
 		game()->prev_time = curr_time;
 	}
 }

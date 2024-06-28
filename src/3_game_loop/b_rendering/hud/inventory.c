@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inventory.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/28 13:08:20 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/28 13:19:05 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,6 @@ static inline void	draw_current_selection(int start_x, int start_y)
 
 void	cycle_inventory(int direction, bool direct)
 {
-	game()->dirty = true;
 	if (direction == 0 && !direct)
 		return ;
 	if (direct)

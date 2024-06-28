@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_hook.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:50:17 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/28 13:07:40 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/28 13:18:56 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,6 @@ void	handle_mouse_mv(void)
 	mlx_get_mouse_pos(game()->mlx, &current_mouse_x, &current_mouse_y);
 	if (current_mouse_x == game()->prev_mouse_x)
 		return ;
-	game()->dirty = true;
-	if (MARK_DIRTY_LOGGING)
-		logger(LOGGER_DIRTY, "Mouse moved, set dirty to true!");
 	turn((current_mouse_x - game()->prev_mouse_x) * MOUSE_SENSITIVITY);
 	game()->prev_mouse_x = current_mouse_x;
 
@@ -45,7 +42,6 @@ void	scroll_hook(double xdelta, double ydelta, void *param)
 			cycle_inventory(-1, false);
 		else
 			cycle_inventory(1, false);
-		game()->dirty = true;
 	}
 }
 

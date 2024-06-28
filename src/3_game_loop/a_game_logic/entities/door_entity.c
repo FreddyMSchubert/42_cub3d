@@ -39,9 +39,6 @@ void	tick_door(t_entity *self)
 		door->door_open_progress -= DOOR_OPEN_SPEED;
 		self->transform.pos.x += ((door->open_pos.x - door->close_pos.x) * DOOR_OPEN_SPEED);
 		self->transform.pos.y += ((door->open_pos.y - door->close_pos.y) * DOOR_OPEN_SPEED);
-		game()->dirty = true;
-		if (MARK_DIRTY_LOGGING)
-			logger(LOGGER_DIRTY, "Door opening, set dirty to true!");
 		if (door->door_open_progress <= 0)
 		{
 			self->transform.pos = door->open_pos;

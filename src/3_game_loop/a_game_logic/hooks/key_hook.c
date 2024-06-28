@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:50 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/28 12:32:55 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/06/28 13:18:35 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ static inline void	inventory_press(mlx_key_data_t keydata)
 	if (keydata.key >= MLX_KEY_1 && keydata.key <= MLX_KEY_9 && keydata.action == MLX_PRESS)
 	{
 		if ((unsigned int)(player()->inv.num_available_items) > keydata.key - MLX_KEY_1)
-		{
 			player()->inv.current_index = keydata.key - MLX_KEY_1;
-			game()->dirty = true;
-		}
 	}
 }
 
@@ -36,6 +33,5 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 	else if (keydata.key == MLX_KEY_R && keydata.action == MLX_PRESS)
 		setup_player();
 	inventory_press(keydata);
-	game()->dirty = true;
 	(void) param;
 }
