@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 16:06:43 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/28 10:06:14 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/28 11:04:33 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ bool	set_blight(t_vec2 pos, t_tile_type ***map, char blight_type)
 	t_entity		*ntt;
 
 	*(map[(int)pos.y][(int)pos.x]) = FLOOR;
-	data = gc_malloc(sizeof(t_blight));
+	data = malloc(sizeof(t_blight));
+	if (!data)
+		cub_exit("malloc failed", -1);
 	if (blight_type == 'q')
 		data->type = TYPE_WATER;
 	else if (blight_type == 'd')
@@ -47,7 +49,9 @@ bool	set_orb(t_vec2 pos, t_tile_type ***map, char orb_type)
 	t_entity		*ntt;
 
 	*(map[(int)pos.y][(int)pos.x]) = FLOOR;
-	data = gc_malloc(sizeof(t_orb));
+	data = malloc(sizeof(t_orb));
+	if (!data)
+		cub_exit("malloc failed", -1);
 	if (orb_type == 'w')
 		data->type = TYPE_WATER;
 	else if (orb_type == 'f')
@@ -76,7 +80,9 @@ bool	set_door(t_vec2 pos, t_tile_type ***map, char type)
 	t_transform		trans;
 
 	*(map[(int)pos.y][(int)pos.x]) = FLOOR;
-	data = gc_malloc(sizeof(t_door));
+	data = malloc(sizeof(t_door));
+	if (!data)
+		cub_exit("malloc failed", -1);
 	if (type == 'H')
 		data->direction = DOOR_DIR_HORIZONTAL;
 	else

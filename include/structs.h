@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/28 10:06:14 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/06/28 10:38:18 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,6 +170,7 @@ typedef struct s_entity
 {
 	t_entity_type	type;
 	unsigned int	id;
+	bool			to_be_deleted;
 
 	t_transform		transform;
 	t_transform		spawn_transform;

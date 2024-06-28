@@ -95,7 +95,7 @@ void	tick_blight(t_entity *self)
 		if (self->frames_since_state_change > BLIGHT_DEATH_ANIMATION_FRAMES)
 		{
 			logger(LOGGER_ACTION, "Blight died!");
-			delete_entity(self);
+			self->to_be_deleted = true;
 			game()->dirty = true;
 		}
 	}
@@ -123,7 +123,7 @@ void	on_collision_blight(t_entity *self, t_entity *other)
 		return ;
 	logger(LOGGER_ACTION, "Blight killed by projectile!");
 	blight->state = BLIGHT_STATE_DYING;
-	delete_entity(other);
+	other->to_be_deleted = true;
 	game()->dirty = true;
 }
 

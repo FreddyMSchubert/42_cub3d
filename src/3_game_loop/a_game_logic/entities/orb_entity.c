@@ -39,7 +39,7 @@ void	tick_orb(t_entity *self)
 		player()->inv.air_orbs += AMMO_AMOUNT_PER_ORB;
 		logger(LOGGER_ACTION, "Picked up some air orbs!");
 	}
-	delete_entity(self);
+	self->to_be_deleted = true;
 }
 
 mlx_texture_t	*get_texture_orb(t_entity *self)

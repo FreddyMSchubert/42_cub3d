@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   entities.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:47:39 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/27 22:07:35 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/28 10:51:39 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,16 @@ void	tick_entities(void)
 	while (ntt_list)
 	{
 		((t_entity *)ntt_list->content)->tick((t_entity *)ntt_list->content);
+		ntt_list = ntt_list->next;
+	}
+	ntt_list = game()->entities;
+	if (((t_entity *)ntt_list->content)->to_be_deleted)
+		delete_entity((t_entity *)ntt_list->content);
+	ntt_list = game()->entities;
+	while (ntt_list && ntt_list->next)
+	{
+		if (((t_entity *)ntt_list->next->content)->to_be_deleted)
+			delete_entity((t_entity *)ntt_list->next->content);
 		ntt_list = ntt_list->next;
 	}
 }

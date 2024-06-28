@@ -18,7 +18,9 @@ void	shooooot(t_transform t, int type)
 	t_projectile	*projectile;
 
 	ntt = create_entity(t, PROJECTILE_NTT, get_texture_projectile, true, tick_projectile);
-	projectile = gc_malloc(sizeof(t_orb));
+	projectile = malloc(sizeof(t_orb));
+	if (!projectile)
+		cub_exit("malloc failed", -1);
 	projectile->type = type;
 	ntt->data = projectile;
 }
@@ -32,7 +34,7 @@ void	tick_projectile(t_entity *self)
 	new_pos.y = self->transform.pos.y + self->transform.rot.y * PROJECTILE_SPEED;
 	if (!is_position_valid(new_pos.x, new_pos.y))
 	{
-		delete_entity(self);
+		self->to_be_deleted = true;
 		game()->dirty = true;
 		return ;
 	}

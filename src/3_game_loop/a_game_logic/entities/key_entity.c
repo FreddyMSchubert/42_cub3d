@@ -18,7 +18,7 @@ void	tick_key(t_entity *self)
 		return ;
 	logger(LOGGER_ACTION, "Key collected!");
 	player()->inv.keys++;
-	delete_entity(self);
+	self->to_be_deleted = true;
 }
 
 mlx_texture_t	*get_texture_key(t_entity *self)

@@ -1,6 +1,10 @@
 # Changelog
 
-### [0.22.7] - 27.06.2024 - Freddy
+### [0.22.8] - 28.06.2024 - Freddy
+- Made entities use normal malloc instead of gc_malloc (otherwise any created entity would stay in the gc forever)
+- Entities now just get cleaned up when leaving using gc_exit
+
+### [0.22.7] - 28.06.2024 - Freddy
 - Random cleanups
 - Entity type renaming
 - assets directory sorting
