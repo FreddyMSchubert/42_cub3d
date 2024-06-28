@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/28 19:28:08 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/28 20:55:28 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,17 @@
 // Map Making
 
 # define MIN_MAP_SIZE 8
-# define MAX_MAP_SIZE 35
+# define MAX_MAP_SIZE 20
 # define MIN_ROOMS_AMOUNT 2
 # define MAX_ROOMS_AMOUNT 5
 # define MIN_ROOM_SIZE 1
 # define MAX_ROOM_SIZE 13
 # define MAX_ROOM_SIZE_REL_TO_MAP_SIZE 3
-# define WALL_REMOVAL_CHANCE_PERCENT 15
+# define WALL_REMOVAL_CHANCE_PERCENT 25
+
+# define ENTITIY_PLACEMENT_CHANCE 10
+# define ORB_PLACEMENT_CHANCE 100
+# define BLIGHT_PLACEMENT_CHANCE 100
 
 // --- Window Setup
 
@@ -106,6 +110,7 @@
 
 // --- Gameplay Balancing
 
-# define AMMO_AMOUNT_PER_ORB 3
+# define MIN_AMMO_AMOUNT_PER_ORB 2
+# define MAX_AMMO_AMOUNT_PER_ORB 4
 
 #endif

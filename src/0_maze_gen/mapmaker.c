@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 22:46:53 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/28 19:29:26 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/28 20:32:59 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,10 @@ void	generate_map(void)
 	logger(LOGGER_STEP, "Walls removed");
 	add_rooms(maze, map_scale, random_int(MIN_ROOMS_AMOUNT, MAX_ROOMS_AMOUNT));
 	logger(LOGGER_STEP, "Rooms added");
+	add_ntts_in_good_spots(maze, map_scale);
+	logger(LOGGER_STEP, "Entities added");
+	place_locked_goal(maze, map_scale);
+	logger(LOGGER_STEP, "Goal added");
 	write_cub_file(maze, map_scale.y, map_scale.x, "generated_map.cub");
 	logger(LOGGER_INFO, "Map saved to generated_map.cub");
 	gc_cleanup_and_reinit();

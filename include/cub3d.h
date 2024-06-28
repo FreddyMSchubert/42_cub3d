@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/28 19:23:50 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/28 20:32:37 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,11 @@ void				place_player_spawn(char **maze, t_scale	map_scale);
 void				add_rooms(char **maze, t_scale scale, int room_count);
 // file writer
 void				write_cub_file(char **maze, int height, int width, char *filename);
+// entities
+void				add_ntts_in_good_spots(char **maze, t_scale scale);
+void				place_locked_goal(char **maze, t_scale	map_scale);
 // util
-int					random_int(int min, int max);
+int					count_adjacent_walls(char **maze, int x, int y, int height, int width);
 
 // ----- 1_input_parsing
 void				parse_input(char	*filepath);

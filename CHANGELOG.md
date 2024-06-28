@@ -1,13 +1,16 @@
 # Changelog
 
+### [0.23.2] - 28.06.2024 - Freddy
+- Goal placement in randomly generated maps
+- Made orbs drop random amounts of new ammo
 
-### [0.22.14] - 28.06.2024 - Freddy
+### [0.23.1] - 28.06.2024 - Freddy
 - Reworked mapmaker, clearer now
 	- Maze segfault fix
 - Made max room size relative to total generated map size so rooms dont take up all of the map
 - Math min & max utils
 
-### [0.22.13] - 28.06.2024 - Freddy
+## [0.23.0] - 28.06.2024 - Freddy
 - Better goal texture
 - Readded map maker functionality
 - tick entity segfaulting if there are no entities fix
