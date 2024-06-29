@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.23.6] - 29.06.2024 - Freddy
+- Made player input segment where players can pick their element themselves
+
 ### [0.23.5] - 29.06.2024 - Freddy
 - Added health entity to heal player when picked up
 - Renamed type (as in element) to element, since previously "type" in the context of entities could mean both the entity type and the elemental type

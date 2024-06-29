@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 20:25:23 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/28 20:58:36 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/29 21:39:39 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ static inline bool	place_door_and_goal(char **maze, int height, int width)
 					vertical = true;
 				else
 					continue ;
-
-				printf("Selected pos is vertical: %d\n", vertical);
 
 				door1.x = x;
 				door1.y = y;
@@ -63,7 +61,6 @@ static inline bool	place_door_and_goal(char **maze, int height, int width)
 					if (maze[door1.y - 1][door1.x] != '1' || maze[door1.y + 1][door1.x] != '1')
 						continue ;
 				}
-				printf("alright we have proper 2 walls next to each segment!\n");
 
 				door_dir = (vertical) ? 'H' : 'V';
 
