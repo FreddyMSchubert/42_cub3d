@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.23.5] - 29.06.2024 - Freddy
+- Added health entity to heal player when picked up
+- Renamed type (as in element) to element, since previously "type" in the context of entities could mean both the entity type and the elemental type
+
 ### [0.23.4] - 29.06.2024 - Freddy
 - Made player killable, which just quits the program
 - Gave player a random elemental type at start

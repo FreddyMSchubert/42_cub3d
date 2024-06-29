@@ -21,22 +21,22 @@ void	tick_orb(t_entity *self)
 		return ;
 	ammo_amount = random_int(MIN_AMMO_AMOUNT_PER_ORB, MAX_AMMO_AMOUNT_PER_ORB);
 	orb = (t_orb *)self->data;
-	if (orb->type == TYPE_EARTH)
+	if (orb->element == TYPE_EARTH)
 	{
 		player()->inv.earth_orbs += ammo_amount;
 		logger(LOGGER_ACTION, "Picked up some earth orbs!");
 	}
-	else if (orb->type == TYPE_FIRE)
+	else if (orb->element == TYPE_FIRE)
 	{
 		player()->inv.fire_orbs += ammo_amount;
 		logger(LOGGER_ACTION, "Picked up some fire orbs!");
 	}
-	else if (orb->type == TYPE_WATER)
+	else if (orb->element == TYPE_WATER)
 	{
 		player()->inv.water_orbs += ammo_amount;
 		logger(LOGGER_ACTION, "Picked up some water orbs!");
 	}
-	else if (orb->type == TYPE_AIR)
+	else if (orb->element == TYPE_AIR)
 	{
 		player()->inv.air_orbs += ammo_amount;
 		logger(LOGGER_ACTION, "Picked up some air orbs!");
@@ -46,13 +46,13 @@ void	tick_orb(t_entity *self)
 
 mlx_texture_t	*get_texture_orb(t_entity *self)
 {
-	if (((t_blight *)self->data)->type == TYPE_FIRE)
+	if (((t_blight *)self->data)->element == TYPE_FIRE)
 		return (game()->textures.fire_orb);
-	else if (((t_blight *)self->data)->type == TYPE_AIR)
+	else if (((t_blight *)self->data)->element == TYPE_AIR)
 		return (game()->textures.air_orb);
-	else if (((t_blight *)self->data)->type == TYPE_WATER)
+	else if (((t_blight *)self->data)->element == TYPE_WATER)
 		return (game()->textures.water_orb);
-	else if (((t_blight *)self->data)->type == TYPE_EARTH)
+	else if (((t_blight *)self->data)->element == TYPE_EARTH)
 		return (game()->textures.earth_orb);
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/29 20:06:19 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/29 21:18:00 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 
 
 /* ---- SETTINGS ---- */
-# define MAP_TILES " 10NESWGHVKwfeaqrds"
+# define MAP_TILES " 10NESWGHVKwfeaqrdsh"
 // ' ' -> VOID
 // '1' -> WALL
 // '0' -> FLOOR
@@ -57,6 +57,7 @@
 // 'd' -> FIRE BLIGHT
 // 'r' -> EARTH BLIGHT
 // 's' -> AIR BLIGHT
+// 'h' -> HEALTH PICKUP
 
 /* ----- LOGGER ----- */
 # define LOGGER_ERROR 'e'
@@ -122,6 +123,7 @@ bool				set_value(char	**value, char	*set);
 bool				set_color(t_color *color, char *color_val);
 // create entities
 bool				set_goal(t_vec2 pos, t_tile_type ***map);
+bool				set_health(t_vec2 pos, t_tile_type ***map);
 bool				set_orb(t_vec2 pos, t_tile_type ***map, char orb_type);
 bool				set_blight(t_vec2 pos, t_tile_type ***map, char blight_type);
 bool				set_door(t_vec2 pos, t_tile_type ***map, char type);
@@ -208,6 +210,9 @@ mlx_texture_t		*get_texture_goal(t_entity *self);
 // - door
 void				tick_door(t_entity *self);
 mlx_texture_t		*get_texture_door(t_entity *self);
+// - health
+void				tick_health(t_entity *self);
+mlx_texture_t		*get_texture_health(t_entity *self);
 // - key
 void				tick_key(t_entity *self);
 mlx_texture_t		*get_texture_key(t_entity *self);

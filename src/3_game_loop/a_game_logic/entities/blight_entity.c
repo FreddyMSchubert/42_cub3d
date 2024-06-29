@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 21:57:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/29 20:04:24 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/29 21:03:43 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	tick_blight(t_entity *self)
 			self->transform.rot.y = player()->transform.pos.y - self->transform.pos.y;
 			self->transform.rot = scale_vector(self->transform.rot, 1);
 			self->transform.rot = deg_to_dir_vec(dir_vec_to_deg(self->transform.rot) + (random_val() * BLIGHT_SHOOTING_INACCURACY_DEG - (BLIGHT_SHOOTING_INACCURACY_DEG / 2)));
-			shooooot(self->transform, blight->type);
+			shooooot(self->transform, blight->element);
 			blight->state = BLIGHT_STATE_WALKING;
 			self->frames_since_state_change = 0;
 		}
@@ -110,9 +110,9 @@ void	on_collision_blight(t_entity *self, t_entity *other)
 	int			health_decrease_amount;
 
 	blight = (t_blight *)self->data;
-	if (!(other->type == PROJECTILE_NTT) || blight->type == ((t_projectile *)other->data)->type)
+	if (!(other->type == PROJECTILE_NTT) || blight->element == ((t_projectile *)other->data)->element)
 		return ;
-	if (a_beats_b(((t_projectile *)other->data)->type, blight->type))
+	if (a_beats_b(((t_projectile *)other->data)->element, blight->element))
 		health_decrease_amount = MAJOR_PROJECTILE_HIT_DESCREASE;
 	else
 		health_decrease_amount = MINOR_PROJECTILE_HIT_DECREASE;
@@ -136,13 +136,13 @@ mlx_texture_t	*get_texture_blight(t_entity *self)
 	if (blight->state == BLIGHT_STATE_DYING)
 	{
 		animation.frame1 = NULL;
-		if (blight->type == TYPE_FIRE)
+		if (blight->element == TYPE_FIRE)
 			animation = game()->textures.fire_blight_death;
-		else if (blight->type == TYPE_AIR)
+		else if (blight->element == TYPE_AIR)
 			animation = game()->textures.air_blight_death;
-		else if (blight->type == TYPE_WATER)
+		else if (blight->element == TYPE_WATER)
 			animation = game()->textures.water_blight_death;
-		else if (blight->type == TYPE_EARTH)
+		else if (blight->element == TYPE_EARTH)
 			animation = game()->textures.earth_blight_death;
 		if (!animation.frame1)
 			cub_exit("Error: Blight death animation not found!", -1);
@@ -156,13 +156,13 @@ mlx_texture_t	*get_texture_blight(t_entity *self)
 	else if (blight->state == BLIGHT_STATE_ATTACKING)
 	{
 		animation.frame1 = NULL;
-		if (blight->type == TYPE_FIRE)
+		if (blight->element == TYPE_FIRE)
 			animation = game()->textures.fire_blight_attack;
-		else if (blight->type == TYPE_AIR)
+		else if (blight->element == TYPE_AIR)
 			animation = game()->textures.air_blight_attack;
-		else if (blight->type == TYPE_WATER)
+		else if (blight->element == TYPE_WATER)
 			animation = game()->textures.water_blight_attack;
-		else if (blight->type == TYPE_EARTH)
+		else if (blight->element == TYPE_EARTH)
 			animation = game()->textures.earth_blight_attack;
 		if (!animation.frame1)
 			cub_exit("Error: Blight attack animation not found!", -1);
@@ -175,13 +175,13 @@ mlx_texture_t	*get_texture_blight(t_entity *self)
 	}
 	else
 	{
-		if (blight->type == TYPE_FIRE)
+		if (blight->element == TYPE_FIRE)
 			return (game()->textures.fire_blight_idle);
-		else if (blight->type == TYPE_AIR)
+		else if (blight->element == TYPE_AIR)
 			return (game()->textures.air_blight_idle);
-		else if (blight->type == TYPE_WATER)
+		else if (blight->element == TYPE_WATER)
 			return (game()->textures.water_blight_idle);
-		else if (blight->type == TYPE_EARTH)
+		else if (blight->element == TYPE_EARTH)
 			return (game()->textures.earth_blight_idle);
 		return (game()->textures.fire_blight_idle);
 	}

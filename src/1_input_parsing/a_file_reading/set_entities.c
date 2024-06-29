@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 16:06:43 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/29 19:36:49 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/29 21:16:58 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@ bool	set_goal(t_vec2 pos, t_tile_type ***map)
 {
 	*(map[(int)pos.y][(int)pos.x]) = FLOOR;
 	create_entity((t_transform){{pos.x + 0.5, pos.y + 0.5}, {1.0 , 0}}, GOAL_NTT, get_texture_goal, tick_goal);
+	return (true);
+}
+
+bool	set_health(t_vec2 pos, t_tile_type ***map)
+{
+	*(map[(int)pos.y][(int)pos.x]) = FLOOR;
+	create_entity((t_transform){{pos.x + 0.5, pos.y + 0.5}, {1.0 , 0}}, HEALTH_NTT, get_texture_health, tick_health);
 	return (true);
 }
 
@@ -29,13 +36,13 @@ bool	set_blight(t_vec2 pos, t_tile_type ***map, char blight_type)
 	if (!data)
 		cub_exit("malloc failed", -1);
 	if (blight_type == 'q')
-		data->type = TYPE_WATER;
+		data->element = TYPE_WATER;
 	else if (blight_type == 'd')
-		data->type = TYPE_FIRE;
+		data->element = TYPE_FIRE;
 	else if (blight_type == 'r')
-		data->type = TYPE_EARTH;
+		data->element = TYPE_EARTH;
 	else if (blight_type == 's')
-		data->type = TYPE_AIR;
+		data->element = TYPE_AIR;
 	data->state = BLIGHT_STATE_STANDING;
 	ntt = create_entity((t_transform){{pos.x + 0.5, pos.y + 0.5}, {1.0 , 0}}, BLIGHT_NTT, get_texture_blight, tick_blight);
 	ntt->on_collision = on_collision_blight;
@@ -54,13 +61,13 @@ bool	set_orb(t_vec2 pos, t_tile_type ***map, char orb_type)
 	if (!data)
 		cub_exit("malloc failed", -1);
 	if (orb_type == 'w')
-		data->type = TYPE_WATER;
+		data->element = TYPE_WATER;
 	else if (orb_type == 'f')
-		data->type = TYPE_FIRE;
+		data->element = TYPE_FIRE;
 	else if (orb_type == 'e')
-		data->type = TYPE_EARTH;
+		data->element = TYPE_EARTH;
 	else if (orb_type == 'a')
-		data->type = TYPE_AIR;
+		data->element = TYPE_AIR;
 	ntt = create_entity((t_transform){{pos.x + 0.5, pos.y + 0.5}, {1.0 , 0}}, ORB_NTT, get_texture_orb, tick_orb);
 	ntt->data = data;
 	return (true);

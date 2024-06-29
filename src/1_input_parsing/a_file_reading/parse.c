@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 09:39:02 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/26 22:18:41 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/29 21:16:15 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ t_tile_type	***make_map(int map_len, int *i, char **data)
 			else if (data[*i][j] == ' ')
 				*(map[k][j]) = VOID;
 			else if (data[*i][j] == 'G' && !set_goal((t_vec2){j, k}, map))
+				return (NULL);
+			else if (data[*i][j] == 'h' && !set_health((t_vec2){j, k}, map))
 				return (NULL);
 			else if ((data[*i][j] == 'H' || data[*i][j] == 'V') && !set_door((t_vec2){j, k}, map, data[*i][j]))
 				return (NULL);

@@ -6,13 +6,13 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:56:45 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/28 13:38:45 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/29 21:04:07 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/cub3d.h"
 
-void	shooooot(t_transform t, int type)
+void	shooooot(t_transform t, int element)
 {
 	t_entity		*ntt;
 	t_projectile	*projectile;
@@ -21,7 +21,7 @@ void	shooooot(t_transform t, int type)
 	projectile = malloc(sizeof(t_orb));
 	if (!projectile)
 		cub_exit("malloc failed", -1);
-	projectile->type = type;
+	projectile->element = element;
 	ntt->data = projectile;
 }
 
@@ -42,13 +42,13 @@ void	tick_projectile(t_entity *self)
 
 mlx_texture_t	*get_texture_projectile(t_entity *self)
 {
-	if (((t_blight *)self->data)->type == TYPE_FIRE)
+	if (((t_blight *)self->data)->element == TYPE_FIRE)
 		return (game()->textures.fire_orb);
-	else if (((t_blight *)self->data)->type == TYPE_AIR)
+	else if (((t_blight *)self->data)->element == TYPE_AIR)
 		return (game()->textures.air_orb);
-	else if (((t_blight *)self->data)->type == TYPE_WATER)
+	else if (((t_blight *)self->data)->element == TYPE_WATER)
 		return (game()->textures.water_orb);
-	else if (((t_blight *)self->data)->type == TYPE_EARTH)
+	else if (((t_blight *)self->data)->element == TYPE_EARTH)
 		return (game()->textures.earth_orb);
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/29 19:53:33 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/29 21:14:20 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@
 // collisions
 
 # define GOAL_COLLISION_DISTANCE 0.5
+# define HEALTH_COLLISION_DISTANCE 0.5
 # define KEY_COLLISION_DISTANCE 0.5
 # define CLOSED_DOOR_ALLOWED_WALK_DISTANCE 0.4
 # define DOOR_OPEN_DISTANCE 1.0
@@ -101,6 +102,7 @@
 # define PLAYER_STARTING_HEALTH 10
 # define MINOR_PROJECTILE_HIT_DECREASE 1
 # define MAJOR_PROJECTILE_HIT_DESCREASE 3
+# define HEALTH_PICKUP_AMOUNT 2
 
 // animations
 
