@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/28 20:32:37 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/29 20:06:19 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,6 +199,9 @@ t_transform			get_wall_from_intersect(t_vec2 intersect);
 // --- entities
 void				tick_entities(void);
 void				collide_entities(void);
+// - player
+void				on_collision_player(t_entity	*collider);
+void				check_dead_player(void);
 // - goal
 void				tick_goal(t_entity *self);
 mlx_texture_t		*get_texture_goal(t_entity *self);

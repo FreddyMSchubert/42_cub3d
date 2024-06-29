@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 08:28:05 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/29 19:37:06 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/29 20:04:52 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,6 @@ void	setup_player(void)
 	player()->inv.text_amount_water = NULL;
 	player()->inv.text_amount_air = NULL;
 	player()->health = PLAYER_STARTING_HEALTH;
+	player()->elemental_type = random_int(0, 3);
+	printf("Your elemental type is %d!\n", player()->elemental_type);
 }

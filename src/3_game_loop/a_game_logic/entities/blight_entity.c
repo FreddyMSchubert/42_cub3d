@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 21:57:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/29 19:52:37 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/29 20:04:24 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,11 +112,10 @@ void	on_collision_blight(t_entity *self, t_entity *other)
 	blight = (t_blight *)self->data;
 	if (!(other->type == PROJECTILE_NTT) || blight->type == ((t_projectile *)other->data)->type)
 		return ;
-	if (!a_beats_b(((t_projectile *)other->data)->type, blight->type))
-		health_decrease_amount = MINOR_PROJECTILE_HIT_DECREASE;
-	else
+	if (a_beats_b(((t_projectile *)other->data)->type, blight->type))
 		health_decrease_amount = MAJOR_PROJECTILE_HIT_DESCREASE;
-	printf("Blight got hit, decreasign %d health! Now his helath is %d.\n", health_decrease_amount, self->health - health_decrease_amount);
+	else
+		health_decrease_amount = MINOR_PROJECTILE_HIT_DECREASE;
 	self->health -= health_decrease_amount;
 	if (self->health > 0)
 		logger(LOGGER_ACTION, "Blight hit by projectile!");

@@ -1,6 +1,10 @@
 # Changelog
 
-### [0.23.3] - 28.06.2024 - Freddy
+### [0.23.4] - 29.06.2024 - Freddy
+- Made player killable, which just quits the program
+- Gave player a random elemental type at start
+
+### [0.23.3] - 29.06.2024 - Freddy
 - Blight health, don't take damage from their own projectiles, take little damage from random projectiles, instantly die from their major projectile (e.g. water / fire)
 
 ### [0.23.2] - 28.06.2024 - Freddy

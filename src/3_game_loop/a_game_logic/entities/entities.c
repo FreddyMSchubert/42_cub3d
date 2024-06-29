@@ -6,23 +6,23 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:47:39 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/29 19:40:01 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/29 20:00:13 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/cub3d.h"
 
-static inline bool	check_colliding(t_entity *ent1, t_entity *ent2)
+static inline bool	check_colliding(t_transform t1, t_transform t2)
 {
 	t_vec2	pos1;
 	t_vec2	pos2;
 
-	ent1->transform.rot = scale_vector(ent1->transform.rot, 1);
-	pos1.x = ent1->transform.pos.x + ent1->transform.rot.x * 0.5;
-	pos1.y = ent1->transform.pos.y + ent1->transform.rot.y * 0.5;
-	ent2->transform.rot = scale_vector(ent2->transform.rot, 1);
-	pos2.x = ent2->transform.pos.x + ent2->transform.rot.x * 0.5;
-	pos2.y = ent2->transform.pos.y + ent2->transform.rot.y * 0.5;
+	t1.rot = scale_vector(t1.rot, 1);
+	pos1.x = t1.pos.x + t1.rot.x * 0.5;
+	pos1.y = t1.pos.y + t1.rot.y * 0.5;
+	t2.rot = scale_vector(t2.rot, 1);
+	pos2.x = t2.pos.x + t2.rot.x * 0.5;
+	pos2.y = t2.pos.y + t2.rot.y * 0.5;
 	return (pos_distance(pos1, pos2) < DEFAULT_COLLISION_DISTANCE);
 }
 
@@ -39,7 +39,7 @@ void	collide_entities(void)
 		{
 			if (ntt1 != ntt2)
 			{
-				if (check_colliding((t_entity *)ntt1->content, (t_entity *)ntt2->content))
+				if (check_colliding(((t_entity *)ntt1->content)->transform, ((t_entity *)ntt2->content)->transform))
 				{
 					if (((t_entity *)ntt1->content)->on_collision)
 						((t_entity *)ntt1->content)->on_collision((t_entity *)ntt1->content, (t_entity *)ntt2->content);
@@ -49,6 +49,8 @@ void	collide_entities(void)
 			}
 			ntt2 = ntt2->next;
 		}
+		if (check_colliding(player()->transform, ((t_entity *)ntt1->content)->transform))
+			on_collision_player((t_entity *)ntt1->content);
 		ntt1 = ntt1->next;
 	}
 }

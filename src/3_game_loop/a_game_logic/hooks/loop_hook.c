@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:28 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/28 13:18:50 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/29 20:07:10 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ void	loop_hook(void *param)
 		collide_entities();
 		render();
 		game()->prev_time = curr_time;
+		check_dead_player();
 	}
 }
