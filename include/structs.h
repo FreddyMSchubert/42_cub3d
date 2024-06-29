@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/28 19:41:09 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/29 19:37:53 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,8 @@ typedef struct s_player
 	t_transform	transform;
 	t_transform	spawn_transform;
 
+	int			health;
+
 	t_inventory	inv;
 }	t_player;
 
@@ -182,6 +184,8 @@ typedef struct s_entity
 
 	t_transform		transform;
 	t_transform		spawn_transform;
+
+	int				health;
 
 	mlx_texture_t	*(*get_texture)(t_entity *self);
 	bool			is_billboard;

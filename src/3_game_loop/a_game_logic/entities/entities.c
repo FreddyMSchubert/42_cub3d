@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:47:39 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/28 18:18:24 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/29 19:40:01 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,13 @@ void	collide_entities(void)
 void	tick_entities(void)
 {
 	t_list		*ntt_list;
+	t_entity	*ntt;
 
 	ntt_list = game()->entities;
 	while (ntt_list)
 	{
-		((t_entity *)ntt_list->content)->tick((t_entity *)ntt_list->content);
+		ntt = (t_entity *)ntt_list->content;
+		ntt->tick((t_entity *)ntt_list->content);
 		ntt_list = ntt_list->next;
 	}
 	ntt_list = game()->entities;

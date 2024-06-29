@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 16:06:43 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/28 13:38:40 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/29 19:36:49 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ bool	set_blight(t_vec2 pos, t_tile_type ***map, char blight_type)
 	data->state = BLIGHT_STATE_STANDING;
 	ntt = create_entity((t_transform){{pos.x + 0.5, pos.y + 0.5}, {1.0 , 0}}, BLIGHT_NTT, get_texture_blight, tick_blight);
 	ntt->on_collision = on_collision_blight;
+	ntt->health = ENEMY_STARTING_HEALTH;
 	ntt->data = data;
 	return (true);
 }

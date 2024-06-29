@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 10:51:45 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/28 13:37:46 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/29 19:36:10 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ t_entity	*create_entity(t_transform trans, t_entity_type type, \
 	entity->get_texture = tex;
 	entity->frames_since_state_change = 0;
 	entity->is_billboard = true;
+	entity->health = INT_MAX;
 	entity->tick = tick;
 	entity->on_collision = NULL;
 	entity->data = NULL;

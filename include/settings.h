@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/28 20:55:28 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/29 19:53:33 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,13 @@
 # define BLIGHT_MAX_SPAWN_DISTANCE 10
 # define BLIGHT_SPAWN_RETURNING_DEG_VARIATION 60
 # define BLIGHT_SHOOTING_INACCURACY_DEG 30
+
+// health
+
+# define ENEMY_STARTING_HEALTH 3
+# define PLAYER_STARTING_HEALTH 10
+# define MINOR_PROJECTILE_HIT_DECREASE 1
+# define MAJOR_PROJECTILE_HIT_DESCREASE 3
 
 // animations
 

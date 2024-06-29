@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 21:57:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/28 17:48:17 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/29 19:52:37 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,18 +107,26 @@ void	tick_blight(t_entity *self)
 void	on_collision_blight(t_entity *self, t_entity *other)
 {
 	t_blight	*blight;
+	int			health_decrease_amount;
 
 	blight = (t_blight *)self->data;
-	if (!(other->type == PROJECTILE_NTT))
+	if (!(other->type == PROJECTILE_NTT) || blight->type == ((t_projectile *)other->data)->type)
 		return ;
 	if (!a_beats_b(((t_projectile *)other->data)->type, blight->type))
-		return ;
-	logger(LOGGER_ACTION, "Blight killed by projectile!");
-	blight->state = BLIGHT_STATE_DYING;
+		health_decrease_amount = MINOR_PROJECTILE_HIT_DECREASE;
+	else
+		health_decrease_amount = MAJOR_PROJECTILE_HIT_DESCREASE;
+	printf("Blight got hit, decreasign %d health! Now his helath is %d.\n", health_decrease_amount, self->health - health_decrease_amount);
+	self->health -= health_decrease_amount;
+	if (self->health > 0)
+		logger(LOGGER_ACTION, "Blight hit by projectile!");
+	else
+	{
+		logger(LOGGER_ACTION, "Blight killed by projectile!");
+		blight->state = BLIGHT_STATE_DYING;
+	}
 	other->to_be_deleted = true;
 }
-
-// BLIGHT_DEATH_ANIMATION_FRAMES
 
 mlx_texture_t	*get_texture_blight(t_entity *self)
 {

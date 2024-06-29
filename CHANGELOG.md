@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.23.3] - 28.06.2024 - Freddy
+- Blight health, don't take damage from their own projectiles, take little damage from random projectiles, instantly die from their major projectile (e.g. water / fire)
+
 ### [0.23.2] - 28.06.2024 - Freddy
 - Goal placement in randomly generated maps
 - Made orbs drop random amounts of new ammo
