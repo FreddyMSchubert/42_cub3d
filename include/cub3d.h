@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/29 21:18:00 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/30 10:22:07 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ void				add_ntts_in_good_spots(char **maze, t_scale scale);
 void				place_locked_goal(char **maze, t_scale	map_scale);
 // util
 int					count_adjacent_walls(char **maze, int x, int y, int height, int width);
+void				print_mapmaker_map(char **maze, int height, int width);
 
 // ----- 1_input_parsing
 void				parse_input(char	*filepath);

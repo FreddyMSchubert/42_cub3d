@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 22:46:53 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/28 20:32:59 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/30 10:27:56 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	generate_map(void)
 
 	map_scale = (t_scale){random_int(MIN_MAP_SIZE, MAX_MAP_SIZE), random_int(MIN_MAP_SIZE, MAX_MAP_SIZE)};
 	setup_maze(&maze, &visited, map_scale);
-	generate_maze(maze, visited, (t_scale){random_int(1, map_scale.y - 2), random_int(1, map_scale.x - 2)}, map_scale);
+	generate_maze(maze, visited, (t_scale){random_int(1, map_scale.x - 2), random_int(1, map_scale.y - 2)}, map_scale);
 	place_player_spawn(maze, map_scale);
 	logger(LOGGER_STEP, "Player spawn placed");
 	remove_walls(maze, map_scale.y, map_scale.x);

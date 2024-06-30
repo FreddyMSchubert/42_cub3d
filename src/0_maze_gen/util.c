@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 20:22:43 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/28 20:24:24 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/30 10:24:56 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,23 @@ int count_adjacent_walls(char **maze, int x, int y, int height, int width)
 	wall_count += (maze[y][x - 1] == '1') ? 1 : 0;
 	wall_count += (maze[y][x + 1] == '1') ? 1 : 0;
 	return (wall_count);
+}
+
+void	print_mapmaker_map(char **maze, int height, int width)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < height)
+	{
+		j = 0;
+		while (j < width)
+		{
+			write(STDOUT_FILENO, &maze[i][j], 1);
+			j++;
+		}
+		write(STDOUT_FILENO, "\n", 1);
+		i++;
+	}
 }
