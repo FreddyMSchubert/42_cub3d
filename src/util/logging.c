@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:49:10 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/28 13:40:30 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/30 09:57:10 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	logger(char type, char *message)
 {
 	if (!message)
 		return ;
+	printf("[%.2f]\t", mlx_get_time());
 	if (type == 'e')
 		printf("%sERROR%s: \t%s\n", ANSI_BOLD_RED, ANSI_RESET, message);
 	else if (type == 'w')

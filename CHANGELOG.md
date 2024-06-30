@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.23.7] - 29.06.2024 - Freddy
+- Fixed the players bullets damaging the player by
+	- Increasing bullet speed (so player can't run faster when sprinting)
+	- Making bullets spawn in front of player instead of at same pos
+- Added half & full heart gui textures to project, not yet used though
+- Added time to logging
+
 ### [0.23.6] - 29.06.2024 - Freddy
 - Made player input segment where players can pick their element themselves
 

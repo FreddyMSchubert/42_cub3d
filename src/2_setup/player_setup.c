@@ -6,12 +6,13 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 08:28:05 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/29 21:02:50 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/29 22:05:56 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
+// if you just give the player int max health for infinite life, picking up health will kill you
 void	setup_player(void)
 {
 	player()->transform.pos.x = player()->spawn_transform.pos.x + 0.5;
@@ -30,6 +31,8 @@ void	setup_player(void)
 	player()->inv.text_amount_water = NULL;
 	player()->inv.text_amount_air = NULL;
 	player()->health = PLAYER_STARTING_HEALTH;
+	if (INFINITE_HEALTH)
+		player()->health = INT_MAX / 2;
 	player()->element = random_int(0, 3);
 	printf("Your elemental type is %d!\n", player()->element);
 }

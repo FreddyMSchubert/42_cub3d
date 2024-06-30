@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:50:17 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/28 13:18:56 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/30 10:16:35 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	mouse_click_hook(mouse_key_t button, action_t action, modifier_key_t mods, 
 {
 	int				*amount;
 	mlx_image_t		**amount_text;
+	t_transform		trans;
 
 	(void)param;
 	(void)mods;
@@ -57,7 +58,11 @@ void	mouse_click_hook(mouse_key_t button, action_t action, modifier_key_t mods, 
 		&& *amount)
 	{
 		amount_text = get_amount_text_by_index(player()->inv.current_index);
-		shooooot(player()->transform, player()->inv.current_index - 1);
+		trans = player()->transform;
+		trans.rot = scale_vector(trans.rot, 1);
+		trans.pos.x += trans.rot.x * (DEFAULT_COLLISION_DISTANCE * 1.05);
+		trans.pos.y += trans.rot.y * (DEFAULT_COLLISION_DISTANCE * 1.05);
+		shooooot(trans, player()->inv.current_index - 1);
 		(*amount)--;
 		mlx_delete_image(game()->mlx, *amount_text);
 		*amount_text = NULL;

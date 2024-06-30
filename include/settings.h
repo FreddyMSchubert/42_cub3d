@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/29 21:14:20 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/29 22:05:04 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 // --- Debug
 
 # define RENDER_ENTITIES_THROUGH_WALLS false
+# define INFINITE_HEALTH false
 
 // --- Quality of Life
 
@@ -82,7 +83,7 @@
 // speed
 
 # define DOOR_OPEN_SPEED 0.05
-# define PROJECTILE_SPEED 0.1
+# define PROJECTILE_SPEED 0.25
 # define BLIGHT_SPEED 0.05
 
 // movement
