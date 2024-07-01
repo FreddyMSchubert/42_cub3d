@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/01 12:45:31 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 12:59:22 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,7 +188,6 @@ int					get_tex_color_at(mlx_texture_t *tex, int x, int y);
 int					get_minimap_opacity(int x, int y);
 // minimap
 void				hud_draw_minimap(void);
-void				hud_toogle_worldmap(bool change_state);
 // - raycasting util
 double				pos_dist(t_vec2 pos1, t_vec2 pos2);
 t_vec2				scale_vector(t_vec2 t1, double distance);

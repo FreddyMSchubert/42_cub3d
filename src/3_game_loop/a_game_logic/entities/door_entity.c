@@ -21,10 +21,17 @@ void	tick_door(t_entity *self)
 		return ;
 	else if (door->state == DOOR_STATE_CLOSED)
 	{
-		if (pos_dist(player()->transform.pos, self->transform.pos) > DOOR_OPEN_DISTANCE || player()->inv.keys < 1)
+		if (pos_distance(player()->transform.pos, self->transform.pos)
+			> DOOR_OPEN_DISTANCE || player()->inv.keys < 1
+			|| player()->inv.current_index != 0)
 			return ;
 		logger(LOGGER_ACTION, "Door unlocked!");
 		player()->inv.keys--;
+		if (player()->inv.text_amount_key)
+		{
+			mlx_delete_image(game()->mlx, player()->inv.text_amount_key);
+			player()->inv.text_amount_key = NULL;
+		}
 		door->state = DOOR_STATE_OPENING;
 		door->close_pos = self->transform.pos;
 		door->open_pos = self->transform.pos;
