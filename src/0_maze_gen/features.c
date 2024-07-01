@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 22:50:16 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/28 19:28:23 by freddy           ###   ########.fr       */
+/*   Updated: 2024/06/30 12:05:11 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,25 @@ void	add_rooms(char **maze, t_scale scale, int room_count)
 			continue ;
 		add_room(maze, start_pos, room_scale, scale);
 	}
+}
+
+void	place_key(char **maze, t_scale scale)
+{
+	int	required_walls;
+
+	required_walls = 3;
+	while (required_walls >= 0)
+	{
+		for (int i = 0; i < scale.x * scale.y; i++)
+		{
+			int x = random_int(1, scale.x - 2);
+			int y = random_int(1, scale.y - 2);
+			if (maze[y][x] == '0' && count_adjacent_walls(maze, x, y, scale.y, scale.x) == required_walls)
+			{
+				maze[y][x] = 'K';
+				return ;
+			}
+		}
+	}
+	logger(LOGGER_WARNING, "Could not place key in maze. I guess you're stuck here forever.");
 }

@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.23.9] - 01.07.2024 - Freddy
+- Added key to maze gen
+
 ### [0.23.8] - 30.06.2024 - Freddy
 - Fixed mapmaker segfaulting & generating invalid maps (im pretty sure its hard to prove)
 
