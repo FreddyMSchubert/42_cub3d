@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/01 13:01:15 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/01 13:04:31 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,19 @@ void	cycle_inventory(int direction, bool direct)
 		}
 		player()->inv.current_index %= player()->inv.num_available_items;
 	}
+}
+
+static inline void	draw_hand_item(int pos_x, int pos_y, int size_x, int size_y)
+{
+	int				index;
+	mlx_texture_t	*tex;
+
+	index = player()->inv.current_index;
+	tex = get_tex_by_index(index);
+	if (index == -1 || !tex)
+		return ;
+	texture_draw(tex,
+		(t_scale){pos_x, pos_y}, (t_scale){size_x, size_y});
 }
 
 void	draw_inventory(void)

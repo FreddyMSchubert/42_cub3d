@@ -21,7 +21,7 @@ void	tick_door(t_entity *self)
 		return ;
 	else if (door->state == DOOR_STATE_CLOSED)
 	{
-		if (pos_distance(player()->transform.pos, self->transform.pos)
+		if (pos_dist(player()->transform.pos, self->transform.pos)
 			> DOOR_OPEN_DISTANCE || player()->inv.keys < 1
 			|| player()->inv.current_index != 0)
 			return ;
