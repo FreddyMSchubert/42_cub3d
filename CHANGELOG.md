@@ -1,5 +1,10 @@
 # Changelog
 
+### [0.23.10] - 01.07.2024 - Freddy
+- Removed held item drawing
+- Key gen infinite loop fix
+- Norminettification of 0_maze_gen
+
 ### [0.23.9] - 01.07.2024 - Freddy
 - Added key to maze gen
 

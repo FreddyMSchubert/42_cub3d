@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/28 13:19:05 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 11:10:47 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,19 +158,6 @@ void	cycle_inventory(int direction, bool direct)
 	}
 }
 
-void	draw_hand_item(int pos_x, int pos_y, int size_x, int size_y)
-{
-	int				index;
-	mlx_texture_t	*tex;
-
-	index = player()->inv.current_index;
-	tex = get_tex_by_index(index);
-	if (index == -1 || !tex)
-		return ;
-	texture_draw(tex,
-		(t_scale){pos_x, pos_y}, (t_scale){size_x, size_y});
-}
-
 void	draw_inventory(void)
 {
 	int	i;
@@ -180,7 +167,6 @@ void	draw_inventory(void)
 	i = -1;
 	start_x = game()->mlx->width / 2 - 150;
 	start_y = game()->mlx->height - 50;
-	draw_hand_item(start_y + 100, start_y - 150, 200, 200);
 	while (++i < player()->inv.num_available_items)
 		draw_current_selection(start_x, start_y);
 }

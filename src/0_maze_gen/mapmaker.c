@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 22:46:53 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/30 15:57:56 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 11:38:57 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static inline void	get_shuffled_directions(int dx[], int dy[])
 	}
 }
 
-static void	generate_maze(char **maze, bool **visited, t_scale pos, t_scale size)
+static void	generate_maze(char **m, bool **visited, t_scale pos, t_scale size)
 {
 	int		dx[4];
 	int		dy[4];
@@ -51,7 +51,7 @@ static void	generate_maze(char **maze, bool **visited, t_scale pos, t_scale size
 
 	get_shuffled_directions(dx, dy);
 	visited[pos.y][pos.x] = true;
-	maze[pos.y][pos.x] = '0';
+	m[pos.y][pos.x] = '0';
 	i = -1;
 	while (++i < 4)
 	{
@@ -61,10 +61,11 @@ static void	generate_maze(char **maze, bool **visited, t_scale pos, t_scale size
 		mid_pos.y = (pos.y + new_pos.y) / 2;
 		if (new_pos.x > 0 && new_pos.x < size.x - 1 && new_pos.y > 0 && \
 					new_pos.y < size.y - 1 && !visited[new_pos.y][new_pos.x] && \
-					mid_pos.x > 0 && mid_pos.x < size.x - 1 && mid_pos.y > 0 && mid_pos.y < size.y - 1)
+					mid_pos.x > 0 && mid_pos.x < size.x - 1 && \
+					mid_pos.y > 0 && mid_pos.y < size.y - 1)
 		{
-			maze[mid_pos.y][mid_pos.x] = '0';
-			generate_maze(maze, visited, new_pos, size);
+			m[mid_pos.y][mid_pos.x] = '0';
+			generate_maze(m, visited, new_pos, size);
 		}
 	}
 }
@@ -96,9 +97,11 @@ void	generate_map(void)
 	char	**maze;
 	bool	**visited;
 
-	map_scale = (t_scale){random_int(MIN_MAP_SIZE, MAX_MAP_SIZE), random_int(MIN_MAP_SIZE, MAX_MAP_SIZE)};
+	map_scale = (t_scale){random_int(MIN_MAP_SIZE, MAX_MAP_SIZE), \
+								random_int(MIN_MAP_SIZE, MAX_MAP_SIZE)};
 	setup_maze(&maze, &visited, map_scale);
-	generate_maze(maze, visited, (t_scale){random_int(1, map_scale.x - 2), random_int(1, map_scale.y - 2)}, map_scale);
+	generate_maze(maze, visited, (t_scale){random_int(1, map_scale.x - 2), \
+									random_int(1, map_scale.y - 2)}, map_scale);
 	place_player_spawn(maze, map_scale);
 	logger(LOGGER_STEP, "Player spawn placed");
 	remove_walls(maze, map_scale.y, map_scale.x);

@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/29 22:05:04 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 11:39:39 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 # define MAX_ROOMS_AMOUNT 5
 # define MIN_ROOM_SIZE 1
 # define MAX_ROOM_SIZE 13
-# define MAX_ROOM_SIZE_REL_TO_MAP_SIZE 3
+# define MAX_ROOM_SIZE_TO_MAP_SIZE 3
 # define WALL_REMOVAL_CHANCE_PERCENT 25
 
 # define ENTITIY_PLACEMENT_CHANCE 10
