@@ -17,7 +17,7 @@ void	tick_orb(t_entity *self)
 	t_orb	*orb;
 	int		ammo_amount;
 
-	if (pos_distance(player()->transform.pos, self->transform.pos) > GOAL_COLLISION_DISTANCE)
+	if (pos_dist(player()->transform.pos, self->transform.pos) > GOAL_COLLISION_DISTANCE)
 		return ;
 	ammo_amount = random_int(MIN_AMMO_AMOUNT_PER_ORB, MAX_AMMO_AMOUNT_PER_ORB);
 	orb = (t_orb *)self->data;

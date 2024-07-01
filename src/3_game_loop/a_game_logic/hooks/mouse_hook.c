@@ -6,14 +6,11 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:50:17 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/01 12:02:43 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 12:14:47 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../include/cub3d.h"
-#include <stdint.h>
-
-int	*get_amount_of_item(int index);
 
 void	handle_mouse_mv(void)
 {

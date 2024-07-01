@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1999/06/13 09:10:15 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/28 20:37:25 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 12:13:30 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	calc_wall(int ray_index, t_vec2 intersect)
 	double	angle_correction_rad;
 
 	get_x_pixel_from_ray_index(ray_index, &start_x, &end_x);
-	intersection_dist = pos_distance(player()->transform.pos, intersect);
+	intersection_dist = pos_dist(player()->transform.pos, intersect);
 	angle_correction_rad = deg_to_rad(get_fisheye_corrected_ray_angle(ray_index));
 	corrected_dist = intersection_dist * cos(angle_correction_rad);
 	height = get_height_from_intersection_dist(corrected_dist);
@@ -95,7 +95,7 @@ void	calc_entity(int ray_index, t_vec2 intersect, t_entity *ntt)
 	double	angle_correction_rad;
 
 	get_x_pixel_from_ray_index(ray_index, &start_x, &end_x);
-	intersection_dist = pos_distance(player()->transform.pos, intersect);
+	intersection_dist = pos_dist(player()->transform.pos, intersect);
 	angle_correction_rad = deg_to_rad(get_fisheye_corrected_ray_angle(ray_index));
 	corrected_dist = intersection_dist * cos(angle_correction_rad);
 	height = get_height_from_intersection_dist(corrected_dist);

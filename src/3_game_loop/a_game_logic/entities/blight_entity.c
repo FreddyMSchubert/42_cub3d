@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 21:57:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/29 21:03:43 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 12:13:30 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	rotate_self(t_entity *self, int depth)
 	double	new_angle;
 	t_vec2	new_dir;
 
-	if (pos_distance(self->transform.pos, self->spawn_transform.pos) > BLIGHT_MAX_SPAWN_DISTANCE)
+	if (pos_dist(self->transform.pos, self->spawn_transform.pos) > BLIGHT_MAX_SPAWN_DISTANCE)
 	{
 		new_dir.x = self->spawn_transform.pos.x - self->transform.pos.x;
 		new_dir.y = self->spawn_transform.pos.y - self->transform.pos.y;

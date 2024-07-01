@@ -14,7 +14,7 @@
 
 bool	is_visible(int x, int y);
 
-int	get_opacity(int x, int y)
+int	get_minimap_opacity(int x, int y)
 {
 	double	distance;
 	int		min_opacity;
@@ -40,7 +40,7 @@ static inline int	get_floor_color(int j, int i)
 	t_color	color;
 
 	color = game()->input_data->floor_color;
-	color = with_opacity(color, get_opacity(j, i));
+	color = with_opacity(color, get_minimap_opacity(j, i));
 	return (t_color_to_int(color));
 }
 
@@ -50,8 +50,8 @@ static inline int	get_wall_color(int j, int i)
 
 	floor_color = game()->input_data->floor_color;
 	if (floor_color.r + floor_color.g + floor_color.b < 200)
-		return (rgba_to_int(255, 255, 255, get_opacity(j, i)));
-	return (rgba_to_int(0, 0, 0, get_opacity(j, i)));
+		return (rgba_to_int(255, 255, 255, get_minimap_opacity(j, i)));
+	return (rgba_to_int(0, 0, 0, get_minimap_opacity(j, i)));
 }
 
 void	draw_tile(t_scale ij, int size, int offset_x, int offset_y)

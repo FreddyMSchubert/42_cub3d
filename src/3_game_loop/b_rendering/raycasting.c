@@ -6,13 +6,13 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:22:19 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/27 19:25:53 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 12:13:30 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/cub3d.h"
 
-double	pos_distance(t_vec2 pos1, t_vec2 pos2)
+double	pos_dist(t_vec2 pos1, t_vec2 pos2)
 {
 	double	dx;
 	double	dy;
@@ -77,7 +77,7 @@ t_vec2	get_wall_intersection(t_transform **walls, t_transform ray)
 		intersection = raycast_intersect(ray, *walls[i]);
 		if (intersection.x != -1)
 		{
-			current_distance = pos_distance(ray.pos, intersection);
+			current_distance = pos_dist(ray.pos, intersection);
 			if (closest_distance == -1 || current_distance < closest_distance)
 			{
 				closest_distance = current_distance;

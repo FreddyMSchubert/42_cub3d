@@ -14,7 +14,7 @@
 
 void	tick_key(t_entity *self)
 {
-	if (pos_distance(player()->transform.pos, self->transform.pos) > KEY_COLLISION_DISTANCE)
+	if (pos_dist(player()->transform.pos, self->transform.pos) > KEY_COLLISION_DISTANCE)
 		return ;
 	logger(LOGGER_ACTION, "Key collected!");
 	player()->inv.keys++;

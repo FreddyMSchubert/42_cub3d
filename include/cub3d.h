@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/01 12:03:34 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 12:17:35 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,6 +169,7 @@ bool				is_position_valid(float x, float y);
 void				turn(double amount);
 // --- b_rendering
 void				render(void);
+void				set_background(void);
 void				do_wall_operations();
 // - hud
 void				draw_crosshair(void);
@@ -179,11 +180,14 @@ void				draw_inventory(void);
 mlx_image_t			**get_amount_text_by_index(int index);
 void				texture_draw(mlx_texture_t *texture, t_scale pos, t_scale size);
 void				cycle_inventory(int direction, bool direct);
+int					*get_amount_of_item(int index);
+int					get_tex_color_at(mlx_texture_t *tex, int x, int y);
+int					get_minimap_opacity(int x, int y);
 // minimap
 void				hud_draw_minimap(void);
 void				hud_toogle_worldmap(bool change_state);
 // - raycasting util
-double				pos_distance(t_vec2 pos1, t_vec2 pos2);
+double				pos_dist(t_vec2 pos1, t_vec2 pos2);
 t_vec2				scale_vector(t_vec2 t1, double distance);
 t_vec2				raycast_intersect(t_transform t1, t_transform t2);
 t_vec2				get_wall_intersection(t_transform **walls, t_transform ray);

@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   worldmap.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/26 12:19:45 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/01 12:17:27 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../include/cub3d.h"
-
-int	get_opacity(int x, int y);
 
 void	draw_worldmap_tile(t_scale ij, int size, int offset_x, int offset_y)
 {

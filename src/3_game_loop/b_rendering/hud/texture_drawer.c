@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   texture_drawer.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 10:19:53 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/28 11:03:19 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/01 12:16:49 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/cub3d.h"
-
-int	get_tex_color_at(mlx_texture_t *tex, int x, int y);
 
 void	texture_draw(mlx_texture_t *texture, t_scale pos, t_scale size)
 {

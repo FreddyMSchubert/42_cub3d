@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 07:50:27 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/01 11:58:48 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 12:16:21 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,23 @@ static double	get_mvmnt_speed(void)
 		speed *= MOVEMENT_SPRINT_MULTIPLIER;
 	return (speed);
 }
+
+// if positive, turn right
+void	turn(double degrees)
+{
+	t_vec2	direction;
+	double	cos_angle;
+	double	sin_angle;
+	t_vec2	new_direction;
+
+	direction = player()->transform.rot;
+	cos_angle = cos(degrees * M_PI / 180.0);
+	sin_angle = sin(degrees * M_PI / 180.0);
+	new_direction.x = direction.x * cos_angle - direction.y * sin_angle;
+	new_direction.y = direction.x * sin_angle + direction.y * cos_angle;
+	player()->transform.rot = new_direction;
+}
+
 
 static t_vec2	get_movement_from_key(void)
 {

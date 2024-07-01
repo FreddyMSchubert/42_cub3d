@@ -6,13 +6,12 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 08:28:05 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/29 22:05:56 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 12:11:22 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-// if you just give the player int max health for infinite life, picking up health will kill you
 void	setup_player(void)
 {
 	player()->transform.pos.x = player()->spawn_transform.pos.x + 0.5;

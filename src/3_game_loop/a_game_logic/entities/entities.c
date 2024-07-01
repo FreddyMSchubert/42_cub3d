@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:47:39 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/29 20:00:13 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 12:13:30 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static inline bool	check_colliding(t_transform t1, t_transform t2)
 	t2.rot = scale_vector(t2.rot, 1);
 	pos2.x = t2.pos.x + t2.rot.x * 0.5;
 	pos2.y = t2.pos.y + t2.rot.y * 0.5;
-	return (pos_distance(pos1, pos2) < DEFAULT_COLLISION_DISTANCE);
+	return (pos_dist(pos1, pos2) < DEFAULT_COLLISION_DISTANCE);
 }
 
 void	collide_entities(void)

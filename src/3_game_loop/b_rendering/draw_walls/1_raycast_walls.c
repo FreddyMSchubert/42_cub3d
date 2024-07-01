@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/27 19:27:17 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 12:13:30 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	start_calc_entities(t_entity **ntts, t_vec2 *entity_intersects, double wall
 		count++;
 	j = -1;
 	while (++j < count)
-		if (pos_distance(player()->transform.pos, entity_intersects[j]) > wall_dist)
+		if (pos_dist(player()->transform.pos, entity_intersects[j]) > wall_dist)
 			ntts[j] = NULL;
 	j = -1;
 	while (++j < count)
@@ -81,7 +81,7 @@ void	start_calc_entities(t_entity **ntts, t_vec2 *entity_intersects, double wall
 		{
 			if (ntts[i] == NULL)
 				continue ;
-			dist = pos_distance(player()->transform.pos, entity_intersects[i]);
+			dist = pos_dist(player()->transform.pos, entity_intersects[i]);
 			if (dist > max_dist)
 			{
 				max_dist = dist;
@@ -110,6 +110,6 @@ void	raycast_walls(void)
 		wall_intersect = perform_wall_raycast(ray_index);
 		calc_wall(ray_index, wall_intersect);
 		ntts = perform_entity_raycast(ray_index, &entity_intersects);
-		start_calc_entities(ntts, entity_intersects, pos_distance(player()->transform.pos, wall_intersect), ray_index);
+		start_calc_entities(ntts, entity_intersects, pos_dist(player()->transform.pos, wall_intersect), ray_index);
 	}
 }
