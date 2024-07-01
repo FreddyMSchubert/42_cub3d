@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:47:39 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/01 12:13:30 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 17:17:08 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,18 @@ static inline bool	check_colliding(t_transform t1, t_transform t2)
 	return (pos_dist(pos1, pos2) < DEFAULT_COLLISION_DISTANCE);
 }
 
+static inline void	alert_colliding(t_entity *e1, t_entity *e2)
+{
+	if (e1->id == e2->id)
+		return ;
+	if (!check_colliding(e1->transform, e2->transform))
+		return ;
+	if (e1->on_collision)
+		e1->on_collision(e1, e2);
+	if (e2->on_collision)
+		e2->on_collision(e2, e1);
+}
+
 void	collide_entities(void)
 {
 	t_list	*ntt1;
@@ -37,19 +49,12 @@ void	collide_entities(void)
 		ntt2 = ntt1->next;
 		while (ntt2)
 		{
-			if (ntt1 != ntt2)
-			{
-				if (check_colliding(((t_entity *)ntt1->content)->transform, ((t_entity *)ntt2->content)->transform))
-				{
-					if (((t_entity *)ntt1->content)->on_collision)
-						((t_entity *)ntt1->content)->on_collision((t_entity *)ntt1->content, (t_entity *)ntt2->content);
-					if (((t_entity *)ntt2->content)->on_collision)
-						((t_entity *)ntt2->content)->on_collision((t_entity *)ntt2->content, (t_entity *)ntt1->content);
-				}
-			}
+			alert_colliding((t_entity *)ntt1->content, \
+							(t_entity *)ntt2->content);
 			ntt2 = ntt2->next;
 		}
-		if (check_colliding(player()->transform, ((t_entity *)ntt1->content)->transform))
+		if (check_colliding(player()->transform, \
+						((t_entity *)ntt1->content)->transform))
 			on_collision_player((t_entity *)ntt1->content);
 		ntt1 = ntt1->next;
 	}

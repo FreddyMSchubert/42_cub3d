@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ORB_NTTntity.c                                       :+:      :+:    :+:   */
+/*   orb_entity.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:42:00 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/27 20:56:46 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 17:18:32 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/cub3d.h"
 
-void	tick_orb(t_entity *self)
+static inline void	gain_ammo(t_entity *self, t_orb *orb)
 {
-	t_orb	*orb;
-	int		ammo_amount;
+	int	ammo_amount;
 
-	if (pos_dist(player()->transform.pos, self->transform.pos) > GOAL_COLLISION_DISTANCE)
-		return ;
 	ammo_amount = random_int(MIN_AMMO_AMOUNT_PER_ORB, MAX_AMMO_AMOUNT_PER_ORB);
-	orb = (t_orb *)self->data;
 	if (orb->element == TYPE_EARTH)
 	{
 		player()->inv.earth_orbs += ammo_amount;
@@ -42,6 +38,17 @@ void	tick_orb(t_entity *self)
 		logger(LOGGER_ACTION, "Picked up some air orbs!");
 	}
 	self->to_be_deleted = true;
+}
+
+void	tick_orb(t_entity *self)
+{
+	t_orb	*orb;
+
+	orb = (t_orb *)self->data;
+	if (pos_dist(player()->transform.pos, self->transform.pos) > \
+						GOAL_COLLISION_DISTANCE)
+		return ;
+	gain_ammo(self, orb);
 }
 
 mlx_texture_t	*get_texture_orb(t_entity *self)

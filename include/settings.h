@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/01 16:37:33 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 17:21:19 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 // --- Debug
 
 # define RENDER_ENTITIES_THROUGH_WALLS false
-# define INFINITE_HEALTH true
+# define INFINITE_HEALTH false
 
 // --- Quality of Life
 
@@ -94,7 +94,7 @@
 # define BLIGHT_MOVEMENT_ROTATION_SWITCH_CHANCE 0.05
 # define BLIGHT_MINIUM_ROTATION_DEG 45
 # define BLIGHT_MAX_SPAWN_DISTANCE 10
-# define BLIGHT_SPAWN_RETURNING_DEG_VARIATION 60
+# define BLIGHT_SPAWN_RETURNING_DEG_VARIATION 45
 # define BLIGHT_SHOOTING_INACCURACY_DEG 30
 
 // health
@@ -121,6 +121,6 @@
 // --- Gameplay Balancing
 
 # define MIN_AMMO_AMOUNT_PER_ORB 2
-# define MAX_AMMO_AMOUNT_PER_ORB 4
+# define MAX_AMMO_AMOUNT_PER_ORB 5
 
 #endif

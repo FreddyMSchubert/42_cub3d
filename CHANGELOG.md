@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.23.16] - 01.07.2024 - Freddy
+- Norminettification of the entities folder
+
 ### [0.23.15] - 01.07.2024 - Freddy
 - Fixed left-clicking when key held segfaulting
 - Added a max hearts amount to avoid segfaulting
