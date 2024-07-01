@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.23.11] - 01.07.2024 - Freddy
+- Fixed projectiles shooting through doors
+
 ### [0.23.10] - 01.07.2024 - Freddy
 - Removed held item drawing
 - Key gen infinite loop fix

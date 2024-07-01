@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 07:50:27 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/28 13:19:01 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 11:55:01 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ static t_vec2	get_movement_from_key(void)
 	return (mvmnt);
 }
 
-// we can reuse this function once we have projectiles
 bool	is_position_valid(float x, float y)
 {
 	t_list		*ntt_list;
@@ -76,14 +75,14 @@ bool	is_position_valid(float x, float y)
 				if (door->direction == DOOR_DIR_HORIZONTAL)
 				{
 					pos_on_space = fmod(y, 1.0f);
-					if (floor(player()->transform.pos.x) == floor(ntt->transform.pos.x) && floor(player()->transform.pos.y) == floor(ntt->transform.pos.y) && \
+					if (floor(x) == floor(ntt->transform.pos.x) && floor(y) == floor(ntt->transform.pos.y) && \
 							pos_on_space > CLOSED_DOOR_ALLOWED_WALK_DISTANCE && pos_on_space < 1 - CLOSED_DOOR_ALLOWED_WALK_DISTANCE)
 						return(false);
 				}
 				else
 				{
 					pos_on_space = fmod(x, 1.0f);
-					if (floor(player()->transform.pos.y) == floor(ntt->transform.pos.y) && floor(player()->transform.pos.x) == floor(ntt->transform.pos.x) && \
+					if (floor(y) == floor(ntt->transform.pos.y) && floor(x) == floor(ntt->transform.pos.x) && \
 							pos_on_space > CLOSED_DOOR_ALLOWED_WALK_DISTANCE && pos_on_space < 1 - CLOSED_DOOR_ALLOWED_WALK_DISTANCE)
 						return(false);
 				}
