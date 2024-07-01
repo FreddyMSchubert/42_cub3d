@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/01 13:28:25 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/01 16:33:52 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,7 +165,7 @@ void				key_hook(mlx_key_data_t keydata, void *param);
 void				scroll_hook(double xdelta, double ydelta, void *param);
 void				mouse_click_hook(mouse_key_t button, action_t action, \
 									modifier_key_t mods, void *param);
-void				player_shoot(int *amount);
+void				player_shoot(void);
 // player movement
 void				handle_player_move(void);
 bool				is_position_valid(float x, float y);

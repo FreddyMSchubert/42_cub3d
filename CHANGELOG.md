@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.23.15] - 01.07.2024 - Freddy
+- Fixed left-clicking when key held segfaulting
+- Added a max hearts amount to avoid segfaulting
+
 ### [0.23.14] - 01.07.2024 - Freddy
 - Removed github workflows, they weren't working anyways
 - Removed <float.h> from the project, norminette didnt like it

@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/01 11:39:39 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 16:37:33 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 // --- Debug
 
 # define RENDER_ENTITIES_THROUGH_WALLS false
-# define INFINITE_HEALTH false
+# define INFINITE_HEALTH true
 
 // --- Quality of Life
 

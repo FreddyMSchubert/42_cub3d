@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:50:17 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/01 12:14:47 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 16:33:08 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,15 @@ void	scroll_hook(double xdelta, double ydelta, void *param)
 	}
 }
 
-void	player_shoot(int *amount)
+void	player_shoot(void)
 {
 	mlx_image_t		**amount_text;
 	t_transform		trans;
+	int				*amount;
 
+	amount = get_amount_of_item(player()->inv.current_index);
+	if (player()->inv.current_index == 0 || *amount <= 0)
+		return ;
 	amount_text = get_amount_text_by_index(player()->inv.current_index);
 	trans = player()->transform;
 	trans.rot = scale_vector(trans.rot, 1);
@@ -56,14 +60,10 @@ void	player_shoot(int *amount)
 
 void	mouse_click_hook(mouse_key_t button, action_t action, modifier_key_t mods, void* param)
 {
-	int				*amount;
-
 	(void)param;
 	(void)mods;
-	amount = get_amount_of_item(player()->inv.current_index);
-	if (button == MLX_MOUSE_BUTTON_LEFT && action == MLX_PRESS
-		&& *amount)
-		player_shoot(amount);
+	if (button == MLX_MOUSE_BUTTON_LEFT && action == MLX_PRESS)
+		player_shoot();
 }
 
 void	cursor_hook(double x, double y, void *param)
