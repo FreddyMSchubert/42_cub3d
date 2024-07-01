@@ -6,9 +6,11 @@
 /*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/01 13:04:31 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/01 15:00:47 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+void	draw_healthbar(int size, int start_x, int start_y);
 
 #include "../../../include/cub3d.h"
 
@@ -124,4 +126,5 @@ void	draw_inventory(void)
 		size * 2, size * 2);
 	while (++i < player()->inv.num_available_items)
 		draw_current_selection(start_x, start_y, size, 10);
+	draw_healthbar(size / 2, start_x, start_y);
 }

@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 14:23:39 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/28 14:30:26 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/01 14:58:56 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,15 @@ mlx_texture_t	*get_tex_by_index(int index)
 		|| index > player()->inv.num_available_items)
 		return (NULL);
 	if (index == 0)
-		tex = mlx_load_png("./assets/textures/entities/key.png");
+		tex = game()->textures.key;
 	else if (index == TYPE_WATER + 1)
-		tex = mlx_load_png("./assets/textures/entities/orbs/water.png");
+		tex = game()->textures.water_orb;
 	else if (index == TYPE_FIRE + 1)
-		tex = mlx_load_png("./assets/textures/entities/orbs/fire.png");
+		tex = game()->textures.fire_orb;
 	else if (index == TYPE_EARTH + 1)
-		tex = mlx_load_png("./assets/textures/entities/orbs/earth.png");
+		tex = game()->textures.earth_orb;
 	else if (index == TYPE_AIR + 1)
-		tex = mlx_load_png("./assets/textures/entities/orbs/air.png");
+		tex = game()->textures.air_orb;
 	else
 	 	tex = NULL;
 	return (tex);
