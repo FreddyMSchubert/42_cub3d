@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 22:02:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/28 18:36:29 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 21:58:15 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	init_random_seed(void)
 
 double	random_val(void)
 {
-	return (double)rand() / RAND_MAX;
+	return ((double)rand() / RAND_MAX);
 }
 
 int	random_int(int min, int max)

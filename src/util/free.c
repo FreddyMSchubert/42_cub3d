@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 13:24:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/01 13:26:36 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/01 21:58:24 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void free_arr(void **arr)
+void	free_arr(void **arr)
 {
 	int	i;
 
