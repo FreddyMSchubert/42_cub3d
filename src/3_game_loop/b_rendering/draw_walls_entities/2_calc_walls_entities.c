@@ -1,18 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   2_calc_walls.c                                     :+:      :+:    :+:   */
+/*   2_calc_walls_entities.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1999/06/13 09:10:15 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/01 12:13:30 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 21:47:12 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../include/cub3d.h"
-
-double	get_fisheye_corrected_ray_angle(int ray_index);
 
 static void	get_x_pixel_from_ray_index(int ray_index, int *start_x, int *end_x)
 {
@@ -50,55 +48,38 @@ static double	get_ntt_hit_offset(t_vec2 intersect, t_transform ntt_face)
 	return (dot_product / line_rot_sqr_mag);
 }
 
-static inline mlx_texture_t	*get_wall_texture(char d)
-{
-	if (d == 'N')
-		return (game()->no_texture);
-	if (d == 'E')
-		return (game()->ea_texture);
-	if (d == 'S')
-		return (game()->so_texture);
-	if (d == 'W')
-		return (game()->we_texture);
-	return (NULL);
-}
-
 void	calc_wall(int ray_index, t_vec2 intersect)
 {
 	int		height;
-	int		start_x;
-	int		end_x;
-	double	hit_offset;
+	t_range	range;
 	double	intersection_dist;
-	double	corrected_dist;
 	double	angle_correction_rad;
 
-	get_x_pixel_from_ray_index(ray_index, &start_x, &end_x);
+	get_x_pixel_from_ray_index(ray_index, &range.min, &range.max);
 	intersection_dist = pos_dist(player()->transform.pos, intersect);
-	angle_correction_rad = deg_to_rad(get_fisheye_corrected_ray_angle(ray_index));
-	corrected_dist = intersection_dist * cos(angle_correction_rad);
-	height = get_height_from_intersection_dist(corrected_dist);
-	hit_offset = intersect.y - floor(intersect.y) + \
-						intersect.x - floor(intersect.x);
-	draw_gameobject(start_x, end_x, height, \
-			get_wall_texture(get_wall_face_to_render(intersect)), hit_offset);
+	angle_correction_rad = \
+						deg_to_rad(get_fisheye_corrected_ray_angle(ray_index));
+	height = get_height_from_intersection_dist(intersection_dist * \
+					cos(angle_correction_rad));
+	draw_gameobject(range, height, \
+			get_wall_texture(get_wall_face_to_render(intersect)), \
+							intersect.y - floor(intersect.y) + \
+						intersect.x - floor(intersect.x));
 }
 
 void	calc_entity(int ray_index, t_vec2 intersect, t_entity *ntt)
 {
 	int		height;
-	int		start_x;
-	int		end_x;
-	double	hit_offset;
+	t_range	range;
 	double	intersection_dist;
-	double	corrected_dist;
 	double	angle_correction_rad;
 
-	get_x_pixel_from_ray_index(ray_index, &start_x, &end_x);
+	get_x_pixel_from_ray_index(ray_index, &range.min, &range.max);
 	intersection_dist = pos_dist(player()->transform.pos, intersect);
-	angle_correction_rad = deg_to_rad(get_fisheye_corrected_ray_angle(ray_index));
-	corrected_dist = intersection_dist * cos(angle_correction_rad);
-	height = get_height_from_intersection_dist(corrected_dist);
-	hit_offset = get_ntt_hit_offset(intersect, get_face_vector(ntt));
-	draw_gameobject(start_x, end_x, height, ntt->get_texture(ntt), hit_offset);
+	angle_correction_rad = deg_to_rad(\
+						get_fisheye_corrected_ray_angle(ray_index));
+	height = get_height_from_intersection_dist(intersection_dist * \
+						cos(angle_correction_rad));
+	draw_gameobject(range, height, ntt->get_texture(ntt), \
+						get_ntt_hit_offset(intersect, get_face_vector(ntt)));
 }

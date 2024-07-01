@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.23.18] - 01.07.2024 - Freddy
+- Norminettified walls & entities drawing
+
 ### [0.23.17] - 01.07.2024 - Freddy
 - Norminettification of game loop hooks, now a_game_logic is fully norminettified
 

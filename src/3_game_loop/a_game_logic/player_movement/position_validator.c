@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:27:28 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/01 17:30:08 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 21:34:06 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,34 +18,32 @@ static inline bool	check_door_collisions(float x, float y, t_entity *ntt)
 	float	pos_on_space;
 
 	door = (t_door *)ntt->data;
-	if (door->state != DOOR_STATE_OPEN)
+	if (door->state != DOOR_STATE_OPEN && \
+						door->direction == DOOR_DIR_HORIZONTAL)
 	{
-		if (door->direction == DOOR_DIR_HORIZONTAL)
-		{
-			pos_on_space = fmod(y, 1.0f);
-			if (floor(x) == floor(ntt->transform.pos.x) && \
-								floor(y) == floor(ntt->transform.pos.y) && \
-					pos_on_space > CLOSED_DOOR_ALLOWED_WALK_DISTANCE && \
-						pos_on_space < 1 - CLOSED_DOOR_ALLOWED_WALK_DISTANCE)
-				return (false);
-		}
-		else
-		{
-			pos_on_space = fmod(x, 1.0f);
-			if (floor(y) == floor(ntt->transform.pos.y) && \
-						floor(x) == floor(ntt->transform.pos.x) && \
-					pos_on_space > CLOSED_DOOR_ALLOWED_WALK_DISTANCE && \
-						pos_on_space < 1 - CLOSED_DOOR_ALLOWED_WALK_DISTANCE)
-				return (false);
-		}
+		pos_on_space = fmod(y, 1.0f);
+		if (floor(x) == floor(ntt->transform.pos.x) && \
+							floor(y) == floor(ntt->transform.pos.y) && \
+				pos_on_space > CLOSED_DOOR_ALLOWED_WALK_DISTANCE && \
+					pos_on_space < 1 - CLOSED_DOOR_ALLOWED_WALK_DISTANCE)
+			return (false);
 	}
+	else if (door->state != DOOR_STATE_OPEN)
+	{
+		pos_on_space = fmod(x, 1.0f);
+		if (floor(y) == floor(ntt->transform.pos.y) && \
+					floor(x) == floor(ntt->transform.pos.x) && \
+				pos_on_space > CLOSED_DOOR_ALLOWED_WALK_DISTANCE && \
+					pos_on_space < 1 - CLOSED_DOOR_ALLOWED_WALK_DISTANCE)
+			return (false);
+	}
+	return (true);
 }
 
 bool	is_position_valid(float x, float y)
 {
 	t_list		*ntt_list;
 	t_entity	*ntt;
-	t_door		*door;
 
 	if (x < 0 || x >= game()->input_data->map_width || y < 0 || \
 		y >= game()->input_data->map_height || \

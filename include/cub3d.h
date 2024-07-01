@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/01 16:33:52 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 21:46:15 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ bool				free_split(char	**split, bool ret);
 int					split_len(char **split);
 bool				char_is_in(char c, char *seq);
 bool				regex(char *line, char *reg);
-void 				free_arr(void **arr);
+void				free_arr(void **arr);
 
 // --- a_file_reading
 void				get_map_contents(char *filepath);
@@ -196,19 +196,24 @@ t_vec2				raycast_intersect(t_transform t1, t_transform t2);
 t_vec2				get_wall_intersection(t_transform **walls, t_transform ray);
 t_vec2				*get_entity_intersection(t_transform ray, \
 												t_entity ***entities);
-// - 1 raycast walls
+// - 1 raycasting
 void				raycast_walls(void);
+void				start_calc_entities(t_entity **ntts, \
+					t_vec2 *entity_intersects, double wall_dist, int ray_index);
+t_entity			**perform_entity_raycast(int i, t_vec2 **entity_intersects);
 // - 2 calc walls
 void				calc_wall(int ray_index, t_vec2 intersect);
 void				calc_entity(int ray_index, t_vec2 intersect, t_entity *ntt);
 // - 3 draw walls
-void				draw_gameobject(int start_x, int end_x, int height, \
+void				draw_gameobject(t_range x_range, int height, \
 									mlx_texture_t *tex, double hit_offset);
 void				set_pixel_color(mlx_image_t *img, int x, int y, int col);
 // - util
 bool				get_wall_orientation(t_vec2 intersect);
 char				get_wall_face_to_render(t_vec2 intersect);
 t_transform			get_wall_from_intersect(t_vec2 intersect);
+double				get_fisheye_corrected_ray_angle(int ray_index);
+mlx_texture_t		*get_wall_texture(char d);
 
 // --- entities
 void				tick_entities(void);
