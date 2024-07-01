@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.23.12] - 01.07.2024 - Freddy
+- Moved the view rotation using arrow keys over to the loop hook, allowing for much smoother turning
+- Made it possible to shoot pressing F as wel
+
 ### [0.23.11] - 01.07.2024 - Freddy
 - Fixed projectiles shooting through doors
 

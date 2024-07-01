@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:50:17 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/30 10:16:35 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 12:02:43 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,6 @@ void	handle_mouse_mv(void)
 		return ;
 	turn((current_mouse_x - game()->prev_mouse_x) * MOUSE_SENSITIVITY);
 	game()->prev_mouse_x = current_mouse_x;
-
-	/*
-	mouse reset logic gotta be in here:
-	mlx_set_mouse_pos(game()->mlx, game()->mlx->width / 2, game()->mlx->height / 2);
-	*/
 }
 
 void	scroll_hook(double xdelta, double ydelta, void *param)
@@ -45,29 +40,33 @@ void	scroll_hook(double xdelta, double ydelta, void *param)
 	}
 }
 
+void	player_shoot(int *amount)
+{
+	mlx_image_t		**amount_text;
+	t_transform		trans;
+
+	amount_text = get_amount_text_by_index(player()->inv.current_index);
+	trans = player()->transform;
+	trans.rot = scale_vector(trans.rot, 1);
+	trans.pos.x += trans.rot.x * (DEFAULT_COLLISION_DISTANCE * 1.05);
+	trans.pos.y += trans.rot.y * (DEFAULT_COLLISION_DISTANCE * 1.05);
+	shooooot(trans, player()->inv.current_index - 1);
+	(*amount)--;
+	mlx_delete_image(game()->mlx, *amount_text);
+	*amount_text = NULL;
+	logger(LOGGER_ACTION, "Shot projectile!");
+}
+
 void	mouse_click_hook(mouse_key_t button, action_t action, modifier_key_t mods, void* param)
 {
 	int				*amount;
-	mlx_image_t		**amount_text;
-	t_transform		trans;
 
 	(void)param;
 	(void)mods;
 	amount = get_amount_of_item(player()->inv.current_index);
 	if (button == MLX_MOUSE_BUTTON_LEFT && action == MLX_PRESS
 		&& *amount)
-	{
-		amount_text = get_amount_text_by_index(player()->inv.current_index);
-		trans = player()->transform;
-		trans.rot = scale_vector(trans.rot, 1);
-		trans.pos.x += trans.rot.x * (DEFAULT_COLLISION_DISTANCE * 1.05);
-		trans.pos.y += trans.rot.y * (DEFAULT_COLLISION_DISTANCE * 1.05);
-		shooooot(trans, player()->inv.current_index - 1);
-		(*amount)--;
-		mlx_delete_image(game()->mlx, *amount_text);
-		*amount_text = NULL;
-		logger(LOGGER_ACTION, "Shot projectile!");
-	}
+		player_shoot(amount);
 }
 
 void	cursor_hook(double x, double y, void *param)

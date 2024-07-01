@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 07:50:27 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/01 11:55:01 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 11:58:48 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,4 +105,8 @@ void	handle_player_move(void)
 		player()->transform.pos.x += mvmnt.x;
 	if (is_position_valid(player()->transform.pos.x, new_pos.y))
 		player()->transform.pos.y += mvmnt.y;
+	if (mlx_is_key_down(game()->mlx, MLX_KEY_LEFT))
+		turn(-TURN_SPEED_ARROWS_DEG);
+	if (mlx_is_key_down(game()->mlx, MLX_KEY_RIGHT))
+		turn(TURN_SPEED_ARROWS_DEG);
 }

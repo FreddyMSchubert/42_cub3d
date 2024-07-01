@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/01 11:43:07 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 12:03:34 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,7 @@ void				handle_mouse_mv(void);
 void				key_hook(mlx_key_data_t keydata, void *param);
 void				scroll_hook(double xdelta, double ydelta, void *param);
 void				mouse_click_hook(mouse_key_t button, action_t action, modifier_key_t mods, void* param);
+void				player_shoot(int *amount);
 // player movement
 void				handle_player_move(void);
 bool				is_position_valid(float x, float y);
