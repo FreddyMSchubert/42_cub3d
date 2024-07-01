@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:22:19 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/01 12:13:30 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 12:32:00 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ t_vec2	raycast_intersect(t_transform t1, t_transform t2)
 	intersection.x = -1;
 	intersection.y = -1;
 	denom = t1.rot.x * t2.rot.y - t1.rot.y * t2.rot.x;
-	if (fabs(denom) < DBL_EPSILON)
-		return (intersection);
 	inv_denom = 1.0 / denom;
 	t = ((t2.pos.x - t1.pos.x) * t2.rot.y - \
 		(t2.pos.y - t1.pos.y) * t2.rot.x) * inv_denom;

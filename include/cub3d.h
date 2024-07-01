@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/01 12:17:35 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 12:45:31 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@
 // other
 # include <stdbool.h>
 # include <limits.h>
-# include <float.h>
-
 
 /* ---- SETTINGS ---- */
 # define MAP_TILES " 10NESWGHVKwfeaqrdsh"
@@ -96,13 +94,14 @@ void				remove_walls(char **maze, int height, int width);
 void				place_player_spawn(char **maze, t_scale	map_scale);
 void				add_rooms(char **maze, t_scale scale, int room_count);
 // file writer
-void				write_cub_file(char **maze, int height, int width, char *filename);
+void				write_cub_file(char **maze, int height, int width, \
+										char *filename);
 // entities
 void				add_ntts_in_good_spots(char **maze, t_scale scale);
 void				place_locked_goal(char **maze, t_scale	map_scale);
 void				place_key(char **maze, t_scale scale);
 // util
-int					count_adjacent_walls(char **maze, t_scale pos, t_scale scale);
+int					count_adjacent_walls(char **maze, t_scale pos, t_scale s);
 void				print_mapmaker_map(char **maze, int height, int width);
 
 // ----- 1_input_parsing
@@ -111,8 +110,10 @@ void				parse_input(char	*filepath);
 int					get_file_length(char *filename);
 bool				check_player(bool *invalid);
 // parse
-bool				set_values(char **split, t_input_data **input_data, char **data, int *i);
-bool				parse_attributes(char **data, t_input_data **input_data, int *i);
+bool				set_values(char **split, t_input_data **input_data, \
+									char **data, int *i);
+bool				parse_attributes(char **data, t_input_data **input_data, \
+													int *i);
 int					get_map_len(int *i, char **data);
 t_tile_type			***make_map(int map_len, int *i, char **data);
 bool				parse_map(char **data, t_input_data **input_data, int *i);
@@ -127,7 +128,8 @@ bool				set_color(t_color *color, char *color_val);
 bool				set_goal(t_vec2 pos, t_tile_type ***map);
 bool				set_health(t_vec2 pos, t_tile_type ***map);
 bool				set_orb(t_vec2 pos, t_tile_type ***map, char orb_type);
-bool				set_blight(t_vec2 pos, t_tile_type ***map, char blight_type);
+bool				set_blight(t_vec2 pos, t_tile_type ***map, \
+										char blight_type);
 bool				set_door(t_vec2 pos, t_tile_type ***map, char type);
 bool				set_key(t_vec2 pos, t_tile_type ***map);
 // squarify map
@@ -160,7 +162,8 @@ void				cursor_hook(double x, double y, void *param);
 void				handle_mouse_mv(void);
 void				key_hook(mlx_key_data_t keydata, void *param);
 void				scroll_hook(double xdelta, double ydelta, void *param);
-void				mouse_click_hook(mouse_key_t button, action_t action, modifier_key_t mods, void* param);
+void				mouse_click_hook(mouse_key_t button, action_t action, \
+									modifier_key_t mods, void *param);
 void				player_shoot(int *amount);
 // player movement
 void				handle_player_move(void);
@@ -170,7 +173,6 @@ void				turn(double amount);
 // --- b_rendering
 void				render(void);
 void				set_background(void);
-void				do_wall_operations();
 // - hud
 void				draw_crosshair(void);
 void				draw_square(int x, int y, int size, int color);
@@ -178,7 +180,8 @@ void				draw_square_hud(int x, int y, int size, int color);
 void				draw_square_world(int x, int y, int size, int color);
 void				draw_inventory(void);
 mlx_image_t			**get_amount_text_by_index(int index);
-void				texture_draw(mlx_texture_t *texture, t_scale pos, t_scale size);
+void				texture_draw(mlx_texture_t *texture, t_scale pos, \
+										t_scale size);
 void				cycle_inventory(int direction, bool direct);
 int					*get_amount_of_item(int index);
 int					get_tex_color_at(mlx_texture_t *tex, int x, int y);
@@ -191,14 +194,16 @@ double				pos_dist(t_vec2 pos1, t_vec2 pos2);
 t_vec2				scale_vector(t_vec2 t1, double distance);
 t_vec2				raycast_intersect(t_transform t1, t_transform t2);
 t_vec2				get_wall_intersection(t_transform **walls, t_transform ray);
-t_vec2				*get_entity_intersection(t_transform ray, t_entity ***entities);
+t_vec2				*get_entity_intersection(t_transform ray, \
+												t_entity ***entities);
 // - 1 raycast walls
 void				raycast_walls(void);
 // - 2 calc walls
 void				calc_wall(int ray_index, t_vec2 intersect);
 void				calc_entity(int ray_index, t_vec2 intersect, t_entity *ntt);
 // - 3 draw walls
-void				draw_gameobject(int start_x, int end_x, int height, mlx_texture_t *tex, double hit_offset);
+void				draw_gameobject(int start_x, int end_x, int height, \
+									mlx_texture_t *tex, double hit_offset);
 void				set_pixel_color(mlx_image_t *img, int x, int y, int col);
 // - util
 bool				get_wall_orientation(t_vec2 intersect);
@@ -285,7 +290,8 @@ t_vec2				rotate_vector_by_90_degrees(t_vec2 v, int direction);
 
 // entities
 t_transform			get_face_vector(t_entity *ntt);
-t_entity			*create_entity(t_transform trans, t_entity_type type, mlx_texture_t	*(*tex)(t_entity *self), void (*tick)(t_entity *self));
+t_entity			*create_entity(t_transform trans, t_entity_type type, \
+		mlx_texture_t	*(*tex)(t_entity *self), void (*tick)(t_entity *self));
 void				delete_entity(t_entity *self);
 
 // vector

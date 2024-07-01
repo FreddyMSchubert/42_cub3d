@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/29 21:58:52 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 12:45:02 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,23 +87,19 @@ typedef struct s_animation
 
 typedef struct s_textures
 {
-	// General
 	mlx_texture_t	*door;
 	mlx_texture_t	*key;
 	mlx_texture_t	*goal;
 	mlx_texture_t	*health;
 
-	// GUI
 	mlx_texture_t	*heart_full;
 	mlx_texture_t	*heart_half;
 
-	// Orbs
 	mlx_texture_t	*water_orb;
 	mlx_texture_t	*fire_orb;
 	mlx_texture_t	*earth_orb;
 	mlx_texture_t	*air_orb;
 
-	// Blights
 	mlx_texture_t	*air_blight_idle;
 	t_animation		air_blight_death;
 	t_animation		air_blight_attack;
@@ -142,14 +138,14 @@ typedef struct s_persistent_data
 
 typedef struct s_inventory
 {
-	int		num_available_items;
-	int		current_index;
+	int			num_available_items;
+	int			current_index;
 
-	int		keys;
-	int		water_orbs;
-	int		fire_orbs;
-	int		earth_orbs;
-	int		air_orbs;
+	int			keys;
+	int			water_orbs;
+	int			fire_orbs;
+	int			earth_orbs;
+	int			air_orbs;
 
 	mlx_image_t	*text_amount_key;
 	mlx_image_t	*text_amount_water;

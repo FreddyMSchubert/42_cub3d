@@ -1,5 +1,10 @@
 # Changelog
 
+### [0.23.14] - 01.07.2024 - Freddy
+- Removed github workflows, they weren't working anyways
+- Removed <float.h> from the project, norminette didnt like it
+- Header norminettification
+
 ### [0.23.13] - 01.07.2024 - Freddy
 - Various fixes & cleanups
 
