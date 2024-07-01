@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   1_raycast_walls.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/01 12:13:30 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 13:29:33 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../include/cub3d.h"
+#include <stdlib.h>
 
 double	get_fisheye_corrected_ray_angle(int ray_index)
 {
@@ -112,4 +113,6 @@ void	raycast_walls(void)
 		ntts = perform_entity_raycast(ray_index, &entity_intersects);
 		start_calc_entities(ntts, entity_intersects, pos_dist(player()->transform.pos, wall_intersect), ray_index);
 	}
+	free(entity_intersects);
+	// free_arr((void **)ntts);
 }

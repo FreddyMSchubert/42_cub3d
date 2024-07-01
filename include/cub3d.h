@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/01 12:59:22 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/01 13:28:25 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,7 @@ bool				free_split(char	**split, bool ret);
 int					split_len(char **split);
 bool				char_is_in(char c, char *seq);
 bool				regex(char *line, char *reg);
+void 				free_arr(void **arr);
 
 // --- a_file_reading
 void				get_map_contents(char *filepath);
