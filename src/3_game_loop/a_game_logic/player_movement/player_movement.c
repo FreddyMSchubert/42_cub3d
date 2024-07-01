@@ -6,13 +6,13 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 07:50:27 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/01 12:16:21 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 17:33:15 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/cub3d.h"
 
-static double	get_mvmnt_speed(void)
+static inline double	get_mvmnt_speed(void)
 {
 	double	speed;
 
@@ -38,15 +38,10 @@ void	turn(double degrees)
 	player()->transform.rot = new_direction;
 }
 
-
-static t_vec2	get_movement_from_key(void)
+static inline t_vec2	get_movement_from_key(double speed, double angle)
 {
-	double	speed;
-	double	angle;
-	t_vec2	mvmnt;
+	t_vec2		mvmnt;
 
-	speed = get_mvmnt_speed();
-	angle = deg_to_rad(dir_vec_to_deg(player()->transform.rot));
 	mvmnt = (t_vec2){0, 0};
 	if (mlx_is_key_down(game()->mlx, MLX_KEY_W))
 	{
@@ -71,53 +66,20 @@ static t_vec2	get_movement_from_key(void)
 	return (mvmnt);
 }
 
-bool	is_position_valid(float x, float y)
-{
-	t_list		*ntt_list;
-	t_entity	*ntt;
-	t_door		*door;
-	float		pos_on_space;
-
-	if (x < 0 || x >= game()->input_data->map_width || y < 0 || y >= game()->input_data->map_height || *game()->input_data->map[(int)y][(int)x] != FLOOR)
-		return (false);
-	ntt_list = game()->entities;
-	while (ntt_list)
-	{
-		ntt = (t_entity *)ntt_list->content;
-		if (ntt->type == DOOR_NTT)
-		{
-			door = (t_door *)ntt->data;
-			if (door->state != DOOR_STATE_OPEN)
-			{
-				if (door->direction == DOOR_DIR_HORIZONTAL)
-				{
-					pos_on_space = fmod(y, 1.0f);
-					if (floor(x) == floor(ntt->transform.pos.x) && floor(y) == floor(ntt->transform.pos.y) && \
-							pos_on_space > CLOSED_DOOR_ALLOWED_WALK_DISTANCE && pos_on_space < 1 - CLOSED_DOOR_ALLOWED_WALK_DISTANCE)
-						return(false);
-				}
-				else
-				{
-					pos_on_space = fmod(x, 1.0f);
-					if (floor(y) == floor(ntt->transform.pos.y) && floor(x) == floor(ntt->transform.pos.x) && \
-							pos_on_space > CLOSED_DOOR_ALLOWED_WALK_DISTANCE && pos_on_space < 1 - CLOSED_DOOR_ALLOWED_WALK_DISTANCE)
-						return(false);
-				}
-			}
-		}
-		ntt_list = ntt_list->next;
-	}
-	return (true);
-}
-
 void	handle_player_move(void)
 {
 	t_vec2	mvmnt;
 	t_vec2	new_pos;
+	double	speed;
+	double	angle;
 
-	mvmnt = get_movement_from_key();
-	new_pos.x = player()->transform.pos.x + mvmnt.x * (1 + WALL_COLLISION_MARGIN);
-	new_pos.y = player()->transform.pos.y + mvmnt.y * (1 + WALL_COLLISION_MARGIN);
+	speed = get_mvmnt_speed();
+	angle = deg_to_rad(dir_vec_to_deg(player()->transform.rot));
+	mvmnt = get_movement_from_key(speed, angle);
+	new_pos.x = player()->transform.pos.x + mvmnt.x * \
+				(1 + WALL_COLLISION_MARGIN);
+	new_pos.y = player()->transform.pos.y + mvmnt.y * \
+				(1 + WALL_COLLISION_MARGIN);
 	if (is_position_valid(new_pos.x, player()->transform.pos.y))
 		player()->transform.pos.x += mvmnt.x;
 	if (is_position_valid(player()->transform.pos.x, new_pos.y))

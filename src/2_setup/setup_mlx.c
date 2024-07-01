@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:41:35 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/01 12:12:35 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 17:24:39 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ void	setup_mlx(void)
 	mlx_loop_hook(game()->mlx, loop_hook, NULL);
 	mlx_key_hook(game()->mlx, key_hook, NULL);
 	mlx_scroll_hook(game()->mlx, scroll_hook, NULL);
-	mlx_cursor_hook(game()->mlx, cursor_hook, NULL);
 	mlx_resize_hook(game()->mlx, resize_hook, NULL);
 	mlx_mouse_hook(game()->mlx, mouse_click_hook, NULL);
 }

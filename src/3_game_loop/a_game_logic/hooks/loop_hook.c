@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:28 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/29 20:07:10 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 17:23:40 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	loop_hook(void *param)
 	prev_time = game()->prev_time;
 	curr_frame = get_frame(curr_time);
 	prev_frame = get_frame(prev_time);
-	// if (curr_frame > prev_frame + 1)
-	// 	logger(LOGGER_WARNING, "skipped frame");
+	if (curr_frame > prev_frame + 1 && DEBUG)
+		logger(LOGGER_WARNING, "skipped frame");
 	if ((int)curr_time != (int)prev_time || curr_frame != prev_frame)
 	{
 		handle_mouse_mv();
