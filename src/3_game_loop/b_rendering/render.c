@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 14:36:45 by freddy            #+#    #+#             */
-/*   Updated: 2024/06/26 15:25:33 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/01 12:48:24 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static inline void	render_game_scene(void)
 		* game()->mlx->height * 4);
 	do_wall_operations();
 	draw_crosshair();
-	// hud_toogle_worldmap(false);
 	// mlx_image_to_window(game()->mlx, game()->game_scene, 0, 0);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/28 13:17:40 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/01 12:48:07 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,6 @@ void				texture_draw(mlx_texture_t *texture, t_scale pos, t_scale size);
 void				cycle_inventory(int direction, bool direct);
 // minimap
 void				hud_draw_minimap(void);
-void				hud_toogle_worldmap(bool change_state);
 // - raycasting util
 double				pos_distance(t_vec2 pos1, t_vec2 pos2);
 t_vec2				scale_vector(t_vec2 t1, double distance);
