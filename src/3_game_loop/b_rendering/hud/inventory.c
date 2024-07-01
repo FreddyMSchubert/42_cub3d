@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/28 14:25:49 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/01 12:43:44 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ void	draw_inventory(void)
 	int	size;
 
 	i = -1;
-	size = game()->mlx->width / 10;
+	size = game()->mlx->width / 15;
 	start_x = game()->mlx->width / 2 - (size * 5) / 2;
 	start_y = game()->mlx->height - size;
 	draw_hand_item(game()->mlx->width - size * 2.3, game()->mlx->height - size * 2.3,
