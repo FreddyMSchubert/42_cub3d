@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.24.1] - 02.07.2024
+- Made window capture mouse pos, now you can turn infinitely in one direction, very pleasant change
+
 ## [0.24.0] - 02.07.2024
 - Added 5 campaign levels
 - Added key-dropping blights
