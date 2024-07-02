@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mapmaker.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 22:46:53 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/01 11:38:57 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/02 11:33:27 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,9 +111,10 @@ void	generate_map(void)
 	add_ntts_in_good_spots(maze, map_scale);
 	logger(LOGGER_STEP, "Entities added");
 	place_locked_goal(maze, map_scale);
-	logger(LOGGER_STEP, "Goal added");
 	place_key(maze, map_scale);
-	logger(LOGGER_STEP, "Key added");
+	logger(LOGGER_STEP, "Goal, doors & key added");
+	place_health_drops(maze, map_scale);
+	logger(LOGGER_STEP, "Health drops added");
 	write_cub_file(maze, map_scale.y, map_scale.x, "generated_map.cub");
 	logger(LOGGER_INFO, "Map saved to generated_map.cub");
 	gc_cleanup_and_reinit();

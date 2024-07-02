@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.23.23] - 02.07.2024
+- Fixed doors being incorrectly rotated
+- Added health drops in random gen maps
+
+### [0.23.22] - 02.07.2024
+- Project now fully norminettified
+
 ### [0.23.21] - 02.07.2024
 - input parsing norminettification
 

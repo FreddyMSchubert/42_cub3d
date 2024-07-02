@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/02 10:38:31 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/02 11:44:58 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@
 
 # define ENTITIY_PLACEMENT_CHANCE 10
 # define ORB_PLACEMENT_CHANCE 100
-# define BLIGHT_PLACEMENT_CHANCE 100
+# define BLIGHT_PLACEMENT_CHANCE 85
+# define HEALTH_DROP_CHANCE_PERCENT 3
 
 // --- Window Setup
 

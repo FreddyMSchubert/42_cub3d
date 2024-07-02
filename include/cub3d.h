@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/02 11:00:38 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/02 11:32:52 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ void				generate_map(void);
 void				remove_walls(char **maze, int height, int width);
 void				place_player_spawn(char **maze, t_scale	map_scale);
 void				add_rooms(char **maze, t_scale scale, int room_count);
+void				place_health_drops(char **maze, t_scale scale);
 // file writer
 void				write_cub_file(char **maze, int height, int width, \
 										char *filename);
