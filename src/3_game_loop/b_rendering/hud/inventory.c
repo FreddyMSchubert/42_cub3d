@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inventory.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/02 10:43:16 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/02 13:24:35 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,23 +47,41 @@ static void	draw_item_at(unsigned int index, int x, int y, int size)
 }
 
 static inline void	draw_current_selection(int start_x, int start_y,
-	int size, int border_size)
+	int size)
 {
 	int			i;
 	t_inventory	inv;
 
 	inv = player()->inv;
 	i = -1;
-	(void)border_size;
 	while (++i < inv.num_available_items)
+		draw_item_at(i, i * size + start_x + 5, start_y + 5, size - 5);
+}
+
+void	snap_to_item(int dir, int i)
+{
+	player()->inv.current_index %= player()->inv.num_available_items;
+	if (dir < 0)
 	{
-		if (i == inv.current_index)
-			draw_rectangle((t_scale){i * size + start_x, start_y},
-				(t_scale){size, size}, (t_color){0, 255, 0, 255});
-		else
-			draw_rectangle((t_scale){i * size + start_x, start_y},
-				(t_scale){size, size}, (t_color){0, 0, 255, 255});
-		draw_item_at(i, i * size + start_x, start_y, size);
+		while ((*get_amount_of_item(player()->inv.current_index)) == 0 && ++i
+			< player()->inv.num_available_items)
+		{
+			player()->inv.current_index--;
+			if (player()->inv.current_index < 0)
+				player()->inv.current_index = player()->inv.num_available_items
+				- 1;
+		}
+	}
+	else
+	{
+		while ((*get_amount_of_item(player()->inv.current_index)) == 0 && ++i
+			< player()->inv.num_available_items)
+		{
+			player()->inv.current_index++;
+			if (player()->inv.current_index
+				>= player()->inv.num_available_items)
+				player()->inv.current_index = 0;
+		}
 	}
 }
 
@@ -92,21 +110,8 @@ void	cycle_inventory(int direction, bool direct)
 				player()->inv.current_index = player()->inv.num_available_items
 				- 1;
 		}
-		player()->inv.current_index %= player()->inv.num_available_items;
+		snap_to_item(direction, 0);
 	}
-}
-
-static inline void	draw_hand_item(int pos_x, int pos_y, int size_x, int size_y)
-{
-	int				index;
-	mlx_texture_t	*tex;
-
-	index = player()->inv.current_index;
-	tex = get_tex_by_index(index);
-	if (index == -1 || !tex)
-		return ;
-	texture_draw(tex,
-		(t_scale){pos_x, pos_y}, (t_scale){size_x, size_y});
 }
 
 void	draw_inventory(void)
@@ -119,11 +124,13 @@ void	draw_inventory(void)
 	i = -1;
 	size = game()->mlx->width / 15;
 	start_x = game()->mlx->width / 2 - (size * 5) / 2;
-	start_y = game()->mlx->height - size;
-	draw_hand_item(game()->mlx->width - size * 2.3, \
-					game()->mlx->height - size * 2.3,
-		size * 2, size * 2);
+	start_y = game()->mlx->height - size - 2;
+	texture_draw(game()->textures.hotbar, (t_scale){start_x, start_y},
+		(t_scale){size * 5, size});
+	texture_draw(game()->textures.hotbar_select,
+		(t_scale){start_x + size * player()->inv.current_index, start_y},
+		(t_scale){size, size});
 	while (++i < player()->inv.num_available_items)
-		draw_current_selection(start_x, start_y, size, 10);
+		draw_current_selection(start_x, start_y, size);
 	draw_healthbar(size / 2, start_x, start_y);
 }
