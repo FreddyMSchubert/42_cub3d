@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/02 10:27:50 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/02 12:30:27 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,9 @@ typedef struct s_textures
 	mlx_texture_t	*earth_blight_idle;
 	t_animation		earth_blight_death;
 	t_animation		earth_blight_attack;
+
+	mlx_texture_t	*hotbar;
+	mlx_texture_t	*hotbar_select;
 }	t_textures;
 
 typedef struct s_persistent_data

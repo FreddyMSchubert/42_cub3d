@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 20:18:50 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/02 10:27:37 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/02 12:35:40 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,7 @@ void	load_static_textures(void)
 	game()->textures.fire_orb = l("assets/textures/entities/orbs/fire.png");
 	game()->textures.earth_orb = l("assets/textures/entities/orbs/earth.png");
 	game()->textures.air_orb = l("assets/textures/entities/orbs/air.png");
+	game()->textures.hotbar = l("assets/textures/hud/hotbar.png");
+	game()->textures.hotbar_select = l("assets/textures/hud/hotbar_select.png");
 	load_blight_textures();
 }
