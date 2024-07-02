@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   healthbar.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:50:32 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/01 16:37:13 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/02 10:40:53 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../include/cub3d.h"
 
-# define MAX_DISPLAYED_HEARTS 30
+#define MAX_DISPLAYED_HEARTS 30
 
 void	draw_healthbar(int size, int start_x, int start_y)
 {
@@ -31,6 +31,7 @@ void	draw_healthbar(int size, int start_x, int start_y)
 			step = 0;
 		}
 		texture_draw(game()->textures.health,
-			(t_scale){start_x + size * step, start_y - size - 5}, (t_scale){size, size});
+			(t_scale){start_x + size * step, start_y - size - 5}, \
+							(t_scale){size, size});
 	}
 }

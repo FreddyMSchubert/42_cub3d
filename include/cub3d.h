@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/01 21:46:15 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/02 10:46:37 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,9 @@ void				cycle_inventory(int direction, bool direct);
 int					*get_amount_of_item(int index);
 int					get_tex_color_at(mlx_texture_t *tex, int x, int y);
 int					get_minimap_opacity(int x, int y);
+void				draw_healthbar(int size, int start_x, int start_y);
+int					get_floor_color(int j, int i);
+int					get_wall_color(int j, int i);
 // minimap
 void				hud_draw_minimap(void);
 // - raycasting util

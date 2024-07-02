@@ -3,14 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   inventory.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/01 15:00:47 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/02 10:43:16 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-void	draw_healthbar(int size, int start_x, int start_y);
 
 #include "../../../include/cub3d.h"
 
@@ -19,7 +17,7 @@ mlx_texture_t	*get_tex_by_index(int index);
 mlx_image_t		**get_amount_text_by_index(int index);
 void			draw_rectangle(t_scale pos, t_scale size, t_color color);
 
-static void draw_item_at(unsigned int index, int x, int y, int size)
+static void	draw_item_at(unsigned int index, int x, int y, int size)
 {
 	mlx_texture_t	*tex;
 	t_inventory		inv;
@@ -122,7 +120,8 @@ void	draw_inventory(void)
 	size = game()->mlx->width / 15;
 	start_x = game()->mlx->width / 2 - (size * 5) / 2;
 	start_y = game()->mlx->height - size;
-	draw_hand_item(game()->mlx->width - size * 2.3, game()->mlx->height - size * 2.3,
+	draw_hand_item(game()->mlx->width - size * 2.3, \
+					game()->mlx->height - size * 2.3,
 		size * 2, size * 2);
 	while (++i < player()->inv.num_available_items)
 		draw_current_selection(start_x, start_y, size, 10);

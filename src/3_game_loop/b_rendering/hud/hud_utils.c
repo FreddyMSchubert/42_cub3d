@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hud_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/01 12:48:41 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/02 10:41:13 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,25 +60,6 @@ void	draw_square(int x, int y, int size, int color)
 	}
 }
 
-// bool	is_visible(int x, int y)
-// {
-// 	float	player_rot_x = player()->transform.rot.x;
-// 	float	player_rot_y = player()->transform.rot.y;
-// 	float	dir_x = x - player()->transform.pos.x;
-// 	float	dir_y = y - player()->transform.pos.y;
-// 	float	dir_magnitude = sqrt(dir_x * dir_x + dir_y * dir_y);
-// 	dir_x /= dir_magnitude;
-// 	dir_y /= dir_magnitude;
-// 	float	player_rot_magnitude = sqrt(player_rot_x * player_rot_x + player_rot_y * player_rot_y);
-// 	player_rot_x /= player_rot_magnitude;
-// 	player_rot_y /= player_rot_magnitude;
-// 	float	dot_product = dir_x * player_rot_x + dir_y * player_rot_y;
-// 	if (acos(dot_product) <= M_PI / 4.5
-// 		&& dir_magnitude <= VIEW_DIST * 5)
-// 		return (true);
-// 	return (false);
-// }
-
 t_vec2	normalize_player_rotation(void)
 {
 	t_vec2	player_rot;
@@ -119,7 +100,6 @@ bool	is_visible(int x, int y)
 			* (x - player()->transform.pos.x)
 			+ (y - player()->transform.pos.y)
 			* (y - player()->transform.pos.y));
-
 	if (acos(dot_product) <= M_PI / 4.5 && dir_magnitude <= VIEW_DIST * 5)
 		return (true);
 	return (false);

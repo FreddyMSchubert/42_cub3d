@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.23.20] - 01.07.2024
+- hud norminettification, rnadom fixed
+
 ### [0.23.19] - 01.07.2024
 - removed minecraft hearts, they are unused
 - lil writing segfault fix

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   logging.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:49:10 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/30 16:01:45 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/02 10:36:31 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	logger(char type, char *message)
 {
 	if (!message)
 		return ;
-	printf("[%.2f] ", mlx_get_time());
+	printf("[%.5f] ", mlx_get_time());
 	if (type == 'e')
 		printf("%sERROR%s: \t%s\n", ANSI_BOLD_RED, ANSI_RESET, message);
 	else if (type == 'w')

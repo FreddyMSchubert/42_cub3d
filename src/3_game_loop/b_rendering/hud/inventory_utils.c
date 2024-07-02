@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inventory_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 14:23:39 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/01 14:58:56 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/02 10:43:32 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ mlx_texture_t	*get_tex_by_index(int index)
 	else if (index == TYPE_AIR + 1)
 		tex = game()->textures.air_orb;
 	else
-	 	tex = NULL;
+		tex = NULL;
 	return (tex);
 }
 

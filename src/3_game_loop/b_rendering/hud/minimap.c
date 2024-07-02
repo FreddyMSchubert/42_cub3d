@@ -12,8 +12,6 @@
 
 #include "../../../../include/cub3d.h"
 
-bool	is_visible(int x, int y);
-
 int	get_minimap_opacity(int x, int y)
 {
 	double	distance;
@@ -33,25 +31,6 @@ int	get_minimap_opacity(int x, int y)
 	if (max_opacity - (max_opacity * (distance / 10)) < min_opacity)
 		return (min_opacity);
 	return (max_opacity - (max_opacity * (distance / 10)));
-}
-
-static inline int	get_floor_color(int j, int i)
-{
-	t_color	color;
-
-	color = game()->input_data->floor_color;
-	color = with_opacity(color, get_minimap_opacity(j, i));
-	return (t_color_to_int(color));
-}
-
-static inline int	get_wall_color(int j, int i)
-{
-	t_color	floor_color;
-
-	floor_color = game()->input_data->floor_color;
-	if (floor_color.r + floor_color.g + floor_color.b < 200)
-		return (rgba_to_int(255, 255, 255, get_minimap_opacity(j, i)));
-	return (rgba_to_int(0, 0, 0, get_minimap_opacity(j, i)));
 }
 
 void	draw_tile(t_scale ij, int size, int offset_x, int offset_y)
@@ -93,18 +72,13 @@ static inline void	draw_walls(int size)
 	}
 }
 
-static inline void	draw_player(int size)
-{
-	draw_square_hud(MINIMAP_WIDTH / 2 - size / 2,
-		MINIMAP_HEIGHT / 2 - size / 2, size / 2,
-		rgba_to_int(0, 0, 255, 255));
-}
-
 void	hud_draw_minimap(void)
 {
 	int	size;
 
 	size = 6;
 	draw_walls(size);
-	draw_player(size);
+	draw_square_hud(MINIMAP_WIDTH / 2 - size / 2,
+		MINIMAP_HEIGHT / 2 - size / 2, size / 2,
+		rgba_to_int(0, 0, 255, 255));
 }
