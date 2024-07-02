@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   blight_collision.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 21:57:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/01 17:20:15 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/02 12:39:24 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ void	on_collision_blight(t_entity *self, t_entity *other)
 	{
 		logger(LOGGER_ACTION, "Blight killed by projectile!");
 		blight->state = BLIGHT_STATE_DYING;
+		if (blight->drops_key)
+		{
+			create_entity(self->transform, KEY_NTT, get_texture_key, tick_key);
+		}
 	}
 	other->to_be_deleted = true;
 }

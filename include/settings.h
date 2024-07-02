@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/02 11:44:58 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/02 11:57:57 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@
 # define MIN_ROOM_SIZE 1
 # define MAX_ROOM_SIZE 13
 # define MAX_ROOM_SIZE_TO_MAP_SIZE 3
-# define WALL_REMOVAL_CHANCE_PERCENT 25
+# define WALL_REMOVAL_CHANCE_PERCENT 5
 
 # define ENTITIY_PLACEMENT_CHANCE 10
 # define ORB_PLACEMENT_CHANCE 100
 # define BLIGHT_PLACEMENT_CHANCE 85
-# define HEALTH_DROP_CHANCE_PERCENT 3
+# define HEALTH_DROP_CHANCE_PERCENT 10
 
 // --- Window Setup
 
@@ -104,7 +104,7 @@
 # define PLAYER_STARTING_HEALTH 10
 # define MINOR_PROJECTILE_HIT_DECREASE 1
 # define MAJOR_PROJECTILE_HIT_DESCREASE 3
-# define HEALTH_PICKUP_AMOUNT 2
+# define HEALTH_PICKUP_AMOUNT 1
 
 // animations
 

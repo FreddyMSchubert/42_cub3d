@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_entity.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 15:53:33 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/01 17:12:16 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/02 13:15:42 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ void	tick_key(t_entity *self)
 		return ;
 	logger(LOGGER_ACTION, "Key collected!");
 	player()->inv.keys++;
+	if (player()->inv.text_amount_key)
+	{
+		mlx_delete_image(game()->mlx, player()->inv.text_amount_key);
+		player()->inv.text_amount_key = NULL;
+	}
 	self->to_be_deleted = true;
 }
 

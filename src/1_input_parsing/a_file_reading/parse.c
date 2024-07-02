@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 09:39:02 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/02 11:00:15 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/02 12:31:59 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,29 +58,30 @@ bool	parse_attributes(char **data, t_input_data **input_data, int *i)
 }
 
 static inline bool	check_element_at_pos(t_scale s, t_tile_type ***map, \
-										char **data, int i)
+										char **d, int i)
 {
-	if (data[i][s.x] == '0' || data[i][s.x] == '1')
-		*(map[s.y][s.x]) = (t_tile_type)(data[i][s.x] - '0');
-	else if (data[i][s.x] == ' ')
+	if (d[i][s.x] == '0' || d[i][s.x] == '1')
+		*(map[s.y][s.x]) = (t_tile_type)(d[i][s.x] - '0');
+	else if (d[i][s.x] == ' ')
 		*(map[s.y][s.x]) = VOID;
-	else if (data[i][s.x] == 'G' && !set_goal((t_vec2){s.x, s.y}, map))
+	else if (d[i][s.x] == 'G' && !set_goal((t_vec2){s.x, s.y}, map))
 		return (false);
-	else if (data[i][s.x] == 'h' && !set_health((t_vec2){s.x, s.y}, map))
+	else if (d[i][s.x] == 'h' && !set_health((t_vec2){s.x, s.y}, map))
 		return (false);
-	else if ((data[i][s.x] == 'H' || data[i][s.x] == 'V') && \
-					!set_door((t_vec2){s.x, s.y}, map, data[i][s.x]))
+	else if ((d[i][s.x] == 'H' || d[i][s.x] == 'V') && \
+					!set_door((t_vec2){s.x, s.y}, map, d[i][s.x]))
 		return (false);
-	else if ((data[i][s.x] == 'w' || data[i][s.x] == 'e' || data[i][s.x] == 'a'
-	|| data[i][s.x] == 'f') && !set_orb((t_vec2){s.x, s.y}, map, data[i][s.x]))
+	else if ((d[i][s.x] == 'w' || d[i][s.x] == 'e' || d[i][s.x] == 'a'
+	|| d[i][s.x] == 'f') && !set_orb((t_vec2){s.x, s.y}, map, d[i][s.x]))
 		return (false);
-	else if ((data[i][s.x] == 'q' || data[i][s.x] == 'r' || data[i][s.x] == 'd'
-				|| data[i][s.x] == 's') && !set_blight((t_vec2){s.x, s.y},
-				map, data[i][s.x]))
+	else if ((d[i][s.x] == 'q' || d[i][s.x] == 'r' || d[i][s.x] == 'd'
+		|| d[i][s.x] == 's' || d[i][s.x] == 'u' || d[i][s.x] == 'i' ||
+	d[i][s.x] == 'o' || d[i][s.x] == 'p') && !set_blight((t_vec2){s.x, s.y},
+				map, d[i][s.x]))
 		return (false);
-	else if (data[i][s.x] == 'k' && !set_key((t_vec2){s.x, s.y}, map))
+	else if (d[i][s.x] == 'K' && !set_key((t_vec2){s.x, s.y}, map))
 		return (false);
-	else if (char_is_in(data[i][s.x], "NSEW") && !set_entity_spawn(data[i][s.x],
+	else if (char_is_in(d[i][s.x], "NSEW") && !set_entity_spawn(d[i][s.x],
 				(t_vec2){s.x, s.y}, map))
 		return (false);
 	return (true);

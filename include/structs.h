@@ -248,8 +248,9 @@ typedef struct s_projectile
 
 typedef struct s_blight
 {
-	int	element;
-	int	state;
+	int		element;
+	int		state;
+	bool	drops_key;
 }	t_blight;
 
 #endif

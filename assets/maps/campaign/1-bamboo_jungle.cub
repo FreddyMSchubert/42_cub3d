@@ -1,0 +1,27 @@
+NO ./assets/textures/walls/bamboo_block_sideways.png
+SO ./assets/textures/walls/bamboo_block_sideways.png
+WE ./assets/textures/walls/bamboo_block_top.png
+EA ./assets/textures/walls/bamboo_block_top.png
+
+F 90,103,42
+C 185,219,95
+
+11111111111
+10001000101
+10001010101
+10000010001
+10011111001
+101h0000101
+10111010101
+100E1010001
+11111011011
+10000010001
+10100010111
+10100010001
+10100011101
+10000000001
+11100011101
+1G100010101
+101h0110101
+10000000001
+11111111111

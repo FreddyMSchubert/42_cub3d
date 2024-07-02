@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/02 11:32:52 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/02 12:39:45 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # include <limits.h>
 
 /* ---- SETTINGS ---- */
-# define MAP_TILES " 10NESWGHVKwfeaqrdsh"
+# define MAP_TILES " 10NESWGHVKwfeaqrdshuiop"
 // ' ' -> VOID
 // '1' -> WALL
 // '0' -> FLOOR
@@ -55,6 +55,10 @@
 // 'd' -> FIRE BLIGHT
 // 'r' -> EARTH BLIGHT
 // 's' -> AIR BLIGHT
+// 'u' -> KEY AIR ORB
+// 'i' -> KEY EARTH ORB
+// 'o' -> KEY FIRE ORB
+// 'p' -> KEY WATER ORB
 // 'h' -> HEALTH PICKUP
 
 /* ----- LOGGER ----- */
