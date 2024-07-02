@@ -12,6 +12,8 @@
 
 #include "../../../../include/cub3d.h"
 
+bool	is_visible(int x, int y);
+
 int	get_minimap_opacity(int x, int y)
 {
 	double	distance;
