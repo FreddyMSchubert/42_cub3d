@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.24.0] - 02.07.2024
+- Added 5 campaign levels
+- Added key-dropping blights
+- Made picking up a second key refresh the inventory display
+
 ### [0.23.23] - 02.07.2024
 - Fixed doors being incorrectly rotated
 - Added health drops in random gen maps

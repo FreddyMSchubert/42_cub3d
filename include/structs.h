@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/02 10:27:50 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/02 12:33:19 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -245,8 +245,9 @@ typedef struct s_projectile
 
 typedef struct s_blight
 {
-	int	element;
-	int	state;
+	int		element;
+	int		state;
+	bool	drops_key;
 }	t_blight;
 
 #endif

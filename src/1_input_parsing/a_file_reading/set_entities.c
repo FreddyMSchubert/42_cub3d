@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 16:06:43 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/02 11:04:18 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/02 12:34:46 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ bool	set_health(t_vec2 pos, t_tile_type ***map)
 	return (true);
 }
 
-bool	set_blight(t_vec2 pos, t_tile_type ***map, char blight_type)
+bool	set_blight(t_vec2 pos, t_tile_type ***map, char type)
 {
 	t_blight		*data;
 	t_entity		*ntt;
@@ -37,19 +37,22 @@ bool	set_blight(t_vec2 pos, t_tile_type ***map, char blight_type)
 	data = malloc(sizeof(t_blight));
 	if (!data)
 		cub_exit("malloc failed", -1);
-	if (blight_type == 'q')
+	if (type == 'q' || type == 'p')
 		data->element = TYPE_WATER;
-	else if (blight_type == 'd')
+	else if (type == 'd' || type == 'o')
 		data->element = TYPE_FIRE;
-	else if (blight_type == 'r')
+	else if (type == 'r' || type == 'i')
 		data->element = TYPE_EARTH;
-	else if (blight_type == 's')
+	else if (type == 's' || type == 'u')
 		data->element = TYPE_AIR;
 	data->state = BLIGHT_STATE_STANDING;
 	ntt = create_entity((t_transform){{pos.x + 0.5, pos.y + 0.5}, {1.0, 0}}, \
 							BLIGHT_NTT, get_texture_blight, tick_blight);
 	ntt->on_collision = on_collision_blight;
 	ntt->health = ENEMY_STARTING_HEALTH;
+	data->drops_key = false;
+	if (type == 'p' || type == 'o' || type == 'i' || type == 'u')
+		data->drops_key = true;
 	ntt->data = data;
 	return (true);
 }
@@ -79,6 +82,7 @@ bool	set_orb(t_vec2 pos, t_tile_type ***map, char orb_type)
 
 bool	set_key(t_vec2 pos, t_tile_type ***map)
 {
+	printf("Setting key at %f, %f\n", pos.x, pos.y);
 	*(map[(int)pos.y][(int)pos.x]) = FLOOR;
 	create_entity((t_transform){{pos.x + 0.5, pos.y + 0.5}, {1.0, 0}}, \
 						KEY_NTT, get_texture_key, tick_key);
