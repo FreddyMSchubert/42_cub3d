@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.24.2] - 02.07.2024
+- Reworked the coloseum a bit, making it longer and more interesting
+- Added play_campaign.sh to play the campaign in its totality
+
 ### [0.24.1] - 02.07.2024
 - Made window capture mouse pos, now you can turn infinitely in one direction, very pleasant change
 
