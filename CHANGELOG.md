@@ -1,9 +1,12 @@
 # Changelog
 
-### [0.23.20] - 01.07.2024
+### [0.23.21] - 02.07.2024
+- input parsing norminettification
+
+### [0.23.20] - 02.07.2024
 - hud norminettification, rnadom fixed
 
-### [0.23.19] - 01.07.2024
+### [0.23.19] - 02.07.2024
 - removed minecraft hearts, they are unused
 - lil writing segfault fix
 - made doors delete themselves once opened

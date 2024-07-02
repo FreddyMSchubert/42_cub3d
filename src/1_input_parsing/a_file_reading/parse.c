@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 09:39:02 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/29 21:16:15 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/02 11:00:15 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ bool	parse_attributes(char **data, t_input_data **input_data, int *i)
 		if (data[*i][0] == 0)
 			continue ;
 		split = ft_split(data[*i], ' ');
-		if (!split || split_len(split) != 2) // TODO: when we have F or C color not only seperated by comma but also by space it stops here
+		if (!split || split_len(split) != 2)
 			return (free_split(split, true));
 		if (!set_values(split, input_data, data, i))
 			return (free_split(split, false));
@@ -57,14 +57,33 @@ bool	parse_attributes(char **data, t_input_data **input_data, int *i)
 	return (true);
 }
 
-int	get_map_len(int *i, char **data)
+static inline bool	check_element_at_pos(t_scale s, t_tile_type ***map, \
+										char **data, int i)
 {
-	int	map_len;
-
-	map_len = 0;
-	while (data[(*i) + map_len] && regex(data[(*i) + map_len], MAP_TILES))
-		map_len++;
-	return (map_len);
+	if (data[i][s.x] == '0' || data[i][s.x] == '1')
+		*(map[s.y][s.x]) = (t_tile_type)(data[i][s.x] - '0');
+	else if (data[i][s.x] == ' ')
+		*(map[s.y][s.x]) = VOID;
+	else if (data[i][s.x] == 'G' && !set_goal((t_vec2){s.x, s.y}, map))
+		return (false);
+	else if (data[i][s.x] == 'h' && !set_health((t_vec2){s.x, s.y}, map))
+		return (false);
+	else if ((data[i][s.x] == 'H' || data[i][s.x] == 'V') && \
+					!set_door((t_vec2){s.x, s.y}, map, data[i][s.x]))
+		return (false);
+	else if ((data[i][s.x] == 'w' || data[i][s.x] == 'e' || data[i][s.x] == 'a'
+	|| data[i][s.x] == 'f') && !set_orb((t_vec2){s.x, s.y}, map, data[i][s.x]))
+		return (false);
+	else if ((data[i][s.x] == 'q' || data[i][s.x] == 'r' || data[i][s.x] == 'd'
+				|| data[i][s.x] == 's') && !set_blight((t_vec2){s.x, s.y},
+				map, data[i][s.x]))
+		return (false);
+	else if (data[i][s.x] == 'k' && !set_key((t_vec2){s.x, s.y}, map))
+		return (false);
+	else if (char_is_in(data[i][s.x], "NSEW") && !set_entity_spawn(data[i][s.x],
+				(t_vec2){s.x, s.y}, map))
+		return (false);
+	return (true);
 }
 
 t_tile_type	***make_map(int map_len, int *i, char **data)
@@ -84,23 +103,7 @@ t_tile_type	***make_map(int map_len, int *i, char **data)
 		while (data[*i][++j])
 		{
 			map[k][j] = gc_malloc(sizeof(t_tile_type));
-			if (data[*i][j] == '0' || data[*i][j] == '1')
-				*(map[k][j]) = (t_tile_type)(data[*i][j] - '0');
-			else if (data[*i][j] == ' ')
-				*(map[k][j]) = VOID;
-			else if (data[*i][j] == 'G' && !set_goal((t_vec2){j, k}, map))
-				return (NULL);
-			else if (data[*i][j] == 'h' && !set_health((t_vec2){j, k}, map))
-				return (NULL);
-			else if ((data[*i][j] == 'H' || data[*i][j] == 'V') && !set_door((t_vec2){j, k}, map, data[*i][j]))
-				return (NULL);
-			else if ((data[*i][j] == 'w' || data[*i][j] == 'e' || data[*i][j] == 'a' || data[*i][j] == 'f') && !set_orb((t_vec2){j, k}, map, data[*i][j]))
-				return (NULL);
-			else if ((data[*i][j] == 'q' || data[*i][j] == 'r' || data[*i][j] == 'd' || data[*i][j] == 's') && !set_blight((t_vec2){j, k}, map, data[*i][j]))
-				return (NULL);
-			else if (data[*i][j] == 'K' && !set_key((t_vec2){j, k}, map))
-				return (NULL);
-			else if (char_is_in(data[*i][j], "NSEW") && !set_entity_spawn(data[*i][j], (t_vec2){j, k}, map))
+			if (!check_element_at_pos((t_scale){j, k}, map, data, *i))
 				return (NULL);
 		}
 	}

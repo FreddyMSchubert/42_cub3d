@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/02 10:46:37 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/02 11:00:38 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ bool				parse_attributes(char **data, t_input_data **input_data, \
 int					get_map_len(int *i, char **data);
 t_tile_type			***make_map(int map_len, int *i, char **data);
 bool				parse_map(char **data, t_input_data **input_data, int *i);
+int					get_map_len(int *i, char **data);
 // read file
 bool				basic_validate(t_input_data **in);
 void				get_map_contents(char *filepath);

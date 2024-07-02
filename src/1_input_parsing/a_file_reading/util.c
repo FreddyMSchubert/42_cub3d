@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:13:59 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/14 12:48:59 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/02 10:59:46 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,14 @@ bool	regex(char *line, char *reg)
 		if (!char_is_in(line[i], reg))
 			return (false);
 	return (true);
+}
+
+int	get_map_len(int *i, char **data)
+{
+	int	map_len;
+
+	map_len = 0;
+	while (data[(*i) + map_len] && regex(data[(*i) + map_len], MAP_TILES))
+		map_len++;
+	return (map_len);
 }
