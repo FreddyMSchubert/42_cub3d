@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/02 12:45:27 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/02 13:24:35 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,33 @@ static inline void	draw_current_selection(int start_x, int start_y,
 		draw_item_at(i, i * size + start_x + 5, start_y + 5, size - 5);
 }
 
+void	snap_to_item(int dir, int i)
+{
+	player()->inv.current_index %= player()->inv.num_available_items;
+	if (dir < 0)
+	{
+		while ((*get_amount_of_item(player()->inv.current_index)) == 0 && ++i
+			< player()->inv.num_available_items)
+		{
+			player()->inv.current_index--;
+			if (player()->inv.current_index < 0)
+				player()->inv.current_index = player()->inv.num_available_items
+				- 1;
+		}
+	}
+	else
+	{
+		while ((*get_amount_of_item(player()->inv.current_index)) == 0 && ++i
+			< player()->inv.num_available_items)
+		{
+			player()->inv.current_index++;
+			if (player()->inv.current_index
+				>= player()->inv.num_available_items)
+				player()->inv.current_index = 0;
+		}
+	}
+}
+
 void	cycle_inventory(int direction, bool direct)
 {
 	if (direction == 0 && !direct)
@@ -83,7 +110,7 @@ void	cycle_inventory(int direction, bool direct)
 				player()->inv.current_index = player()->inv.num_available_items
 				- 1;
 		}
-		player()->inv.current_index %= player()->inv.num_available_items;
+		snap_to_item(direction, 0);
 	}
 }
 
