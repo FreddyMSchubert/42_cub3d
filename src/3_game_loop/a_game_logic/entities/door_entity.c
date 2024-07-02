@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   door_entity.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:57:29 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/01 17:09:40 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/02 10:34:39 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,10 @@ void	tick_door(t_entity *self)
 
 	door = (t_door *)self->data;
 	if (door->state == DOOR_STATE_OPEN)
+	{
+		self->to_be_deleted = true;
 		return ;
+	}
 	else if (door->state == DOOR_STATE_CLOSED)
 		unlock_door_if_possible(self, door);
 	else if (door->state == DOOR_STATE_OPENING)

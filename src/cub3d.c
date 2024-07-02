@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 07:33:54 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/01 21:57:59 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/02 10:24:12 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static inline void	set_player_element(void)
 
 	write(STDOUT_FILENO, "\x1b[35mGreetings, Adventurer! 🧌", 33);
 	write(STDOUT_FILENO, " Choose your element 💧🔥🪨💨", 38);
-	write(STDOUT_FILENO, " [WFEA] [ENTER for random pick]: ", 35);
+	write(STDOUT_FILENO, " [WFEA] [ENTER for random pick]: ", 34);
 	bytes_read = read(STDIN_FILENO, &input, 1);
 	if (bytes_read < 0)
 		input = '\n';

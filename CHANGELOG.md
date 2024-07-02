@@ -1,5 +1,10 @@
 # Changelog
 
+### [0.23.19] - 01.07.2024
+- removed minecraft hearts, they are unused
+- lil writing segfault fix
+- made doors delete themselves once opened
+
 ### [0.23.18] - 01.07.2024 - Freddy
 - Norminettified walls & entities drawing
 

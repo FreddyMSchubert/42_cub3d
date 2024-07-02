@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/01 21:45:16 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/02 10:27:50 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,6 @@ typedef struct s_textures
 	mlx_texture_t	*key;
 	mlx_texture_t	*goal;
 	mlx_texture_t	*health;
-
-	mlx_texture_t	*heart_full;
-	mlx_texture_t	*heart_half;
 
 	mlx_texture_t	*water_orb;
 	mlx_texture_t	*fire_orb;
