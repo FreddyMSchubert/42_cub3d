@@ -11,6 +11,8 @@ for map_file in "$MAP_DIR"/*; do
 
 		if [[ $exit_code -eq 0 ]]; then
 			break
+		elif [[ $exit_code -eq 214 ]]; then
+			exit
 		fi
 	done
 done

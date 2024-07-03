@@ -64,6 +64,10 @@ elif [[ "$EXECUTION_MODE" = "a" || "$EXECUTION_MODE" = "A" ]]; then
             echo -e "\n-------------------\n\n${GREEN}Running cub3d with map: $MAPFILE 🗺️${NC}"
             ./cub3d "$MAPFILE"
             EXIT_CODE=$?
+			if [ $EXIT_CODE -eq 214 ]; then
+				echo -e "${RED}Exiting script. 🚫${NC}"
+				break
+			fi
             wait $!
             if ([ "$MAP_TYPE" = "i" ] || [ "$MAP_TYPE" = "I" ]); then
                 if [ $EXIT_CODE -eq 0 ]; then

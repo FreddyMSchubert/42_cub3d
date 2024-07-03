@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 21:57:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/03 10:18:18 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/03 12:16:28 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,7 @@ void	on_collision_blight(t_entity *self, t_entity *other)
 		logger_v(LOGGER_ACTION, "Blight killed by projectile!");
 		blight->state = BLIGHT_STATE_DYING;
 		if (blight->drops_key)
-		{
 			create_entity(self->transform, KEY_NTT, get_texture_key, tick_key);
-		}
 	}
 	other->to_be_deleted = true;
 }

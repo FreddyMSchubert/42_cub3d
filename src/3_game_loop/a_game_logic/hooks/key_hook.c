@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:50 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/03 11:39:19 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/03 12:12:27 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 		player_shoot();
 	else if (keydata.key == MLX_KEY_R && keydata.action == MLX_PRESS)
 		setup_player();
+	if (mlx_is_key_down(game()->mlx, MLX_KEY_C) && \
+			mlx_is_key_down(game()->mlx, MLX_KEY_LEFT_CONTROL))
+		cub_exit("Control + C received, exiting...", 214);
 	inventory_press(keydata);
 	(void) param;
 }

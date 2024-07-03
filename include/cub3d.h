@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/03 11:13:30 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/03 12:17:34 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -312,6 +312,7 @@ t_transform			get_face_vector(t_entity *ntt);
 t_entity			*create_entity(t_transform trans, t_entity_type type, \
 		mlx_texture_t	*(*tex)(t_entity *self), void (*tick)(t_entity *self));
 void				delete_entity(t_entity *self);
+void				drop_orbs(t_transform trans, int element);
 
 // vector
 double				vec2_dot_product(t_vec2 a, t_vec2 b);

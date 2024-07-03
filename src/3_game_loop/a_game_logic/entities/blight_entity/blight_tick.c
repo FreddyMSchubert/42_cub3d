@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:57:26 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/03 10:18:25 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/03 12:17:04 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ void	tick_blight(t_entity *self)
 			self->frames_since_state_change > BLIGHT_DEATH_ANIMATION_FRAMES)
 	{
 		logger_v(LOGGER_ACTION, "Blight died!");
+		drop_orbs(self->transform, blight->element);
 		self->to_be_deleted = true;
 	}
 	else if (blight->state == BLIGHT_STATE_ATTACKING)

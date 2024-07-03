@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.24.5] - 03.07.2024
+- Made blights drop orbs upon death
+- Fixed exiting segfault when window isnt launched yet
+
 ### [0.24.4] - 03.07.2024
 - Added saving & loading of game data.
 - Various smaller fixes
