@@ -6,11 +6,12 @@
 /*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:18:59 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/03 16:47:58 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/03 16:56:32 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+#include <stdlib.h>
 
 /*
 	Garbage Collector (gc) has one dummy node at the start just as a reference.
