@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:38:30 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/28 14:06:00 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/03 14:44:20 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static char	**read_file(char *filename)
 		return (NULL);
 	}
 	length = get_file_length(filename);
-	data = ft_calloc((length + 2), sizeof(char *));
+	data = gc_malloc((length + 2) * sizeof(char *));
 	if (!data)
 	{
 		close(file);

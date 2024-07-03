@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   1_raycast_entities.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 21:27:44 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/01 21:48:28 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/03 14:38:12 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,6 @@ void	start_calc_entities(t_entity **ntts, \
 		if (pos_dist(player()->transform.pos, entity_intersects[j]) > wall_dist)
 			ntts[j] = NULL;
 	draw_entities_ordered(ntts, entity_intersects, count, ray_index);
-	free (ntts);
+	free(ntts);
 	free(entity_intersects);
 }
