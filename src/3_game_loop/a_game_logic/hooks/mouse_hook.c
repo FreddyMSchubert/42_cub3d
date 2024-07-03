@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_hook.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:50:17 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/02 13:46:13 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/03 10:23:56 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	player_shoot(void)
 	(*amount)--;
 	mlx_delete_image(game()->mlx, *amount_text);
 	*amount_text = NULL;
-	logger(LOGGER_ACTION, "Shot projectile!");
+	logger_v(LOGGER_ACTION, "Shot projectile!");
 }
 
 void	mouse_click_hook(mouse_key_t button, action_t action, \

@@ -3,6 +3,12 @@ SO ./assets/textures/walls/cherry_planks.png
 WE ./assets/textures/walls/cherry_planks.png
 EA ./assets/textures/walls/cherry_planks.png
 
+> You wake up.
+> But you realize that something is wrong.
+> You look around and realize - someone was here.
+> They stole all of the stars out of the night sky, and your coding AI bot girlfriend.
+> Time to get your revenge.
+
 F 65,152,10
 C 135,206,235
 

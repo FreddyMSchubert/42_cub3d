@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:57:29 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/02 10:34:39 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/03 10:17:34 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static inline void	unlock_door_if_possible(t_entity *self, t_door *door)
 		> DOOR_OPEN_DISTANCE || player()->inv.keys < 1
 		|| player()->inv.current_index != 0)
 		return ;
-	logger(LOGGER_ACTION, "Door unlocked!");
+	logger_v(LOGGER_ACTION, "Door unlocked!");
 	player()->inv.keys--;
 	if (player()->inv.text_amount_key)
 	{

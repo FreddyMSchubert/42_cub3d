@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 07:33:54 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/02 10:24:12 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/03 10:57:12 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static inline void	printf_element(int element)
 		printf("igneous");
 	else if (element == TYPE_AIR)
 		printf("aerian");
-	printf(" arts. May you find the star ⭐️ you seek.\x1b[0m\n");
+	printf(" arts. May you find the stars ⭐️ you seek.\x1b[0m\n");
 }
 
 static inline void	set_player_element(void)
@@ -78,17 +78,17 @@ int	main(int argc, char **argv)
 	init_random_seed();
 	if (argc == 1)
 	{
-		logger(LOGGER_STEP, "Map Generation");
+		logger_v(LOGGER_STEP, "Map Generation");
 		generate_map();
 		parse_input("generated_map.cub");
 	}
 	else
 		parse_input(argv[1]);
-	logger(LOGGER_STEP, "Player Element Input");
+	logger_v(LOGGER_STEP, "Player Element Input");
 	set_player_element();
-	logger(LOGGER_STEP, "Mlx Setup");
+	logger_v(LOGGER_STEP, "Mlx Setup");
 	setup_mlx();
-	logger(LOGGER_STEP, "Gameloop");
+	logger_v(LOGGER_STEP, "Gameloop");
 	mlx_loop(game()->mlx);
 	mlx_terminate(game()->mlx);
 	return (EXIT_SUCCESS);

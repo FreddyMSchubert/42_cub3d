@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_values.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:12:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/28 14:02:56 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/03 10:17:26 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ bool	set_entity_spawn(char dir, t_vec2 pos, t_tile_type ***map)
 		player()->spawn_transform.rot.y = -1;
 	else
 	{
-		logger(LOGGER_WARNING, "Player spawn look dir is not valid dir");
+		logger_v(LOGGER_ERROR, "Player spawn look dir is not valid dir");
 		return (false);
 	}
 	player()->spawn_transform.pos = pos;
@@ -53,7 +53,7 @@ bool	set_value(char	**value, char	*set)
 	if (strlen(*value) > 4
 		&& !str_is_equal(&((*value)[strlen(*value) - 4]), ".png"))
 	{
-		logger(LOGGER_WARNING,
+		logger(LOGGER_ERROR,
 			"Invalid texture file extension. Please provide a .png file!");
 		return (false);
 	}

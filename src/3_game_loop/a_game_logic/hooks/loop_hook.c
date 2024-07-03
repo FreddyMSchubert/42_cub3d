@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop_hook.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:28 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/03 09:49:06 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/03 10:18:29 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	loop_hook(void *param)
 	curr_frame = get_frame(curr_time);
 	prev_frame = get_frame(prev_time);
 	if (curr_frame > prev_frame + 1 && DEBUG)
-		logger(LOGGER_WARNING, "skipped frame");
+		logger_v(LOGGER_WARNING, "skipped frame");
 	if (((int)curr_time != (int)prev_time || curr_frame != prev_frame)
 		&& !game()->game_over)
 	{

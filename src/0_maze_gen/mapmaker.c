@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 22:46:53 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/02 11:33:27 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/03 10:12:33 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,19 +103,19 @@ void	generate_map(void)
 	generate_maze(maze, visited, (t_scale){random_int(1, map_scale.x - 2), \
 									random_int(1, map_scale.y - 2)}, map_scale);
 	place_player_spawn(maze, map_scale);
-	logger(LOGGER_STEP, "Player spawn placed");
+	logger_v(LOGGER_STEP, "Player spawn placed");
 	remove_walls(maze, map_scale.y, map_scale.x);
-	logger(LOGGER_STEP, "Walls removed");
+	logger_v(LOGGER_STEP, "Walls removed");
 	add_rooms(maze, map_scale, random_int(MIN_ROOMS_AMOUNT, MAX_ROOMS_AMOUNT));
-	logger(LOGGER_STEP, "Rooms added");
+	logger_v(LOGGER_STEP, "Rooms added");
 	add_ntts_in_good_spots(maze, map_scale);
-	logger(LOGGER_STEP, "Entities added");
+	logger_v(LOGGER_STEP, "Entities added");
 	place_locked_goal(maze, map_scale);
 	place_key(maze, map_scale);
-	logger(LOGGER_STEP, "Goal, doors & key added");
+	logger_v(LOGGER_STEP, "Goal, doors & key added");
 	place_health_drops(maze, map_scale);
-	logger(LOGGER_STEP, "Health drops added");
+	logger_v(LOGGER_STEP, "Health drops added");
 	write_cub_file(maze, map_scale.y, map_scale.x, "generated_map.cub");
-	logger(LOGGER_INFO, "Map saved to generated_map.cub");
+	logger_v(LOGGER_INFO, "Map saved to generated_map.cub");
 	gc_cleanup_and_reinit();
 }

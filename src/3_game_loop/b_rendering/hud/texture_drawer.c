@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_drawer.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 10:19:53 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/02 12:45:52 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/03 10:15:51 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	texture_draw(mlx_texture_t *texture, t_scale pos, t_scale size)
 			tex_y = (int)((y - pos.y) * texture->height / size.y);
 			color = get_tex_color_at(texture, tex_x, tex_y);
 			if ((color & 0xFF) > 0 && x >= 0
-				&& (u_int32_t)x < game()->game_scene->width
-				&& y >= 0 && (u_int32_t)y < game()->game_scene->height)
+				&& (int32_t)x < game()->mlx->width
+				&& y >= 0 && (int32_t)y < game()->mlx->height)
 				mlx_put_pixel(game()->game_scene, x, y, color);
 		}
 	}

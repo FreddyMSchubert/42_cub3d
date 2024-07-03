@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/02 12:39:45 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/03 10:46:28 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,7 @@ int					split_len(char **split);
 bool				char_is_in(char c, char *seq);
 bool				regex(char *line, char *reg);
 void				free_arr(void **arr);
+void				print_map_line(char **split);
 
 // --- a_file_reading
 void				get_map_contents(char *filepath);
@@ -272,7 +273,7 @@ void				gc_exit(int code);
 
 // logging
 void				logger(char type, char *message);
-void				logger_verbose(char type, char *message);
+void				logger_v(char type, char *message);
 // printing
 void				print_map(t_tile_type ***map, char *mode);
 void				print_walls(void);

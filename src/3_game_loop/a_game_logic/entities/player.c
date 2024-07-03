@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 19:57:01 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/01 17:10:43 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/03 10:18:12 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	on_collision_player(t_entity	*collider)
 	else
 		health_decrease_amount = MINOR_PROJECTILE_HIT_DECREASE;
 	player()->health -= health_decrease_amount;
-	logger(LOGGER_ACTION, "Player took some damange. How embarrassing!");
+	logger_v(LOGGER_ACTION, "Player took some damange. How embarrassing!");
 	collider->to_be_deleted = true;
 }
 

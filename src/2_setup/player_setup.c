@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_setup.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 08:28:05 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/01 14:16:42 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/03 10:19:16 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,4 @@ void	setup_player(void)
 	if (INFINITE_HEALTH)
 		player()->health = INT_MAX / 2;
 	player()->element = random_int(0, 3);
-	printf("Your elemental type is %d!\n", player()->element);
 }

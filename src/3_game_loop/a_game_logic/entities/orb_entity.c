@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   orb_entity.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:42:00 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/01 17:18:32 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/03 10:18:05 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,22 @@ static inline void	gain_ammo(t_entity *self, t_orb *orb)
 	if (orb->element == TYPE_EARTH)
 	{
 		player()->inv.earth_orbs += ammo_amount;
-		logger(LOGGER_ACTION, "Picked up some earth orbs!");
+		logger_v(LOGGER_ACTION, "Picked up some earth orbs!");
 	}
 	else if (orb->element == TYPE_FIRE)
 	{
 		player()->inv.fire_orbs += ammo_amount;
-		logger(LOGGER_ACTION, "Picked up some fire orbs!");
+		logger_v(LOGGER_ACTION, "Picked up some fire orbs!");
 	}
 	else if (orb->element == TYPE_WATER)
 	{
 		player()->inv.water_orbs += ammo_amount;
-		logger(LOGGER_ACTION, "Picked up some water orbs!");
+		logger_v(LOGGER_ACTION, "Picked up some water orbs!");
 	}
 	else if (orb->element == TYPE_AIR)
 	{
 		player()->inv.air_orbs += ammo_amount;
-		logger(LOGGER_ACTION, "Picked up some air orbs!");
+		logger_v(LOGGER_ACTION, "Picked up some air orbs!");
 	}
 	self->to_be_deleted = true;
 }
