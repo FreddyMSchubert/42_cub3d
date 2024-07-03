@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 20:18:50 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/02 12:35:40 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/03 12:58:33 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,13 @@ static void	load_blight_textures(void)
 					&game()->textures.earth_blight_attack);
 }
 
+static inline void	load_status_animatons(void)
+{
+	game()->frame_hurt = l("assets/textures/hud/hurt.png");
+	game()->frame_win = l("assets/textures/hud/win_screen.png");
+	game()->frame_dead = l("assets/textures/hud/dead_screen.png");
+}
+
 void	load_static_textures(void)
 {
 	game()->textures.door = l("assets/textures/entities/door.png");
@@ -83,5 +90,6 @@ void	load_static_textures(void)
 	game()->textures.air_orb = l("assets/textures/entities/orbs/air.png");
 	game()->textures.hotbar = l("assets/textures/hud/hotbar.png");
 	game()->textures.hotbar_select = l("assets/textures/hud/hotbar_select.png");
+	load_status_animatons();
 	load_blight_textures();
 }

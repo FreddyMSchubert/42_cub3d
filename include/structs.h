@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/03 09:39:03 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/03 12:05:12 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,11 @@ typedef struct s_persistent_data
 	mlx_texture_t	*we_texture;
 	mlx_texture_t	*ea_texture;
 	t_list			*entities;
+	mlx_texture_t	*frame_hurt;
+	mlx_texture_t	*frame_dead;
+	mlx_texture_t	*frame_win;
+	mlx_image_t		*screen_effect;
+	double			screen_effect_end;
 	int32_t			prev_mouse_x;
 	double			prev_time;
 	t_textures		textures;
