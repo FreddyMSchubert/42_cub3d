@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 19:57:01 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/03 13:59:37 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/03 15:20:28 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,31 @@
 
 #include "../../../include/cub3d.h"
 
+#define PLAYER_DAMAGE_EVERY_X_FRAMES 3
+
+static inline void	handle_blight_collision(t_entity *collider)
+{
+	static int		hits;
+
+	if (collider->type != BLIGHT_NTT || \
+			((t_blight *)collider->data)->element == player()->element || \
+			pos_dist(player()->transform.pos, collider->transform.pos) > 0.5)
+		return ;
+	hits++;
+	if (hits < PLAYER_DAMAGE_EVERY_X_FRAMES)
+		return ;
+	hits = 0;
+	player()->health -= PLAYER_BLIGHT_COLLISION_DAMAGE;
+	logger_v(LOGGER_ACTION, "Player took some damage from a blight. Ouch!");
+}
+
 void	on_collision_player(t_entity	*collider)
 {
 	int			health_decrease_amount;
 	mlx_image_t	*frame_hurt;
 
+	if (collider->type == BLIGHT_NTT)
+		handle_blight_collision(collider);
 	if (!(collider->type == PROJECTILE_NTT))
 		return ;
 	if (a_beats_b(((t_projectile *)collider->data)->element, player()->element))

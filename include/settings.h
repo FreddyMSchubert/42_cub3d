@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   settings.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/03 14:18:08 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/03 15:09:03 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@
 
 // --- Player Movement Stats
 
-# define MOVEMENT_SPEED 0.08
+# define MOVEMENT_SPEED 0.0625
 # define MOVEMENT_SPRINT_MULTIPLIER 2
 # define TURN_SPEED_ARROWS_DEG 5
 # define TURN_SPEED_MOUSE_DEG 1
@@ -71,7 +71,7 @@
 # define RAYCASTS_PER_DEG 5
 # define FISHEYE_CORRECTION_FACTOR 0.5
 # define VIEW_DIST 3
-# define FPS 60
+# define FPS 30
 
 // --- Entities
 
@@ -82,7 +82,7 @@
 # define KEY_COLLISION_DISTANCE 0.5
 # define CLOSED_DOOR_ALLOWED_WALK_DISTANCE 0.4
 # define DOOR_OPEN_DISTANCE 1.0
-# define DEFAULT_COLLISION_DISTANCE 0.5
+# define DEFAULT_COLLISION_DISTANCE 1
 
 // speed
 
@@ -108,6 +108,7 @@
 # define MINOR_PROJECTILE_HIT_DECREASE 1
 # define MAJOR_PROJECTILE_HIT_DESCREASE 3
 # define HEALTH_PICKUP_AMOUNT 1
+# define PLAYER_BLIGHT_COLLISION_DAMAGE 1 // every damn frame lol
 
 // animations
 
@@ -124,7 +125,7 @@
 
 // --- Gameplay Balancing
 
-# define MIN_AMMO_AMOUNT_PER_ORB 2
-# define MAX_AMMO_AMOUNT_PER_ORB 5
+# define MIN_AMMO_AMOUNT_PER_ORB 1
+# define MAX_AMMO_AMOUNT_PER_ORB 4
 
 #endif

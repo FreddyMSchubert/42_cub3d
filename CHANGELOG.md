@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.24.7] - 03.07.2024
+- Made blights damage you if you are close to them
+
 ### [0.24.6] - 03.07.2024
 - Added hit blight textures
 

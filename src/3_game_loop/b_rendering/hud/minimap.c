@@ -82,5 +82,5 @@ void	hud_draw_minimap(void)
 	draw_walls(size);
 	draw_square_hud(MINIMAP_WIDTH / 2 - size / 2,
 		MINIMAP_HEIGHT / 2 - size / 2, size / 2,
-		rgba_to_int(0, 0, 255, 255));
+		get_wall_color(player()->transform.pos.y, player()->transform.pos.x));
 }

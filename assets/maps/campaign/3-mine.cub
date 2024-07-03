@@ -1,0 +1,29 @@
+C 0,0,0
+F 0,0,0 
+
+EA ./assets/textures/walls/coal_ore.png
+NO ./assets/textures/walls/redstone_ore.png
+SO ./assets/textures/walls/lapis_ore.png
+WE ./assets/textures/walls/diamond_ore.png
+
+> Turns out, that slavery dojo where nobody was inside gets their money from taking all the people that walk inside and forcing them to work by mining ores in dangerous conditions.
+> You better get out of there to continue your journey!
+
+1111111111111111
+100000000000h101
+1001110010111101
+10100K1010000001
+1010111000011101
+1000001011000001
+1001100011011101
+1001101000000101
+10000011S1110001
+1011101000010101
+1010000011000101
+1000110110010101
+1010110000110101
+1010001110100001
+101010VG100h1001
+1010111110011101
+1000000000000001
+1111111111111111

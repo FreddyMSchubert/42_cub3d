@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop_hook.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:28 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/03 13:58:34 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/03 14:47:33 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	show_death_screen(void)
 	}
 	if (mlx_get_time() - start_time < 2.0)
 		return ;
-	cub_exit("Quitting program. Playing as a corpse is dull.", 0);
+	cub_exit("Quitting program. Playing as a corpse is dull.", -1);
 }
 
 static int	get_frame(double time)

@@ -1,0 +1,30 @@
+C 0,0,0
+F 0,0,0 
+
+EA ./assets/textures/walls/coal_ore.png
+NO ./assets/textures/walls/redstone_ore.png
+SO ./assets/textures/walls/lapis_ore.png
+WE ./assets/textures/walls/diamond_ore.png
+
+> You slowly come to the realization that you don't have an AI girlfriend, because even the AI rejected you and you will die alone.
+> But hey, at least you now got all the stars back.
+> Time to return home a changed man.
+
+1111111111111111
+100000000000h101
+1001110010111101
+10100K1010000001
+1010111000011101
+1000001011000001
+1001100011011101
+1001101000000101
+10000011S1110001
+1011101000010101
+1010000011000101
+1000110110010101
+1010110000110101
+1010001110100001
+101010VG100h1001
+1010111110011101
+1000000000000001
+1111111111111111
