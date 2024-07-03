@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.25.1] - 04.07.2024
+- Better smaller entities - just more pngs. simple, but works, games small-scale anyways
+- Some fixes to rendering
+
 ## [0.25.0] - 03.07.2024
 - Terrible first attempt at implementing smaller entities
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/03 12:05:12 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/04 01:01:49 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,10 +98,23 @@ typedef struct s_textures
 	mlx_texture_t	*goal;
 	mlx_texture_t	*health;
 
+	mlx_texture_t	*key_floor;
+	mlx_texture_t	*health_floor;
+
 	mlx_texture_t	*water_orb;
 	mlx_texture_t	*fire_orb;
 	mlx_texture_t	*earth_orb;
 	mlx_texture_t	*air_orb;
+
+	mlx_texture_t	*water_orb_floor;
+	mlx_texture_t	*fire_orb_floor;
+	mlx_texture_t	*earth_orb_floor;
+	mlx_texture_t	*air_orb_floor;
+
+	mlx_texture_t	*water_orb_flying;
+	mlx_texture_t	*fire_orb_flying;
+	mlx_texture_t	*earth_orb_flying;
+	mlx_texture_t	*air_orb_flying;
 
 	mlx_texture_t	*air_blight_idle;
 	t_animation		air_blight_death;

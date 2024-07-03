@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:56:45 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/01 17:11:02 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/04 01:04:45 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ void	tick_projectile(t_entity *self)
 mlx_texture_t	*get_texture_projectile(t_entity *self)
 {
 	if (((t_blight *)self->data)->element == TYPE_FIRE)
-		return (game()->textures.fire_orb);
+		return (game()->textures.fire_orb_flying);
 	else if (((t_blight *)self->data)->element == TYPE_AIR)
-		return (game()->textures.air_orb);
+		return (game()->textures.air_orb_flying);
 	else if (((t_blight *)self->data)->element == TYPE_WATER)
-		return (game()->textures.water_orb);
+		return (game()->textures.water_orb_flying);
 	else if (((t_blight *)self->data)->element == TYPE_EARTH)
-		return (game()->textures.earth_orb);
+		return (game()->textures.earth_orb_flying);
 	return (NULL);
 }

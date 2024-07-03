@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 20:18:50 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/03 12:58:33 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/04 01:02:38 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,20 @@ void	load_static_textures(void)
 	game()->textures.key = l("assets/textures/entities/key.png");
 	game()->textures.goal = l("assets/textures/entities/goal.png");
 	game()->textures.health = l("assets/textures/entities/health.png");
+	game()->textures.key_floor = l("assets/textures/entities/key_floor.png");
+	game()->textures.health_floor = l("assets/textures/entities/health_floor.png");
 	game()->textures.water_orb = l("assets/textures/entities/orbs/water.png");
 	game()->textures.fire_orb = l("assets/textures/entities/orbs/fire.png");
 	game()->textures.earth_orb = l("assets/textures/entities/orbs/earth.png");
 	game()->textures.air_orb = l("assets/textures/entities/orbs/air.png");
+	game()->textures.water_orb_floor = l("assets/textures/entities/orbs/water_floor.png");
+	game()->textures.fire_orb_floor = l("assets/textures/entities/orbs/fire_floor.png");
+	game()->textures.earth_orb_floor = l("assets/textures/entities/orbs/earth_floor.png");
+	game()->textures.air_orb_floor = l("assets/textures/entities/orbs/air_floor.png");
+	game()->textures.water_orb_flying = l("assets/textures/entities/orbs/water_flying.png");
+	game()->textures.fire_orb_flying = l("assets/textures/entities/orbs/fire_flying.png");
+	game()->textures.earth_orb_flying = l("assets/textures/entities/orbs/earth_flying.png");
+	game()->textures.air_orb_flying = l("assets/textures/entities/orbs/air_flying.png");
 	game()->textures.hotbar = l("assets/textures/hud/hotbar.png");
 	game()->textures.hotbar_select = l("assets/textures/hud/hotbar_select.png");
 	load_status_animatons();

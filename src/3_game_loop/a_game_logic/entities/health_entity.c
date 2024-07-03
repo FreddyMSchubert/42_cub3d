@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   health_entity.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 21:11:23 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/03 10:17:43 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/04 01:04:06 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ void	tick_health(t_entity *self)
 mlx_texture_t	*get_texture_health(t_entity *self)
 {
 	(void)self;
-	return (game()->textures.health);
+	return (game()->textures.health_floor);
 }

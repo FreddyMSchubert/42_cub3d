@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_entity.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 15:53:33 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/03 10:17:56 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/04 01:04:11 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ void	tick_key(t_entity *self)
 mlx_texture_t	*get_texture_key(t_entity *self)
 {
 	(void)self;
-	return (game()->textures.key);
+	return (game()->textures.key_floor);
 }

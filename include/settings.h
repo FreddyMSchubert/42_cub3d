@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/03 15:27:05 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/04 01:22:15 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@
 // speed
 
 # define DOOR_OPEN_SPEED 0.05
-# define PROJECTILE_SPEED 0.25
+# define PROJECTILE_SPEED (MOVEMENT_SPEED * MOVEMENT_SPRINT_MULTIPLIER) + 0.01
 # define BLIGHT_SPEED 0.05
 
 // movement
