@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.24.6] - 03.07.2024
+- Added hit blight textures
+
 ### [0.24.5] - 03.07.2024
 - Made blights drop orbs upon death
 - Fixed exiting segfault when window isnt launched yet

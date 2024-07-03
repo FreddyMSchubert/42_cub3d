@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/03 12:27:58 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/03 14:18:08 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 // --- Quality of Life
 
 # define MOUSE_SENSITIVITY 0.45
-# define CAPTURE_MOUSE false
+# define CAPTURE_MOUSE true
 
 // Map Making
 
