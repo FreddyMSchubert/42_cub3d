@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.25.0] - 03.07.2024
+- Terrible first attempt at implementing smaller entities
+
 ### [0.24.7] - 03.07.2024
 - Made blights damage you if you are close to them
 

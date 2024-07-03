@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/01 21:45:59 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/03 17:10:13 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ static inline void	draw_column(t_scale start, int end_y, mlx_texture_t *tex,
 	}
 }
 
+#define ENTITY_RENDER_STATE_FULL 0
+#define ENTITY_RENDER_STATE_FLOOR 1
+#define ENTITY_RENDER_STATE_FLYING 2
+
 void	draw_gameobject(t_range x_range, int height,
 	mlx_texture_t *tex, double hit_offset)
 {
@@ -61,12 +65,39 @@ void	draw_gameobject(t_range x_range, int height,
 	int	end_y;
 	int	x;
 	int	texture_x;
+	int	adjusted_height;
 
+	int render_state = ENTITY_RENDER_STATE_FLOOR;
+	adjusted_height = height;
+	if (render_state != ENTITY_RENDER_STATE_FULL)
+		adjusted_height = height / 3;
 	start_y = (int)(game()->mlx->height / 2) - height / 2;
-	end_y = start_y + height;
+	if (render_state == ENTITY_RENDER_STATE_FLOOR)
+		start_y = (int)(game()->mlx->height / 2) + height / 2 - adjusted_height;
+	else if (render_state == ENTITY_RENDER_STATE_FLYING)
+		start_y = (int)(game()->mlx->height / 2) - height / 2;
+	end_y = start_y + adjusted_height;
 	x = x_range.min;
-	while (x != x_range.max)
+	while (render_state == ENTITY_RENDER_STATE_FULL && x != x_range.max)
 	{
+		texture_x = (int)(hit_offset * tex->width) % tex->width;
+		draw_column((t_scale){x, start_y}, end_y, tex, texture_x);
+		if (x_range.min < x_range.max)
+			x++;
+		else
+			x--;
+	}
+	while (render_state != ENTITY_RENDER_STATE_FULL && x != x_range.max)
+	{
+		if (hit_offset < (1.0 / 3.0) || hit_offset > (2.0 / 3.0))
+		{
+			if (x_range.min < x_range.max)
+				x++;
+			else
+				x--;
+			continue ;
+		}
+		hit_offset = (hit_offset - (1.0 / 3.0)) * 3.0;
 		texture_x = (int)(hit_offset * tex->width) % tex->width;
 		draw_column((t_scale){x, start_y}, end_y, tex, texture_x);
 		if (x_range.min < x_range.max)
