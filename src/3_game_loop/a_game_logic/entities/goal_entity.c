@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   goal_entity.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:34:27 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/03 13:59:57 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/03 14:26:25 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ void	tick_goal(t_entity *self)
 	}
 	if (mlx_get_time() - reached_time > 2)
 	{
-		if (img)
-			mlx_delete_image(game()->mlx, img);
 		save_game();
 		logger_v(LOGGER_STEP, "Closing game. Thanks for playing!");
 		gc_exit(0);
