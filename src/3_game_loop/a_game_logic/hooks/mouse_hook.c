@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_hook.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:50:17 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/02 13:46:13 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/03 10:19:01 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void	handle_mouse_mv(void)
 		return ;
 	turn((current_mouse_x - game()->prev_mouse_x) * MOUSE_SENSITIVITY);
 	game()->prev_mouse_x = current_mouse_x;
-	mlx_set_mouse_pos(game()->mlx, game()->mlx->width / 2, \
-								game()->mlx->height / 2);
-	game()->prev_mouse_x = game()->mlx->width / 2;
+	// mlx_set_mouse_pos(game()->mlx, game()->mlx->width / 2, \
+	// 							game()->mlx->height / 2);
+	// game()->prev_mouse_x = game()->mlx->width / 2;
 }
 
 void	scroll_hook(double xdelta, double ydelta, void *param)

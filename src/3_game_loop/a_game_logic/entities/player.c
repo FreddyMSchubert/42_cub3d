@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 19:57:01 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/01 17:10:43 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/03 13:07:15 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 
 void	on_collision_player(t_entity	*collider)
 {
-	int	health_decrease_amount;
+	int			health_decrease_amount;
+	mlx_image_t	*frame_hurt;
 
 	if (!(collider->type == PROJECTILE_NTT))
 		return ;
@@ -25,6 +26,12 @@ void	on_collision_player(t_entity	*collider)
 	else
 		health_decrease_amount = MINOR_PROJECTILE_HIT_DECREASE;
 	player()->health -= health_decrease_amount;
+	frame_hurt = mlx_texture_to_image(game()->mlx, game()->frame_hurt);
+	if (game()->screen_effect)
+		mlx_delete_image(game()->mlx, game()->screen_effect);
+	mlx_image_to_window(game()->mlx, frame_hurt, 0, 0);
+	game()->screen_effect = frame_hurt;
+	game()->screen_effect_end = mlx_get_time() + 0.3;
 	logger(LOGGER_ACTION, "Player took some damange. How embarrassing!");
 	collider->to_be_deleted = true;
 }
@@ -35,5 +42,5 @@ void	check_dead_player(void)
 		return ;
 	printf("%sYou died after %f seconds. Bruh.%s\n", \
 					ANSI_BOLD_RED, mlx_get_time(), ANSI_RESET);
-	cub_exit("Quitting program. Playing as a corpse is dull.", 0);
+	game()->game_over = true;
 }

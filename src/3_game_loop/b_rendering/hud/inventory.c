@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/02 13:54:49 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/03 12:11:17 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,10 @@ static void	draw_item_at(unsigned int index, int x, int y, int size)
 	texture_draw(tex, (t_scale){x + 1, y + 1},
 		(t_scale){size - 2, size - 2});
 	amount = ft_itoa(*get_amount_of_item(index));
-	if (!amount)
-	{
-		mlx_put_string(game()->mlx, "?", x, y);
-		return ;
-	}
 	amount_text = get_amount_text_by_index(index);
-	if (!*amount_text)
+	if (!amount && !*amount_text)
+		*amount_text = mlx_put_string(game()->mlx, "?", x, y);
+	else if (!*amount_text)
 		*amount_text = mlx_put_string(game()->mlx, amount, x + 4, y);
 	free(amount);
 }
