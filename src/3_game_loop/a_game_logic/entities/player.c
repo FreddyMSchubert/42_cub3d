@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 19:57:01 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/03 10:18:12 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/03 11:24:52 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,5 @@ void	check_dead_player(void)
 		return ;
 	printf("%sYou died after %f seconds. Bruh.%s\n", \
 					ANSI_BOLD_RED, mlx_get_time(), ANSI_RESET);
-	cub_exit("Quitting program. Playing as a corpse is dull.", 0);
+	cub_exit("Quitting program. Playing as a corpse is dull.", -1);
 }

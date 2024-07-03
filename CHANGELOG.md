@@ -1,6 +1,10 @@
 # Changelog
 
-### [0.24.3] - 02.07.2024
+### [0.24.4] - 03.07.2024
+- Added saving & loading of game data.
+- Various smaller fixes
+
+### [0.24.3] - 03.07.2024
 - Removed super unnecessary logging (now only logs when verbose)
 - Made it possible to write a lil story into the map files which will get printed before things run
 

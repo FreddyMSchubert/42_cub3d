@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/03 10:46:28 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/03 11:13:30 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -262,6 +262,10 @@ mlx_texture_t		*get_texture_blight(t_entity *self);
 # define WALL_FACE_SOUTH 'S'
 # define WALL_FACE_EAST 'E'
 # define WALL_FACE_WEST 'W'
+
+// ----- saving_loading
+void				save_game(void);
+void				load_save(void);
 
 // ----- util
 // garbage collector

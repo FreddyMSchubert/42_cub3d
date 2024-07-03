@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 07:33:54 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/03 10:57:12 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/03 11:57:52 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static inline void	set_player_element(void)
 	printf_element(player()->element);
 }
 
-bool	check_args_validity(int argc, char **argv)
+static inline bool	check_args_validity(int argc, char **argv)
 {
 	if (argc != 1 && argc != 2)
 	{
@@ -68,8 +68,19 @@ bool	check_args_validity(int argc, char **argv)
 	return (true);
 }
 
+static inline void	null_data(void)
+{
+	player()->element = -1;
+	player()->health = -1;
+	player()->inv.air_orbs = -1;
+	player()->inv.earth_orbs = -1;
+	player()->inv.fire_orbs = -1;
+	player()->inv.water_orbs = -1;
+}
+
 int	main(int argc, char **argv)
 {
+	printf("\n");
 	if (!check_args_validity(argc, argv))
 		return (EXIT_FAILURE);
 	if (GREETING)
@@ -84,12 +95,19 @@ int	main(int argc, char **argv)
 	}
 	else
 		parse_input(argv[1]);
-	logger_v(LOGGER_STEP, "Player Element Input");
-	set_player_element();
+	null_data();
+	logger_v(LOGGER_STEP, "Loading Save Data");
+	load_save();
+	if (player()->element == -1)
+	{
+		logger_v(LOGGER_STEP, "Player Element Input");
+		set_player_element();
+	}
 	logger_v(LOGGER_STEP, "Mlx Setup");
 	setup_mlx();
 	logger_v(LOGGER_STEP, "Gameloop");
 	mlx_loop(game()->mlx);
 	mlx_terminate(game()->mlx);
+	save_game();
 	return (EXIT_SUCCESS);
 }

@@ -7,6 +7,8 @@ YELLOW='\033[1;33m'
 CYAN='\033[1;34m'
 NC='\033[0m' # No Color
 
+rm -f "save.cubsave"
+
 # Prompt user for map type with a single letter and allow default
 echo -e "${YELLOW}Select map type: ${CYAN}[V]alid${YELLOW} or ${CYAN}[I]nvalid${YELLOW}? Press Enter for default (Valid):${NC}"
 read -n 1 MAP_TYPE
