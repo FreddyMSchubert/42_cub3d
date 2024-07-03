@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:28 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/03 13:13:42 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/03 13:58:34 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,14 @@ static void	show_death_screen(void)
 		printf("showing death screen\n");
 		if (game()->screen_effect)
 			mlx_delete_image(game()->mlx, game()->screen_effect);
-		frame_dead = mlx_texture_to_image(game()->mlx, game()->frame_dead);
-		mlx_image_to_window(game()->mlx, frame_dead, 0, 0);
+		frame_dead = mlx_new_image(game()->mlx, game()->mlx->width,
+				game()->mlx->height);
+		if (!frame_dead)
+			cub_exit("Failed to create death screen", -1);
 		game()->screen_effect = frame_dead;
+		mlx_image_to_window(game()->mlx, frame_dead, 0, 0);
+		screen_texture_draw(game()->frame_dead, (t_scale){0, 0},
+			(t_scale){game()->mlx->width, game()->mlx->height});
 		start_time = mlx_get_time();
 	}
 	if (mlx_get_time() - start_time < 2.0)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   orb_entity.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:42:00 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/01 17:18:32 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/03 13:21:38 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,30 @@ static inline void	gain_ammo(t_entity *self, t_orb *orb)
 	self->to_be_deleted = true;
 }
 
+static inline void	delete_old_orb_amont_text(t_orb *orb)
+{
+	if (orb->element == TYPE_EARTH)
+	{
+		mlx_delete_image(game()->mlx, player()->inv.text_amount_earth);
+		player()->inv.text_amount_earth = NULL;
+	}
+	else if (orb->element == TYPE_FIRE)
+	{
+		mlx_delete_image(game()->mlx, player()->inv.text_amount_fire);
+		player()->inv.text_amount_fire = NULL;
+	}
+	else if (orb->element == TYPE_WATER)
+	{
+		mlx_delete_image(game()->mlx, player()->inv.text_amount_water);
+		player()->inv.text_amount_water = NULL;
+	}
+	else if (orb->element == TYPE_AIR)
+	{
+		mlx_delete_image(game()->mlx, player()->inv.text_amount_air);
+		player()->inv.text_amount_air = NULL;
+	}
+}
+
 void	tick_orb(t_entity *self)
 {
 	t_orb	*orb;
@@ -49,6 +73,7 @@ void	tick_orb(t_entity *self)
 						GOAL_COLLISION_DISTANCE)
 		return ;
 	gain_ammo(self, orb);
+	delete_old_orb_amont_text(orb);
 }
 
 mlx_texture_t	*get_texture_orb(t_entity *self)
