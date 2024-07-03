@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 20:25:23 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/02 11:40:11 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/03 10:19:08 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static inline void	place_door_and_goal(char **maze, t_scale door1, \
 {
 	char	door_dir;
 
-	printf("placing gooal wooho\n");
 	door_dir = 'V';
 	if (door1.x == door2.x)
 		door_dir = 'H';

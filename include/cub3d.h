@@ -146,6 +146,7 @@ int					split_len(char **split);
 bool				char_is_in(char c, char *seq);
 bool				regex(char *line, char *reg);
 void				free_arr(void **arr);
+void				print_map_line(char **split);
 
 // --- a_file_reading
 void				get_map_contents(char *filepath);
@@ -263,6 +264,10 @@ mlx_texture_t		*get_texture_blight(t_entity *self);
 # define WALL_FACE_EAST 'E'
 # define WALL_FACE_WEST 'W'
 
+// ----- saving_loading
+void				save_game(void);
+void				load_save(void);
+
 // ----- util
 // garbage collector
 t_list				*gc_create(void);
@@ -273,7 +278,7 @@ void				gc_exit(int code);
 
 // logging
 void				logger(char type, char *message);
-void				logger_verbose(char type, char *message);
+void				logger_v(char type, char *message);
 // printing
 void				print_map(t_tile_type ***map, char *mode);
 void				print_walls(void);
@@ -308,6 +313,7 @@ t_transform			get_face_vector(t_entity *ntt);
 t_entity			*create_entity(t_transform trans, t_entity_type type, \
 		mlx_texture_t	*(*tex)(t_entity *self), void (*tick)(t_entity *self));
 void				delete_entity(t_entity *self);
+void				drop_orbs(t_transform trans, int element);
 
 // vector
 double				vec2_dot_product(t_vec2 a, t_vec2 b);

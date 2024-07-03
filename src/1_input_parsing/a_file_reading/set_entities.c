@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 16:06:43 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/02 12:34:46 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/03 10:19:11 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ bool	set_orb(t_vec2 pos, t_tile_type ***map, char orb_type)
 
 bool	set_key(t_vec2 pos, t_tile_type ***map)
 {
-	printf("Setting key at %f, %f\n", pos.x, pos.y);
 	*(map[(int)pos.y][(int)pos.x]) = FLOOR;
 	create_entity((t_transform){{pos.x + 0.5, pos.y + 0.5}, {1.0, 0}}, \
 						KEY_NTT, get_texture_key, tick_key);

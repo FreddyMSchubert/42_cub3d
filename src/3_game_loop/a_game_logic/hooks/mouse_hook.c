@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_hook.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:50:17 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/03 10:19:01 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/03 11:47:45 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,12 @@ void	handle_mouse_mv(void)
 		return ;
 	turn((current_mouse_x - game()->prev_mouse_x) * MOUSE_SENSITIVITY);
 	game()->prev_mouse_x = current_mouse_x;
-	// mlx_set_mouse_pos(game()->mlx, game()->mlx->width / 2, \
-	// 							game()->mlx->height / 2);
-	// game()->prev_mouse_x = game()->mlx->width / 2;
+	if (CAPTURE_MOUSE)
+	{
+		mlx_set_mouse_pos(game()->mlx, game()->mlx->width / 2, \
+								game()->mlx->height / 2);
+		game()->prev_mouse_x = game()->mlx->width / 2;
+	}
 }
 
 void	scroll_hook(double xdelta, double ydelta, void *param)
@@ -58,7 +61,7 @@ void	player_shoot(void)
 	(*amount)--;
 	mlx_delete_image(game()->mlx, *amount_text);
 	*amount_text = NULL;
-	logger(LOGGER_ACTION, "Shot projectile!");
+	logger_v(LOGGER_ACTION, "Shot projectile!");
 }
 
 void	mouse_click_hook(mouse_key_t button, action_t action, \

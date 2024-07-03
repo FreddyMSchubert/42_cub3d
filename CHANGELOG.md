@@ -1,5 +1,17 @@
 # Changelog
 
+### [0.24.5] - 03.07.2024
+- Made blights drop orbs upon death
+- Fixed exiting segfault when window isnt launched yet
+
+### [0.24.4] - 03.07.2024
+- Added saving & loading of game data.
+- Various smaller fixes
+
+### [0.24.3] - 03.07.2024
+- Removed super unnecessary logging (now only logs when verbose)
+- Made it possible to write a lil story into the map files which will get printed before things run
+
 ### [0.24.2] - 02.07.2024
 - Reworked the coloseum a bit, making it longer and more interesting
 - Added play_campaign.sh to play the campaign in its totality

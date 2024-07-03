@@ -35,7 +35,7 @@ void	on_collision_player(t_entity	*collider)
 	screen_texture_draw(game()->frame_hurt, (t_scale){0, 0},
 		(t_scale){game()->mlx->width, game()->mlx->height});
 	game()->screen_effect_end = mlx_get_time() + 0.3;
-	logger(LOGGER_ACTION, "Player took some damange. How embarrassing!");
+	logger_v(LOGGER_ACTION, "Player took some damange. How embarrassing!");
 	collider->to_be_deleted = true;
 }
 

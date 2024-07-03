@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 09:39:02 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/02 12:31:59 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/03 10:55:23 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ bool	set_values(char **split, t_input_data **input_data, char **data, int *i)
 	else if (str_is_equal(split[0], "C")
 		&& !set_color(&((*input_data)->ceiling_color), split[1]))
 		return (false);
+	else if (str_is_equal(split[0], ">"))
+		return(print_map_line(split), true);
 	else if (regex(data[*i], MAP_TILES))
 		return (false);
 	return (true);
@@ -48,7 +50,7 @@ bool	parse_attributes(char **data, t_input_data **input_data, int *i)
 		if (data[*i][0] == 0)
 			continue ;
 		split = ft_split(data[*i], ' ');
-		if (!split || split_len(split) != 2)
+		if (!split || (split_len(split) != 2 && data[*i][0] != '>'))
 			return (free_split(split, true));
 		if (!set_values(split, input_data, data, i))
 			return (free_split(split, false));

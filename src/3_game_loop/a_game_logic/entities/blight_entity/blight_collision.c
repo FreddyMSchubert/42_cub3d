@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 21:57:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/02 12:39:24 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/03 12:16:28 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,13 @@ void	on_collision_blight(t_entity *self, t_entity *other)
 		health_decrease_amount = MINOR_PROJECTILE_HIT_DECREASE;
 	self->health -= health_decrease_amount;
 	if (self->health > 0)
-		logger(LOGGER_ACTION, "Blight hit by projectile!");
+		logger_v(LOGGER_ACTION, "Blight hit by projectile!");
 	else
 	{
-		logger(LOGGER_ACTION, "Blight killed by projectile!");
+		logger_v(LOGGER_ACTION, "Blight killed by projectile!");
 		blight->state = BLIGHT_STATE_DYING;
 		if (blight->drops_key)
-		{
 			create_entity(self->transform, KEY_NTT, get_texture_key, tick_key);
-		}
 	}
 	other->to_be_deleted = true;
 }

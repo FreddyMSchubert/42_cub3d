@@ -20,22 +20,22 @@ static inline void	gain_ammo(t_entity *self, t_orb *orb)
 	if (orb->element == TYPE_EARTH)
 	{
 		player()->inv.earth_orbs += ammo_amount;
-		logger(LOGGER_ACTION, "Picked up some earth orbs!");
+		logger_v(LOGGER_ACTION, "Picked up some earth orbs!");
 	}
 	else if (orb->element == TYPE_FIRE)
 	{
 		player()->inv.fire_orbs += ammo_amount;
-		logger(LOGGER_ACTION, "Picked up some fire orbs!");
+		logger_v(LOGGER_ACTION, "Picked up some fire orbs!");
 	}
 	else if (orb->element == TYPE_WATER)
 	{
 		player()->inv.water_orbs += ammo_amount;
-		logger(LOGGER_ACTION, "Picked up some water orbs!");
+		logger_v(LOGGER_ACTION, "Picked up some water orbs!");
 	}
 	else if (orb->element == TYPE_AIR)
 	{
 		player()->inv.air_orbs += ammo_amount;
-		logger(LOGGER_ACTION, "Picked up some air orbs!");
+		logger_v(LOGGER_ACTION, "Picked up some air orbs!");
 	}
 	self->to_be_deleted = true;
 }

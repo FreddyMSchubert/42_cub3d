@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_entity.c                                       :+:      :+:    :+:   */
+/*   util2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/25 15:53:33 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/03 10:17:56 by fschuber         ###   ########.fr       */
+/*   Created: 2024/07/03 10:45:13 by fschuber          #+#    #+#             */
+/*   Updated: 2024/07/03 10:55:43 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/cub3d.h"
 
-void	tick_key(t_entity *self)
+void	print_map_line(char **split)
 {
-	if (pos_dist(player()->transform.pos, self->transform.pos) > \
-					KEY_COLLISION_DISTANCE)
-		return ;
-	logger_v(LOGGER_ACTION, "Key collected!");
-	player()->inv.keys++;
-	if (player()->inv.text_amount_key)
-	{
-		mlx_delete_image(game()->mlx, player()->inv.text_amount_key);
-		player()->inv.text_amount_key = NULL;
-	}
-	self->to_be_deleted = true;
-}
+	int	i;
 
-mlx_texture_t	*get_texture_key(t_entity *self)
-{
-	(void)self;
-	return (game()->textures.key);
+	if (!split || !split[0] || !split[1])
+		return ;
+	i = 1;
+	while (split[i])
+	{
+		ft_putstr_fd(split[i], 1);
+		ft_putstr_fd(" ", 1);
+		i++;
+	}
+	ft_putstr_fd("\n", 1);
 }

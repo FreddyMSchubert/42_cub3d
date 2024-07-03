@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/02 11:57:57 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/03 12:27:58 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@
 
 // --- General
 
-# define GREETING true
-# define VERBOSE true
+# define GREETING false
+# define VERBOSE false
 # define DEBUG false
 # define LOG_WALLS false
 # define TERMINAL_MAP true
+
+# define SAVE_FILE "save.cubsave"
 
 // --- Debug
 
@@ -31,6 +33,7 @@
 // --- Quality of Life
 
 # define MOUSE_SENSITIVITY 0.45
+# define CAPTURE_MOUSE false
 
 // Map Making
 
@@ -44,9 +47,9 @@
 # define WALL_REMOVAL_CHANCE_PERCENT 5
 
 # define ENTITIY_PLACEMENT_CHANCE 10
-# define ORB_PLACEMENT_CHANCE 100
+# define ORB_PLACEMENT_CHANCE 60
 # define BLIGHT_PLACEMENT_CHANCE 85
-# define HEALTH_DROP_CHANCE_PERCENT 10
+# define HEALTH_DROP_CHANCE_PERCENT 5
 
 // --- Window Setup
 
