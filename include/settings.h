@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   settings.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/03 14:18:08 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/03 15:24:12 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@
 # define RAYCASTS_PER_DEG 5
 # define FISHEYE_CORRECTION_FACTOR 0.5
 # define VIEW_DIST 3
-# define FPS 60
+# define FPS 30
 
 // --- Entities
 

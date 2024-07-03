@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 07:33:54 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/03 12:27:35 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/03 14:49:55 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,6 @@ int	main(int argc, char **argv)
 	mlx_loop(game()->mlx);
 	mlx_terminate(game()->mlx);
 	save_game();
+	cub_exit("", 0);
 	return (EXIT_SUCCESS);
 }
