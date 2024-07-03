@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_mlx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:41:35 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/01 17:24:39 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/03 09:42:31 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void	setup_mlx(void)
 				MINIMAP_LEFT_OFFSET, MINIMAP_TOP_OFFSET) < 0))
 		cub_exit("mlx hud image creation failed", -1);
 	game()->minimap_size = 5;
+	game()->game_over = false;
 	setup_player();
 	mlx_set_cursor_mode(game()->mlx, MLX_MOUSE_HIDDEN);
 	mlx_loop_hook(game()->mlx, loop_hook, NULL);
