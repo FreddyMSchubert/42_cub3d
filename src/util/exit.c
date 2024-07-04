@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:51:31 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/03 17:18:39 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/04 13:53:44 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static inline void	free_textures(void)
 	int	i;
 
 	i = -1;
-	while(++i < MAX_TEXTURES && game()->texture_arr[i])
+	while (++i < MAX_TEXTURES && game()->texture_arr[i])
 		mlx_delete_texture(game()->texture_arr[i]);
 	if (game()->background)
 		mlx_delete_image(game()->mlx, game()->background);

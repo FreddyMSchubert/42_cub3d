@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gc.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:18:59 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/03 16:56:32 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/04 13:54:59 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,7 @@ int	gc_append_element(void *content)
 		selected_node = selected_node->next;
 		if (selected_node->content == content)
 		{
-			logger_v(LOGGER_WARNING, \
-					"Element already in garbage collector.");
+			logger_v(LOGGER_WARNING, "Element already in gc.");
 			return (free(new_node), -2);
 		}
 	}
@@ -124,14 +123,14 @@ void	*gc_malloc(size_t size)
 	if (!new_mem)
 	{
 		perror("Malloc failed");
-		gc_exit(-1);
+		cub_exit("", -1);
 	}
 	ft_bzero(new_mem, size);
 	if (gc_append_element(new_mem) == -1)
 	{
 		perror("Malloc failed");
 		free(new_mem);
-		gc_exit(-1);
+		cub_exit("", -1);
 	}
 	return (new_mem);
 }
