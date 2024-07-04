@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/04 15:25:11 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/04 20:54:48 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,23 @@
 # define TYPE_AIR 2
 # define TYPE_EARTH 3
 
+/* ----- TIMING ----- */
+# define TIMING_MODE_START 0
+# define TIMING_MODE_STOP 1
+# define TIMING_MODE_CLEAR 2
+# define TIMING_MODE_PRINT 3
+
+# define TIMING_TYPE_LOOP 0
+# define TIMING_TYPE_RENDERING 1
+# define TIMING_TYPE_HUD_RENDERING 2
+# define TIMING_TYPE_WORLD_RENDERING 3
+# define TIMING_TYPE_WALL_RAYCAST 4		// this includes calcs and drawing
+# define TIMING_TYPE_NTT_RAYCAST 5
+# define TIMING_TYPE_WALL_CALC 6		// this includes drawing
+# define TIMING_TYPE_NTT_CALC 7
+# define TIMING_TYPE_WALL_DRAW 8
+# define TIMING_TYPE_NTT_DRAW 9
+
 /* ---- FUNCTIONS ----- */
 // lets mirror the file system in here. the less ---, the deeper the file
 
@@ -87,6 +104,9 @@
 t_persistent_data	*game(void);
 t_list				**gc(void);
 t_player			*player(void);
+
+void				timing(int mode, int type);
+void				log_timing(double timing[10]);
 
 void				load_static_textures(void);
 

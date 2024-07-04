@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 14:36:45 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/04 12:04:58 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/04 19:57:43 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,13 @@ static inline void	render_hud(void)
 
 void	render(void)
 {
+	timing(TIMING_MODE_START, TIMING_TYPE_RENDERING);
+	timing(TIMING_MODE_START, TIMING_TYPE_WORLD_RENDERING);
 	render_game_scene();
+	timing(TIMING_MODE_STOP, TIMING_TYPE_WORLD_RENDERING);
+	timing(TIMING_MODE_START, TIMING_TYPE_HUD_RENDERING);
 	draw_inventory();
 	render_hud();
+	timing(TIMING_MODE_STOP, TIMING_TYPE_HUD_RENDERING);
+	timing(TIMING_MODE_STOP, TIMING_TYPE_RENDERING);
 }

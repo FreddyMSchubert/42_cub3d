@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:28 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/04 18:55:57 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/04 21:32:21 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ void	loop_hook(void *param)
 	int		prev_frame;
 
 	(void) param;
+	timing(TIMING_MODE_CLEAR, -1);
+	timing(TIMING_MODE_START, TIMING_TYPE_LOOP);
 	curr_time = mlx_get_time();
 	prev_time = game()->prev_time;
 	curr_frame = get_frame(curr_time);
@@ -80,4 +82,9 @@ void	loop_hook(void *param)
 		tick_entities();
 	else if (game()->game_over && player()->health <= 0)
 		show_death_screen();
+	if (curr_frame != prev_frame)
+	{
+		timing(TIMING_MODE_STOP, TIMING_TYPE_LOOP);
+		timing(TIMING_MODE_PRINT, -1);
+	}
 }

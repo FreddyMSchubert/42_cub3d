@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/04 18:55:45 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/04 22:05:53 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define DEBUG false
 # define LOG_WALLS false
 # define TERMINAL_MAP true
+# define LOG_TIMING true
 
 # define SAVE_FILE "save.cubsave"
 
@@ -36,8 +37,8 @@
 
 // Map Making
 
-# define MIN_MAP_SIZE 13
-# define MAX_MAP_SIZE 30
+# define MIN_MAP_SIZE 10
+# define MAX_MAP_SIZE 25
 # define MIN_ROOMS_AMOUNT 2
 # define MAX_ROOMS_AMOUNT 5
 # define MIN_ROOM_SIZE 3
@@ -46,7 +47,7 @@
 # define WALL_REMOVAL_CHANCE_PERCENT 18
 
 # define ENTITIY_PLACEMENT_CHANCE 13
-# define ORB_PLACEMENT_CHANCE 65
+# define ORB_PLACEMENT_CHANCE 60
 # define BLIGHT_PLACEMENT_CHANCE 55
 # define HEALTH_DROP_CHANCE_PERCENT 3
 
@@ -93,12 +94,12 @@
 
 # define BLIGHT_WALKING_START_CHANCE 0.1
 # define BLIGHT_STANDING_START_CHANCE 0.025
-# define BLIGHT_ATTACKING_START_CHANCE 0.5
+# define BLIGHT_ATTACKING_START_CHANCE 0.75
 # define BLIGHT_MOVEMENT_ROTATION_SWITCH_CHANCE 0.05
 # define BLIGHT_MINIUM_ROTATION_DEG 45
 # define BLIGHT_MAX_SPAWN_DISTANCE 10
 # define BLIGHT_SPAWN_RETURNING_DEG_VARIATION 45
-# define BLIGHT_SHOOTING_INACCURACY_DEG 30
+# define BLIGHT_SHOOTING_INACCURACY_DEG 15
 
 // health
 
@@ -112,7 +113,7 @@
 // animations
 
 # define BLIGHT_DEATH_ANIMATION_FRAMES 25
-# define BLIGHT_ATTACK_ANIMATION_FRAMES 20
+# define BLIGHT_ATTACK_ANIMATION_FRAMES 15
 # define BLIGHT_HURT_STATE_FRAME_DURATION 3
 
 // --- HUD Settings
@@ -133,8 +134,8 @@
 
 // --- Gameplay Balancing
 
-# define MIN_AMMO_AMOUNT_PER_ORB 1
-# define MAX_AMMO_AMOUNT_PER_ORB 4
+# define MIN_AMMO_AMOUNT_PER_ORB 2
+# define MAX_AMMO_AMOUNT_PER_ORB 5
 # define TICKS_BETWEEN_PLAYER_SHOTS 15
 
 #endif

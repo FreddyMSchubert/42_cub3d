@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.25.10] - 04.07.2024
+- Added some very nice timing setup, should be nicely expandable in the future.
+
 ### [0.25.9] - 04.07.2024
 - Blight hurt animation duration handling improvements
 - Shots per second limit

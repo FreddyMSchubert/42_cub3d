@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1999/06/13 09:10:15 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/01 21:47:12 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/04 19:58:34 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,20 @@ void	calc_wall(int ray_index, t_vec2 intersect)
 	double	intersection_dist;
 	double	angle_correction_rad;
 
+	timing(TIMING_MODE_START, TIMING_TYPE_WALL_CALC);
 	get_x_pixel_from_ray_index(ray_index, &range.min, &range.max);
 	intersection_dist = pos_dist(player()->transform.pos, intersect);
 	angle_correction_rad = \
 						deg_to_rad(get_fisheye_corrected_ray_angle(ray_index));
 	height = get_height_from_intersection_dist(intersection_dist * \
 					cos(angle_correction_rad));
+	timing(TIMING_MODE_START, TIMING_TYPE_WALL_DRAW);
 	draw_gameobject(range, height, \
 			get_wall_texture(get_wall_face_to_render(intersect)), \
 							intersect.y - floor(intersect.y) + \
 						intersect.x - floor(intersect.x));
+	timing(TIMING_MODE_STOP, TIMING_TYPE_WALL_DRAW);
+	timing(TIMING_MODE_STOP, TIMING_TYPE_WALL_CALC);
 }
 
 void	calc_entity(int ray_index, t_vec2 intersect, t_entity *ntt)
@@ -74,12 +78,16 @@ void	calc_entity(int ray_index, t_vec2 intersect, t_entity *ntt)
 	double	intersection_dist;
 	double	angle_correction_rad;
 
+	timing(TIMING_MODE_START, TIMING_TYPE_NTT_CALC);
 	get_x_pixel_from_ray_index(ray_index, &range.min, &range.max);
 	intersection_dist = pos_dist(player()->transform.pos, intersect);
 	angle_correction_rad = deg_to_rad(\
 						get_fisheye_corrected_ray_angle(ray_index));
 	height = get_height_from_intersection_dist(intersection_dist * \
 						cos(angle_correction_rad));
+	timing(TIMING_MODE_START, TIMING_TYPE_NTT_DRAW);
 	draw_gameobject(range, height, ntt->get_texture(ntt), \
 						get_ntt_hit_offset(intersect, get_face_vector(ntt)));
+	timing(TIMING_MODE_STOP, TIMING_TYPE_NTT_DRAW);
+	timing(TIMING_MODE_STOP, TIMING_TYPE_NTT_CALC);
 }
