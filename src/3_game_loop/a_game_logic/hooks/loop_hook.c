@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop_hook.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:28 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/03 14:47:33 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/04 14:51:02 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static void	show_death_screen(void)
 
 	if (start_time == -1.0)
 	{
-		printf("showing death screen\n");
 		if (game()->screen_effect)
 			mlx_delete_image(game()->mlx, game()->screen_effect);
 		frame_dead = mlx_new_image(game()->mlx, game()->mlx->width,
