@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/04 12:06:26 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/04 14:26:33 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,8 @@ typedef struct s_textures
 	mlx_texture_t	*elements_overview;
 }	t_textures;
 
+# define MAX_TEXTURES 60
+
 typedef struct s_persistent_data
 {
 	t_input_data	*input_data;
@@ -163,6 +165,7 @@ typedef struct s_persistent_data
 	double			prev_time;
 	t_textures		textures;
 	bool			mouse_free;
+	mlx_texture_t	*texture_arr[MAX_TEXTURES];
 }	t_persistent_data;
 
 // --- PLAYER

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_parser.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 13:57:51 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/03 10:21:38 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/04 13:51:53 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,7 @@ void	parse_input(char	*filepath)
 	init_player_pos();
 	get_map_contents(filepath);
 	if (!game()->input_data || !game()->input_data->map)
-	{
-		logger(LOGGER_ERROR, "Error during input parsing!");
-		gc_exit(-1);
-	}
+		cub_exit("Error during input parsing!", -1);
 	logger_v(LOGGER_STEP, "Map Squarification");
 	squarify_map();
 	logger_v(LOGGER_STEP, "Map Validation");
