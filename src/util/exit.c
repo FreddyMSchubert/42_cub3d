@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:51:31 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/04 14:02:41 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/04 17:20:17 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ static inline void	free_textures(void)
 	int	i;
 
 	i = -1;
-	while (++i < MAX_TEXTURES && game()->texture_arr[i])
-		mlx_delete_texture(game()->texture_arr[i]);
+	while (++i < MAX_TEXTURES)
+		if (game()->texture_arr[i])
+			mlx_delete_texture(game()->texture_arr[i]);
 	if (game()->background)
 		mlx_delete_image(game()->mlx, game()->background);
 	if (game()->hud)
@@ -43,8 +44,7 @@ void	cub_exit(char	*message, int code)
 		logger(LOGGER_ERROR, message);
 	else
 		logger(LOGGER_INFO, message);
-	if (game()->texture_arr[0])
-		free_textures();
+	free_textures();
 	if (game()->mlx)
 		mlx_terminate(game()->mlx);
 	gc_exit(code);

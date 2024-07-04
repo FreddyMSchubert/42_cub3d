@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 20:18:50 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/04 14:25:54 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/04 17:20:45 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static mlx_texture_t	*l(char *path)
 		cub_exit("Error loading texture", -1);
 	}
 	free(fullpath);
-	game()->texture_arr[++textures] = texture;
+	game()->texture_arr[textures++] = texture;
 	return (texture);
 }
 
