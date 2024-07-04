@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_hook.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:50:17 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/03 11:47:45 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/04 01:55:42 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	handle_mouse_mv(void)
 		return ;
 	turn((current_mouse_x - game()->prev_mouse_x) * MOUSE_SENSITIVITY);
 	game()->prev_mouse_x = current_mouse_x;
-	if (CAPTURE_MOUSE)
+	if (game()->mouse_free)
 	{
 		mlx_set_mouse_pos(game()->mlx, game()->mlx->width / 2, \
 								game()->mlx->height / 2);

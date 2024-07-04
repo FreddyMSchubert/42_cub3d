@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_values.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:12:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/03 10:17:26 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/04 01:49:53 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ bool	set_entity_spawn(char dir, t_vec2 pos, t_tile_type ***map)
 	player()->spawn_transform.rot.x = 0;
 	player()->spawn_transform.rot.y = 0;
 	if (dir == 'N')
-		player()->spawn_transform.rot.x = -1;
-	else if (dir == 'S')
-		player()->spawn_transform.rot.x = 1;
-	else if (dir == 'E')
-		player()->spawn_transform.rot.y = 1;
-	else if (dir == 'W')
 		player()->spawn_transform.rot.y = -1;
+	else if (dir == 'S')
+		player()->spawn_transform.rot.y = 1;
+	else if (dir == 'E')
+		player()->spawn_transform.rot.x = 1;
+	else if (dir == 'W')
+		player()->spawn_transform.rot.x = -1;
 	else
 	{
 		logger_v(LOGGER_ERROR, "Player spawn look dir is not valid dir");

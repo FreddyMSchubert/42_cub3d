@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:50 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/03 12:12:27 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/04 01:58:03 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 {
 	if (keydata.key == MLX_KEY_ESCAPE)
 		cub_exit("ESCAPE received, exiting...", -1);
+	else if (keydata.key == MLX_KEY_ENTER && keydata.action == MLX_PRESS)
+		game()->mouse_free = !game()->mouse_free;
 	else if (keydata.key == MLX_KEY_PERIOD)
 		save_game();
 	else if (keydata.key == MLX_KEY_F && keydata.action == MLX_PRESS)

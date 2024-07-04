@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   player_setup.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 08:28:05 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/03 11:58:50 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/04 01:55:03 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+static inline void	setup_rot(void)
+{
+	int32_t	x;
+	int32_t	y;
+
+	mlx_get_mouse_pos(game()->mlx, &x, &y);
+	game()->prev_mouse_x = x;
+	game()->mouse_free = CAPTURE_MOUSE_AT_START;
+}
 
 void	setup_player(void)
 {
@@ -38,4 +48,5 @@ void	setup_player(void)
 	if (INFINITE_HEALTH)
 		player()->health = INT_MAX / 2;
 	player()->element = random_int(0, 3);
+	setup_rot();
 }

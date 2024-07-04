@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_mlx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:41:35 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/03 12:06:02 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/04 01:58:37 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	set_background(void)
 
 void	setup_mlx(void)
 {
-	game()->mlx = mlx_init(START_WIDTH, START_HEIGHT, WINDOW_NAME, true);
+	game()->mlx = mlx_init(START_WIDTH, START_HEIGHT, WINDOW_NAME, false);
 	if (!game()->mlx)
 		cub_exit("mlx setup failed.", -1);
 	set_background();

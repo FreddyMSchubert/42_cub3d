@@ -1,5 +1,10 @@
 # Changelog
 
+### [0.25.2] - 04.07.2024
+- Improved minimap player indicator coloring
+- Fixed player having pretty much random rotation at start depending on where mouse is by saving the intiial position at the start
+- You can now press ENTER to toggle mouse capturedness.
+
 ### [0.25.1] - 04.07.2024
 - Better smaller entities - just more pngs. simple, but works, games small-scale anyways
 - Some fixes to rendering

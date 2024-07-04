@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/04 01:22:15 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/04 01:54:59 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 // --- Quality of Life
 
 # define MOUSE_SENSITIVITY 0.45
-# define CAPTURE_MOUSE true
+# define CAPTURE_MOUSE_AT_START false
 
 // Map Making
 

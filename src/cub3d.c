@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 07:33:54 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/03 14:49:55 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/04 02:00:41 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ static inline void	printf_element(int element)
 		printf("igneous");
 	else if (element == TYPE_AIR)
 		printf("aerian");
-	printf(" arts. May you find the stars ⭐️ you seek.\x1b[0m\n");
+	printf(" arts. May you find the stars ⭐️ you seek.\n");
+	printf("And one last thing: Water beats Fire, Fire beats Air, ");
+	printf("Air beats Earth, Earth beats Water.\n\x1b[0m\n");
 }
 
 static inline void	set_player_element(void)

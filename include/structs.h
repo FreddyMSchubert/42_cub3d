@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/04 01:01:49 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/04 01:54:37 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,7 @@ typedef struct s_persistent_data
 	int32_t			prev_mouse_x;
 	double			prev_time;
 	t_textures		textures;
+	bool			mouse_free;
 }	t_persistent_data;
 
 // --- PLAYER
