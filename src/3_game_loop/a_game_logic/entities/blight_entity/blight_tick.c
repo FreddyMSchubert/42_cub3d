@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   blight_tick.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:57:26 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/04 11:18:07 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/04 18:43:54 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ void	tick_blight(t_entity *self)
 
 	self->frames_since_state_change++;
 	blight = (t_blight *)self->data;
+	if (blight->hurt_state > 0)
+		blight->hurt_state--;
 	if (blight->state == BLIGHT_STATE_WALKING)
 		blight_walk(self, blight);
 	else if (blight->state == BLIGHT_STATE_STANDING && \

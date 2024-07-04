@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop_hook.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:28 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/04 14:51:02 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/04 18:55:57 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static inline void	game_tick(double curr_time)
 	render();
 	game()->prev_time = curr_time;
 	check_dead_player();
+	player()->frames_since_shot++;
 	if (game()->screen_effect && game()->screen_effect_end < curr_time)
 	{
 		mlx_delete_image(game()->mlx, game()->screen_effect);

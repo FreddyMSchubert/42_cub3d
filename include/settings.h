@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   settings.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/04 15:26:59 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/04 18:55:45 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@
 # define WALL_REMOVAL_CHANCE_PERCENT 18
 
 # define ENTITIY_PLACEMENT_CHANCE 13
-# define ORB_PLACEMENT_CHANCE 50
+# define ORB_PLACEMENT_CHANCE 65
 # define BLIGHT_PLACEMENT_CHANCE 55
 # define HEALTH_DROP_CHANCE_PERCENT 3
 
@@ -113,7 +113,7 @@
 
 # define BLIGHT_DEATH_ANIMATION_FRAMES 25
 # define BLIGHT_ATTACK_ANIMATION_FRAMES 20
-# define BLIGHT_HURT_STATE_FRAME_DURATION 150
+# define BLIGHT_HURT_STATE_FRAME_DURATION 3
 
 // --- HUD Settings
 
@@ -135,5 +135,6 @@
 
 # define MIN_AMMO_AMOUNT_PER_ORB 1
 # define MAX_AMMO_AMOUNT_PER_ORB 4
+# define TICKS_BETWEEN_PLAYER_SHOTS 15
 
 #endif

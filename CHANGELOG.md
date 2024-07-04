@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.25.9] - 04.07.2024
+- Blight hurt animation duration handling improvements
+- Shots per second limit
+
 ### [0.25.8] - 04.07.2024
 - Showing cursor when mouse is uncaptured, hiding it if it is
 
