@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 20:18:50 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/04 14:00:28 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/04 14:11:40 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static mlx_texture_t	*l(char *path)
 	mlx_texture_t	*texture;
 	static int		textures = -1;
 
-	if (textures >= MAX_TEXTURES)
+	if (textures + 1 >= MAX_TEXTURES)
 		cub_exit("Texture amount exceeds max allowed textures", -1);
 	if (textures == -1)
 		ft_bzero(game()->texture_arr, MAX_TEXTURES);
@@ -25,7 +25,6 @@ static mlx_texture_t	*l(char *path)
 	if (!texture)
 		cub_exit("Error loading texture", -1);
 	game()->texture_arr[++textures] = texture;
-	printf("added: %p\n", texture);
 	return (texture);
 }
 
