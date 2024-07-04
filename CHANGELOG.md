@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.25.7] - 04.07.2024
+- Fixed player being able to keep blight stuck in dying animation by continuously shooting projectiles at it while its dying
+
 ### [0.25.6] - 04.07.2024
 - Improved goal placement in random gen.
 	- Removed non-locked positioning bug
