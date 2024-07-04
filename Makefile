@@ -19,7 +19,7 @@ endif
 
 HEADERS := -I ./include -I $(LIBMLX)/include -I $(LIBFT)/include -I $(GNL)/include -I $(GLFW_PATH)/include
 LIBS := $(LIBMLX)/build/libmlx42.a -ldl -lm -L$(GLFW_PATH)/lib -lglfw $(LIBFT)/libft.a $(GNL)/libftgnl.a
-CFLAGS := -Wall -Werror -Wextra
+CFLAGS := -Wall -Werror -Wextra -Ofast -O0
 
 $(NAME): setup $(OBJ) $(LIBMLX)/build/libmlx42.a $(LIBFT)/libft.a $(GNL)/libftgnl.a
 	cc $(OBJ) $(LIBS) $(HEADERS) -o $(NAME)
@@ -30,6 +30,7 @@ $(OBJ_DIR)/%.o: ./src/%.c
 	cc $(CFLAGS) -o $@ -c $< $(HEADERS) -g
 
 all: setup libmlx libft gnl $(NAME)
+	rm -f save.cubsave
 clean:
 	rm -rf $(OBJ_DIR)
 	@if [ -d "$(LIBFT)" ]; then make -C $(LIBFT) clean; fi

@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.25.11] - 04.07.2024
+- Some minor efficiency improvements in draw_walls_entities.c, nothing major
+
 ### [0.25.10] - 04.07.2024
 - Added some very nice timing setup, should be nicely expandable in the future.
 

@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/04 20:54:48 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/05 00:33:07 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,7 +215,6 @@ void				screen_texture_draw(mlx_texture_t *texture, t_scale pos, \
 										t_scale size);
 void				cycle_inventory(int direction, bool direct);
 int					*get_amount_of_item(int index);
-int					get_tex_color_at(mlx_texture_t *tex, int x, int y);
 int					get_minimap_opacity(int x, int y);
 void				draw_healthbar(int size, int start_x, int start_y);
 int					get_floor_color(int j, int i);
@@ -240,7 +239,6 @@ void				calc_entity(int ray_index, t_vec2 intersect, t_entity *ntt);
 // - 3 draw walls
 void				draw_gameobject(t_range x_range, int height, \
 									mlx_texture_t *tex, double hit_offset);
-void				set_pixel_color(mlx_image_t *img, int x, int y, int col);
 // - util
 bool				get_wall_orientation(t_vec2 intersect);
 char				get_wall_face_to_render(t_vec2 intersect);

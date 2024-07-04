@@ -6,35 +6,42 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/04 01:32:06 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/05 00:36:01 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../include/cub3d.h"
 
-void	set_pixel_color(mlx_image_t *img, int x, int y, int col)
+static void	set_pixel_color(mlx_image_t *img, int x, int y, t_color col)
 {
-	if (int_to_t_color(col).a != 0)
-		mlx_put_pixel(img, x, y, col);
+	int	index;
+
+	if (col.a == 0)
+		return ;
+	index = (y * img->width + x) * 4;
+	img->pixels[index + 0] = col.r & 0xFF;
+	img->pixels[index + 1] = col.g & 0xFF;
+	img->pixels[index + 2] = col.b & 0xFF;
+	img->pixels[index + 3] = col.a & 0xFF;
 }
 
-int	get_tex_color_at(mlx_texture_t *tex, int x, int y)
+static t_color	get_tex_color_at(mlx_texture_t *tex, int x, int y)
 {
 	int	index;
 
 	index = (y * tex->width + x) * tex->bytes_per_pixel;
-	return (rgba_to_int(tex->pixels[index], tex->pixels[index + 1], \
-					tex->pixels[index + 2], tex->pixels[index + 3]));
+	return ((t_color){tex->pixels[index + 0], tex->pixels[index + 1], \
+					tex->pixels[index + 2], tex->pixels[index + 3]});
 }
 
-static inline void	draw_column(t_scale start, int end_y, mlx_texture_t *tex,
+static void	draw_column(t_scale start, int end_y, mlx_texture_t *tex,
 	int tex_x)
 {
-	int	y;
-	int	delta_y;
-	int	tex_y;
-	int	color;
-	int	repeat_y;
+	int		y;
+	int		delta_y;
+	int		tex_y;
+	t_color	color;
+	int		repeat_y;
 
 	if (end_y <= start.y)
 		return ;
@@ -44,7 +51,7 @@ static inline void	draw_column(t_scale start, int end_y, mlx_texture_t *tex,
 	while (y < end_y)
 	{
 		y++;
-		if (y >= game()->mlx->height)
+		if (y >= game()->mlx->height || y < 0)
 			continue ;
 		tex_y = (y - start.y) * tex->height * repeat_y / delta_y % tex->height;
 		color = get_tex_color_at(tex, tex_x, tex_y);
