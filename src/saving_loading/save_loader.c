@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 11:10:07 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/03 11:56:40 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/04 11:23:31 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ void	load_save(void)
 	player()->inv.air_orbs = (int)data[2];
 	player()->inv.fire_orbs = (int)data[3];
 	player()->inv.water_orbs = (int)data[4];
-	player()->element = (int)data[5];
+	player()->element = (int)data[5] % 4;
 	close(fd);
 }

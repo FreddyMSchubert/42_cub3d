@@ -1,5 +1,10 @@
 # Changelog
 
+### [0.25.4] - 04.07.2024
+- Blight hurt texture animation
+- Map Gen rebalancing
+- MADE play_campaign.sh take an optionalnumber parameter to skip the first x elements
+
 ### [0.25.3] - 04.07.2024
 - Fixed some norm error stuff
 

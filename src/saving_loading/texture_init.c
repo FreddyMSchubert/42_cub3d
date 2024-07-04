@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 20:18:50 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/04 03:11:02 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/04 11:30:50 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,14 @@ static mlx_texture_t	*l(char *path)
 	mlx_texture_t	*texture;
 	char			*fullpath;
 
-	fullpath = ft_strjoin("", path);
+	fullpath = ft_strjoin("assets/textures/", path);
 	if (!fullpath)
 		cub_exit("Error loading texture", -1);
-	texture = mlx_load_png(path);
+	texture = mlx_load_png(fullpath);
 	if (!texture)
 	{
 		free(fullpath);
+		printf("Problem texture: <assets/textures/%s>\n", path);
 		cub_exit("Error loading texture", -1);
 	}
 	free(fullpath);
@@ -84,6 +85,10 @@ static inline void	load_status_animatons(void)
 	game()->frame_hurt = l("hud/hurt.png");
 	game()->frame_win = l("hud/win_screen.png");
 	game()->frame_dead = l("hud/dead_screen.png");
+	game()->textures.air_blight_hurt = l("entities/blights/air/hurt.png");
+	game()->textures.fire_blight_hurt = l("entities/blights/fire/hurt.png");
+	game()->textures.water_blight_hurt = l("entities/blights/water/hurt.png");
+	game()->textures.earth_blight_hurt = l("entities/blights/earth/hurt.png");
 }
 
 void	load_static_textures(void)

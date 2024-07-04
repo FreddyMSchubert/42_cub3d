@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 19:57:01 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/03 15:20:28 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/04 11:26:20 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ static inline void	handle_blight_collision(t_entity *collider)
 
 	if (collider->type != BLIGHT_NTT || \
 			((t_blight *)collider->data)->element == player()->element || \
-			pos_dist(player()->transform.pos, collider->transform.pos) > 0.5)
+			pos_dist(player()->transform.pos, \
+			get_face_vector(collider).pos) > 1)
 		return ;
 	hits++;
 	if (hits < PLAYER_DAMAGE_EVERY_X_FRAMES)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   blight_texture.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:05:50 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/01 17:20:08 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/04 11:35:00 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,28 @@ static inline mlx_texture_t	*get_texture_attak(t_entity *self, t_blight *blight)
 		return (animation.frame3);
 }
 
+static inline mlx_texture_t	*get_texture_hurt(t_blight *blight)
+{
+	blight->hurt_state--;
+	if (blight->element == TYPE_FIRE)
+		return (game()->textures.fire_blight_hurt);
+	else if (blight->element == TYPE_AIR)
+		return (game()->textures.air_blight_hurt);
+	else if (blight->element == TYPE_WATER)
+		return (game()->textures.water_blight_hurt);
+	else if (blight->element == TYPE_EARTH)
+		return (game()->textures.earth_blight_hurt);
+	return (game()->textures.fire_blight_hurt);
+}
+
 mlx_texture_t	*get_texture_blight(t_entity *self)
 {
 	t_blight	*blight;
 
 	blight = (t_blight *)self->data;
-	if (blight->state == BLIGHT_STATE_DYING)
+	if (blight->hurt_state > 0)
+		return (get_texture_hurt(blight));
+	else if (blight->state == BLIGHT_STATE_DYING)
 		return (get_texture_dying(self, blight));
 	else if (blight->state == BLIGHT_STATE_ATTACKING)
 		return (get_texture_attak(self, blight));

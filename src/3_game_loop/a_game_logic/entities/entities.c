@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   entities.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:47:39 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/01 17:17:08 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/04 11:13:41 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/cub3d.h"
+
+#define PROJECTILE_PLAYER_COLLISION_DISTANCE 0.1
 
 static inline bool	check_colliding(t_transform t1, t_transform t2)
 {
@@ -18,11 +20,11 @@ static inline bool	check_colliding(t_transform t1, t_transform t2)
 	t_vec2	pos2;
 
 	t1.rot = scale_vector(t1.rot, 1);
-	pos1.x = t1.pos.x + t1.rot.x * 0.5;
-	pos1.y = t1.pos.y + t1.rot.y * 0.5;
+	pos1.x = t1.pos.x - (t1.rot.x * 0.5);
+	pos1.y = t1.pos.y - (t1.rot.y * 0.5);
 	t2.rot = scale_vector(t2.rot, 1);
-	pos2.x = t2.pos.x + t2.rot.x * 0.5;
-	pos2.y = t2.pos.y + t2.rot.y * 0.5;
+	pos2.x = t2.pos.x - (t2.rot.x * 0.5);
+	pos2.y = t2.pos.y - (t2.rot.y * 0.5);
 	return (pos_dist(pos1, pos2) < DEFAULT_COLLISION_DISTANCE);
 }
 
@@ -30,7 +32,7 @@ static inline void	alert_colliding(t_entity *e1, t_entity *e2)
 {
 	if (e1->id == e2->id)
 		return ;
-	if (!check_colliding(e1->transform, e2->transform))
+	if (!check_colliding(get_face_vector(e1), get_face_vector(e2)))
 		return ;
 	if (e1->on_collision)
 		e1->on_collision(e1, e2);

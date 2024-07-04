@@ -2,9 +2,18 @@
 
 MAP_DIR="assets/maps/campaign"
 
+# Accept a skip parameter
+SKIP=${1:-0}
+COUNTER=0
+
 rm -f "save.cubsave"
 
 for map_file in "$MAP_DIR"/*; do
+	if [ $COUNTER -lt $SKIP ]; then
+		((COUNTER++))
+		continue
+	fi
+
 	while true; do
 		./cub3d "$map_file"
 		exit_code=$?
@@ -15,8 +24,10 @@ for map_file in "$MAP_DIR"/*; do
 			exit
 		fi
 	done
+
+	((COUNTER++))
 done
 
 while true; do
-    ./cub3d
+	./cub3d
 done

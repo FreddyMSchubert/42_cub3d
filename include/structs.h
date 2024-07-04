@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/04 01:54:37 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/04 10:34:19 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,15 +117,19 @@ typedef struct s_textures
 	mlx_texture_t	*air_orb_flying;
 
 	mlx_texture_t	*air_blight_idle;
+	mlx_texture_t	*air_blight_hurt;
 	t_animation		air_blight_death;
 	t_animation		air_blight_attack;
 	mlx_texture_t	*fire_blight_idle;
+	mlx_texture_t	*fire_blight_hurt;
 	t_animation		fire_blight_death;
 	t_animation		fire_blight_attack;
 	mlx_texture_t	*water_blight_idle;
+	mlx_texture_t	*water_blight_hurt;
 	t_animation		water_blight_death;
 	t_animation		water_blight_attack;
 	mlx_texture_t	*earth_blight_idle;
+	mlx_texture_t	*earth_blight_hurt;
 	t_animation		earth_blight_death;
 	t_animation		earth_blight_attack;
 
@@ -271,6 +275,9 @@ typedef struct s_blight
 	int		element;
 	int		state;
 	bool	drops_key;
+	int		hurt_state;
 }	t_blight;
+// once hurt, hurt_state will be set to BLIGHT_HURT_STATE_FRAME_DURATION
+// this will count down and the texture will be hurt during that time
 
 #endif

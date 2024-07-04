@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   settings.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/04 03:11:40 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/04 11:33:52 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@
 
 // Map Making
 
-# define MIN_MAP_SIZE 8
-# define MAX_MAP_SIZE 20
+# define MIN_MAP_SIZE 13
+# define MAX_MAP_SIZE 35
 # define MIN_ROOMS_AMOUNT 2
 # define MAX_ROOMS_AMOUNT 5
-# define MIN_ROOM_SIZE 1
+# define MIN_ROOM_SIZE 3
 # define MAX_ROOM_SIZE 13
 # define MAX_ROOM_SIZE_TO_MAP_SIZE 3
-# define WALL_REMOVAL_CHANCE_PERCENT 5
+# define WALL_REMOVAL_CHANCE_PERCENT 25
 
 # define ENTITIY_PLACEMENT_CHANCE 10
 # define ORB_PLACEMENT_CHANCE 60
@@ -81,7 +81,7 @@
 # define KEY_COLLISION_DISTANCE 0.5
 # define CLOSED_DOOR_ALLOWED_WALK_DISTANCE 0.4
 # define DOOR_OPEN_DISTANCE 1.0
-# define DEFAULT_COLLISION_DISTANCE 1
+# define DEFAULT_COLLISION_DISTANCE 0.25
 
 // speed
 
@@ -107,12 +107,13 @@
 # define MINOR_PROJECTILE_HIT_DECREASE 1
 # define MAJOR_PROJECTILE_HIT_DESCREASE 3
 # define HEALTH_PICKUP_AMOUNT 1
-# define PLAYER_BLIGHT_COLLISION_DAMAGE 1 // every damn frame lol
+# define PLAYER_BLIGHT_COLLISION_DAMAGE 1
 
 // animations
 
 # define BLIGHT_DEATH_ANIMATION_FRAMES 45
 # define BLIGHT_ATTACK_ANIMATION_FRAMES 30
+# define BLIGHT_HURT_STATE_FRAME_DURATION 150
 
 // --- Minimap Settings
 
