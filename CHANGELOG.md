@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.25.3] - 04.07.2024
+- Fixed some norm error stuff
+
 ### [0.25.2] - 04.07.2024
 - Improved minimap player indicator coloring
 - Fixed player having pretty much random rotation at start depending on where mouse is by saving the intiial position at the start

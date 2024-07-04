@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/03 13:29:38 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/04 03:06:16 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,7 +190,8 @@ void				draw_inventory(void);
 mlx_image_t			**get_amount_text_by_index(int index);
 void				texture_draw(mlx_texture_t *texture, t_scale pos, \
 										t_scale size);
-void				screen_texture_draw(mlx_texture_t *texture, t_scale pos, t_scale size);
+void				screen_texture_draw(mlx_texture_t *texture, t_scale pos, \
+										t_scale size);
 void				cycle_inventory(int direction, bool direct);
 int					*get_amount_of_item(int index);
 int					get_tex_color_at(mlx_texture_t *tex, int x, int y);

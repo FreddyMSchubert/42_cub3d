@@ -80,4 +80,9 @@ debug: fclean all
 random: all
 	./random_map.sh
 
+norm:
+	norminette ./include
+	norminette ./src
+	make 
+
 .PHONY: all clean fclean re setup libmlx libft gnl

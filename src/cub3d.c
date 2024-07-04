@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 07:33:54 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/04 02:00:41 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/04 03:12:35 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,6 @@ int	main(int argc, char **argv)
 	printf("\n");
 	if (!check_args_validity(argc, argv))
 		return (EXIT_FAILURE);
-	if (GREETING)
-		printf("🧊 %sHello cubic world!%s 🧊\n", ANSI_COLOR_CYAN, ANSI_RESET);
 	load_static_textures();
 	init_random_seed();
 	if (argc == 1)
@@ -109,8 +107,4 @@ int	main(int argc, char **argv)
 	setup_mlx();
 	logger_v(LOGGER_STEP, "Gameloop");
 	mlx_loop(game()->mlx);
-	mlx_terminate(game()->mlx);
-	save_game();
-	cub_exit("", 0);
-	return (EXIT_SUCCESS);
 }
