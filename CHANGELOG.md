@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.25.8] - 04.07.2024
+- Showing cursor when mouse is uncaptured, hiding it if it is
+
 ### [0.25.7] - 04.07.2024
 - Fixed player being able to keep blight stuck in dying animation by continuously shooting projectiles at it while its dying
 

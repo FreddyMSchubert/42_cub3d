@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_mlx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:41:35 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/04 01:58:37 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/04 15:25:34 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	setup_mlx(void)
 	game()->game_over = false;
 	game()->screen_effect = NULL;
 	setup_player();
-	mlx_set_cursor_mode(game()->mlx, MLX_MOUSE_HIDDEN);
+	update_mouse_visibility();
 	mlx_loop_hook(game()->mlx, loop_hook, NULL);
 	mlx_key_hook(game()->mlx, key_hook, NULL);
 	mlx_scroll_hook(game()->mlx, scroll_hook, NULL);

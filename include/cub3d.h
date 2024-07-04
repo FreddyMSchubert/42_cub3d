@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/04 12:04:44 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/04 15:25:11 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -309,6 +309,9 @@ t_vec2				deg_to_dir_vec(double degrees);
 double				dir_vec_to_deg(t_vec2 dir);
 double				normalize_degrees(double degrees);
 t_vec2				rotate_vector_by_90_degrees(t_vec2 v, int direction);
+
+// window
+void				update_mouse_visibility(void);
 
 // entities
 t_transform			get_face_vector(t_entity *ntt);

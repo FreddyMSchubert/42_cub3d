@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   settings.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/04 14:15:20 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/04 15:26:59 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 // --- Quality of Life
 
 # define MOUSE_SENSITIVITY 0.35
-# define CAPTURE_MOUSE_AT_START true
+# define CAPTURE_MOUSE_AT_START false
 
 // Map Making
 
