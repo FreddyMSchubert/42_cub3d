@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 14:36:45 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/01 13:00:13 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/04 12:04:58 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static inline void	render_game_scene(void)
 		* game()->mlx->height * 4);
 	raycast_walls();
 	draw_crosshair();
+	draw_elements_overview();
 }
 
 static inline void	render_hud(void)

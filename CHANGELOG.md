@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.25.5] - 04.07.2024
+- Added elements visualization, which are really helpful
+
 ### [0.25.4] - 04.07.2024
 - Blight hurt texture animation
 - Map Gen rebalancing

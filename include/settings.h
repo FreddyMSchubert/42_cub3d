@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/04 11:33:52 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/04 12:08:22 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,13 +115,21 @@
 # define BLIGHT_ATTACK_ANIMATION_FRAMES 30
 # define BLIGHT_HURT_STATE_FRAME_DURATION 150
 
-// --- Minimap Settings
+// --- HUD Settings
+
+// Minimap Settings
 
 # define MINIMAP_WIDTH 200
 # define MINIMAP_HEIGHT 200
 # define MINIMAP_LEFT_OFFSET 25
 # define MINIMAP_TOP_OFFSET 25
 # define MINIMAP_BORDER_WIDTH 5
+
+// Elements Visualization
+
+# define ELEMENTS_VIS_RIGHT_OFFSET 25
+# define ELEMENTS_VIS_TOP_OFFSET 25
+# define ELEMENTS_VIS_SCALE 1.5
 
 // --- Gameplay Balancing
 

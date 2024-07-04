@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/04 03:06:16 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/04 12:04:44 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,7 @@ void				render(void);
 void				set_background(void);
 // - hud
 void				draw_crosshair(void);
+void				draw_elements_overview(void);
 void				draw_square(int x, int y, int size, int color);
 void				draw_square_hud(int x, int y, int size, int color);
 void				draw_square_world(int x, int y, int size, int color);

@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 20:18:50 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/04 11:30:50 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/04 12:02:47 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ static inline void	load_status_animatons(void)
 
 void	load_static_textures(void)
 {
+	game()->textures.elements_overview = l("hud/elements_overview.png");
 	game()->textures.door = l("entities/door.png");
 	game()->textures.key = l("entities/key.png");
 	game()->textures.goal = l("entities/goal.png");

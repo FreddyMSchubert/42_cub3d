@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/04 10:34:19 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/04 12:06:26 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,8 @@ typedef struct s_textures
 
 	mlx_texture_t	*hotbar;
 	mlx_texture_t	*hotbar_select;
+
+	mlx_texture_t	*elements_overview;
 }	t_textures;
 
 typedef struct s_persistent_data
