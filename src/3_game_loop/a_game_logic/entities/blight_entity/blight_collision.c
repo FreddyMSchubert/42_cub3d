@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 21:57:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/04 11:32:18 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/04 12:30:24 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ void	on_collision_blight(t_entity *self, t_entity *other)
 		if (blight->drops_key)
 			create_entity(self->transform, KEY_NTT, get_texture_key, tick_key);
 	}
+	self->frames_since_state_change = 0;
 	other->to_be_deleted = true;
 }

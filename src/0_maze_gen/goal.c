@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 20:25:23 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/03 10:19:08 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/04 12:23:52 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,11 @@ static inline bool	attempt_place_door_and_goal(char **maze, t_scale s)
 	t_scale	door1;
 	t_scale	door2;
 
-	if (maze[s.y][s.x - 1] == '0' && maze[s.y][s.x + 1] == '0')
+	if (maze[s.y][s.x - 1] == '0' && maze[s.y][s.x + 1] == '0' && \
+			maze[s.y - 1][s.x] != '0' && maze[s.y + 1][s.x] != '0')
 		vertical = false;
-	else if (maze[s.y - 1][s.x] == '0' && maze[s.y + 1][s.x] == '0')
+	else if (maze[s.y - 1][s.x] == '0' && maze[s.y + 1][s.x] == '0' && \
+			maze[s.y][s.x - 1] != '0' && maze[s.y][s.x + 1] != '0')
 		vertical = true;
 	else
 		return (false);
@@ -71,20 +73,19 @@ static inline bool	attempt_place_door_and_goal(char **maze, t_scale s)
 
 static inline bool	attempt_door_pos(char **maze, int height, int width)
 {
-	int		y;
+	int		i;
 	int		x;
+	int		y;
 
-	y = -1;
-	while (++y < height)
+	i = -1;
+	while (++i < height * width)
 	{
-		x = -1;
-		while (++x < width)
+		x = random_int(1, width - 2);
+		y = random_int(1, height - 2);
+		if (maze[y][x] == '0')
 		{
-			if (maze[y][x] == '0')
-			{
-				if (attempt_place_door_and_goal(maze, (t_scale){x, y}))
-					return (true);
-			}
+			if (attempt_place_door_and_goal(maze, (t_scale){x, y}))
+				return (true);
 		}
 	}
 	return (false);

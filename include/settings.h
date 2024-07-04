@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/04 12:08:22 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/04 12:44:21 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,24 +31,24 @@
 
 // --- Quality of Life
 
-# define MOUSE_SENSITIVITY 0.45
-# define CAPTURE_MOUSE_AT_START false
+# define MOUSE_SENSITIVITY 0.35
+# define CAPTURE_MOUSE_AT_START true
 
 // Map Making
 
 # define MIN_MAP_SIZE 13
-# define MAX_MAP_SIZE 35
+# define MAX_MAP_SIZE 30
 # define MIN_ROOMS_AMOUNT 2
 # define MAX_ROOMS_AMOUNT 5
 # define MIN_ROOM_SIZE 3
-# define MAX_ROOM_SIZE 13
+# define MAX_ROOM_SIZE 10
 # define MAX_ROOM_SIZE_TO_MAP_SIZE 3
-# define WALL_REMOVAL_CHANCE_PERCENT 25
+# define WALL_REMOVAL_CHANCE_PERCENT 18
 
-# define ENTITIY_PLACEMENT_CHANCE 10
-# define ORB_PLACEMENT_CHANCE 60
-# define BLIGHT_PLACEMENT_CHANCE 85
-# define HEALTH_DROP_CHANCE_PERCENT 5
+# define ENTITIY_PLACEMENT_CHANCE 13
+# define ORB_PLACEMENT_CHANCE 50
+# define BLIGHT_PLACEMENT_CHANCE 55
+# define HEALTH_DROP_CHANCE_PERCENT 3
 
 // --- Window Setup
 
@@ -60,7 +60,7 @@
 
 # define MOVEMENT_SPEED 0.0625
 # define MOVEMENT_SPRINT_MULTIPLIER 2
-# define TURN_SPEED_ARROWS_DEG 5
+# define TURN_SPEED_ARROWS_DEG 10
 # define TURN_SPEED_MOUSE_DEG 1
 # define WALL_COLLISION_MARGIN 0.25
 
@@ -70,7 +70,7 @@
 # define RAYCASTS_PER_DEG 5
 # define FISHEYE_CORRECTION_FACTOR 0.5
 # define VIEW_DIST 3
-# define FPS 30
+# define FPS 24
 
 // --- Entities
 
@@ -85,7 +85,7 @@
 
 // speed
 
-# define DOOR_OPEN_SPEED 0.05
+# define DOOR_OPEN_SPEED 0.03
 # define PROJECTILE_SPEED 0.13
 # define BLIGHT_SPEED 0.05
 
@@ -111,8 +111,8 @@
 
 // animations
 
-# define BLIGHT_DEATH_ANIMATION_FRAMES 45
-# define BLIGHT_ATTACK_ANIMATION_FRAMES 30
+# define BLIGHT_DEATH_ANIMATION_FRAMES 25
+# define BLIGHT_ATTACK_ANIMATION_FRAMES 20
 # define BLIGHT_HURT_STATE_FRAME_DURATION 150
 
 // --- HUD Settings

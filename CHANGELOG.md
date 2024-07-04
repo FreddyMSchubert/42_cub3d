@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.25.6] - 04.07.2024
+- Improved goal placement in random gen.
+	- Removed non-locked positioning bug
+	- Placed goal randomly instead of just looping through and placing it at the first viable spot, making the placement have a huge bias towards north-west
+- various map gen rebalancings & general settings.h messarounds
+- fixed blights death animation starting at pretty much random points
+
 ### [0.25.5] - 04.07.2024
 - Added elements visualization, which are really helpful
 
