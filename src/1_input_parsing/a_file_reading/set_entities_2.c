@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 11:03:47 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/02 11:04:01 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/04 13:50:29 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,31 @@ bool	set_door(t_vec2 pos, t_tile_type ***map, char type)
 	data->state = DOOR_STATE_CLOSED;
 	ntt = create_entity(trans, DOOR_NTT, get_texture_door, tick_door);
 	ntt->is_billboard = false;
+	ntt->data = data;
+	return (true);
+}
+
+bool	set_boss(t_vec2 pos, t_tile_type ***map)
+{
+	t_elementor	*data;
+	t_entity	*ntt;
+	t_transform	trans;
+
+	*(map[(int)pos.y][(int)pos.x]) = FLOOR;
+	data = malloc(sizeof(t_elementor));
+	if (!data)
+		cub_exit("malloc failed", -1);
+	trans.pos = (t_vec2){pos.x + 0.5, pos.y + 0.5};
+	trans.rot = (t_vec2){0, 0};
+	data->element1 = random_int(0, 3);
+	data->element2 = random_int(0, 3);
+	data->element3 = random_int(0, 3);
+	data->stage = ELEMENTOR_STAGE_EASY;
+	data->mvmnt = ELEMENTOR_MVMNT_STAND;
+	data->attack = ELEMENTOR_ATTACK_NONE;
+	ntt = create_entity(trans, ELEMENTOR_NTT, \
+					get_texture_elementor, tick_elementor);
+	ntt->is_billboard = true;
 	ntt->data = data;
 	return (true);
 }

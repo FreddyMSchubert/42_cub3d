@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/04 12:06:26 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/04 13:49:55 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,7 +207,8 @@ typedef enum e_entity_type
 	ORB_NTT,
 	PROJECTILE_NTT,
 	BLIGHT_NTT,
-	HEALTH_NTT
+	HEALTH_NTT,
+	ELEMENTOR_NTT
 }	t_entity_type;
 
 typedef struct s_entity	t_entity;
@@ -281,5 +282,30 @@ typedef struct s_blight
 }	t_blight;
 // once hurt, hurt_state will be set to BLIGHT_HURT_STATE_FRAME_DURATION
 // this will count down and the texture will be hurt during that time
+
+// - ELEMENTOR
+
+# define ELEMENTOR_STAGE_EASY 0
+# define ELEMENTOR_STAGE_HARD 1
+
+# define ELEMENTOR_MVMNT_STAND 0
+# define ELEMENTOR_MVMNT_WALK 1
+
+# define ELEMENTOR_ATTACK_NONE 0
+# define ELEMENTOR_ATTACK_NORMAL 1
+# define ELEMENTOR_ATTACK_SPIN 2
+# define ELEMENTOR_ATTACK_SUMMON 3
+
+typedef struct s_elementor
+{
+	int		element1;
+	int		element2;
+	int		element3;
+	int		stage;
+	int		mvmnt;
+	int		attack;
+}	t_elementor;
+
+// stage will define which half of the fight were in
 
 #endif

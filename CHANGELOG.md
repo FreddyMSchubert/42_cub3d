@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.26.0] - 04.07.2024
+- elementor implementation, basic elementor movement. hes currently a door
+
 ### [0.25.7] - 04.07.2024
 - Fixed player being able to keep blight stuck in dying animation by continuously shooting projectiles at it while its dying
 

@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/04 12:44:21 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/04 14:44:27 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@
 # define MAX_MAP_SIZE 30
 # define MIN_ROOMS_AMOUNT 2
 # define MAX_ROOMS_AMOUNT 5
-# define MIN_ROOM_SIZE 3
-# define MAX_ROOM_SIZE 10
+# define MIN_ROOM_SIZE 1
+# define MAX_ROOM_SIZE 7
 # define MAX_ROOM_SIZE_TO_MAP_SIZE 3
 # define WALL_REMOVAL_CHANCE_PERCENT 18
 
 # define ENTITIY_PLACEMENT_CHANCE 13
 # define ORB_PLACEMENT_CHANCE 50
-# define BLIGHT_PLACEMENT_CHANCE 55
+# define BLIGHT_PLACEMENT_CHANCE 45
 # define HEALTH_DROP_CHANCE_PERCENT 3
 
 // --- Window Setup
@@ -70,7 +70,7 @@
 # define RAYCASTS_PER_DEG 5
 # define FISHEYE_CORRECTION_FACTOR 0.5
 # define VIEW_DIST 3
-# define FPS 24
+# define FPS 30
 
 // --- Entities
 
@@ -114,6 +114,14 @@
 # define BLIGHT_DEATH_ANIMATION_FRAMES 25
 # define BLIGHT_ATTACK_ANIMATION_FRAMES 20
 # define BLIGHT_HURT_STATE_FRAME_DURATION 150
+
+// --- ELEMENTOR
+
+// mvmnt
+# define LMNTOR_MVMNT_SPEED 0.03
+# define LMNTOR_MVMNT_WALK_START_CHANCE 0.05	// every frame
+# define LMNTOR_MVMNT_WALK_STOP_CHANCE 0.01		// every frame
+# define LMNTOR_MVMNT_ROT_CHANGE_CHANCE 0.05	// every frame
 
 // --- HUD Settings
 

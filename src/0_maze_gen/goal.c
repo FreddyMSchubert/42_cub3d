@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 20:25:23 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/04 12:23:52 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/04 13:56:58 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ static inline bool	attempt_place_door_and_goal(char **maze, t_scale s)
 	t_scale	door2;
 
 	if (maze[s.y][s.x - 1] == '0' && maze[s.y][s.x + 1] == '0' && \
-			maze[s.y - 1][s.x] != '0' && maze[s.y + 1][s.x] != '0')
+			maze[s.y - 1][s.x] == '1' && maze[s.y + 1][s.x] == '1')
 		vertical = false;
 	else if (maze[s.y - 1][s.x] == '0' && maze[s.y + 1][s.x] == '0' && \
-			maze[s.y][s.x - 1] != '0' && maze[s.y][s.x + 1] != '0')
+			maze[s.y][s.x - 1] == '1' && maze[s.y][s.x + 1] == '1')
 		vertical = true;
 	else
 		return (false);

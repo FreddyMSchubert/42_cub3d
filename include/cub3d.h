@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/04 12:04:44 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/04 13:50:52 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # include <limits.h>
 
 /* ---- SETTINGS ---- */
-# define MAP_TILES " 10NESWGHVKwfeaqrdshuiop"
+# define MAP_TILES " 10NESWGHVKwfeaqrdshuiopB"
 // ' ' -> VOID
 // '1' -> WALL
 // '0' -> FLOOR
@@ -60,6 +60,7 @@
 // 'o' -> KEY FIRE ORB
 // 'p' -> KEY WATER ORB
 // 'h' -> HEALTH PICKUP
+// 'B' -> BOSS (ELEMENTOR)
 
 /* ----- LOGGER ----- */
 # define LOGGER_ERROR 'e'
@@ -138,6 +139,7 @@ bool				set_blight(t_vec2 pos, t_tile_type ***map, \
 										char blight_type);
 bool				set_door(t_vec2 pos, t_tile_type ***map, char type);
 bool				set_key(t_vec2 pos, t_tile_type ***map);
+bool				set_boss(t_vec2 pos, t_tile_type ***map);
 // squarify map
 void				squarify_map(void);
 // util
@@ -257,6 +259,10 @@ mlx_texture_t		*get_texture_projectile(t_entity *self);
 void				tick_blight(t_entity *self);
 void				on_collision_blight(t_entity *self, t_entity *other);
 mlx_texture_t		*get_texture_blight(t_entity *self);
+// - elementor
+void				tick_elementor(t_entity *self);
+void				on_collision_elementor(t_entity *self, t_entity *other);
+mlx_texture_t		*get_texture_elementor(t_entity *self);
 
 # define WALL_ORIENTATION_HORIZONTAL 0
 # define WALL_ORIENTATION_VERTICAL 1
