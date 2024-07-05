@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/05 09:01:30 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/05 09:21:37 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,13 @@ static void	draw_column(t_scale start, int end_y, mlx_texture_t *tex,
 	int		y;
 	int		tex_y;
 	t_color	color;
-	int		multiplier;
+	double	multiplier;
 
 	if (end_y <= start.y)
 		return ;
 	y = fmax(0, start.y) - 1;
-	multiplier = tex->height * (tex->width / tex->height) / (end_y - start.y);
+	multiplier = (double)tex->height * (tex->width / tex->height) / \
+										(end_y - start.y);
 	while (y < end_y)
 	{
 		y++;
@@ -67,14 +68,8 @@ void	draw_gameobject(t_range x_range, int height,
 
 	start_y = (int)(game()->mlx->height / 2) - height / 2;
 	end_y = start_y + height;
-	x = x_range.min;
-	while (x != x_range.max)
-	{
-		texture_x = (int)(hit_offset * tex->width) % tex->width;
+	texture_x = (int)(hit_offset * tex->width) % tex->width;
+	x = x_range.min - 1;
+	while (++x < x_range.max)
 		draw_column((t_scale){x, start_y}, end_y, tex, texture_x);
-		if (x_range.min < x_range.max)
-			x++;
-		else
-			x--;
-	}
 }
