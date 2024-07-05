@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.26.8] - 05.07.2024
+- boss drops health
+- Added explosion which gets triggered after the boss is dead
+
 ### [0.26.6] - 05.07.2024
 - Made elementor killable & Added a really nice death animation
 - Added some cool voice messages

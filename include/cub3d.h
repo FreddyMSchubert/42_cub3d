@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/05 20:08:02 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 00:08:28 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -285,6 +285,9 @@ void				on_collision_elementor(t_entity *self, t_entity *other);
 mlx_texture_t		*get_texture_elementor(t_entity *self);
 void				elementor_attack(t_entity *self, t_elementor *elementor);
 void				refresh_projectiles(t_elementor *elementor);
+// - explosion
+void				tick_explosion(t_entity *self);
+mlx_texture_t		*get_texture_explosion(t_entity *self);
 
 # define WALL_ORIENTATION_HORIZONTAL 0
 # define WALL_ORIENTATION_VERTICAL 1
@@ -349,6 +352,7 @@ t_entity			*create_entity(t_transform trans, t_entity_type type, \
 		mlx_texture_t	*(*tex)(t_entity *self), void (*tick)(t_entity *self));
 void				delete_entity(t_entity *self);
 void				drop_orbs(t_transform trans, int element);
+void				nuke(t_vec2 pos);
 
 // vector
 double				vec2_dot_product(t_vec2 a, t_vec2 b);

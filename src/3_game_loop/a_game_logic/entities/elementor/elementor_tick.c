@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 13:37:24 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/05 21:33:56 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 00:08:11 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ static inline void	update_stage(t_entity *self, t_elementor *elementor)
 		elementor_logger("Oh no! What's going on? The elements - It's too much - power - HELP!");
 	if (previous == elementor->stage)
 		return ;
+	create_entity(self->transform, HEALTH_NTT, get_texture_health, tick_health);
 	if (elementor->stage == 1)
 		elementor_logger("You won't defeat me! I can harness more elements than\
  you! Now, you won't be able to damage me with half of your orbs!");
@@ -87,5 +88,6 @@ void	tick_elementor(t_entity *self)
 		game()->boss = NULL;
 		create_entity(self->transform, KEY_NTT, get_texture_key, tick_key);
 		elementor_logger("Nooooooooooooooooooooooooooooooooooooooooooo!");
+		nuke(self->transform.pos);
 	}
 }

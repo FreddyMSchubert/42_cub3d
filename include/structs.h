@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/05 20:34:25 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 00:11:49 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,9 +148,20 @@ typedef struct s_textures
 
 	mlx_texture_t	*elementor_idle;
 	mlx_texture_t	*elementor_hurt;
+
+	mlx_texture_t	*explosion_1;
+	mlx_texture_t	*explosion_2;
+	mlx_texture_t	*explosion_3;
+	mlx_texture_t	*explosion_4;
+	mlx_texture_t	*explosion_5;
+	mlx_texture_t	*explosion_6;
+	mlx_texture_t	*explosion_7;
+	mlx_texture_t	*explosion_8;
+	mlx_texture_t	*explosion_9;
+	mlx_texture_t	*explosion_10;
 }	t_textures;
 
-# define MAX_TEXTURES 63
+# define MAX_TEXTURES 73
 
 typedef struct s_persistent_data
 {
@@ -224,7 +235,8 @@ typedef enum e_entity_type
 	PROJECTILE_NTT,
 	BLIGHT_NTT,
 	HEALTH_NTT,
-	ELEMENTOR_NTT
+	ELEMENTOR_NTT,
+	EXPLOSION_NTT
 }	t_entity_type;
 
 typedef struct s_entity
