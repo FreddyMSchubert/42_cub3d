@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   goal_entity.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:34:27 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/03 14:26:25 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/04 20:01:14 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	tick_goal(t_entity *self)
 	{
 		save_game();
 		logger_v(LOGGER_STEP, "Closing game. Thanks for playing!");
-		gc_exit(0);
+		cub_exit("Closing game. Thanks for playing!", 1);
 	}
 }
 

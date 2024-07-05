@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/01 21:29:59 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/04 19:58:00 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,14 @@ void	raycast_walls(void)
 	ray_index = -1;
 	while (++ray_index < RAYCASTS_PER_DEG * FOV_DEG)
 	{
+		timing(TIMING_MODE_START, TIMING_TYPE_WALL_RAYCAST);
 		wall_intersect = perform_wall_raycast(ray_index);
 		calc_wall(ray_index, wall_intersect);
+		timing(TIMING_MODE_STOP, TIMING_TYPE_WALL_RAYCAST);
+		timing(TIMING_MODE_START, TIMING_TYPE_NTT_RAYCAST);
 		ntts = perform_entity_raycast(ray_index, &entity_intersects);
 		start_calc_entities(ntts, entity_intersects, \
 				pos_dist(player()->transform.pos, wall_intersect), ray_index);
+		timing(TIMING_MODE_STOP, TIMING_TYPE_NTT_RAYCAST);
 	}
 }

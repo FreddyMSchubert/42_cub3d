@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 20:18:50 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/04 12:02:47 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/04 17:20:45 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,12 @@ static mlx_texture_t	*l(char *path)
 {
 	mlx_texture_t	*texture;
 	char			*fullpath;
+	static int		textures = 0;
 
+	if (textures + 1 >= MAX_TEXTURES)
+		cub_exit("Texture amount exceeds max allowed textures", -1);
+	if (textures == -1)
+		ft_bzero(game()->texture_arr, MAX_TEXTURES);
 	fullpath = ft_strjoin("assets/textures/", path);
 	if (!fullpath)
 		cub_exit("Error loading texture", -1);
@@ -28,6 +33,7 @@ static mlx_texture_t	*l(char *path)
 		cub_exit("Error loading texture", -1);
 	}
 	free(fullpath);
+	game()->texture_arr[textures++] = texture;
 	return (texture);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   blight_texture.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:05:50 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/04 11:35:00 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/04 18:43:31 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ static inline mlx_texture_t	*get_texture_attak(t_entity *self, t_blight *blight)
 
 static inline mlx_texture_t	*get_texture_hurt(t_blight *blight)
 {
-	blight->hurt_state--;
 	if (blight->element == TYPE_FIRE)
 		return (game()->textures.fire_blight_hurt);
 	else if (blight->element == TYPE_AIR)

@@ -1,0 +1,15 @@
+alright so
+
+if the opacity is in fact exactly 15, take the pixel from the cloak texture instead.
+the cloak texture is either a solid color or an animation of the three selected colors continuously rotating through
+
+t_color propertexturecolorhatwouldnormallybertendereD;
+if opacity == 15
+	tempcol = get_cloak_texture(current_stage)
+	switch (tempcol.a)
+		case 0 -> color = 255 0 0
+		case 1 -> color = 0 255 0
+		case 2 -> color = 0 0 255
+	if (propercol.r < 255)
+		color.r -= 255 - propercol.r
+	// for g and b as well

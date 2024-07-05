@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:50:17 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/04 01:55:42 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/04 18:55:13 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,12 @@ void	player_shoot(void)
 	t_transform		trans;
 	int				*amount;
 
+	if (TICKS_BETWEEN_PLAYER_SHOTS > player()->frames_since_shot)
+		return ;
 	amount = get_amount_of_item(player()->inv.current_index);
 	if (player()->inv.current_index == 0 || *amount <= 0)
 		return ;
+	player()->frames_since_shot = 0;
 	amount_text = get_amount_text_by_index(player()->inv.current_index);
 	trans = player()->transform;
 	trans.rot = scale_vector(trans.rot, 1);

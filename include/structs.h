@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/04 13:49:55 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/05 12:59:23 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,8 @@ typedef struct s_textures
 	mlx_texture_t	*elements_overview;
 }	t_textures;
 
+# define MAX_TEXTURES 60
+
 typedef struct s_persistent_data
 {
 	t_input_data	*input_data;
@@ -163,6 +165,7 @@ typedef struct s_persistent_data
 	double			prev_time;
 	t_textures		textures;
 	bool			mouse_free;
+	mlx_texture_t	*texture_arr[MAX_TEXTURES];
 }	t_persistent_data;
 
 // --- PLAYER
@@ -193,6 +196,7 @@ typedef struct s_player
 	int			element;
 
 	int			health;
+	int			frames_since_shot;
 
 	t_inventory	inv;
 }	t_player;

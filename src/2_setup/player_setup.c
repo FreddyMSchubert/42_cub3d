@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 08:28:05 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/04 01:55:03 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/04 18:53:24 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	setup_player(void)
 		player()->health = PLAYER_STARTING_HEALTH;
 	if (INFINITE_HEALTH)
 		player()->health = INT_MAX / 2;
-	player()->element = random_int(0, 3);
+	// player()->element = random_int(0, 3);
+	player()->frames_since_shot = TICKS_BETWEEN_PLAYER_SHOTS;
 	setup_rot();
 }

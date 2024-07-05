@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:28 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/03 14:47:33 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/05 00:35:54 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static void	show_death_screen(void)
 
 	if (start_time == -1.0)
 	{
-		printf("showing death screen\n");
 		if (game()->screen_effect)
 			mlx_delete_image(game()->mlx, game()->screen_effect);
 		frame_dead = mlx_new_image(game()->mlx, game()->mlx->width,
@@ -51,6 +50,7 @@ static inline void	game_tick(double curr_time)
 	render();
 	game()->prev_time = curr_time;
 	check_dead_player();
+	player()->frames_since_shot++;
 	if (game()->screen_effect && game()->screen_effect_end < curr_time)
 	{
 		mlx_delete_image(game()->mlx, game()->screen_effect);
@@ -66,6 +66,8 @@ void	loop_hook(void *param)
 	int		prev_frame;
 
 	(void) param;
+	timing(TIMING_MODE_CLEAR, -1);
+	timing(TIMING_MODE_START, TIMING_TYPE_LOOP);
 	curr_time = mlx_get_time();
 	prev_time = game()->prev_time;
 	curr_frame = get_frame(curr_time);
@@ -80,4 +82,9 @@ void	loop_hook(void *param)
 		tick_entities();
 	else if (game()->game_over && player()->health <= 0)
 		show_death_screen();
+	if (curr_frame != prev_frame)
+	{
+		timing(TIMING_MODE_STOP, TIMING_TYPE_LOOP);
+		timing(TIMING_MODE_PRINT, -1);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/04 13:50:52 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/05 12:58:35 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,23 @@
 # define TYPE_AIR 2
 # define TYPE_EARTH 3
 
+/* ----- TIMING ----- */
+# define TIMING_MODE_START 0
+# define TIMING_MODE_STOP 1
+# define TIMING_MODE_CLEAR 2
+# define TIMING_MODE_PRINT 3
+
+# define TIMING_TYPE_LOOP 0
+# define TIMING_TYPE_RENDERING 1
+# define TIMING_TYPE_HUD_RENDERING 2
+# define TIMING_TYPE_WORLD_RENDERING 3
+# define TIMING_TYPE_WALL_RAYCAST 4		// this includes calcs and drawing
+# define TIMING_TYPE_NTT_RAYCAST 5
+# define TIMING_TYPE_WALL_CALC 6		// this includes drawing
+# define TIMING_TYPE_NTT_CALC 7
+# define TIMING_TYPE_WALL_DRAW 8
+# define TIMING_TYPE_NTT_DRAW 9
+
 /* ---- FUNCTIONS ----- */
 // lets mirror the file system in here. the less ---, the deeper the file
 
@@ -88,6 +105,9 @@
 t_persistent_data	*game(void);
 t_list				**gc(void);
 t_player			*player(void);
+
+void				timing(int mode, int type);
+void				log_timing(double timing[10]);
 
 void				load_static_textures(void);
 
@@ -197,7 +217,6 @@ void				screen_texture_draw(mlx_texture_t *texture, t_scale pos, \
 										t_scale size);
 void				cycle_inventory(int direction, bool direct);
 int					*get_amount_of_item(int index);
-int					get_tex_color_at(mlx_texture_t *tex, int x, int y);
 int					get_minimap_opacity(int x, int y);
 void				draw_healthbar(int size, int start_x, int start_y);
 int					get_floor_color(int j, int i);
@@ -222,7 +241,6 @@ void				calc_entity(int ray_index, t_vec2 intersect, t_entity *ntt);
 // - 3 draw walls
 void				draw_gameobject(t_range x_range, int height, \
 									mlx_texture_t *tex, double hit_offset);
-void				set_pixel_color(mlx_image_t *img, int x, int y, int col);
 // - util
 bool				get_wall_orientation(t_vec2 intersect);
 char				get_wall_face_to_render(t_vec2 intersect);
@@ -315,6 +333,9 @@ t_vec2				deg_to_dir_vec(double degrees);
 double				dir_vec_to_deg(t_vec2 dir);
 double				normalize_degrees(double degrees);
 t_vec2				rotate_vector_by_90_degrees(t_vec2 v, int direction);
+
+// window
+void				update_mouse_visibility(void);
 
 // entities
 t_transform			get_face_vector(t_entity *ntt);

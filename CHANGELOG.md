@@ -3,6 +3,19 @@
 ### [0.26.0] - 04.07.2024
 - elementor implementation, basic elementor movement. hes currently a door
 
+### [0.25.11] - 04.07.2024
+- Some minor efficiency improvements in draw_walls_entities.c, nothing major
+
+### [0.25.10] - 04.07.2024
+- Added some very nice timing setup, should be nicely expandable in the future.
+
+### [0.25.9] - 04.07.2024
+- Blight hurt animation duration handling improvements
+- Shots per second limit
+
+### [0.25.8] - 04.07.2024
+- Showing cursor when mouse is uncaptured, hiding it if it is
+
 ### [0.25.7] - 04.07.2024
 - Fixed player being able to keep blight stuck in dying animation by continuously shooting projectiles at it while its dying
 
