@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/05 14:33:22 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/05 14:50:16 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ static t_color	get_tex_color_at(mlx_texture_t *tex, int x, int y)
 {
 	int	index;
 
-	index = (y * tex->width + x) * tex->bytes_per_pixel; // XXX: invalid read of 1 when index is >= tex->width * tex->height * tex->bytes_per_pixel
+	if (!tex)
+		return ((t_color){0, 0, 0, 0});
+	index = (y * tex->width + x) * tex->bytes_per_pixel;
 	if (index < 0 || index >= tex->width * tex->height * tex->bytes_per_pixel)
 		return ((t_color){0, 0, 0, 0});
 	return ((t_color){tex->pixels[index + 0], tex->pixels[index + 1], \
