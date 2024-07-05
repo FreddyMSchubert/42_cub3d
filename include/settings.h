@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/05 18:36:53 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/05 21:29:47 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,12 +131,13 @@
 # define LMNTOR_ATTACK_SUMMON_CHANCE 0
 # define LMNTOR_SHOOTING_INACCURACY_DEG 10
 
-# define LMNTOR_RANDOM_ELEM_CHOICE_CHANCE 0.5
+# define LMNTOR_RANDOM_ELEM_CHOICE_CHANCE 0.25
 # define LMNTOR_MAX_SAME_ELEMENT_FRAMES 600
 
 // health
-# define LMNTOR_STARTING_HEALTH 50
+# define LMNTOR_STARTING_HEALTH 20
 # define LMNTOR_HURT_STATE_FRAME_DURATION 3
+# define LMNTOR_DEATH_ANIM_TICKS 200
 
 // --- HUD Settings
 

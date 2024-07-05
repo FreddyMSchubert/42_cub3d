@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/05 18:17:50 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/05 20:08:02 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -309,6 +309,8 @@ void				gc_exit(int code);
 // logging
 void				logger(char type, char *message);
 void				logger_v(char type, char *message);
+void				elementor_logger(char *message);
+
 // printing
 void				print_map(t_tile_type ***map, char *mode);
 void				print_walls(void);

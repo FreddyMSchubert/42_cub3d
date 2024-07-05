@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 13:37:35 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/05 18:31:51 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/05 21:26:49 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ void	on_collision_elementor(t_entity *self, t_entity *other)
 	if (elem->stage == 0 && projectile->element == elem->element1)
 		return ;
 	if (elem->stage == 1 && (projectile->element == elem->element1 || \
+			projectile->element == elem->element2))
+		return ;
+	if (elem->stage == 2 && (projectile->element == elem->element1 || \
 			projectile->element == elem->element2 || \
 			projectile->element == elem->element3))
 		return ;
@@ -51,10 +54,10 @@ void	on_collision_elementor(t_entity *self, t_entity *other)
 	elem->hurt_state = LMNTOR_HURT_STATE_FRAME_DURATION;
 	if (self->health > 0)
 		logger_v(LOGGER_ACTION, "Elementor was hit by projectile!");
-	else
+	else if (elem->death_animation < 0)
 	{
 		logger_v(LOGGER_ACTION, "Elementor was killed by projectile!");
-		create_entity(self->transform, KEY_NTT, get_texture_key, tick_key);
+		elem->death_animation = 0;
 	}
 	other->to_be_deleted = true;
 	if (elem->stage == 0)

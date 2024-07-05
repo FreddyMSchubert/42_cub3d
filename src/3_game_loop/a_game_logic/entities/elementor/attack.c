@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 14:59:57 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/05 15:50:06 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/05 20:52:31 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,14 @@ static inline void	normal_attack(t_entity *self, t_elementor *elementor)
 		LMNTOR_SHOOTING_INACCURACY_DEG - (LMNTOR_SHOOTING_INACCURACY_DEG / 2)));
 	if (elementor->stage == 0)
 		shooooot(trans, elementor->element1);
+	else if (elementor->stage == 1)
+	{
+		num = random_int(0, 1);
+		if (num == 0)
+			shooooot(trans, elementor->element1);
+		else
+			shooooot(trans, elementor->element2);
+	}
 	else
 	{
 		num = random_int(0, 2);
@@ -45,6 +53,8 @@ static inline void	normal_attack(t_entity *self, t_elementor *elementor)
 
 void	elementor_attack(t_entity *self, t_elementor *elementor)
 {
+	if (elementor->death_animation >= 0)
+		return ;
 	if (random_val() > LMNTOR_ATTACK_CHANCE)
 		return ;
 	if (random_val() < LMNTOR_ATTACK_SPIN_CHANCE)

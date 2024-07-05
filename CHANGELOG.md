@@ -1,5 +1,10 @@
 # Changelog
 
+### [0.26.6] - 05.07.2024
+- Made elementor killable & Added a really nice death animation
+- Added some cool voice messages
+- Little write warning fix
+
 ### [0.26.5] - 05.07.2024
 - Made elementor switch their type after a while so you don't get softlocked
 - Added a nice black outline around the element you've selected in the element overview in the top right

@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 11:03:47 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/05 18:31:29 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/05 20:50:29 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ bool	set_boss(t_vec2 pos, t_tile_type ***map)
 	data->stage = 1;
 	data->mvmnt = ELEMENTOR_MVMNT_STAND;
 	data->animation_frame = 0;
+	data->death_animation = -1;
 	ntt = create_entity(trans, ELEMENTOR_NTT, \
 					get_texture_elementor, tick_elementor);
 	ntt->is_billboard = true;
@@ -64,5 +65,6 @@ bool	set_boss(t_vec2 pos, t_tile_type ***map)
 	ntt->health = LMNTOR_STARTING_HEALTH;
 	ntt->on_collision = on_collision_elementor;
 	game()->boss = ntt;
+	elementor_logger("You, harnesser of the elements! You will not defeat me!");
 	return (true);
 }

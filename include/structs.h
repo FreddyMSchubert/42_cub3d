@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/05 18:53:03 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/05 20:34:25 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -314,6 +314,7 @@ typedef struct s_elementor
 
 	int		animation_frame;
 	int		hurt_state;
+	int		death_animation;
 
 	int		frames_since_element_switch;
 }	t_elementor;
