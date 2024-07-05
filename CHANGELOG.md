@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.26.3] - 05.07.2024
+- Added a basic attack
+- Added a nice method to shuffle up the elementor selected elements
+
 ### [0.26.2] - 05.07.2024
 - Gave boss a rotating animation when in second phase
 

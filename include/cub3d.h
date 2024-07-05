@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/05 13:35:47 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/05 15:41:04 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -282,6 +282,8 @@ mlx_texture_t		*get_texture_blight(t_entity *self);
 void				tick_elementor(t_entity *self);
 void				on_collision_elementor(t_entity *self, t_entity *other);
 mlx_texture_t		*get_texture_elementor(t_entity *self);
+void				elementor_attack(t_entity *self, t_elementor *elementor);
+void				refresh_projectiles(t_elementor *elementor);
 
 # define WALL_ORIENTATION_HORIZONTAL 0
 # define WALL_ORIENTATION_VERTICAL 1

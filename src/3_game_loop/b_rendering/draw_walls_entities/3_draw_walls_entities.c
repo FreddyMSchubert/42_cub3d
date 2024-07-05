@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   3_draw_walls_entities.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/05 13:41:27 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/05 15:33:55 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ static t_color	get_tex_color_at(mlx_texture_t *tex, int x, int y)
 {
 	int	index;
 
+	if (x < 0 || x >= (int)tex->width || y < 0 || y >= (int)tex->height)
+		return ((t_color){0, 0, 0, 0});
 	index = (y * tex->width + x) * tex->bytes_per_pixel;
 	return ((t_color){tex->pixels[index + 0], tex->pixels[index + 1], \
 					tex->pixels[index + 2], tex->pixels[index + 3]});

@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 13:37:24 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/05 14:33:14 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/05 15:54:22 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	tick_elementor(t_entity *self)
 	t_elementor	*elementor;
 
 	elementor = (t_elementor *)self->data;
-	move(self, elementor);
 	elementor->animation_frame++;
+	elementor->stage = self->health < (LMNTOR_STARTING_HEALTH / 2);
+	move(self, elementor);
+	elementor_attack(self, elementor);
 }

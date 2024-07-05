@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/05 14:32:33 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/05 15:02:20 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -298,11 +298,6 @@ typedef struct s_blight
 # define ELEMENTOR_MVMNT_STAND 0
 # define ELEMENTOR_MVMNT_WALK 1
 
-# define ELEMENTOR_ATTACK_NONE 0
-# define ELEMENTOR_ATTACK_NORMAL 1
-# define ELEMENTOR_ATTACK_SPIN 2
-# define ELEMENTOR_ATTACK_SUMMON 3
-
 typedef struct s_elementor
 {
 	int		element1;
@@ -311,7 +306,6 @@ typedef struct s_elementor
 
 	int		stage;
 	int		mvmnt;
-	int		attack;
 
 	int		animation_frame;
 }	t_elementor;

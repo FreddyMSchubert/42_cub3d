@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   settings.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/05 13:38:56 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/05 15:54:21 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,16 @@
 # define LMNTOR_MVMNT_WALK_START_CHANCE 0.05	// every frame
 # define LMNTOR_MVMNT_WALK_STOP_CHANCE 0.01		// every frame
 # define LMNTOR_MVMNT_ROT_CHANGE_CHANCE 0.05	// every frame
+
+// attack
+# define LMNTOR_ATTACK_CHANCE 0.03				// every frame
+# define LMNTOR_ATTACK_NOMRAL_CHANCE 1
+# define LMNTOR_ATTACK_SPIN_CHANCE 0
+# define LMNTOR_ATTACK_SUMMON_CHANCE 0
+# define LMNTOR_SHOOTING_INACCURACY_DEG 10
+
+// health
+# define LMNTOR_STARTING_HEALTH 30
 
 // --- HUD Settings
 

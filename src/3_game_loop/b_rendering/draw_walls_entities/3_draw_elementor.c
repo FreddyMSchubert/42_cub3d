@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:13:27 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/05 14:48:01 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/05 14:53:33 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,5 @@ t_color	get_elementor_cloak_color(t_scale tex)
 		return (get_element_col(elementor->element2));
 	else
 		return (get_element_col(elementor->element3));
+	return (int_to_t_color(rgba_to_int(0, 0, 0, 0)));
 }
