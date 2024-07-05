@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 20:18:50 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/05 17:58:07 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/05 18:54:22 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,17 @@ static inline void	load_status_animatons(void)
 	game()->textures.earth_blight_hurt = l("entities/blights/earth/hurt.png");
 }
 
+static inline void	load_elements_overview_textures(void)
+{
+	game()->textures.elements_overview = l("hud/elements_overview/main.png");
+	game()->textures.hightlight_air = l("hud/elements_overview/air.png");
+	game()->textures.hightlight_fire = l("hud/elements_overview/fire.png");
+	game()->textures.hightlight_water = l("hud/elements_overview/water.png");
+	game()->textures.hightlight_earth = l("hud/elements_overview/earth.png");
+}
+
 void	load_static_textures(void)
 {
-	game()->textures.elements_overview = l("hud/elements_overview.png");
 	game()->textures.door = l("entities/door.png");
 	game()->textures.key = l("entities/key.png");
 	game()->textures.goal = l("entities/goal.png");
@@ -122,6 +130,7 @@ void	load_static_textures(void)
 	game()->textures.hotbar_select = l("hud/hotbar_select.png");
 	load_status_animatons();
 	load_blight_textures();
+	load_elements_overview_textures();
 	game()->textures.elementor_idle = l("entities/elementor/opacity.png");
 	game()->textures.elementor_hurt = l("entities/elementor/hurt.png");
 }

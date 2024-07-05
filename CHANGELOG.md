@@ -1,5 +1,10 @@
 # Changelog
 
+### [0.26.5] - 05.07.2024
+- Made elementor switch their type after a while so you don't get softlocked
+- Added a nice black outline around the element you've selected in the element overview in the top right
+- Fixed command line input for element choice allowing to choose an invalid value
+
 ### [0.26.4] - 05.07.2024
 - Made elementor damageable
 - Added a boss health bar

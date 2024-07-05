@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 13:37:24 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/05 17:55:16 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/05 18:34:49 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,14 @@ void	tick_elementor(t_entity *self)
 
 	elementor = (t_elementor *)self->data;
 	elementor->animation_frame++;
+	elementor->frames_since_element_switch++;
 	elementor->stage = self->health < (LMNTOR_STARTING_HEALTH / 2);
 	elementor->hurt_state -= elementor->hurt_state > 0;
 	move(self, elementor);
 	elementor_attack(self, elementor);
+	if (elementor->frames_since_element_switch > LMNTOR_MAX_SAME_ELEMENT_FRAMES)
+	{
+		refresh_projectiles(elementor);
+		elementor->frames_since_element_switch = 0;
+	}
 }

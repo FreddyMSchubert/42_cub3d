@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/05 18:21:22 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/05 18:36:53 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@
 
 // mvmnt
 # define LMNTOR_MVMNT_SPEED 0.03
-# define LMNTOR_MVMNT_WALK_START_CHANCE 0.05	// every frame
+# define LMNTOR_MVMNT_WALK_START_CHANCE 0.1		// every frame
 # define LMNTOR_MVMNT_WALK_STOP_CHANCE 0.01		// every frame
 # define LMNTOR_MVMNT_ROT_CHANGE_CHANCE 0.05	// every frame
 
@@ -132,6 +132,7 @@
 # define LMNTOR_SHOOTING_INACCURACY_DEG 10
 
 # define LMNTOR_RANDOM_ELEM_CHOICE_CHANCE 0.5
+# define LMNTOR_MAX_SAME_ELEMENT_FRAMES 600
 
 // health
 # define LMNTOR_STARTING_HEALTH 50

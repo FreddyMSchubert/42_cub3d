@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 13:37:35 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/05 18:07:43 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/05 18:31:51 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	on_collision_elementor(t_entity *self, t_entity *other)
 			elem->element1 = projectile->element;
 		else
 			elem->element1 = random_int(0, 3);
+		elem->frames_since_element_switch = 0;
 	}
 	else
 		refresh_projectiles(elem);
