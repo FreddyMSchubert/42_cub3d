@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   3_draw_walls_entities.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/05 09:28:25 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/05 14:28:16 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static t_color	get_tex_color_at(mlx_texture_t *tex, int x, int y)
 {
 	int	index;
 
-	index = (y * tex->width + x) * tex->bytes_per_pixel;
+	index = (y * tex->width + x) * tex->bytes_per_pixel; // XXX: invalid read of 1 in the return statement
 	return ((t_color){tex->pixels[index + 0], tex->pixels[index + 1], \
 					tex->pixels[index + 2], tex->pixels[index + 3]});
 }
