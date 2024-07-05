@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 13:37:41 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/04 13:39:23 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/05 13:05:54 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 mlx_texture_t	*get_texture_elementor(t_entity *self)
 {
 	(void)self;
-	return (game()->textures.door);
+	return (game()->textures.elementor_idle);
 }

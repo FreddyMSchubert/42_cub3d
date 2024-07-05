@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 07:33:54 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/04 03:12:35 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/05 13:44:25 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,11 @@ static inline void	null_data(void)
 
 int	main(int argc, char **argv)
 {
-	printf("\n");
 	if (!check_args_validity(argc, argv))
 		return (EXIT_FAILURE);
 	load_static_textures();
 	init_random_seed();
+	game()->boss = NULL;
 	if (argc == 1)
 	{
 		logger_v(LOGGER_STEP, "Map Generation");

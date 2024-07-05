@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/05 12:58:35 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/05 13:35:47 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -241,6 +241,7 @@ void				calc_entity(int ray_index, t_vec2 intersect, t_entity *ntt);
 // - 3 draw walls
 void				draw_gameobject(t_range x_range, int height, \
 									mlx_texture_t *tex, double hit_offset);
+t_color				get_elementor_cloak_color(t_scale tex);
 // - util
 bool				get_wall_orientation(t_vec2 intersect);
 char				get_wall_face_to_render(t_vec2 intersect);

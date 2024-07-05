@@ -1,6 +1,10 @@
 # Changelog
 
-### [0.26.0] - 04.07.2024
+### [0.26.1] - 05.07.2024
+- Made elementor texture square & made it display in-game
+- Made elementor cloak color change dynamically based on selected element
+
+## [0.26.0] - 04.07.2024
 - elementor implementation, basic elementor movement. hes currently a door
 
 ### [0.25.11] - 04.07.2024

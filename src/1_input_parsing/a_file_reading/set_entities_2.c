@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 11:03:47 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/04 13:50:29 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/05 13:47:15 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,10 @@ bool	set_boss(t_vec2 pos, t_tile_type ***map)
 	t_elementor	*data;
 	t_entity	*ntt;
 	t_transform	trans;
+	static int	count;
 
+	if (++count > 1)
+		cub_exit("Too many bosses!", -1);
 	*(map[(int)pos.y][(int)pos.x]) = FLOOR;
 	data = malloc(sizeof(t_elementor));
 	if (!data)
@@ -54,12 +57,13 @@ bool	set_boss(t_vec2 pos, t_tile_type ***map)
 	data->element1 = random_int(0, 3);
 	data->element2 = random_int(0, 3);
 	data->element3 = random_int(0, 3);
-	data->stage = ELEMENTOR_STAGE_EASY;
+	data->stage = 0;
 	data->mvmnt = ELEMENTOR_MVMNT_STAND;
 	data->attack = ELEMENTOR_ATTACK_NONE;
 	ntt = create_entity(trans, ELEMENTOR_NTT, \
 					get_texture_elementor, tick_elementor);
 	ntt->is_billboard = true;
 	ntt->data = data;
+	game()->boss = ntt;
 	return (true);
 }

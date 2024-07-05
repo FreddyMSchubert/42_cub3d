@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/05 12:59:12 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/05 13:38:56 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define DEBUG false
 # define LOG_WALLS false
 # define TERMINAL_MAP true
-# define LOG_TIMING true
+# define LOG_TIMING false
 
 # define SAVE_FILE "save.cubsave"
 
@@ -33,7 +33,7 @@
 // --- Quality of Life
 
 # define MOUSE_SENSITIVITY 0.35
-# define CAPTURE_MOUSE_AT_START false
+# define CAPTURE_MOUSE_AT_START true
 
 // Map Making
 

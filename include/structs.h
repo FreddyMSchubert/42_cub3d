@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/05 12:59:23 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/05 13:34:04 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define STRUCTS_H
 
 # include "cub3d.h"
+
+// ---- PREDEFS
+
+typedef struct s_entity	t_entity;
 
 // ---- UTILS
 
@@ -137,6 +141,8 @@ typedef struct s_textures
 	mlx_texture_t	*hotbar_select;
 
 	mlx_texture_t	*elements_overview;
+
+	mlx_texture_t	*elementor_idle;
 }	t_textures;
 
 # define MAX_TEXTURES 60
@@ -166,6 +172,7 @@ typedef struct s_persistent_data
 	t_textures		textures;
 	bool			mouse_free;
 	mlx_texture_t	*texture_arr[MAX_TEXTURES];
+	t_entity		*boss;
 }	t_persistent_data;
 
 // --- PLAYER
@@ -215,7 +222,6 @@ typedef enum e_entity_type
 	ELEMENTOR_NTT
 }	t_entity_type;
 
-typedef struct s_entity	t_entity;
 typedef struct s_entity
 {
 	t_entity_type	type;
@@ -288,9 +294,6 @@ typedef struct s_blight
 // this will count down and the texture will be hurt during that time
 
 // - ELEMENTOR
-
-# define ELEMENTOR_STAGE_EASY 0
-# define ELEMENTOR_STAGE_HARD 1
 
 # define ELEMENTOR_MVMNT_STAND 0
 # define ELEMENTOR_MVMNT_WALK 1

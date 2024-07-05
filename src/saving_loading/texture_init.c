@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 20:18:50 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/04 17:20:45 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/05 13:33:30 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,4 +122,5 @@ void	load_static_textures(void)
 	game()->textures.hotbar_select = l("hud/hotbar_select.png");
 	load_status_animatons();
 	load_blight_textures();
+	game()->textures.elementor_idle = l("entities/elementor/opacity.png");
 }
