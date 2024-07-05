@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/05 00:36:01 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/05 09:01:30 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,20 @@ static void	draw_column(t_scale start, int end_y, mlx_texture_t *tex,
 	int tex_x)
 {
 	int		y;
-	int		delta_y;
 	int		tex_y;
 	t_color	color;
-	int		repeat_y;
+	int		multiplier;
 
 	if (end_y <= start.y)
 		return ;
-	repeat_y = tex->width / tex->height;
 	y = fmax(0, start.y) - 1;
-	delta_y = end_y - start.y;
+	multiplier = tex->height * (tex->width / tex->height) / (end_y - start.y);
 	while (y < end_y)
 	{
 		y++;
 		if (y >= game()->mlx->height || y < 0)
 			continue ;
-		tex_y = (y - start.y) * tex->height * repeat_y / delta_y % tex->height;
+		tex_y = (y - start.y) * multiplier;
 		color = get_tex_color_at(tex, tex_x, tex_y);
 		set_pixel_color(game()->game_scene, start.x, y, color);
 	}
