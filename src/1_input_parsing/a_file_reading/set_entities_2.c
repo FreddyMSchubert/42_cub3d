@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_entities_2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 11:03:47 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/05 13:47:15 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/05 14:34:07 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,10 @@ bool	set_boss(t_vec2 pos, t_tile_type ***map)
 	data->element1 = random_int(0, 3);
 	data->element2 = random_int(0, 3);
 	data->element3 = random_int(0, 3);
-	data->stage = 0;
+	data->stage = 1;
 	data->mvmnt = ELEMENTOR_MVMNT_STAND;
 	data->attack = ELEMENTOR_ATTACK_NONE;
+	data->animation_frame = 0;
 	ntt = create_entity(trans, ELEMENTOR_NTT, \
 					get_texture_elementor, tick_elementor);
 	ntt->is_billboard = true;

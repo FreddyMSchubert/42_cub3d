@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   elementor_tick.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 13:37:24 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/04 14:27:38 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/05 14:33:14 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,5 @@ void	tick_elementor(t_entity *self)
 
 	elementor = (t_elementor *)self->data;
 	move(self, elementor);
+	elementor->animation_frame++;
 }

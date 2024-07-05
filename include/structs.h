@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/05 13:34:04 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/05 14:32:33 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -308,9 +308,12 @@ typedef struct s_elementor
 	int		element1;
 	int		element2;
 	int		element3;
+
 	int		stage;
 	int		mvmnt;
 	int		attack;
+
+	int		animation_frame;
 }	t_elementor;
 
 // stage will define which half of the fight were in

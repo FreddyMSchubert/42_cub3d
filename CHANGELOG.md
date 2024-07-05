@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.26.2] - 05.07.2024
+- Gave boss a rotating animation when in second phase
+
 ### [0.26.1] - 05.07.2024
 - Made elementor texture square & made it display in-game
 - Made elementor cloak color change dynamically based on selected element

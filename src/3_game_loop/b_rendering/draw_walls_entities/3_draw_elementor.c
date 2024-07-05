@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   3_draw_elementor.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:13:27 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/05 13:42:20 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/05 14:48:01 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../include/cub3d.h"
+
+#define ELEMENTOR_SPRITE_WIDTH 29
+#define TICKS_PER_FRAME 1
 
 static inline t_color	get_element_col(int element)
 {
@@ -28,13 +31,37 @@ static inline t_color	get_element_col(int element)
 	return (int_to_t_color(rgba_to_int(0, 0, 0, 0)));
 }
 
+static inline int	get_phase_2_col(t_scale tex, int frame)
+{
+	int	effective_x;
+	int	color_width;
+
+	effective_x = (tex.x + frame + tex.y) % ELEMENTOR_SPRITE_WIDTH;
+	color_width = ELEMENTOR_SPRITE_WIDTH / 3;
+	if (effective_x < color_width)
+		return (0);
+	else if (effective_x < 2 * color_width)
+		return (1);
+	else
+		return (2);
+}
+
 t_color	get_elementor_cloak_color(t_scale tex)
 {
 	t_elementor	*elementor;
+	int			i;
 
 	(void)tex;
 	if (!game()->boss)
 		cub_exit("No boss found", -1);
 	elementor = (t_elementor *)game()->boss->data;
-	return (get_element_col(elementor->element1));
+	if (elementor->stage == 0)
+		return (get_element_col(elementor->element1));
+	i = get_phase_2_col(tex, elementor->animation_frame / TICKS_PER_FRAME);
+	if (i == 0)
+		return (get_element_col(elementor->element1));
+	else if (i == 1)
+		return (get_element_col(elementor->element2));
+	else
+		return (get_element_col(elementor->element3));
 }
