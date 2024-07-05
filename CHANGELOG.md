@@ -1,5 +1,10 @@
 # Changelog
 
+### [0.26.9] - 05.07.2024
+- Map reworks & elementors domain map
+- Various rebalancings
+- Fixed getting to the goal leading to an incorrect return code
+
 ### [0.26.8] - 05.07.2024
 - boss drops health
 - Added explosion which gets triggered after the boss is dead

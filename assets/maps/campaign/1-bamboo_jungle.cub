@@ -6,12 +6,13 @@ EA ./assets/textures/walls/bamboo_block_top.png
 F 90,103,42
 C 185,219,95
 
+> ----- THE BAMBOO JUNGLE -----
 > You enter the area your parents warned you about.
 > In this deep bamboo jungle, you wouldn't be the first to get lost and never return.
 > You tell yourself to stay vigilant.
 
 11111111111
-100010001a1
+100010001h1
 10001010101
 10000010001
 10011111001
@@ -19,13 +20,13 @@ C 185,219,95
 10111010101
 100E1010001
 11111011011
-100000100a1
+100000100e1
 10100010111
 1a100010001
 10100011101
 10000000001
-11100f11101
-1G100010101
-101h0110101
+11101011101
+1G101f1h101
+10101110101
 10000000001
 11111111111

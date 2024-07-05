@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/06 00:08:28 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 00:51:46 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@
 // 'd' -> FIRE BLIGHT
 // 'r' -> EARTH BLIGHT
 // 's' -> AIR BLIGHT
-// 'u' -> KEY AIR ORB
-// 'i' -> KEY EARTH ORB
-// 'o' -> KEY FIRE ORB
-// 'p' -> KEY WATER ORB
+// 'u' -> KEY AIR BLIGHT
+// 'i' -> KEY EARTH BLIGHT
+// 'o' -> KEY FIRE BLIGHT
+// 'p' -> KEY WATER BLIGHT
 // 'h' -> HEALTH PICKUP
 // 'B' -> BOSS (ELEMENTOR)
 

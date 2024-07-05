@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/05 21:29:47 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 01:42:50 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,12 +120,12 @@
 
 // mvmnt
 # define LMNTOR_MVMNT_SPEED 0.03
-# define LMNTOR_MVMNT_WALK_START_CHANCE 0.1		// every frame
+# define LMNTOR_MVMNT_WALK_START_CHANCE 0.25	// every frame
 # define LMNTOR_MVMNT_WALK_STOP_CHANCE 0.01		// every frame
-# define LMNTOR_MVMNT_ROT_CHANGE_CHANCE 0.05	// every frame
+# define LMNTOR_MVMNT_ROT_CHANGE_CHANCE 0.03	// every frame
 
 // attack
-# define LMNTOR_ATTACK_CHANCE 0.03				// every frame
+# define LMNTOR_ATTACK_CHANCE 0.05				// every frame
 # define LMNTOR_ATTACK_NOMRAL_CHANCE 1
 # define LMNTOR_ATTACK_SPIN_CHANCE 0
 # define LMNTOR_ATTACK_SUMMON_CHANCE 0
@@ -135,7 +135,7 @@
 # define LMNTOR_MAX_SAME_ELEMENT_FRAMES 600
 
 // health
-# define LMNTOR_STARTING_HEALTH 20
+# define LMNTOR_STARTING_HEALTH 50
 # define LMNTOR_HURT_STATE_FRAME_DURATION 3
 # define LMNTOR_DEATH_ANIM_TICKS 200
 
@@ -157,8 +157,8 @@
 
 // --- Gameplay Balancing
 
-# define MIN_AMMO_AMOUNT_PER_ORB 2
-# define MAX_AMMO_AMOUNT_PER_ORB 5
+# define MIN_AMMO_AMOUNT_PER_ORB 1
+# define MAX_AMMO_AMOUNT_PER_ORB 3
 # define TICKS_BETWEEN_PLAYER_SHOTS 15
 
 #endif
