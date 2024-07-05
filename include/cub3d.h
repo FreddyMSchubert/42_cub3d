@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/05 15:41:04 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/05 18:17:50 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,6 +219,7 @@ void				cycle_inventory(int direction, bool direct);
 int					*get_amount_of_item(int index);
 int					get_minimap_opacity(int x, int y);
 void				draw_healthbar(int size, int start_x, int start_y);
+void				draw_boss_healthbar(int size);
 int					get_floor_color(int j, int i);
 int					get_wall_color(int j, int i);
 // minimap

@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.26.4] - 05.07.2024
+- Made elementor damageable
+- Added a boss health bar
+
 ### [0.26.3] - 05.07.2024
 - Added a basic attack
 - Added a nice method to shuffle up the elementor selected elements

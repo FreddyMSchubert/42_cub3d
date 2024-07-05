@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 11:03:47 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/05 15:48:43 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/05 18:19:12 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ bool	set_boss(t_vec2 pos, t_tile_type ***map)
 					get_texture_elementor, tick_elementor);
 	ntt->is_billboard = true;
 	ntt->data = data;
+	ntt->health = LMNTOR_STARTING_HEALTH;
+	ntt->on_collision = on_collision_elementor;
 	game()->boss = ntt;
 	return (true);
 }

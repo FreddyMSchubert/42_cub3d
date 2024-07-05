@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 20:18:50 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/05 13:33:30 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/05 17:58:07 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,4 +123,5 @@ void	load_static_textures(void)
 	load_status_animatons();
 	load_blight_textures();
 	game()->textures.elementor_idle = l("entities/elementor/opacity.png");
+	game()->textures.elementor_hurt = l("entities/elementor/hurt.png");
 }

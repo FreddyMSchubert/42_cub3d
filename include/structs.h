@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/05 15:02:20 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/05 17:57:52 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,7 @@ typedef struct s_textures
 	mlx_texture_t	*elements_overview;
 
 	mlx_texture_t	*elementor_idle;
+	mlx_texture_t	*elementor_hurt;
 }	t_textures;
 
 # define MAX_TEXTURES 60
@@ -308,6 +309,7 @@ typedef struct s_elementor
 	int		mvmnt;
 
 	int		animation_frame;
+	int		hurt_state;
 }	t_elementor;
 
 // stage will define which half of the fight were in
