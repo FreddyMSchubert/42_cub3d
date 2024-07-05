@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/05 09:21:37 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/05 09:28:25 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,27 +34,30 @@ static t_color	get_tex_color_at(mlx_texture_t *tex, int x, int y)
 					tex->pixels[index + 2], tex->pixels[index + 3]});
 }
 
-static void	draw_column(t_scale start, int end_y, mlx_texture_t *tex,
+static void	draw_column(t_scale start, t_scale end, mlx_texture_t *tex,
 	int tex_x)
 {
+	int		x;
 	int		y;
 	int		tex_y;
 	t_color	color;
 	double	multiplier;
 
-	if (end_y <= start.y)
+	if (end.y <= start.y)
 		return ;
 	y = fmax(0, start.y) - 1;
 	multiplier = (double)tex->height * (tex->width / tex->height) / \
-										(end_y - start.y);
-	while (y < end_y)
+										(end.y - start.y);
+	while (y < end.y)
 	{
 		y++;
 		if (y >= game()->mlx->height || y < 0)
 			continue ;
 		tex_y = (y - start.y) * multiplier;
 		color = get_tex_color_at(tex, tex_x, tex_y);
-		set_pixel_color(game()->game_scene, start.x, y, color);
+		x = start.x - 1;
+		while (++x < end.x && x < game()->mlx->width && x >= 0)
+			set_pixel_color(game()->game_scene, x, y, color);
 	}
 }
 
@@ -70,6 +73,6 @@ void	draw_gameobject(t_range x_range, int height,
 	end_y = start_y + height;
 	texture_x = (int)(hit_offset * tex->width) % tex->width;
 	x = x_range.min - 1;
-	while (++x < x_range.max)
-		draw_column((t_scale){x, start_y}, end_y, tex, texture_x);
+	draw_column((t_scale){x, start_y}, (t_scale){x_range.max, end_y}, \
+						tex, texture_x);
 }
