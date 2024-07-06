@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:27:28 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/01 21:34:06 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 11:44:19 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,9 @@ bool	is_position_valid(float x, float y)
 	t_entity	*ntt;
 
 	if (x < 0 || x >= game()->input_data->map_width || y < 0 || \
-		y >= game()->input_data->map_height || \
-		*game()->input_data->map[(int)y][(int)x] != FLOOR)
+		y >= game()->input_data->map_height)
+		return (false);
+	if (*game()->input_data->map[(int)y][(int)x] != FLOOR)
 		return (false);
 	ntt_list = game()->entities;
 	while (ntt_list)

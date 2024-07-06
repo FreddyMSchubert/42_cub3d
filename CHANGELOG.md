@@ -1,6 +1,10 @@
 # Changelog
 
-### [0.26.10] - 05.07.2024
+### [0.26.11] - 06.07.2024
+- Made elementor stop spawning enemies in walls
+- Various rebalancings. Enemies now get spawned more often but only one at a time.
+
+### [0.26.10] - 06.07.2024
 - Added spin & summon attacks
 - A lot of fixes & rebalancings
 - Added map overview script which prints out how many of what element are in a given map, used that to make sure no blight type or orb type is there unproportionally. There is 1 more earth blight than anything else in the campaign in total.

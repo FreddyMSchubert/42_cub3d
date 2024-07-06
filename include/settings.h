@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/06 11:21:43 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 11:53:53 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 
 # define ENTITIY_PLACEMENT_CHANCE 13
 # define ORB_PLACEMENT_CHANCE 70
-# define BLIGHT_PLACEMENT_CHANCE 75
+# define BLIGHT_PLACEMENT_CHANCE 65
 # define HEALTH_DROP_CHANCE_PERCENT 3
 
 // --- Window Setup
@@ -125,21 +125,19 @@
 # define LMNTOR_MVMNT_ROT_CHANGE_CHANCE 0.03	// every frame
 
 // attack
-# define LMNTOR_ATTACK_CHANCE 0.02				// every frame
-# define LMNTOR_ATTACK_SPIN_CHANCE 0.15
-# define LMNTOR_ATTACK_SUMMON_CHANCE 0.8
+# define LMNTOR_ATTACK_CHANCE 0.03				// every frame
+# define LMNTOR_ATTACK_SPIN_CHANCE 0.175
+# define LMNTOR_ATTACK_SUMMON_CHANCE 0.075
 # define LMNTOR_SHOOTING_INACCURACY_DEG 10
 # define LMNTOR_SPIN_ATTACK_MIN_PROJECTILES 6
 # define LMNTOR_SPIN_ATTACK_MAX_PROJECTILES 15
-# define LMNTOR_SPAWN_ATTACK_MIN_BLIGHTS 1
-# define LMNTOR_SPAWN_ATTACK_MAX_BLIGHTS 2
-# define LMNTOR_BLIGHT_SPAWN_DIST 1.5
+# define LMNTOR_BLIGHT_SPAWN_DIST 2 // int!
 
 # define LMNTOR_RANDOM_ELEM_CHOICE_CHANCE 0.25
 # define LMNTOR_MAX_SAME_ELEMENT_FRAMES 600
 
 // health
-# define LMNTOR_STARTING_HEALTH 30
+# define LMNTOR_STARTING_HEALTH 40
 # define LMNTOR_HURT_STATE_FRAME_DURATION 3
 # define LMNTOR_DEATH_ANIM_TICKS 200
 # define LMNTOR_MAJOR_HIT_DECREASE 2

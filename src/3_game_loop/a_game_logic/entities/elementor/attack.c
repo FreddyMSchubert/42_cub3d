@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 14:59:57 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/06 10:03:44 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 11:49:37 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,31 +81,23 @@ static inline void	spin_attack(t_entity *self, t_elementor *elem)
 
 static inline void	summon_attack(t_entity *self, t_elementor *elem)
 {
-	int			count;
-	int			i;
 	t_transform	trans;
 	t_entity	*ntt;
 	t_blight	*blight;
 
-	count = random_int(LMNTOR_SPAWN_ATTACK_MIN_BLIGHTS, \
-						LMNTOR_SPAWN_ATTACK_MAX_BLIGHTS);
-	i = 0;
-	while (i < count)
-	{
-		trans.pos.x = self->transform.pos.x + random_val() + \
-					LMNTOR_BLIGHT_SPAWN_DIST - (LMNTOR_BLIGHT_SPAWN_DIST / 2);
-		trans.pos.y = self->transform.pos.y + random_val() + \
-					LMNTOR_BLIGHT_SPAWN_DIST - (LMNTOR_BLIGHT_SPAWN_DIST / 2);
-		trans.rot = deg_to_dir_vec(random_int(0, 360));
-		ntt = create_entity(trans, BLIGHT_NTT, get_texture_blight, tick_blight);
-		ntt->on_collision = on_collision_blight;
-		blight = malloc(sizeof(t_blight));
-		blight->element = get_random_element(elem);
-		blight->drops_key = false;
-		ntt->health = ENEMY_STARTING_HEALTH;
-		ntt->data = blight;
-		i++;
-	}
+	trans.pos.x = self->transform.pos.x + random_int(-LMNTOR_BLIGHT_SPAWN_DIST, LMNTOR_BLIGHT_SPAWN_DIST);
+	trans.pos.y = self->transform.pos.y + random_int(-LMNTOR_BLIGHT_SPAWN_DIST, LMNTOR_BLIGHT_SPAWN_DIST);
+	if (!is_position_valid(trans.pos.x, trans.pos.y))
+		return ;
+	printf("position is validdd!\n");
+	trans.rot = deg_to_dir_vec(random_int(0, 360));
+	ntt = create_entity(trans, BLIGHT_NTT, get_texture_blight, tick_blight);
+	ntt->on_collision = on_collision_blight;
+	blight = malloc(sizeof(t_blight));
+	blight->element = get_random_element(elem);
+	blight->drops_key = false;
+	ntt->health = ENEMY_STARTING_HEALTH;
+	ntt->data = blight;
 }
 
 void	elementor_attack(t_entity *self, t_elementor *elem)
