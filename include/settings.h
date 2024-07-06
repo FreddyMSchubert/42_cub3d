@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/06 01:42:50 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 11:17:36 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,21 @@
 // --- Quality of Life
 
 # define MOUSE_SENSITIVITY 0.35
-# define CAPTURE_MOUSE_AT_START true
+# define CAPTURE_MOUSE_AT_START false
 
 // Map Making
 
 # define MIN_MAP_SIZE 10
-# define MAX_MAP_SIZE 25
+# define MAX_MAP_SIZE 27
 # define MIN_ROOMS_AMOUNT 2
 # define MAX_ROOMS_AMOUNT 5
 # define MIN_ROOM_SIZE 1
 # define MAX_ROOM_SIZE 7
 # define MAX_ROOM_SIZE_TO_MAP_SIZE 3
-# define WALL_REMOVAL_CHANCE_PERCENT 18
+# define WALL_REMOVAL_CHANCE_PERCENT 15
 
 # define ENTITIY_PLACEMENT_CHANCE 13
-# define ORB_PLACEMENT_CHANCE 60
+# define ORB_PLACEMENT_CHANCE 75
 # define BLIGHT_PLACEMENT_CHANCE 55
 # define HEALTH_DROP_CHANCE_PERCENT 3
 
@@ -125,19 +125,24 @@
 # define LMNTOR_MVMNT_ROT_CHANGE_CHANCE 0.03	// every frame
 
 // attack
-# define LMNTOR_ATTACK_CHANCE 0.05				// every frame
-# define LMNTOR_ATTACK_NOMRAL_CHANCE 1
-# define LMNTOR_ATTACK_SPIN_CHANCE 0
-# define LMNTOR_ATTACK_SUMMON_CHANCE 0
+# define LMNTOR_ATTACK_CHANCE 0.02				// every frame
+# define LMNTOR_ATTACK_SPIN_CHANCE 0.15
+# define LMNTOR_ATTACK_SUMMON_CHANCE 0.8
 # define LMNTOR_SHOOTING_INACCURACY_DEG 10
+# define LMNTOR_SPIN_ATTACK_MIN_PROJECTILES 6
+# define LMNTOR_SPIN_ATTACK_MAX_PROJECTILES 15
+# define LMNTOR_SPAWN_ATTACK_MIN_BLIGHTS 1
+# define LMNTOR_SPAWN_ATTACK_MAX_BLIGHTS 2
+# define LMNTOR_BLIGHT_SPAWN_DIST 1.5
 
 # define LMNTOR_RANDOM_ELEM_CHOICE_CHANCE 0.25
 # define LMNTOR_MAX_SAME_ELEMENT_FRAMES 600
 
 // health
-# define LMNTOR_STARTING_HEALTH 50
+# define LMNTOR_STARTING_HEALTH 35
 # define LMNTOR_HURT_STATE_FRAME_DURATION 3
 # define LMNTOR_DEATH_ANIM_TICKS 200
+# define LMNTOR_MAJOR_HIT_DECREASE 2
 
 // --- HUD Settings
 

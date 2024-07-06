@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 13:37:35 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/05 21:26:49 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 09:12:33 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,24 +32,14 @@ void	on_collision_elementor(t_entity *self, t_entity *other)
 			projectile->element == elem->element3))
 		return ;
 	health_decrease_amount = 0;
-	if (elem->stage == 0)
-	{
-		if (a_beats_b(projectile->element, elem->element1))
-			health_decrease_amount += MAJOR_PROJECTILE_HIT_DESCREASE;
-		else
-			health_decrease_amount += MINOR_PROJECTILE_HIT_DECREASE;
-	}
+	if (a_beats_b(projectile->element, elem->element1))
+		health_decrease_amount += LMNTOR_MAJOR_HIT_DECREASE;
+	else if (a_beats_b(projectile->element, elem->element2) && elem->stage > 0)
+		health_decrease_amount += LMNTOR_MAJOR_HIT_DECREASE;
+	else if (a_beats_b(projectile->element, elem->element3) && elem->stage > 1)
+		health_decrease_amount += LMNTOR_MAJOR_HIT_DECREASE;
 	else
-	{
-		if (a_beats_b(projectile->element, elem->element1))
-			health_decrease_amount += MAJOR_PROJECTILE_HIT_DESCREASE;
-		else if (a_beats_b(projectile->element, elem->element2))
-			health_decrease_amount += MAJOR_PROJECTILE_HIT_DESCREASE;
-		else if (a_beats_b(projectile->element, elem->element3))
-			health_decrease_amount += MAJOR_PROJECTILE_HIT_DESCREASE;
-		else
-			health_decrease_amount += MINOR_PROJECTILE_HIT_DECREASE;
-	}
+		health_decrease_amount += MINOR_PROJECTILE_HIT_DECREASE;
 	self->health -= health_decrease_amount;
 	elem->hurt_state = LMNTOR_HURT_STATE_FRAME_DURATION;
 	if (self->health > 0)

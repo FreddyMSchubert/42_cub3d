@@ -1,5 +1,10 @@
 # Changelog
 
+### [0.26.10] - 05.07.2024
+- Added spin & summon attacks
+- A lot of fixes & rebalancings
+- Added map overview script which prints out how many of what element are in a given map, used that to make sure no blight type or orb type is there unproportionally. There is 1 more earth blight than anything else in the campaign in total.
+
 ### [0.26.9] - 05.07.2024
 - Map reworks & elementors domain map
 - Various rebalancings

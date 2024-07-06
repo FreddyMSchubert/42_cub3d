@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:13:27 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/05 21:15:49 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 09:15:16 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ t_color	get_elementor_cloak_color(t_scale tex)
 	t_color		random_col;
 	double		chance_of_random;
 
+	if (!game()->boss)
+		return (int_to_t_color(rgba_to_int(0, 0, 0, 0)));
 	elementor = (t_elementor *)game()->boss->data;
 	normal_col = get_non_intense_color(tex);
 	random_col = get_element_col(random_int(0, 3));
