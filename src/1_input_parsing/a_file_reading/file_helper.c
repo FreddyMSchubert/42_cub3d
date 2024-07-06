@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_helper.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:27:08 by jkauker           #+#    #+#             */
-/*   Updated: 2024/06/10 11:53:43 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/06 20:11:55 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ bool	check_player(bool *invalid)
 {
 	if (*invalid)
 		return (false);
-	if (player()->spawn_transform.rot.x == -1
-		&& player()->spawn_transform.rot.y == -1)
+	if (player()->spawn_trans.rot.x == -1
+		&& player()->spawn_trans.rot.y == -1)
 	{
 		*invalid = true;
 		logger(LOGGER_ERROR, "Player spawn look dir not set!");
 	}
-	if (player()->spawn_transform.pos.x == -1
-		&& player()->spawn_transform.pos.y == -1)
+	if (player()->spawn_trans.pos.x == -1
+		&& player()->spawn_trans.pos.y == -1)
 	{
 		*invalid = true;
 		logger(LOGGER_ERROR, "Player spawn position not set!");

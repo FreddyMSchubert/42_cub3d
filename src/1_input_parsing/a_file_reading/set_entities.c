@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_entities.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 16:06:43 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/03 10:19:11 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/06 20:11:55 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 bool	set_goal(t_vec2 pos, t_tile_type ***map)
 {
 	*(map[(int)pos.y][(int)pos.x]) = FLOOR;
-	create_entity((t_transform){{pos.x + 0.5, pos.y + 0.5}, {1.0, 0}}, \
+	create_entity((t_trans){{pos.x + 0.5, pos.y + 0.5}, {1.0, 0}}, \
 						GOAL_NTT, get_texture_goal, tick_goal);
 	return (true);
 }
@@ -23,7 +23,7 @@ bool	set_goal(t_vec2 pos, t_tile_type ***map)
 bool	set_health(t_vec2 pos, t_tile_type ***map)
 {
 	*(map[(int)pos.y][(int)pos.x]) = FLOOR;
-	create_entity((t_transform){{pos.x + 0.5, pos.y + 0.5}, {1.0, 0}}, \
+	create_entity((t_trans){{pos.x + 0.5, pos.y + 0.5}, {1.0, 0}}, \
 							HEALTH_NTT, get_texture_health, tick_health);
 	return (true);
 }
@@ -46,7 +46,7 @@ bool	set_blight(t_vec2 pos, t_tile_type ***map, char type)
 	else if (type == 's' || type == 'u')
 		data->element = TYPE_AIR;
 	data->state = BLIGHT_STATE_STANDING;
-	ntt = create_entity((t_transform){{pos.x + 0.5, pos.y + 0.5}, {1.0, 0}}, \
+	ntt = create_entity((t_trans){{pos.x + 0.5, pos.y + 0.5}, {1.0, 0}}, \
 							BLIGHT_NTT, get_texture_blight, tick_blight);
 	ntt->on_collision = on_collision_blight;
 	ntt->health = ENEMY_STARTING_HEALTH;
@@ -74,7 +74,7 @@ bool	set_orb(t_vec2 pos, t_tile_type ***map, char orb_type)
 		data->element = TYPE_EARTH;
 	else if (orb_type == 'a')
 		data->element = TYPE_AIR;
-	ntt = create_entity((t_transform){{pos.x + 0.5, pos.y + 0.5}, {1.0, 0}}, \
+	ntt = create_entity((t_trans){{pos.x + 0.5, pos.y + 0.5}, {1.0, 0}}, \
 						ORB_NTT, get_texture_orb, tick_orb);
 	ntt->data = data;
 	return (true);
@@ -83,7 +83,7 @@ bool	set_orb(t_vec2 pos, t_tile_type ***map, char orb_type)
 bool	set_key(t_vec2 pos, t_tile_type ***map)
 {
 	*(map[(int)pos.y][(int)pos.x]) = FLOOR;
-	create_entity((t_transform){{pos.x + 0.5, pos.y + 0.5}, {1.0, 0}}, \
+	create_entity((t_trans){{pos.x + 0.5, pos.y + 0.5}, {1.0, 0}}, \
 						KEY_NTT, get_texture_key, tick_key);
 	return (true);
 }

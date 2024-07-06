@@ -6,34 +6,34 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 10:51:45 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/06 00:08:57 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 20:15:19 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-t_transform	get_face_vector(t_entity *ntt)
+t_trans	get_face_vector(t_entity *ntt)
 {
-	t_transform		face_vector;
-	t_vec2			dir;
+	t_trans	face_vector;
+	t_vec2	dir;
 
 	if (!ntt->is_billboard)
 	{
-		face_vector.pos.x = ntt->transform.pos.x - 0.5 * ntt->transform.rot.x;
-		face_vector.pos.y = ntt->transform.pos.y - 0.5 * ntt->transform.rot.y;
-		face_vector.rot = ntt->transform.rot;
+		face_vector.pos.x = ntt->trans.pos.x - 0.5 * ntt->trans.rot.x;
+		face_vector.pos.y = ntt->trans.pos.y - 0.5 * ntt->trans.rot.y;
+		face_vector.rot = ntt->trans.rot;
 		return (face_vector);
 	}
-	dir.x = player()->transform.pos.x - ntt->transform.pos.x;
-	dir.y = player()->transform.pos.y - ntt->transform.pos.y;
+	dir.x = player()->trans.pos.x - ntt->trans.pos.x;
+	dir.y = player()->trans.pos.y - ntt->trans.pos.y;
 	dir = scale_vector(dir, 1);
 	face_vector.rot = rotate_vector_by_90_degrees(dir, 1);
-	face_vector.pos.x = ntt->transform.pos.x - 0.5 * face_vector.rot.x;
-	face_vector.pos.y = ntt->transform.pos.y - 0.5 * face_vector.rot.y;
+	face_vector.pos.x = ntt->trans.pos.x - 0.5 * face_vector.rot.x;
+	face_vector.pos.y = ntt->trans.pos.y - 0.5 * face_vector.rot.y;
 	return (face_vector);
 }
 
-t_entity	*create_entity(t_transform trans, t_entity_type type, \
+t_entity	*create_entity(t_trans trans, t_entity_type type, \
 		mlx_texture_t	*(*tex)(t_entity *self), void (*tick)(t_entity *self))
 {
 	t_entity			*entity;
@@ -44,8 +44,8 @@ t_entity	*create_entity(t_transform trans, t_entity_type type, \
 	if (!entity)
 		cub_exit("Failed to allocate memory for entity", -1);
 	entity->id = id;
-	entity->spawn_transform = trans;
-	entity->transform = entity->spawn_transform;
+	entity->spawn_trans = trans;
+	entity->trans = entity->spawn_trans;
 	entity->type = type;
 	entity->get_texture = tex;
 	entity->frames_since_state_change = 0;
@@ -85,7 +85,7 @@ void	delete_entity(t_entity *self)
 	}
 }
 
-void	drop_orbs(t_transform trans, int element)
+void	drop_orbs(t_trans trans, int element)
 {
 	t_entity	*ntt;
 	t_orb		*orb;
@@ -100,7 +100,7 @@ void	nuke(t_vec2 pos)
 {
 	t_entity	*ntt;
 
-	ntt = create_entity((t_transform){pos, (t_vec2){0, 0}}, EXPLOSION_NTT, \
+	ntt = create_entity((t_trans){pos, (t_vec2){0, 0}}, EXPLOSION_NTT, \
 		get_texture_explosion, tick_explosion);
 	ntt->frames_since_state_change = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:57:26 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/04 18:43:54 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 20:11:55 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,21 @@ static void	rotate_self(t_entity *self, int depth)
 	double	new_angle;
 	t_vec2	new_dir;
 
-	if (pos_dist(self->transform.pos, self->spawn_transform.pos) > \
+	if (pos_dist(self->trans.pos, self->spawn_trans.pos) > \
 								BLIGHT_MAX_SPAWN_DISTANCE)
 	{
-		new_dir.x = self->spawn_transform.pos.x - self->transform.pos.x;
-		new_dir.y = self->spawn_transform.pos.y - self->transform.pos.y;
+		new_dir.x = self->spawn_trans.pos.x - self->trans.pos.x;
+		new_dir.y = self->spawn_trans.pos.y - self->trans.pos.y;
 		new_angle = dir_vec_to_deg(new_dir);
 		new_angle += random_val() * BLIGHT_SPAWN_RETURNING_DEG_VARIATION - \
 								(BLIGHT_SPAWN_RETURNING_DEG_VARIATION / 2);
-		self->transform.rot = deg_to_dir_vec(new_angle);
+		self->trans.rot = deg_to_dir_vec(new_angle);
 		return ;
 	}
-	prev_angle = dir_vec_to_deg(self->transform.rot);
-	self->transform.rot.x = (random_val() * 2) - 1;
-	self->transform.rot.y = (random_val() * 2) - 1;
-	new_angle = dir_vec_to_deg(self->transform.rot);
+	prev_angle = dir_vec_to_deg(self->trans.rot);
+	self->trans.rot.x = (random_val() * 2) - 1;
+	self->trans.rot.y = (random_val() * 2) - 1;
+	new_angle = dir_vec_to_deg(self->trans.rot);
 	if (fabs(prev_angle - new_angle) < BLIGHT_MINIUM_ROTATION_DEG && \
 			depth < MAX_ROTATE_SELF_DEPTH)
 		rotate_self(self, depth + 1);
@@ -44,15 +44,15 @@ static inline void	move_self(t_entity *self)
 {
 	t_vec2	new_pos;
 
-	self->transform.rot = scale_vector(self->transform.rot, 1);
+	self->trans.rot = scale_vector(self->trans.rot, 1);
 	if (random_val() < BLIGHT_MOVEMENT_ROTATION_SWITCH_CHANCE)
 		rotate_self(self, 0);
-	new_pos.x = self->transform.pos.x + self->transform.rot.x * BLIGHT_SPEED;
-	new_pos.y = self->transform.pos.y + self->transform.rot.y * BLIGHT_SPEED;
+	new_pos.x = self->trans.pos.x + self->trans.rot.x * BLIGHT_SPEED;
+	new_pos.y = self->trans.pos.y + self->trans.rot.y * BLIGHT_SPEED;
 	if (is_position_valid(new_pos.x, new_pos.y))
 	{
-		self->transform.pos.x = new_pos.x;
-		self->transform.pos.y = new_pos.y;
+		self->trans.pos.x = new_pos.x;
+		self->trans.pos.y = new_pos.y;
 	}
 	else
 		rotate_self(self, 0);
@@ -62,16 +62,16 @@ static inline void	blight_attack(t_entity *self, t_blight *blight)
 {
 	if (self->frames_since_state_change > BLIGHT_ATTACK_ANIMATION_FRAMES)
 	{
-		self->transform.rot.x = \
-							player()->transform.pos.x - self->transform.pos.x;
-		self->transform.rot.y = \
-							player()->transform.pos.y - self->transform.pos.y;
-		self->transform.rot = scale_vector(self->transform.rot, 1);
-		self->transform.rot = deg_to_dir_vec(\
-						dir_vec_to_deg(self->transform.rot) + (random_val() * \
+		self->trans.rot.x = \
+							player()->trans.pos.x - self->trans.pos.x;
+		self->trans.rot.y = \
+							player()->trans.pos.y - self->trans.pos.y;
+		self->trans.rot = scale_vector(self->trans.rot, 1);
+		self->trans.rot = deg_to_dir_vec(\
+						dir_vec_to_deg(self->trans.rot) + (random_val() * \
 						BLIGHT_SHOOTING_INACCURACY_DEG - \
 						(BLIGHT_SHOOTING_INACCURACY_DEG / 2)));
-		shooooot(self->transform, blight->element);
+		shooooot(self->trans, blight->element);
 		blight->state = BLIGHT_STATE_WALKING;
 		self->frames_since_state_change = 0;
 	}
@@ -109,7 +109,7 @@ void	tick_blight(t_entity *self)
 			self->frames_since_state_change > BLIGHT_DEATH_ANIMATION_FRAMES)
 	{
 		logger_v(LOGGER_ACTION, "Blight died!");
-		drop_orbs(self->transform, blight->element);
+		drop_orbs(self->trans, blight->element);
 		self->to_be_deleted = true;
 	}
 	else if (blight->state == BLIGHT_STATE_ATTACKING)

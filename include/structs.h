@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/06 00:11:49 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 20:11:55 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ typedef struct s_vec2
 	double	y;
 }	t_vec2;
 
-typedef struct s_transform
+typedef struct s_trans
 {
 	t_vec2	pos;
 	t_vec2	rot;
-}	t_transform;
+}	t_trans;
 
 typedef struct s_wall_scale
 {
@@ -85,7 +85,7 @@ typedef struct s_input_data
 	t_tile_type	***map;
 	int			map_width;
 	int			map_height;
-	t_transform	**walls;
+	t_trans	**walls;
 }	t_input_data;
 
 typedef struct s_animation
@@ -213,8 +213,8 @@ typedef struct s_inventory
 
 typedef struct s_player
 {
-	t_transform	transform;
-	t_transform	spawn_transform;
+	t_trans	trans;
+	t_trans	spawn_trans;
 
 	int			element;
 
@@ -245,8 +245,8 @@ typedef struct s_entity
 	unsigned int	id;
 	bool			to_be_deleted;
 
-	t_transform		transform;
-	t_transform		spawn_transform;
+	t_trans		trans;
+	t_trans		spawn_trans;
 
 	int				health;
 

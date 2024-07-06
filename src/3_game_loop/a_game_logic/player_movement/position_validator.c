@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:27:28 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/06 11:44:19 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 20:11:55 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static inline bool	check_door_collisions(float x, float y, t_entity *ntt)
 						door->direction == DOOR_DIR_HORIZONTAL)
 	{
 		pos_on_space = fmod(y, 1.0f);
-		if (floor(x) == floor(ntt->transform.pos.x) && \
-							floor(y) == floor(ntt->transform.pos.y) && \
+		if (floor(x) == floor(ntt->trans.pos.x) && \
+							floor(y) == floor(ntt->trans.pos.y) && \
 				pos_on_space > CLOSED_DOOR_ALLOWED_WALK_DISTANCE && \
 					pos_on_space < 1 - CLOSED_DOOR_ALLOWED_WALK_DISTANCE)
 			return (false);
@@ -31,8 +31,8 @@ static inline bool	check_door_collisions(float x, float y, t_entity *ntt)
 	else if (door->state != DOOR_STATE_OPEN)
 	{
 		pos_on_space = fmod(x, 1.0f);
-		if (floor(y) == floor(ntt->transform.pos.y) && \
-					floor(x) == floor(ntt->transform.pos.x) && \
+		if (floor(y) == floor(ntt->trans.pos.y) && \
+					floor(x) == floor(ntt->trans.pos.x) && \
 				pos_on_space > CLOSED_DOOR_ALLOWED_WALK_DISTANCE && \
 					pos_on_space < 1 - CLOSED_DOOR_ALLOWED_WALK_DISTANCE)
 			return (false);

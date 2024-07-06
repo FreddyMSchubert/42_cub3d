@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:34:27 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/06 00:41:17 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 20:11:55 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	tick_goal(t_entity *self)
 	static bool			reached = false;
 	static double		reached_time = 0;
 
-	if (pos_dist(player()->transform.pos, self->transform.pos) > \
+	if (pos_dist(player()->trans.pos, self->trans.pos) > \
 					GOAL_COLLISION_DISTANCE)
 		return ;
 	if (!reached)

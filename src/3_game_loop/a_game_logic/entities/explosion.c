@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 23:59:32 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/06 00:20:43 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 20:10:50 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ mlx_texture_t	*get_texture_explosion(t_entity *self)
 	int		texture_tick;
 
 	texture_tick = self->frames_since_state_change / TICKS_PER_FRAME;
-	if (texture_tick == 1)
+	if (texture_tick <= 1)
 		return (game()->textures.explosion_1);
 	else if (texture_tick == 2)
 		return (game()->textures.explosion_2);
@@ -45,11 +45,7 @@ mlx_texture_t	*get_texture_explosion(t_entity *self)
 		return (game()->textures.explosion_8);
 	else if (texture_tick == 9)
 		return (game()->textures.explosion_9);
-	else if (texture_tick == 10)
+	else if (texture_tick >= 10)
 		return (game()->textures.explosion_10);
-	if (texture_tick > 10)
-		return (game()->textures.explosion_10);
-	if (texture_tick < 1)
-		return (game()->textures.explosion_1);
 	return (game()->textures.door);
 }

@@ -6,13 +6,13 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:05:18 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/20 03:39:07 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 20:11:55 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-bool	is_same_wall(t_transform wall1, t_transform wall2)
+bool	is_same_wall(t_trans wall1, t_trans wall2)
 {
 	if (wall1.rot.x != wall2.rot.x)
 		return (false);

@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/06 00:51:46 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 20:11:55 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,7 +178,7 @@ void				validate(void);
 void				convert_walls(void);
 // util
 t_scale				get_map_size(t_tile_type ***map);
-t_transform			*create_transform(int x, int y, int rotx, int roty);
+t_trans			*create_trans(int x, int y, int rotx, int roty);
 bool				wall_needed(t_tile_type ***map, int x, int y, t_scale size);
 
 // ----- 2_setup
@@ -227,9 +227,9 @@ void				hud_draw_minimap(void);
 // - raycasting util
 double				pos_dist(t_vec2 pos1, t_vec2 pos2);
 t_vec2				scale_vector(t_vec2 t1, double distance);
-t_vec2				raycast_intersect(t_transform t1, t_transform t2);
-t_vec2				get_wall_intersection(t_transform **walls, t_transform ray);
-t_vec2				*get_entity_intersection(t_transform ray, \
+t_vec2				raycast_intersect(t_trans t1, t_trans t2);
+t_vec2				get_wall_intersection(t_trans **walls, t_trans ray);
+t_vec2				*get_entity_intersection(t_trans ray, \
 												t_entity ***entities);
 // - 1 raycasting
 void				raycast_walls(void);
@@ -246,7 +246,7 @@ t_color				get_elementor_cloak_color(t_scale tex);
 // - util
 bool				get_wall_orientation(t_vec2 intersect);
 char				get_wall_face_to_render(t_vec2 intersect);
-t_transform			get_wall_from_intersect(t_vec2 intersect);
+t_trans			get_wall_from_intersect(t_vec2 intersect);
 double				get_fisheye_corrected_ray_angle(int ray_index);
 mlx_texture_t		*get_wall_texture(char d);
 
@@ -273,7 +273,7 @@ void				tick_orb(t_entity *self);
 mlx_texture_t		*get_texture_orb(t_entity *self);
 // - projectile
 void				tick_projectile(t_entity *self);
-void				shooooot(t_transform t, int type);
+void				shooooot(t_trans t, int type);
 mlx_texture_t		*get_texture_projectile(t_entity *self);
 // - blight
 void				tick_blight(t_entity *self);
@@ -328,9 +328,9 @@ int					rgba_to_int(int r, int g, int b, int a);
 t_color				with_opacity(t_color in, int opacity);
 
 // positions
-bool				is_same_wall(t_transform wall1, t_transform wall2);
+bool				is_same_wall(t_trans wall1, t_trans wall2);
 t_vec2				sum_vectors(t_vec2 v1, t_vec2 v2);
-char				get_color_for_wall(t_transform t);
+char				get_color_for_wall(t_trans t);
 
 // string
 bool				str_is_equal(char *str1, char *str2);
@@ -347,11 +347,11 @@ t_vec2				rotate_vector_by_90_degrees(t_vec2 v, int direction);
 void				update_mouse_visibility(void);
 
 // entities
-t_transform			get_face_vector(t_entity *ntt);
-t_entity			*create_entity(t_transform trans, t_entity_type type, \
+t_trans			get_face_vector(t_entity *ntt);
+t_entity			*create_entity(t_trans trans, t_entity_type type, \
 		mlx_texture_t	*(*tex)(t_entity *self), void (*tick)(t_entity *self));
 void				delete_entity(t_entity *self);
-void				drop_orbs(t_transform trans, int element);
+void				drop_orbs(t_trans trans, int element);
 void				nuke(t_vec2 pos);
 
 // vector

@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:42:00 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/04 01:04:28 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 20:11:55 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	tick_orb(t_entity *self)
 	t_orb	*orb;
 
 	orb = (t_orb *)self->data;
-	if (pos_dist(player()->transform.pos, self->transform.pos) > \
+	if (pos_dist(player()->trans.pos, self->trans.pos) > \
 						GOAL_COLLISION_DISTANCE)
 		return ;
 	gain_ammo(self, orb);

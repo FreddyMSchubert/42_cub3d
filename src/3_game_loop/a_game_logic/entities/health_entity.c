@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 21:11:23 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/04 01:04:06 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 20:11:55 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	tick_health(t_entity *self)
 {
-	if (pos_dist(player()->transform.pos, self->transform.pos) > \
+	if (pos_dist(player()->trans.pos, self->trans.pos) > \
 					HEALTH_COLLISION_DISTANCE)
 		return ;
 	logger_v(LOGGER_ACTION, "Health power up picked up!");

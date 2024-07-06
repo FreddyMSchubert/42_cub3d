@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:03:38 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/04 22:01:35 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 20:01:42 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ t_player	*player(void)
 
 	return (&player);
 }
-
 
 void	timing(int mode, int type)
 {

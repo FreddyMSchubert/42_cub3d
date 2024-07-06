@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validator.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 10:54:38 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/26 12:28:23 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/06 20:11:55 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ void	validate(void)
 	y = -1;
 	while (++y < map_size.y)
 		visited[y] = gc_malloc(map_size.x * sizeof(bool));
-	if (flood_fill(data, visited, (t_scale){player()->spawn_transform.pos.x, \
-						player()->spawn_transform.pos.y}, map_size) == INVALID)
+	if (flood_fill(data, visited, (t_scale){player()->spawn_trans.pos.x, \
+						player()->spawn_trans.pos.y}, map_size) == INVALID)
 		cub_exit("Invalid map - Player can reach edge or void.", -1);
 	clear_unused_spaces(data->map, visited, map_size);
 }

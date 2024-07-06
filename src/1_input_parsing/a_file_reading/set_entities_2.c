@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 11:03:47 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/05 20:50:29 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 20:15:58 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ bool	set_door(t_vec2 pos, t_tile_type ***map, char type)
 {
 	t_door			*data;
 	t_entity		*ntt;
-	t_transform		trans;
+	t_trans			trans;
 
 	*(map[(int)pos.y][(int)pos.x]) = FLOOR;
 	data = malloc(sizeof(t_door));
@@ -43,7 +43,7 @@ bool	set_boss(t_vec2 pos, t_tile_type ***map)
 {
 	t_elementor	*data;
 	t_entity	*ntt;
-	t_transform	trans;
+	t_trans		trans;
 	static int	count;
 
 	if (++count > 1)
@@ -55,7 +55,6 @@ bool	set_boss(t_vec2 pos, t_tile_type ***map)
 	trans.pos = (t_vec2){pos.x + 0.5, pos.y + 0.5};
 	trans.rot = (t_vec2){0, 0};
 	data->stage = 1;
-	data->mvmnt = ELEMENTOR_MVMNT_STAND;
 	data->animation_frame = 0;
 	data->death_animation = -1;
 	ntt = create_entity(trans, ELEMENTOR_NTT, \

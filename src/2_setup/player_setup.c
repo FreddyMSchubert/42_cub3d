@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 08:28:05 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/04 18:53:24 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 20:11:55 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ static inline void	setup_rot(void)
 
 void	setup_player(void)
 {
-	player()->transform.pos.x = player()->spawn_transform.pos.x + 0.5;
-	player()->transform.pos.y = player()->spawn_transform.pos.y + 0.5;
-	player()->transform.rot.x = player()->spawn_transform.rot.x;
-	player()->transform.rot.y = player()->spawn_transform.rot.y;
+	player()->trans.pos.x = player()->spawn_trans.pos.x + 0.5;
+	player()->trans.pos.y = player()->spawn_trans.pos.y + 0.5;
+	player()->trans.rot.x = player()->spawn_trans.rot.x;
+	player()->trans.rot.y = player()->spawn_trans.rot.y;
 	player()->inv.keys = 0;
 	if (player()->inv.water_orbs == -1)
 		player()->inv.water_orbs = 0;
@@ -47,7 +47,6 @@ void	setup_player(void)
 		player()->health = PLAYER_STARTING_HEALTH;
 	if (INFINITE_HEALTH)
 		player()->health = INT_MAX / 2;
-	// player()->element = random_int(0, 3);
 	player()->frames_since_shot = TICKS_BETWEEN_PLAYER_SHOTS;
 	setup_rot();
 }

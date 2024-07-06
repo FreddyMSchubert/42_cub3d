@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 07:50:27 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/01 17:33:15 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 20:11:55 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ void	turn(double degrees)
 	double	sin_angle;
 	t_vec2	new_direction;
 
-	direction = player()->transform.rot;
+	direction = player()->trans.rot;
 	cos_angle = cos(degrees * M_PI / 180.0);
 	sin_angle = sin(degrees * M_PI / 180.0);
 	new_direction.x = direction.x * cos_angle - direction.y * sin_angle;
 	new_direction.y = direction.x * sin_angle + direction.y * cos_angle;
-	player()->transform.rot = new_direction;
+	player()->trans.rot = new_direction;
 }
 
 static inline t_vec2	get_movement_from_key(double speed, double angle)
@@ -74,16 +74,16 @@ void	handle_player_move(void)
 	double	angle;
 
 	speed = get_mvmnt_speed();
-	angle = deg_to_rad(dir_vec_to_deg(player()->transform.rot));
+	angle = deg_to_rad(dir_vec_to_deg(player()->trans.rot));
 	mvmnt = get_movement_from_key(speed, angle);
-	new_pos.x = player()->transform.pos.x + mvmnt.x * \
+	new_pos.x = player()->trans.pos.x + mvmnt.x * \
 				(1 + WALL_COLLISION_MARGIN);
-	new_pos.y = player()->transform.pos.y + mvmnt.y * \
+	new_pos.y = player()->trans.pos.y + mvmnt.y * \
 				(1 + WALL_COLLISION_MARGIN);
-	if (is_position_valid(new_pos.x, player()->transform.pos.y))
-		player()->transform.pos.x += mvmnt.x;
-	if (is_position_valid(player()->transform.pos.x, new_pos.y))
-		player()->transform.pos.y += mvmnt.y;
+	if (is_position_valid(new_pos.x, player()->trans.pos.y))
+		player()->trans.pos.x += mvmnt.x;
+	if (is_position_valid(player()->trans.pos.x, new_pos.y))
+		player()->trans.pos.y += mvmnt.y;
 	if (mlx_is_key_down(game()->mlx, MLX_KEY_LEFT))
 		turn(-TURN_SPEED_ARROWS_DEG);
 	if (mlx_is_key_down(game()->mlx, MLX_KEY_RIGHT))

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 13:22:19 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/02 11:14:25 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/06 20:11:55 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/cub3d.h"
 
-t_vec2	get_wall_intersection(t_transform **walls, t_transform ray)
+t_vec2	get_wall_intersection(t_trans **walls, t_trans ray)
 {
 	t_vec2		intersection;
 	t_vec2		closest_intersection;
@@ -49,7 +49,7 @@ static inline void	setup_entities(t_vec2 **intersections, t_entity ***entities)
 		cub_exit("Memory allocation failed", -1);
 }
 
-t_vec2	*get_entity_intersection(t_transform ray, t_entity ***entities)
+t_vec2	*get_entity_intersection(t_trans ray, t_entity ***entities)
 {
 	int			size;
 	t_vec2		*intersections;

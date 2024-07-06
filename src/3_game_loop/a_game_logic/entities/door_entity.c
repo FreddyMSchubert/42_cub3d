@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   door_entity.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:57:29 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/03 10:17:34 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/06 20:11:55 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static inline void	unlock_door_if_possible(t_entity *self, t_door *door)
 {
-	if (pos_dist(player()->transform.pos, self->transform.pos)
+	if (pos_dist(player()->trans.pos, self->trans.pos)
 		> DOOR_OPEN_DISTANCE || player()->inv.keys < 1
 		|| player()->inv.current_index != 0)
 		return ;
@@ -26,8 +26,8 @@ static inline void	unlock_door_if_possible(t_entity *self, t_door *door)
 		player()->inv.text_amount_key = NULL;
 	}
 	door->state = DOOR_STATE_OPENING;
-	door->close_pos = self->transform.pos;
-	door->open_pos = self->transform.pos;
+	door->close_pos = self->trans.pos;
+	door->open_pos = self->trans.pos;
 	if (door->direction == DOOR_DIR_HORIZONTAL)
 		door->open_pos.x += 1;
 	else
@@ -50,13 +50,13 @@ void	tick_door(t_entity *self)
 	else if (door->state == DOOR_STATE_OPENING)
 	{
 		door->door_open_progress -= DOOR_OPEN_SPEED;
-		self->transform.pos.x += ((door->open_pos.x - door->close_pos.x) * \
+		self->trans.pos.x += ((door->open_pos.x - door->close_pos.x) * \
 								DOOR_OPEN_SPEED);
-		self->transform.pos.y += ((door->open_pos.y - door->close_pos.y) * \
+		self->trans.pos.y += ((door->open_pos.y - door->close_pos.y) * \
 								DOOR_OPEN_SPEED);
 		if (door->door_open_progress <= 0)
 		{
-			self->transform.pos = door->open_pos;
+			self->trans.pos = door->open_pos;
 			door->state = DOOR_STATE_OPEN;
 		}
 	}

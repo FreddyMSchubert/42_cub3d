@@ -1,5 +1,10 @@
 # Changelog
 
+### [0.26.13] - 06.07.2024
+- Norminettification, again
+- Various fixes
+- Renamed transform to trans
+
 ### [0.26.12] - 06.07.2024
 - Made boss stay near its spawn, thus it doesnt get stuck in its map
 - Made boss health bar scale up the less there is

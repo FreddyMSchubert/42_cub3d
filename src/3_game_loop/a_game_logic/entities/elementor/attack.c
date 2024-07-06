@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 14:59:57 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/06 12:38:43 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 20:31:49 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,21 @@ static inline int	get_random_element(t_elementor *elem)
 
 static inline void	normal_attack(t_entity *self, t_elementor *elem)
 {
-	t_transform	trans;
+	t_trans	trans;
 
-	trans.rot.x = player()->transform.pos.x - self->transform.pos.x;
-	trans.rot.y = player()->transform.pos.y - self->transform.pos.y;
-	self->transform.rot = scale_vector(self->transform.rot, 1);
-	trans.pos = self->transform.pos;
-	self->transform.rot = deg_to_dir_vec(\
-		dir_vec_to_deg(self->transform.rot) + (random_val() * \
+	trans.rot.x = player()->trans.pos.x - self->trans.pos.x;
+	trans.rot.y = player()->trans.pos.y - self->trans.pos.y;
+	self->trans.rot = scale_vector(self->trans.rot, 1);
+	trans.pos = self->trans.pos;
+	self->trans.rot = deg_to_dir_vec(\
+		dir_vec_to_deg(self->trans.rot) + (random_val() * \
 		LMNTOR_SHOOTING_INACCURACY_DEG - (LMNTOR_SHOOTING_INACCURACY_DEG / 2)));
 	shooooot(trans, get_random_element(elem));
 }
 
 static inline void	spin_attack(t_entity *self, t_elementor *elem)
 {
-	t_transform	trans;
+	t_trans		trans;
 	int			i;
 	int			count;
 	int			degree;
@@ -71,7 +71,7 @@ static inline void	spin_attack(t_entity *self, t_elementor *elem)
 	i = 0;
 	while (i < count)
 	{
-		trans.pos = self->transform.pos;
+		trans.pos = self->trans.pos;
 		trans.rot = deg_to_dir_vec(degree);
 		shooooot(trans, get_random_element(elem));
 		degree += 360 / count;
@@ -81,12 +81,14 @@ static inline void	spin_attack(t_entity *self, t_elementor *elem)
 
 static inline void	summon_attack(t_entity *self, t_elementor *elem)
 {
-	t_transform	trans;
+	t_trans		trans;
 	t_entity	*ntt;
 	t_blight	*blight;
 
-	trans.pos.x = self->transform.pos.x + random_int(-LMNTOR_BLIGHT_SPAWN_DIST, LMNTOR_BLIGHT_SPAWN_DIST);
-	trans.pos.y = self->transform.pos.y + random_int(-LMNTOR_BLIGHT_SPAWN_DIST, LMNTOR_BLIGHT_SPAWN_DIST);
+	trans.pos.x = self->trans.pos.x + random_int(-LMNTOR_BLIGHT_SPAWN_DIST, \
+													LMNTOR_BLIGHT_SPAWN_DIST);
+	trans.pos.y = self->trans.pos.y + random_int(-LMNTOR_BLIGHT_SPAWN_DIST, \
+													LMNTOR_BLIGHT_SPAWN_DIST);
 	if (!is_position_valid(trans.pos.x, trans.pos.y))
 		return ;
 	trans.rot = deg_to_dir_vec(random_int(0, 360));

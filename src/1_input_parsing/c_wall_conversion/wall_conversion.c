@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 13:47:07 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/05 18:52:20 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 20:15:38 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,19 +99,19 @@ static int	count_walls(bool ***walls, t_scale size)
 }
 
 /*
-	The return of this file is a list of wall side transforms,
+	The return of this file is a list of wall side transs,
 	created from the boolean array.
 */
 
-static t_transform	**create_walls_list(bool ***bool_list, t_scale size)
+static t_trans	**create_walls_list(bool ***bool_list, t_scale size)
 {
-	t_transform	**walls;
+	t_trans		**walls;
 	int			walls_count;
 	int			y;
 	int			x;
 
 	walls_count = count_walls(bool_list, size);
-	walls = gc_malloc(sizeof(t_transform *) * (walls_count + 1));
+	walls = gc_malloc(sizeof(t_trans *) * (walls_count + 1));
 	walls[walls_count] = NULL;
 	y = -1;
 	walls_count = -1;
@@ -123,9 +123,9 @@ static t_transform	**create_walls_list(bool ***bool_list, t_scale size)
 			if (bool_list[y][x] != NULL)
 			{
 				if (bool_list[y][x][RIGHT] == true)
-					walls[++walls_count] = create_transform(x, y, 1, 0);
+					walls[++walls_count] = create_trans(x, y, 1, 0);
 				if (bool_list[y][x][DOWN] == true)
-					walls[++walls_count] = create_transform(x, y, 0, 1);
+					walls[++walls_count] = create_trans(x, y, 0, 1);
 			}
 		}
 	}

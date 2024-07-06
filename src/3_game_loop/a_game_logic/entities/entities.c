@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:47:39 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/05 21:28:23 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 20:11:55 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #define PROJECTILE_PLAYER_COLLISION_DISTANCE 0.1
 
-static inline bool	check_colliding(t_transform t1, t_transform t2)
+static inline bool	check_colliding(t_trans t1, t_trans t2)
 {
 	t_vec2	pos1;
 	t_vec2	pos2;
@@ -55,8 +55,8 @@ void	collide_entities(void)
 							(t_entity *)ntt2->content);
 			ntt2 = ntt2->next;
 		}
-		if (check_colliding(player()->transform, \
-						((t_entity *)ntt1->content)->transform))
+		if (check_colliding(player()->trans, \
+						((t_entity *)ntt1->content)->trans))
 			on_collision_player((t_entity *)ntt1->content);
 		ntt1 = ntt1->next;
 	}

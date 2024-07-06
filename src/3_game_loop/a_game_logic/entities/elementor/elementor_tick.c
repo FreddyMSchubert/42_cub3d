@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 13:37:24 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/06 12:30:28 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 20:18:33 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,27 @@ static inline void	move(t_entity *self, t_elementor *elementor)
 {
 	t_vec2	new_pos;
 
-	if (elementor->mvmnt == ELEMENTOR_MVMNT_STAND && \
-				random_val() < LMNTOR_MVMNT_WALK_START_CHANCE)
+	if (random_val() < LMNTOR_MVMNT_WALK_START_CHANCE)
 		elementor->mvmnt = ELEMENTOR_MVMNT_WALK;
-	else if (elementor->mvmnt == ELEMENTOR_MVMNT_WALK && \
-				random_val() < LMNTOR_MVMNT_WALK_STOP_CHANCE)
+	else if (random_val() < LMNTOR_MVMNT_WALK_STOP_CHANCE)
 		elementor->mvmnt = ELEMENTOR_MVMNT_STAND;
 	if (elementor->mvmnt == ELEMENTOR_MVMNT_STAND)
 		return ;
-	self->transform.rot = scale_vector(self->transform.rot, LMNTOR_MVMNT_SPEED);
-	new_pos.x = self->transform.pos.x + self->transform.rot.x;
-	new_pos.y = self->transform.pos.y + self->transform.rot.y;
+	self->trans.rot = scale_vector(self->trans.rot, LMNTOR_MVMNT_SPEED);
+	new_pos.x = self->trans.pos.x + self->trans.rot.x;
+	new_pos.y = self->trans.pos.y + self->trans.rot.y;
 	if (is_position_valid(new_pos.x, new_pos.y))
-		self->transform.pos = new_pos;
+		self->trans.pos = new_pos;
 	else
 		elementor->mvmnt = ELEMENTOR_MVMNT_STAND;
 	if (random_val() > LMNTOR_MVMNT_ROT_CHANGE_CHANCE)
 		return ;
-	self->transform.rot = deg_to_dir_vec(random_int(0, 360));
-	if (pos_dist(self->transform.pos, self->spawn_transform.pos) > LMNTOR_MAX_DISTANCE_FROM_SPAWN)
+	self->trans.rot = deg_to_dir_vec(random_int(0, 360));
+	if (pos_dist(self->trans.pos, self->spawn_trans.pos) > \
+					LMNTOR_MAX_DISTANCE_FROM_SPAWN)
 	{
-		self->transform.rot.x = self->spawn_transform.pos.x - self->transform.pos.x;
-		self->transform.rot.y = self->spawn_transform.pos.y - self->transform.pos.y;
+		self->trans.rot.x = self->spawn_trans.pos.x - self->trans.pos.x;
+		self->trans.rot.y = self->spawn_trans.pos.y - self->trans.pos.y;
 	}
 }
 
@@ -46,19 +45,19 @@ static inline void	update_stage(t_entity *self, t_elementor *elementor)
 	int		previous;
 
 	previous = elementor->stage;
+	elementor->stage = 0;
 	if (self->health < 0)
 		elementor->stage = 3;
 	else if (self->health < (LMNTOR_STARTING_HEALTH / 3))
 		elementor->stage = 2;
 	else if (self->health < 2 * (LMNTOR_STARTING_HEALTH / 3))
 		elementor->stage = 1;
-	else
-		elementor->stage = 0;
-	if (elementor->stage == 3 && elementor->death_animation == LMNTOR_DEATH_ANIM_TICKS / 2)
-		elementor_logger("Oh no! What's going on? The elements - It's too much - power - HELP!");
+	if (elementor->stage == 3 && elementor->death_animation == \
+							LMNTOR_DEATH_ANIM_TICKS / 2)
+		elementor_logger("Oh no! The elements - It's too much - power - HELP!");
 	if (previous == elementor->stage)
 		return ;
-	create_entity(self->transform, HEALTH_NTT, get_texture_health, tick_health);
+	create_entity(self->trans, HEALTH_NTT, get_texture_health, tick_health);
 	if (elementor->stage == 1)
 		elementor_logger("You won't defeat me! I can harness more elements than\
  you! Now, you won't be able to damage me with half of your orbs!");
@@ -91,8 +90,8 @@ void	tick_elementor(t_entity *self)
 	{
 		self->to_be_deleted = true;
 		game()->boss = NULL;
-		create_entity(self->transform, KEY_NTT, get_texture_key, tick_key);
-		elementor_logger("Nooooooooooooooooooooooooooooooooooooooooooo!");
-		nuke(self->transform.pos);
+		create_entity(self->trans, KEY_NTT, get_texture_key, tick_key);
+		elementor_logger("Nooooooooooooooooooooooooooooooooooooooooooooooooo!");
+		nuke(self->trans.pos);
 	}
 }

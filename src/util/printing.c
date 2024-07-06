@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:49:10 by fschuber          #+#    #+#             */
-/*   Updated: 2024/06/28 13:40:05 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 20:11:55 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	print_entity(void)
 	int		deg_seg;
 	char	*deg_seg_string;
 
-	deg_seg = normalize_degrees(dir_vec_to_deg(player()->transform.rot) \
+	deg_seg = normalize_degrees(dir_vec_to_deg(player()->trans.rot) \
 		+ 22.5) / 45;
 	if (deg_seg == 0)
 		deg_seg_string = "→";
@@ -62,8 +62,8 @@ void	print_map(t_tile_type ***map, char *mode)
 		while (map[y][++x] != NULL)
 		{
 			current_spot = *map[y][x];
-			if (TERMINAL_MAP && x == (int)player()->transform.pos.x
-				&& y == (int)player()->transform.pos.y)
+			if (TERMINAL_MAP && x == (int)player()->trans.pos.x
+				&& y == (int)player()->trans.pos.y)
 				print_entity();
 			else if (current_spot == VOID)
 				printf("%s%c%s", ANSI_BACKGROUND_BLACK, mode[0], ANSI_RESET);

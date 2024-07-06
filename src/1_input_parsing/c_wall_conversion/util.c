@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 07:13:03 by fschuber          #+#    #+#             */
-/*   Updated: 2024/05/24 13:40:00 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 20:11:55 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ t_scale	get_map_size(t_tile_type ***map)
 	return (size);
 }
 
-t_transform	*create_transform(int x, int y, int rotx, int roty)
+t_trans	*create_trans(int x, int y, int rotx, int roty)
 {
-	t_transform	*directions;
+	t_trans	*directions;
 
-	directions = gc_malloc(sizeof(t_transform));
+	directions = gc_malloc(sizeof(t_trans));
 	directions->pos.x = x;
 	directions->pos.y = y;
 	directions->rot.x = rotx;

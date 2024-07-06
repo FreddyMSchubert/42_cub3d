@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_parser.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 13:57:51 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/04 13:51:53 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/06 20:11:55 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static inline void	init_player_pos(void)
 {
-	player()->spawn_transform.rot.x = -1;
-	player()->spawn_transform.rot.y = -1;
-	player()->spawn_transform.pos.x = -1;
-	player()->spawn_transform.pos.y = -1;
-	player()->transform = player()->spawn_transform;
+	player()->spawn_trans.rot.x = -1;
+	player()->spawn_trans.rot.y = -1;
+	player()->spawn_trans.pos.x = -1;
+	player()->spawn_trans.pos.y = -1;
+	player()->trans = player()->spawn_trans;
 }
 
 void	parse_input(char	*filepath)

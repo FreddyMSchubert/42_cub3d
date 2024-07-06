@@ -6,13 +6,13 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:56:45 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/04 01:04:45 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 20:11:55 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/cub3d.h"
 
-void	shooooot(t_transform t, int element)
+void	shooooot(t_trans t, int element)
 {
 	t_entity		*ntt;
 	t_projectile	*projectile;
@@ -30,17 +30,17 @@ void	tick_projectile(t_entity *self)
 {
 	t_vec2	new_pos;
 
-	self->transform.rot = scale_vector(self->transform.rot, 1);
-	new_pos.x = self->transform.pos.x + self->transform.rot.x * \
+	self->trans.rot = scale_vector(self->trans.rot, 1);
+	new_pos.x = self->trans.pos.x + self->trans.rot.x * \
 						PROJECTILE_SPEED;
-	new_pos.y = self->transform.pos.y + self->transform.rot.y * \
+	new_pos.y = self->trans.pos.y + self->trans.rot.y * \
 						PROJECTILE_SPEED;
 	if (!is_position_valid(new_pos.x, new_pos.y))
 	{
 		self->to_be_deleted = true;
 		return ;
 	}
-	self->transform.pos = new_pos;
+	self->trans.pos = new_pos;
 }
 
 mlx_texture_t	*get_texture_projectile(t_entity *self)

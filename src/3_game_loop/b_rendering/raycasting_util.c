@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_util.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 11:08:51 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/02 11:09:07 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/06 20:11:55 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_vec2	scale_vector(t_vec2 v, double distance)
 	return (v);
 }
 
-t_vec2	raycast_intersect(t_transform t1, t_transform t2)
+t_vec2	raycast_intersect(t_trans t1, t_trans t2)
 {
 	double	denom;
 	double	inv_denom;

@@ -23,8 +23,8 @@ int	get_minimap_opacity(int x, int y)
 
 	min_opacity = 75;
 	max_opacity = 255;
-	distance = sqrt(pow(player()->transform.pos.x - x, 2)
-			+ pow(player()->transform.pos.y - y, 2));
+	distance = sqrt(pow(player()->trans.pos.x - x, 2)
+			+ pow(player()->trans.pos.y - y, 2));
 	visible = is_visible(x, y);
 	if (!visible && distance >= 3)
 		return (0);
@@ -63,8 +63,8 @@ static inline void	draw_walls(int size)
 	t_tile_type	***walls;
 
 	i = -1;
-	offset_x = MINIMAP_WIDTH / 2 - (player()->transform.pos.x * size);
-	offset_y = MINIMAP_HEIGHT / 2 - (player()->transform.pos.y * size);
+	offset_x = MINIMAP_WIDTH / 2 - (player()->trans.pos.x * size);
+	offset_y = MINIMAP_HEIGHT / 2 - (player()->trans.pos.y * size);
 	walls = game()->input_data->map;
 	while (walls[++i])
 	{
@@ -83,5 +83,5 @@ void	hud_draw_minimap(void)
 	draw_square_hud(MINIMAP_WIDTH / 2 - size / 2,
 		MINIMAP_HEIGHT / 2 - size / 2, size / 2,
 		t_color_to_int(with_opacity(int_to_t_color(get_wall_color(\
-		player()->transform.pos.y, player()->transform.pos.x)), 255)));
+		player()->trans.pos.y, player()->trans.pos.x)), 255)));
 }

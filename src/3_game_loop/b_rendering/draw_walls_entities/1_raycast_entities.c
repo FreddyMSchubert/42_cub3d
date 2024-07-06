@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   1_raycast_entities.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 21:27:44 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/03 14:38:12 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/06 20:16:41 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 t_entity	**perform_entity_raycast(int i, t_vec2 **entity_intersects)
 {
-	t_transform	ray;
+	t_trans		ray;
 	double		p_angle;
 	double		ray_angle;
 	t_entity	**entities;
 
-	p_angle = dir_vec_to_deg(player()->transform.rot);
+	p_angle = dir_vec_to_deg(player()->trans.rot);
 	ray_angle = get_fisheye_corrected_ray_angle(i);
 	ray_angle += p_angle;
 	ray.rot = deg_to_dir_vec(ray_angle);
 	ray.rot = scale_vector(ray.rot, VIEW_DIST);
-	ray.pos = player()->transform.pos;
+	ray.pos = player()->trans.pos;
 	*entity_intersects = get_entity_intersection(ray, &entities);
 	return (entities);
 }
@@ -43,7 +43,7 @@ static inline double	get_max_dist(t_entity **ntts, \
 	{
 		if (ntts[i] == NULL)
 			continue ;
-		dist = pos_dist(player()->transform.pos, entity_intersects[i]);
+		dist = pos_dist(player()->trans.pos, entity_intersects[i]);
 		if (dist > max_dist)
 		{
 			max_dist = dist;
@@ -83,7 +83,7 @@ void	start_calc_entities(t_entity **ntts, \
 		count++;
 	j = -1;
 	while (++j < count)
-		if (pos_dist(player()->transform.pos, entity_intersects[j]) > wall_dist)
+		if (pos_dist(player()->trans.pos, entity_intersects[j]) > wall_dist)
 			ntts[j] = NULL;
 	draw_entities_ordered(ntts, entity_intersects, count, ray_index);
 	free(ntts);

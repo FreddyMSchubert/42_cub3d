@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_values.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:12:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/05 13:51:27 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/06 20:11:55 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,23 @@ bool	set_entity_spawn(char dir, t_vec2 pos, t_tile_type ***map)
 
 	if (++player_count > 1)
 		cub_exit("Multiple player spawns detected!", -1);
-	player()->spawn_transform.rot.x = 0;
-	player()->spawn_transform.rot.y = 0;
+	player()->spawn_trans.rot.x = 0;
+	player()->spawn_trans.rot.y = 0;
 	if (dir == 'N')
-		player()->spawn_transform.rot.y = -1;
+		player()->spawn_trans.rot.y = -1;
 	else if (dir == 'S')
-		player()->spawn_transform.rot.y = 1;
+		player()->spawn_trans.rot.y = 1;
 	else if (dir == 'E')
-		player()->spawn_transform.rot.x = 1;
+		player()->spawn_trans.rot.x = 1;
 	else if (dir == 'W')
-		player()->spawn_transform.rot.x = -1;
+		player()->spawn_trans.rot.x = -1;
 	else
 	{
 		logger_v(LOGGER_ERROR, "Player spawn look dir is not valid dir");
 		return (false);
 	}
-	player()->spawn_transform.pos = pos;
-	player()->transform = player()->spawn_transform;
+	player()->spawn_trans.pos = pos;
+	player()->trans = player()->spawn_trans;
 	*(map[(int)pos.y][(int)pos.x]) = FLOOR;
 	return (true);
 }
