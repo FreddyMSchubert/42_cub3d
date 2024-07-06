@@ -31,7 +31,7 @@ done
 echo "Campaign completed!"
 echo "But I'm already bored..."
 echo "Wait, what's that over there?"
-echo "Infinite arcade mode, here I come!"
+echo "Infinite random gen arcade mode, here I come!"
 
 while true; do
 	./cub3d
