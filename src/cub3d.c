@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 07:33:54 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/04 03:12:35 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/05 18:56:30 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,15 @@ static inline void	set_player_element(void)
 	bytes_read = read(STDIN_FILENO, &input, 1);
 	if (bytes_read < 0)
 		input = '\n';
-	if (input == 'W')
+	if (input == 'W' || input == 'w')
 		player()->element = TYPE_WATER;
-	else if (input == 'F')
+	else if (input == 'F' || input == 'f')
 		player()->element = TYPE_FIRE;
-	else if (input == 'E')
+	else if (input == 'E' || input == 'e')
 		player()->element = TYPE_EARTH;
-	else if (input == 'A')
+	else if (input == 'A' || input == 'a')
 		player()->element = TYPE_AIR;
-	else if (input == '\n')
+	else
 		player()->element = random_int(0, 3);
 	printf_element(player()->element);
 }
@@ -82,11 +82,11 @@ static inline void	null_data(void)
 
 int	main(int argc, char **argv)
 {
-	printf("\n");
 	if (!check_args_validity(argc, argv))
 		return (EXIT_FAILURE);
 	load_static_textures();
 	init_random_seed();
+	game()->boss = NULL;
 	if (argc == 1)
 	{
 		logger_v(LOGGER_STEP, "Map Generation");

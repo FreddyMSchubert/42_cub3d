@@ -1,5 +1,56 @@
 # Changelog
 
+### [0.26.12] - 06.07.2024
+- Made boss stay near its spawn, thus it doesnt get stuck in its map
+- Made boss health bar scale up the less there is
+- Better enemy spawning balancing
+
+### [0.26.11] - 06.07.2024
+- Made elementor stop spawning enemies in walls
+- Various rebalancings. Enemies now get spawned more often but only one at a time.
+
+### [0.26.10] - 06.07.2024
+- Added spin & summon attacks
+- A lot of fixes & rebalancings
+- Added map overview script which prints out how many of what element are in a given map, used that to make sure no blight type or orb type is there unproportionally. There is 1 more earth blight than anything else in the campaign in total.
+
+### [0.26.9] - 05.07.2024
+- Map reworks & elementors domain map
+- Various rebalancings
+- Fixed getting to the goal leading to an incorrect return code
+
+### [0.26.8] - 05.07.2024
+- boss drops health
+- Added explosion which gets triggered after the boss is dead
+
+### [0.26.6] - 05.07.2024
+- Made elementor killable & Added a really nice death animation
+- Added some cool voice messages
+- Little write warning fix
+
+### [0.26.5] - 05.07.2024
+- Made elementor switch their type after a while so you don't get softlocked
+- Added a nice black outline around the element you've selected in the element overview in the top right
+- Fixed command line input for element choice allowing to choose an invalid value
+
+### [0.26.4] - 05.07.2024
+- Made elementor damageable
+- Added a boss health bar
+
+### [0.26.3] - 05.07.2024
+- Added a basic attack
+- Added a nice method to shuffle up the elementor selected elements
+
+### [0.26.2] - 05.07.2024
+- Gave boss a rotating animation when in second phase
+
+### [0.26.1] - 05.07.2024
+- Made elementor texture square & made it display in-game
+- Made elementor cloak color change dynamically based on selected element
+
+## [0.26.0] - 04.07.2024
+- elementor implementation, basic elementor movement. hes currently a door
+
 ### [0.25.11] - 04.07.2024
 - Some minor efficiency improvements in draw_walls_entities.c, nothing major
 

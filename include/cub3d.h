@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/05 00:33:07 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 00:51:46 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # include <limits.h>
 
 /* ---- SETTINGS ---- */
-# define MAP_TILES " 10NESWGHVKwfeaqrdshuiop"
+# define MAP_TILES " 10NESWGHVKwfeaqrdshuiopB"
 // ' ' -> VOID
 // '1' -> WALL
 // '0' -> FLOOR
@@ -55,11 +55,12 @@
 // 'd' -> FIRE BLIGHT
 // 'r' -> EARTH BLIGHT
 // 's' -> AIR BLIGHT
-// 'u' -> KEY AIR ORB
-// 'i' -> KEY EARTH ORB
-// 'o' -> KEY FIRE ORB
-// 'p' -> KEY WATER ORB
+// 'u' -> KEY AIR BLIGHT
+// 'i' -> KEY EARTH BLIGHT
+// 'o' -> KEY FIRE BLIGHT
+// 'p' -> KEY WATER BLIGHT
 // 'h' -> HEALTH PICKUP
+// 'B' -> BOSS (ELEMENTOR)
 
 /* ----- LOGGER ----- */
 # define LOGGER_ERROR 'e'
@@ -158,6 +159,7 @@ bool				set_blight(t_vec2 pos, t_tile_type ***map, \
 										char blight_type);
 bool				set_door(t_vec2 pos, t_tile_type ***map, char type);
 bool				set_key(t_vec2 pos, t_tile_type ***map);
+bool				set_boss(t_vec2 pos, t_tile_type ***map);
 // squarify map
 void				squarify_map(void);
 // util
@@ -217,6 +219,7 @@ void				cycle_inventory(int direction, bool direct);
 int					*get_amount_of_item(int index);
 int					get_minimap_opacity(int x, int y);
 void				draw_healthbar(int size, int start_x, int start_y);
+void				draw_boss_healthbar(int size);
 int					get_floor_color(int j, int i);
 int					get_wall_color(int j, int i);
 // minimap
@@ -239,6 +242,7 @@ void				calc_entity(int ray_index, t_vec2 intersect, t_entity *ntt);
 // - 3 draw walls
 void				draw_gameobject(t_range x_range, int height, \
 									mlx_texture_t *tex, double hit_offset);
+t_color				get_elementor_cloak_color(t_scale tex);
 // - util
 bool				get_wall_orientation(t_vec2 intersect);
 char				get_wall_face_to_render(t_vec2 intersect);
@@ -275,6 +279,15 @@ mlx_texture_t		*get_texture_projectile(t_entity *self);
 void				tick_blight(t_entity *self);
 void				on_collision_blight(t_entity *self, t_entity *other);
 mlx_texture_t		*get_texture_blight(t_entity *self);
+// - elementor
+void				tick_elementor(t_entity *self);
+void				on_collision_elementor(t_entity *self, t_entity *other);
+mlx_texture_t		*get_texture_elementor(t_entity *self);
+void				elementor_attack(t_entity *self, t_elementor *elementor);
+void				refresh_projectiles(t_elementor *elementor);
+// - explosion
+void				tick_explosion(t_entity *self);
+mlx_texture_t		*get_texture_explosion(t_entity *self);
 
 # define WALL_ORIENTATION_HORIZONTAL 0
 # define WALL_ORIENTATION_VERTICAL 1
@@ -299,6 +312,8 @@ void				gc_exit(int code);
 // logging
 void				logger(char type, char *message);
 void				logger_v(char type, char *message);
+void				elementor_logger(char *message);
+
 // printing
 void				print_map(t_tile_type ***map, char *mode);
 void				print_walls(void);
@@ -337,6 +352,7 @@ t_entity			*create_entity(t_transform trans, t_entity_type type, \
 		mlx_texture_t	*(*tex)(t_entity *self), void (*tick)(t_entity *self));
 void				delete_entity(t_entity *self);
 void				drop_orbs(t_transform trans, int element);
+void				nuke(t_vec2 pos);
 
 // vector
 double				vec2_dot_product(t_vec2 a, t_vec2 b);

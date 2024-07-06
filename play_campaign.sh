@@ -28,6 +28,11 @@ for map_file in "$MAP_DIR"/*; do
 	((COUNTER++))
 done
 
+echo "Campaign completed!"
+echo "But I'm already bored..."
+echo "Wait, what's that over there?"
+echo "Infinite random gen arcade mode, here I come!"
+
 while true; do
 	./cub3d
 done

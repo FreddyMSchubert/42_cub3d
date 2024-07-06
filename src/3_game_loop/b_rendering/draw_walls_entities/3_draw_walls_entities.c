@@ -6,19 +6,24 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:58:47 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/05 09:28:25 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/05 15:33:55 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../include/cub3d.h"
 
-static void	set_pixel_color(mlx_image_t *img, int x, int y, t_color col)
+// pos is the pixel to draw at
+// tex is the pixel of the texture the color is from
+static void	set_pixel_color(mlx_image_t *img, t_scale pos, \
+							t_color col, t_scale tex)
 {
 	int	index;
 
 	if (col.a == 0)
 		return ;
-	index = (y * img->width + x) * 4;
+	if (col.a == 38)
+		col = get_elementor_cloak_color(tex);
+	index = (pos.y * img->width + pos.x) * 4;
 	img->pixels[index + 0] = col.r & 0xFF;
 	img->pixels[index + 1] = col.g & 0xFF;
 	img->pixels[index + 2] = col.b & 0xFF;
@@ -29,6 +34,8 @@ static t_color	get_tex_color_at(mlx_texture_t *tex, int x, int y)
 {
 	int	index;
 
+	if (x < 0 || x >= (int)tex->width || y < 0 || y >= (int)tex->height)
+		return ((t_color){0, 0, 0, 0});
 	index = (y * tex->width + x) * tex->bytes_per_pixel;
 	return ((t_color){tex->pixels[index + 0], tex->pixels[index + 1], \
 					tex->pixels[index + 2], tex->pixels[index + 3]});
@@ -57,7 +64,8 @@ static void	draw_column(t_scale start, t_scale end, mlx_texture_t *tex,
 		color = get_tex_color_at(tex, tex_x, tex_y);
 		x = start.x - 1;
 		while (++x < end.x && x < game()->mlx->width && x >= 0)
-			set_pixel_color(game()->game_scene, x, y, color);
+			set_pixel_color(game()->game_scene, (t_scale){x, y}, color, \
+								(t_scale){tex_x, tex_y});
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 20:22:43 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/01 11:17:30 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/05 19:00:13 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	print_mapmaker_map(char **maze, int height, int width)
 {
 	int	i;
 	int	j;
+	int	count;
 
 	i = 0;
 	while (i < height)
@@ -38,10 +39,14 @@ void	print_mapmaker_map(char **maze, int height, int width)
 		j = 0;
 		while (j < width)
 		{
-			write(STDOUT_FILENO, &maze[i][j], 1);
+			count = write(STDOUT_FILENO, &maze[i][j], 1);
+			if (count != 1)
+				cub_exit("Error writing to stdout", -1);
 			j++;
 		}
-		write(STDOUT_FILENO, "\n", 1);
+		count = write(STDOUT_FILENO, "\n", 1);
+		if (count != 1)
+			cub_exit("Error writing to stdout", -1);
 		i++;
 	}
 }

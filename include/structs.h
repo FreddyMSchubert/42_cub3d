@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/04 19:22:25 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 00:11:49 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define STRUCTS_H
 
 # include "cub3d.h"
+
+// ---- PREDEFS
+
+typedef struct s_entity	t_entity;
 
 // ---- UTILS
 
@@ -137,9 +141,27 @@ typedef struct s_textures
 	mlx_texture_t	*hotbar_select;
 
 	mlx_texture_t	*elements_overview;
+	mlx_texture_t	*hightlight_water;
+	mlx_texture_t	*hightlight_fire;
+	mlx_texture_t	*hightlight_earth;
+	mlx_texture_t	*hightlight_air;
+
+	mlx_texture_t	*elementor_idle;
+	mlx_texture_t	*elementor_hurt;
+
+	mlx_texture_t	*explosion_1;
+	mlx_texture_t	*explosion_2;
+	mlx_texture_t	*explosion_3;
+	mlx_texture_t	*explosion_4;
+	mlx_texture_t	*explosion_5;
+	mlx_texture_t	*explosion_6;
+	mlx_texture_t	*explosion_7;
+	mlx_texture_t	*explosion_8;
+	mlx_texture_t	*explosion_9;
+	mlx_texture_t	*explosion_10;
 }	t_textures;
 
-# define MAX_TEXTURES 60
+# define MAX_TEXTURES 73
 
 typedef struct s_persistent_data
 {
@@ -166,6 +188,7 @@ typedef struct s_persistent_data
 	t_textures		textures;
 	bool			mouse_free;
 	mlx_texture_t	*texture_arr[MAX_TEXTURES];
+	t_entity		*boss;
 }	t_persistent_data;
 
 // --- PLAYER
@@ -211,10 +234,11 @@ typedef enum e_entity_type
 	ORB_NTT,
 	PROJECTILE_NTT,
 	BLIGHT_NTT,
-	HEALTH_NTT
+	HEALTH_NTT,
+	ELEMENTOR_NTT,
+	EXPLOSION_NTT
 }	t_entity_type;
 
-typedef struct s_entity	t_entity;
 typedef struct s_entity
 {
 	t_entity_type	type;
@@ -285,5 +309,28 @@ typedef struct s_blight
 }	t_blight;
 // once hurt, hurt_state will be set to BLIGHT_HURT_STATE_FRAME_DURATION
 // this will count down and the texture will be hurt during that time
+
+// - ELEMENTOR
+
+# define ELEMENTOR_MVMNT_STAND 0
+# define ELEMENTOR_MVMNT_WALK 1
+
+typedef struct s_elementor
+{
+	int		element1;
+	int		element2;
+	int		element3;
+
+	int		stage;
+	int		mvmnt;
+
+	int		animation_frame;
+	int		hurt_state;
+	int		death_animation;
+
+	int		frames_since_element_switch;
+}	t_elementor;
+
+// stage will define which half of the fight were in
 
 #endif

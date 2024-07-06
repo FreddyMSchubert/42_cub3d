@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hud.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/04 12:07:09 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/05 18:51:45 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,13 @@ void	draw_elements_overview(void)
 	pos.y = ELEMENTS_VIS_TOP_OFFSET;
 	size.x = game()->textures.elements_overview->width * ELEMENTS_VIS_SCALE;
 	size.y = game()->textures.elements_overview->height * ELEMENTS_VIS_SCALE;
+	if (player()->element == TYPE_FIRE)
+		texture_draw(game()->textures.hightlight_fire, pos, size);
+	else if (player()->element == TYPE_WATER)
+		texture_draw(game()->textures.hightlight_water, pos, size);
+	else if (player()->element == TYPE_EARTH)
+		texture_draw(game()->textures.hightlight_earth, pos, size);
+	else if (player()->element == TYPE_AIR)
+		texture_draw(game()->textures.hightlight_air, pos, size);
 	texture_draw(game()->textures.elements_overview, pos, size);
 }

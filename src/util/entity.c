@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   entity.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 10:51:45 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/03 12:17:19 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/06 00:08:57 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,13 @@ void	drop_orbs(t_transform trans, int element)
 	orb = malloc(sizeof(t_orb));
 	orb->element = element;
 	ntt->data = orb;
+}
+
+void	nuke(t_vec2 pos)
+{
+	t_entity	*ntt;
+
+	ntt = create_entity((t_transform){pos, (t_vec2){0, 0}}, EXPLOSION_NTT, \
+		get_texture_explosion, tick_explosion);
+	ntt->frames_since_state_change = 0;
 }

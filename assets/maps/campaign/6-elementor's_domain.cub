@@ -1,0 +1,48 @@
+NO ./assets/textures/walls/amethyst_block.png
+SO ./assets/textures/walls/amethyst_block.png
+WE ./assets/textures/walls/amethyst_block.png
+EA ./assets/textures/walls/amethyst_block.png
+
+F 58,36,92
+C 255,224,242
+
+> ----- ELEMENTOR'S DOMAIN -----
+> Only one star left to go before you can return.
+> Wait, who is that back there?
+> Be careful.
+
+    11111111111
+    1h000S000h1
+    10000000001
+    10e00000f01
+    10e00h00f01
+    10a00h00w01
+    10a00000w01
+    10000000001
+    10001110001
+    1h001h100h1
+  1111001h1001111
+  1h00000000000h1
+  100000000000001
+  100000000000001
+  100000000000001
+  100000000000001
+ 11000000000000011
+1hh000000B000000hh1
+ 11000000000000011
+  100000000000001
+  100000000000001
+  100000000000001
+  100000000000001
+  1h00000000000h1
+  1111111h1111111
+    1hhh1h1hhh1
+    10001H10001
+    10000000001
+    10h00000h01
+    10h00h00h01
+    10h00h00h01
+    10h00000h01
+    100h000h001
+    1h000G000h1
+    11111111111

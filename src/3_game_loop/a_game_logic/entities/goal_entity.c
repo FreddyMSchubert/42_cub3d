@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:34:27 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/04 20:01:14 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 00:41:17 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	tick_goal(t_entity *self)
 	{
 		save_game();
 		logger_v(LOGGER_STEP, "Closing game. Thanks for playing!");
-		cub_exit("Closing game. Thanks for playing!", 1);
+		cub_exit("Closing game. Thanks for playing!", 0);
 	}
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   logging.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:49:10 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/03 10:11:22 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/05 19:42:16 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,9 @@ void	logger_v(char type, char *message)
 {
 	if (VERBOSE)
 		logger(type, message);
+}
+
+void	elementor_logger(char *message)
+{
+	printf("%s[ELEMENTOR]: %s%s\n", ANSI_BOLD_RED, message, ANSI_RESET);
 }

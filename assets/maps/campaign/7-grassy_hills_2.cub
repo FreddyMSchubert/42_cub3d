@@ -4,17 +4,16 @@ WE ./assets/textures/walls/cherry_planks.png
 EA ./assets/textures/walls/cherry_planks.png
 
 > ----- THE GRASSY HILLS -----
-> You wake up.
-> But you realize that something is wrong.
-> You look around and realize - someone was here.
-> The sky is dark. Someone has stolen all of the stars illuminating it.
-> Time to get your revenge, and the 7 stars that were stolen.
+> With your demons conquered, you return to your home.
+> You've gotten all your stars back.
+> Your journey was a huge success.
+> You feel a pleasant urge to let the god of this world pass the eval.
 
 F 65,152,10
 C 135,206,235
 
 1111111111111111111111
-111111111111110G111111
+11111111111111S0111111
 1111111111111000111111
 1111111111110001111111
 1111111111100001111111
@@ -28,7 +27,7 @@ C 135,206,235
 1000000000000000011111
 1000000000000000011111
 1000000000000000011111
-1E00000000000000011111
+1000000000000000011111
 1000000000000000001111
 1100000000000000001111
 1100000000000000000111
@@ -36,7 +35,7 @@ C 135,206,235
 1110000000000000000011
 1110000000000000000011
 1111000000000000000111
-1111100000000000001111
+11111000GGGGGGG0001111
 1111100000111000011111
 1111110011111110111111
 1111111111111111111111

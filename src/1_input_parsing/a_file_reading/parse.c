@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 09:39:02 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/04 03:12:59 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/04 13:54:37 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,17 +76,16 @@ static inline bool	check_element_at_pos(t_scale s, t_tile_type ***map, \
 	else if ((d[i][s.x] == 'w' || d[i][s.x] == 'e' || d[i][s.x] == 'a'
 	|| d[i][s.x] == 'f') && !set_orb((t_vec2){s.x, s.y}, map, d[i][s.x]))
 		return (false);
-	else if ((d[i][s.x] == 'q' || d[i][s.x] == 'r' || d[i][s.x] == 'd'
-		|| d[i][s.x] == 's' || d[i][s.x] == 'u' || d[i][s.x] == 'i' ||
-	d[i][s.x] == 'o' || d[i][s.x] == 'p') && !set_blight((t_vec2){s.x, s.y},
-				map, d[i][s.x]))
+	else if ((d[i][s.x] == 'q' || d[i][s.x] == 'r' || d[i][s.x] == 'd' || d[i] \
+	[s.x] == 's' || d[i][s.x] == 'u' || d[i][s.x] == 'i' || d[i][s.x] == 'o' \
+	|| d[i][s.x] == 'p') && !set_blight((t_vec2){s.x, s.y}, map, d[i][s.x]))
 		return (false);
 	else if (d[i][s.x] == 'K' && !set_key((t_vec2){s.x, s.y}, map))
 		return (false);
-	else if (char_is_in(d[i][s.x], "NSEW") && !set_entity_spawn(d[i][s.x],
-				(t_vec2){s.x, s.y}, map))
+	else if (d[i][s.x] == 'B' && !set_boss((t_vec2){s.x, s.y}, map))
 		return (false);
-	return (true);
+	return (!(char_is_in(d[i][s.x], "NSEW") && !set_entity_spawn(d[i][s.x], \
+				(t_vec2){s.x, s.y}, map)));
 }
 
 t_tile_type	***make_map(int map_len, int *i, char **data)
