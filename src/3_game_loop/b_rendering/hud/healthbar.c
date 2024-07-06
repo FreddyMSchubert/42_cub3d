@@ -6,13 +6,13 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:50:32 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/05 18:17:26 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 12:56:27 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../include/cub3d.h"
 
-#define MAX_DISPLAYED_HEARTS 30
+#define MAX_DISPLAYED_HEARTS 40
 
 void	draw_healthbar(int size, int start_x, int start_y)
 {
@@ -23,7 +23,7 @@ void	draw_healthbar(int size, int start_x, int start_y)
 	i = -1;
 	step = -1;
 	max_hearts_in_bar = 10;
-	while (++i < player()->health && i < 30)
+	while (++i < player()->health && i < MAX_DISPLAYED_HEARTS)
 	{
 		if (++step >= max_hearts_in_bar)
 		{

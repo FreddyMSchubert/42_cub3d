@@ -1,5 +1,10 @@
 # Changelog
 
+### [0.26.12] - 06.07.2024
+- Made boss stay near its spawn, thus it doesnt get stuck in its map
+- Made boss health bar scale up the less there is
+- Better enemy spawning balancing
+
 ### [0.26.11] - 06.07.2024
 - Made elementor stop spawning enemies in walls
 - Various rebalancings. Enemies now get spawned more often but only one at a time.

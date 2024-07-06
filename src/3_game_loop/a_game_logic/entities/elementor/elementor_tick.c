@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 13:37:24 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/06 00:08:11 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 12:30:28 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ static inline void	move(t_entity *self, t_elementor *elementor)
 	if (random_val() > LMNTOR_MVMNT_ROT_CHANGE_CHANCE)
 		return ;
 	self->transform.rot = deg_to_dir_vec(random_int(0, 360));
+	if (pos_dist(self->transform.pos, self->spawn_transform.pos) > LMNTOR_MAX_DISTANCE_FROM_SPAWN)
+	{
+		self->transform.rot.x = self->spawn_transform.pos.x - self->transform.pos.x;
+		self->transform.rot.y = self->spawn_transform.pos.y - self->transform.pos.y;
+	}
 }
 
 static inline void	update_stage(t_entity *self, t_elementor *elementor)

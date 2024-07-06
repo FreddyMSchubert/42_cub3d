@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/05 18:18:13 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 12:59:19 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,5 +131,6 @@ void	draw_inventory(void)
 		draw_current_selection(start_x, start_y, size);
 	draw_healthbar(size / 2, start_x, start_y);
 	if (game()->boss)
-		draw_boss_healthbar(size / 2);
+		draw_boss_healthbar(size / (1.0 + ((game()->boss->health - 3.0) / \
+							(50.0 - 3.0)) * (3.3 - 1.0)));
 }

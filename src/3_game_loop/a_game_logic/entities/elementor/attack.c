@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 14:59:57 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/06 11:49:37 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/06 12:38:43 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ static inline void	summon_attack(t_entity *self, t_elementor *elem)
 	trans.pos.y = self->transform.pos.y + random_int(-LMNTOR_BLIGHT_SPAWN_DIST, LMNTOR_BLIGHT_SPAWN_DIST);
 	if (!is_position_valid(trans.pos.x, trans.pos.y))
 		return ;
-	printf("position is validdd!\n");
 	trans.rot = deg_to_dir_vec(random_int(0, 360));
 	ntt = create_entity(trans, BLIGHT_NTT, get_texture_blight, tick_blight);
 	ntt->on_collision = on_collision_blight;
