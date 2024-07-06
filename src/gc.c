@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gc.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:18:59 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/04 13:54:59 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/05 13:56:11 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,15 @@ int	gc_append_element(void *content)
 	new_node->content = content;
 	new_node->next = NULL;
 	selected_node = garbage_col;
-	while (selected_node && selected_node->next && selected_node->content)
-	{
+	while (selected_node && selected_node->next)
 		selected_node = selected_node->next;
-		if (selected_node->content == content)
-		{
-			logger_v(LOGGER_WARNING, "Element already in gc.");
-			return (free(new_node), -2);
-		}
+	if (selected_node->next)
+	{
+		free(new_node);
+		return (-1);
 	}
 	selected_node->next = new_node;
+
 	return (0);
 }
 

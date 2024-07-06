@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:38:30 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/03 14:44:20 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/05 13:55:27 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static void	read_file_loop(char ***data, int file)
 			continue ;
 		}
 		(*data)[i++] = line;
+		gc_append_element(line);
 		if ((*data)[i - 1][ft_strlen((*data)[i -1]) - 1] == '\n')
 			(*data)[i - 1][ft_strlen((*data)[i -1]) - 1] = 0;
 		line = get_next_line(file);
@@ -54,6 +55,7 @@ static char	**read_file(char *filename)
 		return (NULL);
 	}
 	read_file_loop(&data, file);
+	get_next_line(-1);
 	close(file);
 	return (data);
 }

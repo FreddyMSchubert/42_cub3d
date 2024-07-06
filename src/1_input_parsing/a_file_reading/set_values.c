@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_values.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:12:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/04 01:49:53 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/05 13:51:27 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ bool	set_value(char	**value, char	*set)
 	*value = ft_strdup(set);
 	if (!*value)
 		return (false);
+	gc_append_element(*value);
 	if ((*value)[ft_strlen(*value) - 1] == '\n')
 		(*value)[ft_strlen(*value) - 1] = 0;
 	if (strlen(*value) > 4
