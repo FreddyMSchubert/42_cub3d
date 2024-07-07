@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 13:37:35 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/06 20:27:31 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/07 23:01:01 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,26 @@ static inline bool	projectile_does_damage(int element, t_elementor *elem)
 	return (true);
 }
 
-static inline int	calc_damage(t_projectile *projectile, t_elementor *elem)
+static inline int	calc_damage(t_projectile *projectile, \
+									t_elementor *elem, t_entity *ntt)
 {
+	int		major;
+	int		minor;
+
+	major = LMNTOR_MAJOR_HIT_DECREASE;
+	minor = MINOR_PROJECTILE_HIT_DECREASE;
+	if (ntt->health <= 5)
+	{
+		major = 1;
+		minor = 1;
+	}
 	if (a_beats_b(projectile->element, elem->element1))
-		return (LMNTOR_MAJOR_HIT_DECREASE);
+		return (major);
 	if (a_beats_b(projectile->element, elem->element2) && elem->stage > 0)
-		return (LMNTOR_MAJOR_HIT_DECREASE);
+		return (major);
 	if (a_beats_b(projectile->element, elem->element3) && elem->stage > 1)
-		return (LMNTOR_MAJOR_HIT_DECREASE);
-	return (MINOR_PROJECTILE_HIT_DECREASE);
+		return (major);
+	return (minor);
 }
 
 void	on_collision_elementor(t_entity *self, t_entity *other)
@@ -48,7 +59,7 @@ void	on_collision_elementor(t_entity *self, t_entity *other)
 	projectile = (t_projectile *)other->data;
 	if (!projectile_does_damage(projectile->element, elem))
 		return ;
-	self->health -= calc_damage(projectile, elem);
+	self->health -= calc_damage(projectile, elem, self);
 	elem->hurt_state = LMNTOR_HURT_STATE_FRAME_DURATION;
 	if (self->health > 0)
 		logger_v(LOGGER_ACTION, "Elementor was hit by projectile!");

@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 11:03:47 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/07 14:59:01 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/07 23:15:07 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ bool	set_boss(t_vec2 pos, t_tile_type ***map)
 	data->stage = 1;
 	data->animation_frame = 0;
 	data->death_animation = -1;
+	data->frames_since_element_switch = 0;
 	ntt = create_entity(trans, ELEMENTOR_NTT, \
 					get_texture_elementor, tick_elementor);
 	ntt->is_billboard = true;

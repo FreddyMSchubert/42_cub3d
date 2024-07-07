@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 15:36:49 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/06 20:29:48 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/07 23:17:12 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,6 @@ void	refresh_projectiles(t_elementor *elementor)
 	int		el2;
 	int		el3;
 
-	if (elementor->stage == 0)
-	{
-		elementor->element1 = random_int(0, 3);
-		return ;
-	}
 	valid_config = false;
 	while (!valid_config)
 	{

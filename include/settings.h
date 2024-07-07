@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/07 18:21:53 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/07 23:18:34 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@
 
 // Map Making
 
-# define MIN_MAP_SIZE 10
+# define MIN_MAP_SIZE 15
 # define MAX_MAP_SIZE 25
 # define MIN_ROOMS_AMOUNT 2
 # define MAX_ROOMS_AMOUNT 5
 # define MIN_ROOM_SIZE 1
-# define MAX_ROOM_SIZE 10
+# define MAX_ROOM_SIZE 7
 # define MAX_ROOM_SIZE_TO_MAP_SIZE 3
-# define WALL_REMOVAL_CHANCE_PERCENT 18
+# define WALL_REMOVAL_CHANCE_PERCENT 13
 
 # define ENTITIY_PLACEMENT_CHANCE 13
 # define ORB_PLACEMENT_CHANCE 70
@@ -126,9 +126,9 @@
 # define LMNTOR_MAX_DISTANCE_FROM_SPAWN 5
 
 // attack
-# define LMNTOR_ATTACK_CHANCE 0.03				// every frame
+# define LMNTOR_ATTACK_CHANCE 0.025				// every frame
 # define LMNTOR_ATTACK_SPIN_CHANCE 0.175
-# define LMNTOR_ATTACK_SUMMON_CHANCE 0.01
+# define LMNTOR_ATTACK_SUMMON_CHANCE 0.08
 # define LMNTOR_SHOOTING_INACCURACY_DEG 10
 # define LMNTOR_SPIN_ATTACK_MIN_PROJECTILES 6
 # define LMNTOR_SPIN_ATTACK_MAX_PROJECTILES 15

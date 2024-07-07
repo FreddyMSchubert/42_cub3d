@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:57:26 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/06 20:11:55 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/07 22:27:33 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ void	tick_blight(t_entity *self)
 {
 	t_blight	*blight;
 
+	printf("Ticking blight %d\n", self->id);
 	self->frames_since_state_change++;
 	blight = (t_blight *)self->data;
 	if (blight->hurt_state > 0)

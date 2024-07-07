@@ -1,5 +1,11 @@
 # Changelog
 
+### [0.26.19] - 06.07.2024
+- Fixed elementor summoned blights not moving
+- Various map fixes
+- Fix color switch up after time issue.
+- Made the last 5 hitpoints of boss go down 1 by 1 whatever projectile you shoot, to make it extra tense. And so everybody gets to see the boss at 1 heart and shoot the final shot. It's very anticlimactic to have the boss at 2 hearts, shoot 1 bullet and it kills him. Boss also doesn't really shoot badly anymore in the last 5 health, so you're not sad because it was close it's supposed to feel clutch aight
+
 ### [0.26.18] - 06.07.2024
 - Improved goal placement
 
