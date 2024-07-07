@@ -1,0 +1,59 @@
+# Here's the basics of map-making
+
+# Define the wall textures, based on the cardinal direction.
+NO ./assets/textures/walls/cherry_planks.png
+SO ./assets/textures/walls/blackstone.png
+WE ./assets/textures/walls/bamboo_block.png
+EA ./assets/textures/walls/amethyst_block.png
+
+# Define the floor and ceiling colors, in rgb format.
+F 184,113,39
+C 51,198,227
+
+# MAP
+# Available Tiles:
+
+# ' ' -> Void
+# '1' -> Wall
+# '0' -> Floor
+
+# 'N' -> Player facing North
+# 'S' -> Player facing South
+# 'E' -> Player facing East
+# 'W' -> Player facing West
+
+# 'G' -> Goal
+# 'H' -> Horizontal door
+# 'V' -> Vertical door
+# 'K' -> Key
+# 'h' -> Health pickup
+
+# 'w' -> Water orb
+# 'f' -> Fire orb
+# 'e' -> Earth orb
+# 'a' -> Air orb
+
+# 'q' -> Water blight (enemy)
+# 'd' -> Fire blight (enemy)
+# 'r' -> Earth blight (enemy)
+# 's' -> Air blight (enemy)
+
+# 'p' -> Key-dropping Water blight (enemy)
+# 'o' -> Key-dropping Fire blight (enemy)
+# 'i' -> Key-dropping Earth blight (enemy)
+# 'u' -> Key-dropping Air blight (enemy)
+
+# 'B' -> BOSS (Elementor)
+#		- This dude needs an area with a radius of 5 walls around him to walk properly
+
+11111111111111111111111111111
+10000000000000000f0000000V0G1
+100d0000001110000w01111111101
+10000000111E000001110000111H1
+10000011101110000a00001110001
+10001110011100000e01110000001
+101111111111100011100000B0001
+100000K1110000111h00000000001
+10000011100011111111111000001
+10000000000000000000000000001
+11111111111111111111111111111

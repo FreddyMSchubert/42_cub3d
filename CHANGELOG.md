@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.26.14] - 06.07.2024
+- Added a nice template map to explain all of the things you can put in a given map
+
 ### [0.26.13] - 06.07.2024
 - Norminettification, again
 - Various fixes

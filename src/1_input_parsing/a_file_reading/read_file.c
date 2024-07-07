@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:38:30 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/05 13:55:27 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/07 13:05:00 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	read_file_loop(char ***data, int file)
 	i = 0;
 	while (line)
 	{
-		if ((*line == '#' && i == 0))
+		if (*line == '#')
 		{
 			free(line);
 			line = get_next_line(file);
