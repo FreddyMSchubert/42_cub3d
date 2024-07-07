@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/07 14:03:35 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/07 16:19:06 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,7 @@ bool				set_door(t_vec2 pos, t_tile_type ***map, char type);
 bool				set_key(t_vec2 pos, t_tile_type ***map);
 bool				set_boss(t_vec2 pos, t_tile_type ***map);
 bool				set_fog(char *color_val, t_input_data **input_data);
+bool				set_minimap(char *minimap_val, t_input_data **input_data);
 // squarify map
 void				squarify_map(void);
 // util

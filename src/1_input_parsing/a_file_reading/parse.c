@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 09:39:02 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/07 13:47:51 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/07 16:27:08 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,22 @@
 
 bool	set_values(char **split, t_input_data **input_data, char **data, int *i)
 {
-	if (str_is_equal(split[0], "NO")
-		&& !set_value(&(*input_data)->no_texture_location, split[1]))
-		return (false);
-	else if (str_is_equal(split[0], "SO")
-		&& !set_value(&(*input_data)->so_texture_location, split[1]))
-		return (false);
-	else if (str_is_equal(split[0], "WE")
-		&& !set_value(&(*input_data)->we_texture_location, split[1]))
-		return (false);
-	else if (str_is_equal(split[0], "EA")
-		&& !set_value(&(*input_data)->ea_texture_location, split[1]))
-		return (false);
-	else if (str_is_equal(split[0], "F")
-		&& !set_color(&((*input_data)->floor_color), split[1]))
-		return (false);
-	else if (str_is_equal(split[0], "C")
-		&& !set_color(&((*input_data)->ceiling_color), split[1]))
-		return (false);
-	else if (str_is_equal(split[0], "FO") && !set_fog(split[1], input_data))
-		return (false);
+	if (str_is_equal(split[0], "NO"))
+		return (set_value(&(*input_data)->no_texture_location, split[1]));
+	else if (str_is_equal(split[0], "SO"))
+		return (set_value(&(*input_data)->so_texture_location, split[1]));
+	else if (str_is_equal(split[0], "WE"))
+		return (set_value(&(*input_data)->we_texture_location, split[1]));
+	else if (str_is_equal(split[0], "EA"))
+		return (set_value(&(*input_data)->ea_texture_location, split[1]));
+	else if (str_is_equal(split[0], "F"))
+		return (set_color(&((*input_data)->floor_color), split[1]));
+	else if (str_is_equal(split[0], "C"))
+		return (set_color(&((*input_data)->ceiling_color), split[1]));
+	else if (str_is_equal(split[0], "FO"))
+		return (set_fog(split[1], input_data));
+	else if (str_is_equal(split[0], "MM"))
+		return (set_minimap(split[1], input_data));
 	else if (str_is_equal(split[0], ">"))
 		return (print_map_line(split), true);
 	else if (regex(data[*i], MAP_TILES))

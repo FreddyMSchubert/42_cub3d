@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 14:36:45 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/04 19:57:43 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/07 16:26:43 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ static inline void	render_hud(void)
 {
 	ft_memset(game()->hud->pixels, 0, game()->hud->width
 		* game()->hud->height * 4);
-	hud_draw_minimap();
+	if (game()->input_data->show_minimap)
+		hud_draw_minimap();
 }
 
 void	render(void)

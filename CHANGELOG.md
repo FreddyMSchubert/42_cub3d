@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.26.16] - 06.07.2024
+- Made an option to hide the minimap. Added that to a couple campaign maps
+
 ### [0.26.15] - 06.07.2024
 - Fog
 - Elementor shooting with invalid projectile leading to drawing segfault because no valid texture can be found fix

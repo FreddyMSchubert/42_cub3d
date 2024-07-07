@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:12:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/07 13:47:31 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/07 16:27:12 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,5 +121,18 @@ bool	set_fog(char *fog_val, t_input_data **input_data)
 	(*input_data)->fog_color = col;
 	(*input_data)->fog_enabled = true;
 	(*input_data)->fog_intensity = intensity;
+	return (true);
+}
+
+bool	set_minimap(char *minimap_val, t_input_data **input_data)
+{
+	if (!minimap_val || !regex(minimap_val, "OFN"))
+		return (false);
+	if (ft_strlen(minimap_val) < 2)
+		return (false);
+	if (minimap_val[1] == 'F')
+		(*input_data)->show_minimap = false;
+	else
+		(*input_data)->show_minimap = true;
 	return (true);
 }

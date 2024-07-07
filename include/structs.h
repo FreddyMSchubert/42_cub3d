@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/07 15:08:23 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/07 16:15:22 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ typedef struct s_input_data
 	bool		fog_enabled;
 	t_color		fog_color;
 	int			fog_intensity;
+	bool		show_minimap;
 }	t_input_data;
 
 typedef struct s_animation

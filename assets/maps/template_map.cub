@@ -16,6 +16,14 @@ C 51,198,227
 # 2-4. RGB for fog color (Put anything thats not black or white with care it might look terrible)
 FO 25,0,0,0
 
+# Define whether minimap should be shown
+# Options: [MM OFF][MM ON]
+MM OFF
+
+# Everything after a > gets printed to stdout when the map is parsed
+> Hello World!
+> Are you ready for cub3d?
+
 # MAP
 # Available Tiles:
 
