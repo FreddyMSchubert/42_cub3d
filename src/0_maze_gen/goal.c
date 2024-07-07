@@ -3,71 +3,66 @@
 /*                                                        :::      ::::::::   */
 /*   goal.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 20:25:23 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/04 13:56:58 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/07 18:13:47 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static inline void	determine_door_pos(t_scale *door1, t_scale *door2, \
-										bool v, t_scale goal)
+static inline t_scale	get_door_pos(char **maze, t_scale pos, t_scale scale)
 {
-	door1->x = goal.x;
-	door1->y = goal.y;
-	door2->x = goal.x;
-	door2->y = goal.y;
-	if (v)
+	t_scale	door_pos;
+
+	if (pos.y + 1 < scale.y && pos.y - 1 >= 0 && \
+		pos.x + 1 < scale.x && pos.x - 1 >= 0)
 	{
-		door1->y = goal.y - 1;
-		door2->y = goal.y + 1;
+		if (maze[pos.y + 1][pos.x] == '0')
+			door_pos = (t_scale){pos.x, pos.y + 1};
+		else if (maze[pos.y - 1][pos.x] == '0')
+			door_pos = (t_scale){pos.x, pos.y - 1};
+		else if (maze[pos.y][pos.x + 1] == '0')
+			door_pos = (t_scale){pos.x + 1, pos.y};
+		else if (maze[pos.y][pos.x - 1] == '0')
+			door_pos = (t_scale){pos.x - 1, pos.y};
+		else
+			return ((t_scale){-1, -1});
+		if (count_adjacent_walls(maze, door_pos, scale) != 2)
+			return ((t_scale){-1, -1});
+		return (door_pos);
 	}
 	else
-	{
-		door1->x = goal.x - 1;
-		door2->x = goal.x + 1;
-	}
+		return ((t_scale){-1, -1});
 }
 
-static inline void	place_door_and_goal(char **maze, t_scale door1, \
-											t_scale door2, t_scale goal)
+static inline bool	attempt_place_door_and_goal(char **maze, \
+											t_scale pos, t_scale scale)
 {
-	char	door_dir;
-
-	door_dir = 'V';
-	if (door1.x == door2.x)
-		door_dir = 'H';
-	maze[door1.y][door1.x] = door_dir;
-	maze[door2.y][door2.x] = door_dir;
-	maze[goal.y][goal.x] = 'G';
-}
-
-static inline bool	attempt_place_door_and_goal(char **maze, t_scale s)
-{
+	t_scale	door_pos;
 	bool	vertical;
-	t_scale	door1;
-	t_scale	door2;
 
-	if (maze[s.y][s.x - 1] == '0' && maze[s.y][s.x + 1] == '0' && \
-			maze[s.y - 1][s.x] == '1' && maze[s.y + 1][s.x] == '1')
-		vertical = false;
-	else if (maze[s.y - 1][s.x] == '0' && maze[s.y + 1][s.x] == '0' && \
-			maze[s.y][s.x - 1] == '1' && maze[s.y][s.x + 1] == '1')
+	door_pos = get_door_pos(maze, pos, scale);
+	if (door_pos.x == -1)
+		return (false);
+	if (door_pos.x == pos.x)
 		vertical = true;
+	else if (door_pos.y == pos.y)
+		vertical = false;
 	else
 		return (false);
-	determine_door_pos(&door1, &door2, vertical, (t_scale){s.x, s.y});
-	if (!(count_adjacent_walls(maze, door1, s) >= 2) || \
-				!(count_adjacent_walls(maze, door2, s) >= 2))
+	if (vertical && (maze[door_pos.y][door_pos.x + 1] != '1' || \
+		maze[door_pos.y][door_pos.x - 1] != '1'))
 		return (false);
-	if (vertical && (maze[door1.y][door1.x - 1] != '1' || \
-					maze[door1.y][door1.x + 1] != '1'))
+	if (!vertical && (maze[door_pos.y + 1][door_pos.x] != '1' || \
+		maze[door_pos.y - 1][door_pos.x] != '1'))
 		return (false);
-	if (maze[door1.y - 1][door1.x] != '1' || maze[door1.y + 1][door1.x] != '1')
-		return (false);
-	place_door_and_goal(maze, door1, door2, s);
+	maze[pos.y][pos.x] = 'G';
+	if (vertical)
+		maze[door_pos.y][door_pos.x] = 'H';
+	else
+		maze[door_pos.y][door_pos.x] = 'V';
 	return (true);
 }
 
@@ -82,9 +77,11 @@ static inline bool	attempt_door_pos(char **maze, int height, int width)
 	{
 		x = random_int(1, width - 2);
 		y = random_int(1, height - 2);
-		if (maze[y][x] == '0')
+		if (maze[y][x] == '0' && count_adjacent_walls(maze, (t_scale){x, y}, \
+					(t_scale){height, width}) == 3)
 		{
-			if (attempt_place_door_and_goal(maze, (t_scale){x, y}))
+			if (attempt_place_door_and_goal(maze, (t_scale){x, y}, \
+											(t_scale){height, width}))
 				return (true);
 		}
 	}
@@ -93,7 +90,7 @@ static inline bool	attempt_door_pos(char **maze, int height, int width)
 
 #define MAX_PLACE_ATTEMPTS 100
 
-void	place_locked_goal(char **maze, t_scale	map_scale)
+void	place_locked_goal(char **maze, t_scale map_scale)
 {
 	t_scale	pos;
 	bool	placed;
@@ -115,7 +112,7 @@ void	place_locked_goal(char **maze, t_scale	map_scale)
 				placed = true;
 			}
 		}
-		if (place_attempts >= MAX_PLACE_ATTEMPTS)
+		if (place_attempts >= map_scale.x * map_scale.y)
 			logger(LOGGER_WARNING, "Failed to place goal randomly. No goal!");
 	}
 }

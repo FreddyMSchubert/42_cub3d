@@ -6,7 +6,7 @@ EA ./assets/textures/walls/bamboo_block_top.png
 F 90,103,42
 C 185,219,95
 
-FO 50,0,50,0
+FO 75,0,0,0
 MM OFF
 
 > ----- THE BAMBOO JUNGLE -----

@@ -1,5 +1,8 @@
 # Changelog
 
+### [0.26.18] - 06.07.2024
+- Improved goal placement
+
 ### [0.26.17] - 06.07.2024
 - Made players gain more orbs when picking up orbs of their element
 - Various fixes and changes
