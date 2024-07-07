@@ -1,5 +1,10 @@
 # Changelog
 
+### [0.26.15] - 06.07.2024
+- Fog
+- Elementor shooting with invalid projectile leading to drawing segfault because no valid texture can be found fix
+- Made goal reached screen leave again
+
 ### [0.26.14] - 06.07.2024
 - Added a nice template map to explain all of the things you can put in a given map
 

@@ -6,6 +6,8 @@ EA ./assets/textures/walls/crafter_south_triggered.png
 F 56,56,56
 C 0,189,176
 
+FO 10,255,0,0
+
 > ----- THE COLOSEUM -----
 > As you try to leave the fighting dojo, the floor opens up beneath you.
 > You now have to fight for real in a coloseum, for the amusement of your captivator.

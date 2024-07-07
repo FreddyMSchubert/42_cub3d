@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 11:03:47 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/06 20:15:58 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/07 14:59:01 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,6 @@ bool	set_boss(t_vec2 pos, t_tile_type ***map)
 	ntt->health = LMNTOR_STARTING_HEALTH;
 	ntt->on_collision = on_collision_elementor;
 	game()->boss = ntt;
-	elementor_logger("You, harnesser of the elements! You will not defeat me!");
+	refresh_projectiles(data);
 	return (true);
 }

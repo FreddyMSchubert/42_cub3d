@@ -6,6 +6,8 @@ NO ./assets/textures/walls/redstone_ore.png
 SO ./assets/textures/walls/lapis_ore.png
 WE ./assets/textures/walls/diamond_ore.png
 
+FO 450,0,0,0
+
 > ----- THE MINE -----
 > Turns out, that fighting dojo where nobody was inside gets their money from taking all the people that walk inside and forcing them to work by mining ores in dangerous conditions.
 > This fun occupation has now also been thrust upon you.

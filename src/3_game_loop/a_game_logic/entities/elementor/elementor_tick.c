@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 13:37:24 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/06 20:18:33 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/07 14:59:42 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,13 @@ me? I am the master of all elements! I will crush you!");
 void	tick_elementor(t_entity *self)
 {
 	t_elementor	*elementor;
+	static bool	initialized;
 
+	if (!initialized)
+	{
+		initialized = true;
+		elementor_logger("Harnesser of the elements! You will not defeat me!");
+	}
 	elementor = (t_elementor *)self->data;
 	elementor->animation_frame++;
 	elementor->frames_since_element_switch++;

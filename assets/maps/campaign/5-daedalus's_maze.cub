@@ -6,6 +6,8 @@ EA ./assets/textures/walls/bookshelf.png
 F 0,64,59
 C 135,206,235
 
+FO 75,0,0,0
+
 > ----- DAEDALUS'S MAZE -----
 > As you start reaching deeper into the north, you find a world left behind.
 > What once was the beautiful library of cubandria is now forgotten and left to rot.

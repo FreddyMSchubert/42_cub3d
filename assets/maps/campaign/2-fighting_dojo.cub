@@ -6,6 +6,8 @@ EA ./assets/textures/walls/structure_block.png
 F 150,120,150
 C 215,194,215
 
+FO 20,100,0,30
+
 > ----- THE FIGHTING DOJO -----
 > You realize that a fight may not be avoidable, if you are going to face your foes.
 > You find a fighting dojo on the side of the road and decide to enter it.

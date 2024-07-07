@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:38:30 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/07 13:05:00 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/07 13:47:40 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ void	get_map_contents(char *filepath)
 	input_data->so_texture_location = NULL;
 	input_data->we_texture_location = NULL;
 	input_data->map = NULL;
+	input_data->fog_enabled = false;
 	if (!parse_file_data(data, &input_data))
 		cub_exit("Could not parse map data!", -1);
 	if (!basic_validate(&input_data))

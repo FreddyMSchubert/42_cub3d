@@ -10,6 +10,12 @@ EA ./assets/textures/walls/amethyst_block.png
 F 184,113,39
 C 51,198,227
 
+# Define the degree and color of the fog
+# Just don't put these lines in the file for no fog
+# 1. Fog intensity. The higher, the less you'll see.
+# 2-4. RGB for fog color (Put anything thats not black or white with care it might look terrible)
+FO 25,0,0,0
+
 # MAP
 # Available Tiles:
 

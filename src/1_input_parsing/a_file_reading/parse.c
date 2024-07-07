@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 09:39:02 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/04 13:54:37 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/07 13:47:51 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ bool	set_values(char **split, t_input_data **input_data, char **data, int *i)
 		return (false);
 	else if (str_is_equal(split[0], "C")
 		&& !set_color(&((*input_data)->ceiling_color), split[1]))
+		return (false);
+	else if (str_is_equal(split[0], "FO") && !set_fog(split[1], input_data))
 		return (false);
 	else if (str_is_equal(split[0], ">"))
 		return (print_map_line(split), true);

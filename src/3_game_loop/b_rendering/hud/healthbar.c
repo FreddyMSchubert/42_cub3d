@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:50:32 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/06 12:56:27 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/07 15:08:07 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	draw_boss_healthbar(int size)
 	start_y = 5;
 	i = -1;
 	while (++i < hearts)
-		texture_draw(game()->textures.health,
+		texture_draw(game()->textures.health_boss,
 			(t_scale){start_x + i * size, start_y},
 			(t_scale){size, size});
 }

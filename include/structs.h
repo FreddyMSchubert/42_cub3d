@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/06 20:11:55 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/07 15:08:23 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,10 @@ typedef struct s_input_data
 	t_tile_type	***map;
 	int			map_width;
 	int			map_height;
-	t_trans	**walls;
+	t_trans		**walls;
+	bool		fog_enabled;
+	t_color		fog_color;
+	int			fog_intensity;
 }	t_input_data;
 
 typedef struct s_animation
@@ -101,6 +104,7 @@ typedef struct s_textures
 	mlx_texture_t	*key;
 	mlx_texture_t	*goal;
 	mlx_texture_t	*health;
+	mlx_texture_t	*health_boss;
 
 	mlx_texture_t	*key_floor;
 	mlx_texture_t	*health_floor;
@@ -161,7 +165,7 @@ typedef struct s_textures
 	mlx_texture_t	*explosion_10;
 }	t_textures;
 
-# define MAX_TEXTURES 73
+# define MAX_TEXTURES 74
 
 typedef struct s_persistent_data
 {
@@ -213,8 +217,8 @@ typedef struct s_inventory
 
 typedef struct s_player
 {
-	t_trans	trans;
-	t_trans	spawn_trans;
+	t_trans		trans;
+	t_trans		spawn_trans;
 
 	int			element;
 
@@ -245,8 +249,8 @@ typedef struct s_entity
 	unsigned int	id;
 	bool			to_be_deleted;
 
-	t_trans		trans;
-	t_trans		spawn_trans;
+	t_trans			trans;
+	t_trans			spawn_trans;
 
 	int				health;
 

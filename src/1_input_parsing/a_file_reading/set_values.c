@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:12:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/06 20:11:55 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/07 13:47:31 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,33 @@ bool	set_color(t_color *color, char *color_val)
 	else
 		color->a = 255;
 	free_split(cols, NULL);
+	return (true);
+}
+
+bool	set_fog(char *fog_val, t_input_data **input_data)
+{
+	char	**fog_vals;
+	int		intensity;
+	t_color	col;
+
+	if (!fog_val || !regex(fog_val, "0123456789,"))
+		return (false);
+	fog_vals = ft_split(fog_val, ',');
+	if (!fog_vals || split_len(fog_vals) < 4 || split_len(fog_vals) > 4)
+		return (free_split(fog_vals, false));
+	intensity = ft_atoi(fog_vals[0]);
+	col.r = ft_atoi(fog_vals[1]);
+	col.g = ft_atoi(fog_vals[2]);
+	col.b = ft_atoi(fog_vals[3]);
+	col.a = 255;
+	if (!(col.r < 256 && col.r >= 0) || \
+		!(col.g < 256 && col.g >= 0) || \
+		!(col.b < 256 && col.b >= 0) || \
+		!(intensity >= 0))
+		return (free_split(fog_vals, false));
+	free_split(fog_vals, NULL);
+	(*input_data)->fog_color = col;
+	(*input_data)->fog_enabled = true;
+	(*input_data)->fog_intensity = intensity;
 	return (true);
 }

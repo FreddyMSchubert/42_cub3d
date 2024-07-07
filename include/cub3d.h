@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/06 20:11:55 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/07 14:03:35 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,7 @@ bool				set_blight(t_vec2 pos, t_tile_type ***map, \
 bool				set_door(t_vec2 pos, t_tile_type ***map, char type);
 bool				set_key(t_vec2 pos, t_tile_type ***map);
 bool				set_boss(t_vec2 pos, t_tile_type ***map);
+bool				set_fog(char *color_val, t_input_data **input_data);
 // squarify map
 void				squarify_map(void);
 // util
@@ -178,7 +179,7 @@ void				validate(void);
 void				convert_walls(void);
 // util
 t_scale				get_map_size(t_tile_type ***map);
-t_trans			*create_trans(int x, int y, int rotx, int roty);
+t_trans				*create_trans(int x, int y, int rotx, int roty);
 bool				wall_needed(t_tile_type ***map, int x, int y, t_scale size);
 
 // ----- 2_setup
@@ -241,12 +242,13 @@ void				calc_wall(int ray_index, t_vec2 intersect);
 void				calc_entity(int ray_index, t_vec2 intersect, t_entity *ntt);
 // - 3 draw walls
 void				draw_gameobject(t_range x_range, int height, \
-									mlx_texture_t *tex, double hit_offset);
+						mlx_texture_t *tex, double hit_offset, double distance);
 t_color				get_elementor_cloak_color(t_scale tex);
+t_color				apply_fog(t_color col, double distance);
 // - util
 bool				get_wall_orientation(t_vec2 intersect);
 char				get_wall_face_to_render(t_vec2 intersect);
-t_trans			get_wall_from_intersect(t_vec2 intersect);
+t_trans				get_wall_from_intersect(t_vec2 intersect);
 double				get_fisheye_corrected_ray_angle(int ray_index);
 mlx_texture_t		*get_wall_texture(char d);
 
