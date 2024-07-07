@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:42:00 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/06 20:11:55 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/07 17:01:29 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,21 @@ static inline void	gain_ammo(t_entity *self, t_orb *orb)
 {
 	int	ammo_amount;
 
-	ammo_amount = random_int(MIN_AMMO_AMOUNT_PER_ORB, MAX_AMMO_AMOUNT_PER_ORB);
+	if (orb->element != player()->element)
+		ammo_amount = random_int(MIN_AMMO_AMOUNT_PER_ORB, \
+								MAX_AMMO_AMOUNT_PER_ORB);
+	else
+		ammo_amount = random_int(MIN_AMMO_AMOUNT_PER_ORB, \
+								MAX_AMMO_AMOUNT_PER_OWN_ELEMENT_ORB);
 	if (orb->element == TYPE_EARTH)
-	{
 		player()->inv.earth_orbs += ammo_amount;
-		logger_v(LOGGER_ACTION, "Picked up some earth orbs!");
-	}
 	else if (orb->element == TYPE_FIRE)
-	{
 		player()->inv.fire_orbs += ammo_amount;
-		logger_v(LOGGER_ACTION, "Picked up some fire orbs!");
-	}
 	else if (orb->element == TYPE_WATER)
-	{
 		player()->inv.water_orbs += ammo_amount;
-		logger_v(LOGGER_ACTION, "Picked up some water orbs!");
-	}
 	else if (orb->element == TYPE_AIR)
-	{
 		player()->inv.air_orbs += ammo_amount;
-		logger_v(LOGGER_ACTION, "Picked up some air orbs!");
-	}
+	logger_v(LOGGER_ACTION, "Picked up some orbs!");
 	self->to_be_deleted = true;
 }
 

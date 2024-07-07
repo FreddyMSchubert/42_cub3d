@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/07 16:03:01 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/07 17:27:45 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@
 // attack
 # define LMNTOR_ATTACK_CHANCE 0.03				// every frame
 # define LMNTOR_ATTACK_SPIN_CHANCE 0.175
-# define LMNTOR_ATTACK_SUMMON_CHANCE 0.085
+# define LMNTOR_ATTACK_SUMMON_CHANCE 0.01
 # define LMNTOR_SHOOTING_INACCURACY_DEG 10
 # define LMNTOR_SPIN_ATTACK_MIN_PROJECTILES 6
 # define LMNTOR_SPIN_ATTACK_MAX_PROJECTILES 15
@@ -163,6 +163,7 @@
 
 # define MIN_AMMO_AMOUNT_PER_ORB 1
 # define MAX_AMMO_AMOUNT_PER_ORB 3
+# define MAX_AMMO_AMOUNT_PER_OWN_ELEMENT_ORB 4
 # define TICKS_BETWEEN_PLAYER_SHOTS 15
 
 #endif

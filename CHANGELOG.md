@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.26.17] - 06.07.2024
+- Made players gain more orbs when picking up orbs of their element
+- Various fixes and changes
+
 ### [0.26.16] - 06.07.2024
 - Made an option to hide the minimap. Added that to a couple campaign maps
 

@@ -15,12 +15,12 @@ for map_file in "$MAP_DIR"/*; do
 	fi
 
 	while true; do
+		echo -e "\n\n\n"
 		./cub3d "$map_file"
-		exit_code=$?
 
-		if [[ $exit_code -eq 0 ]]; then
+		if [[ $? -eq 0 ]]; then
 			break
-		elif [[ $exit_code -eq 214 ]]; then
+		elif [[ $? -eq 214 ]]; then
 			exit
 		fi
 	done
@@ -28,11 +28,19 @@ for map_file in "$MAP_DIR"/*; do
 	((COUNTER++))
 done
 
+echo -e "\n\n\n"
+echo "----- ARCADE MODE -----"
 echo "Campaign completed!"
 echo "But I'm already bored..."
 echo "Wait, what's that over there?"
-echo "Infinite random gen arcade mode, here I come!"
+echo "Infinite random gen maps, here I come!"
 
 while true; do
 	./cub3d
+
+	if [[ $? -eq 0 ]]; then
+		break
+	elif [[ $? -eq 214 ]]; then
+		exit
+	fi
 done
