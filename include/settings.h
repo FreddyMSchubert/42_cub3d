@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/08 09:49:14 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/08 10:42:37 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,9 +127,9 @@
 # define LMNTOR_MAX_DISTANCE_FROM_SPAWN 5
 
 // attack
-# define LMNTOR_ATTACK_CHANCE 0.025				// every frame
+# define LMNTOR_ATTACK_CHANCE 0.03				// every frame
 # define LMNTOR_ATTACK_SPIN_CHANCE 0.175
-# define LMNTOR_ATTACK_SUMMON_CHANCE 0.08
+# define LMNTOR_ATTACK_SUMMON_CHANCE 0.085
 # define LMNTOR_SHOOTING_INACCURACY_DEG 10
 # define LMNTOR_SPIN_ATTACK_MIN_PROJECTILES 6
 # define LMNTOR_SPIN_ATTACK_MAX_PROJECTILES 15
@@ -141,7 +141,7 @@
 // health
 # define LMNTOR_STARTING_HEALTH 50
 # define LMNTOR_HURT_STATE_FRAME_DURATION 3
-# define LMNTOR_DEATH_ANIM_TICKS 200
+# define LMNTOR_DEATH_ANIM_TICKS 400
 # define LMNTOR_MAJOR_HIT_DECREASE 2
 
 // --- HUD Settings
@@ -162,8 +162,8 @@
 
 // --- Gameplay Balancing
 
-# define MIN_AMMO_AMOUNT_PER_ORB 2
-# define MAX_AMMO_AMOUNT_PER_ORB 3
+# define MIN_AMMO_AMOUNT_PER_ORB 1
+# define MAX_AMMO_AMOUNT_PER_ORB 1
 # define MAX_AMMO_AMOUNT_PER_OWN_ELEMENT_ORB 4
 # define TICKS_BETWEEN_PLAYER_SHOTS 15
 

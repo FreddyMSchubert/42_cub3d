@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.26.21] - 06.07.2024
+- Better balancing
+- Boss-spawned enemies are no longer permanently red
+
 ### [0.26.20] - 06.07.2024
 - Some uninitialized value fixes
 - Rebalancing. Game is easier now.
