@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   blight_tick.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:57:26 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/07 22:27:33 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/08 08:32:37 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,8 @@ void	tick_blight(t_entity *self)
 {
 	t_blight	*blight;
 
-	printf("Ticking blight %d\n", self->id);
+	if (!self)
+		return ;
 	self->frames_since_state_change++;
 	blight = (t_blight *)self->data;
 	if (blight->hurt_state > 0)

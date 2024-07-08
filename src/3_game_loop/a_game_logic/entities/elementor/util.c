@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 15:36:49 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/07 23:17:12 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/08 08:32:59 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ void	refresh_projectiles(t_elementor *elementor)
 	int		el2;
 	int		el3;
 
+	if (!elementor)
+		return ;
+	el1 = 0;
+	el2 = 0;
+	el3 = 0;
 	valid_config = false;
 	while (!valid_config)
 	{

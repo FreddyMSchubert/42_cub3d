@@ -19,10 +19,10 @@ endif
 
 HEADERS := -I ./include -I $(LIBMLX)/include -I $(LIBFT)/include -I $(GNL)/include -I $(GLFW_PATH)/include
 LIBS := $(LIBMLX)/build/libmlx42.a -ldl -lm -L$(GLFW_PATH)/lib -lglfw $(LIBFT)/libft.a $(GNL)/libftgnl.a
-CFLAGS := -Wall -Wextra -Werror -Ofast -march=native -flto -funroll-loops -g -fsanitize=address
+CFLAGS := -Wall -Wextra -Werror -Ofast -march=native -flto -funroll-loops
 
 $(NAME): setup $(OBJ) $(LIBMLX)/build/libmlx42.a $(LIBFT)/libft.a $(GNL)/libftgnl.a
-	cc $(OBJ) $(LIBS) $(HEADERS) -o $(NAME) -g -fsanitize=address
+	cc $(OBJ) $(LIBS) $(HEADERS) -o $(NAME)
 
 $(OBJ_DIR)/%.o: ./src/%.c
 	@mkdir -p $(OBJ_DIR)
