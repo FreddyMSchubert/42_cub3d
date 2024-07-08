@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_drawer.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 10:19:53 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/05 00:33:03 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/08 11:56:43 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void	texture_draw(mlx_texture_t *texture, t_scale pos, t_scale size)
 			tex_y = (int)((y - pos.y) * texture->height / size.y);
 			color = get_tex_color_at(texture, tex_x, tex_y);
 			if ((color & 0xFF) > 0 && x >= 0
-				&& (int32_t)x < game()->mlx->width
-				&& y >= 0 && (int32_t)y < game()->mlx->height)
+				&& (uint32_t)x < game()->game_scene->width
+				&& y >= 0 && (uint32_t)y < game()->game_scene->height)
 				mlx_put_pixel(game()->game_scene, x, y, color);
 		}
 	}
@@ -66,8 +66,8 @@ void	screen_texture_draw(mlx_texture_t *texture, t_scale pos, t_scale size)
 			tex_y = (int)((y - pos.y) * texture->height / size.y);
 			color = get_tex_color_at(texture, tex_x, tex_y);
 			if ((color & 0xFF) > 0 && x >= 0
-				&& (int32_t)x < game()->mlx->width
-				&& y >= 0 && (int32_t)y < game()->mlx->height)
+				&& (uint32_t)x < game()->screen_effect->width
+				&& y >= 0 && (uint32_t)y < game()->screen_effect->height)
 				mlx_put_pixel(game()->screen_effect, x, y, color);
 		}
 	}

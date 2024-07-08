@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inventory.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/06 12:59:19 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/08 12:45:34 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int				*get_amount_of_item(int index);
 mlx_texture_t	*get_tex_by_index(int index);
 mlx_image_t		**get_amount_text_by_index(int index);
-void			draw_rectangle(t_scale pos, t_scale size, t_color color);
 
 static void	draw_item_at(unsigned int index, int x, int y, int size)
 {
