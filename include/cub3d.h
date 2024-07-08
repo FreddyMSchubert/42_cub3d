@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/07 16:19:06 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/08 11:14:36 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -242,8 +242,8 @@ t_entity			**perform_entity_raycast(int i, t_vec2 **entity_intersects);
 void				calc_wall(int ray_index, t_vec2 intersect);
 void				calc_entity(int ray_index, t_vec2 intersect, t_entity *ntt);
 // - 3 draw walls
-void				draw_gameobject(t_range x_range, int height, \
-						mlx_texture_t *tex, double hit_offset, double distance);
+void				draw_gameobject(t_range x_range, int height,
+						double hit_offset, t_image_data data);
 t_color				get_elementor_cloak_color(t_scale tex);
 t_color				apply_fog(t_color col, double distance);
 // - util

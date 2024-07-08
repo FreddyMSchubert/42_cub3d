@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/07 16:15:22 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/08 11:02:57 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,13 @@ typedef struct s_trans
 	t_vec2	pos;
 	t_vec2	rot;
 }	t_trans;
+
+typedef struct s_image_data
+{
+	double			distance;
+	mlx_image_t		*img;
+	mlx_texture_t	*tex;
+}	t_image_data;
 
 typedef struct s_wall_scale
 {
