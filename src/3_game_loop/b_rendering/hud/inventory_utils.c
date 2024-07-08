@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inventory_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 14:23:39 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/02 10:43:32 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/08 12:45:39 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,25 +61,4 @@ mlx_image_t	**get_amount_text_by_index(int index)
 		return (&(player()->inv.text_amount_earth));
 	else
 		return (&(player()->inv.text_amount_air));
-}
-
-void	draw_rectangle(t_scale pos, t_scale size, t_color color)
-{
-	int	x;
-	int	y;
-
-	x = pos.x;
-	while (x < pos.x + size.x)
-	{
-		y = pos.y;
-		while (y < pos.y + size.y)
-		{
-			if (x == pos.x || x == pos.x + size.x - 1
-				|| y == pos.y || y == pos.y + size.y - 1)
-				mlx_put_pixel(game()->game_scene, x, y,
-					rgba_to_int(color.r, color.g, color.b, color.a));
-			y++;
-		}
-		x++;
-	}
 }

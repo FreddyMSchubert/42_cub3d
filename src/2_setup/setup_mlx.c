@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:41:35 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/08 12:37:25 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/08 12:42:06 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,12 @@ void	set_background(void)
 	if (!img || (mlx_image_to_window(data->mlx, img, 0, 0) < 0))
 		cub_exit("mlx image creation failed", -1);
 	i = -1;
-	while (++i < data->mlx->height)
+	while ((u_int32_t)(++i) < img->height)
 	{
 		j = -1;
-		while (++j < data->mlx->width)
+		while ((uint32_t)(++j) < img->width)
 		{
-			if (i < data->mlx->height / 2)
+			if ((uint32_t)i < img->height / 2)
 				mlx_put_pixel(img, j, i,
 					t_color_to_int(data->input_data->ceiling_color));
 			else
