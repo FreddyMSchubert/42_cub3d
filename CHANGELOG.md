@@ -1,5 +1,9 @@
 # Changelog
 
+### [0.26.20] - 06.07.2024
+- Some uninitialized value fixes
+- Rebalancing. Game is easier now.
+
 ### [0.26.19] - 06.07.2024
 - Fixed elementor summoned blights not moving
 - Various map fixes

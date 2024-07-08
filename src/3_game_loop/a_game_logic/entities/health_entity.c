@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   health_entity.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 21:11:23 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/06 20:11:55 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/08 09:48:05 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	tick_health(t_entity *self)
 					HEALTH_COLLISION_DISTANCE)
 		return ;
 	logger_v(LOGGER_ACTION, "Health power up picked up!");
-	player()->health += HEALTH_PICKUP_AMOUNT;
+	player()->health += random_int(MIN_HEALTH_PICKUP_AMOUNT, \
+									MAX_HEALTH_PICKUP_AMOUNT);
 	self->to_be_deleted = true;
 }
 
