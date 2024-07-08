@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/08 10:42:37 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/08 11:39:25 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@
 # define MINOR_PROJECTILE_HIT_DECREASE 1
 # define MAJOR_PROJECTILE_HIT_DESCREASE 3
 # define MIN_HEALTH_PICKUP_AMOUNT 1
-# define MAX_HEALTH_PICKUP_AMOUNT 2
+# define MAX_HEALTH_PICKUP_AMOUNT 3
 # define PLAYER_BLIGHT_COLLISION_DAMAGE 1
 
 // animations
@@ -163,7 +163,7 @@
 // --- Gameplay Balancing
 
 # define MIN_AMMO_AMOUNT_PER_ORB 1
-# define MAX_AMMO_AMOUNT_PER_ORB 1
+# define MAX_AMMO_AMOUNT_PER_ORB 3
 # define MAX_AMMO_AMOUNT_PER_OWN_ELEMENT_ORB 4
 # define TICKS_BETWEEN_PLAYER_SHOTS 15
 
