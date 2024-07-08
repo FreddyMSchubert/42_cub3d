@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_entities.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 16:06:43 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/08 10:35:57 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/08 11:25:45 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ bool	set_health(t_vec2 pos, t_tile_type ***map)
 	return (true);
 }
 
+static inline void	set_blight_utils(t_blight *data)
+{
+	data->state = BLIGHT_STATE_STANDING;
+	data->hurt_state = -1;
+}
+
 bool	set_blight(t_vec2 pos, t_tile_type ***map, char type)
 {
 	t_blight		*data;
@@ -45,8 +51,7 @@ bool	set_blight(t_vec2 pos, t_tile_type ***map, char type)
 		data->element = TYPE_EARTH;
 	else if (type == 's' || type == 'u')
 		data->element = TYPE_AIR;
-	data->state = BLIGHT_STATE_STANDING;
-	data->hurt_state = -1;
+	set_blight_utils(data);
 	ntt = create_entity((t_trans){pos, {1.0, 0}}, \
 							BLIGHT_NTT, get_texture_blight, tick_blight);
 	ntt->on_collision = on_collision_blight;
@@ -78,13 +83,5 @@ bool	set_orb(t_vec2 pos, t_tile_type ***map, char orb_type)
 	ntt = create_entity((t_trans){{pos.x + 0.5, pos.y + 0.5}, {1.0, 0}}, \
 						ORB_NTT, get_texture_orb, tick_orb);
 	ntt->data = data;
-	return (true);
-}
-
-bool	set_key(t_vec2 pos, t_tile_type ***map)
-{
-	*(map[(int)pos.y][(int)pos.x]) = FLOOR;
-	create_entity((t_trans){{pos.x + 0.5, pos.y + 0.5}, {1.0, 0}}, \
-						KEY_NTT, get_texture_key, tick_key);
 	return (true);
 }

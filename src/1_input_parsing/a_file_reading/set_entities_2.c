@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_entities_2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 11:03:47 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/08 09:20:38 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/08 11:25:49 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,13 @@ bool	set_boss(t_vec2 pos, t_tile_type ***map)
 	ntt->on_collision = on_collision_elementor;
 	game()->boss = ntt;
 	refresh_projectiles(data);
+	return (true);
+}
+
+bool	set_key(t_vec2 pos, t_tile_type ***map)
+{
+	*(map[(int)pos.y][(int)pos.x]) = FLOOR;
+	create_entity((t_trans){{pos.x + 0.5, pos.y + 0.5}, {1.0, 0}}, \
+						KEY_NTT, get_texture_key, tick_key);
 	return (true);
 }
