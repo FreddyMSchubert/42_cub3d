@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 07:33:54 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/07 17:33:17 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/08 08:21:21 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,11 @@ static inline void	set_player_element(void)
 {
 	char	input;
 	int		bytes_read;
+	int		res;
 
-	write(STDOUT_FILENO, "\x1b[35mGreetings, Adventurer! 🧌", 33);
-	write(STDOUT_FILENO, " Choose your element 💧🔥🪨💨", 38);
-	write(STDOUT_FILENO, " [WFEA] [ENTER for random pick]: ", 34);
+	res = write(STDOUT_FILENO, "\x1b[35mGreetings, Adventurer! 🧌", 33);
+	res = write(STDOUT_FILENO, " Choose your element 💧🔥🪨💨", 38);
+	res = write(STDOUT_FILENO, " [WFEA] [ENTER for random pick]: ", 34);
 	bytes_read = read(STDIN_FILENO, &input, 1);
 	if (bytes_read < 0)
 		input = '\n';
@@ -50,6 +51,7 @@ static inline void	set_player_element(void)
 	else
 		player()->element = random_int(0, 3);
 	printf_element(player()->element);
+	(void)res;
 }
 
 static inline bool	check_args_validity(int argc, char **argv)

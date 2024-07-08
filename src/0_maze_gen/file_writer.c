@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_writer.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 22:51:32 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/01 11:12:09 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/08 08:20:48 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,51 +46,58 @@ static char	*get_random_texture(void)
 static void	write_parameters(int fd)
 {
 	char	*texture;
+	int		res;
 
-	write(fd, "NO ", 3);
+	res = write(fd, "NO ", 3);
 	texture = get_random_texture();
-	write(fd, texture, ft_strlen(texture));
-	write(fd, "\n", 1);
-	write(fd, "SO ", 3);
+	res = write(fd, texture, ft_strlen(texture));
+	res = write(fd, "\n", 1);
+	res = write(fd, "SO ", 3);
 	texture = get_random_texture();
-	write(fd, texture, ft_strlen(texture));
-	write(fd, "\n", 1);
-	write(fd, "WE ", 3);
+	res = write(fd, texture, ft_strlen(texture));
+	res = write(fd, "\n", 1);
+	res = write(fd, "WE ", 3);
 	texture = get_random_texture();
-	write(fd, texture, ft_strlen(texture));
-	write(fd, "\n", 1);
-	write(fd, "EA ", 3);
+	res = write(fd, texture, ft_strlen(texture));
+	res = write(fd, "\n", 1);
+	res = write(fd, "EA ", 3);
 	texture = get_random_texture();
-	write(fd, texture, ft_strlen(texture));
-	write(fd, "\n", 1);
+	res = write(fd, texture, ft_strlen(texture));
+	res = write(fd, "\n", 1);
+	(void)res;
 }
 
 static void	write_random_color(int fd, int min, int max)
 {
 	char	*color;
 	int		color_int;
+	int		res;
 
 	color_int = random_int(min, max);
 	color = ft_itoa(color_int);
-	write(fd, color, ft_strlen(color));
+	res = write(fd, color, ft_strlen(color));
+	(void)res;
 }
 
 static void	write_colors(int fd)
 {
-	write(fd, "F ", 2);
+	int	res;
+
+	res = write(fd, "F ", 2);
 	write_random_color(fd, 0, 255);
-	write(fd, ",", 1);
+	res = write(fd, ",", 1);
 	write_random_color(fd, 0, 255);
-	write(fd, ",", 1);
+	res = write(fd, ",", 1);
 	write_random_color(fd, 0, 255);
-	write(fd, "\n", 1);
-	write(fd, "C ", 2);
+	res = write(fd, "\n", 1);
+	res = write(fd, "C ", 2);
 	write_random_color(fd, 0, 255);
-	write(fd, ",", 1);
+	res = write(fd, ",", 1);
 	write_random_color(fd, 0, 255);
-	write(fd, ",", 1);
+	res = write(fd, ",", 1);
 	write_random_color(fd, 0, 255);
-	write(fd, "\n", 1);
+	res = write(fd, "\n", 1);
+	(void)res;
 }
 
 void	write_cub_file(char **maze, int height, int width, char *filename)
@@ -98,6 +105,7 @@ void	write_cub_file(char **maze, int height, int width, char *filename)
 	int	fd;
 	int	x;
 	int	y;
+	int	res;
 
 	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	write_parameters(fd);
@@ -107,8 +115,9 @@ void	write_cub_file(char **maze, int height, int width, char *filename)
 	{
 		x = -1;
 		while (++x < width)
-			write(fd, &maze[y][x], 1);
-		write(fd, "\n", 1);
+			res = write(fd, &maze[y][x], 1);
+		res = write(fd, "\n", 1);
 	}
 	close(fd);
+	(void)res;
 }
