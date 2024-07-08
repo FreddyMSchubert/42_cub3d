@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   elementor_tick.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 13:37:24 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/08 08:29:27 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/08 11:20:22 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,17 @@ the power of another element, you can't even dream of stopping me!");
 me? I am the master of all elements! I will crush you!");
 }
 
+static inline void	update_elementor(t_entity *self, t_elementor *elementor)
+{
+	elementor->animation_frame++;
+	elementor->frames_since_element_switch++;
+	elementor->death_animation += elementor->death_animation >= 0;
+	elementor->hurt_state -= elementor->hurt_state > 0;
+	update_stage(self, elementor);
+	move(self, elementor);
+	elementor_attack(self, elementor);
+}
+
 void	tick_elementor(t_entity *self)
 {
 	t_elementor	*elementor;
@@ -80,14 +91,7 @@ void	tick_elementor(t_entity *self)
 		elementor_logger("Harnesser of the elements! You will not defeat me!");
 	}
 	elementor = (t_elementor *)self->data;
-	elementor->animation_frame++;
-	elementor->frames_since_element_switch++;
-	printf("elments sicne frame switch: %d\n", elementor->frames_since_element_switch);
-	elementor->death_animation += elementor->death_animation >= 0;
-	elementor->hurt_state -= elementor->hurt_state > 0;
-	update_stage(self, elementor);
-	move(self, elementor);
-	elementor_attack(self, elementor);
+	update_elementor(self, elementor);
 	if (elementor->frames_since_element_switch > LMNTOR_MAX_SAME_ELEMENT_FRAMES)
 	{
 		refresh_projectiles(elementor);
