@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hud_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:56:58 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/06 20:11:55 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/08 11:49:20 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	draw_square_hud(int x, int y, int size, int color)
 		{
 			if (x >= 0 && x < (int)(image->width)
 				&& y >= 0 && y < (int)(image->height)
-				&& y < game()->mlx->height && x < game()->mlx->width)
+				&& (uint32_t)y < game()->hud->height
+				&& (uint32_t)x < game()->hud->width)
 			{
 				mlx_put_pixel(image, x + i, y + j, color);
 			}
@@ -54,7 +55,8 @@ void	draw_square(int x, int y, int size, int color)
 		{
 			if (x >= 0 && x < (int)(image->width)
 				&& y >= 0 && y < (int)(image->height)
-				&& y < game()->mlx->height && x < game()->mlx->width)
+				&& (u_int32_t)y < game()->game_scene->height
+				&& (u_int32_t)x < game()->game_scene->width)
 			{
 				mlx_put_pixel(image, x + i, y + j, color);
 			}
