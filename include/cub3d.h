@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/07 16:19:06 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/08 09:55:22 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -350,7 +350,7 @@ t_vec2				rotate_vector_by_90_degrees(t_vec2 v, int direction);
 void				update_mouse_visibility(void);
 
 // entities
-t_trans			get_face_vector(t_entity *ntt);
+t_trans				get_face_vector(t_entity *ntt);
 t_entity			*create_entity(t_trans trans, t_entity_type type, \
 		mlx_texture_t	*(*tex)(t_entity *self), void (*tick)(t_entity *self));
 void				delete_entity(t_entity *self);

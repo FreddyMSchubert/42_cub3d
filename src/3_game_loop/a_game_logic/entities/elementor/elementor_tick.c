@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   elementor_tick.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 13:37:24 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/08 08:29:27 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/08 10:39:51 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ void	tick_elementor(t_entity *self)
 	elementor = (t_elementor *)self->data;
 	elementor->animation_frame++;
 	elementor->frames_since_element_switch++;
-	printf("elments sicne frame switch: %d\n", elementor->frames_since_element_switch);
 	elementor->death_animation += elementor->death_animation >= 0;
 	elementor->hurt_state -= elementor->hurt_state > 0;
 	update_stage(self, elementor);

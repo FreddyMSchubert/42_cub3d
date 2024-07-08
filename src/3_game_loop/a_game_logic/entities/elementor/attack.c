@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   attack.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 14:59:57 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/07 23:20:53 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/08 10:44:17 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ static inline void	summon_attack(t_entity *self, t_elementor *elem)
 	ntt->on_collision = on_collision_blight;
 	blight = malloc(sizeof(t_blight));
 	blight->element = get_random_element(elem);
+	blight->hurt_state = -1;
 	blight->drops_key = false;
 	blight->state = BLIGHT_STATE_WALKING;
 	ntt->health = ENEMY_STARTING_HEALTH;
@@ -106,14 +107,13 @@ void	elementor_attack(t_entity *self, t_elementor *elem)
 {
 	if (elem->death_animation >= 0)
 		return ;
-	if (random_val() > LMNTOR_ATTACK_CHANCE || \
-				(self->health <= 5 && random_val() > LMNTOR_ATTACK_CHANCE / 2))
+	if (random_val() > LMNTOR_ATTACK_CHANCE)
 		return ;
 	if (random_val() < LMNTOR_ATTACK_SPIN_CHANCE * \
-							elem->stage && self->health > 3)
+							elem->stage * ((self->health <= 5) + 1))
 		spin_attack(self, elem);
 	else if (random_val() < LMNTOR_ATTACK_SUMMON_CHANCE * \
-							elem->stage && self->health > 5)
+							elem->stage * ((self->health <= 5) + 1))
 		summon_attack(self, elem);
 	else
 		normal_attack(self, elem);

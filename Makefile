@@ -1,4 +1,4 @@
-NAME = cub3d
+NAME = cub3D
 
 SRC = $(shell find ./src -name "*.c")
 OBJ_DIR = ./obj
