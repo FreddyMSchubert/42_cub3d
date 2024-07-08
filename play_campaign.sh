@@ -40,9 +40,7 @@ while true; do
 	./cub3d
 	exit_code=$?
 
-	if [[ exit_code -eq 0 ]]; then
-		break
-	elif [[ exit_code -eq 214 ]]; then
+	if [[ exit_code -eq 214 ]]; then
 		exit
 	fi
 done
