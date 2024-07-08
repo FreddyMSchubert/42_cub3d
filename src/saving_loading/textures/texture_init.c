@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 20:18:50 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/07 15:07:27 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/08 12:10:12 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ static inline void	load_explosion(void)
 void	load_static_textures(void)
 {
 	game()->textures.door = l("entities/door.png");
+	game()->textures.door_open = l("entities/door_open.png");
 	game()->textures.key = l("entities/key.png");
 	game()->textures.goal = l("entities/goal.png");
 	game()->textures.health = l("hud/health.png");

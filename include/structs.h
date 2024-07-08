@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:38 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/08 11:02:57 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/08 12:58:39 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ typedef struct s_animation
 typedef struct s_textures
 {
 	mlx_texture_t	*door;
+	mlx_texture_t	*door_open;
 	mlx_texture_t	*key;
 	mlx_texture_t	*goal;
 	mlx_texture_t	*health;
@@ -173,7 +174,7 @@ typedef struct s_textures
 	mlx_texture_t	*explosion_10;
 }	t_textures;
 
-# define MAX_TEXTURES 74
+# define MAX_TEXTURES 75
 
 typedef struct s_persistent_data
 {
@@ -278,16 +279,22 @@ typedef struct s_entity
 # define DOOR_STATE_CLOSED 0
 # define DOOR_STATE_OPENING 1
 # define DOOR_STATE_OPEN 2
+# define DOOR_STATE_CLOSING 3
 
 # define DOOR_DIR_VERTICAL 0
 # define DOOR_DIR_HORIZONTAL 1
 
+# define DOOR_TYPE_LOCKED 0
+# define DOOR_TYPE_UNLOCKED 1
+
 typedef struct s_door
 {
 	int		state;
+	int		type;
 	bool	direction;
 	t_vec2	open_pos;
 	t_vec2	close_pos;
+	t_vec2	idle_pos;
 	double	door_open_progress;
 }	t_door;
 

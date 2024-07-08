@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:23:50 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/08 11:18:47 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/08 12:39:01 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static inline void	inventory_press(mlx_key_data_t keydata)
 void	key_hook(mlx_key_data_t keydata, void *param)
 {
 	if (keydata.key == MLX_KEY_ESCAPE)
-		cub_exit("ESCAPE received, exiting...", 0);
+		cub_exit("ESCAPE received, exiting...", -1);
 	else if (keydata.key == MLX_KEY_ENTER && keydata.action == MLX_PRESS)
 	{
 		game()->mouse_free = !game()->mouse_free;

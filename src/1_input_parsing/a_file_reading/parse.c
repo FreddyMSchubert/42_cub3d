@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 09:39:02 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/07 16:27:08 by freddy           ###   ########.fr       */
+/*   Updated: 2024/07/08 12:20:26 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ static inline bool	check_element_at_pos(t_scale s, t_tile_type ***map, \
 		return (false);
 	else if (d[i][s.x] == 'h' && !set_health((t_vec2){s.x, s.y}, map))
 		return (false);
-	else if ((d[i][s.x] == 'H' || d[i][s.x] == 'V') && \
+	else if ((d[i][s.x] == 'H' || d[i][s.x] == 'V' || \
+					d[i][s.x] == '-' || d[i][s.x] == '|') && \
 					!set_door((t_vec2){s.x, s.y}, map, d[i][s.x]))
 		return (false);
 	else if ((d[i][s.x] == 'w' || d[i][s.x] == 'e' || d[i][s.x] == 'a'

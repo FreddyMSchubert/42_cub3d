@@ -36,9 +36,12 @@ MM OFF
 # 'E' -> Player facing East
 # 'W' -> Player facing West
 
+# 'H' -> Horizontal locked door
+# 'V' -> Vertical locked door
+# '-' -> Horizontal unlocked door
+# '|' -> Vertical unlocked door
+
 # 'G' -> Goal
-# 'H' -> Horizontal door
-# 'V' -> Vertical door
 # 'K' -> Key
 # 'h' -> Health pickup
 

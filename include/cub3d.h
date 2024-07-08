@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:37:47 by jkauker           #+#    #+#             */
-/*   Updated: 2024/07/08 11:21:11 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/08 12:04:03 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # include <limits.h>
 
 /* ---- SETTINGS ---- */
-# define MAP_TILES " 10NESWGHVKwfeaqrdshuiopB"
+# define MAP_TILES " 10NESWGHVKwfeaqrdshuiopB-|"
 // ' ' -> VOID
 // '1' -> WALL
 // '0' -> FLOOR
@@ -44,8 +44,8 @@
 // 'S' -> PLAYER LOOKING SOUTH
 // 'W' -> PLAYER LOOKING WEST
 // 'G' -> GOAL
-// 'H' -> HORIZONTAL DOOR
-// 'V' -> VERTICAL DOOR
+// 'H' -> HORIZONTAL LOCKED DOOR
+// 'V' -> VERTICAL LOCKED DOOR
 // 'K' -> KEY
 // 'w' -> WATER ORB
 // 'f' -> FIRE ORB
@@ -61,6 +61,8 @@
 // 'p' -> KEY WATER BLIGHT
 // 'h' -> HEALTH PICKUP
 // 'B' -> BOSS (ELEMENTOR)
+// '-' -> HORIZONTAL UNLOCKED DOOR
+// '|' -> VERTICAL UNLOCKED DOOR
 
 /* ----- LOGGER ----- */
 # define LOGGER_ERROR 'e'
