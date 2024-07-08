@@ -30,6 +30,7 @@ $(OBJ_DIR)/%.o: ./src/%.c
 	cc $(CFLAGS) -o $@ -c $< $(HEADERS) -g
 
 all: setup libmlx libft gnl $(NAME)
+	rm -f save.cubsave
 clean:
 	rm -rf $(OBJ_DIR)
 	@if [ -d "$(LIBFT)" ]; then make -C $(LIBFT) clean; fi
