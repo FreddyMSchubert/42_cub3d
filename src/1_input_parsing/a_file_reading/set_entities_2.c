@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_entities_2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 11:03:47 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/08 11:25:49 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/08 11:27:38 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,18 @@ bool	set_door(t_vec2 pos, t_tile_type ***map, char type)
 	return (true);
 }
 
+static inline void	init_elementor(t_elementor *data)
+{
+	data->stage = 1;
+	data->animation_frame = 0;
+	data->death_animation = -1;
+	data->element1 = random_int(0, 3);
+	data->element2 = random_int(0, 3);
+	data->element3 = random_int(0, 3);
+	data->mvmnt = ELEMENTOR_MVMNT_STAND;
+	data->frames_since_element_switch = 0;
+}
+
 bool	set_boss(t_vec2 pos, t_tile_type ***map)
 {
 	t_elementor	*data;
@@ -54,14 +66,7 @@ bool	set_boss(t_vec2 pos, t_tile_type ***map)
 		cub_exit("malloc failed", -1);
 	trans.pos = (t_vec2){pos.x + 0.5, pos.y + 0.5};
 	trans.rot = (t_vec2){0, 0};
-	data->stage = 1;
-	data->animation_frame = 0;
-	data->death_animation = -1;
-	data->element1 = random_int(0, 3);
-	data->element2 = random_int(0, 3);
-	data->element3 = random_int(0, 3);
-	data->mvmnt = ELEMENTOR_MVMNT_STAND;
-	data->frames_since_element_switch = 0;
+	init_elementor(data);
 	ntt = create_entity(trans, ELEMENTOR_NTT, \
 					get_texture_elementor, tick_elementor);
 	ntt->is_billboard = true;
