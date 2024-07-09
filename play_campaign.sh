@@ -16,7 +16,7 @@ for map_file in "$MAP_DIR"/*; do
 
 	while true; do
 		echo -e "\n\n\n"
-		./cub3d "$map_file"
+		./cub3D "$map_file"
 		exit_code=$?
 
 		if [[ exit_code -eq 0 ]]; then
@@ -37,7 +37,7 @@ echo "Wait, what's that over there?"
 echo "Infinite random gen maps, here I come!"
 
 while true; do
-	./cub3d
+	./cub3D
 	exit_code=$?
 
 	if [[ exit_code -eq 214 ]]; then
