@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.0] - 10.07.2024
+- README additions
+- Fixed R not resetting position but also clearing keys from inventory etc
+- Blight Key dropping changes
+- Project no longer norminette conformant
+
+> [!IMPORTANT]
+> Project was handed in, with full points! We did it.
+
 ### [0.26.21] - 06.07.2024
 - Self-opening doors
 

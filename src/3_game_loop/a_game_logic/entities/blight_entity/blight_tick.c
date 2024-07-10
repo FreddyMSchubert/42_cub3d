@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   blight_tick.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:57:26 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/08 08:32:37 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/10 10:26:53 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,11 @@ void	tick_blight(t_entity *self)
 	{
 		logger_v(LOGGER_ACTION, "Blight died!");
 		drop_orbs(self->trans, blight->element);
+		if (blight->drops_key)
+		{
+			create_entity(self->trans, KEY_NTT, get_texture_key, tick_key);
+			blight->drops_key = false;
+		}
 		self->to_be_deleted = true;
 	}
 	else if (blight->state == BLIGHT_STATE_ATTACKING)
