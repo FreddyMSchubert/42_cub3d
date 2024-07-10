@@ -4,7 +4,7 @@
 > [!INFO]
 > Click on the thumbnail up there to watch the full project showcase on YouTube.
 
-![Boundary](https://github.com/FreddyMSchubert/42_cub3d/assets/readme/boundaries/boundary-1.png)
+![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-1.png)
 
 # Installation
 
@@ -24,13 +24,13 @@ If you wish to play a specific map, you can run:
 
 `./cub3D [path to map]`
 
-> Many maps can be found at ./assets/maps/valid/*.cub, but you can easily make your own!
+> Many maps can be found at [./assets/maps/valid/*.cub](https://github.com/FreddyMSchubert/42_cub3d/tree/master/assets/maps/valid), but you can easily make your own!
 
 If you want to play a randomly generated level, run:
 
 `./cub3D`
 
-![Boundary](https://github.com/FreddyMSchubert/42_cub3d/assets/readme/boundaries/boundary-2.png)
+![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-2.png)
 
 # Project introduction
 
@@ -48,7 +48,7 @@ With the help of the numerous documents available on the internet, you will use 
 
 > You can check out the original Wolfenstein3D game & find out what we were working off here: [Wolfenstein 3D](http://users.atw.hu/wolf3d)
 
-![Boundary](https://github.com/FreddyMSchubert/42_cub3d/assets/readme/boundaries/boundary-3.png)
+![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-3.png)
 
 # The task
 
@@ -106,7 +106,7 @@ Add:
 - An animated sprite
 - View rotation with the mouse
 
-## OUR (☭) bonus
+## OUR bonus
 
 Well, but we didn't just stop there.
 
@@ -168,4 +168,6 @@ MM OFF
 We also made it possible to turn off the minimap and to log stuff when a map is loaded.
 
 > [!NOTE]
-> For a full overview of how to create a map, check out ./assets/maps/template_map.cub
+> For a full overview of how to create a map, check out [./assets/maps/template_map.cub](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/maps/template_map.cub)
+
+![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-4.png)
