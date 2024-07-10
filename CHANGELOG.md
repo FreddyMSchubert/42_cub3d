@@ -1,5 +1,8 @@
 # Changelog
 
+### [1.0.1] - 10.07.2024
+- Wrote A LOT into the Readme.
+
 ## [1.0.0] - 10.07.2024
 - README additions
 - Fixed R not resetting position but also clearing keys from inventory etc
