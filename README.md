@@ -1,7 +1,8 @@
-## Cub3d by [FreddyMSchubert](https://github.com/FreddyMSchubert) && [Reptudn](https://github.com/Reptudn)
+# Cub3d by [FreddyMSchubert](https://github.com/FreddyMSchubert) && [Reptudn](https://github.com/Reptudn)
 
 [![YOUTUBE SHOWCASE VIDEO](https://img.youtube.com/vi/YGmE1SxFchE/0.jpg)](https://www.youtube.com/watch?v=YGmE1SxFchE)
-> [!INFO]
+### 💧🔥🪨💨 42 cub3d game - [full campaign] - project created by FreddyMSchubert & Reptudn
+> [!NOTE]
 > Click on the thumbnail up there to watch the full project showcase on YouTube.
 
 ![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-1.png)
@@ -24,7 +25,7 @@ If you wish to play a specific map, you can run:
 
 `./cub3D [path to map]`
 
-> Many maps can be found at [./assets/maps/valid/*.cub](https://github.com/FreddyMSchubert/42_cub3d/tree/master/assets/maps/valid), but you can easily make your own!
+> Many maps can be found at [./assets/maps/valid/*.cub](https://github.com/FreddyMSchubert/42_cub3d/tree/master/assets/maps/valid), but you can easily make your own! More on that in a bit.
 
 If you want to play a randomly generated level, run:
 
@@ -32,13 +33,13 @@ If you want to play a randomly generated level, run:
 
 ![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-2.png)
 
-> [!INFO]
+> [!NOTE]
 > Don't like the amount of health you start out with? \
 > Don't like the enemy movement speed? \
 > Wan't to play around and tweak the map generation? \
 > Every single important settings is defined in [settings.h](https://github.com/FreddyMSchubert/42_cub3d/blob/master/include/settings.h), you can play around with anything & see what happens.
 
-> [!INFO]
+> [!NOTE]
 > If you want to get a look behind the scenes, turn on some of the settings in the general section of [settings.h](https://github.com/FreddyMSchubert/42_cub3d/blob/master/include/settings.h) - they will enable some very extensive logging, amount other things.
 
 # Project introduction
@@ -209,10 +210,12 @@ In general, Jonas focused more on parsing & the HUD, while I did rendering & the
 
 We both had a lot of fun making this project, and learned a lot about splitting work efficiently & creating such a complex program with a heavy focus on efficiency, especially in graphics rendering.
 
-> [!INFO]
+> [!NOTE]
 > We have documented this entire process in great detail in the [Changelog](https://github.com/FreddyMSchubert/42_cub3d/blob/master/CHANGELOG.md).
 
 But, well, how does it actually - *work*?
+
+![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-1.png)
 
 # The Approach / Implementation
 
@@ -245,6 +248,8 @@ Instead of passing this generated map through to the rest of the program, this s
 
 Now, onto the main part.
 
+![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-2.png)
+
 ## Parsing
 
 Parse it.
@@ -267,7 +272,7 @@ When looking at the stem of a tree in Minecraft, each log block actually only ha
 
 We culled the wall sides that touched other wall tiles using a twodimensional boolean array. In this process, we also converted the walls to the format we'll be using them in later.
 
-Finally, we execute a flood fill from the player position. If the player ever reaches 
+![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-3.png)
 
 ## Game Loop
 
@@ -287,8 +292,8 @@ The entities have a very nice system. Every entity is contained in a single data
 
 ```
 mlx_texture_t	*(*get_texture)(t_entity *self);
-void			(*tick)(t_entity *self);
-void			(*on_collision)(t_entity *self, t_entity *collider);
+void		(*tick)(t_entity *self);
+void		(*on_collision)(t_entity *self, t_entity *collider);
 ```
 
 These three functions will be called at different times by a generic script that handles all entities. Otherwise, handling entities would have been an absolute nightmare and not maintainable in the slightest. I recommend taking a look at the full system.
@@ -330,6 +335,8 @@ Every frame we check whether the WASD keys are held down. If so, we move our pos
 
 But instead of just applying that movement to our positions immediately, we first check whether the new position is valid and not within a wall. This is done in two steps. By doing this check and applying the position on the x and y axis seperately, we allow for wall hugging, where you can still walk while you are technically facing a wall, just slow.
 
+![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-4.png)
+
 ### Rendering
 
 #### Raycasting
@@ -370,6 +377,8 @@ And just like that, we have an impressive & unique effect by leveraging in-engin
 #### HUD
 
 The minimap draws its spaces with decreasing opacity based on the distance, creating a nice torch / flashlight effect.
+
+![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-1.png)
 
 ## Other interesting elements
 
