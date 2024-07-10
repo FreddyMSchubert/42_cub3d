@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 07:33:54 by fschuber          #+#    #+#             */
-/*   Updated: 2024/07/08 08:21:21 by jkauker          ###   ########.fr       */
+/*   Updated: 2024/07/10 10:42:26 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,6 @@ int	main(int argc, char **argv)
 	logger_v(LOGGER_STEP, "Mlx Setup");
 	setup_mlx();
 	logger_v(LOGGER_STEP, "Gameloop");
+	logger(LOGGER_INFO, "Press ESC to exit, press ENTER to free your cursor.");
 	mlx_loop(game()->mlx);
 }
