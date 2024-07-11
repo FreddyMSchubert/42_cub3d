@@ -1,5 +1,9 @@
 # Changelog
 
+### [1.0.2] - 11.07.2024
+- Added a bunch of nice gameplay gifs. Hopefully theyre aligned correctly when viewed on github
+- Also added an updated Youtube Video link image texture
+
 ### [1.0.1] - 10.07.2024
 - Wrote A LOT into the Readme.
 

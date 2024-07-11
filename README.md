@@ -1,7 +1,7 @@
-# Cub3d by [FreddyMSchubert](https://github.com/FreddyMSchubert) && [Reptudn](https://github.com/Reptudn)
+# ***Cub3d*** by [FreddyMSchubert](https://github.com/FreddyMSchubert) && [Reptudn](https://github.com/Reptudn)
 
-[![YOUTUBE SHOWCASE VIDEO](https://img.youtube.com/vi/YGmE1SxFchE/0.jpg)](https://www.youtube.com/watch?v=YGmE1SxFchE)
-### 💧🔥🪨💨 42 cub3d game - [full campaign] - project created by FreddyMSchubert & Reptudn
+[![YOUTUBE SHOWCASE VIDEO](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/thumbnail_screenshot.png)](https://www.youtube.com/watch?v=YGmE1SxFchE)
+
 > [!NOTE]
 > Click on the thumbnail up there to watch the full project showcase on YouTube.
 
@@ -41,6 +41,30 @@ If you want to play a randomly generated level, run:
 
 > [!NOTE]
 > If you want to get a look behind the scenes, turn on some of the settings in the general section of [settings.h](https://github.com/FreddyMSchubert/42_cub3d/blob/master/include/settings.h) - they will enable some very extensive logging, amount other things.
+
+# Showcase
+
+<div align="center">
+	<img width=320 align="center" src="https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/gameplay_gifs/0.gif">
+	<img width=320 align="center" src="https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/gameplay_gifs/1.gif"/>
+</div>
+<div align="center">
+	<img width=320 align="center" src="https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/gameplay_gifs/2.gif">
+	<img width=320 align="center" src="https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/gameplay_gifs/3.gif"/>
+</div>
+<div align="center">
+	<img width=320 align="center" src="https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/gameplay_gifs/4.gif">
+	<img width=320 align="center" src="https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/gameplay_gifs/5.gif"/>
+</div>
+<div align="center">
+	<img width=320 align="center" src="https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/gameplay_gifs/6.gif">
+	<img width=320 align="center" src="https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/gameplay_gifs/7.gif"/>
+</div>
+<div align="center">
+	<img width=320 align="center" src="https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/gameplay_gifs/8.gif">
+	<img width=320 align="center" src="https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/gameplay_gifs/9.gif"/>
+</div>
+<img align="center" src="https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/gameplay_gifs/10.gif"/>
 
 # Project introduction
 
