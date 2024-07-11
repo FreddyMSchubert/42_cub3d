@@ -13,7 +13,7 @@
 
 # Installation
 
-(The program was tested on Mac & Linux.)
+*(The program was tested on Mac & Linux.)*
 
 Simply run this command:
 
@@ -35,8 +35,6 @@ If you want to play a randomly generated level, run:
 
 `./cub3D`
 
-![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-2.png)
-
 > [!NOTE]
 > Don't like the amount of health you start out with? \
 > Don't like the enemy movement speed? \
@@ -45,6 +43,8 @@ If you want to play a randomly generated level, run:
 
 > [!NOTE]
 > If you want to get a look behind the scenes, turn on some of the settings in the general section of [settings.h](https://github.com/FreddyMSchubert/42_cub3d/blob/master/include/settings.h) - they will enable some very extensive logging, amount other things.
+
+![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-2.png)
 
 # Showcase
 
@@ -73,6 +73,8 @@ If you want to play a randomly generated level, run:
 	<img width=400 align="center" src="https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/gameplay_gifs/11.gif"/>
 </div>
 
+> There's a lot more to see. Play it yourself!
+
 # Project introduction
 
 > This project is inspired by the world-famous Wolfenstein 3D game, which was the first FPS ever. \
@@ -89,6 +91,10 @@ With the help of the numerous documents available on the internet, you will use 
 
 > You can check out the original Wolfenstein3D game & find out what we were working off here: [Wolfenstein 3D](http://users.atw.hu/wolf3d)
 
+<div align="center">
+	<img src="https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/wolfenstein.gif" width=450 align="center">
+</div>
+
 ![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-3.png)
 
 # The task
@@ -97,21 +103,21 @@ With the help of the numerous documents available on the internet, you will use 
 
 > You can also read [the subject](https://github.com/FreddyMSchubert/42_cub3d/blob/main/en.subject.pdf).
 
-- You must use MLX42.
+- You must use [MLX42](https://github.com/codam-coding-college/MLX42) or [minilibx](https://github.com/42Paris/minilibx-linux). (We chose MLX42).
 - The window management must remain smooth.
 
 ### File format (.cub)
 
 - Display different wall textures depending on the cardinal direction of a wall (North, South, East, West).
-- Display different floor & ceiling colors.
+- Display different floor & ceiling colors based on RGB input.
 - The map must be made up of 0s, 1s, Spaces and NSEWs.
-	- 1 stands for a wall
-	- 0 stands for a floor
-	- ' ' stands for a void tile
+	- `1` stands for a wall
+	- `0` stands for a floor
+	- `' '` stands for a void tile
 	- NSEW stands for where the player spawns, giving info on the direction they should be facing.
 	- The player must be unable to reach the edge of the map & the void.
 
-An example map could look something like this:
+A basic example map could look something like this:
 
 ```
 NO ./path_to_the_north_texture
@@ -250,6 +256,10 @@ But, well, how does it actually - *work*?
 
 # The Approach / Implementation
 
+<div align="center">
+	<img src="https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/starting_up.png" height=450 align="center">
+</div>
+
 ## Saving / Loading
 
 We created a nice saving system to allow for the creation of proper progressive levels with increasing difficulty, like the campaign demonstrates. To do this, we save the amount of inventory items the player has, their health and their chosen element into a custom data format in a `save.cubsave` file. This gets loaded at the start of the game and if it's valid, the player can continue right from where they left off.
@@ -277,6 +287,14 @@ This is a mode I was anxious about at the start, but that came together really w
 
 Instead of passing this generated map through to the rest of the program, this segmented off section just writes the maze into it's own file which then gets re-read by the program, allowing for saving, editing and replaying of the custom map, which I've used to create most of the campaign maps, as I really do like how the level generator turned out.
 
+Here's one of the maps it just generated for me:
+
+<div align="center">
+	<img src="https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/random_gen_map.png" width=350 align="center">
+</div>
+
+> This map might look kinda tiny from up above, but play one of a similar size - orientation gets pretty hard pretty quickly.
+
 Now, onto the main part.
 
 ![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-2.png)
@@ -302,6 +320,12 @@ There is one very helpful thing we do to make our program run smoother:
 When looking at the stem of a tree in Minecraft, each log block actually only has 4 sides the game draws, because the top and bottom ones won't be visible anyways. In the example of a tree, this is rather inconsequential, but if Minecraft was to draw all the sides of the stone block in a cave 100 blocks beneath you, your PC would explode.
 
 We culled the wall sides that touched other wall tiles using a twodimensional boolean array. In this process, we also converted the walls to the format we'll be using them in later.
+
+<div align="center">
+	<img src="https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/culled_walls.png" height=450 align="center">
+</div>
+
+> These are the walls we use in the rest of the program, fully culled.
 
 ![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-3.png)
 
@@ -369,6 +393,12 @@ But instead of just applying that movement to our positions immediately, we firs
 ![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-4.png)
 
 ### Rendering
+
+<div align="center">
+	<img src="https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/broken_rendering.png" height=450 align="center">
+</div>
+
+> As you can see, rendering has only ever worked perfectly.
 
 #### Raycasting
 

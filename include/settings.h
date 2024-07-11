@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   settings.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 08:45:22 by freddy            #+#    #+#             */
-/*   Updated: 2024/07/10 10:41:53 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/07/11 10:41:22 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define VERBOSE false
 # define DEBUG false
 # define LOG_WALLS false
-# define TERMINAL_MAP true
+# define TERMINAL_MAP false
 # define LOG_TIMING false
 
 # define SAVE_FILE "save.cubsave"

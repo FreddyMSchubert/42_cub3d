@@ -1,5 +1,10 @@
 # Changelog
 
+### [1.0.4] - 11.07.2024
+- Further readme improvements
+- Added a screenshot when starting up the program & and a screenshot to show off one of the randomly generated maps
+- Added a bunch more images for less boringness
+
 ### [1.0.3] - 11.07.2024
 - Centered youtube link
 - Added a door gif, and increased gif sizes
