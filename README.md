@@ -11,6 +11,33 @@
 
 ![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-1.png)
 
+# Table of Contents
+
+- [Installation](https://github.com/FreddyMSchubert/42_cub3d#installation)
+- [Showcase](https://github.com/FreddyMSchubert/42_cub3d#showcase)
+- [Project Introduction](https://github.com/FreddyMSchubert/42_cub3d#project-introduction)
+- [The Task](https://github.com/FreddyMSchubert/42_cub3d#the-task)
+  - [The Bonus](https://github.com/FreddyMSchubert/42_cub3d#the-bonus)
+  - [OUR Bonus](https://github.com/FreddyMSchubert/42_cub3d#our-bonus)
+- [Notes on the journey](https://github.com/FreddyMSchubert/42_cub3d#notes-on-the-journey)
+- [The Approach / Implementation](https://github.com/FreddyMSchubert/42_cub3d#the-approach--implementation)
+  - [Saving / Loading](https://github.com/FreddyMSchubert/42_cub3d#saving--loading)
+  - [Map Generation](https://github.com/FreddyMSchubert/42_cub3d#map-generation)
+  - [Parsing](https://github.com/FreddyMSchubert/42_cub3d#parsing)
+  - [Validation](https://github.com/FreddyMSchubert/42_cub3d#validation)
+  - [Wall Conversion](https://github.com/FreddyMSchubert/42_cub3d#wall-conversion)
+  - [Game Loop](https://github.com/FreddyMSchubert/42_cub3d#game-loop)
+    - [Game Logic](https://github.com/FreddyMSchubert/42_cub3d#game-logic)
+      - [Entities](https://github.com/FreddyMSchubert/42_cub3d#entities)
+      - [Player Movement](https://github.com/FreddyMSchubert/42_cub3d#player-movement)
+    - [Rendering](https://github.com/FreddyMSchubert/42_cub3d#player-movement)
+      - [Raycasting](https://github.com/FreddyMSchubert/42_cub3d#raycasting)
+      - [Drawing](https://github.com/FreddyMSchubert/42_cub3d#drawing)
+      - [HUD](https://github.com/FreddyMSchubert/42_cub3d#hud)
+- [Other interesting elements](https://github.com/FreddyMSchubert/42_cub3d#other-interesting-elements)
+
+![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-2.png)
+
 # Installation
 
 *(The program was tested on Mac & Linux.)*
@@ -44,7 +71,7 @@ If you want to play a randomly generated level, run:
 > [!NOTE]
 > If you want to get a look behind the scenes, turn on some of the settings in the general section of [settings.h](https://github.com/FreddyMSchubert/42_cub3d/blob/master/include/settings.h) - they will enable some very extensive logging, amount other things.
 
-![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-2.png)
+![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-3.png)
 
 # Showcase
 
@@ -95,7 +122,7 @@ With the help of the numerous documents available on the internet, you will use 
 	<img src="https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/wolfenstein.gif" width=450 align="center">
 </div>
 
-![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-3.png)
+![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-4.png)
 
 # The task
 
@@ -217,7 +244,7 @@ We also made it possible to turn off the minimap and to log stuff when a map is 
 > [!NOTE]
 > For a full overview of how to create a map, check out [./assets/maps/template_map.cub](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/maps/template_map.cub)
 
-![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-4.png)
+![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-1.png)
 
 # Notes on the journey
 
@@ -252,13 +279,15 @@ We both had a lot of fun making this project, and learned a lot about splitting 
 
 But, well, how does it actually - *work*?
 
-![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-1.png)
+![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-2.png)
 
 # The Approach / Implementation
 
 <div align="center">
 	<img src="https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/starting_up.png" height=450 align="center">
 </div>
+
+> An example of the verbose output when starting up the program.
 
 ## Saving / Loading
 
@@ -297,7 +326,7 @@ Here's one of the maps it just generated for me:
 
 Now, onto the main part.
 
-![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-2.png)
+![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-3.png)
 
 ## Parsing
 
@@ -327,7 +356,7 @@ We culled the wall sides that touched other wall tiles using a twodimensional bo
 
 > These are the walls we use in the rest of the program, fully culled.
 
-![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-3.png)
+![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-4.png)
 
 ## Game Loop
 
@@ -390,12 +419,12 @@ Every frame we check whether the WASD keys are held down. If so, we move our pos
 
 But instead of just applying that movement to our positions immediately, we first check whether the new position is valid and not within a wall. This is done in two steps. By doing this check and applying the position on the x and y axis seperately, we allow for wall hugging, where you can still walk while you are technically facing a wall, just slow.
 
-![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-4.png)
+![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-1.png)
 
 ### Rendering
 
 <div align="center">
-	<img src="https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/broken_rendering.png" height=450 align="center">
+	<img src="https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/broken_rendering.gif" height=450 align="center">
 </div>
 
 > As you can see, rendering has only ever worked perfectly.
@@ -439,9 +468,11 @@ And just like that, we have an impressive & unique effect by leveraging in-engin
 
 The minimap draws its spaces with decreasing opacity based on the distance, creating a nice torch / flashlight effect.
 
-![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-1.png)
+![Boundary](https://github.com/FreddyMSchubert/42_cub3d/blob/master/assets/readme/boundaries/boundary-2.png)
 
 ## Other interesting elements
+
+> Pun intended.
 
 - The "garbage collector"
 	- is not at all a garbage collector in the traditional sense, it's really just an abstraction for malloc.

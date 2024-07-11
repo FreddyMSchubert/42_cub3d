@@ -1,5 +1,9 @@
 # Changelog
 
+### [1.0.5] - 11.07.2024
+- Added a table of contents
+- broken rendering gif wrong URL fix
+
 ### [1.0.4] - 11.07.2024
 - Further readme improvements
 - Added a screenshot when starting up the program & and a screenshot to show off one of the randomly generated maps
