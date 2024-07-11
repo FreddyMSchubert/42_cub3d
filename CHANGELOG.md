@@ -1,5 +1,9 @@
 # Changelog
 
+### [1.0.3] - 11.07.2024
+- Centered youtube link
+- Added a door gif, and increased gif sizes
+
 ### [1.0.2] - 11.07.2024
 - Added a bunch of nice gameplay gifs. Hopefully theyre aligned correctly when viewed on github
 - Also added an updated Youtube Video link image texture
